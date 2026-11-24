@@ -115,3 +115,12 @@ Number spine: every number with its math. Then `sources.md`.
 - [ ] 20–45 s; -14 LUFS; captions match the audio.
 - [ ] Synthetic disclosure on; assets logged in `credits.md`.
 - [ ] The final line loops into frame 0.
+
+## 13. Woven CTAs (user rule, 2026-11-24) — like, follow, share inside the story, never a pitch
+Every video mentions all three, **spread out**, each as **one short clause that belongs to the story**, said in the narrator's dry voice. Never "like and subscribe", never "follow for more videos like this", never a block of asks at the end.
+- **Like (~25–35% in):** tied to a reaction the viewer is having. "Tap the heart if you'd have wired the money too. Most of Boston did." / "If that number made your stomach drop, hit like — it should."
+- **Share (~50–60%, at the most relatable beat):** tied to a person in their life. "Send this to the friend who keeps texting you about a 'can't-lose' coin." / "Your uncle with the 'guaranteed' 20%? He needs this part."
+- **Follow (~75–85%, right before the payoff, as a promise not a plea):** "Stick around — following this page is how you spot the next one before it spots you." / "Remember this number; it shows up again in the next case."
+- Long-form: the same three, spread across chapters (like in ch1, share in ch2, follow before the final act), plus the closing subscribe line.
+- On screen, when each is said: a tiny matching icon moment — heart pulse (like), paper-plane flick (share), the storyteller tapping the +FOLLOW button (follow). No big banners.
+- The comment-bubble prompt after the payoff and the tap-to-follow in the last 2 s stay as they are.
