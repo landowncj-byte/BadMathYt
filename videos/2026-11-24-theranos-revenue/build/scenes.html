@@ -157,12 +157,12 @@ function sVoid(c, t) {
 // H: 43–46.1 follow + magnifier over $100,000,000
 function sNumber(c, t) {
   bgGrid(c, t, 'rgba(0,210,106,.06)');
-  txt(c, 'CLAIMED REVENUE', 540, 410, '400 70px Anton', PAPER);
-  const k = back(lin(t, 43.0, 43.3)); c.save(); c.translate(540, 560); c.scale(.9 + .1 * k, .9 + .1 * k); glowTxt(c, '$100,000,000', 0, 0, '800 112px JBM', GREEN, 30 + 10 * Math.sin(t * 6)); c.restore();
-  const mk = back(lin(t, 44.08, 44.4)); if (mk > 0) { const mx = lerp(250, 540, eo(lin(t, 44.08, 44.7))) + Math.sin(t * 5) * 6, my = 560 + Math.sin(t * 4) * 5; const r = 150 * mk;
-    c.save(); c.beginPath(); c.arc(mx, my, r, 0, 7); c.clip(); c.fillStyle = '#10151c'; c.fillRect(mx - r, my - r, r * 2, r * 2); c.translate(mx, my); c.scale(1.35, 1.35); c.translate(-mx, -my); glowTxt(c, '$100,000', mx, my, '800 112px JBM', RED, 30); c.restore();
+  txt(c, 'CLAIMED REVENUE', 540, 400, '400 70px Anton', PAPER);
+  const k = back(lin(t, 43.0, 43.3)); c.save(); c.translate(540, 650); c.scale(.9 + .1 * k, .9 + .1 * k); glowTxt(c, '$100,000,000', 0, 0, '800 112px JBM', GREEN, 30 + 10 * Math.sin(t * 6)); c.restore();
+  const mk = back(lin(t, 44.08, 44.4)); if (mk > 0) { const mx = lerp(250, 540, eo(lin(t, 44.08, 44.7))) + Math.sin(t * 5) * 6, my = 650 + Math.sin(t * 4) * 5; const r = 175 * mk;
+    c.save(); c.beginPath(); c.arc(mx, my, r, 0, 7); c.clip(); c.fillStyle = '#10151c'; c.fillRect(mx - r, my - r, r * 2, r * 2); txt(c, 'REAL', mx, my - 62, '700 30px JBM', PAPER); glowTxt(c, '$100,000', mx, my, '800 54px JBM', RED, 20); txt(c, '÷ 1,000', mx, my + 58, '700 28px JBM', HL); c.restore();
     magnifier(c, mx, my, r); }
-  if (t > 44.8) { const q = back(lin(t, 44.8, 45.1)); c.save(); c.translate(540, 800); c.scale(q, q); txt(c, 'REAL: $100,000', 0, 0, '800 52px JBM', RED); c.restore(); txt(c, '1,000× SMALLER', 540, 870, '700 32px JBM', HL); }
+  if (t > 44.8) { const q = back(lin(t, 44.8, 45.1)); c.save(); c.translate(540, 870); c.scale(q, q); txt(c, 'REAL: $100,000', 0, 0, '800 52px JBM', RED); c.restore(); txt(c, '1,000× SMALLER', 540, 930, '700 32px JBM', HL); }
 }
 // I: 46.1–50.3 verdict
 function sVerdict(c, t) {
@@ -171,10 +171,10 @@ function sVerdict(c, t) {
   c.save(); const rail = (bb - bt) * drop; for (let i = 0; i < 9; i++) { const bx = 110 + i * 105; const g = c.createLinearGradient(bx - 20, 0, bx + 20, 0); g.addColorStop(0, '#2a323d'); g.addColorStop(.5, '#a7b1bf'); g.addColorStop(1, '#2a323d'); c.fillStyle = g; rr(c, bx - 20, bt, 40, rail, 18); c.fill(); }
   c.fillStyle = '#5b6573'; if (drop > 0) { c.fillRect(70, bt, 940, 26); c.fillRect(70, bt + rail - 26, 940, 26); } c.restore();
   const sl = ei(lin(t, 46.0, 46.18)); const bounce = t > 46.18 ? Math.exp(-(t - 46.18) * 9) * Math.sin((t - 46.18) * 40) * .1 : 0; const ang = lerp(-1.0, .05, sl) + bounce;
-  rr(c, 380, 520, 320, 46, 10); c.fillStyle = '#6a4a2c'; c.fill();
-  c.save(); c.translate(540, 505); c.rotate(ang); c.fillStyle = '#8a6a44'; rr(c, -14, -250, 28, 260, 8); c.fill(); rr(c, -110, -290, 220, 90, 14); c.fillStyle = '#a07a4e'; c.fill(); c.strokeStyle = '#4a3320'; c.lineWidth = 5; c.stroke(); c.restore();
+  rr(c, 380, 610, 320, 46, 10); c.fillStyle = '#6a4a2c'; c.fill();
+  c.save(); c.translate(540, 595); c.rotate(ang); c.fillStyle = '#8a6a44'; rr(c, -14, -250, 28, 260, 8); c.fill(); rr(c, -110, -290, 220, 90, 14); c.fillStyle = '#a07a4e'; c.fill(); c.strokeStyle = '#4a3320'; c.lineWidth = 5; c.stroke(); c.restore();
   if (t >= 46.18 && t < 46.4) { c.fillStyle = `rgba(255,255,255,${.4 * (1 - (t - 46.18) / .2)})`; c.fillRect(0, 0, W, H); }
-  stamp(c, 'GUILTY', 540, 690, 130, RED, -.04, lin(t, 46.18, 46.3)); stamp(c, '4 COUNTS', 540, 850, 100, HL, .04, lin(t, 46.92, 47.04)); stamp(c, '11 YRS 3 MOS', 540, 1020, 100, RED, -.03, lin(t, 47.88, 48.0));
+  stamp(c, 'GUILTY', 540, 760, 130, RED, -.04, lin(t, 46.18, 46.3)); stamp(c, '4 COUNTS', 540, 905, 100, HL, .04, lin(t, 46.92, 47.04)); stamp(c, '11 YRS 3 MOS', 540, 1040, 100, RED, -.03, lin(t, 47.88, 48.0));
 }
 // J: 50.3–end split: claimed vs real
 function sSplit(c, t) {
