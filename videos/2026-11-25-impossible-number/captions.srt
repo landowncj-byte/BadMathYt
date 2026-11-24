@@ -1,0 +1,631 @@
+1
+00:00:00,000 --> 00:00:06,390
+On April 16th, 1991, Bernie Madoff said he bought 123 call options
+
+2
+00:00:06,450 --> 00:00:08,250
+on Procter and Gamble stock.
+
+3
+00:00:08,730 --> 00:00:12,810
+One problem, in the entire market that whole day, only 20 of
+
+4
+00:00:12,870 --> 00:00:14,610
+those options changed hands.
+
+5
+00:00:14,990 --> 00:00:18,470
+He claimed six times more than existed, and nobody stopped him for
+
+6
+00:00:18,530 --> 00:00:19,830
+17 more years.
+
+7
+00:00:20,230 --> 00:00:24,090
+By the time it collapsed, the fake balances said $65 billion.
+
+8
+00:00:24,990 --> 00:00:26,170
+Here's the thing.
+
+9
+00:00:26,370 --> 00:00:28,330
+That impossible number isn't a fluke.
+
+10
+00:00:28,390 --> 00:00:32,150
+The biggest frauds in history all hide one, a number that cannot
+
+11
+00:00:32,210 --> 00:00:32,910
+exist.
+
+12
+00:00:33,470 --> 00:00:34,510
+Today, three of them.
+
+13
+00:00:34,630 --> 00:00:38,590
+A coupon scam from 1920, a tank farm full of water, and
+
+14
+00:00:38,650 --> 00:00:40,410
+the fund that almost never lost.
+
+15
+00:00:40,790 --> 00:00:43,630
+And by the end, you'll have a three question test that would
+
+16
+00:00:43,690 --> 00:00:46,750
+have caught all three, because the next one won't call itself a
+
+17
+00:00:46,810 --> 00:00:47,830
+Ponzi scheme.
+
+18
+00:00:49,150 --> 00:00:51,550
+Chapter one, the coupon that couldn't exist.
+
+19
+00:00:52,230 --> 00:00:56,470
+Boston, 1920, banks are paying about 5 % a year, and a
+
+20
+00:00:56,530 --> 00:01:02,070
+former dishwasher named Charles Ponzi is promising 50 % in 45 days.
+
+21
+00:01:02,510 --> 00:01:03,870
+His pitch sounded clever.
+
+22
+00:01:04,610 --> 00:01:08,590
+International reply coupons, little slips you could buy cheap in Europe, where
+
+23
+00:01:08,650 --> 00:01:12,230
+money was weak after the war, and trade in America for stamps
+
+24
+00:01:12,290 --> 00:01:13,170
+worth more.
+
+25
+00:01:13,290 --> 00:01:15,070
+Buy low there, cash in high here.
+
+26
+00:01:15,130 --> 00:01:16,830
+On paper, that's arbitrage.
+
+27
+00:01:16,990 --> 00:01:18,070
+It's even legal.
+
+28
+00:01:18,430 --> 00:01:20,470
+And for a while, it looked like it worked.
+
+29
+00:01:20,710 --> 00:01:22,910
+Early investors got paid on time.
+
+30
+00:01:23,070 --> 00:01:26,710
+Word spread, by July, money was pouring in at close to a
+
+31
+00:01:26,770 --> 00:01:28,130
+million dollars a day.
+
+32
+00:01:28,290 --> 00:01:30,990
+Even most of Boston's police force bought in.
+
+33
+00:01:31,210 --> 00:01:35,470
+But nobody did the math, until a financial journalist named Clarence Barron
+
+34
+00:01:35,530 --> 00:01:36,130
+did.
+
+35
+00:01:36,310 --> 00:01:41,590
+To cover what Ponzi owed, 160 million postal coupons would have to
+
+36
+00:01:41,650 --> 00:01:42,710
+be in circulation.
+
+37
+00:01:42,950 --> 00:01:45,950
+The actual number, about 27 ,000.
+
+38
+00:01:46,190 --> 00:01:47,630
+That's not a little short.
+
+39
+00:01:47,790 --> 00:01:50,870
+That's about one coupon for every 6 ,000 he'd need.
+
+40
+00:01:51,170 --> 00:01:52,950
+So where were the profits coming from?
+
+41
+00:01:53,010 --> 00:01:54,530
+The next investor.
+
+42
+00:01:54,730 --> 00:01:57,670
+Old investors were paid with new investors' money.
+
+43
+00:01:57,970 --> 00:01:58,970
+That's the whole trick.
+
+44
+00:01:59,330 --> 00:02:02,810
+When the papers ran the numbers, the line outside his office turned
+
+45
+00:02:02,870 --> 00:02:03,770
+into a run.
+
+46
+00:02:03,950 --> 00:02:05,250
+Six banks went down.
+
+47
+00:02:05,870 --> 00:02:07,570
+Investors lost about $20 million.
+
+48
+00:02:08,130 --> 00:02:11,990
+In 1920, Ponzi pleaded guilty to mail fraud.
+
+49
+00:02:12,230 --> 00:02:14,370
+His name became the word for the scam.
+
+50
+00:02:14,470 --> 00:02:17,390
+And he died broke with an estate of $75.
+
+51
+00:02:18,290 --> 00:02:21,170
+Ponzi's impossible number was hiding in coupons.
+
+52
+00:02:21,230 --> 00:02:25,070
+The next one was hiding in plain sight, inside a tank.
+
+53
+00:02:26,250 --> 00:02:28,430
+Chapter two, more oil than America.
+
+54
+00:02:29,050 --> 00:02:31,470
+New Jersey, the early 1960s.
+
+55
+00:02:31,590 --> 00:02:36,490
+Tino De Angelis runs a vegetable oil company called Allied Crude, out
+
+56
+00:02:36,550 --> 00:02:38,950
+of a run -down tank farm in Bayonne.
+
+57
+00:02:39,150 --> 00:02:41,670
+His business ran on a simple kind of loan.
+
+58
+00:02:41,850 --> 00:02:43,070
+Oil sits in a tank.
+
+59
+00:02:43,190 --> 00:02:46,170
+A warehouse company checks the tank and writes a receipt.
+
+60
+00:02:46,530 --> 00:02:48,250
+Banks lend money against the receipt.
+
+61
+00:02:48,370 --> 00:02:50,090
+And the company, writing those receipts.
+
+62
+00:02:50,150 --> 00:02:52,410
+A unit of American Express.
+
+63
+00:02:52,770 --> 00:02:55,890
+If American Express vouched for the oil, the banks paid.
+
+64
+00:02:56,370 --> 00:02:58,190
+So De Angelis made more oil.
+
+65
+00:02:58,370 --> 00:03:00,570
+Not real oil, receipt oil.
+
+66
+00:03:00,990 --> 00:03:05,010
+Some tanks had hidden compartments, so inspectors saw oil at the hatch.
+
+67
+00:03:05,250 --> 00:03:07,790
+Others were mostly water, because oil floats.
+
+68
+00:03:08,110 --> 00:03:10,890
+Inspectors looked at the top, saw oil and signed.
+
+69
+00:03:11,150 --> 00:03:13,930
+And when they walked to the next tank, pipes moved the same
+
+70
+00:03:13,990 --> 00:03:15,170
+oil ahead of them.
+
+71
+00:03:15,230 --> 00:03:17,370
+The same oil, count again and again.
+
+72
+00:03:17,790 --> 00:03:19,110
+Here's the impossible number.
+
+73
+00:03:19,170 --> 00:03:25,150
+By 1963, Allied claimed more soybean and cottonseed oil than existed in
+
+74
+00:03:25,210 --> 00:03:26,950
+the entire United States.
+
+75
+00:03:27,310 --> 00:03:29,570
+On paper, 900 ,000 tons.
+
+76
+00:03:29,930 --> 00:03:32,490
+Actually there, about 55 ,000.
+
+77
+00:03:32,550 --> 00:03:34,790
+Over 90 % of it never existed.
+
+78
+00:03:35,130 --> 00:03:37,710
+Then he tried to corner the market in oil futures.
+
+79
+00:03:37,950 --> 00:03:43,410
+When prices cracked in November 1963, the margin calls came and somebody
+
+80
+00:03:43,470 --> 00:03:45,490
+finally looked inside the tanks.
+
+81
+00:03:45,850 --> 00:03:50,270
+51 lenders, more than $180 million in losses.
+
+82
+00:03:50,530 --> 00:03:53,290
+The American Express warehouse unit went bankrupt.
+
+83
+00:03:53,510 --> 00:03:55,570
+A Wall Street brokerage went under.
+
+84
+00:03:55,850 --> 00:03:59,350
+De Angelis pleaded guilty and was sentenced to 20 years.
+
+85
+00:03:59,510 --> 00:04:00,810
+He was out in seven.
+
+86
+00:04:01,410 --> 00:04:06,030
+Coupons, tanks, both frauds needed more of something than the world actually
+
+87
+00:04:06,090 --> 00:04:06,630
+had.
+
+88
+00:04:06,690 --> 00:04:10,210
+But the biggest one in history needed something even rarer.
+
+89
+00:04:10,270 --> 00:04:11,370
+A perfect record.
+
+90
+00:04:11,910 --> 00:04:15,230
+Chapter three, the fund that almost never lost.
+
+91
+00:04:15,830 --> 00:04:17,490
+Bernie Madoff wasn't a nobody.
+
+92
+00:04:17,710 --> 00:04:19,430
+He'd been chairman of the NASDAQ.
+
+93
+00:04:19,610 --> 00:04:22,910
+His trading firm was one of the biggest market makers on Wall
+
+94
+00:04:22,970 --> 00:04:23,490
+Street.
+
+95
+00:04:23,750 --> 00:04:27,410
+And his investment fund had a pitch that sounded almost boring.
+
+96
+00:04:27,690 --> 00:04:32,190
+No 50%, just steady returns around 10 % a year, year after
+
+97
+00:04:32,250 --> 00:04:33,490
+year after year.
+
+98
+00:04:33,730 --> 00:04:35,350
+That was the genius of it.
+
+99
+00:04:35,530 --> 00:04:36,570
+Ponzi sold greed.
+
+100
+00:04:37,030 --> 00:04:38,210
+Madoff sold safety.
+
+101
+00:04:38,510 --> 00:04:42,630
+One fund reported 10 .5 % a year for 17 years.
+
+102
+00:04:42,850 --> 00:04:46,730
+In late 2008, while markets were crashing, it said it was still
+
+103
+00:04:46,790 --> 00:04:47,810
+up for the year.
+
+104
+00:04:48,130 --> 00:04:50,270
+Now picture a real investment chart.
+
+105
+00:04:50,350 --> 00:04:54,170
+It wiggles, it drops, it has bad months and bad years.
+
+106
+00:04:54,550 --> 00:04:58,490
+Madoff's line went up at an almost perfect 45 degree angle.
+
+107
+00:04:58,810 --> 00:05:03,990
+A financial analyst named Harry Markopolos was asked to copy Madoff's strategy.
+
+108
+00:05:04,110 --> 00:05:07,250
+He later said he knew within five minutes that the numbers didn't
+
+109
+00:05:07,310 --> 00:05:08,010
+add up.
+
+110
+00:05:08,090 --> 00:05:10,110
+It took him four hours to prove it.
+
+111
+00:05:10,230 --> 00:05:11,730
+His red flags were math.
+
+112
+00:05:12,030 --> 00:05:15,990
+Madoff reported losing months only about 4 % of the time.
+
+113
+00:05:16,090 --> 00:05:17,970
+Real markets don't move like that.
+
+114
+00:05:18,150 --> 00:05:20,390
+And the strategy itself was impossible.
+
+115
+00:05:20,670 --> 00:05:24,110
+To make the trades Madoff claimed, he would have needed more options
+
+116
+00:05:24,170 --> 00:05:28,310
+on the Chicago Board Options Exchange than actually existed.
+
+117
+00:05:28,630 --> 00:05:34,530
+Same pattern as 1991, 123 options claimed, 20 traded.
+
+118
+00:05:34,970 --> 00:05:38,270
+Markopolos took his math to the SEC in 2000.
+
+119
+00:05:38,570 --> 00:05:43,410
+And again, in 2005, he sent a memo titled, the world's largest
+
+120
+00:05:43,470 --> 00:05:45,050
+hedge fund is a fraud.
+
+121
+00:05:45,430 --> 00:05:50,010
+Over 16 years, regulators looked at Madoff's firm at least eight times.
+
+122
+00:05:50,150 --> 00:05:51,510
+They didn't find the fraud.
+
+123
+00:05:51,930 --> 00:05:57,050
+Then 2008 happened, markets crashed and investors asked for their money back.
+
+124
+00:05:57,110 --> 00:05:59,170
+About $7 billion of it.
+
+125
+00:05:59,390 --> 00:06:03,730
+Madoff's bank account, which had held over $5 billion earlier that year,
+
+126
+00:06:04,050 --> 00:06:06,950
+was down to about 234 million.
+
+127
+00:06:07,310 --> 00:06:10,770
+On December 10th, he told his sons he was finished and that
+
+128
+00:06:10,830 --> 00:06:12,690
+the fund was a Ponzi scheme.
+
+129
+00:06:12,910 --> 00:06:14,070
+They went to the authorities.
+
+130
+00:06:14,510 --> 00:06:16,350
+The next morning, he was arrested.
+
+131
+00:06:17,250 --> 00:06:21,610
+Prosecutors put the fraud at $64 .8 billion based on the fake
+
+132
+00:06:21,670 --> 00:06:22,450
+statements.
+
+133
+00:06:22,730 --> 00:06:27,790
+Markopolos estimated that 35 to 55 billion of that was profit that
+
+134
+00:06:27,850 --> 00:06:29,230
+never existed at all.
+
+135
+00:06:29,290 --> 00:06:34,090
+Madoff pleaded guilty to 11 federal crimes and was sentenced to 150
+
+136
+00:06:34,150 --> 00:06:35,230
+years.
+
+137
+00:06:35,430 --> 00:06:37,490
+He died in prison in 2021.
+
+138
+00:06:38,630 --> 00:06:40,710
+So here's the impossible number test.
+
+139
+00:06:40,890 --> 00:06:43,490
+Three questions, they would have caught all three.
+
+140
+00:06:44,250 --> 00:06:47,410
+Question one, does the math need more of something than exists?
+
+141
+00:06:47,730 --> 00:06:50,810
+More coupons, more oil, more options.
+
+142
+00:06:51,050 --> 00:06:54,170
+If a return needs a market bigger than the market, it's not
+
+143
+00:06:54,230 --> 00:06:54,990
+a return.
+
+144
+00:06:55,510 --> 00:06:57,730
+Question two, is it too smooth?
+
+145
+00:06:57,890 --> 00:06:58,850
+Real money wiggles.
+
+146
+00:06:58,910 --> 00:07:02,150
+If something never has a bad month, that's not skill.
+
+147
+00:07:02,370 --> 00:07:03,210
+That's a story.
+
+148
+00:07:04,090 --> 00:07:06,950
+Question three, can anyone check it besides them?
+
+149
+00:07:07,190 --> 00:07:09,370
+Ponzi kept his books on index cards.
+
+150
+00:07:09,650 --> 00:07:12,790
+De Angelis's inspectors had close ties to him.
+
+151
+00:07:13,010 --> 00:07:16,430
+Madoff ran his own brokerage, so he checked his own homework.
+
+152
+00:07:16,910 --> 00:07:21,870
+Three frauds, three different eras, one pattern, a number that can't exist.
+
+153
+00:07:22,250 --> 00:07:25,770
+So next time someone shows you a perfect chart, don't ask how
+
+154
+00:07:25,830 --> 00:07:26,610
+much you could make.
+
+155
+00:07:26,670 --> 00:07:29,010
+Ask what it would take for it to be true.
+
+156
+00:07:29,450 --> 00:07:32,570
+Subscribe for the next case, and tell me in the comments which
+
+157
+00:07:32,630 --> 00:07:34,590
+red flag would have caught you first.
+
+158
+00:07:34,770 --> 00:07:37,350
+Then watch the tank that fooled American Express.
