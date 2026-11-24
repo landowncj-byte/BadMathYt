@@ -27,7 +27,11 @@ ROOT = C.ROOT
 TMP = os.path.join(HERE, "audio_tmp")
 os.makedirs(TMP, exist_ok=True)
 TOTAL = C.TOTAL
-NS = round(TOTAL * 48000)  # exact output length in samples
+NS_OUT = round(TOTAL * 48000)  # exact output length in samples
+SLACK = 48000                  # 1 s of internal slack: ffmpeg's end-of-stream flush
+                               # can drop a few tens of ms, so the graph is padded past
+                               # the end and trimmed to NS_OUT at the master output
+NS = NS_OUT + SLACK
 SR = 48000
 BASE_PEAK_DB = -12.0   # every one-shot file is peak-normalized to this before its cue gain
 LOOP_XFADE = 1.0       # seconds, crossfade between loop copies
@@ -177,7 +181,7 @@ def final_mix(bed_stems, fx_batches):
               "acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200,"
               "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=192000,"
               "alimiter=limit=0.8:level=false:attack=1:release=60,aresample=48000,"
-              f"apad=whole_len={NS},atrim=end_sample={NS}[out]")
+              f"atrim=end_sample={NS_OUT}[out]")
     qa = lambda p: os.path.join(TMP, p)  # noqa: E731
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins,
            "-filter_complex", ";".join(fc),

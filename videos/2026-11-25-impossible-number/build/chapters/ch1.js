@@ -369,14 +369,14 @@ Engine.chapter(1, () => {
     // coupon with the impossible number stamped on it
     const dis = eio(lin(t, t20.plain, t20.ins + .9)), kIn = back(lin(t, T0 + .02, T0 + .4));
     const CW = 640, CX = 840, CY = 450, tw = 300, th = 400;
-    if (dis < 1) { c.save(); c.globalAlpha = 1 - dis * 1.2 > 0 ? clamp(1 - dis * 1.4) : 0; c.translate(CX, CY); c.scale(clamp(kIn), clamp(kIn)); coupon(c, 0, 0, CW, -.05); c.restore();
-      stamp(c, '160,000,000 vs 27,000', CX, CY + 250, 46, RED, -.1, lin(t, t20.imp, t20.imp + .15) * (1 - clamp(dis * 1.4))); }
+    if (dis < 1) { c.save(); c.translate(CX, CY); c.scale(clamp(kIn), clamp(kIn)); coupon(c, 0, 0, CW, -.05, clamp(1 - dis * 1.5)); c.restore();
+      stamp(c, '160,000,000 vs 27,000', CX, CY + 250, 46, RED, -.1, lin(t, t20.imp, t20.imp + .15) * (1 - clamp(dis * 3))); }
     // the dissolve: coupon-coloured squares fly into the tank silhouette
     if (dis > 0) { const col = mod > .5 ? '#5b6879' : SEP;
       for (let i = 0; i < 140; i++) { const sx = CX + (hash(i) - .5) * CW, sy = CY + (hash(i + 7) - .5) * CW * .62, gx = CX + (hash(i + 3) - .5) * tw, gy = CY + 150 - hash(i + 5) * th + 20, a = clamp(dis * 1.4 - hash(i + 9) * .4), e = eio(a);
         const px = lerp(sx, gx, e) + Math.sin(e * 3.14 + i) * 40 * (1 - Math.abs(e * 2 - 1)), py = lerp(sy, gy, e) - Math.sin(e * 3.14) * 90; c.fillStyle = col; c.globalAlpha = a > 0 ? (1 - clamp((dis - .85) * 6)) : 0; c.fillRect(px - 8, py - 8, 16, 16); }
       c.globalAlpha = 1; }
-    const tk = eo(lin(t, t20.ins + .6, t20.tank + .35)); if (tk > 0) { c.save(); c.globalAlpha = tk; glow(c, CX, CY, 420, GOLD, .18 * tk); tank(c, CX, CY + 200, tw, th, { fill: .72 }); c.restore(); }
+    const tk = eo(lin(t, t20.plain + 1.1, t20.tank + .2)); if (tk > 0) { c.save(); c.globalAlpha = tk; glow(c, CX, CY, 420, GOLD, .18 * tk); tank(c, CX, CY + 200, tw, th, { fill: .72 }); c.restore(); }
     if (t > t20.nx) { c.save(); c.globalAlpha = eo(lin(t, t20.nx, t20.nx + .4)) * (1 - mod * 0); plate(c, 1140, 150, 400, 130, 14); txt(c, 'THE NEXT ONE', 1340, 185, '400 42px Anton', PAPER); txt(c, 'HIDING IN PLAIN SIGHT', 1340, 238, '800 24px JBM', HL); c.restore(); }
     film(c, t, 1 - mod);
   }, { film: false, vignette: .6 });
