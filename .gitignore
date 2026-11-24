@@ -5,3 +5,7 @@ package-lock.json
 **/build/tmp/
 **/voice/n16.wav
 **/voice/m16.wav
+**/build/audio_tmp/
+__pycache__/
+**/build/stills/
+**/build/out/
