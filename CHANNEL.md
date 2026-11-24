@@ -63,6 +63,7 @@ tools:
   api_keys: []  # none provided yet (YouTube Data API not set up)
 language: "en-US"
 decisions:
+  - "2026-11-24: FINAL cadence: 3 Shorts daily (free Kokoro voice) + long-form Mon/Wed/Fri (paid ElevenLabs Bad Math Narrator, Creator plan). Sounds/music always free CC0."
   - "2026-11-24: Everything free: Kokoro am_michael voice on every video, CC0 sound effects and music. No ElevenLabs spending."
   - "2026-11-24: Back to 3 Shorts + 1 long-form EVERY day. ElevenLabs Creator credits: Shorts get the paid voice first; long-forms use it while credits last, then Kokoro."
   - "2026-11-24: Budget plan: ElevenLabs Creator (paid voice only; ~121k credits/month — Shorts get the paid voice first, long-forms only if credits remain). Cadence = 3 Shorts daily + long-form on Tuesdays and Fridays (ET)."
