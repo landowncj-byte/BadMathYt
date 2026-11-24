@@ -47,8 +47,8 @@ this table is kept as a courtesy and for source tracking. Copy the relevant rows
 | `ui_pop/ding_2.mp3` | Elevator Ding | collierhs_colinlib | CC0 1.0 | <https://freesound.org/people/collierhs_colinlib/sounds/588718> |
 | `ui_pop/bell_1.mp3` | bell003mono.wav | tec_studio | CC0 1.0 | <https://freesound.org/people/tec_studio/sounds/99625> |
 | `ui_pop/bell_2.mp3` | ding2.wav | MashedTatoes2 | CC0 1.0 | <https://freesound.org/people/MashedTatoes2/sounds/515643> |
-| `ui_pop/notification_chime_1.mp3` | Supermarket PA.mp3 | nigelcoop | CC0 1.0 | <https://freesound.org/people/nigelcoop/sounds/238429> |
-| `ui_pop/notification_chime_2.mp3` | jingle3 | soneproject | CC0 1.0 | <https://freesound.org/people/soneproject/sounds/255102> |
+| `ui_pop/notification_chime_1.mp3` | jingle3 | soneproject | CC0 1.0 | <https://freesound.org/people/soneproject/sounds/255102> |
+| `ui_pop/notification_chime_2.mp3` | jingle1 | soneproject | CC0 1.0 | <https://freesound.org/people/soneproject/sounds/255100> |
 | `ui_pop/typewriter_1.mp3` | Typewriter Bell.wav | ramsamba | CC0 1.0 | <https://freesound.org/people/ramsamba/sounds/318687> |
 | `ui_pop/typewriter_2.mp3` | Shortest Sound Typewriter | fellwell5 | CC0 1.0 | <https://freesound.org/people/fellwell5/sounds/170546> |
 | `ui_pop/keyboard_typing_1.mp3` | Keyboard Typing Tapping.wav | Psykophobia | CC0 1.0 | <https://freesound.org/people/Psykophobia/sounds/250390> |
@@ -57,8 +57,6 @@ this table is kept as a courtesy and for source tracking. Copy the relevant rows
 | `ui_pop/camera_shutter_2.mp3` | Camera Shutter Click | Kodack | CC0 1.0 | <https://freesound.org/people/Kodack/sounds/271010> |
 | `ui_pop/camera_flash_1.mp3` | Vintage Camera Flash Powder and Shutter | Werra | CC0 1.0 | <https://freesound.org/people/Werra/sounds/232130> |
 | `ui_pop/camera_flash_2.mp3` | iOS Camera flash | Rvgerxini | CC0 1.0 | <https://freesound.org/people/Rvgerxini/sounds/455511> |
-| `reactions/crowd_gasp_1.mp3` | Gasp.wav | Dvideoguy | CC0 1.0 | <https://freesound.org/people/Dvideoguy/sounds/207779> |
-| `reactions/crowd_gasp_2.mp3` | Gasp.mp3 | laft2k | CC0 1.0 | <https://freesound.org/people/laft2k/sounds/437667> |
 | `reactions/crowd_ooh_1.mp3` | 'OOOH' group of males sound | jbledger1984 | CC0 1.0 | <https://freesound.org/people/jbledger1984/sounds/613179> |
 | `reactions/crowd_laugh_1.mp3` | Small Crowd Laughing | snakebarney | CC0 1.0 | <https://freesound.org/people/snakebarney/sounds/138112> |
 | `reactions/crowd_laugh_2.mp3` | Crowd laugh.wav | deleted_user_2104797 | CC0 1.0 | <https://freesound.org/people/deleted_user_2104797/sounds/324894> |
@@ -66,8 +64,7 @@ this table is kept as a courtesy and for source tracking. Copy the relevant rows
 | `reactions/applause_2.mp3` | Applause 4.WAV | Sandermotions | CC0 1.0 | <https://freesound.org/people/Sandermotions/sounds/277019> |
 | `reactions/cheer_1.mp3` | Medium crowd cheering 02 | misjoc | CC0 1.0 | <https://freesound.org/people/misjoc/sounds/400586> |
 | `reactions/cheer_2.mp3` | Short Crowd Cheer 2.flac | qubodup | CC0 1.0 | <https://freesound.org/people/qubodup/sounds/182572> |
-| `reactions/boo_1.mp3` | Boo 2 disgusted.wav | jayfrosting | CC0 1.0 | <https://freesound.org/people/jayfrosting/sounds/333390> |
-| `reactions/boo_2.mp3` | Boo 1 very angry.wav | jayfrosting | CC0 1.0 | <https://freesound.org/people/jayfrosting/sounds/333391> |
+| `reactions/boo_1.mp3` | Boo! and hissing!.mp3 | mrrap4food | CC0 1.0 | <https://freesound.org/people/mrrap4food/sounds/619031> |
 | `comedy/sad_trombone_1.mp3` | wah wah sad trombone.wav | kirbydx | CC0 1.0 | <https://freesound.org/people/kirbydx/sounds/175409> |
 | `comedy/sad_trombone_2.mp3` | horn_fail_wahwah_1.wav | TaranP | CC0 1.0 | <https://freesound.org/people/TaranP/sounds/362206> |
 | `comedy/crickets_1.mp3` | Crickets chirping loop | Patrick_Corra | CC0 1.0 | <https://freesound.org/people/Patrick_Corra/sounds/633196> |
@@ -130,8 +127,8 @@ this table is kept as a courtesy and for source tracking. Copy the relevant rows
 | `objects/footsteps_2.mp3` | concrete footstep 3 | Yoyodaman234 | CC0 1.0 | <https://freesound.org/people/Yoyodaman234/sounds/166507> |
 | `music/dramatic_sting_1.mp3` | 5 Super Dramatic Stings | SoundsExciting | CC0 1.0 | <https://freesound.org/people/SoundsExciting/sounds/213101> |
 | `music/dramatic_sting_2.mp3` | Dramatic 1.wav | Lisnmusic | CC0 1.0 | <https://freesound.org/people/Lisnmusic/sounds/122076> |
-| `music/comedic_sting_1.mp3` | uh oh.mp3 | nomiqbomi | CC0 1.0 | <https://freesound.org/people/nomiqbomi/sounds/578797> |
-| `music/comedic_sting_2.mp3` | Bah dum tss.wav | Exchanger | CC0 1.0 | <https://freesound.org/people/Exchanger/sounds/415505> |
+| `music/comedic_sting_1.mp3` | Tuba Stab 2 | nomiqbomi | CC0 1.0 | <https://freesound.org/people/nomiqbomi/sounds/578392> |
+| `music/comedic_sting_2.mp3` | Tuba Stab 3 | nomiqbomi | CC0 1.0 | <https://freesound.org/people/nomiqbomi/sounds/578389> |
 | `music/jazz_bed_1.mp3` | Amande_3201.mp3 | amandedou | CC0 1.0 | <https://freesound.org/people/amandedou/sounds/317673> |
 | `music/jazz_bed_2.mp3` | Fancy Restaurant (atmosphere) | coalcon | CC0 1.0 | <https://freesound.org/people/coalcon/sounds/636073> |
 | `music/lofi_bed_1.mp3` | Lofi Jazz Organ Loop 95 BPM.wav | holizna | CC0 1.0 | <https://freesound.org/people/holizna/sounds/629154> |

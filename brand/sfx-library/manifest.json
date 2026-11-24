@@ -536,19 +536,6 @@
     "file": "ui_pop/notification_chime_1.mp3",
     "category": "ui_pop",
     "name": "notification_chime_1",
-    "duration_s": 4.99,
-    "peak_db": -0.1,
-    "description": "Notification chime; use when a comment or message appears on screen.",
-    "title": "Supermarket PA.mp3",
-    "creator": "nigelcoop",
-    "license": "CC0",
-    "license_version": "1.0",
-    "source_url": "https://freesound.org/people/nigelcoop/sounds/238429"
-  },
-  {
-    "file": "ui_pop/notification_chime_2.mp3",
-    "category": "ui_pop",
-    "name": "notification_chime_2",
     "duration_s": 1.83,
     "peak_db": -9.3,
     "description": "Notification chime; use when a comment or message appears on screen.",
@@ -557,6 +544,19 @@
     "license": "CC0",
     "license_version": "1.0",
     "source_url": "https://freesound.org/people/soneproject/sounds/255102"
+  },
+  {
+    "file": "ui_pop/notification_chime_2.mp3",
+    "category": "ui_pop",
+    "name": "notification_chime_2",
+    "duration_s": 1.57,
+    "peak_db": -9.5,
+    "description": "Notification chime; use when a comment or message appears on screen.",
+    "title": "jingle1",
+    "creator": "soneproject",
+    "license": "CC0",
+    "license_version": "1.0",
+    "source_url": "https://freesound.org/people/soneproject/sounds/255100"
   },
   {
     "file": "ui_pop/typewriter_1.mp3",
@@ -663,32 +663,6 @@
     "source_url": "https://freesound.org/people/Rvgerxini/sounds/455511"
   },
   {
-    "file": "reactions/crowd_gasp_1.mp3",
-    "category": "reactions",
-    "name": "crowd_gasp_1",
-    "duration_s": 1.44,
-    "peak_db": -11.7,
-    "description": "Crowd gasp; use right after a shocking reveal.",
-    "title": "Gasp.wav",
-    "creator": "Dvideoguy",
-    "license": "CC0",
-    "license_version": "1.0",
-    "source_url": "https://freesound.org/people/Dvideoguy/sounds/207779"
-  },
-  {
-    "file": "reactions/crowd_gasp_2.mp3",
-    "category": "reactions",
-    "name": "crowd_gasp_2",
-    "duration_s": 0.89,
-    "peak_db": -2.4,
-    "description": "Crowd gasp; use right after a shocking reveal.",
-    "title": "Gasp.mp3",
-    "creator": "laft2k",
-    "license": "CC0",
-    "license_version": "1.0",
-    "source_url": "https://freesound.org/people/laft2k/sounds/437667"
-  },
-  {
     "file": "reactions/crowd_ooh_1.mp3",
     "category": "reactions",
     "name": "crowd_ooh_1",
@@ -783,27 +757,14 @@
     "file": "reactions/boo_1.mp3",
     "category": "reactions",
     "name": "boo_1",
-    "duration_s": 7.15,
-    "peak_db": -13.1,
+    "duration_s": 6.59,
+    "peak_db": -17.7,
     "description": "Crowd boo; use for a bad take or a mocked idea.",
-    "title": "Boo 2 disgusted.wav",
-    "creator": "jayfrosting",
+    "title": "Boo! and hissing!.mp3",
+    "creator": "mrrap4food",
     "license": "CC0",
     "license_version": "1.0",
-    "source_url": "https://freesound.org/people/jayfrosting/sounds/333390"
-  },
-  {
-    "file": "reactions/boo_2.mp3",
-    "category": "reactions",
-    "name": "boo_2",
-    "duration_s": 6.58,
-    "peak_db": -2.5,
-    "description": "Crowd boo; use for a bad take or a mocked idea.",
-    "title": "Boo 1 very angry.wav",
-    "creator": "jayfrosting",
-    "license": "CC0",
-    "license_version": "1.0",
-    "source_url": "https://freesound.org/people/jayfrosting/sounds/333391"
+    "source_url": "https://freesound.org/people/mrrap4food/sounds/619031"
   },
   {
     "file": "comedy/sad_trombone_1.mp3",
@@ -1615,27 +1576,27 @@
     "file": "music/comedic_sting_1.mp3",
     "category": "music",
     "name": "comedic_sting_1",
-    "duration_s": 6.71,
-    "peak_db": -6.3,
+    "duration_s": 3.68,
+    "peak_db": -13.3,
     "description": "Short comedic music sting; use after a joke or a silly moment.",
-    "title": "uh oh.mp3",
+    "title": "Tuba Stab 2",
     "creator": "nomiqbomi",
     "license": "CC0",
     "license_version": "1.0",
-    "source_url": "https://freesound.org/people/nomiqbomi/sounds/578797"
+    "source_url": "https://freesound.org/people/nomiqbomi/sounds/578392"
   },
   {
     "file": "music/comedic_sting_2.mp3",
     "category": "music",
     "name": "comedic_sting_2",
-    "duration_s": 2.9,
-    "peak_db": -0.3,
+    "duration_s": 3.68,
+    "peak_db": -5.4,
     "description": "Short comedic music sting; use after a joke or a silly moment.",
-    "title": "Bah dum tss.wav",
-    "creator": "Exchanger",
+    "title": "Tuba Stab 3",
+    "creator": "nomiqbomi",
     "license": "CC0",
     "license_version": "1.0",
-    "source_url": "https://freesound.org/people/Exchanger/sounds/415505"
+    "source_url": "https://freesound.org/people/nomiqbomi/sounds/578389"
   },
   {
     "file": "music/jazz_bed_1.mp3",

@@ -153,3 +153,17 @@ Hooks are the most important thing; retention is second, and the two are linked:
 - Something moves every 2–3 s; no static shot longer than 3 s.
 - Shorts: last line loops into the first frame. Cut every word that doesn't serve the loop.
 - Woven CTAs (§13) ride the story beats and never stall them.
+
+## 15. Three platform cuts per topic — user rule 2026-11-24
+Every topic gets **three different scripts and edits**, not one video cross-posted. Each has its own hook (all must pass §14), its own voice track, its own edit/length and its own caption. Same verified facts; the visuals/engine for the topic can be shared, but the cut, order and on-screen text are re-made per platform.
+
+| | **YouTube Shorts** (BadMath) | **TikTok** (@color.me.saved) | **Instagram Reels + Facebook Reels** (badmath.tv) |
+|---|---|---|---|
+| Algorithm favors | viewed-vs-swiped, average % viewed, **loops**, searchable titles, subs from Shorts | completion + **rewatches**, comments, shares, watch-time in first 3 s, trend-native voice | **sends/shares per reach** (DM shares), **saves**, 3-second hold, original content, punchy text that works muted |
+| Length | 40–55 s story with a full arc | 25–40 s, faster, no setup — start mid-action | **15–25 s**, one punchline, one number |
+| Hook tone | edgy, ad-safe (no profanity: "dumb", "stupid", "idiot") | edgy + spicy, direct "you"/POV, mild profanity bleeped or swapped ("dumbass", "screwed") — keep TikTok For You–safe | **most disrespectful + vulgar** (user rule): profanity allowed in voice and on screen ("dumbass", "shit", "f***ing"); no slurs, no sexual content, never insult victims or groups |
+| Structure | hook → setup → re-hooks → payoff at 75–80% → loop line | hook → "here's how he did it" fast list → twist → open-ended question for comments | hook → the one insane number → punchline → "send this to…"/"save this" |
+| CTA weave | like / share / follow (§13) | comment bait (a debatable question), follow for part 2, "send to…" | **send** (DMs) and **save**, then follow |
+| Caption | title ≤ 60 chars + description w/ sources | short, spicy, 3–5 hashtags, a question | hook line + 1–2 lines + 3–5 hashtags; FB uses the same Reel |
+
+Guardrails for all three (unchanged): facts verified; "fraud"/"criminal" only for convicted people; mock behavior and con artists, never victims; AI disclosure on; no "link in bio", no Tape.
