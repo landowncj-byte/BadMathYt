@@ -4,6 +4,8 @@
 //   timeline: [[startSec, pose], ...] with poses idle | point | chin | shock | shrug | you | wave | follow.
 //   bubbles: [[start, end, 'LINE 1', 'LINE 2'?], ...] speech bubbles (comment prompts).
 //   follow: [start, end] shows the +FOLLOW button that ticks to FOLLOWING.
+//   pos: {x, y, s} optional placement (feet position + scale); default = vertical-shorts placement. Bubble and follow button anchor relative to pos.
+//   followLabel: optional ['+ FOLLOW', '✓ FOLLOWING'] labels (e.g. ['SUBSCRIBE','✓ SUBSCRIBED']). followAt: [x,y] absolute override, followScale: number.
 // Deterministic: everything is a function of t.
 (function () {
   const INK = '#0B0F14', RED = '#FF3B30', PAPER = '#F5F3EE', GOLD = '#F2B705', HL = '#FFD60A', GREEN = '#00D26A';
@@ -15,10 +17,10 @@
   const eo = x => 1 - Math.pow(1 - clamp(x), 3);
   const back = x => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
   function poseAt(timeline, t) { let p = 'idle', since = 0; for (const [s, name] of timeline || []) if (t >= s) { p = name; since = s; } return [p, t - since]; }
-  function bubble(c, t, b) {
+  function bubble(c, t, b, P) {
     const [s, e, l1, l2, at] = b; if (t < s || t >= e) return;
     const k = back(lin(t, s, s + .25)) * (1 - eo(lin(t, e - .15, e)));
-    c.save(); c.translate(...(at || [720, 985])); c.scale(k, k);
+    c.save(); c.translate(...(at || rel(P, 720, 985))); c.scale(k, k);
     c.font = '800 31px Inter'; const w = Math.max(c.measureText(l1).width, l2 ? c.measureText(l2).width : 0) + 56, h = l2 ? 118 : 74;
     c.fillStyle = PAPER; c.beginPath(); c.roundRect(-w / 2, -h / 2, w, h, 26); c.fill();
     c.beginPath(); c.moveTo(w * .18, h / 2 - 2); c.lineTo(w * .32, h / 2 + 46); c.lineTo(w * .34, h / 2 - 2); c.fill();
@@ -26,23 +28,26 @@
     if (l2) { c.fillText(l1, 0, -22); c.fillStyle = RED; c.fillText(l2, 0, 24); } else c.fillText(l1, 0, 2);
     c.restore();
   }
-  function followBtn(c, t, f) {
+  // position defined for the default placement, re-anchored relative to pos
+  function rel(P, x, y) { const r = P.s / POS.s; return [P.x + (x - POS.x) * r, P.y + (y - POS.y) * r]; }
+  function followBtn(c, t, f, P, o) {
     const [s, e] = f; if (t < s || t >= e) return;
     const k = back(lin(t, s, s + .25)); const done = t > s + .9; const press = t > s + .75 && t < s + .95 ? .9 : 1;
-    c.save(); c.translate(700, 1030); c.scale(k * press, k * press);
+    c.save(); c.translate(...(o.followAt || rel(P, 700, 1030))); const fs = (o.followScale || 1) * k * press; c.scale(fs, fs);
     c.fillStyle = done ? '#2a323d' : RED; c.beginPath(); c.roundRect(-150, -42, 300, 84, 42); c.fill();
-    c.fillStyle = PAPER; c.font = '800 38px Inter'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(done ? '✓ FOLLOWING' : '+ FOLLOW', 0, 2);
+    c.fillStyle = PAPER; c.font = '800 38px Inter'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText((o.followLabel || ['+ FOLLOW', '✓ FOLLOWING'])[done ? 1 : 0], 0, 2);
     if (!done) { // tap ripple
       const r = lin(t, s + .55, s + .9); if (r > 0) { c.strokeStyle = `rgba(245,243,238,${1 - r})`; c.lineWidth = 6; c.beginPath(); c.arc(80, 10, 20 + 60 * r, 0, 7); c.stroke(); }
     }
     c.restore();
   }
   function draw(c, t, o = {}) {
+    const P = { ...POS, ...(o.pos || {}) };
     const m = clamp(o.mouth || 0), enter = back(lin(t, o.enterAt ?? .45, (o.enterAt ?? .45) + .4)); if (enter <= 0) return;
     const [pose, pt] = poseAt(o.timeline, t);
     const shock = pose === 'shock' ? Math.exp(-pt * 4) : 0;
     const bob = Math.sin(t * 3.1) * 6 + (m > .25 ? Math.sin(t * 22) * 2 : 0) - shock * 40;
-    c.save(); c.translate(POS.x, POS.y + bob); c.scale(enter * POS.s, enter * POS.s);
+    c.save(); c.translate(P.x, P.y + bob); c.scale(enter * P.s, enter * P.s);
     const rim = c.createRadialGradient(0, -150, 20, 0, -150, 190); rim.addColorStop(0, 'rgba(255,214,10,.22)'); rim.addColorStop(1, 'rgba(255,214,10,0)'); c.fillStyle = rim; c.fillRect(-200, -360, 400, 380);
     c.fillStyle = 'rgba(0,0,0,.4)'; c.beginPath(); c.ellipse(0, 0, 80, 14, 0, 0, 7); c.fill();
     // suit
@@ -73,8 +78,8 @@
     if (mo < .08) { c.strokeStyle = '#3a1a08'; c.lineWidth = 5; c.beginPath(); c.arc(0, 18, 16, .2 * Math.PI, .8 * Math.PI); c.stroke(); }
     c.fillStyle = 'rgba(255,120,80,.35)'; c.beginPath(); c.arc(-44, 14, 9, 0, 7); c.arc(44, 14, 9, 0, 7); c.fill();
     c.restore(); c.restore();
-    for (const b of o.bubbles || []) bubble(c, t, b);
-    if (o.follow) followBtn(c, t, o.follow);
+    for (const b of o.bubbles || []) bubble(c, t, b, P);
+    if (o.follow) followBtn(c, t, o.follow, P, o);
   }
   // Head only, for avatars / profile pictures
   function head(c, x, y, r) { c.save(); c.translate(x, y); c.scale(r / 78, r / 78); const R = 78;
