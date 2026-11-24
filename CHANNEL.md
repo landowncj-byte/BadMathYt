@@ -91,3 +91,4 @@ decisions:
 - **Links on Shorts:** links in Shorts descriptions and comments aren't clickable (YouTube changed this in 2023). Put Tape in the channel header/About links and the long-form descriptions too. Re-check the current behavior.
 - **Image licenses:** confirm the Ideogram plan's commercial terms (and whether free-plan images are public), and log each image in `credits.md`.
 - 2026-11-24: Each topic gets 3 separate scripts/cuts: YouTube Shorts, TikTok, Instagram+Facebook Reels (STYLE.md §15). IG/FB cut is the most vulgar/disrespectful (profanity allowed there; still no slurs, facts verified). Instagram badmath.tv + Facebook BadMath.tv connected in PostFast.
+- 2026-11-24: Build ahead allowed, but schedule posts at most ~7 days ahead; daily analytics pull + Sunday weekly review → replicate winning patterns (new topics), improve daily (PRODUCTION.md, ANALYTICS.md, queue.md).

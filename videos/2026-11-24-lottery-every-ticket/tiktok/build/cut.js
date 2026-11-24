@@ -71,14 +71,14 @@ function sDraw(c, t) {
   if (t >= 21.74) { const k = back(lin(t, 21.74, 21.9)); c.save(); c.translate(540, 1150); c.scale(k, k); txt(c, 'ONE TICKET MATCHES…', 0, 0, '400 66px Anton', PAPER); c.restore(); }
   const v = lin(t, 18.1, 22.0), g = c.createRadialGradient(540, 700, 300 - v * 120, 540, 700, 1200); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(0,0,0,${.35 + .4 * v})`); c.fillStyle = g; c.fillRect(0, 0, W, H);
 }
-function sWin(c, t) { drawWin(c, t, 22.1, 1110, 850, 580); big(c, 'THEY HAD IT', 540, 365, '400 150px Anton', HL, 0, lin(t, 22.1, 22.2), INK); }
+function sWin(c, t) { drawWin(c, t, 22.1, 1130, 870, 615); big(c, 'THEY HAD IT', 540, 365, '400 150px Anton', HL, 0, lin(t, 22.1, 22.2), INK); }
 function sPB(c, t) { bg(c, t); drawPBslip(c, t, 23.4, 99, 540, 740, 1.3); big(c, 'TODAY?', 540, 390, '400 200px Anton', HL, 0, lin(t, 23.78, 23.9), INK); }
 function sPBnum(c, t) {
   bg(c, t, 'rgba(255,59,48,.12)'); drawPBslip(c, t, 24.7, 24.7, 540, 480, .8);
   const v = 292201338 * eo(lin(t, 24.78, 25.4)); const k = t > 25.4 ? 1 + .18 * Math.exp(-(t - 25.4) * 12) : 1;
   c.save(); c.translate(540, 840); c.scale(k, k); c.shadowColor = GREEN; c.shadowBlur = 30; txt(c, fmt(v), 0, 0, '800 124px JBM', GREEN); c.restore();
   big(c, 'COMBINATIONS', 540, 990, '400 100px Anton', PAPER, 0, lin(t, 25.96, 26.08), INK);
-  stamp(c, 'TAX', 570, 1120, 190, RED, -.2, lin(t, 26.7, 26.8), 'rgba(11,15,20,.6)');
+  stamp(c, 'TAX', 570, 1200, 170, RED, -.2, lin(t, 26.7, 26.8), 'rgba(11,15,20,.6)');
 }
 function sAsk(c, t) {
   bg(c, t); big(c, 'WOULD YOU TRY IT?', 540, 415, '400 {S}px Anton', PAPER, 940, lin(t, 27.26, 27.38), INK);

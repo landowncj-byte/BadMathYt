@@ -41,3 +41,11 @@ Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` 
 - Usage limit / long build: ship the Shorts first; the long-form can slip to the next day — never ship an unreviewed video.
 - PostFast account DISABLED: tell the user; don't schedule to it.
 - Temp host blocked: tell the user; offer manual upload.
+
+## Build ahead + analytics loop (user rule 2026-11-24)
+- **Build ahead freely** when there's time/usage: research, scripts, voice, renders for future days are all fine.
+- **Scheduling horizon = 7 days max.** Never schedule a post more than ~7 days out. Finished videos beyond that wait in `queue.md` (unscheduled) so they can still be improved or replaced after we see analytics.
+- **Daily (start of every build session):** pull `get_post_analytics` for the last 7 days (all platforms) and append a dated block to `ANALYTICS.md`: per post — platform, title/hook, views, avg watch time / % viewed, likes, comments, shares, saves (IG saveRate, reelsSkipRate), TikTok full_video_watched_rate. Flag the top 20% and bottom 20%.
+- **Weekly review (every Sunday ET, before building):** write `## Week of …` in `ANALYTICS.md`: which topics, series (Decoded/What If), formats, hook patterns, lengths, platforms and slots won/lost, with numbers. Then write **3–5 concrete changes** for next week (e.g. "more court-convicted villains", "IG cuts under 18 s", "drop the 08:00 slot"), and apply them: update STYLE.md/PRODUCTION.md if it's a rule change, re-rank ideas, and revise or replace any already-scheduled post in the next 7 days that the data says will underperform.
+- **Replicate winners, never repeat them:** a winning video gets a *new* topic with the same ingredients (hook pattern, structure, length, villain type) — never the same topic or script (uniqueness rules still apply). Log "inspired by <winner>" in ideas.md.
+- Small samples: don't overreact to < 500 views; judge patterns over ≥ 3 posts.
