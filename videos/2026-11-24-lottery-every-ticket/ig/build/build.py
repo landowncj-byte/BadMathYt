@@ -14,7 +14,7 @@ if CUT=='tiktok':
         if t['w']=='1992,': t['s']=5.38
         if t['w'] in NUM: t['w']=NUM[t['w']]+('.' if t['w']=='20.' else ',')
     MAXW=4; BALLS={'8,','11,','13,','15,','19,','20.'}
-    SENT=[11,5,2,6,3,8,12,3,1,1,1,1,1,1,3,2,3,4,6,5]
+    SENT=[11,5,2,6,3,8,13,3,1,1,1,1,1,1,3,2,3,4,6,5]
     KEY_G={'1992','7','million','dollar','jackpot','27','292','tickets','half','five','combinations','powerball'}
     KEY_Y={'math','every','single','tax','one','follow','yes','no','comments','tried','draw'}
     KEY_R={"can't",'ran','out','time','tax'}

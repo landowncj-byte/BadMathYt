@@ -41,7 +41,7 @@ function drawSlip6(c, t, marks, cx = 540, top = 350, s = 1) { // PICK 6 slip; ma
   c.restore(); }
 
 function drawSign(c, t, tShow, tLit, cy = 330, s = 1) { // jackpot sign
-  const lit = lin(t, tLit, tLit + .06); c.save(); c.translate(540, cy - 330 + 330); c.save(); c.translate(0, 430 * (1 - s)); c.scale(s, s);
+  const lit = lin(t, tLit, tLit + .06); c.save(); c.translate(540, cy - 330); c.save(); c.translate(0, 430 * (1 - s)); c.scale(s, s);
   shadowBox(c, -400, 330, 800, 200, 28, '#141b24', lit > 0 ? GREEN : 'rgba(245,243,238,.25)');
   for (let i = 0; i < 26; i++) { const a = i / 26; let bx, by; const p = a * 4; if (p < 1) { bx = -380 + p * 760; by = 345; } else if (p < 2) { bx = 380; by = 345 + (p - 1) * 170; } else if (p < 3) { bx = 380 - (p - 2) * 760; by = 515; } else { bx = -380; by = 515 - (p - 3) * 170; }
     const on = lit > 0 && (Math.floor(t * 8) + i) % 3 !== 0; c.fillStyle = on ? HL : '#3a4350'; c.beginPath(); c.arc(bx, by, 7, 0, 7); c.fill(); if (on) { c.fillStyle = 'rgba(255,214,10,.25)'; c.beginPath(); c.arc(bx, by, 15, 0, 7); c.fill(); } }
