@@ -1,0 +1,219 @@
+// ---------- Theranos scenes ----------
+function wordmark(c, x, y, size, k = 1, col = PAPER) { c.save(); c.translate(x, y); const sc = lerp(2.4, 1, back(k)); c.scale(sc, sc); c.globalAlpha = clamp(k * 3); c.letterSpacing = (size * .12) + 'px'; txt(c, 'THERANOS', 0, 0, `400 ${size}px Anton`, col); c.letterSpacing = '0px'; c.restore(); }
+function mstamp(c, lines, x, y, size, color, rot, k) { // multi-line stamp
+  if (k <= 0) return; const sc = lerp(2.6, 1, back(k)); c.save(); c.translate(x, y); c.rotate(rot); c.scale(sc, sc); c.globalAlpha = clamp(k * 3); c.font = `400 ${size}px Anton`;
+  const w = Math.max(...lines.map(l => c.measureText(l).width)) + size * .7, h = lines.length * size * 1.12 + size * .35;
+  c.fillStyle = 'rgba(11,15,20,.82)'; rr(c, -w / 2, -h / 2, w, h, size * .12); c.fill(); c.strokeStyle = color; c.lineWidth = size * .08; rr(c, -w / 2, -h / 2, w, h, size * .12); c.stroke();
+  c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle'; lines.forEach((l, i) => c.fillText(l, 0, (i - (lines.length - 1) / 2) * size * 1.12 + size * .03)); c.restore();
+}
+function edison(c, x, y, w, h, t, o = {}) { // sleek box machine
+  c.save(); c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 40; c.shadowOffsetY = 18;
+  const g = c.createLinearGradient(x, y, x + w, y + h); g.addColorStop(0, '#f4f6f9'); g.addColorStop(.55, '#cfd6df'); g.addColorStop(1, '#8f9aa8'); rr(c, x, y, w, h, 36); c.fillStyle = g; c.fill(); c.restore();
+  c.save(); rr(c, x + w * .3, y - 10, w * .4, 22, 10); c.fillStyle = '#10151c'; c.fill(); c.restore(); // slot
+  rr(c, x + w * .1, y + h * .12, w * .8, h * .22, 14); c.fillStyle = '#10151c'; c.fill(); txt(c, 'EDISON', x + w / 2, y + h * .23, `400 ${Math.round(h * .16)}px Anton`, o.hi ? HL : PAPER);
+  rr(c, x + w * .12, y + h * .42, w * .5, h * .4, 16); c.fillStyle = '#0a2a2a'; c.fill(); c.strokeStyle = '#37505a'; c.lineWidth = 3; c.stroke();
+  txt(c, o.screen || 'READY', x + w * .37, y + h * .62, `800 ${Math.round(h * .09)}px JBM`, o.scol || GREEN);
+  c.fillStyle = (Math.sin(t * 8) > 0 ? GREEN : '#1f6f45'); c.beginPath(); c.arc(x + w * .78, y + h * .52, 10, 0, 7); c.fill(); c.fillStyle = '#6b7684'; c.beginPath(); c.arc(x + w * .78, y + h * .68, 10, 0, 7); c.fill();
+}
+function stack(c, x, y, s, a = 1) { c.save(); c.globalAlpha = a; for (let i = 0; i < 3; i++) bill(c, x, y - i * 14 * s, 96 * s, (i - 1) * .05, 1); c.fillStyle = '#e8efe9'; c.fillRect(x - 10 * s, y - 36 * s, 20 * s, 44 * s); c.restore(); }
+function magnifier(c, x, y, r) { c.save(); c.lineCap = 'round'; c.strokeStyle = '#5b3a1c'; c.lineWidth = 34; c.beginPath(); c.moveTo(x + r * .72, y + r * .72); c.lineTo(x + r * 1.55, y + r * 1.55); c.stroke(); c.strokeStyle = '#c3cad4'; c.lineWidth = 20; c.beginPath(); c.arc(x, y, r, 0, 7); c.stroke(); c.restore(); }
+function hlabel(c, s, x, y, col = 'rgba(245,243,238,.8)', size = 30) { txt(c, s, x, y, `700 ${size}px JBM`, col); }
+
+// A: 0–7.6 hook: revenue billboard + crash
+const CRASH = 5.92;
+function sHook(c, t) {
+  const crashed = t >= CRASH, ck = ei(lin(t, CRASH, CRASH + .22));
+  bgGrid(c, t, crashed ? 'rgba(255,59,48,.09)' : 'rgba(0,210,106,.08)');
+  const gl = c.createRadialGradient(540, 640, 40, 540, 640, 600); gl.addColorStop(0, crashed ? 'rgba(255,59,48,.22)' : 'rgba(0,210,106,.28)'); gl.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = gl; c.fillRect(0, 320, W, 700);
+  txt(c, crashed ? 'REAL REVENUE' : 'CLAIMED REVENUE', 540, 390, '400 84px Anton', PAPER);
+  const am = back(lin(t, -.25, .2)); const pulse = 1 + (t > 3.86 && t < 4.4 ? .06 * Math.sin(lin(t, 3.86, 4.4) * Math.PI) : 0);
+  c.save(); c.translate(540, 530); c.scale((.92 + .08 * am) * pulse, (.92 + .08 * am) * pulse);
+  if (!crashed) glowTxt(c, '$100,000,000', 0, 0, '800 112px JBM', GREEN, 50 + 20 * Math.sin(t * 9)); else glowTxt(c, '$100,000', 0, 0, '800 124px JBM', RED, 40); c.restore();
+  // chart panel
+  const px = 110, py = 640, pw = 860, ph = 560, base = py + ph - 50;
+  rr(c, px, py, pw, ph, 22); c.fillStyle = 'rgba(16,22,30,.88)'; c.fill(); c.strokeStyle = crashed ? 'rgba(255,59,48,.7)' : 'rgba(0,210,106,.7)'; c.lineWidth = 4; c.stroke();
+  c.strokeStyle = 'rgba(245,243,238,.14)'; c.lineWidth = 2; for (let i = 0; i < 4; i++) { const gy = base - i * 125; c.beginPath(); c.moveTo(px + 140, gy); c.lineTo(px + pw - 30, gy); c.stroke(); txt(c, ['$0', '$33M', '$66M', '$100M'][i], px + 125, gy, '700 22px JBM', 'rgba(245,243,238,.5)', 'right'); }
+  const full = 3 * 125, grow = 1; const bh = Math.max(7, full * (.12 + .88 * grow) * (1 - ck) + 7 * ck) ; // sliver after crash
+  const bx = px + 360, bw = 260; const wob = !crashed ? Math.sin(t * 5) * 3 : 0;
+  c.save(); c.shadowColor = crashed ? RED : GREEN; c.shadowBlur = crashed ? 20 : 40; const bg = c.createLinearGradient(0, base - bh, 0, base); bg.addColorStop(0, crashed ? '#ff6a5f' : '#7ef0b0'); bg.addColorStop(1, crashed ? RED : '#0f8f4d'); c.fillStyle = bg; rr(c, bx, base - bh + wob, bw, bh - wob, 10); c.fill(); c.restore();
+  txt(c, crashed ? 'ACTUAL' : 'CLAIMED', bx + bw / 2, base + 30, '700 26px JBM', crashed ? RED : GREEN);
+  if (crashed) { for (let i = 0; i < 6; i++) { const k = lin(t, CRASH, CRASH + .8); const fx = bx + 30 + hash(i) * 200, fy = base - 40 - k * (60 + hash(i + 9) * 180) + k * k * 160; c.fillStyle = `rgba(255,59,48,${1 - k})`; c.fillRect(fx, fy, 14, 14); } }
+  // investors (2.1+)
+  for (let i = 0; i < 3; i++) { const k = back(lin(t, 2.1 + i * .22, 2.4 + i * .22)) * (1 - ck); if (k > 0) { c.save(); c.translate(px + 70 + i * 0, 0); silhouette(c, px + 90 + (i % 2) * 36, py + 330 + i * 60 - 20, 62 * k, '#3a4452'); c.restore(); if (t > 3.86 && t < CRASH) { const f = lin(t, 3.86 + i * .15, 4.9 + i * .15); c.globalAlpha = (1 - f) * .9; txt(c, '$', px + 90 + (i % 2) * 36, py + 270 + i * 60 - f * 90, '800 40px JBM', GREEN); c.globalAlpha = 1; } } }
+  stamp(c, 'SHAMELESS', 720, 770, 96, HL, .12, lin(t, .9, 1.04) * (1 - ck));
+  // after crash
+  if (crashed) { const lk = back(lin(t, 6.3, 6.55)); c.save(); c.translate(540, 900); c.rotate(-.05); c.scale(lk, lk); glowTxt(c, '1,000× LIE', 0, 0, '400 150px Anton', HL, 40); c.restore();
+    hlabel(c, '$100,000,000 ÷ $100,000 = 1,000', 540, 1010, 'rgba(245,243,238,.85)', 28); }
+}
+// B: 7.6–14.2 wordmark + founder + blood drop
+function sIntro(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.06)');
+  wordmark(c, 540, 430, 130, lin(t, 7.66, 7.86));
+  c.save(); c.globalAlpha = lin(t, 7.9, 8.1); c.fillStyle = RED; c.fillRect(270, 515, 540 * eo(lin(t, 7.9, 8.4)), 6); c.restore();
+  const ck = back(lin(t, 9.1, 9.45)); if (ck > 0) { c.save(); c.translate(280 - (1 - ck) * 500, 760); c.rotate(-.03); rr(c, -190, -150, 380, 300, 22); c.fillStyle = '#1a212b'; c.fill(); c.strokeStyle = '#3a434f'; c.lineWidth = 4; c.stroke();
+  rr(c, -150, -125, 300, 140, 16); c.fillStyle = '#232c38'; c.fill(); silhouette(c, 0, -35, 112, '#4a5565'); txt(c, 'ELIZABETH HOLMES', 0, 44, '400 38px Anton', PAPER); txt(c, 'FOUNDER', 0, 88, '700 30px JBM', HL); txt(c, 'NO PHOTO · ILLUSTRATION', 0, 124, '700 17px JBM', 'rgba(245,243,238,.45)'); c.restore(); }
+  const mk = back(lin(t, 10.3, 10.7)); const bx = 540, by = 930 + (1 - mk) * 400;
+  const hit = t > 12.1, hk = lin(t, 12.1, 12.7);
+  if (mk > 0) edison(c, bx, by, 360, 300, t, { screen: hit ? 'RUNNING…' : 'READY', hi: t > 13.4 && t < 14.0, scol: hit ? HL : GREEN });
+  const fk = eo(lin(t, 10.5, 10.9)); if (fk > 0) { c.save(); c.translate(720 + (1 - fk) * 420, 600); c.fillStyle = '#e1ad8c'; rr(c, -38, -90, 76, 200, 38); c.fill(); c.strokeStyle = '#b98568'; c.lineWidth = 3; c.beginPath(); c.moveTo(-18, 70); c.lineTo(18, 70); c.stroke(); c.restore(); }
+  const swell = lin(t, 11.0, 11.7), fall = ei(lin(t, 11.7, 12.1));
+  if (t >= 11.0 && t < 12.1) { const dy = lerp(722, 915, fall), r = (6 + 12 * swell) * (1 - fall * .15); c.save(); c.fillStyle = '#d4121f'; c.shadowColor = RED; c.shadowBlur = 16; c.beginPath(); c.arc(720, dy, r, 0, 7); c.moveTo(720, dy - r * 2.2 * (1 - fall * .5)); c.lineTo(720 - r * .9, dy - r * .3); c.lineTo(720 + r * .9, dy - r * .3); c.fill(); c.restore(); }
+  if (hit && hk < 1) { c.strokeStyle = `rgba(255,59,48,${1 - hk})`; c.lineWidth = 5; c.beginPath(); c.ellipse(720, by + 2, 20 + hk * 90, 6 + hk * 18, 0, 0, 7); c.stroke(); }
+  if (t > 13.4) { const k = back(lin(t, 13.4, 13.7)); c.save(); c.translate(720, 870); c.scale(k, k); txt(c, '"ONE FINGER PRICK"', 0, 0, '700 24px JBM', HL); c.restore(); }
+}
+// C: 14.2–20.3 money pours in + valuation rockets
+function sMoney(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.06)');
+  const cnt = lerp(0, 700e6, eo(lin(t, 14.5, 16.1))); const done = t > 16.1;
+  c.save(); c.translate(450, 420); const pk = done ? 1 + .08 * Math.sin(lin(t, 16.1, 16.5) * Math.PI) : 1; c.scale(pk, pk); glowTxt(c, '$' + fmt(cnt) + (done ? '+' : ''), 0, 0, '800 78px JBM', GREEN, 25); c.restore();
+  txt(c, 'RAISED FROM INVESTORS', 450, 490, '700 30px JBM', 'rgba(245,243,238,.8)');
+  // valuation
+  const vk = lin(t, 17.48, 17.8); if (vk > 0) { c.globalAlpha = vk; txt(c, 'VALUATION', 450, 600, '400 54px Anton', PAPER); c.globalAlpha = 1; }
+  const vv = eo(Math.pow(lin(t, 17.62, 19.12), 1.6)); const val = vv * 9e9;
+  if (vk > 0) { const big = t >= 19.12; c.save(); c.translate(450, 680); const s = big ? 1 + .1 * Math.sin(lin(t, 19.12, 19.5) * Math.PI) : 1; c.scale(s, s); glowTxt(c, '$' + fmt(big ? 9e9 : val), 0, 0, '800 64px JBM', big ? HL : GREEN, big ? 40 : 15); c.restore(); }
+  // meter
+  const mx = 810, my0 = 440, my1 = 1170; if (vk > 0) { rr(c, mx, my0, 90, my1 - my0, 45); c.fillStyle = '#1b2430'; c.fill(); c.strokeStyle = '#3a434f'; c.lineWidth = 4; c.stroke(); }
+  if (vk > 0) { const fh = (my1 - my0 - 16) * vv; c.save(); rr(c, mx + 8, my0 + 8, 74, my1 - my0 - 16, 37); c.clip(); const mg = c.createLinearGradient(0, my1, 0, my0); mg.addColorStop(0, '#0f8f4d'); mg.addColorStop(.7, GREEN); mg.addColorStop(1, HL); c.fillStyle = mg; c.fillRect(mx + 8, my1 - 8 - fh, 74, fh); c.restore();
+    const ry = my1 - 8 - fh; c.save(); c.translate(mx + 45, ry - 14); c.fillStyle = PAPER; c.beginPath(); c.moveTo(0, -34); c.lineTo(20, 14); c.lineTo(-20, 14); c.closePath(); c.fill(); c.fillStyle = RED; c.beginPath(); c.moveTo(-10, 14); c.lineTo(0, 14 + 16 + 10 * Math.sin(t * 40)); c.lineTo(10, 14); c.fill(); c.restore(); }
+  if (vk > 0) for (let i = 0; i < 4; i++) txt(c, ['$0', '$3B', '$6B', '$9B'][i], mx - 14, my1 - 20 - i * ((my1 - my0 - 60) / 3), '700 22px JBM', 'rgba(245,243,238,.55)', 'right');
+  // box + stacks
+  edison(c, 150, 780, 500, 340, t, { screen: '$$$ IN', scol: GREEN });
+  for (let i = 0; i < 10; i++) { const t0 = 14.3 + i * .2, k = lin(t, t0, t0 + .55); if (k <= 0 || k >= 1) continue; const sx = 120 + hash(i) * 520, sy = 650 - hash(i + 4) * 100; const x = lerp(sx, 400, ei(k)), y = lerp(sy, 790, ei(k)) - Math.sin(k * Math.PI) * 60; stack(c, x, y, lerp(1.2, .6, k), 1); }
+  if (t > 16.1 && t < 17.4) { const f = (t - 16.1) / 1.3; for (let i = 0; i < 5; i++) { c.globalAlpha = 1 - f; txt(c, '$', 200 + i * 100, 760 - f * 70 - hash(i) * 40, '800 40px JBM', GREEN); } c.globalAlpha = 1; }
+}
+// D: 20.3–26.6 magazine card (generic)
+function sMag(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.05)');
+  const k = eo(lin(t, 20.3, 20.75)); const push = 1 + .05 * lin(t, 20.75, 26.6);
+  c.save(); c.translate(540, 760 + (1 - k) * 900); c.rotate(-.04 + (1 - k) * .1); c.scale(push, push);
+  c.save(); c.shadowColor = 'rgba(0,0,0,.7)'; c.shadowBlur = 50; c.shadowOffsetY = 20; rr(c, -250, -380, 500, 740, 12); c.fillStyle = '#f2efe6'; c.fill(); c.restore();
+  c.fillStyle = '#c9211b'; c.fillRect(-250, -380, 500, 100); txt(c, 'MONEY WEEKLY', 0, -330, '400 62px Anton', PAPER); txt(c, 'THE BILLIONAIRES ISSUE', 0, -295, '700 17px JBM', 'rgba(245,243,238,.85)');
+  const gp = c.createLinearGradient(0, -270, 0, 60); gp.addColorStop(0, '#26364f'); gp.addColorStop(1, '#101a2b'); c.fillStyle = gp; c.fillRect(-250, -280, 500, 330); silhouette(c, 0, -90, 250, '#4c5d79'); txt(c, 'NO PHOTO · ILLUSTRATION', 0, 24, '700 15px JBM', 'rgba(245,243,238,.45)');
+  const L = [[21.18, 'YOUNGEST', '#0B0F14'], [21.9, 'SELF-MADE FEMALE', '#0B0F14'], [22.74, 'BILLIONAIRE', '#c9211b']];
+  L.forEach(([ts, s, col], i) => { const q = eo(lin(t, ts, ts + .2)); c.save(); c.globalAlpha = q; c.translate((1 - q) * -60, 0); txt(c, s, 0, 100 + i * 66, `400 ${i === 1 ? 52 : 66}px Anton`, col); c.restore(); });
+  const q2 = back(lin(t, 23.28, 23.6)); c.save(); c.translate(0, 318); c.scale(q2, q2); txt(c, 'IN AMERICA · 2015', 0, 0, '800 26px JBM', '#0B0F14'); c.restore();
+  c.restore();
+  const bk = back(lin(t, 19.4, 19.8)) * (t < 20.3 ? 1 : 0); // carry-over badge no-op
+  const bd = back(lin(t, 21.2, 21.5)); c.save(); c.translate(790, 470); c.rotate(.12); c.scale(bd, bd); c.fillStyle = HL; c.beginPath(); c.arc(0, 0, 80, 0, 7); c.fill(); txt(c, '$9B', 0, -8, '400 58px Anton', INK); txt(c, 'VALUED', 0, 38, '800 20px JBM', INK); c.restore();
+}
+// E1: 26.6–31.8 "THE PROBLEM?" + WSJ headline
+function sNews(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)');
+  const k = eo(lin(t, 27.54, 27.9)), st = lin(t, 27.54, 27.9);
+  const sz = lerp(130, 62, eo(lin(t, 27.4, 27.8))), sy = lerp(640, 388, eo(lin(t, 27.4, 27.8)));
+  stamp(c, 'THE PROBLEM?', 540, sy, sz, RED, -.04, lin(t, 26.66, 26.8));
+  const nk = eo(lin(t, 27.6, 27.95)); if (nk > 0) { c.save(); c.translate(540, 830 + (1 - nk) * 1100); c.rotate(.025 - (1 - nk) * .15 + Math.sin(t * 1.3) * .004); c.scale(1 + .02 * lin(t, 28, 31.8), 1 + .02 * lin(t, 28, 31.8));
+  c.save(); c.shadowColor = 'rgba(0,0,0,.7)'; c.shadowBlur = 40; c.shadowOffsetY = 16; rr(c, -400, -330, 800, 700, 8); c.fillStyle = '#e9e3d2'; c.fill(); c.restore();
+  txt(c, 'THE FINANCIAL PAGE', 0, -285, '400 52px Anton', '#14181e'); c.fillStyle = '#14181e'; c.fillRect(-370, -250, 740, 4); c.fillRect(-370, -240, 740, 2);
+  txt(c, 'WSJ, OCT 2015', 370, -262, '700 18px JBM', '#5a5448', 'right');
+  c.font = '400 76px Anton'; const H1 = ['REPORT: DEVICE', 'GAVE INACCURATE', 'RESULTS']; H1.forEach((l, i) => { const y = -170 + i * 90; if (i === 1) { const hk = lin(t, 30.28, 30.9); c.fillStyle = `rgba(255,214,10,${.95 * hk})`; const w = c.measureText('INACCURATE').width; c.fillRect(c.measureText('GAVE ').width * 0 + 0 - c.measureText(l).width / 2 + c.measureText('GAVE ').width, y - 40, w, 80 * hk); } txt(c, l, 0, y, '400 76px Anton', '#14181e'); });
+  for (let i = 0; i < 7; i++) { c.fillStyle = 'rgba(20,24,30,.35)'; c.fillRect(-370, 130 + i * 28, i % 3 === 2 ? 240 : 380, 12); } c.fillStyle = '#d4cfbd'; c.fillRect(30, 125, 340, 220); edison(c, 100, 150, 200, 150, t, { screen: 'ERR', scol: RED }); 
+  const xk = back(lin(t, 29.64, 29.9)); c.save(); c.translate(200, 225); c.scale(xk, xk); c.strokeStyle = RED; c.lineWidth = 16; c.lineCap = 'round'; c.beginPath(); c.moveTo(-60, -60); c.lineTo(60, 60); c.moveTo(60, -60); c.lineTo(-60, 60); c.stroke(); c.restore();
+  c.restore(); }
+}
+// E2: 31.8–35.9 Edison opens: ordinary machines
+function labMachine(c, x, y, w, h, t, i, name) {
+  rr(c, x, y, w, h, 14); c.fillStyle = '#9aa3ad'; c.fill(); c.strokeStyle = '#59636f'; c.lineWidth = 4; c.stroke(); rr(c, x + 14, y + 14, w - 28, h * .28, 8); c.fillStyle = '#10222a'; c.fill();
+  txt(c, name, x + w / 2, y + 14 + h * .14, '700 18px JBM', '#7ef0b0'); c.save(); c.translate(x + w / 2, y + h * .66); c.rotate(t * (3 + i)); c.strokeStyle = '#3a434f'; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.arc(0, 0, h * .17, 0, 7); c.stroke(); for (let a = 0; a < 4; a++) { c.beginPath(); c.moveTo(0, 0); c.lineTo(Math.cos(a * 1.57) * h * .17, Math.sin(a * 1.57) * h * .17); c.stroke(); } c.restore();
+}
+function sOpen(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const bx = 130, by = 470, bw = 820, bh = 640, ok = eio(lin(t, 32.0, 32.8));
+  const sl = back(lin(t, 31.8, 32.0)); c.save(); c.globalAlpha = sl;
+  rr(c, bx, by, bw, bh, 30); c.fillStyle = '#10161d'; c.fill();
+  c.save(); rr(c, bx + 20, by + 100, bw - 40, bh - 120, 12); c.clip(); c.fillStyle = '#0a1016'; c.fillRect(bx, by, bw, bh);
+  [['ANALYZER', 0], ['ANALYZER', 1], ['ANALYZER', 2]].forEach(([n, i]) => labMachine(c, bx + 50 + i * 245, by + 170 + (i === 1 ? -20 : 0), 220, 330, t, i, n));
+  c.restore();
+  // doors
+  c.save(); rr(c, bx, by + 90, bw, bh - 90, 20); c.clip();
+  for (const sgn of [-1, 1]) { const dx = sgn * ok * (bw / 2 - 12); const g = c.createLinearGradient(bx, by, bx + bw, by + bh); g.addColorStop(0, '#f4f6f9'); g.addColorStop(.6, '#cfd6df'); g.addColorStop(1, '#8f9aa8'); c.fillStyle = g; c.fillRect(bx + (sgn < 0 ? 0 : bw / 2) + dx, by + 90, bw / 2, bh - 90); c.fillStyle = 'rgba(0,0,0,.2)'; c.fillRect(bx + (sgn < 0 ? bw / 2 - 5 : bw / 2) + dx, by + 90, 5, bh - 90); }
+  c.restore();
+  rr(c, bx, by, bw, 100, [30, 30, 0, 0]); c.fillStyle = '#e8ecf1'; c.fill(); txt(c, 'EDISON', bx + bw / 2, by + 52, '400 76px Anton', '#10151c'); c.restore();
+  if (t > 33.5) { txt(c, 'ORDINARY COMMERCIAL MACHINES', 540, by + bh + 50, '800 30px JBM', HL); }
+  // MEME #3 red circle + arrow
+  const ck = eo(lin(t, 33.7, 34.3)); if (ck > 0) { c.save(); c.strokeStyle = RED; c.lineWidth = 10; c.lineCap = 'round'; c.shadowColor = RED; c.shadowBlur = 16; c.beginPath(); c.ellipse(540, 810, 420 + 6 * Math.sin(t * 9), 205, -.04, -1.9, -1.9 + ck * 6.5); c.stroke(); c.restore(); }
+  const ak = back(lin(t, 34.3, 34.6)); if (ak > 0) { c.save(); c.translate(880, 1215); c.scale(ak, ak); c.rotate(-2.1); c.strokeStyle = RED; c.fillStyle = RED; c.lineWidth = 14; c.lineCap = 'round'; c.beginPath(); c.moveTo(0, 0); c.lineTo(190, 0); c.stroke(); c.beginPath(); c.moveTo(-14, 0); c.lineTo(46, -34); c.lineTo(46, 34); c.closePath(); c.fill(); c.restore(); }
+}
+// F: 35.9–39.4 share: friend + plane
+function sFriend(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.05)');
+  txt(c, 'THE FRIEND WHO BELIEVES', 540, 400, '400 56px Anton', PAPER); txt(c, 'EVERY STARTUP PITCH', 540, 465, '400 56px Anton', HL);
+  const nod = Math.sin(t * 7) * 6 * (t > 36.9 ? 1 : .3); silhouette(c, 300, 900 + nod, 300, '#566174');
+  const bk = back(lin(t, 36.1, 36.4)); c.save(); c.translate(430, 585); c.scale(bk, bk); c.fillStyle = PAPER; rr(c, -190, -50, 380, 100, 30); c.fill(); c.beginPath(); c.moveTo(-120, 46); c.lineTo(-150, 80); c.lineTo(-70, 46); c.fill(); txt(c, '"THIS ONE\'S DIFFERENT"', 0, 2, '800 27px Inter', INK); c.restore();
+  const dk = back(lin(t, 36.4, 36.7)); c.save(); c.translate(790, 800); c.rotate(.05); c.scale(dk, dk); rr(c, -150, -130, 300, 260, 12); c.fillStyle = '#e9e3d2'; c.fill(); c.strokeStyle = '#8a8478'; c.lineWidth = 5; c.stroke(); txt(c, 'STARTUP PITCH', 0, -90, '400 34px Anton', '#14181e'); c.strokeStyle = '#0f8f4d'; c.lineWidth = 8; c.beginPath(); c.moveTo(-100, 70); c.lineTo(-40, 20); c.lineTo(20, 40); c.lineTo(100, -40); c.stroke(); txt(c, '10X!!!', 40, 85, '800 28px JBM', RED); c.restore();
+  // paper plane from storyteller
+  const pk = lin(t, 35.96, 36.9); if (pk > 0 && pk < 1) { const e = eo(pk); const px = lerp(760, 340, e), py = lerp(1230, 900, e) - Math.sin(e * Math.PI) * 260; c.save(); c.setLineDash([14, 14]); c.strokeStyle = 'rgba(245,243,238,.4)'; c.lineWidth = 4; c.beginPath(); for (let q = 0; q <= e; q += .04) { const qq = eo(q); const x = lerp(760, 340, qq), y = lerp(1230, 900, qq) - Math.sin(qq * Math.PI) * 260; q ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke(); c.restore(); plane(c, px, py, -Math.PI + Math.atan2(-(260 * Math.PI * Math.cos(e * Math.PI) * 0 + 150), 1) * 0 - .7 + e * 2.2, 1.7 * (1 - e * .3)); }
+  const sk = back(lin(t, 36.9, 37.2)); if (sk > 0) { c.save(); c.translate(300, 1010); c.scale(sk, sk); rr(c, -90, -28, 180, 56, 28); c.fillStyle = GREEN; c.fill(); txt(c, '✓ SENT', 0, 2, '800 28px Inter', INK); c.restore(); }
+}
+// G: 39.4–43.0 pile of reports + VOIDED stamp
+function report(c, x, y, rot, i, t, k) { c.save(); c.translate(x, y); c.rotate(rot); rr(c, -150, -190, 300, 380, 8); c.fillStyle = '#efeadd'; c.fill(); c.strokeStyle = '#a79f8c'; c.lineWidth = 3; c.stroke(); txt(c, 'EDISON RESULTS', 0, -150, '700 22px JBM', '#14181e'); c.strokeStyle = '#0f8f4d'; c.lineWidth = 5; c.beginPath(); for (let q = 0; q < 9; q++) { const yy = -70 + Math.sin(q * 1.3 + i) * 30; q ? c.lineTo(-120 + q * 30, yy) : c.moveTo(-120, yy); } c.stroke(); for (let q = 0; q < 5; q++) { c.fillStyle = 'rgba(20,24,30,.3)'; c.fillRect(-120, 10 + q * 30, q % 2 ? 160 : 240, 10); } c.restore(); }
+function sVoid(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)');
+  wordmark(c, 540, 380, 84, lin(t, 39.5, 39.7)); txt(c, 'EDISON RESULTS · 2 YEARS', 540, 450, '700 28px JBM', 'rgba(245,243,238,.7)');
+  for (let i = 0; i < 9; i++) { const t0 = 39.45 + i * .1, k = lin(t, t0, t0 + .35); if (k <= 0) continue; const e = eo(k); const tx = 540 + (hash(i) - .5) * 360, ty = 840 + (hash(i + 3) - .5) * 260; report(c, lerp(i % 2 ? -300 : 1380, tx, e), lerp(300, ty, e), (hash(i + 7) - .5) * .7 + (1 - e) * 1.2, i, t, k); }
+  mstamp(c, ['2 YEARS OF', 'RESULTS VOIDED'], 540, 850, 112, RED, -.09, lin(t, 40.18, 40.34));
+  if (t > 40.18 && t < 40.5) { c.fillStyle = `rgba(255,255,255,${.35 * (1 - (t - 40.18) / .32)})`; c.fillRect(0, 0, W, H); }
+}
+// H: 43–46.1 follow + magnifier over $100,000,000
+function sNumber(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.06)');
+  txt(c, 'CLAIMED REVENUE', 540, 410, '400 70px Anton', PAPER);
+  const k = back(lin(t, 43.0, 43.3)); c.save(); c.translate(540, 560); c.scale(.9 + .1 * k, .9 + .1 * k); glowTxt(c, '$100,000,000', 0, 0, '800 112px JBM', GREEN, 30 + 10 * Math.sin(t * 6)); c.restore();
+  const mk = back(lin(t, 44.08, 44.4)); if (mk > 0) { const mx = lerp(250, 540, eo(lin(t, 44.08, 44.7))) + Math.sin(t * 5) * 6, my = 560 + Math.sin(t * 4) * 5; const r = 150 * mk;
+    c.save(); c.beginPath(); c.arc(mx, my, r, 0, 7); c.clip(); c.fillStyle = '#10151c'; c.fillRect(mx - r, my - r, r * 2, r * 2); c.translate(mx, my); c.scale(1.35, 1.35); c.translate(-mx, -my); glowTxt(c, '$100,000', mx, my, '800 112px JBM', RED, 30); c.restore();
+    magnifier(c, mx, my, r); }
+  if (t > 44.8) { const q = back(lin(t, 44.8, 45.1)); c.save(); c.translate(540, 800); c.scale(q, q); txt(c, 'REAL: $100,000', 0, 0, '800 52px JBM', RED); c.restore(); txt(c, '1,000× SMALLER', 540, 870, '700 32px JBM', HL); }
+}
+// I: 46.1–50.3 verdict
+function sVerdict(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.06)');
+  const drop = eo(lin(t, 49.3, 49.6)); const bt = 330, bb = 1230;
+  c.save(); const rail = (bb - bt) * drop; for (let i = 0; i < 9; i++) { const bx = 110 + i * 105; const g = c.createLinearGradient(bx - 20, 0, bx + 20, 0); g.addColorStop(0, '#2a323d'); g.addColorStop(.5, '#a7b1bf'); g.addColorStop(1, '#2a323d'); c.fillStyle = g; rr(c, bx - 20, bt, 40, rail, 18); c.fill(); }
+  c.fillStyle = '#5b6573'; if (drop > 0) { c.fillRect(70, bt, 940, 26); c.fillRect(70, bt + rail - 26, 940, 26); } c.restore();
+  const sl = ei(lin(t, 46.0, 46.18)); const bounce = t > 46.18 ? Math.exp(-(t - 46.18) * 9) * Math.sin((t - 46.18) * 40) * .1 : 0; const ang = lerp(-1.0, .05, sl) + bounce;
+  rr(c, 380, 520, 320, 46, 10); c.fillStyle = '#6a4a2c'; c.fill();
+  c.save(); c.translate(540, 505); c.rotate(ang); c.fillStyle = '#8a6a44'; rr(c, -14, -250, 28, 260, 8); c.fill(); rr(c, -110, -290, 220, 90, 14); c.fillStyle = '#a07a4e'; c.fill(); c.strokeStyle = '#4a3320'; c.lineWidth = 5; c.stroke(); c.restore();
+  if (t >= 46.18 && t < 46.4) { c.fillStyle = `rgba(255,255,255,${.4 * (1 - (t - 46.18) / .2)})`; c.fillRect(0, 0, W, H); }
+  stamp(c, 'GUILTY', 540, 690, 130, RED, -.04, lin(t, 46.18, 46.3)); stamp(c, '4 COUNTS', 540, 850, 100, HL, .04, lin(t, 46.92, 47.04)); stamp(c, '11 YRS 3 MOS', 540, 1020, 100, RED, -.03, lin(t, 47.88, 48.0));
+}
+// J: 50.3–end split: claimed vs real
+function sSplit(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const a = eo(lin(t, 50.3, 50.6)); c.save(); c.globalAlpha = a; rr(c, 100, 360, 880, 400, 22); c.fillStyle = 'rgba(0,210,106,.10)'; c.fill(); c.strokeStyle = GREEN; c.lineWidth = 4; c.stroke();
+  txt(c, 'CLAIMED', 540, 420, '400 64px Anton', GREEN); glowTxt(c, '$100,000,000', 540, 560, '800 104px JBM', GREEN, 25); c.restore();
+  const xk = eo(lin(t, 51.08, 51.35)); if (xk > 0) { c.save(); c.strokeStyle = RED; c.lineWidth = 16; c.lineCap = 'round'; c.shadowColor = RED; c.shadowBlur = 16; c.beginPath(); c.moveTo(140, 640 - xk * 140 + 70); c.lineTo(140 + 800 * xk, 640 - 140 * xk + 70 - 0); c.stroke(); c.beginPath(); c.moveTo(150, 500 + 130 * 0); c.lineTo(150 + 780 * xk, 500 + 130 * xk); c.stroke(); c.restore(); }
+  const b = eo(lin(t, 52.16, 52.5)); c.save(); c.translate(0, (1 - b) * 120); c.globalAlpha = b; rr(c, 100, 810, 880, 380, 22); c.fillStyle = 'rgba(255,59,48,.12)'; c.fill(); c.strokeStyle = RED; c.lineWidth = 4; c.stroke();
+  txt(c, 'REAL', 540, 870, '400 64px Anton', RED); glowTxt(c, '$100,000', 540, 1010, '800 120px JBM', RED, 30); txt(c, '1,000× LESS', 540, 1120, '700 34px JBM', HL); c.restore();
+}
+
+const SCENES = [[0, 7.6, sHook], [7.6, 14.2, sIntro], [14.2, 20.3, sMoney], [20.3, 26.6, sMag], [26.6, 31.8, sNews], [31.8, 35.9, sOpen], [35.9, 39.4, sFriend], [39.4, 43.0, sVoid], [43.0, 46.1, sNumber], [46.1, 50.3, sVerdict], [50.3, 99, sSplit]];
+const GLITCH = [[0, .45, 1], [5.92, 6.3, .9], [19.12, 19.35, .5], [26.66, 26.9, .6], [40.18, 40.45, .7], [53.72, 54.08, 1]];
+const SHAKE = [[.12, .5, 34], [.9, .2, 10], [5.92, .5, 36], [7.66, .3, 18], [12.1, .2, 8], [19.12, .25, 14], [20.5, .2, 10], [26.8, .3, 22], [27.88, .2, 12], [33.7, .2, 8], [40.18, .4, 28], [46.18, .4, 26], [47.88, .3, 22], [49.5, .3, 22], [51.08, .2, 12], [52.16, .3, 16]];
+const ST_CFG = { enterAt: -.5, timeline: [[0, 'shock'], [7.6, 'point'], [14.2, 'chin'], [24.3, 'you'], [26.6, 'point'], [31, 'shock'], [35.9, 'you'], [39.4, 'point'], [43, 'follow'], [46.1, 'shrug'], [50.3, 'point']],
+  bubbles: [[46.1, 50.1, 'WOULD YOU HAVE', 'INVESTED? COMMENT', [600, 1185]]], follow: [43.0, 46.0] };
+function likeHeart(c, t) { if (t < 24.4 || t > 26.6) return; const k = back(lin(t, 24.4, 24.7)) * (1 - eo(lin(t, 26.3, 26.6))); const beat = 1 + .22 * Math.max(0, Math.sin((t - 24.4) * 7.5)) ** 3; c.save(); heart(c, 640, 1160, 2.0 * k * beat, RED, 1); c.restore(); for (let i = 0; i < 3; i++) { const f = ((t - 24.7 - i * .55) % 1.65) / 1.65; if (t > 24.7 + i * .55 && f >= 0) heart(c, 600 + i * 55 + Math.sin(f * 6 + i) * 18, 1100 - f * 150, .55, RED, (1 - f) * .85); } }
+window.render = function (t) {
+  const sc = SCENES.find(s => t >= s[0] && t < s[1]) || SCENES[SCENES.length - 1];
+  O.save(); sc[2](O, t); O.restore(); vignette(O, .65); hud(O, t); Storyteller.draw(O, t, { ...ST_CFG, mouth: MOUTH[Math.min(MOUTH.length - 1, Math.floor(t * 30))] || 0 }); likeHeart(O, t); caption(O, t);
+  let wx = 0; const into = t - sc[0]; if (sc[0] > 0 && into < .16) wx = (1 - eo(into / .16)) * 180;
+  let sx = 0, sy = 0; for (const [s0, d, amp] of SHAKE) if (t >= s0 && t < s0 + d) { const k = 1 - (t - s0) / d; sx += Math.sin(t * 97) * amp * k; sy += Math.cos(t * 83) * amp * k; }
+  X.fillStyle = INK; X.fillRect(0, 0, W, H);
+  let pz = 1; for (const s0 of [7.66, 40.18, 46.18]) if (t >= s0 && t < s0 + .3) pz += .07 * (1 - (t - s0) / .3);
+  if (t >= CRASH && t < CRASH + .52) pz += .25 * (t < CRASH + .06 ? lin(t, CRASH, CRASH + .06) : 1 - eo(lin(t, CRASH + .06, CRASH + .52)));   // MEME #1 boom zoom
+  X.save(); X.translate(540 + sx + wx, 960 + sy); X.scale(pz, pz); X.translate(-540, -960); X.drawImage(OFF, 0, 0); X.restore();
+  for (const [g0, g1, amt] of GLITCH) if (t >= g0 && t < g1) {
+    const k = amt * (g0 === 0 ? (1 - lin(t, g0, g1)) ** .5 : Math.sin(lin(t, g0, g1) * Math.PI) ** .5), f = Math.floor(t * 30);
+    X.save(); X.globalCompositeOperation = 'screen'; X.globalAlpha = .55 * k;
+    T.clearRect(0, 0, W, H); T.drawImage(OFF, 0, 0); T.globalCompositeOperation = 'multiply'; T.fillStyle = '#ff0000'; T.fillRect(0, 0, W, H); T.globalCompositeOperation = 'source-over';
+    X.drawImage(TMP, 24 * k, 0); T.clearRect(0, 0, W, H); T.drawImage(OFF, 0, 0); T.globalCompositeOperation = 'multiply'; T.fillStyle = '#00ffff'; T.fillRect(0, 0, W, H); T.globalCompositeOperation = 'source-over';
+    X.drawImage(TMP, -24 * k, 0); X.restore();
+    for (let i = 0; i < 9; i++) { const y = hash(f * 13 + i) * H, h = 20 + hash(f * 7 + i) * 120, dx = (hash(f * 3 + i) - .5) * 260 * k; X.drawImage(OFF, 0, y, W, h, dx, y, W, h); }
+    X.fillStyle = `rgba(255,255,255,${.14 * k * (f % 2)})`; X.fillRect(0, 0, W, H);
+  }
+};
+window.DUR = DUR;
+const FONTS = [['Anton', 'node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2', '400'], ['Inter', 'node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2', '800'],
+  ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-800-normal.woff2', '800'], ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2', '700'],
+  ['Elite', 'node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2', '400']];
+window.ready = Promise.all(FONTS.map(([f, u, w]) => new FontFace(f, `url(${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))).then(() => { window.render(0); return true; });
+</script></body></html>
