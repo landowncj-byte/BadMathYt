@@ -63,6 +63,7 @@ tools:
   api_keys: []  # none provided yet (YouTube Data API not set up)
 language: "en-US"
 decisions:
+  - "2026-11-24: Back to 3 Shorts + 1 long-form EVERY day. ElevenLabs Creator credits: Shorts get the paid voice first; long-forms use it while credits last, then Kokoro."
   - "2026-11-24: Budget plan: ElevenLabs Creator (paid voice only; ~121k credits/month — Shorts get the paid voice first, long-forms only if credits remain). Cadence = 3 Shorts daily + long-form on Tuesdays and Fridays (ET)."
   - "2026-11-24: Paid voice only (ElevenLabs Bad Math Narrator). Sound effects and music are always free CC0 (Freesound/Openverse), never ElevenLabs credits."
   - "2026-11-24: Standing authorization: build one video at a time and auto-publish each via PostFast as soon as it passes QA — no per-post approval. Revocable with \"stop auto-posting\"."

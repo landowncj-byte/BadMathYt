@@ -1,6 +1,6 @@
 # Daily production runbook — Bad Math
 
-Every day: **3 unique Shorts**, plus **1 unique long-form on Tuesdays and Fridays** (ET), built **one at a time**, and each one is **published automatically as soon as it passes QA** (standing user authorization, 2026-11-24: "don't ask for approval"). Order: Short 1 → post → Short 2 → post → Short 3 → post → (Tue/Fri only) long-form → post, so finished videos go out even if the day's usage runs out. The user can revoke this anytime ("stop auto-posting") — then go back to asking per post.
+Every day: **3 unique Shorts + 1 unique long-form**, built **one at a time**, and each one is **published automatically as soon as it passes QA** (standing user authorization, 2026-11-24: "don't ask for approval"). Order: Short 1 → post → Short 2 → post → Short 3 → post → long-form → post, so finished videos go out even if the day's usage runs out. The user can revoke this anytime ("stop auto-posting") — then go back to asking per post.
 
 Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` (meme beats: 2–3 per Short, ~1 per 30–45 s long-form), `brand/sfx-library/manifest.json` (reusable CC0 sounds), `ideas.md`, and the newest long-form `videos/2026-11-25-impossible-number/DIRECTION.md` (template for long-form direction).
 
