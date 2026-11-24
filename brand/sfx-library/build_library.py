@@ -40,6 +40,9 @@ VOICE_RE = re.compile(
     re.I,
 )
 
+# Titles that were audited by hand as spoken/announcement clips (not clean SFX).
+DENY_RE = re.compile(r"\b(uh oh|bah dum|dum tss|PA|gasp\w*|boo \d)\b", re.I)
+
 # (category, key, search phrasings, kind, one-line description)
 ITEMS = [
     # impacts
@@ -285,6 +288,8 @@ def main():
                 seen_urls.add(url)
                 title = r.get("title") or ""
                 if kind != "reaction" and VOICE_RE.search(f"{title} {tags_text(r)}"):
+                    continue
+                if DENY_RE.search(title):
                     continue
                 dur_ms = r.get("duration")
                 if dur_ms is not None and not (lo <= dur_ms / 1000 <= hi):
