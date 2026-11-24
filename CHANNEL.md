@@ -63,6 +63,7 @@ tools:
   api_keys: []  # none provided yet (YouTube Data API not set up)
 language: "en-US"
 decisions:
+  - "2026-11-24: Standing authorization: build one video at a time and auto-publish each via PostFast as soon as it passes QA — no per-post approval. Revocable with \"stop auto-posting\"."
   - "2026-11-24: Cadence = 3 unique Shorts + 1 unique long-form every day (US Eastern: Shorts 12/5/9 PM, long-form 6 PM). Built overnight per PRODUCTION.md, queued in PostFast, each post approved by the user. TikTok @color.me.saved is the Bad Math TikTok until renamed. No repeats (ideas.md)."
   - "2026-11-24: Salad Oil, Ponzi and Two Buttons Shorts were posted by the user (manually). Posting from now on goes through PostFast with per-post approval; Bad Math TikTok/Instagram still to be connected (PostFast TikTok = Color Me Saved, not Bad Math)."
   - "2026-11-24: Storyteller saved as brand/storyteller.js and used in every video; on-screen comment bubble after the payoff + tap-to-follow button in the last 2 s. Display name Bad Math; pfp brand/pfp-ink.png."

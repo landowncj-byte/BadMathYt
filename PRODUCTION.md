@@ -1,6 +1,6 @@
 # Daily production runbook — Bad Math
 
-Every day: **3 unique Shorts + 1 unique long-form**, built overnight, queued in PostFast, published only after the user approves each post.
+Every day: **3 unique Shorts + 1 unique long-form**, built **one at a time**, and each one is **published automatically as soon as it passes QA** (standing user authorization, 2026-11-24: "don't ask for approval"). Order: Short 1 → post → Short 2 → post → Short 3 → post → long-form → post, so finished videos go out even if the day's usage runs out. The user can revoke this anytime ("stop auto-posting") — then go back to asking per post.
 
 Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `ideas.md`, and the newest long-form `videos/2026-11-25-impossible-number/DIRECTION.md` (template for long-form direction).
 
@@ -30,9 +30,9 @@ Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `ideas.md`, and t
 10. **Queue in PostFast (Opus):**
     - Upload each video to a 12 h temp link: `curl -F reqtype=fileupload -F time=12h -F fileToUpload=@video.mp4 https://litterbox.catbox.moe/resources/internals/api.php` → `upload_from_url`. Long-form must be ≤ 250 MB (re-encode ~3.8 Mb/s). Upload `captions.srt` too (youtubeCaptionKey) and the thumbnail (youtubeThumbnailKey) for long-form.
     - Accounts: YouTube **BadMath** `7615365c-4085-4841-ae0b-7af4c8c441de` (Shorts + long-form); TikTok **@color.me.saved** `095075de-53fe-407f-9d08-4b5f47ed8390` (Shorts only — this is the Bad Math TikTok until the username can be changed). Re-check `list_accounts` connectionStatus first.
-    - Schedule (America/New_York): Shorts 12:00, 17:00, 21:00; long-form 18:00. Controls: youtubeContainsSyntheticMedia true, youtubeMadeForKids false, youtubeIsShort true/false, youtubeLanguage "en", youtubePrivacy PUBLIC; tiktokIsAigc true.
-    - `create_posts` only (held as PENDING_APPROVAL). **Never call approve_posts until the user says yes to that post in the conversation.**
-11. **Morning message to the user:** one table per post (platform · time ET · title · first caption line · video file) + the 4 videos attached (SendUserFile; Shorts directly, long-form share copy < 500 MB). Ask for "yes" per post. On "yes", approve exactly those post ids. If a slot's time passes > 2 h without approval, don't approve it — offer a new time.
+    - Schedule: as soon as the video passes QA, scheduledAt = now + 10 min. Keep ≥ 90 min between two posts on the same account (if the last one was more recent, schedule 90 min after it). Controls: youtubeContainsSyntheticMedia true, youtubeMadeForKids false, youtubeIsShort true/false, youtubeLanguage "en", youtubePrivacy PUBLIC; tiktokIsAigc true.
+    - `create_posts`, then `approve_posts` (APPROVED) right away under the user's standing authorization. Only videos that passed fact-check + QA may be approved. If the user has said "stop auto-posting", leave posts PENDING_APPROVAL and ask instead.
+11. **After each post:** a short note to the user (platform · time ET · title · video attached via SendUserFile; long-form share copy < 500 MB). Then check `list_posts` later for FAILED posts and report any failure.
 12. **Commit + push** each finished video folder to `main` (keep `video.mp4` > 95 MB out of git: split into `video-parts/`).
 
 ## If something fails
