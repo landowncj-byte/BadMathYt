@@ -1,0 +1,41 @@
+# Daily production runbook — Bad Math
+
+Every day: **3 unique Shorts + 1 unique long-form**, built overnight, queued in PostFast, published only after the user approves each post.
+
+Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `ideas.md`, and the newest long-form `videos/2026-11-25-impossible-number/DIRECTION.md` (template for long-form direction).
+
+## Roles (cost rule from the user)
+- **Opus (director, this session):** picks ideas, does the research and fact-checking, writes every script, storyboard and thumbnail concept, reviews every still, approves or sends fixes. Never writes the animation code itself.
+- **Sonnet agents:** animation engines, scenes/chapters, thumbnails (Agent tool, model "sonnet", run in background, parallel where independent).
+- **Haiku agents:** narration + timelines, sound sourcing + mix, captions, upload packages, uploads (model "haiku").
+
+## Uniqueness rules (non-negotiable — YouTube demonetizes repetitive/mass-produced content)
+- Never reuse a topic, case, hypothetical, script, hook line or thumbnail layout already in `ideas.md` (check before choosing).
+- Every video has its own story/insight, script, visuals and edit. Shared engine/character/brand are production tools, never the content.
+- Rotate series and formats: Shorts alternate What If / Decoded; no two consecutive uploads use the same format (Counter, Scale Swap, Pitch vs Math, Case File, Dilemma/Two Buttons, Spot the Tell, Timeline, Myth vs Math).
+- Long-form topics are bigger stories (a case or a hypothetical with 3–5 chapters), not stretched Shorts.
+- Decoded = documented/court-proven only; pending = "alleged". What If = assumptions labeled on screen.
+- Log every chosen idea in `ideas.md` (date, series, format, title, one-line angle, sources) at the moment it's picked.
+
+## Daily pipeline
+1. **Ideas (Opus):** pick 3 Short ideas + 1 long-form idea using research (Wikipedia + WebSearch; outliers in the niche). Hard-to-decide dilemmas and impossible-number frauds perform; vary them.
+2. **Fact pass (Opus):** fetch sources (en.wikipedia.org is allowed), build the number spine, cut anything unverifiable. No invented quotes, records or case captions.
+3. **Scripts (Opus):** Shorts 70–115 words (28–45 s); long-form 1,350–1,600 words (≥ 8:30 so mid-rolls work later). Pattern-break hook in the first 2 s; re-hooks; payoff at 75–80%; loop line for Shorts. Write `paragraphs.json` per video.
+4. **Voice (Haiku):** Kokoro `am_michael` speed 1.12 (`/root/tts/.venv`, models in `/root/tts`), Whisper word timings, mouth envelope — same as `videos/2026-11-25-impossible-number/voice/tts.py`. (When ElevenLabs credits exist, the Bad Math Narrator voice `tEcWY4Gir18XAcYuihhc` may be used instead.)
+5. **Direction (Opus):** `DIRECTION.md` per video (storyboard per paragraph, storyteller poses, sound cues, thumbnail concept). Shorts: 1080×1920, storyteller bottom-right left of the button rail, comment bubble after the payoff, follow button in the last 2 s. Long-form: 1920×1080, reuse the long-form engine (`videos/2026-11-25-impossible-number/build/engine.js`, `ENGINE.md`).
+6. **Build (Sonnet):** scenes/chapters in parallel; each agent renders and inspects stills. Opus reviews contact sheets and sends fixes.
+7. **Sound (Haiku):** CC0-only Openverse/Freesound, `sfx/CREDITS.md`, mix to −14 LUFS / ≤ −1 dBTP. No synthesized "beep" sounds.
+8. **Render + QA:** full render; check duration, loudness/peak, frozen/black frames, contact sheet. `qa.md`.
+9. **Package (Haiku):** `captions.srt`, `upload.json` (title ≤ 60 chars, description with sources + "AI-narrated · not financial advice", chapters for long-form, tags, pinned comment), `socials.md` (TikTok caption; no links, no "link in bio", no Tape).
+10. **Queue in PostFast (Opus):**
+    - Upload each video to a 12 h temp link: `curl -F reqtype=fileupload -F time=12h -F fileToUpload=@video.mp4 https://litterbox.catbox.moe/resources/internals/api.php` → `upload_from_url`. Long-form must be ≤ 250 MB (re-encode ~3.8 Mb/s). Upload `captions.srt` too (youtubeCaptionKey) and the thumbnail (youtubeThumbnailKey) for long-form.
+    - Accounts: YouTube **BadMath** `7615365c-4085-4841-ae0b-7af4c8c441de` (Shorts + long-form); TikTok **@color.me.saved** `095075de-53fe-407f-9d08-4b5f47ed8390` (Shorts only — this is the Bad Math TikTok until the username can be changed). Re-check `list_accounts` connectionStatus first.
+    - Schedule (America/New_York): Shorts 12:00, 17:00, 21:00; long-form 18:00. Controls: youtubeContainsSyntheticMedia true, youtubeMadeForKids false, youtubeIsShort true/false, youtubeLanguage "en", youtubePrivacy PUBLIC; tiktokIsAigc true.
+    - `create_posts` only (held as PENDING_APPROVAL). **Never call approve_posts until the user says yes to that post in the conversation.**
+11. **Morning message to the user:** one table per post (platform · time ET · title · first caption line · video file) + the 4 videos attached (SendUserFile; Shorts directly, long-form share copy < 500 MB). Ask for "yes" per post. On "yes", approve exactly those post ids. If a slot's time passes > 2 h without approval, don't approve it — offer a new time.
+12. **Commit + push** each finished video folder to `main` (keep `video.mp4` > 95 MB out of git: split into `video-parts/`).
+
+## If something fails
+- Usage limit / long build: ship the Shorts first; the long-form can slip to the next day — never ship an unreviewed video.
+- PostFast account DISABLED: tell the user; don't schedule to it.
+- Temp host blocked: tell the user; offer manual upload.
