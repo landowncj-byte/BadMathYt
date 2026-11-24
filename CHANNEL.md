@@ -63,6 +63,7 @@ tools:
   api_keys: []  # none provided yet (YouTube Data API not set up)
 language: "en-US"
 decisions:
+  - "2026-11-24: Salad Oil, Ponzi and Two Buttons Shorts were posted by the user (manually). Posting from now on goes through PostFast with per-post approval; Bad Math TikTok/Instagram still to be connected (PostFast TikTok = Color Me Saved, not Bad Math)."
   - "2026-11-24: Storyteller saved as brand/storyteller.js and used in every video; on-screen comment bubble after the payoff + tap-to-follow button in the last 2 s. Display name Bad Math; pfp brand/pfp-ink.png."
   - "2026-11-24: Instagram/TikTok are purely for views and content: no Tape mention, no link-in-bio lines in socials."
   - "2026-11-24: Add a small original storyteller character (gold-coin head, red bowtie) bottom-right, kept left of the platform button rail."
