@@ -165,8 +165,8 @@ for k in range(8):
     cue(f"stamp_P45_{k + 1}", "stamp.mp3", t, 1.2, -4, f"P45 magnifier {k + 1}/8: NO FRAUD FOUND")
 cue("cash_P46_billion", "coins.mp3", W("P46", "billion"), 2.4, -4,
     "P46 'billion': withdrawal counter")
-cue("stamp_P48_arrested", "stamp.mp3", W("P48", "authorities"), 1.2, -3,
-    "P48 'authorities': ARRESTED stamp (no 'arrested' word in script)")
+cue("stamp_P48_arrested", "stamp.mp3", W("P48", "arrested"), 1.2, -3,
+    "P48 'arrested': ARRESTED stamp")
 cue("cell_P50", "cell_door.mp3", P("P50"), 3.0, -4, "P50 start: prison door")
 cue("stamp_P50_150", "stamp.mp3", W("P50", "150"), 1.2, -3, "P50 '150': 11 FELONIES stamp")
 

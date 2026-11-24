@@ -93,6 +93,33 @@ def loop_filter(src_label, clip_len, need_len, tag):
     return ";".join(parts)
 
 
+def loudnorm_file(src, dst, I, TP, LRA, post_af=""):
+    """Two-pass loudnorm from a file to a file (see master() for why not single-pass)."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", src, "-af",
+                        f"loudnorm=I={I}:TP={TP}:LRA={LRA}:print_format=json", "-f", "null", "-"],
+                       cwd=ROOT, capture_output=True, text=True, check=True)
+    j = json.loads(re.findall(r"\{[^{}]*\"input_i\"[^{}]*\}", r.stderr)[-1])
+    lf = (f"loudnorm=I={I}:TP={TP}:LRA={LRA}:measured_I={j['input_i']}:measured_TP={j['input_tp']}"
+          f":measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}"
+          f":offset={j['target_offset']}:linear=true")
+    af = ",".join(x for x in (lf, post_af) if x)
+    run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", src, "-af", af,
+         "-c:a", "pcm_f32le", dst])
+
+
+def prep_voice():
+    """Narration -> stereo 48 kHz, -16 LUFS (two-pass), exactly NS samples."""
+    pre = os.path.join(TMP, "voice_pre.wav")
+    out = os.path.join(TMP, "voice_norm.wav")
+    run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+         "-i", os.path.join(ROOT, "voice", "narration.wav"), "-af",
+         f"aresample={SR},pan=stereo|c0=c0|c1=c0,apad=whole_len={NS},atrim=end_sample={NS}",
+         "-c:a", "pcm_f32le", pre])
+    loudnorm_file(pre, out, -16, -2, 11,
+                  post_af=f"aresample={SR},apad=whole_len={NS},atrim=end_sample={NS},asetpts=PTS-STARTPTS")
+    return out
+
+
 def render_bed(bed, idx):
     need = bed["end"] - bed["start"]
     out = os.path.join(TMP, f"bed_{idx}_{bed['name']}.wav")
@@ -113,12 +140,15 @@ def render_bed(bed, idx):
     else:
         fc.append(f"{labels[0]}anull[bmix{idx}]")
     fi, fo = bed["fade_in"], bed["fade_out"]
-    fc.append(f"[bmix{idx}]loudnorm=I=-24:TP=-6:LRA=15,aresample={SR},"
-              f"apad=whole_len={round(need * SR)},atrim=end_sample={round(need * SR)},"
-              f"afade=in:st=0:d={fi},afade=out:st={need - fo:.3f}:d={fo}[bout]")
+    nd = round(need * SR)
+    fc.append(f"[bmix{idx}]aresample={SR},asetpts=PTS-STARTPTS[bpre]")
+    pre = os.path.join(TMP, f"bedpre_{idx}.wav")
     run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins,
-         "-filter_complex", ";".join(fc), "-map", "[bout]", "-t", f"{need:.3f}",
-         "-c:a", "pcm_f32le", out])
+         "-filter_complex", ";".join(fc), "-map", "[bpre]", "-t", f"{need:.3f}",
+         "-c:a", "pcm_f32le", pre])
+    loudnorm_file(pre, out, -24, -6, 15,
+                  post_af=f"apad=whole_len={nd},atrim=end_sample={nd},"
+                          f"afade=in:st=0:d={fi},afade=out:st={need - fo:.3f}:d={fo}")
     return out
 
 
@@ -151,16 +181,15 @@ def render_batch(batch, b_idx, peaks):
     return out
 
 
-def final_mix(bed_stems, fx_batches):
-    ins = ["-i", os.path.join(ROOT, "voice", "narration.wav")]
+def final_mix(voice_file, bed_stems, fx_batches):
+    ins = ["-i", voice_file]
     for s in bed_stems:
         ins += ["-i", s]
     for s in fx_batches:
         ins += ["-i", s]
     nb, nf = len(bed_stems), len(fx_batches)
     fc = [
-        f"[0:a]aresample={SR},pan=stereo|c0=c0|c1=c0,apad=whole_len={NS},atrim=end_sample={NS},"
-        f"loudnorm=I=-16:TP=-2:LRA=11,aresample={SR},apad=whole_len={NS},atrim=end_sample={NS},asetpts=PTS-STARTPTS,asplit=3[vm][vk][vq]"
+        "[0:a]asplit=3[vm][vk][vq]"
     ]
     bl = []
     for k, bed in enumerate(C.BEDS):
@@ -228,7 +257,8 @@ def main():
         fx.append(render_batch(batch, b, peaks))
         print(f"fx batch {b}: {len(batch)} cues")
 
-    final_mix(bed_stems, fx)
+    voice = prep_voice()
+    final_mix(voice, bed_stems, fx)
     print("wrote", OUT)
 
 
