@@ -147,8 +147,8 @@ Engine.chapter(1, () => {
     const tl = back(lin(t, t11.low - .05, t11.low + .3)); if (tl > 0) { c.save(); c.translate(370, 235); c.scale(clamp(tl), clamp(tl)); c.rotate(-.05); plate(c, -190, -36, 380, 72, 12, GREEN, '#0b6b3a'); txt(c, 'BUY LOW', 0, 2, '400 52px Anton', INK); c.restore(); }
     const tc = back(lin(t, t11.cash - .05, t11.cash + .3)); if (tc > 0) { c.save(); c.translate(1290, 235); c.scale(clamp(tc), clamp(tc)); c.rotate(.05); plate(c, -250, -36, 500, 72, 12, HL, '#8a6d00'); txt(c, 'CASH IN HIGH', 0, 2, '400 52px Anton', INK); c.restore(); }
     // arbitrage
-    if (t > t11.paper - .1) { plate(c, 640, 420, 400, 130, 14); txt(c, 'ON PAPER:', 840, 448, '800 26px JBM', SEP2); typedText(c, 'ARBITRAGE', 840, 502, '400 62px Anton', PAPER, t, t11.paper - .05, t11.arb + .7); }
-    stamp(c, 'LEGAL ✓', 840, 690, 110, GREEN, -.12, lin(t, t11.legal, t11.legal + .15), 'Anton');
+    if (t > t11.paper - .1) { plate(c, 680, 722, 320, 110, 14); txt(c, 'ON PAPER:', 840, 746, '800 22px JBM', SEP2); typedText(c, 'ARBITRAGE', 840, 792, '400 52px Anton', PAPER, t, t11.paper - .05, t11.arb + .7); }
+    stamp(c, 'LEGAL ✓', 840, 560, 90, GREEN, -.12, lin(t, t11.legal, t11.legal + .15), 'Anton');
   }, FILM);
   Engine.hit(t11.legal, { shake: 14, punch: .04, cue: 'stamp' }); Engine.cue(t11.low, 'cash-register');
 
@@ -172,7 +172,7 @@ Engine.chapter(1, () => {
     const kj = back(lin(t, t12.jul - .05, t12.jul + .3)); if (kj > 0) { c.save(); c.translate(1425, 215); c.scale(clamp(kj), clamp(kj)); plate(c, -170, -56, 340, 112, 14); txt(c, 'JULY', 0, -14, '400 56px Rye', HL); txt(c, '1920', 0, 34, '800 36px JBM', SEP2); c.restore(); }
     // counter
     const kc = eo(lin(t, t12.jul + .1, t12.jul + .5)); if (kc > 0) { c.save(); c.globalAlpha = kc; plate(c, 100, 140, 760, 250, 18); txt(c, 'MONEY POURING IN', 480, 188, '700 30px JBM', SEP2);
-      const v = roll(t, t12.pour, t12.mil + .35, 1e6, 0, eio), landed = t >= t12.mil + .35, pop = landed ? 1 + .1 * (1 - lin(t, t12.mil + .35, t12.mil + .7)) : 1;
+      const v = roll(t, t12.pour - .7, t12.mil + .35, 1e6, 0, eio), landed = t >= t12.mil + .35, pop = landed ? 1 + .1 * (1 - lin(t, t12.mil + .35, t12.mil + .7)) : 1;
       c.save(); c.translate(480, 280); c.scale(pop, pop); txt(c, (landed ? '≈ ' : '') + '$' + fmt(v), 0, 0, '800 88px JBM', landed ? GREEN : HL); c.restore();
       txt(c, 'PER DAY', 480, 355, '800 36px JBM', PAPER); c.restore(); }
   }, FILM);
@@ -334,7 +334,7 @@ Engine.chapter(1, () => {
     paperSlam(c, t, T0, 620, 500, 760, 600, -.02, '#efe6cf', (p, w, h) => {
       txt(p, 'THE CHARGE', 0, -h / 2 + 70, '400 54px Rye', BRN); p.fillStyle = BRN; p.fillRect(-w / 2 + 50, -h / 2 + 115, w - 100, 5);
       typedText(p, 'MAIL', 0, -60, '400 120px Elite', '#1c1c1c', t, t19.mail - .1, t19.mail + .4, 'center', false); typedText(p, 'FRAUD', 0, 70, '400 150px Elite', DRED, t, t19.fraud - .1, t19.fraud + .45, 'center', false);
-      txt(p, 'UNITED STATES v. CHARLES PONZI', 0, h / 2 - 50, '400 24px Elite', BRN2); });
+      txt(p, 'FEDERAL CHARGE · 1920', 0, h / 2 - 50, '400 24px Elite', BRN2); });
     // gavel
     const hit = lin(t, t19.guilty - .25, t19.guilty), rec = lin(t, t19.guilty, t19.guilty + .3), ang = lerp(-1.1, .1, ei(hit)) * (1 - rec * .5);
     c.save(); c.translate(1300, 720); c.rotate(.2); c.fillStyle = '#6b4a22'; c.fillRect(-12, -250, 24, 250); c.save(); c.translate(0, -250); c.rotate(ang * .4); c.fillStyle = '#8a6030'; c.fillRect(-100, -45, 200, 90); c.fillStyle = '#4a3216'; c.fillRect(-100, -45, 22, 90); c.fillRect(78, -45, 22, 90); c.restore(); c.restore();
