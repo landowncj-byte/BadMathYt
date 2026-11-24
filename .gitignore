@@ -19,3 +19,5 @@ brand/sfx-library/.work/
 videos/*/voice/n16.wav
 **/parts/*.mp4
 **/build/err.txt
+**/video.prefix.mp4
+**/voice/narration.orig.wav

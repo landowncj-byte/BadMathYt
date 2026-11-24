@@ -181,7 +181,7 @@ function sSplit(c, t) {
   bgGrid(c, t, 'rgba(255,59,48,.07)');
   const a = eo(lin(t, 50.3, 50.6)); c.save(); c.globalAlpha = a; rr(c, 100, 360, 880, 400, 22); c.fillStyle = 'rgba(0,210,106,.10)'; c.fill(); c.strokeStyle = GREEN; c.lineWidth = 4; c.stroke();
   txt(c, 'CLAIMED', 540, 420, '400 64px Anton', GREEN); glowTxt(c, '$100,000,000', 540, 560, '800 104px JBM', GREEN, 25); c.restore();
-  const xk = eo(lin(t, 51.08, 51.35)); if (xk > 0) { c.save(); c.strokeStyle = RED; c.lineWidth = 16; c.lineCap = 'round'; c.shadowColor = RED; c.shadowBlur = 16; c.beginPath(); c.moveTo(140, 640 - xk * 140 + 70); c.lineTo(140 + 800 * xk, 640 - 140 * xk + 70 - 0); c.stroke(); c.beginPath(); c.moveTo(150, 500 + 130 * 0); c.lineTo(150 + 780 * xk, 500 + 130 * xk); c.stroke(); c.restore(); }
+  const xk = eo(lin(t, 51.08, 51.35)); if (xk > 0) { c.save(); c.strokeStyle = RED; c.lineWidth = 20; c.lineCap = 'round'; c.shadowColor = RED; c.shadowBlur = 18; c.beginPath(); c.moveTo(130, 620); c.lineTo(130 + 820 * xk, 620 - 80 * xk); c.stroke(); c.restore(); }
   const b = eo(lin(t, 52.16, 52.5)); c.save(); c.translate(0, (1 - b) * 120); c.globalAlpha = b; rr(c, 100, 810, 880, 380, 22); c.fillStyle = 'rgba(255,59,48,.12)'; c.fill(); c.strokeStyle = RED; c.lineWidth = 4; c.stroke();
   txt(c, 'REAL', 540, 870, '400 64px Anton', RED); glowTxt(c, '$100,000', 540, 1010, '800 120px JBM', RED, 30); txt(c, '1,000× LESS', 540, 1120, '700 34px JBM', HL); c.restore();
 }

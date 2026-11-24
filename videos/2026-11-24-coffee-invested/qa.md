@@ -1,0 +1,11 @@
+# QA: coffee-invested
+- video.mp4: 1080x1920, 30 fps, H.264 + AAC 192k, faststart, 41.47 s (1244 frames, 2 parts of 622 rendered in parallel, concat list relative to parts/). Voice untouched (narration.wav 41.45 s).
+- Loudness: -14.0 LUFS integrated (two-pass loudnorm), true peak <= -1.4 dBTP. Voice pre-mix at -16 LUFS, bed ducked by sidechain.
+- Freeze check (freezedetect d=1.5 s): no frozen stretch.
+- Frame 0: coffee cup slam + glitch/shake, "$6 COFFEE EVERY DAY?" Anton text; IDIOT TAX stamp at 0.7 s and again at 40.22 s; ends with glitch into frame 0.
+- Numbers: $6x365=$2,190; FV at 7%/yr, end-of-year deposits: 10y $30,258, 20y $89,780, 30y $206,869, 40y $437,201 (put in $87,600). Footnote at x=90, y=1492 (split over 2 lines to clear the storyteller).
+- Captions from words.json with fixes ($2,190, $90,000, $207,000, $437,000, 7%, "FOR COFFEE.", "STILL WANT THAT LATTE?"); captions.srt from script.json + sentence times.
+- Contact sheets reviewed (~40 frames + 16-frame final); fixed: cup vs hook text, stamp vs crack, tag hidden under calendar, assumption card vs caption/storyteller, last-10-years label vs chips, latte arm vs caption, comment bubble vs payoff card and cup, footnote vs storyteller.
+- Known minor: price tag exits upward at 6.2-6.8 s and briefly overlaps the HUD title line.
+- Memes: #1 boom zoom + shake and #13 cash rain at 35.44; #18-style glitches on hits.
+- Not built: no CC0 pour/liquid sound in the library; used pop_1 (bubble pops) + coin drops instead. No dedicated CC0 ka-ching; cash_register_1 used.

@@ -167,3 +167,10 @@ Every topic gets **three different scripts and edits**, not one video cross-post
 | Caption | title ≤ 60 chars + description w/ sources | short, spicy, 3–5 hashtags, a question | hook line + 1–2 lines + 3–5 hashtags; FB uses the same Reel |
 
 Guardrails for all three (unchanged): facts verified; "fraud"/"criminal" only for convicted people; mock behavior and con artists, never victims; AI disclosure on; no "link in bio", no Tape.
+
+## 16. Pronunciation — say it like a person, show it like normal text (user rule 2026-11-24)
+The free Kokoro voice mangles some words ("dumbass" → "dumb-bass", "Theranos", "Alameda", "VIP"...). Every script has two layers:
+- **SAY layer (what the voice reads):** goes through `brand/voice/pronounce.py` — `say(k, text)` swaps in correct phonemes for every word in its `FIX` dictionary (exact IPA, sentence prosody preserved). If a word isn't in FIX and sounds wrong, either add it to FIX (preferred) or respell it phonetically in the SAY text only ("V I P", "F T X").
+- **SHOW layer (captions, on-screen text, .srt):** always the normal spelling from the script — never the respelling, never Whisper's spelling.
+- **Before voicing any script:** run `audit(k, text)` and check every name, acronym, profanity and long/rare word; fix anything wrong. **After voicing:** Whisper the narration with the names as `initial_prompt` and confirm each risky word comes back right.
+- Already-built narration with a newly-found bad word: `python brand/voice/patch_sentences.py <voice_dir>` re-voices only those sentences at their original times, then re-run the cut's `build/mix.py` and re-mux.
