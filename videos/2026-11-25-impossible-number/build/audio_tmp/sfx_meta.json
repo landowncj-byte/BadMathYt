@@ -1,0 +1,210 @@
+{
+ "bed_cold_drone": {
+  "file": "bed_cold_drone.mp3",
+  "title": "Suspense Drones",
+  "creator": "TravieDoodle",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/TravieDoodle/sounds/569184",
+  "duration_ms": 51898
+ },
+ "bed_ch1_piano": {
+  "file": "bed_ch1_piano.mp3",
+  "title": "Saloon piano, honky tonk",
+  "creator": "vdublin",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/vdublin/sounds/428149",
+  "duration_ms": 22161
+ },
+ "bed_ch1_crackle": {
+  "file": "bed_ch1_crackle.mp3",
+  "title": "Vinyl Crackle (Real).mp3",
+  "creator": "beautifuldaymonster1968",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/beautifuldaymonster1968/sounds/434822",
+  "duration_ms": 29162
+ },
+ "bed_ch1_projector": {
+  "file": "bed_ch1_projector.mp3",
+  "title": "8mm FIlm Projector",
+  "creator": "edweisgerber",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/edweisgerber/sounds/268888",
+  "duration_ms": 181539
+ },
+ "bed_ch2_drone": {
+  "file": "bed_ch2_drone.mp3",
+  "title": "Drone_DarkEmptiness.wav",
+  "creator": "ceich93",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/ceich93/sounds/266413",
+  "duration_ms": 87214
+ },
+ "bed_ch3_beat": {
+  "file": "bed_ch3_beat.mp3",
+  "title": "Chill Hip-Hop Beat",
+  "creator": "bdazzle",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/bdazzle/sounds/545333",
+  "duration_ms": 32745
+ },
+ "bed_ch4_uplift": {
+  "file": "bed_ch4_uplift.mp3",
+  "title": "Overlook (uplifting ambient loop)",
+  "creator": "SondreDrakensson",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/SondreDrakensson/sounds/506495",
+  "duration_ms": 78015
+ },
+ "ws_whoosh": {
+  "file": "ws_whoosh.mp3",
+  "title": "Deep Whoosh #1",
+  "creator": "Kinoton",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/Kinoton/sounds/351256",
+  "duration_ms": 3155
+ },
+ "ws_swish": {
+  "file": "ws_swish.mp3",
+  "title": "Swosh swoosh whoosh air sound, free, high quality",
+  "creator": "qubodup",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/qubodup/sounds/60026",
+  "duration_ms": 490
+ },
+ "glitch": {
+  "file": "glitch.mp3",
+  "title": "glitch sound 1",
+  "creator": "dotY21",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/dotY21/sounds/277053",
+  "duration_ms": 10410
+ },
+ "boom": {
+  "file": "boom.mp3",
+  "title": "BOOM IMPACT 2",
+  "creator": "XHALE303",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/XHALE303/sounds/535592",
+  "duration_ms": 1998
+ },
+ "thump": {
+  "file": "thump.mp3",
+  "title": "Thump.mp3",
+  "creator": "Neotone",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/Neotone/sounds/75358",
+  "duration_ms": 1346
+ },
+ "paper_slam": {
+  "file": "paper_slam.mp3",
+  "title": "Book Slam.wav",
+  "creator": "TimoCoetzee200014",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/TimoCoetzee200014/sounds/594290",
+  "duration_ms": 18000
+ },
+ "stamp": {
+  "file": "stamp.mp3",
+  "title": "Office stamp",
+  "creator": "whammy",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/whammy/sounds/514486",
+  "duration_ms": 4514
+ },
+ "typewriter": {
+  "file": "typewriter.mp3",
+  "title": "Typewriter",
+  "creator": "exterminat",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/exterminat/sounds/164807",
+  "duration_ms": 56866
+ },
+ "cash_register": {
+  "file": "cash_register.mp3",
+  "title": "Cash Register Sound Effect.mp3",
+  "creator": "kayliebenson",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/kayliebenson/sounds/474239",
+  "duration_ms": 5131
+ },
+ "coins": {
+  "file": "coins.mp3",
+  "title": "Coins Being Dropped-Assorted",
+  "creator": "TheWoodlandNomad",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/TheWoodlandNomad/sounds/363090",
+  "duration_ms": 24417
+ },
+ "crowd": {
+  "file": "crowd.mp3",
+  "title": "Crowd Murmuring",
+  "creator": "DigestContent",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/DigestContent/sounds/444900",
+  "duration_ms": 22927
+ },
+ "demolition": {
+  "file": "demolition.mp3",
+  "title": "bldg demolition.wav",
+  "creator": "cognito perceptu",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/cognito%20perceptu/sounds/35888",
+  "duration_ms": 26151
+ },
+ "pipes": {
+  "file": "pipes.mp3",
+  "title": "water gurgle pipes.wav",
+  "creator": "pawsound",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/pawsound/sounds/154876",
+  "duration_ms": 22415
+ },
+ "glass_crack": {
+  "file": "glass_crack.mp3",
+  "title": "Glass cracking and breaking.wav",
+  "creator": "SavReese",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/SavReese/sounds/595477",
+  "duration_ms": 171180
+ },
+ "cell_door": {
+  "file": "cell_door.mp3",
+  "title": "Prison Cell Door sound effect.mp3",
+  "creator": "endritprenku",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/endritprenku/sounds/613498",
+  "duration_ms": 4736
+ },
+ "clock_tick": {
+  "file": "clock_tick.mp3",
+  "title": "Clock ticking",
+  "creator": "olver",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/olver/sounds/130388",
+  "duration_ms": 5915
+ },
+ "camera_flash": {
+  "file": "camera_flash.mp3",
+  "title": "Vintage Camera Flash Powder and Shutter",
+  "creator": "Werra",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/Werra/sounds/232130",
+  "duration_ms": 2802
+ },
+ "heartbeat": {
+  "file": "heartbeat.mp3",
+  "title": "Four Heartbeats HQ_BeatSmith.wav",
+  "creator": "Lunardrive",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/Lunardrive/sounds/22416",
+  "duration_ms": 3606
+ },
+ "tape_stop": {
+  "file": "tape_stop.mp3",
+  "title": "Tape stop effect",
+  "creator": "not_yr",
+  "license": "CC0 1.0",
+  "landing": "https://freesound.org/people/not_yr/sounds/680836",
+  "duration_ms": 18994
+ }
+}
