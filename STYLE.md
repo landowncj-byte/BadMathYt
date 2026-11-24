@@ -124,3 +124,32 @@ Every video mentions all three, **spread out**, each as **one short clause that 
 - Long-form: the same three, spread across chapters (like in ch1, share in ch2, follow before the final act), plus the closing subscribe line.
 - On screen, when each is said: a tiny matching icon moment — heart pulse (like), paper-plane flick (share), the storyteller tapping the +FOLLOW button (follow). No big banners.
 - The comment-bubble prompt after the payoff and the tap-to-follow in the last 2 s stay as they are.
+
+## 14. Hook gate (rule #1) and retention (rule #2) — user rule 2026-11-24
+Hooks are the most important thing; retention is second, and the two are linked: the hook opens a loop the video must pay off. No script goes to voice until it passes this gate.
+
+**The hook line (first 1–2 s, ≤ 12 words) must be outrageous.** It should be negative, edgy and close to controversial, so a scroller stops out of disbelief or offense. Patterns:
+- "This guy was so dumb, he [did X]." (FTX: "…committed an eight billion dollar fraud. And wrote it into the code.")
+- "You're probably an idiot if you [common money habit]."
+- "This is the stupidest [con / bet / deal] in history, and [N] people fell for it."
+- "[Respected person / bank / regulator] got played by [absurd detail]."
+- "If you [do X], you're getting robbed. Here's the math."
+- "Nobody this rich should be this stupid."
+
+**Guardrails (they keep the channel monetized and out of court):**
+- Every claim in the hook is true and sourced. Call someone "dumb", "stupid" or a "fraud" only if that person was convicted or the act is on the record; anyone not yet convicted is "alleged".
+- "You're an idiot if…" roasts a *habit*, never a group or the victims.
+- No strong profanity (f-word, slurs) in the voice, the title, the thumbnail or on screen; mild edge ("dumb", "stupid", "idiot", "insane", "robbed") is fine. The first ~7 s stay advertiser-friendly.
+- No clickbait the video doesn't pay off. If the hook promises it, the video shows it.
+
+**Process (in every script/DIRECTION.md):**
+1. Write **10 hook variants**, score each 1–10 for *stop power* (would I stop scrolling?) and *truth*, and keep the best. Log the runner-up in ideas.md for later.
+2. **Frame 0 must already be a pattern break:** a big glitch, slam, stamp or impossible number on screen with a hit sound. Never a title card or a slow fade.
+3. **The on-screen text in the first second shows the outrageous part** ("SO DUMB", "$8,000,000,000", "IDIOT TAX"), because muted viewers read it.
+4. **Open a loop** in the hook that is paid off at 75–80% (the punchline, the number, the verdict). State it in DIRECTION.md as `LOOP: … → PAID at …s`.
+
+**Retention:**
+- Re-hook every 6–8 s (a new number, a twist, "but it gets worse").
+- Something moves every 2–3 s; no static shot longer than 3 s.
+- Shorts: last line loops into the first frame. Cut every word that doesn't serve the loop.
+- Woven CTAs (§13) ride the story beats and never stall them.

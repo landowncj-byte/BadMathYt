@@ -7,5 +7,6 @@
 | 2026-11-24 | Decoded | Pitch vs Math | 50% Profit in 45 Days. In 1920. | Ponzi, 160M coupons vs 27,000 | Zuckoff 2005; Wikipedia |
 | 2026-11-24 | What If | Dilemma | $1,000,000 Today or $1,000 a Week Forever? | lump sum vs weekly, 5% / 3% inflation | arithmetic |
 | 2026-11-25 | Decoded (long) | 3-case | The Impossible Number That Exposed Madoff | Madoff 123 vs 20 options, Ponzi coupons, Salad Oil | Wikipedia (Madoff, Markopolos, Ponzi, Salad oil) |
+| 2026-11-24 | Decoded | Case File | This Guy Wrote His $8B Fraud Into the Code | FTX/Alameda unlimited credit line, $65B, 7 counts, 25 yrs | Wikipedia (FTX, SBF, Alameda) |
 
-Used hooks/formats to avoid repeating verbatim: "$1 every second", "two buttons A/B", "this tank is full of…", "50% in 45 days", "123 vs 20".
+Used hooks/formats to avoid repeating verbatim: "$1 every second", "two buttons A/B", "this tank is full of…", "50% in 45 days", "123 vs 20", "this guy was so dumb he committed an $8B fraud".
