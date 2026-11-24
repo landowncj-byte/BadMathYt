@@ -1,6 +1,6 @@
 # Daily production runbook — Bad Math
 
-Every day: **up to 8 unique Shorts** (at least 3), plus **1 unique long-form on Monday, Wednesday and Friday** (US Eastern), built **one at a time**, and each one is **published automatically as soon as it passes QA** (standing user authorization, 2026-11-24: "don't ask for approval"). Order: Short 1 → Short 2 → Short 3 → (Mon/Wed/Fri) long-form → Shorts 4–8 while usage lasts — each queued and approved the moment it passes QA, so finished videos go out even if the day's usage runs out. The user can revoke this anytime ("stop auto-posting") — then go back to asking per post.
+Every day: **at least 8 unique Shorts topics — 8 posts per platform per day minimum** (user rule 2026-11-24; each topic = YouTube + TikTok + IG/FB cuts), plus **1 unique long-form on Monday, Wednesday and Friday** (US Eastern), built **one at a time**, and each one is **published automatically as soon as it passes QA** (standing user authorization, 2026-11-24: "don't ask for approval"). Order: Shorts 1–4 → (Mon/Wed/Fri) long-form → Shorts 5–8. Build ahead the night before so the 08:00–14:00 slots are already filled when the day starts. If a day is short of 8, add extra evening slots (e.g. 21:00, 23:00, 23:30) to catch up the same day — each queued and approved the moment it passes QA, so finished videos go out even if the day's usage runs out. The user can revoke this anytime ("stop auto-posting") — then go back to asking per post.
 
 Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` (meme beats: 2–3 per Short, ~1 per 30–45 s long-form), `brand/sfx-library/manifest.json` (reusable CC0 sounds), `ideas.md`, and the newest long-form `videos/2026-11-25-impossible-number/DIRECTION.md` (template for long-form direction).
 
@@ -18,7 +18,7 @@ Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` 
 - Log every chosen idea in `ideas.md` (date, series, format, title, one-line angle, sources) at the moment it's picked.
 
 ## Daily pipeline
-1. **Ideas (Opus):** pick 3 Short ideas + 1 long-form idea using research (Wikipedia + WebSearch; outliers in the niche). Hard-to-decide dilemmas and impossible-number frauds perform; vary them.
+1. **Ideas (Opus):** pick 8 Short ideas + 1 long-form idea using research (Wikipedia + WebSearch; outliers in the niche). Hard-to-decide dilemmas and impossible-number frauds perform; vary them.
 2. **Fact pass (Opus):** fetch sources (en.wikipedia.org is allowed), build the number spine, cut anything unverifiable. No invented quotes, records or case captions.
 3. **Hook gate (Opus) — rule #1, before anything else:** follow STYLE.md §14. Write 10 outrageous hook variants ("This guy was so dumb…", "You're probably an idiot if…"), keep the strongest true one, design a frame-0 pattern break, and open a loop paid off at 75–80%. Mild edge only (no f-words/slurs in voice, title, thumbnail); never call an unconvicted person a fraud. A script that fails the gate is rewritten, not built.
 4. **Scripts (Opus) — THREE per topic (STYLE.md §15):** a YouTube Shorts script, a TikTok script and an Instagram/Facebook Reels script, each with its own hook, length and CTA style (IG/FB = most vulgar/disrespectful, 15–25 s, built for sends + saves). Same facts, different cut. Voice each separately; build each edit separately (shared topic assets OK).

@@ -177,7 +177,7 @@ function sSplit(c, t) {
   thief(c, 800, 600, t, t >= 31.3 ? 1 - fl : tl); txt(c, 'THIEF', 800, 920, '400 118px Anton', RED); txt(c, 'GOT LUCKY', 800, 1010, '700 28px JBM', 'rgba(245,243,238,.6)'); c.restore();
   const vs = back(lin(t, 27.5, 27.8)); c.save(); c.translate(540, 730); c.scale(vs, vs); c.fillStyle = INK; c.beginPath(); c.arc(0, 0, 62, 0, 7); c.fill(); c.strokeStyle = PAPER; c.lineWidth = 6; c.stroke(); txt(c, 'VS', 0, 4, '400 62px Anton', PAPER); c.restore();
   // incoming comments
-  if (t > 31.66) for (let i = 0; i < 9; i++) { const p = lin(t, 31.7 + i * .17, 32.7 + i * .17); if (p > 0 && p < 1) { const g = i % 2; c.save(); c.globalAlpha = 1 - p * .7; rr(c, g ? 600 + (i % 3) * 90 : 80 + (i % 3) * 90, 1010 - p * 500, 190, 52, 26); c.fillStyle = g ? RED : HL; c.fill(); txt(c, g ? 'THIEF' : 'GENIUS', g ? 695 + (i % 3) * 90 : 175 + (i % 3) * 90, 1036 - p * 500, '800 28px Inter', INK); c.restore(); } }
+  if (t > 31.66) for (let i = 0; i < 9; i++) { const p = lin(t, 31.7 + i * .17, 32.7 + i * .17); if (p > 0 && p < 1) { const g = i % 2; c.save(); c.globalAlpha = 1 - p * .7; rr(c, g ? 600 + (i % 3) * 90 : 80 + (i % 3) * 90, 480 - p * 110, 190, 52, 26); c.fillStyle = g ? RED : HL; c.fill(); txt(c, g ? 'THIEF' : 'GENIUS', g ? 695 + (i % 3) * 90 : 175 + (i % 3) * 90, 506 - p * 110, '800 28px Inter', INK); c.restore(); } }
 }
 // ---- 32.95–35.72  next con teaser + follow
 function sNext(c, t) {
@@ -191,7 +191,7 @@ function sNext(c, t) {
 const SCENES = [[0, 2.0, sHook], [2.0, 3.5, sUnl], [3.5, 5.2, sVaultA], [5.2, 7.0, sSam], [7.0, 9.0, sPhone], [9.0, 10.6, sCrowd], [10.6, 12.4, sPipe], [12.4, 14.7, sCredit], [14.7, 16.9, sWit], [16.9, 18.9, sCode],
   [18.9, 21.0, sCount], [21.0, 22.8, sRun], [22.8, 24.3, sEmpty], [24.3, 26.0, sGavel], [26.0, 27.4, sBars], [27.4, 32.95, sSplit], [32.95, 35.4, sNext], [35.4, 99, (c, t) => sHook(c, .3 + (t - 35.4))]];
 const ST = { pos: { x: 850, y: 1470, s: 1.02 }, enterAt: -.5, timeline: [[0, 'you'], [2.0, 'shock'], [3.5, 'point'], [5.2, 'point'], [7.0, 'idle'], [9.0, 'shock'], [10.6, 'point'], [12.4, 'chin'], [14.7, 'point'], [18.9, 'shock'], [21.0, 'idle'], [22.8, 'shock'], [24.3, 'point'], [27.4, 'shrug'], [32.95, 'follow'], [35.4, 'you']],
-  bubbles: [[27.4, 32.95, 'GENIUS OR THIEF?', 'COMMENT', [600, 1200]]], follow: [33.1, 99], followAt: [620, 1135], followScale: 1.15 };
+  bubbles: [[27.4, 32.95, 'GENIUS OR THIEF?', 'COMMENT', [600, 1200]]], follow: [33.1, 35.4], followAt: [620, 1135], followScale: 1.15 };
 const CFG = { hud, st: ST, caps: CAPS, cap: CAPCFG,
   shake: [[.1, .5, 34], [2.55, .3, 18], [5.3, .2, 12], [9.5, .2, 12], [11.46, .2, 10], [12.92, .3, 16], [13.88, .25, 12], [20.26, .5, 32], [22.04, .2, 12], [23.46, .35, 24], [24.6, .35, 24], [25.4, .3, 20], [26.32, .35, 24], [27.4, .3, 14]],
   punch: [[2.55, .25, .06], [9.24, .2, .06], [23.46, .25, .08], [24.6, .2, .06], [26.32, .25, .08]], boom: 20.26,

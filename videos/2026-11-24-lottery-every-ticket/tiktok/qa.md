@@ -1,0 +1,11 @@
+# QA: lottery TikTok cut
+- tiktok/video.mp4: 1080x1920, 30 fps, H.264 + AAC 192k, faststart, 32.24 s (970 frames; narration 31.92 s + ~0.4 s tail). Rendered as 2 parts (485 frames each) and concatenated.
+- Loudness: -14.1 LUFS integrated (two-pass loudnorm + limiter), true peak -2.1 dBTP. Voice pre-mix at -16 LUFS; CC0 bed ducked by sidechain.
+- Freeze check (freezedetect d=1.5 s): 0 frozen stretches. Hard cuts every 1.1-2.8 s (14 scenes).
+- Frame 0 (frame0.png): big "THE LOTTERY = A TAX ON PEOPLE WHO CAN'T DO MATH", ticket slam, red TAX stamp, glitch + shake and boom/stamp hit at 0.0/0.15 s.
+- Draw: balls pop exactly on word times 18.86, 19.42, 19.80, 20.22, 20.78, 21.32 (ball_pop SFX on the same times); then THEY HAD IT + WINNER + $27,000,000 at 22.1.
+- 27.3 s YES/NO buttons + comment bubble "WOULD YOU TRY IT? COMMENT"; 30.1 s storyteller taps +FOLLOW with PART 2 tag; last 0.4 s glitches into frame 0 (loop).
+- HUD: WHAT IF pill + footnote "VIRGINIA LOTTERY · FEB 15, 1992 · TIME, ROANOKE TIMES". Captions from words.json (fixes: "These" 0-length start -> 3.17, "Virginia" start -> 4.93, spelled numbers as digits); captions.srt is per script sentence with Whisper times.
+- Contact sheet: contact.png (every 1.2 s), reviewed; fixed overlaps (WINNER vs THEY HAD IT, TAX stamp vs COMBINATIONS caption).
+- Different edit from YouTube: new hook (TAX), reordered beats (comment bait + follow, no birthday slip/printer), hard cuts with punch-zoom instead of wipes, no progress bar.
+- SFX credits: tiktok/sfx/CREDITS.md.

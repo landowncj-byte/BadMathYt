@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:04,763
+Imagine being dumb enough to give yourself unlimited credit, with your customers' money.
+
+2
+00:00:05,063 --> 00:00:05,976
+This guy did.
+
+3
+00:00:06,376 --> 00:00:10,333
+Sam Bankman-Fried ran FTX. Over a million users.
+
+4
+00:00:10,583 --> 00:00:14,543
+His other firm, Alameda, could borrow with no limit. No collateral.
+
+5
+00:00:14,843 --> 00:00:18,800
+His own engineer testified a few simple code tweaks made it happen.
+
+6
+00:00:19,100 --> 00:00:23,833
+Alameda took about eight billion dollars. Then everyone tried to withdraw. Empty.
+
+7
+00:00:24,183 --> 00:00:26,922
+Seven counts. Guilty. Twenty-five years.
+
+8
+00:00:27,322 --> 00:00:32,753
+Real question. Genius, or just a thief who got lucky for a while? Tell me in the comments.
+
+9
+00:00:33,053 --> 00:00:34,823
+Follow. The next con is worse.

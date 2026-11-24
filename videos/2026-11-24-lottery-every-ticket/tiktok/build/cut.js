@@ -78,7 +78,7 @@ function sPBnum(c, t) {
   const v = 292201338 * eo(lin(t, 24.78, 25.4)); const k = t > 25.4 ? 1 + .18 * Math.exp(-(t - 25.4) * 12) : 1;
   c.save(); c.translate(540, 840); c.scale(k, k); c.shadowColor = GREEN; c.shadowBlur = 30; txt(c, fmt(v), 0, 0, '800 124px JBM', GREEN); c.restore();
   big(c, 'COMBINATIONS', 540, 990, '400 100px Anton', PAPER, 0, lin(t, 25.96, 26.08), INK);
-  stamp(c, 'TAX', 570, 1200, 170, RED, -.2, lin(t, 26.7, 26.8), 'rgba(11,15,20,.6)');
+  stamp(c, 'TAX', 570, 1120, 150, RED, -.2, lin(t, 26.7, 26.8), 'rgba(11,15,20,.6)');
 }
 function sAsk(c, t) {
   bg(c, t); big(c, 'WOULD YOU TRY IT?', 540, 415, '400 {S}px Anton', PAPER, 940, lin(t, 27.26, 27.38), INK);

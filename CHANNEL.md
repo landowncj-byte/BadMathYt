@@ -92,3 +92,4 @@ decisions:
 - **Image licenses:** confirm the Ideogram plan's commercial terms (and whether free-plan images are public), and log each image in `credits.md`.
 - 2026-11-24: Each topic gets 3 separate scripts/cuts: YouTube Shorts, TikTok, Instagram+Facebook Reels (STYLE.md §15). IG/FB cut is the most vulgar/disrespectful (profanity allowed there; still no slurs, facts verified). Instagram badmath.tv + Facebook BadMath.tv connected in PostFast.
 - 2026-11-24: Build ahead allowed, but schedule posts at most ~7 days ahead; daily analytics pull + Sunday weekly review → replicate winning patterns (new topics), improve daily (PRODUCTION.md, ANALYTICS.md, queue.md).
+- 2026-11-24: Minimum 8 posts per platform per day (not 'up to 8'). Today caught up with extra evening slots.

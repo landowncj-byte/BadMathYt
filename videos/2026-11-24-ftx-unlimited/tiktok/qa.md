@@ -1,0 +1,12 @@
+# QA — FTX Unlimited, TikTok cut
+- video.mp4: 1080x1920, 30 fps, 1072 frames, H.264 + AAC 192k, faststart, 35.73 s (narration 35.32 s + 0.4 s tail).
+- Loudness (final file, ebur128): -14.1 LUFS integrated, true/sample peak -1.9 dBFS (<= -1). Two-pass loudnorm master; voice stem normalized to -16 LUFS before the bed/SFX sum.
+- Freeze check (freezedetect, >= 0.8 s, -60 dB): none. Hard cuts at 2.0, 3.5, 5.2, 7.0, 9.0, 10.6, 12.4, 14.7, 16.9, 18.9, 21.0, 22.8, 24.3, 26.0, 27.4, 32.95, 35.4 (gaps 1.4-2.3 s, plus the 5.5 s split screen and 2.5 s follow beat, both animated throughout).
+- Frame 0: "IMAGINE BEING THIS DUMB" + toggle slamming to UNLIMITED, glitch + boom, storyteller in pose "you". Last 0.3 s glitches back to frame 0 (loop).
+- 27.4 s: GENIUS (lightbulb) vs THIEF (mask + loot bag) split screen, storyteller shrug, bubble "GENIUS OR THIEF? / COMMENT"; sides highlight on the spoken words.
+- Follow: the storyteller taps +FOLLOW from 33.1 s ("Follow"), ticks to FOLLOWING at 34.0 s.
+- HUD: red DECODED pill only; footnote "CONVICTED 2023 · AFFIRMED ON APPEAL 2026". No real photos or logos; code labelled ILLUSTRATION.
+- Captions: words.json timing, Bankman + Fried merged to BANKMAN-FRIED, max 2 words per cue. captions.srt = script.json text with Whisper sentence times.
+- SFX: CC0 only (sfx/CREDITS.md), stamp/cut hits on every cut; tense_bed_1 ducked under the voice. MEME #1 boom zoom at 20.26 ($8B).
+- Contact sheet (contact_sheet.png) reviewed; fixed: frame-0 label vs DUMB, caption vs footnote, vault title vs label, comment pills vs panel labels, FOLLOWING button over the loop frame.
+- Deviation: the follow tap starts on the word "Follow" (33.1 s), so the follow beat is 2.6 s rather than the last 1.5 s. Two hard cuts are 1.4 s (vault/empty, crowd), a hair under the 1.5 s target.

@@ -1,0 +1,11 @@
+# QA — FTX Unlimited, IG/FB Reels cut
+- video.mp4: 1080x1920, 30 fps, 608 frames, H.264 + AAC 192k, faststart, 20.27 s (narration 19.88 s + 0.4 s tail).
+- Loudness (final file, ebur128): -14.1 LUFS integrated, peak -1.9 dBFS (<= -1). Two-pass loudnorm master; voice stem -16 LUFS before the sum.
+- Freeze check (>= 0.8 s, -60 dB): none.
+- Frame 0: giant "THIS DUMBASS" with glitch, toggle hitting UNLIMITED, boom. Last 0.28 s glitches back to frame 0.
+- $8,000,000,000 beat: vault drains to empty with the MEME #1 boom zoom at 10.72 s, "GONE." slam at 12.84 s. "25 YEARS" and "GUILTY AS SH*T" are stamps with the bars dropping at 13.64 s. Final: storyteller flicks a paper plane into a DM ("THIS VIDEO ✓ SENT"), headline "SEND THIS TO SOMEONE WHO NEEDS IT".
+- On-screen profanity: F***ING and SH*T (voice uncensored). Caption fixes: dumbest->DUMBASS, a lame to->ALAMEDA, customer's->CUSTOMERS', Bankman Fried->BANKMAN-FRIED.
+- HUD: small BAD MATH wordmark top-left; footnote "CONVICTED 2023 · 25 YRS" at y 1232. Key content in y 250-1250 and x < 940; captions at y ~1125; storyteller at the bottom right (feet y 1330).
+- SFX: CC0 only (sfx/CREDITS.md), a hit on every cut and stamp; tense_bed_2 ducked under the voice; sad trombone after "gone".
+- Contact sheet (contact_sheet.png) reviewed; frame-0 text width, caption width vs storyteller fixed. The "$8" is shown as "$8 BILLION" (Whisper's form; the voice says "eight billion dollars").
+- captions.srt = script.json text with Whisper sentence times ("F T X" written FTX).
