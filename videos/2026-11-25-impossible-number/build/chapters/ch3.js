@@ -401,11 +401,11 @@ Engine.chapter(3, () => {
     bgGrid(c, t, TINT); const ck = back(lin(t, tDec - .1, tDec + .3)); if (ck > 0) { c.save(); c.translate(400, 470); c.scale(ck, ck); c.translate(-400, -470); calendar(c, 400, 470, 420, 480, 10, 'DECEMBER', { size: 250 }); c.restore(); }
     const gk = lin(t, W('P48', 'sons') - .3, W('P48', 'sons') + .2); if (gk > 0) { c.save(); c.globalAlpha = gk; c.shadowColor = 'rgba(245,243,238,.35)'; c.shadowBlur = 10;
       bust(c, 900, 760, 340, '#5a6573', { collar: '#e9edf2' }); bust(c, 1100, 760, 270, '#4a5461'); bust(c, 1240, 760, 270, '#4a5461'); c.shadowBlur = 0; txt(c, 'MADOFF', 900, 800, '800 20px JBM', DIM); txt(c, 'HIS SONS', 1170, 800, '800 20px JBM', DIM); c.restore(); }
-    const lc = eo(lin(t, W('P48', 'sons') - .3, W('P48', 'sons') + .2)); if (lc > 0) { c.save(); c.globalAlpha = lc; c.fillStyle = PANEL; rr(c, 760, 190, 740, 270, 18); c.fill(); c.strokeStyle = EDGE; c.lineWidth = 4; c.stroke();
-      txt(c, 'CONFESSES TO HIS SONS', 800, 228, '800 24px JBM', DIM, 'left');
+    const lc = eo(lin(t, W('P48', 'sons') - .3, W('P48', 'sons') + .2)); if (lc > 0) { c.save(); c.globalAlpha = lc; c.fillStyle = PANEL; rr(c, 760, 170, 740, 260, 18); c.fill(); c.strokeStyle = EDGE; c.lineWidth = 4; c.stroke();
+      txt(c, 'CONFESSES TO HIS SONS', 800, 208, '800 24px JBM', DIM, 'left');
       const f = lin(t, tFin - .05, tFin + .25), q = lin(t, tPz48 - .05, tPz48 + .25);
-      if (f > 0) { c.globalAlpha = lc * f; txt(c, 'HE WAS "FINISHED"', 800, 310, '400 64px Anton', PAPER, 'left'); }
-      if (q > 0) { c.globalAlpha = lc * q; txt(c, 'THE FUND = A PONZI SCHEME', 800, 400, '400 52px Anton', RED, 'left'); } c.restore(); }
+      if (f > 0) { c.globalAlpha = lc * f; txt(c, 'HE WAS "FINISHED"', 800, 290, '400 64px Anton', PAPER, 'left'); }
+      if (q > 0) { c.globalAlpha = lc * q; txt(c, 'THE FUND = A PONZI SCHEME', 800, 375, '400 52px Anton', RED, 'left'); } c.restore(); }
     const ak = lin(t, tAuth - .2, tAuth + .3); if (ak > 0) { c.save(); c.globalAlpha = ak; wallst(c, 1500, 700, 230, 230, '#18242f', '#35506a'); txt(c, 'AUTHORITIES', 1500, 760, '800 22px JBM', '#7cc0ff'); c.strokeStyle = '#7cc0ff'; c.lineWidth = 5; c.setLineDash([12, 10]); c.beginPath(); c.moveTo(1300, 640); c.lineTo(1300 + 90 * eo(ak), 640); c.stroke(); c.setLineDash([]); c.restore(); }
   });
   S(['P48', 'next', 1, -.05], (c, t, lt) => {
