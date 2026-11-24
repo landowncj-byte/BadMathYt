@@ -28,3 +28,12 @@ Meme **formats** we recreate in our own art style, timed to our own CC0 sounds (
 **Storyteller meme poses to add to `brand/storyteller.js` when a build needs them:** head-tilt (confused), facepalm, wink, eye-roll, slow blink (deadpan), sweating (nervous laugh), sunglasses-on (cool reveal). Add as new poses in the shared module so every video gets the same ones.
 
 **Directing note:** in each `DIRECTION.md`, mark meme beats explicitly, e.g. `P15 "twenty-seven" → MEME #1 boom zoom (impacts/deep_boom_1)`.
+
+## Real meme clips (Vlipsy) — user-supplied, fair-use guardrails
+Only clips the user downloaded by hand into `brand/memes/vlipsy/` (never scrape Vlipsy — its Terms forbid it; never remove watermarks).
+1. ≤ 2 s per clip; ≤ 1 clip per Short; ≈ 1 per 2–3 min of long-form.
+2. **Mute the clip's original audio**; use our CC0 sound instead (audio is what Content ID matches most).
+3. Transform it: our caption/framing around it, storyteller reaction, a reason in the story (commentary) — never a bare repost.
+4. Never in the hook or the payoff; place mid-video so a claimed clip can be cut without breaking the story.
+5. No music-video or concert clips; avoid recent blockbuster footage.
+6. Log every use in the video's `credits.md` (file, Vlipsy URL, timestamp in our video) so a claimed clip can be swapped fast.
