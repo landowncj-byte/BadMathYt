@@ -1,0 +1,7 @@
+node_modules/
+package-lock.json
+**/build/silent.mp4
+**/build/mix.wav
+**/build/tmp/
+**/voice/n16.wav
+**/voice/m16.wav

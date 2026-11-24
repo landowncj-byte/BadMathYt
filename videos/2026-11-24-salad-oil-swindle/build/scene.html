@@ -1,0 +1,338 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Decoded: Salad Oil Swindle</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../brand/storyteller.js"></script>
+<script>
+// Bad Math — DECODED: The Great Salad Oil Swindle (1963). Every frame is a pure function of t.
+const W = 1080, H = 1920, DUR = 42.6;
+const C = document.getElementById('c'), X = C.getContext('2d');
+const OFF = document.createElement('canvas'); OFF.width = W; OFF.height = H; const O = OFF.getContext('2d');
+const TMP = document.createElement('canvas'); TMP.width = W; TMP.height = H; const T = TMP.getContext('2d');
+const INK = '#0B0F14', RED = '#FF3B30', GREEN = '#00D26A', PAPER = '#F5F3EE', HL = '#FFD60A';
+const OIL1 = '#FFC83D', OIL2 = '#D98A00', WAT1 = '#2B8CE0', WAT2 = '#0A3460';
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - clamp(x), 3), ei = x => Math.pow(clamp(x), 3);
+const eio = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const back = x => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const hash = n => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+const fmt = n => Math.round(n).toLocaleString('en-US');
+
+// ---------- primitives ----------
+function rr(c, x, y, w, h, r) { c.beginPath(); c.roundRect(x, y, w, h, r); }
+function txt(c, s, x, y, font, color, align = 'center', base = 'middle') { c.font = font; c.fillStyle = color; c.textAlign = align; c.textBaseline = base; c.fillText(s, x, y); }
+function stamp(c, s, x, y, size, color, rot, k) {           // k: 0..1 slam-in
+  if (k <= 0) return;
+  const sc = lerp(2.6, 1, back(k)); c.save(); c.translate(x, y); c.rotate(rot); c.scale(sc, sc); c.globalAlpha = clamp(k * 3);
+  c.font = `400 ${size}px Anton`; const w = c.measureText(s).width + size * .6, h = size * 1.25;
+  c.strokeStyle = color; c.lineWidth = size * .09; rr(c, -w / 2, -h / 2, w, h, size * .12); c.stroke();
+  c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(s, 0, size * .04); c.restore();
+}
+// cutaway storage tank. fill = total liquid level 0..1, oil = fraction of the liquid that is oil (on top)
+function tank(c, x, y, w, h, o) {
+  const { fill = 1, oil = 1, xray = 0, t = 0, label = null, glow = 0, compartment = 0, bubbles = 1, labelColor = PAPER } = o;
+  c.save();
+  if (glow > 0) { const g = c.createRadialGradient(x + w / 2, y + h / 2, 10, x + w / 2, y + h / 2, w); g.addColorStop(0, `rgba(255,200,61,${.35 * glow})`); g.addColorStop(1, 'rgba(255,200,61,0)'); c.fillStyle = g; c.fillRect(x - w, y - h * .5, w * 3, h * 2); }
+  // body shell
+  const r = w * .1;
+  const sg = c.createLinearGradient(x, 0, x + w, 0);
+  sg.addColorStop(0, '#2a323d'); sg.addColorStop(.18, '#5b6573'); sg.addColorStop(.5, '#3a434f'); sg.addColorStop(.85, '#5b6573'); sg.addColorStop(1, '#1d232b');
+  rr(c, x, y, w, h, [r * 1.6, r * 1.6, r * .4, r * .4]); c.fillStyle = sg; c.fill();
+  // interior window
+  const ix = x + w * .07, iy = y + h * .06, iw = w * .86, ih = h * .9;
+  c.save(); rr(c, ix, iy, iw, ih, [r, r, r * .3, r * .3]); c.clip();
+  c.fillStyle = '#0d1117'; c.fillRect(ix, iy, iw, ih);
+  const lvl = iy + ih * (1 - fill), oilTop = lvl, oilBot = lvl + ih * fill * oil;
+  const wave = (px, amp, ph) => Math.sin(px * .018 + t * 3.1 + ph) * amp + Math.sin(px * .041 - t * 2.3) * amp * .5;
+  // water (below)
+  if (oil < 1 && fill > 0) {
+    const wg = c.createLinearGradient(0, oilBot, 0, iy + ih); wg.addColorStop(0, WAT1); wg.addColorStop(1, WAT2);
+    c.fillStyle = wg; c.beginPath(); c.moveTo(ix, iy + ih);
+    for (let px = 0; px <= iw; px += 12) c.lineTo(ix + px, oilBot + wave(px, 4, 1.7));
+    c.lineTo(ix + iw, iy + ih); c.closePath(); c.fill();
+    if (bubbles) for (let i = 0; i < 26; i++) { const bx = ix + hash(i) * iw, sp = 40 + hash(i + 9) * 80, by = iy + ih - ((t * sp + hash(i + 3) * ih) % Math.max(10, (iy + ih - oilBot))); if (by > oilBot + 6) { c.beginPath(); c.arc(bx + Math.sin(t * 3 + i) * 5, by, 3 + hash(i + 5) * 7, 0, 7); c.strokeStyle = 'rgba(200,235,255,.5)'; c.lineWidth = 2; c.stroke(); } }
+  }
+  // oil (top layer)
+  if (oil > 0 && fill > 0) {
+    const og = c.createLinearGradient(0, oilTop, 0, oilBot + 2); og.addColorStop(0, OIL1); og.addColorStop(1, OIL2);
+    c.fillStyle = og; c.beginPath(); c.moveTo(ix, oilBot + wave(0, 4, 1.7));
+    for (let px = 0; px <= iw; px += 12) c.lineTo(ix + px, oilTop + wave(px, 7, 0));
+    for (let px = iw; px >= 0; px -= 12) c.lineTo(ix + px, oilBot + (oil < 1 ? wave(px, 4, 1.7) : 40));
+    c.closePath(); c.fill();
+    c.globalAlpha = .35; c.fillStyle = '#fff6d0'; for (let i = 0; i < 4; i++) { c.fillRect(ix + iw * (.1 + i * .22) + Math.sin(t * 2 + i) * 20, oilTop + 14 + i * 6, iw * .1, 4); } c.globalAlpha = 1;
+  }
+  if (compartment > 0) { // hidden inner compartment under the hatch: a narrow tube of oil
+    const cw = iw * .26, cx = ix + iw / 2 - cw / 2;
+    c.globalAlpha = compartment; c.fillStyle = OIL2; c.fillRect(cx, iy, cw, ih * .55);
+    c.fillStyle = OIL1; c.fillRect(cx + 6, iy, cw - 12, ih * .55);
+    c.setLineDash([18, 12]); c.lineDashOffset = -t * 60; c.strokeStyle = RED; c.lineWidth = 8; c.strokeRect(cx - 4, iy - 10, cw + 8, ih * .55 + 14); c.setLineDash([]); c.globalAlpha = 1;
+  }
+  if (xray > 0) { c.globalAlpha = xray * .25; c.fillStyle = '#7fd4ff'; for (let yy = iy; yy < iy + ih; yy += 10) c.fillRect(ix, yy + (t * 80 % 10), iw, 2); c.globalAlpha = 1; }
+  c.restore();
+  // rim, rivets, hatch
+  c.strokeStyle = '#8b96a5'; c.lineWidth = 6; rr(c, x, y, w, h, [r * 1.6, r * 1.6, r * .4, r * .4]); c.stroke();
+  c.fillStyle = '#1d232b'; for (let i = 0; i < 7; i++) { c.beginPath(); c.arc(x + w * .035, y + h * (.12 + i * .13), 5, 0, 7); c.fill(); c.beginPath(); c.arc(x + w * .965, y + h * (.12 + i * .13), 5, 0, 7); c.fill(); }
+  rr(c, x + w * .38, y - h * .045, w * .24, h * .06, 8); c.fillStyle = '#5b6573'; c.fill();
+  if (label) { c.font = `800 ${Math.round(w * .085)}px JBM`; const tw = c.measureText(label).width + 30; rr(c, x + w / 2 - tw / 2, y + h + 18, tw, w * .14, 10); c.fillStyle = 'rgba(11,15,20,.85)'; c.fill(); txt(c, label, x + w / 2, y + h + 18 + w * .07, `800 ${Math.round(w * .085)}px JBM`, labelColor); }
+  c.restore();
+}
+function bank(c, x, y, s, color) {
+  c.fillStyle = color; c.beginPath(); c.moveTo(x - s * .55, y - s * .25); c.lineTo(x, y - s * .55); c.lineTo(x + s * .55, y - s * .25); c.closePath(); c.fill();
+  for (let i = 0; i < 4; i++) c.fillRect(x - s * .42 + i * s * .26, y - s * .2, s * .1, s * .5);
+  c.fillRect(x - s * .55, y + s * .32, s * 1.1, s * .1);
+}
+function bill(c, x, y, w, rot, a = 1) { c.save(); c.translate(x, y); c.rotate(rot); c.globalAlpha = a; rr(c, -w / 2, -w * .21, w, w * .42, 4); c.fillStyle = '#cfe3c6'; c.fill(); c.strokeStyle = '#2f6a3a'; c.lineWidth = w * .05; c.stroke(); c.beginPath(); c.ellipse(0, 0, w * .12, w * .15, 0, 0, 7); c.fillStyle = '#3d7a46'; c.fill(); c.restore(); }
+function person(c, x, y, s, color, light = 0, t = 0) { // inspector silhouette
+  c.fillStyle = color; c.beginPath(); c.arc(x, y - s * .78, s * .16, 0, 7); c.fill();
+  rr(c, x - s * .22, y - s * .58, s * .44, s * .58, s * .12); c.fill();
+  c.fillRect(x - s * .2, y - s * .04, s * .14, s * .36); c.fillRect(x + s * .06, y - s * .04, s * .14, s * .36);
+  rr(c, x - s * .26, y - s * .92, s * .52, s * .08, 4); c.fill(); rr(c, x - s * .16, y - s * 1.02, s * .32, s * .14, 6); c.fill(); // hat
+  if (light > 0) { c.save(); c.globalAlpha = light * .55; const g = c.createLinearGradient(x, y - s * .3, x + s * 1.4, y + s * 1.6); g.addColorStop(0, 'rgba(255,240,180,.95)'); g.addColorStop(1, 'rgba(255,240,180,0)'); c.fillStyle = g; c.beginPath(); c.moveTo(x + s * .25, y - s * .35); c.lineTo(x + s * 1.6 + Math.sin(t * 2) * 30, y + s * 1.9); c.lineTo(x + s * .4, y + s * 2.0); c.closePath(); c.fill(); c.restore(); }
+}
+function paper(c, x, y, w, h, rot, f) { c.save(); c.translate(x, y); c.rotate(rot); c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 40; c.shadowOffsetY = 20; c.fillStyle = '#efe6cf'; c.fillRect(-w / 2, -h / 2, w, h); c.shadowColor = 'transparent'; f(c, w, h); c.restore(); }
+
+// ---------- captions (from the real voiceover word timings) ----------
+const CAPS = [[0, 'THIS TANK IS'], [0.91, 'FULL OF <g>SALAD OIL.</g>'], [2.41, '<r>IT ISN\'T.</r>'], [3.22, 'IN <y>1963,</y>'], [4.74, 'TINO DE ANGELIS'], [5.66, 'BORROWED <g>MILLIONS</g>'],
+[6.54, 'AGAINST TANKS LIKE THIS.'], [7.83, 'AMERICAN EXPRESS'], [8.87, 'VOUCHED FOR THE OIL.'], [9.97, 'BANKS HANDED HIM <g>CASH.</g>'], [11.46, 'BUT INSPECTORS'],
+[12.34, 'ONLY CHECKED <y>THE TOP.</y>'], [13.72, 'UNDERNEATH?'], [14.58, '<r>WATER.</r>'], [15.23, 'HIDDEN <r>COMPARTMENTS.</r>'], [16.62, 'SECRET <r>PIPES</r>'], [17.5, 'MOVING THE SAME OIL'],
+[18.62, 'FROM TANK TO TANK,'], [19.95, 'SO IT GOT COUNTED'], [20.83, '<y>AGAIN AND AGAIN.</y>'], [22.23, 'ON PAPER:'], [23.22, '<g>900,000 TONS.</g>'], [24.93, 'ACTUALLY THERE:'],
+[26.05, '<r>55,000.</r>'], [27.5, 'MORE OIL THAN'], [28.54, 'THE WHOLE <y>COUNTRY</y> HAD.'], [29.76, 'THEN THE MARKET'], [30.72, '<r>CRACKED.</r>'], [31.47, '<y>51</y> LENDERS.'],
+[32.83, '<r>$180,000,000.</r>'], [35.11, '<r>GONE.</r>'], [35.74, 'HE GOT <y>20 YEARS.</y>'], [37.27, 'WALKED OUT IN <g>7.</g>'], [38.65, 'THE TANKS WERE FULL.'], [40.06, 'JUST NOT OF <r>OIL.</r>'], [42.6, '']];
+function caption(c, t) {
+  let i = CAPS.findIndex((x, k) => t >= x[0] && t < (CAPS[k + 1] ? CAPS[k + 1][0] : 99)); if (i < 0 || !CAPS[i][1]) return;
+  const k = i === 0 ? 1 : eo(lin(t, CAPS[i][0], CAPS[i][0] + .13));
+  const parts = []; CAPS[i][1].replace(/<(g|r|y)>(.*?)<\/\1>|([^<]+)/g, (m, tag, inner, plain) => { const col = tag === 'g' ? GREEN : tag === 'r' ? RED : tag === 'y' ? HL : PAPER; for (const w of (inner || plain).split(' ')) if (w) parts.push([w, col]); });
+  c.save(); c.font = '800 68px Inter'; const sp = c.measureText(' ').width;
+  const lines = [[]]; let lw = 0; for (const p of parts) { const w = c.measureText(p[0]).width; if (lw + w > 600 && lines[lines.length - 1].length) { lines.push([]); lw = 0; } lines[lines.length - 1].push([...p, w]); lw += w + sp; }
+  const y0 = 1345 - (lines.length - 1) * 40; c.translate(420, y0); c.scale(.8 + .2 * k, .8 + .2 * k); c.globalAlpha = k;
+  lines.forEach((ln, li) => { const tw = ln.reduce((a, p) => a + p[2], 0) + sp * (ln.length - 1); let px = -tw / 2;
+    for (const [w, col, ww] of ln) { c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineWidth = 14; c.strokeStyle = 'rgba(0,0,0,.85)'; c.lineJoin = 'round'; c.strokeText(w, px, li * 84); c.fillStyle = col; c.fillText(w, px, li * 84); px += ww + sp; } });
+  c.restore();
+}
+function hud(c, t) {
+  c.save(); rr(c, 90, 238, 196, 52, 8); c.fillStyle = RED; c.fill(); txt(c, 'DECODED', 188, 265, '800 30px Inter', PAPER);
+  txt(c, 'CASE: THE SALAD OIL SWINDLE · 1963', 306, 265, '700 27px JBM', 'rgba(245,243,238,.8)', 'left');
+  txt(c, 'DOCUMENTED · DE ANGELIS PLED GUILTY, 1965', 90, 1492, '700 22px JBM', 'rgba(245,243,238,.62)', 'left');
+  // case progress ticker
+  c.fillStyle = 'rgba(245,243,238,.15)'; c.fillRect(90, 306, 900, 6); c.fillStyle = RED; c.fillRect(90, 306, 900 * t / DUR, 6);
+  c.restore();
+}
+function bgGrid(c, t, tint = 'rgba(255,59,48,.05)') { c.fillStyle = INK; c.fillRect(0, 0, W, H); c.strokeStyle = tint; c.lineWidth = 2; const o = (t * 30) % 90; for (let x = -90 + o; x < W; x += 90) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, H); c.stroke(); } for (let y = -90 + o; y < H; y += 90) { c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); } }
+function vignette(c, a = .7) { const g = c.createRadialGradient(540, 900, 300, 540, 900, 1250); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(0,0,0,${a})`); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+function dust(c, t, n = 40, col = 'rgba(255,220,150,') { for (let i = 0; i < n; i++) { const x = (hash(i) * W + t * (10 + hash(i + 1) * 30)) % W, y = (hash(i + 2) * H - t * (20 + hash(i + 4) * 40) + H * 10) % H; c.fillStyle = col + (0.15 + hash(i + 7) * .35) + ')'; c.beginPath(); c.arc(x, y, 1.5 + hash(i + 3) * 3, 0, 7); c.fill(); } }
+
+// ---------- scenes (local time lt; global t) ----------
+function sHook(c, t) { // 0–2.46 golden tank, oil pouring
+  const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1a1205'); g.addColorStop(1, '#0B0F14'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.save(); c.translate(540, 820); const z = 1 + t * .05; c.scale(z, z); c.translate(-540, -820);
+  // light rays
+  c.save(); c.globalAlpha = .18; c.translate(540, 380); c.rotate(t * .15); for (let i = 0; i < 12; i++) { c.rotate(Math.PI / 6); c.fillStyle = HL; c.beginPath(); c.moveTo(0, 0); c.lineTo(-40, -1200); c.lineTo(40, -1200); c.fill(); } c.restore();
+  // pour stream
+  const sx = 540; c.fillStyle = OIL1; c.fillRect(sx - 14 - Math.sin(t * 9) * 2, 330, 28, 260); c.fillStyle = 'rgba(255,246,208,.6)'; c.fillRect(sx - 4, 330, 6, 260);
+  rr(c, 380, 300, 320, 46, 10); c.fillStyle = '#5b6573'; c.fill();
+  tank(c, 250, 560, 580, 620, { fill: .55 + t * .14, oil: 1, t, glow: 1, label: '100% SOYBEAN OIL ✓', labelColor: GREEN });
+  dust(c, t, 40); c.restore();
+  txt(c, 'FULL.', 540, 470 - 0, '400 0px Anton', HL);
+}
+function sReveal(c, t) { // 2.46–3.22 x-ray: water underneath, FAKE stamp
+  const lt = t - 2.46; bgGrid(c, t, 'rgba(43,140,224,.12)');
+  c.save(); c.translate(540, 870); const z = 1.08 - lt * .04; c.scale(z, z); c.translate(-540, -870);
+  tank(c, 250, 560, 580, 620, { fill: .9, oil: .12, xray: 1, t, label: '≈ WATER', labelColor: RED });
+  c.restore();
+  // arrows
+  c.strokeStyle = RED; c.lineWidth = 8; c.beginPath(); c.moveTo(930, 640); c.lineTo(850, 640); c.stroke(); txt(c, 'OIL', 960, 640, '400 46px Anton', OIL1, 'left');
+  c.beginPath(); c.moveTo(930, 950); c.lineTo(850, 950); c.stroke(); txt(c, 'WATER', 905, 1010, '400 46px Anton', WAT1, 'left');
+  stamp(c, 'FAKE', 540, 900, 170, RED, -.2, lin(t, 2.72, 2.9));
+}
+function sCase(c, t) { // 3.22–7.83 year rewind + case file + tank farm with red string
+  const lt = t - 3.22; bgGrid(c, t);
+  // year rolling back 2026 -> 1963
+  const yk = eio(lin(t, 3.3, 4.6)), yr = Math.round(lerp(2026, 1963, yk));
+  const ys = lerp(1, .55, eio(lin(t, 4.6, 5.0))), yy = lerp(700, 470, eio(lin(t, 4.6, 5.0)));
+  c.save(); c.translate(540, yy); c.scale(ys, ys); c.font = '400 330px Anton'; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.fillStyle = yk < 1 ? PAPER : HL; c.fillText(String(yr), Math.sin(t * 40) * (1 - yk) * 8, 0);
+  if (yk < 1) { c.globalAlpha = .25; c.fillText(String(yr + 7), 0, -300 * ((t * 6) % 1)); } c.restore();
+  // case file folder slides in
+  const fk = back(lin(t, 4.7, 5.2));
+  if (fk > 0) paper(c, lerp(-500, 330, fk), 820, 460, 560, -.06, (p, w, h) => {
+    p.fillStyle = '#d8c79c'; p.fillRect(-w / 2, -h / 2, w, 70); txt(p, 'CASE FILE', -w / 2 + 24, -h / 2 + 37, '400 40px Elite', '#3a2c12', 'left');
+    p.fillStyle = '#1c1c1c'; p.beginPath(); p.arc(0, -60, 90, 0, 7); p.fill(); rr(p, -120, 30, 240, 150, 60); p.fill();   // silhouette
+    txt(p, '?', 0, -60, '400 110px Anton', '#efe6cf');
+    const typed = 'ANTHONY "TINO" DE ANGELIS'.slice(0, Math.floor(lin(t, 5.0, 6.3) * 25));
+    txt(p, typed, -w / 2 + 24, 230, '400 30px Elite', '#1c1c1c', 'left');
+    txt(p, 'ALLIED CRUDE VEGETABLE OIL', -w / 2 + 24, 266, '400 22px Elite', '#5a4a2a', 'left');
+  });
+  // tank farm + pin
+  const tk = eo(lin(t, 6.4, 7.0));
+  for (let i = 0; i < 3; i++) { const sy = lerp(1500, 0, eo(lin(t, 6.4 + i * .12, 7.0 + i * .12))); tank(c, 640 + i * 120 - 40, 700 + sy + i * 40, 150, 260, { fill: .85, oil: 1, t: t + i }); }
+  if (tk > 0) { c.globalAlpha = tk; rr(c, 610, 600, 380, 64, 12); c.fillStyle = RED; c.fill(); txt(c, '📍 BAYONNE, N.J.', 800, 633, '800 30px Inter', PAPER); c.globalAlpha = 1; }
+  // red string from folder to tanks
+  const sk = eio(lin(t, 6.9, 7.6)); if (sk > 0) { c.strokeStyle = RED; c.lineWidth = 6; c.beginPath(); c.moveTo(480, 760); c.quadraticCurveTo(600, 980, lerp(480, 760, sk), lerp(760, 820, sk)); c.stroke(); c.fillStyle = RED; c.beginPath(); c.arc(480, 760, 12, 0, 7); c.fill(); }
+}
+function sReceipt(c, t) { // 7.83–11.46 warehouse receipt, CERTIFIED stamp, banks shoot cash
+  bgGrid(c, t);
+  const pk = back(lin(t, 7.85, 8.35)), up = lin(t, 10.0, 10.5);
+  paper(c, 540, lerp(1900, 760, pk) - eio(up) * 120, 680, 520, .03, (p, w, h) => {
+    txt(p, 'WAREHOUSE RECEIPT', 0, -h / 2 + 60, '400 46px Elite', '#1c1c1c');
+    p.fillStyle = '#1c1c1c'; p.fillRect(-w / 2 + 40, -h / 2 + 100, w - 80, 3);
+    const lines = ['STORED: SOYBEAN OIL', 'TANK FARM: BAYONNE, N.J.', 'WAREHOUSEMAN:', '  AMERICAN EXPRESS', '  FIELD WAREHOUSING'];
+    lines.forEach((s, i) => txt(p, s, -w / 2 + 50, -h / 2 + 150 + i * 46, '400 32px Elite', '#2a2a2a', 'left'));
+    stamp(p, 'CERTIFIED', 90, 140, 78, '#1f8a46', -.14, lin(t, 9.42, 9.6));
+  });
+  // banks + cash stream
+  const bk = eo(lin(t, 9.95, 10.3));
+  if (bk > 0) {
+    for (let i = 0; i < 3; i++) bank(c, 230 + i * 310, lerp(1500, 1110, bk), 150, PAPER);
+    const ct = t - 10.1; if (ct > 0) for (let i = 0; i < 46; i++) { const s = i * .03, a = ct - s; if (a < 0 || a > 1.4) continue; const src = 230 + (i % 3) * 310; const q = eo(a / 1.1);
+      bill(c, lerp(src, 540, q) + Math.sin(i * 7 + a * 6) * 60 * (1 - q), lerp(1060, 520, q), 120, Math.sin(i + a * 8) * 1.2, 1 - lin(a, 1.1, 1.4)); }
+  }
+}
+function sInspect(c, t) { // 11.46–15.23 inspector sees the top; dive under to water
+  const dive = eio(lin(t, 13.7, 14.4));
+  bgGrid(c, t, 'rgba(255,214,10,.05)');
+  c.save(); c.translate(0, -dive * 1250);
+  // big tank top section
+  const tx = 120, ty = 720, tw = 840, th = 1900;
+  tank(c, tx, ty, tw, th, { fill: .97, oil: .1, t, bubbles: 1 });
+  // catwalk + inspector
+  c.fillStyle = '#5b6573'; c.fillRect(80, 690, 920, 18);
+  const ik = eo(lin(t, 11.5, 12.1)); person(c, lerp(-100, 330, ik), 690, 230, PAPER, lin(t, 12.3, 12.6), t);
+  // dipstick
+  const dk = eio(lin(t, 12.6, 13.3)); c.fillStyle = '#c9ced6'; c.fillRect(600, 520 + dk * 300, 16, 330); c.fillStyle = OIL1; c.fillRect(600, 520 + dk * 300 + 280, 16, 50 * dk);
+  if (dk > .9 && t < 13.8) stamp(c, 'OIL ✓', 760, 560, 70, GREEN, -.08, lin(t, 13.2, 13.35));
+  c.restore();
+  if (dive > 0) { // underwater overlay text + caustics
+    c.save(); c.globalAlpha = dive * .4; for (let i = 0; i < 9; i++) { c.strokeStyle = 'rgba(160,220,255,.35)'; c.lineWidth = 6; c.beginPath(); for (let x = 0; x <= W; x += 30) c.lineTo(x, 380 + i * 120 + Math.sin(x * .01 + t * 2 + i) * 30); c.stroke(); } c.restore();
+    const wk = back(lin(t, 14.58, 14.85)); c.save(); c.translate(540 + Math.sin(t * 3) * 14, 820); c.rotate(Math.sin(t * 2) * .05); c.scale(wk, wk); txt(c, 'WATER', 0, 0, '400 230px Anton', 'rgba(220,240,255,.95)'); c.restore();
+  }
+}
+function sCompartment(c, t) { // 15.23–16.62 hidden compartment x-ray
+  bgGrid(c, t, 'rgba(43,140,224,.12)');
+  c.save(); c.translate(540, 880); const z = lerp(1.25, 1.05, eo(lin(t, 15.23, 15.8))); c.scale(z, z); c.translate(-540, -880);
+  tank(c, 250, 520, 580, 760, { fill: .92, oil: .07, xray: 1, t, compartment: eo(lin(t, 15.4, 15.8)) }); c.restore();
+  const k = eo(lin(t, 15.7, 16.0)); if (k > 0) { c.globalAlpha = k; rr(c, 150, 400, 780, 90, 14); c.fillStyle = RED; c.fill(); txt(c, 'HIDDEN COMPARTMENT', 540, 446, '400 64px Anton', PAPER); c.globalAlpha = 1; }
+}
+function sPipes(c, t) { // 16.62–22.23 the same oil counted again and again
+  bgGrid(c, t); const xs = [150, 400, 650, 900], ty = 640, tw = 190, th = 430;
+  // pipes
+  c.strokeStyle = '#3a434f'; c.lineWidth = 34; c.beginPath(); c.moveTo(xs[0], ty + th + 40); c.lineTo(xs[3], ty + th + 40); c.stroke();
+  c.strokeStyle = '#5b6573'; c.lineWidth = 6; c.beginPath(); c.moveTo(xs[0], ty + th + 30); c.lineTo(xs[3], ty + th + 30); c.stroke();
+  // timeline: inspector at tank i from ti; oil arrives ahead
+  const T0 = [17.2, 18.4, 19.6, 20.8];
+  let insp = 0; for (let i = 0; i < 4; i++) if (t >= T0[i]) insp = i;
+  for (let i = 0; i < 4; i++) {
+    const enter = eo(lin(t, 16.62 + i * .1, 17.0 + i * .1));
+    // oil present in tank i between (T0[i]-0.5) and (T0[i]+0.9)
+    const a = lin(t, T0[i] - .55, T0[i] - .1) * (1 - lin(t, T0[i] + .7, T0[i] + 1.1));
+    tank(c, xs[i] - tw / 2, ty + (1 - enter) * 900, tw, th, { fill: .9, oil: lerp(.0, .22, a), t: t + i, bubbles: 0, xray: .6 });
+    const counted = t >= T0[i] + .15; if (counted) stamp(c, '✓', xs[i], ty - 70, 70, GREEN, 0, lin(t, T0[i] + .15, T0[i] + .3));
+  }
+  // the oil blob travelling through the pipe
+  for (let i = 0; i < 3; i++) { const k = lin(t, T0[i] + .75, T0[i + 1] - .5); if (k > 0 && k < 1) { const bx = lerp(xs[i], xs[i + 1], eio(k)); c.fillStyle = OIL1; c.beginPath(); c.ellipse(bx, ty + th + 40, 50, 16, 0, 0, 7); c.fill(); c.fillStyle = 'rgba(255,200,61,.3)'; c.beginPath(); c.ellipse(bx, ty + th + 40, 90, 34, 0, 0, 7); c.fill(); } }
+  // inspector walks
+  const ix = lerp(xs[Math.max(0, insp)], xs[Math.min(3, insp + 1)], eio(lin(t, T0[insp] + .5, (T0[insp + 1] || 99) - .1)));
+  person(c, t < 17.0 ? lerp(-80, xs[0], eo(lin(t, 16.62, 17.1))) : ix, ty - 10, 120, PAPER);
+  // counter
+  const n = T0.filter(x => t >= x + .15).length;
+  if (t > 17.2) { const k = back(lin(t, T0[Math.max(0, n - 1)] + .15, T0[Math.max(0, n - 1)] + .35)); c.save(); c.translate(540, 430); c.scale(.8 + .2 * k, .8 + .2 * k); txt(c, 'SAME OIL · COUNTED ×' + n, 0, 0, '400 74px Anton', n > 1 ? HL : PAPER); c.restore(); }
+}
+function sNumbers(c, t) { // 22.23–27.5 900,000 on paper vs 55,000 real
+  bgGrid(c, t);
+  const a = eio(lin(t, 22.3, 24.4)), b = eio(lin(t, 25.0, 26.9));
+  const baseY = 1180, maxH = 600;
+  // paper column
+  c.save(); const h1 = maxH * a; rr(c, 150, baseY - h1, 340, h1, 14); c.fillStyle = '#efe6cf'; c.fill();
+  c.strokeStyle = 'rgba(0,0,0,.25)'; c.lineWidth = 2; for (let y = baseY - h1 + 30; y < baseY; y += 30) { c.beginPath(); c.moveTo(170, y); c.lineTo(470, y); c.stroke(); }
+  txt(c, 'ON PAPER', 320, baseY + 50, '400 52px Anton', PAPER); txt(c, fmt(900000 * a), 320, baseY - h1 - 50, '800 64px JBM', GREEN); c.restore();
+  // real column
+  const h2 = maxH * 55000 / 900000 * b; const ry = baseY - h2;
+  rr(c, 590, ry, 340, Math.max(h2, b > 0 ? 4 : 0), 10); const og = c.createLinearGradient(0, ry, 0, baseY); og.addColorStop(0, OIL1); og.addColorStop(1, OIL2); c.fillStyle = og; c.fill();
+  txt(c, 'ACTUALLY THERE', 760, baseY + 50, '400 52px Anton', PAPER); if (b > 0) txt(c, fmt(55000 * b), 760, ry - 50, '800 64px JBM', RED);
+  txt(c, 'TONS OF OIL', 540, 380, '700 40px JBM', 'rgba(245,243,238,.75)');
+  stamp(c, '94% NEVER EXISTED', 540, 760, 92, RED, -.12, lin(t, 26.95, 27.15));
+}
+function sCountry(c, t) { // 27.5–29.76 his paperwork vs the whole US supply
+  bgGrid(c, t); const k = eio(lin(t, 27.6, 29.2));
+  tank(c, 130, 640, 360, 560, { fill: .8, oil: 1, t, label: 'ALL OF THE U.S.' });
+  const over = clamp((k * 1.25 - 1) * 4);
+  tank(c, 590, 640, 360, 560, { fill: Math.min(1, k * 1.25), oil: 1, t: t + 2, label: "TINO'S RECEIPTS", labelColor: RED });
+  if (over > 0) { c.fillStyle = OIL1; for (let i = 0; i < 6; i++) { const ox = 610 + i * 60; c.beginPath(); c.moveTo(ox, 640); c.quadraticCurveTo(ox - 10, 640 + 300 * over, ox + Math.sin(i) * 20, 640 + 600 * over * (0.6 + hash(i) * .4)); c.lineTo(ox + 18, 640 + 560 * over * (0.6 + hash(i) * .4)); c.quadraticCurveTo(ox + 10, 640 + 300 * over, ox + 26, 640); c.fill(); } }
+  txt(c, 'MORE OIL THAN THE', 540, 440, '400 70px Anton', PAPER); txt(c, 'WHOLE COUNTRY', 540, 520, '400 70px Anton', HL);
+}
+function sCrash(c, t) { // 29.76–35.74 chart crash, screen crack, 51 lenders, $180M gone
+  bgGrid(c, t);
+  if (t < 31.47) { // price chart
+    const pts = []; for (let i = 0; i <= 60; i++) { const x = 120 + i * 14; const up = 1180 - i * 9 - Math.sin(i * .9) * 22; const crash = i > 44 ? (i - 44) * 52 * eio(lin(t, 30.75, 31.1)) : 0; pts.push([x, up + crash]); }
+    const n = Math.floor(lerp(10, 61, lin(t, 29.8, 30.7)));
+    c.strokeStyle = t > 30.75 ? RED : GREEN; c.lineWidth = 12; c.lineJoin = 'round'; c.beginPath(); pts.slice(0, n).forEach((p, i) => i ? c.lineTo(...p) : c.moveTo(...p)); c.stroke();
+    txt(c, 'SOYBEAN OIL FUTURES · NOV 1963', 540, 470, '700 34px JBM', 'rgba(245,243,238,.75)');
+  } else if (t < 32.83) { // 51 lenders turning red
+    for (let i = 0; i < 51; i++) { const col = i % 6, row = Math.floor(i / 6); const k = eo(lin(t, 31.5 + i * .012, 31.7 + i * .012)); if (k <= 0) continue; const red = t > 31.9 + i * .015; c.save(); c.translate(185 + col * 142, 520 + row * 92); c.scale(k, k); bank(c, 0, 0, 70, red ? RED : PAPER); c.restore(); }
+    txt(c, '51 LENDERS', 540, 450, '400 80px Anton', HL);
+  } else { // $180M then GONE (disintegrates)
+    const k = eio(lin(t, 32.88, 34.4)); const s = '$' + fmt(180e6 * k);
+    if (t < 35.16) { c.save(); c.translate(540, 820); const sc = 1 + Math.sin(t * 30) * .01 * k; c.scale(sc, sc); txt(c, s, 0, 0, '800 104px JBM', RED); c.restore(); txt(c, 'IN LOSSES', 540, 930, '400 60px Anton', PAPER); }
+    else { const g = lin(t, 35.16, 35.74); c.font = '800 104px JBM'; for (let i = 0; i < 220; i++) { const sx = 160 + hash(i) * 760, sy = 780 + hash(i + 1) * 80; const vx = (hash(i + 2) - .3) * 900, vy = -(hash(i + 3)) * 700; c.fillStyle = `rgba(255,59,48,${1 - g})`; c.fillRect(sx + vx * g, sy + vy * g + 400 * g * g, 8, 8); } txt(c, 'GONE.', 540, 820, '400 200px Anton', `rgba(245,243,238,${eo(lin(t, 35.2, 35.4))})`); }
+  }
+}
+function sPrison(c, t) { // 35.74–38.65 20 years, out in 7
+  bgGrid(c, t);
+  const twenty = back(lin(t, 36.3, 36.6)); c.save(); c.translate(540, 760); c.scale(twenty, twenty); txt(c, '20', 0, 0, '400 420px Anton', HL); txt(c, 'YEARS', 0, 250, '400 90px Anton', PAPER); c.restore();
+  const strike = eio(lin(t, 37.3, 37.6)); if (strike > 0) { c.strokeStyle = RED; c.lineWidth = 26; c.beginPath(); c.moveTo(330, 900); c.lineTo(lerp(330, 760, strike), lerp(900, 600, strike)); c.stroke(); }
+  const seven = back(lin(t, 38.2, 38.45)); if (seven > 0) { c.save(); c.translate(840, 560); c.rotate(.12); c.scale(seven, seven); c.beginPath(); c.arc(0, 0, 130, 0, 7); c.strokeStyle = GREEN; c.lineWidth = 14; c.stroke(); txt(c, '7', 0, 10, '400 200px Anton', GREEN); c.restore(); }
+  // bars slam down, lift on "seven"
+  const down = 1 - eo(lin(t, 35.8, 36.05)) * (1 - eio(lin(t, 38.25, 38.65)));
+  c.save(); c.translate(0, -down * 1700); for (let i = 0; i < 9; i++) { const g = c.createLinearGradient(60 + i * 122, 0, 100 + i * 122, 0); g.addColorStop(0, '#2a323d'); g.addColorStop(.5, '#a7b1bf'); g.addColorStop(1, '#2a323d'); c.fillStyle = g; rr(c, 50 + i * 122, 0, 40, 1700, 20); c.fill(); }
+  c.fillStyle = '#5b6573'; c.fillRect(0, 380, W, 30); c.fillRect(0, 1250, W, 30); c.restore();
+}
+function sEnd(c, t) { // 38.65–42.6 the tanks were full. just not of oil. (loops to the golden open)
+  const g2 = lin(t, 42.1, 42.6);
+  bgGrid(c, t, 'rgba(43,140,224,.12)');
+  c.save(); c.translate(540, 870); const z = lerp(.92, 1.0, eio(lin(t, 38.65, 42.6))); c.scale(z, z); c.translate(-540, -870);
+  tank(c, 250, 560, 580, 620, { fill: .9, oil: lerp(.12, 1, g2), xray: 1 - g2, t, glow: g2, label: g2 > .5 ? '100% SOYBEAN OIL ✓' : 'FULL ✓', labelColor: GREEN });
+  c.restore();
+  stamp(c, 'NOT OIL', 540, 820, 140, RED, -.16, lin(t, 41.0, 41.2) * (1 - g2));
+}
+const SCENES = [[0, 2.46, sHook], [2.46, 3.22, sReveal], [3.22, 7.83, sCase], [7.83, 11.46, sReceipt], [11.46, 15.23, sInspect], [15.23, 16.62, sCompartment],
+  [16.62, 22.23, sPipes], [22.23, 27.5, sNumbers], [27.5, 29.76, sCountry], [29.76, 35.74, sCrash], [35.74, 38.65, sPrison], [38.65, 42.61, sEnd]];
+// glitch moments (pattern break + "gone")
+const GLITCH = [[2.38, 2.78, 1], [30.72, 30.95, .7], [35.12, 35.35, .8]];
+const SHAKE = [[2.46, .5, 34], [2.75, .35, 22], [9.45, .25, 12], [20.0, .2, 8], [27.0, .3, 18], [30.77, .5, 30], [35.8, .4, 26]];
+const CRACK = (() => { const L = []; for (let i = 0; i < 14; i++) { let a = i / 14 * Math.PI * 2 + hash(i) * .4, x = 620, y = 860, seg = [[x, y]]; for (let j = 0; j < 7; j++) { a += (hash(i * 9 + j) - .5) * .8; x += Math.cos(a) * (60 + hash(i + j) * 90); y += Math.sin(a) * (60 + hash(i + j) * 90); seg.push([x, y]); } L.push(seg); } return L; })();
+
+const MOUTH_ST = [0.001, 0.362, 0.781, 0.899, 0.711, 0.328, 0.322, 0.309, 0.019, 0.314, 0.28, 0.627, 0.838, 0.672, 0.73, 0.712, 0.351, 0.157, 0.22, 0.436, 0.699, 0.411, 0.288, 0.271, 0.093, 0.059, 0.052, 0.04, 0.044, 0.051, 0.406, 0.906, 0.81, 0.657, 0.699, 0.511, 0.827, 0.451, 0.1, 0.299, 0.299, 0.306, 0.315, 0.688, 0.532, 0.512, 0.643, 0.544, 0.355, 0.505, 0.144, 0.375, 0.234, 0.221, 0.253, 0.131, 0.113, 0.152, 0.16, 0.13, 0.034, 0.015, 0.008, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.02, 0.65, 0.738, 0.444, 0.904, 0.867, 0.683, 0.317, 0.35, 0.277, 0.094, 0.115, 0.076, 0.159, 0.103, 0.044, 0.015, 0.002, 0.001, 0.0, 0.0, 0.0, 0.0, 0.467, 0.793, 0.963, 1, 0.991, 0.729, 0.554, 0.629, 0.757, 0.308, 0.41, 0.354, 1, 1, 1, 0.524, 0.292, 0.345, 0.795, 0.459, 0.252, 0.401, 0.083, 0.61, 0.997, 0.548, 0.09, 0.087, 0.349, 0.266, 0.624, 0.781, 0.54, 0.357, 0.17, 0.132, 0.153, 0.23, 0.052, 0.014, 0.005, 0.002, 0.001, 0.001, 0.001, 0.002, 0.385, 0.405, 1, 0.993, 0.987, 0.951, 0.887, 0.603, 0.372, 0.991, 0.804, 0.706, 0.596, 0.586, 0.66, 0.723, 0.843, 0.387, 0.601, 0.653, 0.651, 0.835, 0.589, 0.344, 0.27, 0.057, 0.004, 0.464, 0.905, 0.715, 0.625, 0.637, 0.784, 0.719, 0.442, 0.632, 1, 1, 1, 1, 1, 0.856, 0.916, 0.913, 0.866, 0.936, 0.708, 0.626, 0.558, 0.243, 0.244, 0.184, 0.294, 0.425, 0.46, 0.18, 0.639, 0.541, 0.452, 0.222, 0.287, 0.347, 0.028, 0.317, 0.396, 0.601, 0.521, 0.374, 0.217, 0.303, 0.247, 0.166, 0.528, 0.369, 0.197, 0.016, 0.049, 0.078, 0.478, 0.358, 0.135, 0.15, 0.268, 0.307, 0.278, 0.259, 0.192, 0.046, 0.001, 0.0, 0.0, 0.0, 0.0, 0.001, 0.172, 0.661, 1, 1, 0.83, 0.775, 0.843, 0.698, 0.286, 0.207, 0.824, 0.703, 0.763, 0.333, 0.406, 0.405, 0.264, 0.048, 0.002, 0.418, 0.936, 0.738, 0.651, 0.558, 0.407, 0.34, 0.352, 0.151, 0.159, 0.275, 0.678, 0.65, 0.726, 0.641, 0.155, 0.289, 0.303, 0.13, 0.159, 0.067, 0.315, 0.586, 0.176, 0.465, 0.505, 0.582, 0.686, 0.712, 0.731, 0.756, 0.429, 0.244, 0.136, 0.109, 0.154, 0.116, 0.03, 0.007, 0.001, 0.0, 0.0, 0.0, 0.0, 0.2, 0.72, 0.53, 0.686, 0.775, 0.618, 0.354, 0.318, 0.295, 0.283, 0.146, 0.214, 0.537, 0.588, 0.633, 0.74, 0.557, 0.743, 0.334, 0.558, 0.821, 0.964, 0.837, 0.287, 0.202, 0.199, 0.299, 0.409, 0.561, 0.463, 0.366, 0.234, 0.121, 0.17, 0.246, 0.294, 0.263, 0.264, 0.208, 0.106, 0.006, 0.0, 0.0, 0.0, 0.0, 0.0, 0.003, 0.701, 0.694, 0.679, 0.85, 0.895, 0.4, 0.283, 0.246, 0.008, 0.647, 0.704, 0.659, 0.124, 0.01, 0.028, 0.446, 0.848, 0.832, 0.539, 0.259, 0.425, 0.263, 0.014, 0.123, 0.708, 0.776, 0.804, 0.722, 0.705, 0.693, 0.795, 0.481, 0.031, 0.32, 0.419, 0.346, 0.692, 0.418, 0.06, 0.011, 0.118, 0.053, 0.041, 0.778, 0.221, 0.021, 0.318, 0.198, 0.366, 0.701, 0.859, 0.607, 0.266, 0.18, 0.151, 0.013, 0.004, 0.083, 0.027, 0.007, 0.001, 0.0, 0.0, 0.0, 0.0, 0.01, 0.531, 0.585, 0.624, 0.46, 0.618, 0.417, 0.484, 0.53, 0.528, 0.685, 0.641, 0.501, 0.105, 0.049, 0.038, 0.032, 0.02, 0.024, 0.004, 0.0, 0.0, 0.0, 0.0, 0.003, 0.372, 0.77, 0.897, 0.926, 0.762, 0.843, 0.776, 0.486, 0.176, 0.23, 0.147, 0.161, 0.17, 0.122, 0.058, 0.014, 0.002, 0.0, 0.0, 0.0, 0.0, 0.002, 0.068, 0.303, 0.948, 0.812, 0.435, 0.985, 1, 0.731, 0.214, 0.403, 0.836, 1, 0.693, 0.068, 0.179, 0.401, 0.764, 0.66, 0.462, 0.152, 0.013, 0.199, 0.235, 0.165, 0.081, 0.068, 0.135, 0.275, 0.261, 0.262, 0.194, 0.099, 0.007, 0.0, 0.0, 0.0, 0.0, 0.0, 0.006, 0.223, 0.28, 0.287, 0.442, 0.919, 0.99, 0.281, 0.212, 0.144, 1, 0.661, 0.103, 0.005, 0.002, 0.167, 0.374, 0.414, 0.711, 0.543, 0.558, 0.35, 0.146, 0.029, 0.225, 0.258, 0.246, 0.101, 0.824, 1, 1, 0.733, 0.339, 0.883, 0.969, 0.947, 0.594, 0.764, 0.394, 0.3, 0.317, 0.31, 0.339, 0.741, 0.696, 0.68, 0.677, 0.759, 0.868, 0.628, 0.309, 0.462, 0.837, 0.866, 0.855, 0.85, 0.784, 0.798, 0.781, 0.732, 0.227, 0.038, 0.105, 0.445, 0.595, 0.516, 0.393, 0.038, 0.105, 0.457, 0.362, 0.468, 0.64, 0.666, 0.649, 0.42, 0.144, 0.092, 0.053, 0.455, 0.705, 0.207, 0.034, 0.416, 0.237, 0.648, 0.556, 0.468, 0.227, 0.131, 0.078, 0.047, 0.062, 0.136, 0.026, 0.003, 0.0, 0.0, 0.0, 0.0, 0.0, 0.088, 0.275, 0.442, 0.988, 1, 0.819, 0.166, 0.051, 0.848, 0.664, 0.486, 0.175, 0.032, 0.003, 0.219, 0.32, 0.468, 0.557, 0.627, 0.673, 0.466, 0.074, 0.26, 0.748, 0.703, 0.274, 0.415, 0.296, 0.479, 0.328, 0.14, 0.026, 0.025, 0.343, 0.912, 0.692, 0.697, 0.656, 0.676, 0.599, 0.604, 0.546, 0.497, 0.231, 0.041, 0.347, 0.634, 0.721, 0.762, 0.636, 0.253, 0.109, 0.309, 0.82, 0.572, 0.472, 0.299, 0.193, 0.129, 0.108, 0.099, 0.096, 0.074, 0.015, 0.002, 0.0, 0.0, 0.0, 0.0, 0.001, 0.421, 0.707, 0.779, 0.697, 0.685, 0.125, 0.183, 0.435, 0.811, 0.854, 0.903, 0.104, 0.008, 0.273, 0.644, 0.293, 0.127, 0.128, 0.18, 0.051, 0.007, 0.001, 0.0, 0.0, 0.0, 0.001, 0.029, 0.919, 0.841, 0.565, 0.573, 0.653, 0.709, 0.754, 0.822, 0.73, 0.599, 0.812, 0.811, 0.546, 0.355, 0.814, 0.664, 0.209, 0.038, 0.042, 0.033, 0.544, 0.616, 0.519, 0.657, 0.627, 0.529, 0.244, 0.426, 0.759, 0.815, 0.79, 0.355, 0.299, 0.243, 0.442, 0.594, 0.524, 0.305, 0.104, 0.084, 0.107, 0.09, 0.153, 0.184, 0.22, 0.168, 0.075, 0.009, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.279, 0.451, 0.571, 0.543, 0.051, 0.368, 0.445, 0.358, 0.68, 0.571, 0.512, 0.523, 0.454, 0.111, 0.334, 0.611, 0.477, 0.4, 0.36, 0.256, 0.329, 0.346, 0.161, 0.018, 0.003, 0.0, 0.0, 0.0, 0.0, 0.002, 0.011, 0.019, 0.027, 0.086, 0.941, 0.916, 0.198, 0.02, 0.033, 0.2, 0.806, 0.783, 0.109, 0.023, 0.019, 0.336, 0.786, 0.62, 0.527, 0.584, 0.554, 0.31, 0.088, 0.113, 0.033, 0.424, 0.542, 0.4, 0.307, 0.233, 0.152, 0.231, 0.244, 0.12, 0.1, 0.073, 0.103, 0.078, 0.037, 0.016, 0.003, 0.0, 0.0, 0.0, 0.0, 0.003, 0.521, 1, 1.0, 1, 0.975, 0.945, 0.871, 0.701, 0.273, 0.567, 0.869, 0.865, 0.898, 0.905, 0.793, 0.871, 0.773, 0.818, 0.541, 0.125, 0.746, 0.719, 0.782, 0.717, 0.668, 0.344, 0.228, 0.201, 0.176, 0.114, 0.825, 0.935, 0.953, 0.776, 0.515, 0.039, 0.01, 0.623, 0.33, 0.323, 0.607, 0.681, 0.734, 0.401, 0.358, 0.234, 0.465, 0.555, 0.303, 0.215, 0.29, 0.332, 0.445, 0.348, 0.316, 0.21, 0.164, 0.127, 0.097, 0.064, 0.03, 0.005, 0.0, 0.0, 0.0, 0.0, 0.0, 0.068, 0.425, 0.626, 0.698, 0.678, 0.709, 0.622, 0.457, 0.512, 0.489, 0.387, 0.17, 0.032, 0.007, 0.003, 0.687, 0.746, 0.964, 0.846, 0.758, 0.87, 0.796, 0.454, 0.124, 0.15, 0.564, 0.545, 0.066, 0.006, 0.226, 0.53, 0.652, 0.349, 0.744, 0.539, 0.401, 0.163, 0.335, 0.263, 0.017, 0.073, 0.029, 0.129, 0.136, 0.047, 0.004, 0.0, 0.0, 0.0, 0.0, 0.0, 0.003, 0.016, 0.023, 0.11, 0.919, 0.843, 0.205, 0.032, 0.031, 0.264, 0.866, 1, 1, 0.615, 0.829, 0.793, 0.775, 0.685, 0.732, 0.788, 0.749, 0.656, 0.6, 0.572, 0.516, 0.472, 0.226, 0.276, 0.263, 0.135, 0.08, 0.104, 0.27, 0.253, 0.259, 0.167, 0.066, 0.004, 0.0, 0.0, 0.0, 0.0, 0.002, 0.043, 0.503, 0.629, 0.621, 0.585, 0.623, 0.542, 0.765, 0.74, 0.721, 0.332, 0.662, 0.857, 0.431, 0.553, 0.839, 1, 0.636, 0.117, 0.004, 0.021, 0.584, 0.613, 0.714, 0.904, 0.413, 0.852, 0.822, 0.914, 0.897, 0.911, 0.843, 0.936, 1, 0.946, 0.934, 0.882, 0.838, 0.911, 0.969, 0.991, 0.941, 0.97, 0.864, 0.453, 0.791, 0.612, 0.579, 0.571, 0.581, 0.293, 0.157, 0.134, 0.098, 0.075, 0.097, 0.206, 0.281, 0.22, 0.203, 0.115, 0.012, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.59, 0.873, 0.715, 0.724, 0.67, 0.573, 0.325, 0.208, 0.172, 0.118, 0.085, 0.085, 0.075, 0.036, 0.012, 0.001, 0.0, 0.0, 0.0, 0.0, 0.012, 0.272, 1, 0.963, 0.258, 0.859, 0.679, 0.559, 0.238, 0.018, 0.003, 0.236, 0.401, 0.334, 0.221, 0.623, 0.914, 0.803, 0.756, 0.748, 0.755, 0.603, 0.451, 0.486, 0.563, 0.626, 0.576, 0.418, 0.251, 0.157, 0.094, 0.093, 0.132, 0.248, 0.292, 0.253, 0.191, 0.102, 0.007, 0.0, 0.0, 0.0, 0.0, 0.001, 0.007, 0.733, 0.938, 0.847, 0.798, 0.344, 0.041, 0.029, 0.442, 0.747, 0.498, 0.511, 0.575, 0.422, 0.118, 0.044, 0.152, 0.542, 0.784, 0.782, 0.49, 0.324, 0.343, 0.314, 0.356, 0.633, 0.639, 0.498, 0.137, 0.034, 0.139, 0.114, 0.081, 0.084, 0.117, 0.036, 0.007, 0.001, 0.0, 0.0, 0.0, 0.0, 0.032, 0.872, 0.354, 0.061, 0.424, 0.363, 0.57, 0.718, 0.66, 0.599, 0.358, 0.312, 0.214, 0.15, 0.381, 0.923, 0.534, 0.143, 0.086, 0.066, 0.072, 0.187, 0.833, 0.679, 0.397, 0.364, 0.201, 0.102, 0.066, 0.13, 0.052, 0.013, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.007, 0.118, 0.268, 0.751, 0.711, 0.379, 0.3, 0.303, 0.295, 0.221, 0.006, 0.0, 0.0, 0.0, 0.0, 0.022, 0.167, 0.233, 0.525, 0.586, 0.598, 0.677, 0.659, 0.6, 0.606, 0.234, 0.265, 0.736, 0.668, 0.625, 0.747, 0.585, 0.345, 0.111, 0.097, 0.097, 0.108, 0.03, 0.006, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0];
+const ST_CFG = {"timeline": [[0, "idle"], [2.41, "shock"], [3.22, "point"], [13.72, "chin"], [14.58, "shock"], [15.23, "point"], [26.82, "shock"], [27.5, "point"], [30.72, "shock"], [31.47, "point"], [35.11, "shrug"], [35.74, "point"], [38.65, "you"], [40.9, "follow"]], "bubbles": [[38.7, 40.85, "WOULD YOU HAVE", "CAUGHT IT? COMMENT"]], "follow": [40.9, 42.61]};
+window.render = function (t) {
+  const sc = SCENES.find(s => t >= s[0] && t < s[1]) || SCENES[SCENES.length - 1];
+  O.save(); sc[2](O, t); O.restore(); vignette(O, .65); hud(O, t); Storyteller.draw(O, t, { ...ST_CFG, mouth: MOUTH_ST[Math.min(MOUTH_ST.length - 1, Math.floor(t * 30))] || 0 }); caption(O, t);
+  // whip-pan on cuts (0.16 s slide in)
+  let wx = 0; const into = t - sc[0]; if (sc[0] > 0 && into < .16 && sc[2] !== sReveal) wx = (1 - eo(into / .16)) * 180;
+  // shake
+  let sx = 0, sy = 0; for (const [s0, d, amp] of SHAKE) if (t >= s0 && t < s0 + d) { const k = 1 - (t - s0) / d; sx += Math.sin(t * 97) * amp * k; sy += Math.cos(t * 83) * amp * k; }
+  X.fillStyle = INK; X.fillRect(0, 0, W, H);
+  // punch zoom on key beats
+  let pz = 1; for (const s0 of [2.46, 14.63, 30.77, 35.16]) if (t >= s0 && t < s0 + .3) pz += .07 * (1 - (t - s0) / .3);
+  X.save(); X.translate(540 + sx + wx, 960 + sy); X.scale(pz, pz); X.translate(-540, -960); X.drawImage(OFF, 0, 0); X.restore();
+  // glitch: rgb split + slice tears + flash
+  for (const [g0, g1, amt] of GLITCH) if (t >= g0 && t < g1) {
+    const k = amt * Math.sin(lin(t, g0, g1) * Math.PI), f = Math.floor(t * 30);
+    X.save(); X.globalCompositeOperation = 'screen'; X.globalAlpha = .55 * k;
+    T.clearRect(0, 0, W, H); T.drawImage(OFF, 0, 0); T.globalCompositeOperation = 'multiply'; T.fillStyle = '#ff0000'; T.fillRect(0, 0, W, H); T.globalCompositeOperation = 'source-over';
+    X.drawImage(TMP, 24 * k, 0); T.clearRect(0, 0, W, H); T.drawImage(OFF, 0, 0); T.globalCompositeOperation = 'multiply'; T.fillStyle = '#00ffff'; T.fillRect(0, 0, W, H); T.globalCompositeOperation = 'source-over';
+    X.drawImage(TMP, -24 * k, 0); X.restore();
+    for (let i = 0; i < 9; i++) { const y = hash(f * 13 + i) * H, h = 20 + hash(f * 7 + i) * 120, dx = (hash(f * 3 + i) - .5) * 260 * k; X.drawImage(OFF, 0, y, W, h, dx, y, W, h); }
+    X.fillStyle = `rgba(255,255,255,${.18 * k * (f % 2)})`; X.fillRect(0, 0, W, H);
+  }
+  // screen crack on "cracked"
+  if (t >= 30.77 && t < 31.47) { const k = eo(lin(t, 30.77, 30.9)); X.strokeStyle = 'rgba(255,255,255,.85)'; X.lineWidth = 4; for (const seg of CRACK) { X.beginPath(); const n = Math.max(2, Math.ceil(seg.length * k)); seg.slice(0, n).forEach((p, i) => i ? X.lineTo(...p) : X.moveTo(...p)); X.stroke(); } }
+  // flash on the cell door
+  if (t >= 35.8 && t < 36.0) { X.fillStyle = `rgba(255,255,255,${.35 * (1 - (t - 35.8) / .2)})`; X.fillRect(0, 0, W, H); }
+};
+window.DUR = DUR;
+const FONTS = [['Anton', 'node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2', '400'], ['Inter', 'node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2', '800'],
+  ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-800-normal.woff2', '800'], ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2', '700'],
+  ['Elite', 'node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2', '400']];
+window.ready = Promise.all(FONTS.map(([f, u, w]) => new FontFace(f, `url(${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))).then(() => { window.render(0); return true; });
+</script></body></html>

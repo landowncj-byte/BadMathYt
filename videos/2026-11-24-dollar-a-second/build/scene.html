@@ -1,0 +1,202 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Anton;src:url(node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2)}
+@font-face{font-family:JBM;font-weight:800;src:url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-800-normal.woff2)}
+@font-face{font-family:JBM;font-weight:700;src:url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2)}
+:root{--ink:#0B0F14;--hl:#FFD60A;--red:#FF3B30;--green:#00D26A;--paper:#F5F3EE}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+#root{position:absolute;inset:0;overflow:hidden;background:var(--ink)}
+#glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 52%,rgba(255,214,10,.28),rgba(255,214,10,0) 70%)}
+#rays{position:absolute;left:50%;top:52%;width:2600px;height:2600px;margin:-1300px 0 0 -1300px;
+  background:repeating-conic-gradient(from 0deg,rgba(255,214,10,.10) 0deg 6deg,rgba(255,214,10,0) 6deg 18deg);
+  -webkit-mask:radial-gradient(circle,#000 0,#000 18%,transparent 48%);mask:radial-gradient(circle,#000 0,#000 18%,transparent 48%)}
+#grain{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+#shake{position:absolute;inset:0}
+/* counter block */
+#tag{position:absolute;left:110px;top:240px;background:var(--hl);color:var(--ink);font:800 30px Inter;letter-spacing:3px;padding:8px 18px;border-radius:8px}
+#amount{position:absolute;left:0;right:0;top:282px;text-align:center;font:800 132px JBM;color:var(--green);letter-spacing:-3px;text-shadow:0 0 40px rgba(0,210,106,.35)}
+#elapsed{position:absolute;left:0;right:0;top:438px;text-align:center;font:700 40px Inter;color:var(--paper);letter-spacing:2px}
+#barwrap{position:absolute;left:130px;width:820px;top:506px;height:22px;border-radius:11px;background:rgba(245,243,238,.12);overflow:hidden}
+#bar{position:absolute;left:0;top:0;bottom:0;background:var(--green);border-radius:11px}
+#barlabel{position:absolute;left:130px;width:820px;top:538px;font:700 28px JBM;color:rgba(245,243,238,.7);display:flex;justify-content:space-between}
+/* stage */
+#headline{position:absolute;left:90px;right:90px;top:620px;text-align:center;font:400 118px/1.02 Anton;color:var(--paper);text-transform:uppercase}
+#headline .y{color:var(--hl)} #headline .g{color:var(--green)}
+.vis{position:absolute;left:0;right:0;top:820px;height:430px;opacity:0}
+/* bill */
+#bill{position:absolute;left:50%;top:50%;width:640px;height:300px;margin:-150px 0 0 -320px;border-radius:26px;
+  background:linear-gradient(135deg,#0f3d26,#0b2a1b);border:10px solid var(--green);box-shadow:0 0 80px rgba(0,210,106,.45),inset 0 0 0 14px rgba(0,210,106,.18);
+  display:flex;align-items:center;justify-content:center;font:400 190px Anton;color:var(--paper)}
+#bill:before,#bill:after{content:"1";position:absolute;font:800 52px JBM;color:var(--green)}
+#bill:before{left:34px;top:22px}#bill:after{right:34px;bottom:22px}
+/* ring */
+#ringsvg{position:absolute;left:50%;top:50%;width:420px;height:420px;margin:-210px 0 0 -210px}
+#ringtxt{position:absolute;left:0;right:0;top:50%;margin-top:-50px;text-align:center;font:800 84px JBM;color:var(--paper)}
+/* sun */
+#sky{position:absolute;left:140px;right:140px;top:20px;height:380px;border-radius:24px;overflow:hidden;background:linear-gradient(#1b2433,#0B0F14)}
+#sun{position:absolute;width:110px;height:110px;border-radius:50%;background:var(--hl);box-shadow:0 0 70px 20px rgba(255,214,10,.55)}
+#horizon{position:absolute;left:0;right:0;bottom:0;height:90px;background:#101722;border-top:4px solid rgba(245,243,238,.25)}
+/* stacks */
+#stacks{position:absolute;left:160px;right:160px;bottom:30px;height:400px;display:flex;align-items:flex-end;justify-content:space-between}
+.stk{width:58px;background:repeating-linear-gradient(0deg,#00D26A 0 10px,#0a8f4a 10px 13px);border-radius:6px 6px 2px 2px;box-shadow:0 0 24px rgba(0,210,106,.3)}
+#badge{position:absolute;left:50%;top:40px;transform:translateX(-50%);background:var(--hl);color:var(--ink);font:400 70px Anton;padding:6px 34px;border-radius:12px;white-space:nowrap}
+/* calendar */
+#cal{position:absolute;left:50%;top:10px;width:420px;height:410px;margin-left:-210px;border-radius:28px;background:var(--paper);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#calhead{height:96px;background:var(--hl);color:var(--ink);font:400 60px/96px Anton;text-align:center;letter-spacing:4px}
+#calnum{font:800 220px/300px JBM;color:var(--ink);text-align:center}
+#stamp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-8deg);border:12px solid var(--hl);color:var(--hl);background:rgba(11,15,20,.88);
+  font:400 150px/1 Anton;padding:18px 40px;border-radius:18px;white-space:nowrap;opacity:0}
+/* compare */
+.row{position:absolute;left:130px;width:820px}
+.rowlbl{display:flex;justify-content:space-between;font:400 64px Anton;color:var(--paper)}
+.rowlbl span:last-child{font:800 46px/80px JBM;color:var(--green)}
+.track{margin-top:10px;height:56px;border-radius:12px;background:rgba(245,243,238,.10);overflow:hidden;position:relative}
+.fill{position:absolute;left:0;top:0;bottom:0;border-radius:12px}
+#r1{top:95px}#r2{top:265px}
+#r1 .fill{background:var(--green)}#r2 .fill{background:var(--hl)}
+/* captions + footnote */
+#cap{position:absolute;left:150px;right:150px;top:1300px;text-align:center;font:800 78px/1.08 Inter;color:var(--paper);text-transform:uppercase;
+  text-shadow:0 6px 0 rgba(0,0,0,.55),0 0 30px rgba(0,0,0,.8)}
+#cap .y{color:var(--hl)}#cap .g{color:var(--green)}
+#foot{position:absolute;left:0;right:0;top:1478px;text-align:center;font:700 26px JBM;color:rgba(245,243,238,.55);letter-spacing:1px}
+#dim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+</style></head>
+<body><div id="root">
+  <div id="glow"></div><div id="rays"></div><div id="grain"></div>
+  <div id="shake">
+    <div id="tag">WHAT IF</div>
+    <div id="amount">$0</div>
+    <div id="elapsed"></div>
+    <div id="barwrap"><div id="bar"></div></div>
+    <div id="barlabel"><span>PROGRESS TO $1,000,000,000</span><span id="pct"></span></div>
+    <div id="headline"></div>
+    <div class="vis" id="vBill"><div id="bill">$1</div></div>
+    <div class="vis" id="vRing"><svg id="ringsvg" viewBox="0 0 420 420"><circle cx="210" cy="210" r="180" fill="none" stroke="rgba(245,243,238,.12)" stroke-width="34"/>
+      <circle id="ringfill" cx="210" cy="210" r="180" fill="none" stroke="#FFD60A" stroke-width="34" stroke-linecap="round" transform="rotate(-90 210 210)" stroke-dasharray="1131" stroke-dashoffset="1131"/></svg><div id="ringtxt"></div></div>
+    <div class="vis" id="vSun"><div id="sky"><div id="sun"></div><div id="horizon"></div></div></div>
+    <div class="vis" id="vStack"><div id="stacks"></div><div id="badge">MILLIONAIRE</div></div>
+    <div class="vis" id="vCal"><div id="cal"><div id="calhead">YEAR</div><div id="calnum">1</div></div><div id="stamp">31.7 YEARS</div></div>
+    <div class="vis" id="vCmp">
+      <div class="row" id="r1"><div class="rowlbl"><span>$1 MILLION</span><span>11.6 DAYS</span></div><div class="track"><div class="fill"></div></div></div>
+      <div class="row" id="r2"><div class="rowlbl"><span>$1 BILLION</span><span>31.7 YEARS</span></div><div class="track"><div class="fill"></div></div></div>
+    </div>
+    <div id="cap"></div>
+    <div id="foot">HYPOTHETICAL · NO TAXES · NO INTEREST · NO SPENDING</div>
+  </div>
+  <div id="dim"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>clamp((t-a)/(b-a));
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eout=x=>1-Math.pow(1-x,3);
+const lerp=(a,b,x)=>a+(b-a)*x;
+// log-space interpolation so big jumps feel like a counter racing
+const lgl=(a,b,x)=>Math.exp(lerp(Math.log(a),Math.log(b),x));
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+
+function amount(t){
+  if(t<5.45) return Math.floor(t)+1;
+  const seg=[[5.45,7.0,6,60],[7.8,9.6,60,3600],[10.3,12.9,3600,86400],[13.8,15.6,86400,1e6],
+             [16.45,18.5,1e6,31536000],[19.3,19.6,31536000,63072000],[20.74,21.2,63072000,1e9]];
+  let v=6;
+  for(const [a,b,f,to] of seg){ if(t<a) return v; v=lgl(f,to,eio(lin(t,a,b))); }
+  return v;
+}
+function elapsed(s){
+  if(s<60) return 'AFTER '+Math.round(s)+(Math.round(s)===1?' SECOND':' SECONDS');
+  if(s<3600){const m=Math.round(s/60);return 'AFTER '+m+(m===1?' MINUTE':' MINUTES');}
+  if(s<86400){const h=Math.round(s/3600);return 'AFTER '+h+(h===1?' HOUR':' HOURS');}
+  if(s<31536000*0.98){const d=s/86400;const ds=d<20?d.toFixed(1).replace(/\.0$/,''):Math.round(d).toLocaleString('en-US');return 'AFTER '+ds+(ds==='1'?' DAY':' DAYS');}
+  const y=s/31536000;const ys=(Math.abs(y-Math.round(y))<0.02&&y<3)?String(Math.round(y)):y.toFixed(1);return 'AFTER '+ys+(ys==='1'?' YEAR':' YEARS');
+}
+function pctStr(a){const p=a/1e9*100;if(p>=99.95)return '100%';if(p>=1)return p.toFixed(1)+'%';if(p>=0.01)return p.toFixed(2)+'%';if(p>=0.0001)return p.toFixed(4)+'%';return p.toFixed(7)+'%';}
+
+// captions: [start, end, html]  (start = first word start - 0.05)
+const C=[[0,1.15,'One <span class=g>dollar.</span>'],[1.15,2.59,'Every <span class=y>second.</span>'],[2.59,3.79,'<span class=y>Forever.</span>'],
+ [3.79,4.27,'When are you a'],[4.27,5.47,'<span class=y>billionaire?</span>'],[5.47,6.55,'One minute:'],[6.55,7.79,'<span class=g>$60</span>'],
+ [7.79,8.71,'One hour:'],[8.71,10.27,'<span class=g>$3,600</span>'],[10.27,11.31,'One day:'],[11.31,13.79,'<span class=g>$86,400</span>'],
+ [13.79,14.71,'You\'re a <span class=y>millionaire</span>'],[14.71,16.51,'in under <span class=y>12 days.</span>'],[16.51,18.27,'So a billion\'s what&nbsp;—'],
+ [18.27,19.31,'a <span class=y>year?</span>'],[19.31,19.9,'<span class=y>Two?</span>'],[20.69,22.05,'<span class=y>31 years.</span>'],[22.05,23.65,'Nearly <span class=y>32.</span>'],
+ [23.65,24.53,'A million is a'],[24.53,25.65,'<span class=g>vacation.</span>'],[25.65,26.61,'A <span class=y>billion</span> is'],[26.61,28.8,'your <span class=y>whole life.</span>']];
+
+// headlines: [start,end,html]
+const H=[[0,3.79,'$1 every <span class=y>second.</span><br>forever.'],[3.79,5.45,'when do you hit<br><span class=y>$1 billion?</span>'],
+ [5.45,7.8,'<span class=y>1</span> minute'],[7.8,10.3,'<span class=y>1</span> hour'],[10.3,13.8,'<span class=y>1</span> day'],
+ [13.8,16.45,'$1M in <span class=y>11.6</span> days'],[16.45,19.3,'so&hellip; <span class=y>1 year?</span>'],[19.3,19.7,'<span class=y>2 years?</span>'],
+ [20.74,23.6,''],[23.6,28.8,'<span class=g>1,000×</span> the money.<br><span class=y>1,000×</span> the time.']];
+
+const VIS=[['vBill',0,5.45],['vRing',5.45,10.3],['vSun',10.3,13.8],['vStack',13.8,16.45],['vCal',16.45,23.6],['vCmp',23.6,99]];
+const stk=$('stacks');for(let i=0;i<10;i++){const d=document.createElement('div');d.className='stk';stk.appendChild(d);}
+
+let lastCap=-1,lastHead=-1;
+window.render=function(t){
+  // background
+  $('rays').style.transform='rotate('+(t*10)+'deg)';
+  const raysOn=(t<5.45?1:0)+(t>=20.74&&t<23.6?1:0);
+  $('rays').style.opacity=raysOn?1:0.25;
+  const pulse=t<5.45?0.15*Math.exp(-(t%1)*5):0;
+  $('glow').style.opacity=0.75+pulse+(t>=20.74&&t<21.5?0.6*Math.exp(-(t-20.74)*3):0);
+  // slow push-in on everything
+  const push=1+0.03*((t%5.4)/5.4);
+  // impact shake at 20.74
+  let sx=0,sy=0;if(t>=20.74&&t<21.15){const k=Math.exp(-(t-20.74)*9)*26;sx=Math.sin(t*93)*k;sy=Math.cos(t*71)*k;}
+  $('shake').style.transform='translate('+sx+'px,'+sy+'px)';
+  // counter
+  const a=amount(t);
+  const ft=fmt(a);$('amount').textContent=ft;$('amount').style.fontSize=Math.min(132,880/(ft.length*0.6))+'px';
+  const ap=(t>=13.8&&t<14.2)||(t>=20.74&&t<21.8)?1.0+0.06*Math.sin(lin(t,20.74,21.8)*Math.PI):1;
+  $('amount').style.transform='scale('+ap+')';
+  $('elapsed').textContent=elapsed(a);
+  $('bar').style.width=Math.max(6,820*a/1e9)+'px';
+  $('pct').textContent=pctStr(a);
+  // headline
+  let hi=H.findIndex(h=>t>=h[0]&&t<h[1]);
+  if(hi!==lastHead){$('headline').innerHTML=hi>=0?H[hi][2]:'';lastHead=hi;}
+  const hs=hi>=0?H[hi][0]:0;const hp=hs===0?1:eout(lin(t,hs,hs+0.18));
+  $('headline').style.transform='scale('+(0.86+0.14*hp)*push+')';$('headline').style.opacity=hi>=0?hp:0;
+  // visuals
+  for(const [id,a0,a1] of VIS){const on=t>=a0&&t<a1;const el=$(id);const p=a0===0?1:eout(lin(t,a0,a0+0.25));
+    el.style.opacity=on?p:0;el.style.transform='translateY('+(1-p)*60+'px) scale('+push+')';}
+  // bill pulse each second
+  const bp=1+0.07*Math.exp(-(t%1)*6);const bl=t>=3.79?eio(lin(t,3.79,5.3)):0;
+  $('bill').style.transform='rotate('+(Math.sin(t*1.3)*3)+'deg) scale('+bp*(1-0.55*bl)+')';
+  // ring
+  let rp,rt;
+  if(t<7.8){rp=eio(lin(t,5.45,7.0));rt=Math.round(lerp(0,60,rp))+'s';$('ringfill').setAttribute('stroke','#00D26A');}
+  else{rp=eio(lin(t,7.8,9.6));rt=Math.round(lerp(1,60,rp))+'m';$('ringfill').setAttribute('stroke','#FFD60A');}
+  $('ringfill').setAttribute('stroke-dashoffset',1131*(1-rp));$('ringtxt').textContent=rt;
+  // sun arc
+  const sp=lin(t,10.3,13.2);const ang=Math.PI*(1-sp);
+  $('sun').style.left=(400-55+330*Math.cos(ang))+'px';$('sun').style.top=(300-55-230*Math.sin(ang))+'px';
+  $('sky').style.background='linear-gradient('+(sp<.5?'#24324a':'#3a2a1a')+',#0B0F14)';
+  // stacks
+  const kids=stk.children;for(let i=0;i<10;i++){const p=eout(lin(t,13.85+i*0.17,14.3+i*0.17));kids[i].style.height=(p*(150+i*24))+'px';}
+  const bg=eout(lin(t,15.6,15.85));$('badge').style.opacity=bg;$('badge').style.transform='translateX(-50%) scale('+(1.4-0.4*bg)+')';
+  // calendar
+  let yr=1; if(t>=19.3) yr=2;
+  if(t>=20.74){yr=Math.min(31,Math.floor(lerp(2,31.99,eio(lin(t,20.74,21.6)))));}
+  $('calnum').textContent=yr;
+  $('cal').style.transform='rotate('+(t>=20.74&&t<21.6?Math.sin(t*60)*3:0)+'deg)';
+  const st=lin(t,20.74,20.9);$('stamp').style.opacity=t>=20.74?1:0;
+  $('stamp').style.transform='translate(-50%,-50%) rotate(-8deg) scale('+(t>=20.74?lerp(2.2,1,eout(st)):1)+')';
+  // compare bars
+  const f1=eout(lin(t,23.75,24.2)), f2=eio(lin(t,25.7,27.4));
+  document.querySelector('#r1 .fill').style.width=Math.max(4,820*f1*11.574/11574)+'px';
+  document.querySelector('#r2 .fill').style.width=(820*f2)+'px';
+  $('r1').style.opacity=eout(lin(t,23.65,23.9));$('r2').style.opacity=eout(lin(t,25.6,25.85));
+  // captions
+  let ci=C.findIndex(c=>t>=c[0]&&t<c[1]);
+  if(ci!==lastCap){$('cap').innerHTML=ci>=0?C[ci][2]:'';lastCap=ci;}
+  const cp=ci>=0?eout(lin(t,C[ci][0],C[ci][0]+0.12)):0;
+  $('cap').style.transform='scale('+(0.8+0.2*cp)+')';$('cap').style.opacity=cp;
+  // silence before the reveal: dim
+  $('dim').style.opacity=(t>=19.75&&t<20.74)?0.55*eout(lin(t,19.75,20.0)):0;
+};
+window.render(0);
+</script></body></html>

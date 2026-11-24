@@ -1,0 +1,288 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Decoded: Ponzi</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../brand/storyteller.js"></script>
+<script>
+// Bad Math — DECODED: Charles Ponzi (1920). Every frame is a pure function of t.
+const W = 1080, H = 1920, DUR = 42.0;
+const C = document.getElementById('c'), X = C.getContext('2d');
+const OFF = document.createElement('canvas'); OFF.width = W; OFF.height = H; const O = OFF.getContext('2d');
+const TMP = document.createElement('canvas'); TMP.width = W; TMP.height = H; const T = TMP.getContext('2d');
+const INK = '#0B0F14', RED = '#FF3B30', GREEN = '#00D26A', PAPER = '#F5F3EE', HL = '#FFD60A';
+const SEP = '#E6D5B0', SEP2 = '#C9B07E', BRN = '#2B1D0E', BRN2 = '#5A3F1E';
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - clamp(x), 3);
+const eio = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const back = x => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const hash = n => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+const fmt = n => Math.round(n).toLocaleString('en-US');
+function rr(c, x, y, w, h, r) { c.beginPath(); c.roundRect(x, y, w, h, r); }
+function txt(c, s, x, y, font, color, align = 'center', base = 'middle') { c.font = font; c.fillStyle = color; c.textAlign = align; c.textBaseline = base; c.fillText(s, x, y); }
+function stamp(c, s, x, y, size, color, rot, k, font = 'Anton') {
+  if (k <= 0) return; const sc = lerp(2.6, 1, back(k)); c.save(); c.translate(x, y); c.rotate(rot); c.scale(sc, sc); c.globalAlpha = clamp(k * 3);
+  c.font = `400 ${size}px ${font}`; const w = c.measureText(s).width + size * .6, h = size * 1.25;
+  c.strokeStyle = color; c.lineWidth = size * .09; rr(c, -w / 2, -h / 2, w, h, size * .12); c.stroke();
+  c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(s, 0, size * .04); c.restore();
+}
+// 1920s man silhouette (bowler hat). col: fill color
+function man(c, x, y, s, col, opts = {}) {
+  const { walk = 0, arms = 0, run = 0 } = opts; c.fillStyle = col;
+  const sw = Math.sin(walk) * (run ? .5 : .25);
+  c.save(); c.translate(x, y);
+  c.save(); c.translate(-s * .08, -s * .42); c.rotate(sw); c.fillRect(-s * .06, 0, s * .12, s * .42); c.restore();
+  c.save(); c.translate(s * .08, -s * .42); c.rotate(-sw); c.fillRect(-s * .06, 0, s * .12, s * .42); c.restore();
+  rr(c, -s * .2, -s * .9, s * .4, s * .52, s * .08); c.fill();
+  c.save(); c.translate(-s * .2, -s * .85); c.rotate(.15 + (arms ? -2.6 : -sw * .8)); c.fillRect(-s * .05, 0, s * .1, s * .4); c.restore();
+  c.save(); c.translate(s * .2, -s * .85); c.rotate(-.15 + (arms ? 2.6 : sw * .8)); c.fillRect(-s * .05, 0, s * .1, s * .4); c.restore();
+  c.beginPath(); c.arc(0, -s * 1.02, s * .13, 0, 7); c.fill();
+  c.beginPath(); c.ellipse(0, -s * 1.1, s * .2, s * .045, 0, 0, 7); c.fill(); c.beginPath(); c.arc(0, -s * 1.12, s * .11, Math.PI, 0); c.fill();
+  c.restore();
+}
+function bank(c, x, y, s, color) {
+  c.fillStyle = color; c.beginPath(); c.moveTo(x - s * .55, y - s * .25); c.lineTo(x, y - s * .55); c.lineTo(x + s * .55, y - s * .25); c.closePath(); c.fill();
+  for (let i = 0; i < 4; i++) c.fillRect(x - s * .42 + i * s * .26, y - s * .2, s * .1, s * .5);
+  c.fillRect(x - s * .55, y + s * .32, s * 1.1, s * .1);
+}
+function coupon(c, x, y, w, rot, a = 1, col = SEP) { // international reply coupon (stylized)
+  c.save(); c.translate(x, y); c.rotate(rot); c.globalAlpha = a; const h = w * .62;
+  c.fillStyle = col; c.fillRect(-w / 2, -h / 2, w, h); c.strokeStyle = BRN2; c.lineWidth = Math.max(1, w * .03); c.setLineDash([w * .05, w * .04]); c.strokeRect(-w / 2 + w * .05, -h / 2 + w * .05, w - w * .1, h - w * .1); c.setLineDash([]);
+  if (w > 60) { txt(c, 'REPLY', 0, -h * .14, `400 ${w * .17}px Rye`, BRN); txt(c, 'COUPON', 0, h * .16, `400 ${w * .13}px Rye`, BRN); }
+  c.restore();
+}
+function paper(c, x, y, w, h, rot, col, f) { c.save(); c.translate(x, y); c.rotate(rot); c.shadowColor = 'rgba(0,0,0,.55)'; c.shadowBlur = 40; c.shadowOffsetY = 18; c.fillStyle = col; c.fillRect(-w / 2, -h / 2, w, h); c.shadowColor = 'transparent'; f(c, w, h); c.restore(); }
+function sepiaBg(c, t) { const g = c.createRadialGradient(540, 900, 200, 540, 900, 1300); g.addColorStop(0, '#3a2a14'); g.addColorStop(1, '#120c05'); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+function film(c, t, a = 1) { // grain, scratches, flicker over sepia scenes
+  const f = Math.floor(t * 24); c.save(); c.globalAlpha = a;
+  c.fillStyle = `rgba(255,240,200,${.04 + .04 * hash(f)})`; c.fillRect(0, 0, W, H);
+  for (let i = 0; i < 3; i++) if (hash(f * 3 + i) > .5) { const x = hash(f * 7 + i) * W; c.fillStyle = 'rgba(255,245,220,.25)'; c.fillRect(x, 0, 2, H); }
+  for (let i = 0; i < 120; i++) { c.fillStyle = `rgba(0,0,0,${hash(f * 11 + i) * .25})`; c.fillRect(hash(f * 13 + i) * W, hash(f * 17 + i) * H, 3, 3); }
+  if (hash(f * 5) > .85) { c.fillStyle = 'rgba(20,10,0,.6)'; c.beginPath(); c.arc(hash(f * 19) * W, hash(f * 23) * H, 6 + hash(f) * 14, 0, 7); c.fill(); }
+  c.restore();
+}
+function bgGrid(c, t, tint = 'rgba(255,59,48,.05)') { c.fillStyle = INK; c.fillRect(0, 0, W, H); c.strokeStyle = tint; c.lineWidth = 2; const o = (t * 30) % 90; for (let x = -90 + o; x < W; x += 90) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, H); c.stroke(); } for (let y = -90 + o; y < H; y += 90) { c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); } }
+function vignette(c, a = .7) { const g = c.createRadialGradient(540, 900, 300, 540, 900, 1250); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(0,0,0,${a})`); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+
+// ---------- captions (Whisper word timings on the Kokoro narration) ----------
+const CAPS = [[0, '<g>50%</g> PROFIT.'], [1.05, 'IN <y>45 DAYS.</y>'], [3.2, 'BOSTON, <y>1920.</y>'], [4.95, 'BANKS PAID'], [5.41, '<g>5%</g> A YEAR.'], [6.95, 'CHARLES PONZI'], [7.77, 'SAID HE BOUGHT'],
+[8.31, 'POSTAL COUPONS'], [9.27, 'CHEAP IN EUROPE,'], [10.15, 'AND CASHED THEM'], [11.27, 'IN AMERICA.'], [12.35, '<y>THOUSANDS</y> LINED UP.'], [13.67, 'EVEN MOST OF'],
+[14.35, "BOSTON'S <y>POLICE</y>"], [15.05, 'FORCE BOUGHT IN.'], [16.55, 'BUT DO <r>THE MATH.</r>'], [17.76, 'TO PAY EVERYONE,'], [18.91, "HE'D NEED"], [19.31, '<r>160 MILLION</r>'],
+[20.61, 'COUPONS.'], [21.95, 'THERE WERE ABOUT'], [22.49, '<g>27,000.</g>'], [24.4, 'SO THE PROFITS'], [24.99, 'CAME FROM THE'], [25.71, '<r>NEXT INVESTOR.</r>'],
+[27.03, 'THEN A NEWSPAPER'], [27.81, 'CHECKED THE NUMBERS.'], [29.15, 'THE LINE TURNED'], [29.83, 'INTO A <r>RUN.</r>'], [30.8, '<r>6 BANKS</r> WENT DOWN.'], [32.33, '<r>$20 MILLION.</r>'],
+[33.78, '<r>GONE.</r>'], [34.77, 'HIS NAME BECAME'], [35.61, 'THE WORD FOR IT.'], [36.81, 'HE DIED <r>BROKE.</r>'], [38.18, 'TOTAL ESTATE:'], [39.21, '<r>$75.</r>'], [41.4, '']];
+function caption(c, t) {
+  let i = CAPS.findIndex((x, k) => t >= x[0] && t < (CAPS[k + 1] ? CAPS[k + 1][0] : 99)); if (i < 0 || !CAPS[i][1]) return;
+  const k = i === 0 ? 1 : eo(lin(t, CAPS[i][0], CAPS[i][0] + .13));
+  const parts = []; CAPS[i][1].replace(/<(g|r|y)>(.*?)<\/\1>|([^<]+)/g, (m, tag, inner, plain) => { const col = tag === 'g' ? GREEN : tag === 'r' ? RED : tag === 'y' ? HL : PAPER; for (const w of (inner || plain).split(' ')) if (w) parts.push([w, col]); });
+  c.save(); c.font = '800 68px Inter'; const sp = c.measureText(' ').width;
+  const lines = [[]]; let lw = 0; for (const p of parts) { const w = c.measureText(p[0]).width; if (lw + w > 600 && lines[lines.length - 1].length) { lines.push([]); lw = 0; } lines[lines.length - 1].push([...p, w]); lw += w + sp; }
+  const y0 = 1345 - (lines.length - 1) * 40; c.translate(420, y0); c.scale(.8 + .2 * k, .8 + .2 * k); c.globalAlpha = k;
+  lines.forEach((ln, li) => { const tw = ln.reduce((a, p) => a + p[2], 0) + sp * (ln.length - 1); let px = -tw / 2;
+    for (const [w, col, ww] of ln) { c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineWidth = 14; c.strokeStyle = 'rgba(0,0,0,.85)'; c.lineJoin = 'round'; c.strokeText(w, px, li * 86); c.fillStyle = col; c.fillText(w, px, li * 86); px += ww + sp; } });
+  c.restore();
+}
+function hud(c, t) {
+  if (t < 2.75) return; // the fake "app" hook has no case HUD
+  c.save(); rr(c, 90, 238, 196, 52, 8); c.fillStyle = RED; c.fill(); txt(c, 'DECODED', 188, 265, '800 30px Inter', PAPER);
+  txt(c, 'CASE: CHARLES PONZI · 1920', 306, 265, '700 27px JBM', 'rgba(245,243,238,.85)', 'left');
+  txt(c, 'DOCUMENTED · PONZI PLED GUILTY, 1920', 90, 1492, '700 22px JBM', 'rgba(245,243,238,.62)', 'left');
+  c.fillStyle = 'rgba(245,243,238,.15)'; c.fillRect(90, 306, 900, 6); c.fillStyle = RED; c.fillRect(90, 306, 900 * t / DUR, 6); c.restore();
+}
+
+// ---------- scenes ----------
+function sApp(c, t) { // 0–2.75 modern trading app: +50% in 45 days (the bait)
+  c.fillStyle = '#05080c'; c.fillRect(0, 0, W, H);
+  rr(c, 60, 200, 960, 1160, 48); c.fillStyle = '#0f151d'; c.fill();
+  txt(c, '9:41', 120, 250, '700 30px Inter', 'rgba(245,243,238,.8)', 'left'); txt(c, '● ● ●', 960, 250, '700 22px Inter', 'rgba(245,243,238,.6)', 'right');
+  txt(c, 'MY PORTFOLIO', 120, 330, '700 34px Inter', 'rgba(245,243,238,.6)', 'left');
+  const g = lerp(.12, 1, eio(lin(t, 0, 2.2))); txt(c, '$' + fmt(1000 * (1 + .5 * g)), 120, 420, '800 110px JBM', PAPER, 'left');
+  rr(c, 120, 490, 300, 64, 32); c.fillStyle = 'rgba(0,210,106,.18)'; c.fill(); txt(c, '▲ +' + Math.round(50 * g) + '%', 270, 523, '800 38px JBM', GREEN);
+  // candles rocketing
+  for (let i = 0; i < 18; i++) { const k = lin(t, i * .1 - .45, i * .1 - .25); if (k <= 0) continue; const base = 1120 - i * 30 - Math.pow(i / 17, 2) * 260, h = 60 + hash(i) * 60; const up = hash(i + 3) > .18;
+    c.fillStyle = up ? GREEN : RED; c.fillRect(130 + i * 47, base - h * k, 30, h * k); c.fillRect(143 + i * 47, base - h * k - 30, 4, h * k + 60); }
+  // 45-day countdown ring
+  const d = Math.round(lerp(45, 0, lin(t, .2, 2.4))); c.lineWidth = 18; c.strokeStyle = 'rgba(245,243,238,.12)'; c.beginPath(); c.arc(840, 420, 90, 0, 7); c.stroke();
+  c.strokeStyle = HL; c.beginPath(); c.arc(840, 420, 90, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * d / 45); c.stroke(); txt(c, d, 840, 405, '800 60px JBM', PAPER); txt(c, 'DAYS', 840, 455, '700 22px Inter', 'rgba(245,243,238,.7)');
+  // notifications drop in
+  [[.3, 'Deposit received: $1,000'], [1.0, 'Return: +50% in 45 days'], [1.7, 'Your friends are investing']].forEach(([t0, s], i) => {
+    const k = back(lin(t, t0, t0 + .3)); if (k <= 0) return; const n = [[.3], [1.0], [1.7]].filter(x => t > x[0] + .02).length - 1 - i; const y = 1180 - n * 112;
+    c.save(); c.globalAlpha = clamp(k); c.translate(lerp(1100, 0, eo(lin(t, t0, t0 + .3))), 0); rr(c, 90, y, 900, 96, 24); c.fillStyle = 'rgba(40,48,60,.95)'; c.fill();
+    rr(c, 112, y + 20, 56, 56, 14); c.fillStyle = GREEN; c.fill(); txt(c, '$', 140, y + 49, '800 36px Inter', INK); txt(c, s, 190, y + 49, '700 34px Inter', PAPER, 'left'); c.restore();
+  });
+}
+function sTitle(c, t) { // 2.75–4.96 silent-film intertitle: BOSTON 1920
+  sepiaBg(c, t); const k = eo(lin(t, 2.85, 3.3));
+  c.save(); c.translate(540, 820); c.scale(lerp(1.15, 1, k), lerp(1.15, 1, k)); c.globalAlpha = k;
+  c.strokeStyle = SEP; c.lineWidth = 6; c.strokeRect(-420, -330, 840, 660); c.lineWidth = 2; c.strokeRect(-395, -305, 790, 610);
+  for (const [sx, sy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) { c.beginPath(); c.arc(sx * 395, sy * 305, 34, 0, 7); c.stroke(); }
+  txt(c, 'BOSTON', 0, -90, '400 150px Rye', SEP); txt(c, '— 1920 —', 0, 90, '400 110px Rye', SEP2);
+  c.restore();
+}
+function sBank(c, t) { // 4.96–6.99 $100 at a bank vs with Ponzi
+  sepiaBg(c, t);
+  const a = eio(lin(t, 5.4, 6.7));
+  // bank column
+  bank(c, 300, 640, 180, SEP); txt(c, 'BANK', 300, 760, '400 54px Rye', SEP); txt(c, '5% / YEAR', 300, 820, '800 40px JBM', SEP2);
+  const h1 = 300 * (1.05 * a + (1 - a)) * .2 + 0; rr(c, 220, 1210 - 300 * .2 * (1 + .05 * a), 160, 300 * .2 * (1 + .05 * a), 8); c.fillStyle = SEP2; c.fill();
+  txt(c, '$' + (100 + 5 * a).toFixed(0), 300, 1170 - 300 * .2 * (1 + .05 * a) + 0, '800 50px JBM', SEP);
+  // ponzi column
+  man(c, 780, 690, 170, SEP); txt(c, 'PONZI', 780, 760, '400 54px Rye', HL); txt(c, '50% / 45 DAYS', 780, 820, '800 40px JBM', HL);
+  const h2 = 60 + 240 * a; rr(c, 700, 1210 - h2, 160, h2, 8); c.fillStyle = GREEN; c.fill();
+  txt(c, '$' + (100 + 50 * a).toFixed(0), 780, 1170 - h2, '800 50px JBM', GREEN);
+  c.strokeStyle = SEP2; c.lineWidth = 4; c.beginPath(); c.moveTo(150, 1212); c.lineTo(930, 1212); c.stroke();
+}
+function sPonzi(c, t) { // 6.99–12.38 camera flash portrait, coupons Europe -> America
+  sepiaBg(c, t);
+  if (t < 8.6) { // wanted-style portrait card
+    const k = back(lin(t, 7.0, 7.35));
+    paper(c, 540, 820, 600, 760, -.04 * k, SEP, (p, w, h) => { p.globalAlpha = 1;
+      txt(p, 'MEET', 0, -h / 2 + 70, '400 60px Rye', BRN);
+      p.fillStyle = BRN; man(p, 0, 190, 330, BRN); p.fillStyle = BRN;
+      txt(p, 'CHARLES PONZI', 0, h / 2 - 90, '400 58px Rye', BRN); txt(p, 'SECURITIES EXCHANGE CO.', 0, h / 2 - 40, '400 28px Elite', BRN2); });
+  } else { // map: Europe -> America
+    const k = eo(lin(t, 8.6, 9.0));
+    c.globalAlpha = k; rr(c, 80, 560, 330, 560, 30); c.fillStyle = 'rgba(230,213,176,.14)'; c.fill(); rr(c, 670, 560, 330, 560, 30); c.fill(); c.globalAlpha = 1;
+    txt(c, 'EUROPE', 245, 610, '400 52px Rye', SEP); txt(c, 'AMERICA', 835, 610, '400 52px Rye', SEP);
+    txt(c, 'BUY CHEAP', 245, 1060, '800 36px JBM', GREEN); txt(c, 'CASH IN', 835, 1060, '800 36px JBM', HL);
+    // ocean waves
+    c.strokeStyle = 'rgba(120,160,190,.5)'; c.lineWidth = 4; for (let j = 0; j < 6; j++) { c.beginPath(); for (let x = 420; x <= 660; x += 10) c.lineTo(x, 700 + j * 60 + Math.sin(x * .05 + t * 4 + j) * 8); c.stroke(); }
+    for (let i = 0; i < 9; i++) { const s0 = 9.3 + i * .28, a = lin(t, s0, s0 + 1.1); if (a <= 0 || a >= 1) continue; const q = eio(a);
+      coupon(c, lerp(245, 835, q), lerp(840, 840, q) - Math.sin(q * Math.PI) * 220 + (i % 3 - 1) * 60, lerp(120, 150, q), Math.sin(i + a * 6) * .4); }
+    if (t < 9.6) for (let i = 0; i < 4; i++) coupon(c, 200 + i * 30, 860 + i * 18, 120, -.2 + i * .1);
+    const st = t > 10.6; if (st) for (let i = 0; i < Math.min(8, Math.floor((t - 10.6) * 6)); i++) coupon(c, 820 + (i % 2) * 30, 920 - i * 14, 140, .1 - i * .03);
+  }
+}
+function sLine(c, t) { // 12.38–16.61 thousands lined up; police bought in
+  sepiaBg(c, t);
+  c.fillStyle = 'rgba(0,0,0,.35)'; c.fillRect(0, 1060, W, 300);
+  // office door
+  rr(c, 830, 640, 190, 430, 10); c.fillStyle = '#2a1d0c'; c.fill(); txt(c, 'PONZI', 925, 610, '400 44px Rye', HL); txt(c, 'SECURITIES', 925, 700, '700 20px JBM', SEP2);
+  const n = 26;
+  for (let i = 0; i < n; i++) { const row = i % 2, x = 790 - ((i * 70 - (t - 12.38) * 140 + 6000) % (n * 70)), y = 1040 + row * 70; const s = 120 - row * 10;
+    const cop = (t > 14.3) && (i % 4 !== 3); man(c, x, y, s, cop ? '#7fa6d6' : (row ? '#d9c59a' : SEP), { walk: t * 8 + i });
+    if (cop) { c.fillStyle = '#26466f'; c.fillRect(x - s * .2, y - s * 1.2, s * .4, s * .1); } }
+  const inv = Math.round(lerp(0, 15000, eio(lin(t, 12.4, 16.2))));
+  txt(c, 'INVESTORS (AT LEAST)', 540, 430, '700 34px JBM', SEP2); txt(c, fmt(inv) + '+', 540, 510, '800 96px JBM', GREEN);
+  stamp(c, '≈ 75% OF BOSTON POLICE', 540, 760, 64, '#4f8bd6', -.08, lin(t, 14.4, 14.6));
+}
+function sMath(c, t) { // 16.61–17.82 DO THE MATH (adding machine)
+  bgGrid(c, t); const k = back(lin(t, 16.62, 16.85));
+  c.save(); c.translate(540, 700); c.scale(k, k); txt(c, 'DO THE', 0, -90, '400 150px Anton', PAPER); txt(c, 'MATH.', 0, 70, '400 210px Anton', RED); c.restore();
+  // adding machine tape printing
+  const p = lin(t, 16.9, 17.8); rr(c, 380, 900, 320, 70, 10); c.fillStyle = '#5b6573'; c.fill();
+  c.fillStyle = PAPER; c.fillRect(420, 970, 240, 300 * p);
+  ['PROMISED: +50%', 'IN: 45 DAYS', 'COUPON PROFIT:', '= ???'].forEach((s, i) => { if (p > (i + 1) / 5) txt(c, s, 540, 1000 + i * 60, '800 28px JBM', INK); });
+}
+function sTower(c, t) { // 17.82–21.95 160 million coupons tower
+  sepiaBg(c, t);
+  const k = eio(lin(t, 18.9, 21.2)); const cam = k * 1400; // camera tilts up
+  c.save(); c.translate(0, cam);
+  for (let i = 0; i < 70; i++) { const y = 1180 - i * 36; if (y + cam < 200 || i / 70 > k * 1.05 + .05) continue; coupon(c, 540 + Math.sin(i * 1.7) * 12, y, 230, Math.sin(i) * .05); }
+  c.restore();
+  rr(c, 140, 370, 800, 180, 20); c.fillStyle = 'rgba(18,12,5,.88)'; c.fill();
+  txt(c, 'COUPONS NEEDED', 540, 420, '700 36px JBM', SEP2);
+  txt(c, fmt(160e6 * eio(lin(t, 19.3, 20.6))), 540, 500, '800 92px JBM', RED);
+}
+function sReal(c, t) { // 21.95–24.47 there were about 27,000
+  sepiaBg(c, t);
+  const k = eo(lin(t, 22.0, 22.4));
+  // ghost tower outline (the 160M) vs real speck
+  c.strokeStyle = 'rgba(230,213,176,.35)'; c.setLineDash([16, 12]); c.lineWidth = 4; c.strokeRect(170, 340, 360, 880); c.setLineDash([]);
+  txt(c, 'NEEDED', 350, 1260, '400 44px Rye', SEP2); txt(c, '160,000,000', 350, 760, '800 44px JBM', 'rgba(230,213,176,.55)');
+  const real = 880 * 27000 / 160e6; // ~0.15 px
+  c.fillStyle = GREEN; c.fillRect(640, 1220 - Math.max(3, real), 300, Math.max(3, real));
+  txt(c, 'EXISTED', 790, 1260, '400 44px Rye', GREEN);
+  if (t > 22.5) { const z = back(lin(t, 22.5, 22.8)); c.save(); c.translate(790, 1100); c.scale(z, z); txt(c, '27,000', 0, 0, '800 64px JBM', GREEN); c.restore();
+    c.strokeStyle = GREEN; c.lineWidth = 4; c.beginPath(); c.moveTo(790, 1130); c.lineTo(790, 1212); c.stroke(); }
+  stamp(c, '0.017%', 790, 700, 110, RED, -.1, lin(t, 23.3, 23.5));
+}
+function sPyramid(c, t) { // 24.47–27.08 the profits came from the next investor
+  sepiaBg(c, t); const rows = 6;
+  for (let r = 0; r < rows; r++) { const k = eo(lin(t, 24.5 + r * .3, 24.8 + r * .3)); if (k <= 0) continue; const n = Math.pow(2, r); const s = Math.max(28, 110 - r * 16); const y = 520 + r * 130;
+    for (let i = 0; i < Math.min(n, 32); i++) { const x = 540 + (i - (Math.min(n, 32) - 1) / 2) * Math.min(130, 900 / Math.min(n, 32)); man(c, x, y + (1 - k) * 200, s, r === rows - 1 ? GREEN : SEP); } }
+  // money flowing up from the newest row
+  for (let i = 0; i < 30; i++) { const s0 = 25.2 + i * .06, a = lin(t, s0, s0 + .9); if (a <= 0 || a >= 1) continue; const x = 540 + (hash(i) - .5) * 800 * (1 - a); c.fillStyle = GREEN; txt(c, '$', x, lerp(1180, 460, eio(a)), '800 46px JBM', GREEN); }
+  txt(c, 'NEW MONEY', 540, 1240, '800 40px JBM', GREEN); txt(c, '▲ PAYS THE OLD ▲', 540, 372, '800 40px JBM', HL);
+}
+function sPaper(c, t) { // 27.08–29.19 spinning newspaper
+  sepiaBg(c, t); const k = eo(lin(t, 27.1, 27.8)); const rot = (1 - k) * Math.PI * 4;
+  c.save(); c.translate(540, 820); c.rotate(rot); c.scale(.2 + .8 * k, .2 + .8 * k);
+  c.fillStyle = '#efe6cf'; c.fillRect(-400, -470, 800, 940); c.fillStyle = BRN;
+  txt(c, 'EXTRA!', 0, -390, '400 110px Rye', BRN); c.fillRect(-370, -320, 740, 6);
+  txt(c, 'COUPONS NEEDED: 160,000,000', 0, -250, '700 34px JBM', BRN); txt(c, 'COUPONS THAT EXIST: 27,000', 0, -200, '700 34px JBM', '#8a1c12');
+  txt(c, 'THE MATH', 0, -80, '400 120px Anton', BRN); txt(c, "DOESN'T WORK", 0, 50, '400 120px Anton', '#8a1c12');
+  for (let i = 0; i < 9; i++) c.fillRect(-370, 150 + i * 32, 740 * (.6 + hash(i) * .4), 12);
+  c.restore();
+  txt(c, 'ILLUSTRATION', 900, 1240, '700 20px JBM', 'rgba(230,213,176,.5)');
+}
+function sRun(c, t) { // 29.19–30.84 the line turned into a run
+  sepiaBg(c, t);
+  rr(c, 830, 640, 190, 430, 10); c.fillStyle = '#2a1d0c'; c.fill(); txt(c, 'PONZI', 925, 610, '400 44px Rye', HL);
+  for (let i = 0; i < 30; i++) { const row = i % 3, x = 60 + ((i * 41 + (t - 29.19) * 520) % 900), y = 1000 + row * 60; man(c, x, y, 120 - row * 8, row ? '#d9c59a' : SEP, { walk: t * 16 + i, run: 1, arms: i % 5 === 0 }); }
+  txt(c, 'EVERYONE WANTS OUT', 540, 460, '400 76px Anton', RED);
+}
+function sBanks(c, t) { // 30.84–32.37 six banks went down
+  sepiaBg(c, t);
+  for (let i = 0; i < 6; i++) { const x = 200 + (i % 3) * 340, y = 700 + Math.floor(i / 3) * 400, t0 = 31.0 + i * .2; const f = eio(lin(t, t0, t0 + .5));
+    c.save(); c.beginPath(); c.rect(x - 160, y - 200, 320, 300); c.clip(); c.translate(0, f * 260); c.rotate(f * (i % 2 ? .2 : -.2)); bank(c, x, y, 220, f > 0 ? '#c94a3a' : SEP); c.restore();
+    if (f > 0 && f < 1) for (let d = 0; d < 10; d++) { c.fillStyle = `rgba(200,180,140,${.5 * (1 - f)})`; c.beginPath(); c.arc(x + (hash(i * 10 + d) - .5) * 260, y + 90 - f * 60 * hash(d), 20 + 30 * f, 0, 7); c.fill(); } }
+  const n = [0, 1, 2, 3, 4, 5].filter(i => t > 31.0 + i * .2).length; txt(c, n + ' / 6 BANKS', 540, 450, '400 84px Anton', RED);
+}
+function sGone(c, t) { // 32.37–34.81 $20 million gone
+  bgGrid(c, t);
+  if (t < 33.8) { const k = eio(lin(t, 32.4, 33.4)); txt(c, '$' + fmt(20e6 * k), 540, 820, '800 110px JBM', RED); txt(c, 'INVESTORS LOST', 540, 940, '400 60px Anton', PAPER); }
+  else { const g = lin(t, 33.8, 34.6); for (let i = 0; i < 260; i++) { const sx = 140 + hash(i) * 800, sy = 780 + hash(i + 1) * 80; const vx = (hash(i + 2) - .3) * 900, vy = -hash(i + 3) * 700; c.fillStyle = `rgba(255,${120 + hash(i) * 80},40,${1 - g})`; c.fillRect(sx + vx * g, sy + vy * g + 400 * g * g, 8, 8); }
+    txt(c, 'GONE.', 540, 820, '400 210px Anton', `rgba(245,243,238,${eo(lin(t, 33.85, 34.05))})`); }
+}
+function sWord(c, t) { // 34.81–36.85 his name became the word
+  bgGrid(c, t); paper(c, 540, 820, 860, 560, -.02, '#f4efe3', (p, w, h) => {
+    txt(p, 'Pon·zi scheme', -w / 2 + 50, -h / 2 + 90, '400 76px Rye', BRN, 'left'); txt(p, '/ˈpɒn.zi ˌskiːm/  noun', -w / 2 + 54, -h / 2 + 160, '400 34px Elite', BRN2, 'left');
+    const def = 'A fraud that pays earlier investors with money from newer investors.'; const n = Math.floor(lin(t, 35.2, 36.6) * def.length);
+    const words = def.slice(0, n).split(' '); let line = '', y = -h / 2 + 250; p.font = '400 40px Elite';
+    for (const w2 of words) { if (p.measureText(line + w2).width > w - 110) { txt(p, line, -w / 2 + 54, y, '400 40px Elite', '#1c1c1c', 'left'); line = ''; y += 54; } line += w2 + ' '; }
+    txt(p, line, -w / 2 + 54, y, '400 40px Elite', '#1c1c1c', 'left'); });
+}
+function sEstate(c, t) { // 36.85–42.0 died broke, estate $75; loops back to the app
+  sepiaBg(c, t); const k = eo(lin(t, 36.9, 37.3));
+  paper(c, 540, 760, 560, 700, .03, '#c8b897', (p, w, h) => { man(p, 0, 250, 380, '#6b5a40'); txt(p, 'CHARLES PONZI', 0, h / 2 - 60, '400 50px Rye', '#3a2c18'); });
+  if (t > 38.2) { const z = back(lin(t, 39.2, 39.5)); paper(c, 380, 1080, 430, 170, -.05, '#efe6cf', (p) => { txt(p, 'ESTATE:', -88, 0, '400 46px Rye', BRN); p.save(); p.translate(118, 0); p.scale(z, z); txt(p, '$75', 0, 0, '800 90px JBM', '#8a1c12'); p.restore(); }); }
+  for (let i = 0; i < 3; i++) { const t0 = 39.3 + i * .25, a = lin(t, t0, t0 + .35); if (a <= 0) continue; c.fillStyle = '#d4a84a'; c.beginPath(); c.ellipse(760 + i * 60, lerp(400, 1210, eio(a)), 34, 12 + 22 * (1 - a), 0, 0, 7); c.fill(); }
+  if (t > 41.0) stamp(c, 'BROKE', 540, 560, 120, RED, -.15, lin(t, 41.0, 41.15));
+}
+const SCENES = [[0, 2.75, sApp], [2.75, 4.96, sTitle], [4.96, 6.99, sBank], [6.99, 12.38, sPonzi], [12.38, 16.61, sLine], [16.61, 17.82, sMath], [17.82, 21.95, sTower],
+  [21.95, 24.47, sReal], [24.47, 27.08, sPyramid], [27.08, 29.19, sPaper], [29.19, 30.84, sRun], [30.84, 32.37, sBanks], [32.37, 34.81, sGone], [34.81, 36.85, sWord], [36.85, 42.01, sEstate]];
+const SEPIA = new Set([sTitle, sBank, sPonzi, sLine, sTower, sReal, sPyramid, sPaper, sRun, sBanks, sEstate]);
+const GLITCH = [[2.62, 3.05, 1], [16.58, 16.8, .8], [33.78, 34.0, .8], [41.6, 42.0, 1]];
+const SHAKE = [[2.75, .45, 34], [7.0, .25, 10], [14.4, .25, 12], [16.62, .35, 24], [23.3, .3, 16], [29.2, 1.5, 7], [31.0, 1.2, 10], [33.8, .4, 26], [41.0, .3, 18]];
+const FLASH = [[7.0, .25], [2.75, .15], [33.8, .15]];
+
+const MOUTH_ST = [0.02, 0.13, 1, 0.938, 0.138, 0.05, 0.002, 0.318, 0.475, 0.324, 0.048, 0.147, 0.527, 0.479, 0.535, 0.584, 0.513, 0.702, 0.491, 0.3, 0.065, 0.012, 0.115, 0.538, 0.958, 0.832, 1, 0.753, 0.219, 0.06, 0.053, 0.341, 0.163, 0.052, 0.019, 0.003, 0.003, 0.004, 0.004, 0.003, 0.003, 0.003, 0.09, 0.55, 0.752, 0.733, 0.326, 0.102, 0.066, 0.073, 0.761, 0.751, 0.909, 0.802, 0.431, 0.468, 0.299, 0.105, 0.072, 0.31, 0.499, 0.405, 0.484, 0.473, 0.468, 0.25, 0.184, 0.165, 0.356, 0.63, 0.621, 0.579, 0.357, 0.176, 0.057, 0.039, 0.031, 0.021, 0.132, 0.196, 0.08, 0.008, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.009, 0.078, 0.881, 1, 1, 1, 0.449, 0.725, 0.509, 0.022, 0.062, 0.669, 0.676, 0.386, 0.351, 0.249, 0.252, 0.306, 0.385, 0.6, 0.587, 0.581, 0.458, 0.215, 0.121, 0.171, 0.343, 0.445, 0.484, 0.394, 0.106, 0.297, 0.109, 0.034, 0.575, 0.77, 0.62, 0.57, 0.181, 0.166, 0.112, 0.197, 0.096, 0.041, 0.03, 0.004, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.044, 0.504, 1, 0.92, 0.833, 0.515, 0.376, 0.54, 0.051, 0.005, 0.175, 0.478, 0.751, 0.539, 0.516, 0.449, 0.176, 0.081, 0.065, 0.05, 0.6, 0.925, 0.533, 0.709, 0.659, 0.654, 0.596, 0.16, 0.024, 0.002, 0.122, 0.445, 0.376, 0.447, 0.408, 0.372, 0.46, 0.599, 0.482, 0.435, 0.427, 0.314, 0.226, 0.234, 0.312, 0.398, 0.342, 0.212, 0.092, 0.062, 0.026, 0.018, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.032, 0.359, 0.311, 0.678, 0.652, 0.621, 0.69, 0.621, 0.364, 0.249, 0.004, 0.113, 0.171, 0.381, 0.657, 0.694, 0.788, 0.776, 0.631, 0.413, 0.242, 0.257, 0.371, 0.336, 0.271, 0.275, 0.298, 0.247, 0.519, 0.398, 0.307, 0.293, 0.333, 0.292, 0.196, 0.156, 0.634, 0.667, 0.777, 0.609, 0.181, 0.03, 0.002, 0.003, 0.104, 0.083, 0.663, 0.75, 0.517, 0.287, 0.493, 0.022, 0.061, 0.479, 0.34, 0.103, 0.019, 0.062, 0.082, 0.074, 0.394, 0.375, 0.176, 0.028, 0.119, 0.208, 0.367, 0.392, 0.444, 0.433, 0.409, 0.263, 0.456, 0.085, 0.044, 0.328, 0.435, 0.211, 0.341, 0.277, 0.179, 0.031, 0.116, 0.398, 0.331, 0.403, 0.405, 0.339, 0.309, 0.568, 0.854, 0.74, 0.536, 0.342, 0.146, 0.073, 0.017, 0.01, 0.002, 0.005, 0.002, 0.003, 0.005, 0.006, 0.007, 0.008, 0.011, 0.013, 0.009, 0.169, 0.486, 0.616, 0.242, 0.11, 0.163, 0.204, 0.379, 0.641, 0.756, 0.75, 0.476, 0.525, 0.576, 0.22, 0.016, 0.056, 0.364, 0.396, 0.363, 0.304, 0.25, 0.222, 0.256, 0.377, 0.43, 0.395, 0.415, 0.384, 0.445, 0.385, 0.444, 0.508, 0.497, 0.464, 0.244, 0.042, 0.003, 0.074, 0.158, 0.098, 0.022, 0.016, 0.003, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004, 0.019, 0.267, 1, 0.703, 0.66, 0.636, 0.695, 0.455, 0.496, 0.396, 0.463, 0.475, 0.272, 0.318, 0.171, 0.378, 0.537, 0.508, 0.502, 0.601, 0.609, 0.665, 0.588, 0.393, 0.307, 0.551, 0.439, 0.269, 0.094, 0.025, 0.003, 0.002, 0.032, 0.006, 0.001, 0.0, 0.0, 0.0, 0.001, 0.233, 0.438, 0.486, 0.235, 0.503, 0.664, 0.478, 0.532, 0.461, 0.487, 0.756, 0.855, 1.0, 0.699, 0.466, 0.428, 0.052, 0.453, 0.264, 0.178, 0.125, 0.126, 0.715, 0.763, 0.775, 0.656, 0.342, 0.366, 0.019, 0.07, 0.371, 0.445, 0.313, 0.21, 0.005, 0.004, 0.115, 0.268, 0.285, 0.217, 0.459, 0.381, 0.35, 0.232, 0.492, 0.362, 0.09, 0.04, 0.031, 0.324, 0.539, 0.387, 0.375, 0.293, 0.252, 0.168, 0.359, 0.175, 0.009, 0.095, 0.108, 0.54, 0.744, 0.914, 0.947, 0.739, 0.408, 0.161, 0.267, 0.259, 0.154, 0.076, 0.045, 0.021, 0.017, 0.008, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.576, 0.737, 0.26, 0.18, 0.371, 0.715, 0.775, 0.696, 0.508, 0.41, 0.98, 0.396, 0.493, 0.469, 0.607, 0.678, 0.798, 0.954, 0.611, 0.332, 0.164, 0.089, 0.035, 0.061, 0.089, 0.065, 0.032, 0.007, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.136, 0.306, 0.126, 0.01, 0.253, 0.538, 0.854, 0.999, 0.735, 0.449, 0.048, 0.004, 1, 1, 1, 0.174, 0.211, 0.54, 0.482, 0.425, 0.335, 0.41, 0.382, 0.173, 0.107, 0.06, 0.049, 0.009, 0.002, 0.003, 0.004, 0.005, 0.005, 0.006, 0.005, 0.003, 0.009, 0.127, 0.565, 0.339, 0.269, 0.486, 0.557, 0.499, 0.562, 0.318, 0.698, 0.579, 0.168, 0.138, 0.14, 0.155, 0.802, 1, 0.814, 0.795, 0.588, 0.225, 0.276, 0.487, 0.46, 0.328, 0.155, 0.279, 0.35, 0.445, 0.37, 0.303, 0.461, 0.463, 0.508, 0.363, 0.062, 0.473, 0.281, 0.019, 0.195, 0.319, 0.356, 0.39, 0.41, 0.379, 0.32, 0.337, 0.341, 0.343, 0.446, 0.402, 0.406, 0.22, 0.067, 0.103, 0.082, 0.419, 0.356, 0.147, 0.015, 0.145, 0.267, 0.511, 0.361, 0.151, 0.073, 0.045, 0.035, 0.014, 0.007, 0.021, 0.111, 0.196, 0.094, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.206, 0.581, 0.805, 0.691, 0.367, 0.592, 0.712, 1, 0.876, 0.217, 0.138, 0.856, 0.743, 0.685, 0.604, 0.254, 0.05, 0.003, 0.001, 0.363, 0.172, 0.047, 0.37, 0.565, 0.452, 0.494, 0.436, 0.289, 0.473, 0.439, 0.353, 0.553, 0.552, 0.432, 0.195, 0.366, 0.434, 0.442, 0.258, 0.028, 0.028, 0.275, 0.581, 0.462, 0.466, 0.506, 0.468, 0.35, 0.259, 0.173, 0.276, 0.128, 0.084, 0.035, 0.028, 0.016, 0.01, 0.006, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.005, 0.107, 0.478, 0.709, 0.283, 0.647, 0.277, 0.031, 0.138, 0.525, 1, 1, 1, 1, 0.115, 0.071, 0.458, 0.543, 0.137, 0.084, 0.337, 0.051, 0.052, 0.102, 0.389, 0.542, 0.47, 0.496, 0.509, 0.497, 0.24, 0.073, 0.08, 0.445, 0.339, 0.361, 0.414, 0.391, 0.417, 0.415, 0.506, 0.52, 0.501, 0.181, 0.063, 0.318, 0.203, 0.038, 0.389, 0.383, 0.468, 0.434, 0.268, 0.231, 0.763, 0.755, 0.607, 0.337, 0.436, 0.522, 0.251, 0.002, 0.133, 0.191, 0.091, 0.036, 0.022, 0.006, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.041, 0.382, 0.932, 0.962, 0.742, 0.603, 0.576, 0.536, 0.458, 0.51, 0.49, 0.501, 0.654, 0.835, 0.718, 0.558, 0.419, 0.538, 0.055, 0.006, 0.202, 0.523, 0.498, 0.437, 0.117, 0.007, 0.237, 0.438, 0.258, 0.046, 0.351, 0.66, 0.459, 0.912, 0.478, 0.034, 0.008, 0.031, 0.322, 0.315, 0.453, 0.552, 0.597, 0.635, 0.34, 0.205, 0.11, 0.133, 0.077, 0.022, 0.018, 0.071, 0.152, 0.112, 0.008, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.036, 0.416, 0.389, 0.328, 0.499, 0.747, 0.582, 0.645, 0.678, 0.703, 0.633, 0.55, 0.506, 0.281, 0.092, 0.673, 0.207, 0.333, 0.595, 0.467, 0.447, 0.405, 0.317, 0.347, 0.324, 0.237, 0.208, 0.388, 0.141, 0.209, 0.398, 0.386, 0.302, 0.192, 0.246, 0.633, 0.711, 0.726, 0.357, 0.129, 0.05, 0.031, 0.012, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004, 0.08, 0.267, 0.306, 1, 0.471, 0.074, 0.42, 0.218, 0.09, 0.147, 1, 0.96, 0.871, 0.844, 0.653, 0.502, 0.154, 0.324, 0.43, 0.077, 0.186, 0.432, 0.454, 0.392, 0.304, 0.178, 0.543, 0.72, 0.791, 0.753, 0.683, 0.589, 0.36, 0.156, 0.084, 0.062, 0.035, 0.023, 0.017, 0.003, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.21, 0.079, 0.342, 0.785, 0.53, 0.301, 0.149, 0.372, 0.406, 0.422, 0.506, 0.695, 0.702, 0.606, 0.569, 0.382, 0.433, 0.534, 0.473, 0.424, 0.315, 0.178, 0.683, 0.862, 0.844, 0.89, 0.908, 0.709, 0.22, 0.123, 0.073, 0.038, 0.031, 0.021, 0.138, 0.292, 0.238, 0.03, 0.002, 0.0, 0.0, 0.0, 0.0, 0.002, 0.114, 0.218, 0.948, 1, 1, 1, 0.789, 0.675, 0.526, 0.43, 0.328, 0.223, 0.138, 0.047, 0.01, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004, 0.129, 0.575, 0.52, 0.614, 0.223, 0.54, 0.634, 0.764, 0.862, 0.918, 0.754, 0.577, 0.508, 0.497, 0.364, 0.239, 0.159, 0.077, 0.368, 0.265, 0.054, 0.148, 0.138, 0.417, 0.505, 0.456, 0.426, 0.387, 0.336, 0.414, 0.367, 0.21, 0.267, 0.623, 0.558, 0.612, 0.652, 0.437, 0.181, 0.137, 0.148, 0.123, 0.066, 0.391, 0.354, 0.263, 0.152, 0.096, 0.052, 0.014, 0.005, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.018, 0.059, 0.409, 0.431, 0.359, 0.262, 0.198, 0.342, 1, 0.84, 0.72, 0.779, 0.724, 0.67, 0.639, 0.493, 0.257, 0.182, 0.139, 0.336, 0.7, 0.83, 0.869, 0.615, 0.292, 0.129, 0.051, 0.003, 0.051, 0.069, 0.026, 0.004, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.101, 0.122, 0.374, 0.726, 0.698, 0.58, 0.447, 0.689, 0.587, 0.426, 0.398, 0.435, 0.336, 0.581, 0.474, 0.049, 0.012, 0.82, 1, 0.696, 0.442, 0.249, 0.112, 0.044, 0.004, 0.003, 0.003, 0.002, 0.002, 0.004, 0.062, 0.265, 0.41, 1, 1, 0.691, 0.301, 0.452, 0.327, 0.312, 0.341, 0.157, 0.077, 0.059, 0.438, 0.425, 0.425, 0.44, 0.511, 0.411, 0.217, 0.18, 0.149, 0.584, 0.707, 0.705, 0.76, 0.778, 0.603, 0.252, 0.124, 0.069, 0.032, 0.036, 0.029, 0.037, 0.119, 0.108, 0.011, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+const ST_CFG = {"timeline": [[0, "idle"], [2.75, "shock"], [3.2, "point"], [16.55, "chin"], [17.8, "point"], [22.49, "shock"], [23.2, "point"], [33.78, "shock"], [34.5, "point"], [36.85, "shrug"], [38.2, "you"], [40.2, "follow"]], "bubbles": [[37.0, 40.1, "WOULD YOU HAVE", "INVESTED? COMMENT", [770, 985]]], "follow": [40.2, 42.01]};
+window.render = function (t) {
+  const sc = SCENES.find(s => t >= s[0] && t < s[1]) || SCENES[SCENES.length - 1];
+  O.save(); sc[2](O, t); O.restore(); if (SEPIA.has(sc[2])) film(O, t); vignette(O, .6); hud(O, t); Storyteller.draw(O, t, { ...ST_CFG, mouth: MOUTH_ST[Math.min(MOUTH_ST.length - 1, Math.floor(t * 30))] || 0 }); caption(O, t);
+  let wx = 0; const into = t - sc[0]; if (sc[0] > 0 && into < .16 && sc[2] !== sTitle) wx = (1 - eo(into / .16)) * 180;
+  let sx = 0, sy = 0; for (const [s0, d, amp] of SHAKE) if (t >= s0 && t < s0 + d) { const k = 1 - (t - s0) / d; sx += Math.sin(t * 97) * amp * k; sy += Math.cos(t * 83) * amp * k; }
+  let pz = 1; for (const s0 of [2.75, 16.62, 22.49, 33.8]) if (t >= s0 && t < s0 + .3) pz += .07 * (1 - (t - s0) / .3);
+  // film gate weave for sepia scenes
+  if (SEPIA.has(sc[2])) { sx += Math.sin(t * 13) * 2; sy += Math.sin(t * 7.3) * 3; }
+  X.fillStyle = INK; X.fillRect(0, 0, W, H); X.save(); X.translate(540 + sx + wx, 960 + sy); X.scale(pz, pz); X.translate(-540, -960); X.drawImage(OFF, 0, 0); X.restore();
+  for (const [g0, g1, amt] of GLITCH) if (t >= g0 && t < g1) {
+    const k = amt * Math.sin(lin(t, g0, g1) * Math.PI), f = Math.floor(t * 30);
+    X.save(); X.globalCompositeOperation = 'screen'; X.globalAlpha = .55 * k;
+    for (const [col, dx] of [['#ff0000', 26], ['#00ffff', -26]]) { T.clearRect(0, 0, W, H); T.drawImage(OFF, 0, 0); T.globalCompositeOperation = 'multiply'; T.fillStyle = col; T.fillRect(0, 0, W, H); T.globalCompositeOperation = 'source-over'; X.drawImage(TMP, dx * k, 0); }
+    X.restore();
+    for (let i = 0; i < 10; i++) { const y = hash(f * 13 + i) * H, h = 20 + hash(f * 7 + i) * 130, dx = (hash(f * 3 + i) - .5) * 280 * k; X.drawImage(OFF, 0, y, W, h, dx, y, W, h); }
+    X.fillStyle = `rgba(255,255,255,${.16 * k * (f % 2)})`; X.fillRect(0, 0, W, H);
+  }
+  for (const [f0, d] of FLASH) if (t >= f0 && t < f0 + d) { X.fillStyle = `rgba(255,250,235,${.85 * (1 - (t - f0) / d)})`; X.fillRect(0, 0, W, H); }
+};
+window.DUR = DUR;
+const FONTS = [['Anton', 'node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2', '400'], ['Inter', 'node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2', '800'],
+  ['Inter', 'node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2', '700'],
+  ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-800-normal.woff2', '800'], ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2', '700'],
+  ['Elite', 'node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2', '400'], ['Rye', 'node_modules/@fontsource/rye/files/rye-latin-400-normal.woff2', '400']];
+window.ready = Promise.all(FONTS.map(([f, u, w]) => new FontFace(f, `url(${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))).then(() => { window.render(0); return true; });
+</script></body></html>

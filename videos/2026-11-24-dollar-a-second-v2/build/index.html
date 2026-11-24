@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bad Math — $1 every second</title>
+<style>
+  @font-face { font-family: Anton; src: url('node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2'); }
+  @font-face { font-family: Inter; font-weight: 800; src: url('node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2'); }
+  @font-face { font-family: JBM; font-weight: 800; src: url('node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-800-normal.woff2'); }
+  @font-face { font-family: JBM; font-weight: 700; src: url('node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2'); }
+  :root { --ink:#0B0F14; --hl:#FFD60A; --green:#00D26A; --paper:#F5F3EE; }
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; }
+  canvas { display: block; }
+  #cap, #fade { position: absolute; }
+  #cap { display: none; }
+  #fade { inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 5; }
+  #ov { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+  #topband { position: absolute; left: 0; right: 0; top: 0; height: 330px; background: linear-gradient(rgba(11,15,20,.78), rgba(11,15,20,.45) 60%, rgba(11,15,20,0)); }
+  #tag { position: absolute; left: 74px; top: 160px; background: var(--hl); color: var(--ink); font: 800 19px Inter; letter-spacing: 2px; padding: 5px 11px; border-radius: 6px; }
+  #amount { position: absolute; left: 0; right: 0; top: 184px; text-align: center; font: 800 84px JBM; color: var(--green); letter-spacing: -2px; text-shadow: 0 0 24px rgba(0,210,106,.35), 0 3px 0 rgba(0,0,0,.5); }
+  #elapsed { position: absolute; left: 0; right: 0; top: 284px; text-align: center; font: 800 26px Inter; color: var(--paper); letter-spacing: 1.5px; text-shadow: 0 2px 6px rgba(0,0,0,.8); }
+  #barwrap { position: absolute; left: 90px; width: 540px; top: 326px; height: 14px; border-radius: 7px; background: rgba(245,243,238,.22); overflow: hidden; }
+  #bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--green); border-radius: 7px; }
+  #barlabel { position: absolute; left: 90px; width: 540px; top: 346px; font: 700 18px JBM; color: rgba(245,243,238,.85); display: flex; justify-content: space-between; text-shadow: 0 2px 4px rgba(0,0,0,.8); }
+  #head { position: absolute; left: 50px; right: 50px; top: 400px; text-align: center; font: 400 64px/1.04 Anton; color: var(--paper); text-transform: uppercase; text-shadow: 0 4px 0 rgba(0,0,0,.45), 0 0 24px rgba(0,0,0,.55); }
+  #head .y, #caption .y { color: var(--hl); } #head .g, #caption .g { color: var(--green); }
+  #caption { position: absolute; left: 90px; right: 90px; top: 864px; text-align: center; font: 800 52px/1.08 Inter; color: var(--paper); text-transform: uppercase;
+    text-shadow: 0 4px 0 rgba(0,0,0,.6), 0 0 22px rgba(0,0,0,.85); -webkit-text-stroke: 1px rgba(0,0,0,.35); }
+  #foot { position: absolute; left: 0; right: 0; top: 986px; text-align: center; font: 700 17px JBM; color: rgba(245,243,238,.8); letter-spacing: .5px; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
+  #hud { display: none; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "./node_modules/three/build/three.module.js",
+  "three/addons/": "./node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="stage">
+  <div id="ov">
+    <div id="topband"></div>
+    <div id="tag">WHAT IF</div>
+    <div id="amount">$1</div>
+    <div id="elapsed"></div>
+    <div id="barwrap"><div id="bar"></div></div>
+    <div id="barlabel"><span>TO $1,000,000,000</span><span id="pct"></span></div>
+    <div id="head"></div>
+    <div id="caption"></div>
+    <div id="foot">HYPOTHETICAL · NO TAXES · NO INTEREST · NO SPENDING</div>
+  </div>
+  <div id="fade"></div><div id="cap"></div>
+</div>
+<div id="hud"></div>
+<script type="module">
+import { amount } from './src/shots.js';
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const eout = x => 1 - Math.pow(1 - x, 3);
+const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
+function elapsed(s) {
+  if (s < 60) { const n = Math.round(s); return 'AFTER ' + n + (n === 1 ? ' SECOND' : ' SECONDS'); }
+  if (s < 3600) { const m = Math.round(s / 60); return 'AFTER ' + m + (m === 1 ? ' MINUTE' : ' MINUTES'); }
+  if (s < 86400) { const h = Math.round(s / 3600); return 'AFTER ' + h + (h === 1 ? ' HOUR' : ' HOURS'); }
+  if (s < 31536000 * 0.98) { const d = s / 86400; const ds = d < 20 ? d.toFixed(1).replace(/\.0$/, '') : Math.round(d).toLocaleString('en-US'); return 'AFTER ' + ds + (ds === '1' ? ' DAY' : ' DAYS'); }
+  const y = s / 31536000; const ys = (Math.abs(y - Math.round(y)) < 0.02 && y < 3) ? String(Math.round(y)) : y.toFixed(1); return 'AFTER ' + ys + (ys === '1' ? ' YEAR' : ' YEARS');
+}
+function pctStr(a) { const p = a / 1e9 * 100; if (p >= 99.95) return '100%'; if (p >= 1) return p.toFixed(1) + '%'; if (p >= 0.01) return p.toFixed(2) + '%'; if (p >= 0.0001) return p.toFixed(4) + '%'; return p.toFixed(7) + '%'; }
+// captions from the real voiceover word timings (ElevenLabs Scribe), shown 0.05 s early
+const C = [[0,1.15,'One <span class=g>dollar.</span>'],[1.15,2.59,'Every <span class=y>second.</span>'],[2.59,3.79,'<span class=y>Forever.</span>'],
+ [3.79,4.27,'When are you a'],[4.27,5.47,'<span class=y>billionaire?</span>'],[5.47,6.55,'One minute:'],[6.55,7.79,'<span class=g>$60</span>'],
+ [7.79,8.71,'One hour:'],[8.71,10.27,'<span class=g>$3,600</span>'],[10.27,11.31,'One day:'],[11.31,13.79,'<span class=g>$86,400</span>'],
+ [13.79,14.71,'You\'re a <span class=y>millionaire</span>'],[14.71,16.51,'in under <span class=y>12 days.</span>'],[16.51,18.27,'So a billion\'s what&nbsp;—'],
+ [18.27,19.31,'a <span class=y>year?</span>'],[19.31,19.9,'<span class=y>Two?</span>'],[20.69,22.05,'<span class=y>31 years.</span>'],[22.05,23.65,'Nearly <span class=y>32.</span>'],
+ [23.65,24.53,'A million is a'],[24.53,25.65,'<span class=g>vacation.</span>'],[25.65,26.61,'A <span class=y>billion</span> is'],[26.61,28.8,'your <span class=y>whole life.</span>']];
+const H = [[20.74, 23.6, '<span class=y>31.7</span> years'],
+ [23.65, 25.65, '<span class=g>$1M</span> = 11.6 days'], [25.65, 28.8, '<span class=g>$1M</span> = 11.6 days<br><span class=y>$1B</span> = 31.7 years']];
+let lc = -1, lh = -1;
+window.overlay = (t) => {
+  const a = amount(t), ft = fmt(a);
+  $('amount').textContent = ft; $('amount').style.fontSize = Math.min(84, 600 / (ft.length * 0.6)) + 'px';
+  const pop = (t >= 15.6 && t < 15.9) || (t >= 21.2 && t < 21.5) ? 1.08 : 1;
+  $('amount').style.transform = 'scale(' + pop + ')';
+  $('elapsed').textContent = elapsed(a);
+  $('bar').style.width = Math.max(4, 540 * a / 1e9) + 'px'; $('pct').textContent = pctStr(a);
+  const ci = C.findIndex(c => t >= c[0] && t < c[1]);
+  if (ci !== lc) { $('caption').innerHTML = ci >= 0 ? C[ci][2] : ''; lc = ci; }
+  const cp = ci >= 0 ? (C[ci][0] === 0 ? 1 : eout(lin(t, C[ci][0], C[ci][0] + 0.12))) : 0;
+  $('caption').style.opacity = cp; $('caption').style.transform = 'scale(' + (0.82 + 0.18 * cp) + ')';
+  const hi = H.findIndex(h => t >= h[0] && t < h[1]);
+  if (hi !== lh) { $('head').innerHTML = hi >= 0 ? H[hi][2] : ''; lh = hi; }
+  const hp = hi >= 0 ? eout(lin(t, H[hi][0], H[hi][0] + 0.18)) : 0;
+  const slam = hi === 0 ? 1 + 0.9 * (1 - eout(lin(t, 20.74, 20.92))) : 1;
+  $('head').style.opacity = hp; $('head').style.transform = 'scale(' + ((0.9 + 0.1 * hp) * slam) + ')';
+  $('head').style.top = (hi === 0 ? 420 : 400) + 'px';
+};
+</script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

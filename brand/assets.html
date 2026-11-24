@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#0B0F14}</style></head><body>
+<canvas id="c" width="1080" height="1080"></canvas>
+<script src="storyteller.js"></script>
+<script>
+const C=document.getElementById('c'),X=C.getContext('2d');
+const f=[new FontFace('Inter','url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)',{weight:'800'}),new FontFace('Anton','url(node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2)')];
+window.ready=Promise.all(f.map(x=>x.load().then(y=>document.fonts.add(y))));
+window.pfp=(variant)=>{C.width=C.height=1080;const bg=variant==='red'?'#FF3B30':'#0B0F14';X.fillStyle=bg;X.fillRect(0,0,1080,1080);
+ const g=X.createRadialGradient(540,540,100,540,540,560);g.addColorStop(0,variant==='red'?'rgba(255,214,10,.25)':'rgba(255,214,10,.28)');g.addColorStop(1,'rgba(255,214,10,0)');X.fillStyle=g;X.fillRect(0,0,1080,1080);
+ // bowtie peeking under the coin
+ X.fillStyle=variant==='red'?'#0B0F14':'#FF3B30';X.beginPath();X.moveTo(540,930);X.lineTo(430,870);X.lineTo(430,990);X.closePath();X.fill();X.beginPath();X.moveTo(540,930);X.lineTo(650,870);X.lineTo(650,990);X.closePath();X.fill();X.beginPath();X.arc(540,930,30,0,7);X.fill();
+ Storyteller.head(X,540,500,360);};
+window.sheet=()=>{C.width=2160;C.height=1300;X.fillStyle='#0B0F14';X.fillRect(0,0,2160,1300);
+ Storyteller.poses.forEach((p,i)=>{X.save();X.translate((i%4)*540-842+270,Math.floor(i/4)*640-1545+560);Storyteller.draw(X,p==='shock'?1.05:1.3,{mouth:p==='you'?.5:0,timeline:[[0,p]],enterAt:-1});X.restore();
+  X.fillStyle='#F5F3EE';X.font='800 40px Inter';X.textAlign='center';X.fillText(p.toUpperCase(),(i%4)*540+270,Math.floor(i/4)*640+610);});
+ X.fillStyle='#FFD60A';X.font='400 56px Anton';X.textAlign='left';X.fillText('BAD MATH · STORYTELLER',40,70);};
+</script></body></html>
