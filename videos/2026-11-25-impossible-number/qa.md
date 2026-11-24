@@ -10,4 +10,4 @@
 | Sound | 26 CC0 Freesound files (sfx/CREDITS.md), 97 cues, voice 12–13 dB over ducked beds | PASS |
 | Note | P50 opens on a sparse frame for ~2 s before the GUILTY stamp/tally | MINOR |
 | Note | Long-form ≥ 8:00 enables mid-roll ads later; this is 7:53 (not monetized yet, so no impact) | INFO |
-| Delivery | video.mp4 (560 MB) is attached to a GitHub Release, not committed (100 MB file limit) | — |
+| Delivery | video.mp4 (560 MB) is backed up in video-parts/ as 95 MB pieces (GitHub 100 MB limit); rejoin with `cat video.mp4.part* > video.mp4` | — |
