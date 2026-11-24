@@ -27,6 +27,7 @@ ROOT = C.ROOT
 TMP = os.path.join(HERE, "audio_tmp")
 os.makedirs(TMP, exist_ok=True)
 TOTAL = C.TOTAL
+NS = round(TOTAL * 48000)  # exact output length in samples
 SR = 48000
 BASE_PEAK_DB = -12.0   # every one-shot file is peak-normalized to this before its cue gain
 LOOP_XFADE = 1.0       # seconds, crossfade between loop copies
@@ -71,14 +72,20 @@ def loop_filter(src_label, clip_len, need_len, tag):
     """
     if clip_len >= need_len:
         return f"[{src_label}]atrim=0:{need_len:.3f},asetpts=PTS-STARTPTS[{tag}]"
-    n = max(2, math.ceil((need_len - clip_len) / (clip_len - LOOP_XFADE)) + 2)
+    # Overlapped copies: copy k starts at k*(L-X); each copy fades in and out over X,
+    # so neighbours cross-fade (linear fades sum to constant level) and the loop seams are smooth.
+    # (acrossfade chains were tried first but return a much shorter stream than expected.)
+    x = LOOP_XFADE
+    step = clip_len - x
+    n = max(2, math.ceil((need_len - clip_len) / step) + 2)
     parts = [f"[{src_label}]asplit={n}" + "".join(f"[{tag}s{k}]" for k in range(n))]
-    prev = f"{tag}s0"
-    for k in range(1, n):
-        out = f"{tag}x{k}"
-        parts.append(f"[{prev}][{tag}s{k}]acrossfade=d={LOOP_XFADE}:c1=tri:c2=tri[{out}]")
-        prev = out
-    parts.append(f"[{prev}]atrim=0:{need_len:.3f},asetpts=PTS-STARTPTS[{tag}]")
+    for k in range(n):
+        ms = int(round(k * step * 1000))
+        parts.append(f"[{tag}s{k}]afade=in:st=0:d={x},afade=out:st={clip_len - x:.3f}:d={x},"
+                     f"adelay={ms}|{ms}[{tag}c{k}]")
+    parts.append("".join(f"[{tag}c{k}]" for k in range(n)) +
+                 f"amix=inputs={n}:normalize=0:duration=longest,atrim=0:{need_len:.3f},"
+                 f"asetpts=PTS-STARTPTS[{tag}]")
     return ";".join(parts)
 
 
@@ -103,6 +110,7 @@ def render_bed(bed, idx):
         fc.append(f"{labels[0]}anull[bmix{idx}]")
     fi, fo = bed["fade_in"], bed["fade_out"]
     fc.append(f"[bmix{idx}]loudnorm=I=-24:TP=-6:LRA=15,aresample={SR},"
+              f"apad=whole_len={round(need * SR)},atrim=end_sample={round(need * SR)},"
               f"afade=in:st=0:d={fi},afade=out:st={need - fo:.3f}:d={fo}[bout]")
     run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins,
          "-filter_complex", ";".join(fc), "-map", "[bout]", "-t", f"{need:.3f}",
@@ -130,9 +138,9 @@ def render_batch(batch, b_idx, peaks):
     labels = "".join(f"[c{k}]" for k in range(len(batch)))
     if len(batch) > 1:
         fc.append(f"{labels}amix=inputs={len(batch)}:normalize=0:duration=longest,"
-                  f"apad=whole_dur={TOTAL},atrim=0:{TOTAL}[fxout]")
+                  f"apad=whole_len={NS},atrim=end_sample={NS}[fxout]")
     else:
-        fc.append(f"{labels}apad=whole_dur={TOTAL},atrim=0:{TOTAL}[fxout]")
+        fc.append(f"{labels}apad=whole_len={NS},atrim=end_sample={NS}[fxout]")
     run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins,
          "-filter_complex", ";".join(fc), "-map", "[fxout]", "-t", f"{TOTAL:.3f}",
          "-c:a", "pcm_f32le", out])
@@ -147,8 +155,8 @@ def final_mix(bed_stems, fx_batches):
         ins += ["-i", s]
     nb, nf = len(bed_stems), len(fx_batches)
     fc = [
-        f"[0:a]aresample={SR},pan=stereo|c0=c0|c1=c0,apad=whole_dur={TOTAL},atrim=0:{TOTAL},"
-        f"loudnorm=I=-16:TP=-2:LRA=11,aresample={SR},asplit=3[vm][vk][vq]"
+        f"[0:a]aresample={SR},pan=stereo|c0=c0|c1=c0,apad=whole_len={NS},atrim=end_sample={NS},"
+        f"loudnorm=I=-16:TP=-2:LRA=11,aresample={SR},apad=whole_len={NS},atrim=end_sample={NS},asplit=3[vm][vk][vq]"
     ]
     bl = []
     for k, bed in enumerate(C.BEDS):
@@ -157,7 +165,7 @@ def final_mix(bed_stems, fx_batches):
                   f"adelay={ms}|{ms}[bed{k}]")
         bl.append(f"[bed{k}]")
     fc.append("".join(bl) + f"amix=inputs={nb}:normalize=0:duration=longest,"
-              f"apad=whole_dur={TOTAL},atrim=0:{TOTAL},asplit=2[bsA][bsB]")
+              f"apad=whole_len={NS},atrim=end_sample={NS},asplit=2[bsA][bsB]")
     fc.append("[bsA][vk]sidechaincompress=threshold=0.04:ratio=5:attack=15:release=350[bd]")
     fc.append("[bd]asplit=2[bdm][bdq]")
     fc.append(";".join(f"[{1 + nb + k}:a]aresample={SR},aformat=channel_layouts=stereo[f{k}]"
@@ -168,7 +176,8 @@ def final_mix(bed_stems, fx_batches):
     fc.append("[vm][fx][bdm]amix=inputs=3:normalize=0:duration=first,highpass=f=60,"
               "acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200,"
               "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=192000,"
-              "alimiter=limit=0.8:level=false:attack=1:release=60,aresample=48000[out]")
+              "alimiter=limit=0.8:level=false:attack=1:release=60,aresample=48000,"
+              f"apad=whole_len={NS},atrim=end_sample={NS}[out]")
     qa = lambda p: os.path.join(TMP, p)  # noqa: E731
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins,
            "-filter_complex", ";".join(fc),
