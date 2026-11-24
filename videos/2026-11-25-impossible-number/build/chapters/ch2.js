@@ -74,14 +74,14 @@ Engine.chapter(2, () => {
   Engine.scene('P21', 'P21', (c, t, lt) => {
     SPOT(c, t, REDT);
     const tM = W('P21', 'more'), tT = W('P21', 'than'), tA = W('P21', 'america');
-    const slide = eo(lin(lt, 0, .35)); txt(c, 'CHAPTER TWO', 840 - (1 - slide) * 200, 290, '800 40px JBM', RED); c.globalAlpha = slide;
+    const slide = Math.max(.7, eo(lin(lt, 0, .35))); txt(c, 'CHAPTER TWO', 840 - (1 - slide) * 200, 290, '800 40px JBM', RED); c.globalAlpha = slide;
     c.fillStyle = RED; c.fillRect(840 - 130, 322, 260 * slide, 5); c.globalAlpha = 1;
     // string with pins sweeping across
     const sk = eio(lin(lt, .1, 1.5)); c.save(); c.strokeStyle = RED; c.lineWidth = 5; c.beginPath();
     const pts = [[110, 470], [560, 410], [1020, 560], [1500, 440]]; c.moveTo(...pts[0]); const n = sk * (pts.length - 1);
     for (let i = 1; i < pts.length; i++) { const k = clamp(n - (i - 1)); if (k > 0) c.lineTo(lerp(pts[i - 1][0], pts[i][0], k), lerp(pts[i - 1][1], pts[i][1], k)); } c.stroke();
     c.fillStyle = RED; pts.forEach((p, i) => { if (n >= i) { c.beginPath(); c.arc(p[0], p[1], 10, 0, 7); c.fill(); } }); c.restore();
-    const k1 = back(lin(t, tM - .12, tM + .2)), k2 = back(lin(t, tT - .12, tT + .2)); c.font = '400 200px Anton'; c.letterSpacing = '4px';
+    const k1 = 1 + .14 * (1 - eo(lin(t, tM - .12, tM + .3))), k2 = 1 + .14 * (1 - eo(lin(t, tT - .12, tT + .3))); c.font = '400 200px Anton'; c.letterSpacing = '4px';
     if (k1 > 0) { c.save(); c.translate(840, 480); c.scale(k1, k1); txt(c, 'MORE OIL', 0, 0, '400 200px Anton', PAPER); c.restore(); }
     if (k2 > 0) { c.font = '400 200px Anton'; const w1 = c.measureText('THAN ').width, w2 = c.measureText('AMERICA').width, x0 = 840 - (w1 + w2) / 2, ka = lin(t, tA - .1, tA + .15);
       c.save(); c.translate(840, 690); c.scale(k2, k2); c.translate(-840, -690); txt(c, 'THAN ', x0, 690, '400 200px Anton', PAPER, 'left'); txt(c, 'AMERICA', x0 + w1, 690, '400 200px Anton', lerpCol(PAPER, HL, ka), 'left'); c.restore(); }
@@ -215,11 +215,12 @@ Engine.chapter(2, () => {
     bgGrid(c, t, BLUET); const zk = eo(lin(lt, 0, 1.2)), TX = 330, TY = 190, TW = 480, TH = 600;
     c.save(); c.translate(TX + TW / 2, 500); c.scale(lerp(1.08, 1, zk), lerp(1.08, 1, zk)); c.translate(-TX - TW / 2, -500);
     ctank(c, TX, TY, TW, TH, { fill: .9, oil: .08, xray: .9, t, compartment: eo(lin(t, tHid, tHid + .5)) }); c.restore();
-    const hk = eo(lin(t, tHid + .25, tHid + .6)); if (hk > 0) { c.save(); c.globalAlpha = hk; pill(c, 'HIDDEN COMPARTMENT', 1190, 300, 34, RED, PAPER); c.strokeStyle = RED; c.lineWidth = 5; c.beginPath(); c.moveTo(1010, 305); c.lineTo(TX + TW / 2 + 70, 320); c.stroke(); c.restore(); }
+    
     // catwalk + inspector w/ flashlight
     c.fillStyle = '#5b6573'; c.fillRect(840, 262, 520, 14); const ik = eo(lin(t, tIns, tIns + .6)); person(c, lerp(1500, 1020, ik), 262, 190, PAPER, lin(t, W('P26', 'saw') - .1, W('P26', 'saw') + .3), t, -1);
     c.save(); c.globalAlpha = lin(t, tIns + .3, tIns + .6); txt(c, 'INSPECTOR AT THE HATCH', 1190, 380 + 12, '700 26px JBM', GREY); c.restore();
     const sk = lin(t, tOil1, tOil1 + .15); stamp(c, 'OIL', 1160, 560, 110, GREEN, -.08, sk); if (sk > 0) check(c, 1370, 560, 90, GREEN, lin(t, tOil1 + .1, tOil1 + .35));
+    const hk = eo(lin(t, tHid + .25, tHid + .6)); if (hk > 0) { c.save(); c.globalAlpha = hk; c.strokeStyle = RED; c.lineWidth = 5; c.beginPath(); c.moveTo(TX + TW / 2, 172); c.lineTo(TX + TW / 2, 215); c.stroke(); pill(c, 'HIDDEN COMPARTMENT', TX + TW / 2, 142, 30, RED, PAPER); c.restore(); }
   });
   Engine.sceneAt(tOth - .05, (c, t, lt) => { // B: mostly water, oil floats
     bgGrid(c, t, BLUET); const TX = 330, TY = 190, TW = 480, TH = 600, ok = eio(lin(t, tOth, tOth + .6));
@@ -333,13 +334,14 @@ Engine.chapter(2, () => {
     if (t >= tCr) { const k = eo(lin(t, tCr, tCr + .15)); c.strokeStyle = 'rgba(255,255,255,.85)'; c.lineWidth = 3; for (const seg of CRACK) { c.beginPath(); const m = Math.max(2, Math.ceil(seg.length * k)); seg.slice(0, m).forEach((p, i) => i ? c.lineTo(...p) : c.moveTo(...p)); c.stroke(); } }
   });
   Engine.sceneAt(tMg - .1, (c, t, lt) => { // margin calls + tank looked inside
-    bgGrid(c, t, REDT); stamp(c, 'MARGIN CALL', 470, 200, 100, RED, -.06, lin(t, tMg, tMg + .15));
+    bgGrid(c, t, REDT);
+    { const pk = Math.max(.5, eo(lin(lt, 0, .3))) * (1 - lin(t, tSom - .1, tSom + .3)); if (pk > 0) { c.save(); c.globalAlpha = pk; const sh = Math.sin(t * 45) * 6; c.translate(1200 + sh, 420); c.rotate(Math.sin(t * 45) * .06); rr(c, -90, -170, 180, 340, 28); c.fillStyle = '#1b222c'; c.fill(); c.strokeStyle = RED; c.lineWidth = 8; c.stroke(); c.fillStyle = '#0d1117'; rr(c, -70, -140, 140, 250, 10); c.fill(); txt(c, 'CALLING', 0, -60, '800 22px JBM', RED); txt(c, '51', 0, 10, '400 80px Anton', PAPER); c.restore(); c.save(); c.globalAlpha = pk; for (let i = 0; i < 3; i++) { c.strokeStyle = `rgba(255,59,48,${.9 - i * .25})`; c.lineWidth = 6; c.beginPath(); c.arc(1200, 420, 150 + i * 40 + ((t * 80) % 40), -.6, .6); c.stroke(); c.beginPath(); c.arc(1200, 420, 150 + i * 40 + ((t * 80) % 40), Math.PI - .6, Math.PI + .6); c.stroke(); } txt(c, 'LENDERS WANT THEIR MONEY', 1200, 700, '800 26px JBM', GREY); c.restore(); } } stamp(c, 'MARGIN CALL', 470, 200, 100, RED, -.06, lin(t, tMg - .1, tMg + .05));
     for (let i = 0; i < 4; i++) { const k = back(lin(t, tMg + .15 + i * .22, tMg + .5 + i * .22)); if (k <= 0) continue; paper(c, 330 + (i % 2) * 300 + (i > 1 ? 40 : 0), lerp(-200, 420 + Math.floor(i / 2) * 200, k), 270, 150, (i - 1.5) * .06, '#efe6cf', (p, w, h) => { txt(p, 'MARGIN CALL', 0, -h * .28, '400 38px Elite', '#7a1a14'); txt(p, 'PAY NOW', 0, h * .05, '400 30px Elite', '#1c1c1c'); p.fillStyle = 'rgba(28,28,28,.3)'; p.fillRect(-w * .35, h * .25, w * .7, 10); }); }
     const tk = eo(lin(t, tSom - .1, tSom + .4)); c.save(); c.globalAlpha = tk; const rev = eio(lin(t, tInside, tTanks + .4));
-    ctank(c, 1020, 230, 380, 540, { fill: .95, oil: lerp(1, .08, rev), xray: rev, t, label: rev > .5 ? 'NOT OIL' : 'TANK', labelColor: rev > .5 ? RED : PAPER }); c.restore();
+    if (tk > 0) ctank(c, 1020, 230, 380, 540, { fill: .95, oil: lerp(1, .08, rev), xray: rev, t, label: rev > .5 ? 'NOT OIL' : 'TANK', labelColor: rev > .5 ? RED : PAPER }); c.restore();
     if (tk > 0) { const mx = lerp(1100, 1240, eio(lin(t, tSom, tInside))), my = lerp(330, 480, eio(lin(t, tSom, tInside))); c.save(); c.globalAlpha = tk; c.strokeStyle = HL; c.lineWidth = 12; c.beginPath(); c.arc(mx, my, 90, 0, 7); c.stroke(); c.lineWidth = 16; c.lineCap = 'round'; c.beginPath(); c.moveTo(mx + 64, my + 64); c.lineTo(mx + 130, my + 130); c.stroke(); c.restore(); }
     c.save(); c.globalAlpha = lin(t, tSom, tSom + .3); txt(c, 'SOMEBODY LOOKED INSIDE', 1210, 150, '400 54px Anton', HL); c.restore();
-  });
+  }, { whip: false });
 
   // =====================================================================================
   // P31 — 51 lenders turn red, $180,000,000+, AMEX unit bankrupt, brokerage under
@@ -377,7 +379,7 @@ Engine.chapter(2, () => {
     c.save(); c.translate(0, -down * 1000); for (let i = 0; i < 11; i++) { const bx = 100 + i * 148; const g = c.createLinearGradient(bx, 0, bx + 40, 0); g.addColorStop(0, '#2a323d'); g.addColorStop(.5, '#a7b1bf'); g.addColorStop(1, '#2a323d'); c.fillStyle = g; rr(c, bx, -40, 40, 960, 18); c.fill(); } c.fillStyle = '#5b6573'; c.fillRect(60, 180, 1560, 24); c.fillRect(60, 800, 1560, 24); c.restore();
     c.save(); rr(c, 360, 260, 960, 470, 24); c.fillStyle = 'rgba(11,15,20,.88)'; c.fill(); c.restore();
     const kT = back(lin(t, tTw, tTw + .25)); if (kT > 0) { c.save(); c.translate(760, 430); c.scale(kT, kT); txt(c, '20', 0, 0, '400 340px Anton', HL); c.restore(); txt(c, 'YEARS', 1070, 470, '400 110px Anton', PAPER); }
-    const st = eio(lin(t, tOut, tOut + .3)); if (st > 0) { c.strokeStyle = RED; c.lineWidth = 26; c.lineCap = 'round'; c.beginPath(); c.moveTo(420, 600); c.lineTo(lerp(420, 1260, st), lerp(600, 300, st)); c.stroke(); }
+    const st = eio(lin(t, tOut, tOut + .3)); if (st > 0) { c.lineCap = 'round'; for (const [col, lw] of [['#000', 46], [RED, 30]]) { c.strokeStyle = col; c.lineWidth = lw; c.beginPath(); c.moveTo(540, 620); c.lineTo(lerp(540, 980, st), lerp(620, 250, st)); c.stroke(); } }
     const sk = back(lin(t, tSv, tSv + .25)); if (sk > 0) { c.save(); c.translate(1130, 330); c.rotate(.1); c.scale(sk, sk); glow(c, 0, 0, 260, GREEN, .35); c.beginPath(); c.arc(0, 0, 140, 0, 7); c.fillStyle = INK; c.fill(); c.strokeStyle = GREEN; c.lineWidth = 14; c.stroke(); txt(c, '7', 0, 10, '400 220px Anton', GREEN); c.restore(); txt(c, 'OUT IN 7', 1130, 550, '400 52px Anton', GREEN); }
     if (t < tOut) stamp(c, 'PLEADED GUILTY', 840, 650, 64, RED, -.04, lin(t, tGu, tGu + .15));
   });

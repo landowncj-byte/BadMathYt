@@ -171,8 +171,8 @@ def final_mix(bed_stems, fx_batches):
     fc.append(";".join(f"[{1 + nb + k}:a]aresample={SR},aformat=channel_layouts=stereo[f{k}]"
                        for k in range(nf)))
     fc.append("".join(f"[f{k}]" for k in range(nf)) +
-              f"amix=inputs={nf}:normalize=0:duration=longest,apad=whole_dur={TOTAL},"
-              f"atrim=0:{TOTAL}[fx]")
+              f"amix=inputs={nf}:normalize=0:duration=longest,apad=whole_len={NS},"
+              f"atrim=end_sample={NS}[fx]")
     fc.append("[vm][fx][bdm]amix=inputs=3:normalize=0:duration=first,highpass=f=60,"
               "acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200,"
               "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=192000,"

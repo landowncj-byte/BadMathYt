@@ -164,7 +164,7 @@ Engine.chapter(1, () => {
       c.save(); c.globalAlpha = al * (i >= 7 ? eo(lin(t, t12.spread + (i - 7) * .15, t12.spread + (i - 7) * .15 + .3)) : 1); man(c, x, y, s, row ? '#b9a577' : SEP, { walk: t * 7 + i * 1.3 + row, hat: i % 3 ? 'bowler' : 'fedora' }); c.restore(); }
     // early investors paid: +50% tags drifting up
     for (let i = 0; i < 6; i++) { const s0 = t12.early + i * .35, a = lin(t, s0, s0 + 1.1); if (a <= 0 || a >= 1) continue; c.save(); c.globalAlpha = Math.sin(a * Math.PI); txt(c, '+50%', 1010 - i * 130, 620 - a * 150, '800 40px JBM', GREEN); c.restore(); }
-    stamp(c, 'PAID ON TIME', 700, 470, 62, GREEN, -.1, lin(t, t12.paid - .15, t12.paid + .05) * (t < t12.spread ? 1 : 1 - lin(t, t12.spread, t12.spread + .3)));
+    stamp(c, 'PAID ON TIME', 620, 300, 62, GREEN, -.1, lin(t, t12.paid - .15, t12.paid + .05) * (t < t12.spread ? 1 : 1 - lin(t, t12.spread, t12.spread + .3)));
     // word spread: ripples
     if (t > t12.spread) for (let i = 0; i < 3; i++) { const a = lin((t - t12.spread + i * .35) % 1.05, 0, 1.05); c.strokeStyle = `rgba(230,213,176,${.5 * (1 - a)})`; c.lineWidth = 4; c.beginPath(); c.arc(600, 640, 40 + a * 300, 0, 7); c.stroke(); }
     if (t > t12.spread && t < t12.jul) { c.save(); c.globalAlpha = clamp(eo(lin(t, t12.spread, t12.spread + .25))); txt(c, 'WORD SPREAD…', 620, 300, '400 64px Rye', SEP); c.restore(); }
@@ -213,10 +213,10 @@ Engine.chapter(1, () => {
     paperSlam(c, t, t14.jour - .05, 1230, 480, 520, 640, .03, '#d9c490', (p, w, h) => {
       p.strokeStyle = BRN2; p.lineWidth = 4; p.strokeRect(-w / 2 + 16, -h / 2 + 16, w - 32, h - 32);
       txt(p, 'FINANCIAL JOURNALIST', 0, -h / 2 + 58, '400 28px Elite', BRN2);
-      p.fillStyle = 'rgba(43,29,14,.12)'; p.fillRect(-w / 2 + 40, -h / 2 + 90, w - 80, 360); p.save(); p.translate(0, 120); man(p, 0, 0, 330, BRN, { hat: 'fedora' }); p.restore();
+      p.fillStyle = 'rgba(43,29,14,.12)'; p.fillRect(-w / 2 + 40, -h / 2 + 90, w - 80, 360); p.save(); p.translate(0, 135); man(p, 0, 0, 270, BRN, { hat: 'fedora' }); p.restore();
       p.fillStyle = BRN; const nm = 'CLARENCE BARRON'; const m = Math.floor(nm.length * lin(t, t14.cl, t14.bar + .35)); if (t >= t14.cl) { p.font = '400 40px Rye'; p.textAlign = 'center'; p.textBaseline = 'middle'; p.fillText(nm.slice(0, m), 0, h / 2 - 70); }
     });
-    stamp(c, 'DID THE MATH', 1230, 800, 52, DRED, -.08, lin(t, t14.did, t14.did + .15));
+    stamp(c, 'DID THE MATH', 480, 225, 52, DRED, -.08, lin(t, t14.did, t14.did + .15));
   }, FILM);
   Engine.hit(t14.cl, { flash: 1, shake: 8, cue: 'camera-flash' }); Engine.cue(P('P14').start + .1, 'typewriter'); Engine.hit(t14.jour, { shake: 8, cue: 'paper-slam' });
 
@@ -229,18 +229,17 @@ Engine.chapter(1, () => {
       for (let i = 0; i < 6; i++) { const a = eo(lin(t, T0 + .3 + i * .22, T0 + .55 + i * .22)); p.globalAlpha = a; const y = -h / 2 + 190 + i * 70;
         txt(p, 'INVESTOR', -w / 2 + 60, y, '400 32px Elite', BRN2, 'left'); p.fillStyle = BRN2; p.fillRect(-w / 2 + 250, y + 14, 260, 3); txt(p, '+ 50%', w / 2 - 70, y, '800 36px JBM', DRED, 'right'); }
       p.globalAlpha = 1; });
-    txt(c, '…TO EVERY INVESTOR', 840, 195, '700 30px JBM', SEP2);
   }, FILM);
   Engine.scene([ 'P15', '160', 1, -.15 ], 'P15', (c, t, lt) => { // the tower
     sepiaBg(c); const k = eio(lin(t, t15.f160 - .05, t15.coup + .5)), cam = lt * 40;
     const topY = lerp(900, -400, k);
-    for (let i = 0; i < 46; i++) { const y = 1000 - i * 44 + (k > .02 ? 0 : 0); if (y < topY || y > 1100) continue; coupon(c, 360 + Math.sin(i * 1.7) * 10, y, 230, Math.sin(i) * .05); }
+    for (let i = 0; i < 40; i++) { const y = 1000 - i * 52; if (y < topY || y > 1100) continue; coupon(c, 1290 + Math.sin(i * 1.7) * 10, y, 300, Math.sin(i) * .05); }
     c.fillStyle = 'rgba(0,0,0,.35)'; c.fillRect(0, 960, VW, 120);
-    plate(c, 640, 190, 940, 330, 20); txt(c, 'COUPONS NEEDED', 1110, 245, '800 38px JBM', SEP2);
+    plate(c, 100, 190, 940, 330, 20); txt(c, 'COUPONS NEEDED', 570, 245, '800 38px JBM', SEP2);
     const v = roll(t, t15.f160, t15.coup + .1, 160e6, 0, eio), landed = t >= t15.coup + .1, pop = landed ? 1 + .08 * (1 - lin(t, t15.coup + .1, t15.coup + .45)) : 1;
-    c.save(); c.translate(1110, 360); c.scale(pop, pop); txt(c, fmt(v), 0, 0, '800 120px JBM', landed ? RED : HL); c.restore();
-    const ci = back(lin(t, t15.circ - .05, t15.circ + .3)); if (ci > 0) { c.save(); c.globalAlpha = clamp(ci); txt(c, 'IN CIRCULATION', 1110, 460, '800 36px JBM', PAPER); c.restore(); }
-    c.save(); c.translate(0, 0); const arrow = clamp(k * 2); if (arrow > 0) { txt(c, '▲', 360, 130 + Math.sin(t * 6) * 6, '800 60px JBM', RED); } c.restore();
+    c.save(); c.translate(570, 360); c.scale(pop, pop); txt(c, fmt(v), 0, 0, '800 120px JBM', landed ? RED : HL); c.restore();
+    const ci = back(lin(t, t15.circ - .05, t15.circ + .3)); if (ci > 0) { c.save(); c.globalAlpha = clamp(ci); txt(c, 'IN CIRCULATION', 570, 460, '800 36px JBM', PAPER); c.restore(); }
+    c.save(); c.translate(0, 0); const arrow = clamp(k * 2); if (arrow > 0) { txt(c, '▲', 1290, 130 + Math.sin(t * 6) * 6, '800 60px JBM', RED); } c.restore();
   }, FILM);
   Engine.scene([ 'P15', 'actual', 1, -.15 ], 'P15', (c, t, lt) => { // the tiny pile
     sepiaBg(c); const k = lin(t, t15.act, t15.act + .35);
@@ -262,13 +261,13 @@ Engine.chapter(1, () => {
   Engine.scene('P16', 'P16', (c, t, lt) => {
     sepiaBg(c); const T0 = P('P16').start, fill = eo(lin(t, T0 + .1, t16.one - .15)), nShown = Math.floor(GC * GR * fill);
     const z = lerp(1, 2.6, eio(lin(t, t16.one, t16.one + 1.1))), hx = GX + (HC + .5) * CS, hy = GY + (HR + .5) * CS;
-    c.save(); c.translate(hx, hy); c.scale(z, z); c.translate(-hx, -hy);
+    c.save(); c.beginPath(); c.rect(100, 190, 1480, 650); c.clip(); c.translate(hx, hy); c.scale(z, z); c.translate(-hx, -hy);
     for (let i = 0; i < nShown; i++) { const col = i % GC, row = Math.floor(i / GC); if (col === HC && row === HR) continue; c.fillStyle = (row + col) % 2 ? 'rgba(230,213,176,.78)' : 'rgba(201,176,126,.78)'; c.fillRect(GX + col * CS + .6, GY + row * CS + .6, CS - 1.2, CS - 1.2); }
     if (nShown > HR * GC + HC && t > t16.one - .3) { const p = 1 + .25 * Math.sin(t * 9), pk = lin(t, t16.one - .05, t16.one + .2); glow(c, hx, hy, 40 * p * z * .6, GREEN, .8 * pk); c.fillStyle = GREEN; c.fillRect(GX + HC * CS - 1, GY + HR * CS - 1, CS + 2, CS + 2); }
     c.restore();
-    const vn = Math.round(6000 * fill); txt(c, fmt(vn) + ' COUPONS NEEDED', 840, 160, '800 54px JBM', SEP);
+    const vn = Math.round(6000 * fill); plate(c, 440, 125, 800, 66, 12); txt(c, fmt(vn) + ' COUPONS NEEDED', 840, 158, '800 44px JBM', SEP);
     const lk = back(lin(t, t16.six - .1, t16.six + .3)); if (lk > 0) { c.save(); c.translate(840, 795); c.scale(clamp(lk), clamp(lk)); plate(c, -430, -70, 860, 140, 18, DK, GREEN); txt(c, '1 COUPON PER ~6,000', 0, 4, '400 82px Anton', GREEN); c.restore(); }
-    else if (t > t16.one) { txt(c, 'ONLY ONE EXISTS', 840, 800, '800 44px JBM', GREEN); }
+    else if (t > t16.one) { plate(c, 540, 760, 600, 76, 14, DK, GREEN); txt(c, 'ONLY ONE EXISTS', 840, 798, '800 44px JBM', GREEN); }
   }, FILM);
   Engine.hit(t16.one, { punch: .04, shake: 8 }); Engine.hit(t16.six, { punch: .03, shake: 8, cue: 'stamp' });
 
@@ -278,7 +277,7 @@ Engine.chapter(1, () => {
     sepiaBg(c); const T0 = P('P17').start;
     const k = back(lin(t, T0 + .05, T0 + .45));
     for (let i = 0; i < 14; i++) { const x = 840 + (hash(i) - .5) * 340, y = 780 - Math.floor(i / 4) * 24 - (i % 3) * 6; c.fillStyle = '#d4a84a'; c.beginPath(); c.ellipse(x, y, 52, 17, 0, 0, 7); c.fill(); c.strokeStyle = '#8a6d1a'; c.lineWidth = 3; c.stroke(); }
-    c.save(); c.translate(840, 440); c.scale(clamp(k), clamp(k)); glow(c, 0, 0, 380, HL, .25); txt(c, '?', 0, 0, '400 420px Anton', HL); c.restore();
+    c.save(); c.translate(840, 500); c.scale(clamp(k), clamp(k)); glow(c, 0, 0, 380, HL, .25); txt(c, '?', 0, 0, '400 380px Anton', HL); c.restore();
     const kp = back(lin(t, t17.profits - .05, t17.profits + .3)); c.save(); c.globalAlpha = clamp(kp); txt(c, 'THE PROFITS', 840, 190, '400 78px Anton', PAPER); c.restore();
   }, FILM);
   Engine.scene([ 'P17', 'next', 1, -.15 ], 'P17', (c, t, lt) => { // pyramid
@@ -300,8 +299,8 @@ Engine.chapter(1, () => {
     for (let i = 0; i < 6; i++) { const a = lin(t, T0 + i * .09, T0 + i * .09 + .9); if (a <= 0 || a >= 1) continue; c.save(); c.translate(lerp(120 + i * 250, 840, a), lerp(900, 500, a) - Math.sin(a * Math.PI) * 120); c.rotate(a * 9 + i); c.globalAlpha = .35 * (1 - a); c.fillStyle = '#efe6cf'; c.fillRect(-60, -80, 120, 160); c.restore(); }
     c.save(); c.translate(840, 500); c.rotate(rot); c.scale(.2 + .8 * k, .2 + .8 * k); c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 40; c.shadowOffsetY = 18; c.fillStyle = '#efe6cf'; c.fillRect(-460, -370, 920, 740); c.shadowColor = 'transparent'; c.fillStyle = BRN;
     txt(c, 'EXTRA!', 0, -290, '400 120px Rye', BRN); c.fillRect(-420, -218, 840, 6);
-    txt(c, '160,000,000', -210, -110, '800 62px JBM', BRN); txt(c, 'vs', 0, -110, '400 40px Rye', BRN2); txt(c, '27,000', 215, -110, '800 62px JBM', DRED);
-    txt(c, 'NEEDED', -210, -45, '700 28px JBM', BRN2); txt(c, 'EXISTED', 215, -45, '700 28px JBM', BRN2);
+    txt(c, '160,000,000', -245, -110, '800 54px JBM', BRN); txt(c, 'vs', 0, -110, '400 40px Rye', BRN2); txt(c, '27,000', 255, -110, '800 54px JBM', DRED);
+    txt(c, 'NEEDED', -245, -45, '700 28px JBM', BRN2); txt(c, 'EXISTED', 255, -45, '700 28px JBM', BRN2);
     for (let i = 0; i < 9; i++) c.fillRect(-420, 25 + i * 38, 840 * (.55 + hash(i) * .45), 13); c.restore();
   }, FILM);
   Engine.scene([ 'P18', 'line', 1, -.25 ], 'P18', (c, t, lt) => { // the line turns into a run
@@ -314,10 +313,10 @@ Engine.chapter(1, () => {
   }, FILM);
   const crumble = i => t18.six + .1 + i * .24;
   Engine.scene([ 'P18', 'Six', 1, -.1 ], 'P18', (c, t, lt) => { // six banks go down, then $20,000,000
-    sepiaBg(c); const nDown = [0, 1, 2, 3, 4, 5].filter(i => t > crumble(i)).length, BY = 690;
-    for (let i = 0; i < 6; i++) { const x = 240 + i * 240, f = eio(lin(t, crumble(i), crumble(i) + .5));
-      c.save(); c.beginPath(); c.rect(x - 140, BY - 150, 280, 240); c.clip(); c.translate(x, BY + f * 150 * 0 ); c.translate(0, f * 190); c.rotate(f * (i % 2 ? .22 : -.22)); bank(c, 0, 0, 200, f > 0 ? '#c94a3a' : SEP); c.restore();
-      if (f > 0) { c.fillStyle = 'rgba(43,29,14,.8)'; c.beginPath(); c.ellipse(x, BY + 90, 110 * Math.min(1, f * 1.5), 22, 0, Math.PI, 0); c.fill(); }
+    sepiaBg(c); const nDown = [0, 1, 2, 3, 4, 5].filter(i => t > crumble(i)).length, BY = 720;
+    for (let i = 0; i < 6; i++) { const x = 215 + i * 250, f = eio(lin(t, crumble(i), crumble(i) + .5));
+      c.save(); c.beginPath(); c.rect(x - 140, BY - 150, 280, 242); c.clip(); c.translate(x, BY + f * 150 * 0 ); c.translate(0, f * 190); c.rotate(f * (i % 2 ? .22 : -.22)); bank(c, 0, 0, 215, f > 0 ? '#c94a3a' : SEP); c.restore();
+      if (f > 0) { const hk = Math.min(1, f * 1.4); c.fillStyle = '#1a1006'; c.beginPath(); c.moveTo(x - 125 * hk, BY + 92); for (let j = 0; j <= 8; j++) c.lineTo(x - 125 * hk + j * 31 * hk, BY + 92 - (30 + 40 * hash(i * 9 + j)) * hk * Math.sin(Math.PI * j / 8)); c.lineTo(x + 125 * hk, BY + 92); c.closePath(); c.fill(); c.fillStyle = '#6b4a22'; for (let j = 0; j < 6; j++) c.fillRect(x + (hash(i * 5 + j) - .5) * 190 * hk - 9, BY + 70 - hash(i * 3 + j) * 34 * hk, 18, 12); }
       if (f > 0 && f < 1) for (let d = 0; d < 10; d++) { c.fillStyle = `rgba(200,180,140,${.55 * (1 - f)})`; c.beginPath(); c.arc(x + (hash(i * 10 + d) - .5) * 260, BY + 40 - f * 90 * hash(d + 1), 20 + 36 * f, 0, 7); c.fill(); } }
     const lostK = lin(t, t18.lost - .05, t18.lost + .25);
     c.save(); c.translate(840, lerp(300, 200, eo(lostK))); const sc = lerp(1, .55, eo(lostK)); c.scale(sc, sc); txt(c, nDown + ' / 6 BANKS DOWN', 0, 0, '400 118px Anton', RED); c.restore();
@@ -338,9 +337,9 @@ Engine.chapter(1, () => {
       txt(p, 'UNITED STATES v. CHARLES PONZI', 0, h / 2 - 50, '400 24px Elite', BRN2); });
     // gavel
     const hit = lin(t, t19.guilty - .25, t19.guilty), rec = lin(t, t19.guilty, t19.guilty + .3), ang = lerp(-1.1, .1, ei(hit)) * (1 - rec * .5);
-    c.save(); c.translate(1280, 700); c.rotate(.2); c.fillStyle = '#6b4a22'; c.fillRect(-12, -250, 24, 250); c.save(); c.translate(0, -250); c.rotate(ang * .4); c.fillStyle = '#8a6030'; c.fillRect(-100, -45, 200, 90); c.fillStyle = '#4a3216'; c.fillRect(-100, -45, 22, 90); c.fillRect(78, -45, 22, 90); c.restore(); c.restore();
-    c.fillStyle = '#4a3216'; rr(c, 1130, 700, 300, 40, 8); c.fill();
-    stamp(c, 'GUILTY', 640, 440, 150, DRED, -.12, lin(t, t19.guilty, t19.guilty + .15));
+    c.save(); c.translate(1300, 720); c.rotate(.2); c.fillStyle = '#6b4a22'; c.fillRect(-12, -250, 24, 250); c.save(); c.translate(0, -250); c.rotate(ang * .4); c.fillStyle = '#8a6030'; c.fillRect(-100, -45, 200, 90); c.fillStyle = '#4a3216'; c.fillRect(-100, -45, 22, 90); c.fillRect(78, -45, 22, 90); c.restore(); c.restore();
+    c.fillStyle = '#4a3216'; rr(c, 1150, 720, 300, 40, 8); c.fill();
+    stamp(c, 'GUILTY', 1240, 260, 130, DRED, -.12, lin(t, t19.guilty, t19.guilty + .15));
   }, FILM);
   Engine.scene([ 'P19', 'His', 1, -.1 ], 'P19', (c, t, lt) => { // dictionary entry
     sepiaBg(c); const T0 = W('P19', 'His') - .1;
@@ -369,9 +368,9 @@ Engine.chapter(1, () => {
     sepiaBg(c); if (mod > 0) { c.save(); c.globalAlpha = mod; bgGrid(c, t, 'rgba(255,214,10,.05)'); c.restore(); }
     // coupon with the impossible number stamped on it
     const dis = eio(lin(t, t20.plain, t20.ins + .9)), kIn = back(lin(t, T0 + .02, T0 + .4));
-    const CW = 560, CX = 840, CY = 470, tw = 300, th = 400;
+    const CW = 640, CX = 840, CY = 450, tw = 300, th = 400;
     if (dis < 1) { c.save(); c.globalAlpha = 1 - dis * 1.2 > 0 ? clamp(1 - dis * 1.4) : 0; c.translate(CX, CY); c.scale(clamp(kIn), clamp(kIn)); coupon(c, 0, 0, CW, -.05); c.restore();
-      stamp(c, '160,000,000 vs 27,000', CX, CY + 20, 46, RED, -.1, lin(t, t20.imp, t20.imp + .15) * (1 - clamp(dis * 1.4))); }
+      stamp(c, '160,000,000 vs 27,000', CX, CY + 250, 46, RED, -.1, lin(t, t20.imp, t20.imp + .15) * (1 - clamp(dis * 1.4))); }
     // the dissolve: coupon-coloured squares fly into the tank silhouette
     if (dis > 0) { const col = mod > .5 ? '#5b6879' : SEP;
       for (let i = 0; i < 140; i++) { const sx = CX + (hash(i) - .5) * CW, sy = CY + (hash(i + 7) - .5) * CW * .62, gx = CX + (hash(i + 3) - .5) * tw, gy = CY + 150 - hash(i + 5) * th + 20, a = clamp(dis * 1.4 - hash(i + 9) * .4), e = eio(a);
