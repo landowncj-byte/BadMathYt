@@ -178,19 +178,38 @@ def final_mix(bed_stems, fx_batches):
               f"amix=inputs={nf}:normalize=0:duration=longest,apad=whole_len={NS},"
               f"atrim=end_sample={NS}[fx]")
     fc.append("[vm][fx][bdm]amix=inputs=3:normalize=0:duration=first,highpass=f=60,"
-              "acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200,"
-              "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=192000,"
-              "alimiter=limit=0.8:level=false:attack=1:release=60,aresample=48000,"
-              f"atrim=end_sample={NS_OUT},asetpts=PTS-STARTPTS[out]")
+              "acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200[pre]")
     qa = lambda p: os.path.join(TMP, p)  # noqa: E731
+    premaster = qa("premaster.wav")
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins,
            "-filter_complex", ";".join(fc),
-           "-map", "[out]", "-t", f"{TOTAL:.3f}", "-c:a", "pcm_s16le", OUT,
-           "-map", "[vq]", "-t", f"{TOTAL:.3f}", "-c:a", "pcm_f32le", qa("qa_voice.wav"),
-           "-map", "[bsB]", "-t", f"{TOTAL:.3f}", "-c:a", "pcm_f32le", qa("qa_bed_unducked.wav"),
-           "-map", "[bdq]", "-t", f"{TOTAL:.3f}", "-c:a", "pcm_f32le", qa("qa_bed_ducked.wav")]
-    # the QA voice stem is the third split output of the voice chain
+           "-map", "[pre]", "-c:a", "pcm_f32le", premaster,
+           "-map", "[vq]", "-c:a", "pcm_f32le", qa("qa_voice.wav"),
+           "-map", "[bsB]", "-c:a", "pcm_f32le", qa("qa_bed_unducked.wav"),
+           "-map", "[bdq]", "-c:a", "pcm_f32le", qa("qa_bed_ducked.wav")]
     run(cmd)
+    master(premaster)
+
+
+def master(src):
+    """Master chain: loudnorm -14 LUFS / -1.5 dBTP, 192 kHz alimiter 0.8, back to 48 kHz.
+
+    loudnorm runs as two passes. Single-pass dynamic loudnorm drops the tail of the stream
+    in this ffmpeg build (measured: 118 s out of 473 s on the test input), so the stream is
+    measured first (print_format=json) and then applied in linear mode with those values.
+    """
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", src, "-af",
+                        "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
+                       cwd=ROOT, capture_output=True, text=True, check=True)
+    j = json.loads(re.findall(r"\{[^{}]*\"input_i\"[^{}]*\}", r.stderr)[-1])
+    print("loudnorm measured:", {k: j[k] for k in ("input_i", "input_tp", "input_lra", "input_thresh", "target_offset")})
+    lf = (f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}"
+          f":measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}"
+          f":offset={j['target_offset']}:linear=true")
+    run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", src, "-af",
+         f"{lf},aresample=192000,alimiter=limit=0.8:level=false:attack=1:release=60,"
+         f"aresample=48000,apad=whole_len={NS_OUT},atrim=end_sample={NS_OUT},asetpts=PTS-STARTPTS",
+         "-c:a", "pcm_s16le", OUT])
 
 
 def main():
