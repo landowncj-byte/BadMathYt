@@ -81,8 +81,8 @@ Engine.chapter(3, () => {
     c.lineWidth = s * .05; for (let i = 0; i < 4; i++) { c.beginPath(); c.ellipse(-s * .12 + i * s * .08, 0, s * .045, s * .03, 0, 0, 7); c.stroke(); } c.restore();
   }
   // seeded market path (0 low .. 1 high)
-  const MK = []; { const n = 72; let v = 0; const raw = []; for (let i = 0; i < n; i++) { const r = hash(i * 1.73 + 4) + hash(i * 2.91 + 9) + hash(i * 5.17 + 2) - 1.5; v += .06 + r * .62 + (i >= 28 && i <= 34 ? -.62 : 0) + (i >= 50 && i <= 57 ? -.7 : 0); raw.push(v); }
-    const mn = Math.min(...raw), mx = Math.max(...raw); for (const q of raw) MK.push((q - mn) / (mx - mn)); }
+  const MK = []; { const n = 72; for (let i = 0; i < n; i++) { const u = i / (n - 1); let v = .05 + .78 * u + (hash(i * 1.73 + 4) + hash(i * 2.91 + 9) - 1) * .1 + Math.sin(i * .9) * .025;
+      if (i >= 24 && i <= 31) v -= .2 * Math.sin((i - 24) / 7 * Math.PI) * 1; if (i >= 46 && i <= 56) v -= .26 * Math.sin((i - 46) / 10 * Math.PI); if (i === 12 || i === 38) v -= .08; MK.push(Math.max(.02, v)); } }
   const CR = []; { const n = 64; for (let i = 0; i < n; i++) { const u = i / (n - 1); CR.push(.18 + .72 * (u * .55 + u * u * u * .45) + (hash(i * 3.3 + 1) - .5) * .09); } }
 
   // ================================================================ P34 chapter card
@@ -103,7 +103,7 @@ Engine.chapter(3, () => {
     bgGrid(c, t, TINT); glow(c, 600, 480, 700, 'rgba(0,210,106,.3)', .2);
     c.save(); push(c, lt, 7, 1, 1.04, 840, 480); c.globalAlpha = .9 * eo(lin(lt, .05, .5));
     wallst(c, 620, 830, 980, 640, '#16212d', '#2f4358'); c.restore();
-    const k = lin(t, W('P35', 'Bernie') - .1, W('P35', 'Bernie') + .3); if (k > 0) { c.save(); c.globalAlpha = k; c.translate((1 - eo(k)) * -120, 0); spot(c, 560, 490, 420, 560, 'BERNIE MADOFF', { collar: '#e9edf2', sub: 'SILHOUETTE' }); c.restore(); }
+    const k = lin(t, W('P35', 'Bernie') - .1, W('P35', 'Bernie') + .3); if (k > 0) { c.save(); c.globalAlpha = k; c.translate((1 - eo(k)) * -120, 0); spot(c, 560, 490, 420, 560, 'BERNIE MADOFF', { collar: '#e9edf2', }); c.restore(); }
     stamp(c, 'NOT A NOBODY', 1300, 250, 56, GREEN, .07, lin(t, tNob, tNob + .15));
     const bk = back(lin(t, tChair - .12, tChair + .3)); if (bk > 0) { c.save(); c.translate(1230 + (1 - eo(lin(t, tChair - .12, tChair + .3))) * 500, 520); c.fillStyle = PANEL; rr(c, -330, -62, 660, 124, 18); c.fill(); c.strokeStyle = GREEN; c.lineWidth = 5; c.stroke();
       txt(c, 'FORMER', -160, -26, '800 22px JBM', GREEN); txt(c, 'NASDAQ CHAIRMAN', -10, 14, '400 52px Anton', PAPER); c.fillStyle = GREEN; c.beginPath(); c.arc(-290, 0, 14, 0, 7); c.fill(); c.restore(); }
@@ -206,15 +206,15 @@ Engine.chapter(3, () => {
     const pts = MK.map((v, i) => [X0 + i / (MK.length - 1) * D, Y0 - 14 - v * (D - 200)]);
     const dim = 1 - .62 * eo(lin(t, tPerf, tPerf + .4));
     c.save(); c.globalAlpha = dim; poly(c, pts, lin(t, P('P39').start + .35, tBadY + .7), RED, 6, 0); c.restore();
-    let i1 = 10, i2 = 40, m1 = 9, m2 = 9; for (let i = 8; i < 38; i++) { const d = MK[i] - MK[i - 1]; if (d < m1) { m1 = d; i1 = i; } } for (let i = 40; i < 66; i++) { const d = MK[i] - MK[i - 1]; if (d < m2) { m2 = d; i2 = i; } }
-    c.save(); c.globalAlpha = dim; for (const [i, tt, lab, dx, dy] of [[i1, tDrops, 'BAD MONTH', 150, 120], [i2, tBadY, 'BAD YEAR', -190, 130]]) { const k = popK(t, tt - .1, .25); if (k <= 0) continue; const p = pts[i];
+    let i1 = 28, i2 = 52, m1 = 9, m2 = 9; for (let i = 22; i < 34; i++) if (MK[i] < m1) { m1 = MK[i]; i1 = i; } for (let i = 44; i < 60; i++) if (MK[i] < m2) { m2 = MK[i]; i2 = i; }
+    c.save(); c.globalAlpha = dim; for (const [i, tt, lab, dx, dy] of [[i1, tDrops, 'BAD MONTH', 60, -116], [i2, tBadY, 'BAD YEAR', 220, 140]]) { const k = popK(t, tt - .1, .25); if (k <= 0) continue; const p = pts[i];
       c.strokeStyle = RED; c.lineWidth = 3; c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(p[0] + dx * .5 * k, p[1] + dy * .5 * k); c.stroke(); c.fillStyle = RED; c.beginPath(); c.arc(p[0], p[1], 9, 0, 7); c.fill();
-      pill(c, lab, p[0] + dx * .5, p[1] + dy * .5 + 20, '800 24px JBM', RED, { k, h: 46, px: 30, bg: '#1d0d0c', lw: 3 }); } c.restore();
+      pill(c, lab, p[0] + dx * .5, p[1] + dy * .5, '800 24px JBM', RED, { k, h: 46, px: 30, bg: '#1d0d0c', lw: 3 }); } c.restore();
     const mf = lin(t, tMad, tPerf - .05); if (mf > 0) { const e = eio(mf); const ex = X0 + D * e, ey = Y0 - D * e; c.save(); c.shadowColor = GREEN; c.shadowBlur = 36; c.strokeStyle = GREEN; c.lineWidth = 12; c.lineCap = 'round'; c.beginPath(); c.moveTo(X0, Y0); c.lineTo(ex, ey); c.stroke(); c.shadowBlur = 0; c.strokeStyle = '#c9ffe2'; c.lineWidth = 4; c.stroke(); c.restore(); glow(c, ex, ey, 70, GREEN, .7); }
     const pk = eo(lin(t, t45 - .1, t45 + .5)); if (pk > 0) { c.save(); c.translate(X0, Y0); const R = 190; c.fillStyle = 'rgba(255,214,10,.14)'; c.beginPath(); c.moveTo(0, 0); c.arc(0, 0, R, 0, -Math.PI / 4 * pk, true); c.closePath(); c.fill();
       c.strokeStyle = HL; c.lineWidth = 6; c.beginPath(); c.arc(0, 0, R, 0, -Math.PI / 4 * pk, true); c.stroke(); c.lineWidth = 3; for (let d = 0; d <= 45 * pk; d += 5) { const a = -d * Math.PI / 180, l = d % 15 === 0 ? 26 : 14; c.beginPath(); c.moveTo(Math.cos(a) * R, Math.sin(a) * R); c.lineTo(Math.cos(a) * (R - l), Math.sin(a) * (R - l)); c.stroke(); }
       c.setLineDash([10, 8]); c.strokeStyle = 'rgba(245,243,238,.6)'; c.beginPath(); c.moveTo(0, 0); c.lineTo(R + 60, 0); c.stroke(); c.setLineDash([]); c.restore(); }
-    const lk = popK(t, tDeg - .05, .3); if (lk > 0) { c.save(); c.translate(X0 + 255, Y0 - 78); c.scale(lk, lk); c.fillStyle = 'rgba(11,15,20,.88)'; rr(c, -75, -45, 150, 90, 14); c.fill(); txt(c, '45°', 0, 4, '800 76px JBM', HL); c.restore(); }
+    const lk = popK(t, tDeg - .05, .3); if (lk > 0) { c.save(); c.translate(X0 + 112, Y0 - 50); c.scale(lk, lk); c.fillStyle = 'rgba(11,15,20,.9)'; rr(c, -68, -38, 136, 76, 12); c.fill(); txt(c, '45°', 0, 4, '800 62px JBM', HL); c.restore(); }
     c.restore();
     const lg = eo(lin(t, P('P39').start + .3, P('P39').start + .7)); c.save(); c.globalAlpha = lg;
     c.fillStyle = RED; c.fillRect(960, 158, 36, 8); txt(c, 'A REAL MARKET', 1010, 162, '800 28px JBM', RED, 'left'); txt(c, 'BAD MONTHS · BAD YEARS', 1010, 196, '700 22px JBM', DIM, 'left'); c.restore();
@@ -228,6 +228,7 @@ Engine.chapter(3, () => {
   Engine.hit(tHarry, { punch: .03, flash: .6 }); Engine.cue(tHarry, 'camera-flash');
   S('P40', (c, t, lt) => {
     bgGrid(c, t, TINT); const k = lin(t, tHarry - .1, tHarry + .35);
+    if (k < 1) { c.save(); c.globalAlpha = 1 - k; c.setLineDash([16, 12]); c.strokeStyle = EDGE; c.lineWidth = 5; rr(c, 300, 200, 440, 580, 20); c.stroke(); c.setLineDash([]); txt(c, '?', 520, 470, '800 260px JBM', EDGE); txt(c, 'WHO IS THIS?', 520, 700, '800 30px JBM', DIM); c.restore(); }
     if (k > 0) { c.save(); c.globalAlpha = k; c.translate((1 - eo(k)) * -140, 0); spot(c, 520, 490, 440, 580, 'HARRY MARKOPOLOS', { glasses: '#9fb0c3', collar: '#e9edf2', font: '400 36px Anton' }); c.restore(); }
     typedText(c, 'FINANCIAL ANALYST', 1000, 300, '800 44px JBM', GREEN, t, P('P40').start + .1, P('P40').start + 1.2, 'left');
     const ck = lin(t, tCopy - .15, tCopy + .3); if (ck > 0) { c.save(); c.globalAlpha = ck; txt(c, 'ASSIGNMENT:', 1000, 420, '800 28px JBM', DIM, 'left'); txt(c, "COPY MADOFF'S STRATEGY", 1000, 480, '400 58px Anton', PAPER, 'left');
@@ -248,17 +249,17 @@ Engine.chapter(3, () => {
     if (t < tFour) { if (popK(t, tFive - .1) > 0) txt(c, '5 MIN', cx, cy + 90, '800 76px JBM', HL); } else txt(c, '4 HOURS', cx, cy + 90, '800 62px JBM', GREEN);
     const c1 = popK(t, tFive + .2); if (c1 > 0) pill(c, '5 MIN = DOUBT', 400, 740, '800 38px JBM', HL, { k: c1, h: 80, bg: '#1b1a08' });
     const c2 = popK(t, tFour + .2); if (c2 > 0) pill(c, '4 HOURS = PROOF', 1280, 740, '800 38px JBM', GREEN, { k: c2, h: 80, bg: '#0d1d15' });
-    const ad = lin(t, tAdd - .1, tAdd + .3) * (1 - lin(t, tFour - .2, tFour)); if (ad > 0) { c.save(); c.globalAlpha = ad; txt(c, "NUMBERS DON'T ADD UP", 840, 200, '400 56px Anton', RED); c.restore(); }
+    const ad = lin(t, tAdd - .1, tAdd + .3) * (1 - lin(t, tFour - .2, tFour)); if (ad > 0) { c.save(); c.globalAlpha = ad; txt(c, "NUMBERS DON'T ADD UP", 1270, 430, '400 56px Anton', RED); c.restore(); }
     stamp(c, 'PROVED', 1330, 330, 80, GREEN, .09, lin(t, tProve, tProve + .15));
   });
 
   // ================================================================ P41 losing months grid
   const REDC = [17, 42, 68, 89];
   S('P41', (c, t, lt) => {
-    bgGrid(c, t, RTINT); const a = back(lin(t, P('P41').start + .1, P('P41').start + .45)); c.save(); c.translate(840, 400); c.scale(a, a);
+    bgGrid(c, t, RTINT); const a = back(lin(t, P('P41').start + .1, P('P41').start + .45)); c.save(); c.translate(840, 300); c.scale(a, a);
     c.save(); c.translate(-330, 0); for (let i = 0; i < 4; i++) { const wv = Math.sin(t * 5 + i) * .06; c.save(); c.translate(i * 220 - 20, 0); c.rotate(wv); c.fillStyle = PAPER; c.fillRect(-4, -70, 8, 190); c.fillStyle = RED; c.beginPath(); c.moveTo(4, -70); c.lineTo(110, -35); c.lineTo(4, 0); c.closePath(); c.fill(); c.restore(); } c.restore();
     txt(c, 'RED FLAGS', 0, 250, '400 120px Anton', PAPER); c.restore();
-    const wm = lin(t, W('P41', 'math') - .1, W('P41', 'math') + .25); if (wm > 0) { c.save(); c.translate(840, 620); c.scale(back(wm), back(wm)); txt(c, '= MATH', 0, 0, '800 100px JBM', GREEN); c.restore(); }
+    const wm = lin(t, W('P41', 'math') - .1, W('P41', 'math') + .25); if (wm > 0) { c.save(); c.translate(840, 730); c.scale(back(wm), back(wm)); txt(c, '= MATH', 0, 0, '800 100px JBM', GREEN); c.restore(); }
   });
   const tMadr = W('P41', 'reported') - .2, tFour41 = W('P41', 'four'), tReal41 = W('P41', 'Real');
   Engine.hit(tFour41, { punch: .04, shake: 8 }); Engine.hit(tReal41, { shake: 10 });
@@ -290,19 +291,19 @@ Engine.chapter(3, () => {
   const tPunch = tNeeded + .5;
   Engine.hit(tPunch, { shake: 22, punch: .05 }); Engine.cue(tPunch, 'crash'); Engine.hit(tExist, { shake: 10, flash: .8, glitch: .6, glitchDur: .25 });
   S(['P42', 'needed', 1, -.2], (c, t, lt) => {
-    bgGrid(c, t, TINT); const base = 790, ceil = 550, x1 = 560, x2 = 1050, bw = 200;
+    bgGrid(c, t, TINT); const base = 750, ceil = 510, x1 = 560, x2 = 1050, bw = 200;
     const bk = eo(lin(t, tNeeded - .2, tNeeded + .3));
     c.strokeStyle = 'rgba(245,243,238,.35)'; c.lineWidth = 4; c.beginPath(); c.moveTo(380, base); c.lineTo(1300, base); c.stroke();
     c.fillStyle = 'rgba(0,210,106,.95)'; rr(c, x1 - bw / 2, base - (base - ceil) * bk, bw, (base - ceil) * bk, [10, 10, 0, 0]); c.fill();
-    const nh = (base - 140) * eo(lin(t, tNeeded, tPunch + .45));
+    const nh = (base - 135) * eo(lin(t, tNeeded, tPunch + .45));
     c.fillStyle = '#4a5563'; c.fillRect(380, ceil - 20, 920, 20); c.fillStyle = '#2e3743'; c.fillRect(380, ceil, 920, 8);
     c.save(); c.shadowColor = RED; c.shadowBlur = 24; c.fillStyle = RED; rr(c, x2 - bw / 2, base - nh, bw, nh, [10, 10, 0, 0]); c.fill(); c.restore();
     c.setLineDash([14, 10]); c.strokeStyle = HL; c.lineWidth = 3; c.beginPath(); c.moveTo(x1 + bw / 2, ceil - 30); c.lineTo(x2 - bw / 2 - 20, ceil - 30); c.stroke(); c.setLineDash([]); txt(c, 'CEILING', 1300, ceil - 40, '800 22px JBM', HL, 'right');
     for (let i = 0; i < 16; i++) { const u = lin(t, tPunch, tPunch + 1.0), a = hash(i * 2.1) * Math.PI; if (u <= 0 || u >= 1) continue; const d = 40 + hash(i) * 150 * u; c.fillStyle = i % 2 ? '#8b96a5' : RED; c.save(); c.translate(x2 + Math.cos(a) * d * 1.5, ceil - Math.sin(a) * d * .8 + 300 * u * u); c.rotate(u * 6 + i); c.fillRect(-7, -7, 14, 14); c.restore(); }
     const cb = popK(t, tChi - .1, .35); if (cb > 0) { c.save(); c.translate(430, 160); c.scale(cb, cb); c.fillStyle = '#0f1b2b'; rr(c, 0, -46, 520, 92, 14); c.fill(); c.strokeStyle = '#4fa3ff'; c.lineWidth = 4; c.stroke(); txt(c, 'CBOE', 100, 4, '400 62px Anton', '#7cc0ff'); txt(c, 'CHICAGO BOARD', 330, -12, '800 24px JBM', PAPER); txt(c, 'OPTIONS EXCHANGE', 330, 20, '800 24px JBM', PAPER); c.restore(); }
-    const l1 = popK(t, tNeeded - .1); if (l1 > 0) pill(c, 'OPTIONS MADOFF NEEDED', x2, 838, '800 28px JBM', RED, { k: l1, h: 52, px: 34, bg: '#1d0d0c' });
-    const l2 = popK(t, tThan - .1); if (l2 > 0) pill(c, 'OPTIONS THAT EXISTED', x1, 838, '800 28px JBM', GREEN, { k: l2 * (1 + .06 * Math.sin(t * 10) * (t < tExist + .6 ? 1 : 0)), h: 52, px: 34, bg: '#0d1d15' });
-    stamp(c, 'IMPOSSIBLE', 1380, 330, 96, RED, -.11, lin(t, tExist, tExist + .15));
+    const l1 = popK(t, tNeeded - .1); if (l1 > 0) pill(c, 'OPTIONS MADOFF NEEDED', x2, 800, '800 28px JBM', RED, { k: l1, h: 52, px: 34, bg: '#1d0d0c' });
+    const l2 = popK(t, tThan - .1); if (l2 > 0) pill(c, 'OPTIONS THAT EXISTED', x1, 800, '800 28px JBM', GREEN, { k: l2 * (1 + .06 * Math.sin(t * 10) * (t < tExist + .6 ? 1 : 0)), h: 52, px: 34, bg: '#0d1d15' });
+    stamp(c, 'IMPOSSIBLE', 1400, 560, 74, RED, -.11, lin(t, tExist, tExist + .15));
   });
 
   // ================================================================ P43 ticket callback
@@ -336,7 +337,7 @@ Engine.chapter(3, () => {
     paperSlam(c, t, tMemo - .05, 840, 570, 900, 560, -.012, '#EFE7D2', (c2, w, h) => { const ink = '#1d1a14';
       txt(c2, 'MEMORANDUM', -w / 2 + 40, -h / 2 + 48, '400 36px Elite', ink, 'left'); txt(c2, 'TO: SEC · 2005', w / 2 - 40, -h / 2 + 48, '400 28px Elite', 'rgba(29,26,20,.6)', 'right'); c2.fillStyle = ink; c2.fillRect(-w / 2 + 40, -h / 2 + 78, w - 80, 4);
       const full = "THE WORLD'S LARGEST HEDGE FUND IS A FRAUD"; const words = full.split(' '), n = Math.floor(words.length * lin(t, tTitled, tFraud + .1) + 1e-6);
-      txt(c2, words.slice(0, Math.min(n, 5)).join(' '), 0, -60, '400 52px Elite', ink); if (n > 5) txt(c2, words.slice(5, n).join(' '), 0, 10, '400 52px Elite', RED);
+      txt(c2, words.slice(0, Math.min(n, 5)).join(' '), 0, -60, '400 46px Elite', ink); if (n > 5) txt(c2, words.slice(5, n).join(' '), 0, 10, '400 46px Elite', RED);
       c2.fillStyle = 'rgba(29,26,20,.18)'; for (let i = 0; i < 6; i++) c2.fillRect(-w / 2 + 60, 80 + i * 36, (w - 120) * (i % 3 === 2 ? .6 : 1), 10); });
     stamp(c, '21 PAGES', 1400, 400, 62, RED, .1, lin(t, tTitled + .2, tTitled + .35)); stamp(c, 'FRAUD', 1360, 650, 80, RED, -.08, lin(t, tFraud, tFraud + .15));
   });
@@ -345,17 +346,17 @@ Engine.chapter(3, () => {
   const tLooked = W('P45', 'looked'), tEight = W('P45', 'eight'), tNot = W('P45', "didn't");
   Engine.hit(tNot + .3, { punch: .03 });
   S('P45', (c, t, lt) => {
-    bgGrid(c, t, TINT); const y = 520, x0 = 160, x1 = 1540; const ak = eo(lin(t, P('P45').start + .05, P('P45').start + .5));
-    txt(c, '16 YEARS · REGULATORS LOOKED', 840, 150, '800 34px JBM', DIM);
+    bgGrid(c, t, TINT); const y = 490, x0 = 160, x1 = 1540; const ak = eo(lin(t, P('P45').start + .05, P('P45').start + .5));
+    txt(c, '16 YEARS · REGULATORS LOOKED', 840, 140, '800 34px JBM', DIM);
     c.strokeStyle = 'rgba(245,243,238,.4)'; c.lineWidth = 6; c.beginPath(); c.moveTo(x0, y); c.lineTo(x0 + (x1 - x0) * ak, y); c.stroke();
     for (let i = 0; i <= 16; i++) { const x = x0 + i * (x1 - x0) / 16; c.fillStyle = PAPER; c.globalAlpha = ak; c.fillRect(x - 2, y - (i % 4 ? 9 : 16), 4, i % 4 ? 18 : 32); if (i % 4 === 0) txt(c, String(1992 + i), x, y + 50, '700 24px JBM', DIM); c.globalAlpha = 1; }
     const fr = [.04, .17, .29, .42, .55, .68, .81, .94]; const grey = lin(t, tNot, tNot + .5); let cnt = 0;
-    for (let i = 0; i < 8; i++) { const ta = lerp(tLooked - .1, tEight - .05, i / 7), k = popK(t, ta, .3); if (k <= 0) continue; cnt++; const x = x0 + fr[i] * (x1 - x0), up = i % 2 === 0, gy = up ? 390 : 650;
+    for (let i = 0; i < 8; i++) { const ta = lerp(tLooked - .1, tEight - .05, i / 7), k = popK(t, ta, .3); if (k <= 0) continue; cnt++; const x = x0 + fr[i] * (x1 - x0), up = i % 2 === 0, gy = up ? 365 : 615;
       c.save(); c.translate(x, gy); c.scale(k, k); magnifier(c, 0, 0, 38, grey > .5 ? '#5d6877' : HL, 12); c.restore();
       c.strokeStyle = 'rgba(245,243,238,.18)'; c.lineWidth = 2; c.beginPath(); c.moveTo(x, up ? gy + 55 : gy - 55); c.lineTo(x, y); c.stroke();
       const tk = popK(t, ta + .2, .3); if (tk > 0) pill(c, 'NO FRAUD FOUND', x, up ? gy - 90 : gy + 90, '800 20px JBM', '#8794a5', { k: tk, h: 42, px: 26, bg: PANEL, lw: 3 }); }
-    txt(c, 'LOOKS: ' + cnt + ' / 8', 840, 215, '800 56px JBM', cnt >= 8 ? RED : PAPER);
-    const dk = lin(t, tNot, tNot + .3); if (dk > 0) { c.save(); c.globalAlpha = dk; txt(c, "THEY DIDN'T FIND IT", 840, 790, '400 64px Anton', PAPER); c.restore(); }
+    txt(c, 'LOOKS: ' + cnt + ' / 8', 840, 205, '800 56px JBM', cnt >= 8 ? RED : PAPER);
+    const dk = lin(t, tNot, tNot + .3); if (dk > 0) { c.save(); c.globalAlpha = dk; txt(c, "THEY DIDN'T FIND IT", 840, 805, '400 64px Anton', PAPER); c.restore(); }
   });
 
   // ================================================================ P46 2008 crash, withdrawals
@@ -398,10 +399,13 @@ Engine.chapter(3, () => {
   Engine.hit(tArr, { shake: 34, punch: .08, glitch: 1.2, glitchDur: .5, flash: 1 }); Engine.cue(tArr, 'handcuffs'); Engine.hit(tPz48, { punch: .03 });
   S('P48', (c, t, lt) => {
     bgGrid(c, t, TINT); const ck = back(lin(t, tDec - .1, tDec + .3)); if (ck > 0) { c.save(); c.translate(400, 470); c.scale(ck, ck); c.translate(-400, -470); calendar(c, 400, 470, 420, 480, 10, 'DECEMBER', { size: 250 }); c.restore(); }
-    const gk = lin(t, W('P48', 'sons') - .3, W('P48', 'sons') + .2); if (gk > 0) { c.save(); c.globalAlpha = gk; bust(c, 900, 720, 340, '#27323f', { collar: '#e9edf2' }); bust(c, 1100, 720, 270, '#1b232d'); bust(c, 1240, 720, 270, '#1b232d'); txt(c, 'MADOFF', 900, 765, '800 20px JBM', DIM); txt(c, 'HIS SONS', 1170, 765, '800 20px JBM', DIM); c.restore(); }
-    const bf = popK(t, tFin - .1, .3), bp = popK(t, tPz48 - .1, .3);
-    if (bf > 0 && bp <= 0) pill(c, "I'M FINISHED", 960, 300, '400 60px Anton', PAPER, { k: bf, h: 110, px: 80, bg: '#151e29', stroke: PAPER });
-    if (bp > 0) pill(c, 'A PONZI SCHEME', 960, 300, '400 60px Anton', RED, { k: bp, h: 110, px: 80, bg: '#1d0d0c' });
+    const gk = lin(t, W('P48', 'sons') - .3, W('P48', 'sons') + .2); if (gk > 0) { c.save(); c.globalAlpha = gk; c.shadowColor = 'rgba(245,243,238,.35)'; c.shadowBlur = 10;
+      bust(c, 900, 760, 340, '#5a6573', { collar: '#e9edf2' }); bust(c, 1100, 760, 270, '#4a5461'); bust(c, 1240, 760, 270, '#4a5461'); c.shadowBlur = 0; txt(c, 'MADOFF', 900, 800, '800 20px JBM', DIM); txt(c, 'HIS SONS', 1170, 800, '800 20px JBM', DIM); c.restore(); }
+    const lc = eo(lin(t, W('P48', 'sons') - .3, W('P48', 'sons') + .2)); if (lc > 0) { c.save(); c.globalAlpha = lc; c.fillStyle = PANEL; rr(c, 760, 190, 740, 270, 18); c.fill(); c.strokeStyle = EDGE; c.lineWidth = 4; c.stroke();
+      txt(c, 'CONFESSES TO HIS SONS', 800, 228, '800 24px JBM', DIM, 'left');
+      const f = lin(t, tFin - .05, tFin + .25), q = lin(t, tPz48 - .05, tPz48 + .25);
+      if (f > 0) { c.globalAlpha = lc * f; txt(c, 'HE WAS "FINISHED"', 800, 310, '400 64px Anton', PAPER, 'left'); }
+      if (q > 0) { c.globalAlpha = lc * q; txt(c, 'THE FUND = A PONZI SCHEME', 800, 400, '400 52px Anton', RED, 'left'); } c.restore(); }
     const ak = lin(t, tAuth - .2, tAuth + .3); if (ak > 0) { c.save(); c.globalAlpha = ak; wallst(c, 1500, 700, 230, 230, '#18242f', '#35506a'); txt(c, 'AUTHORITIES', 1500, 760, '800 22px JBM', '#7cc0ff'); c.strokeStyle = '#7cc0ff'; c.lineWidth = 5; c.setLineDash([12, 10]); c.beginPath(); c.moveTo(1300, 640); c.lineTo(1300 + 90 * eo(ak), 640); c.stroke(); c.setLineDash([]); c.restore(); }
   });
   S(['P48', 'next', 1, -.05], (c, t, lt) => {
@@ -443,7 +447,7 @@ Engine.chapter(3, () => {
     c.restore();
     const bk = eo(lin(t, tEst + .4, t35 + .1)); if (bk > 0) { c.save(); c.globalAlpha = bk; c.strokeStyle = HL; c.lineWidth = 8; c.lineCap = 'round'; const bx = K.x + K.w + 26, my = (bt + bb) / 2; c.beginPath(); c.moveTo(bx, bt); c.quadraticCurveTo(bx + 36, bt, bx + 36, bt + 36); c.lineTo(bx + 36, my - 24); c.quadraticCurveTo(bx + 36, my, bx + 70, my); c.moveTo(bx + 36, my + 24); c.lineTo(bx + 36, bb - 36); c.quadraticCurveTo(bx + 36, bb, bx, bb); c.stroke(); c.restore(); }
     const lk = popK(t, t35 - .05, .3); if (lk > 0) { c.save(); c.translate(1010, 300); c.scale(lk, lk); txt(c, '$35–55B', 0, 0, '800 120px JBM', HL, 'left'); c.restore(); }
-    const nk = lin(t, tNever - .1, tNever + .3); if (nk > 0) { c.save(); c.globalAlpha = nk; txt(c, 'NEVER EXISTED', 1010, 430, '400 96px Anton', PAPER, 'left'); const u = eo(lin(t, tNever + .2, tNever + .8)); c.strokeStyle = RED; c.lineWidth = 8; c.beginPath(); c.moveTo(1010, 430); c.lineTo(1010 + 560 * u, 430); c.stroke(); c.restore(); }
+    const nk = lin(t, tNever - .1, tNever + .3); if (nk > 0) { c.save(); c.globalAlpha = nk; txt(c, 'NEVER EXISTED', 1010, 430, '400 96px Anton', PAPER, 'left'); const u = eo(lin(t, tNever + .2, tNever + .8)); c.strokeStyle = RED; c.lineWidth = 8; c.beginPath(); c.moveTo(1010, 492); c.lineTo(1010 + 560 * u, 492); c.stroke(); c.restore(); }
     const mk = lin(t, W('P49', 'profit') - .1, W('P49', 'profit') + .3); if (mk > 0) { c.save(); c.globalAlpha = mk; txt(c, '(MARKOPOLOS ESTIMATE)', 1010, 540, '800 32px JBM', GREY, 'left'); txt(c, 'PROFIT THAT NEVER EXISTED AT ALL', 1010, 590, '700 24px JBM', DIM, 'left'); c.restore(); }
   });
 
@@ -462,7 +466,7 @@ Engine.chapter(3, () => {
     bars(c, t, tSent); c.fillStyle = `rgba(0,0,0,${.5 * dark})`; c.fillRect(0, 0, VW, VH);
     const v = Math.round(roll(t, t150 - .1, t150 + .5, 150, 0, eo)), ck = back(lin(t, t150 - .15, t150 + .3));
     if (dark < .5) { if (ck > 0) { c.save(); c.translate(840, 250); c.scale(ck, ck); c.fillStyle = 'rgba(11,15,20,.82)'; rr(c, -430, -110, 860, 220, 20); c.fill(); txt(c, v + ' YEARS', 0, 0, '800 190px JBM', RED); c.restore(); }
-      stamp(c, '11 FELONIES · 150 YEARS', 840, 540, 78, RED, -.04, lin(t, tYears, tYears + .15)); }
+      stamp(c, '11 FELONIES · 150 YEARS', 840, 560, 92, RED, -.04, lin(t, tYears, tYears + .15)); }
     if (dark > 0) { c.save(); c.globalAlpha = dark; typedText(c, 'DIED IN PRISON, 2021', 840, 430, '400 120px Anton', PAPER, t, tDied, t2021 + .6, 'center', false); c.restore(); }
   });
 });

@@ -160,7 +160,7 @@ def final_mix(bed_stems, fx_batches):
     nb, nf = len(bed_stems), len(fx_batches)
     fc = [
         f"[0:a]aresample={SR},pan=stereo|c0=c0|c1=c0,apad=whole_len={NS},atrim=end_sample={NS},"
-        f"loudnorm=I=-16:TP=-2:LRA=11,aresample={SR},apad=whole_len={NS},atrim=end_sample={NS},asplit=3[vm][vk][vq]"
+        f"loudnorm=I=-16:TP=-2:LRA=11,aresample={SR},apad=whole_len={NS},atrim=end_sample={NS},asetpts=PTS-STARTPTS,asplit=3[vm][vk][vq]"
     ]
     bl = []
     for k, bed in enumerate(C.BEDS):
@@ -169,9 +169,9 @@ def final_mix(bed_stems, fx_batches):
                   f"adelay={ms}|{ms}[bed{k}]")
         bl.append(f"[bed{k}]")
     fc.append("".join(bl) + f"amix=inputs={nb}:normalize=0:duration=longest,"
-              f"apad=whole_len={NS},atrim=end_sample={NS},asplit=2[bsA][bsB]")
+              f"apad=whole_len={NS},atrim=end_sample={NS},asetpts=PTS-STARTPTS,asplit=2[bsA][bsB]")
     fc.append("[bsA][vk]sidechaincompress=threshold=0.04:ratio=5:attack=15:release=350[bd]")
-    fc.append("[bd]asplit=2[bdm][bdq]")
+    fc.append("[bd]asetpts=PTS-STARTPTS,asplit=2[bdm][bdq]")
     fc.append(";".join(f"[{1 + nb + k}:a]aresample={SR},aformat=channel_layouts=stereo[f{k}]"
                        for k in range(nf)))
     fc.append("".join(f"[f{k}]" for k in range(nf)) +
@@ -181,7 +181,7 @@ def final_mix(bed_stems, fx_batches):
               "acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200,"
               "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=192000,"
               "alimiter=limit=0.8:level=false:attack=1:release=60,aresample=48000,"
-              f"atrim=end_sample={NS_OUT}[out]")
+              f"atrim=end_sample={NS_OUT},asetpts=PTS-STARTPTS[out]")
     qa = lambda p: os.path.join(TMP, p)  # noqa: E731
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *ins,
            "-filter_complex", ";".join(fc),
