@@ -3,49 +3,69 @@
 Nearly a thousand PhDs got this puzzle wrong. Your turn.
 
 2
-00:00:04,617 --> 00:00:07,765
-One of three briefcases has a million bucks. So you pick one.
+00:00:04,717 --> 00:00:08,496
+Picture three briefcases. One holds a million dollars, and two are empty.
 
 3
-00:00:08,015 --> 00:00:11,214
-The host knows where the money is, and always opens an empty one.
+00:00:09,096 --> 00:00:11,763
+That's a hundred bucks a day. For twenty-seven years.
 
 4
-00:00:11,464 --> 00:00:13,921
-Then he offers a swap, and it's fifty-fifty, right?
+00:00:12,463 --> 00:00:15,058
+You pick a case. But the host knows where the money is.
 
 5
-00:00:14,171 --> 00:00:15,955
-Hit like if you said fifty-fifty.
+00:00:15,958 --> 00:00:18,528
+And he always opens an empty case you didn't pick.
 
 6
-00:00:16,255 --> 00:00:20,246
-Nope. Your first pick was a one in three guess, and opening a case changed nothing.
+00:00:19,528 --> 00:00:23,289
+Then he asks: stay with yours, or switch? Hit like if it feels fifty-fifty.
 
 7
-00:00:20,496 --> 00:00:22,345
-So switching wins two out of three.
+00:00:23,689 --> 00:00:26,902
+A columnist printed the answer in nineteen ninety: switch.
 
 8
-00:00:23,645 --> 00:00:26,507
-Send this to the friend who's— who's already typing 'no way'.
+00:00:27,402 --> 00:00:31,107
+By her count, nearly a thousand PhDs wrote in to say she was wrong.
 
 9
-00:00:26,807 --> 00:00:32,997
-A columnist printed that in nineteen ninety, and by her count, nearly a thousand PhDs wrote in saying she's wrong.
+00:00:32,407 --> 00:00:34,645
+Let's check every— every possible start.
 
 10
-00:00:33,597 --> 00:00:36,323
-Still don't buy it? Follow, this page ends the argument.
+00:00:34,945 --> 00:00:38,241
+One: you picked the money. The other case is empty, so switching loses.
 
 11
-00:00:37,037 --> 00:00:40,808
-Make it a hundred cases: you pick one, and he opens ninety-eight empties.
+00:00:38,641 --> 00:00:41,007
+Send this to the friend who'd stop listening now.
 
 12
-00:00:41,908 --> 00:00:44,825
-Now switching wins ninety-nine percent. Same game.
+00:00:41,407 --> 00:00:45,778
+Two: you picked an empty case. So he has to open the other empty one, and switching wins.
 
 13
-00:00:46,125 --> 00:00:48,041
+00:00:46,778 --> 00:00:49,593
+Three: you picked the other empty case, so switching wins again.
+
+14
+00:00:49,993 --> 00:00:51,545
+That's two wins out of three.
+
+15
+00:00:52,345 --> 00:00:54,351
+Follow, this page settles arguments.
+
+16
+00:00:55,015 --> 00:00:58,862
+Make it a hundred cases. You pick one, and he opens ninety-eight empties.
+
+17
+00:00:59,462 --> 00:01:02,076
+Now switching wins ninety-nine percent of the time.
+
+18
+00:01:03,576 --> 00:01:05,492
 So… stay or switch? Your turn.
