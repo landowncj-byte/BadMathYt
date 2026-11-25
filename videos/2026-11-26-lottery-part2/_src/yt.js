@@ -1,8 +1,8 @@
 // YouTube cut — directed to voice/beats.md (2026-11-26). Series DECODED (factual follow-up, nobody is a criminal).
 // Stations: A hook+mountain+cheque (0,0) · B rulebook (1800,0) · C calendar (3600,0) · D pay+cheque fan (3600,1500) · E year jump (1800,1500) · F Texas (0,2000+)
 BM2.scene({
-  series: 'decoded', title: 'PART 2 · LOTTERY · 1992', duration: 48.98,
-  footnote: ['NO CONVICTIONS: THE 1992 PURCHASE WAS LEGAL AND VIRGINIA PAID · SOURCES: UPI · WASHINGTON POST', 'ROANOKE TIMES (1992) · VIRGINIAN-PILOT (1997) · KUT · HOUSTON CHRONICLE (TEXAS 2023)', 'ILLUSTRATIONS: TICKETS · CHEQUES · RULEBOOK · SIGN (GENERIC, NOT REAL DOCUMENTS)'],
+  series: 'whatif', title: 'PART 2 · LOTTERY · 1992', duration: 48.98,
+  footnote: ['THE 1992 PURCHASE WAS LEGAL AND VIRGINIA PAID · SOURCES: UPI · WASHINGTON POST', 'ROANOKE TIMES (1992) · VIRGINIAN-PILOT (1997) · KUT · HOUSTON CHRONICLE (TEXAS 2023)', 'ILLUSTRATIONS: TICKETS · CHEQUES · RULEBOOK · SIGN (GENERIC, NOT REAL DOCUMENTS)'],
   elements: [
     // ---- A: frame 0 ----
     { id: 'mtn1', type: 'mountain', at: [0, 175], in: -4, props: { rows: 8, thumpAt: 0.04, heroAt: '@tickets', heroOut: '@Was+2.7', seed: 3 } },
@@ -17,15 +17,15 @@ BM2.scene({
     { id: 'q2', type: 'stamp', at: [0, -330], rot: -0.06, in: '@Was-0.05', out: '@About-0.3', props: { text: 'WAS THIS ONE?', tone: 'accent', size: 58 } },
     // ---- B: rulebook ----
     { id: 'book', type: 'rulebook', at: [1800, 60], in: '@snag-0.5', props: { ulAt: '@licensed', lineAt: '@tickets#2', newAt: '@passed', stampAt: '@emergency+0.08' } },
-    { id: 'snag', type: 'text', layer: 'screen', at: [540, 440], in: '@snag-0.05', out: '@bought#2', props: { lines: [[['THE SNAG?', 'gold']]], size: 112 } },
-    { id: 'solved', type: 'text', layer: 'screen', at: [540, 440], in: '@Problem#2-0.1', out: '@31-0.2', props: { lines: [[['SOLVED?', 'gold']]], size: 120 } },
+    { id: 'snag', type: 'text', layer: 'screen', at: [540, 365], in: '@snag-0.05', out: '@bought#2', props: { lines: [[['THE SNAG?', 'gold']]], size: 112 } },
+    { id: 'solved', type: 'text', layer: 'screen', at: [540, 365], in: '@Problem#2-0.1', out: '@31-0.2', props: { lines: [[['SOLVED?', 'gold']]], size: 120 } },
     // ---- C: calendar ----
     { id: 'cal', type: 'datecal', at: [3600, 20], in: '@About-0.3', props: { tick1At: '@About+0.4', tearAt: '@weeks+0.1', tick2At: '@later+0.2', provedAt: '@nobody' } },
     // ---- D: pay + cheque fan ----
     { id: 'pay2', type: 'paystamp', at: [3600, 870], scale: 0.9, in: '@So-0.35', props: { slamAt: '@paid-0.05' } },
     { id: 'fan', type: 'chequefan', at: [3600, 1830], in: '@1-0.5', out: '@Then-0.25', props: { at: '@year-0.05', per: 0.036, valAt: '@1', yearAt: '@year', nAt: '@20' } },
     // ---- E: year jump ----
-    { id: 'ycal', type: 'yearcal', at: [1800, 1500], in: '@31-0.45', props: { flipAt: '@Texas-0.35', labelAt: '@Texas-0.35', dur: 0.6, yearsAt: '@31+0.05' } },
+    { id: 'ycal', type: 'yearcal', at: [1800, 1500], in: '@31-0.45', props: { flipAt: '@again-0.3', labelAt: '@again-0.3', dur: 0.6, yearsAt: '@31+0.05' } },
     // ---- F: Texas ----
     { id: 'mtn1s', type: 'mountain', at: [-560, 3010], scale: 0.45, in: '@Texas-0.3', props: { rows: 9, seed: 3 } },
     { id: 'mtn2', type: 'mountain', at: [0, 2780], in: '@2023+0.15', props: { rows: 12, seed: 8, thumpAt: '@95' } },
@@ -70,8 +70,8 @@ BM2.scene({
     { at: '@31+0.05', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.72, maxH: 400, sy: 700, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@follow-0.1', beat: 'graphic-hero', focus: 'ycal', fill: 0.7, maxH: 840, sx: 520, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.8 },
     { at: '@Somebody', beat: 'presenter-front', focus: 'ycal', sy: 770, pose: 'shock' },
-    { at: '@Texas-0.3', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.72, maxH: 400, sy: 700, st: 'corner-left', pose: 'point', dur: 0.45 },
-    { at: '@2023+0.5', beat: 'side-by-side', focus: ['jack', 'mtn2', 'mtn1s'], move: 'whip', fill: 0.92, maxH: 1050, sy: 800, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
+    { at: '@again', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.72, maxH: 400, sy: 700, st: 'corner-left', pose: 'point', dur: 0.45 },
+    { at: '@2023+0.65', beat: 'side-by-side', focus: ['jack', 'mtn2', 'mtn1s'], move: 'whip', fill: 0.92, maxH: 1050, sy: 800, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
     { at: '@95', beat: 'zoom-on-number', focus: 'jack', fill: 0.94, maxH: 520, sy: 780, st: { x: 120, y: 1370, s: 0.9, dx: 0 }, pose: 'shock', dur: 0.4, lead: 0.12 },
     { at: '@million#4', beat: 'graphic-hero', focus: ['jack', 'mtn2', 'mtn1s'], fill: 0.92, maxH: 1050, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.8 },
     { at: '@It#2', beat: 'side-by-side', focus: ['sign', 'mtn2'], fill: 0.78, maxH: 1040, sy: 800, st: 'corner-left', pose: 'point', dur: 0.8 },
@@ -104,7 +104,7 @@ BM2.scene({
     { at: '@Problem#2', name: 'record_scratch_stop_1', gain: -14, dur: 0.6 },
     { at: '@31-0.1', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@31', name: 'clock_ticking_1', gain: -14, dur: 1.2 },
     { at: '@follow+0.5', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.58', name: 'success_chime_1', gain: -12, dur: 1.0 },
-    { at: '@Texas-0.35', name: 'riser_2', gain: -12, dur: 0.9 }, { at: '@2023+0.15', name: 'sub_drop_1', gain: -8, dur: 1.2 }, { at: '@2023+0.4', name: 'money_counter_2', gain: -11, dur: 1.2 },
+    { at: '@again-0.3', name: 'riser_2', gain: -12, dur: 0.9 }, { at: '@2023+0.15', name: 'sub_drop_1', gain: -8, dur: 1.2 }, { at: '@2023+0.4', name: 'money_counter_2', gain: -11, dur: 1.2 },
     { at: '@95', name: 'cinematic_hit_1', gain: -3, dur: 1.2 }, { at: '@95', name: 'deep_boom_1', gain: -3, dur: 1.4 }, { at: '@95+0.1', name: 'cash_register_1', gain: -8, dur: 0.9 },
     { at: '@shutting', name: 'door_slam_1', gain: -5, dur: 0.8 }, { at: '@lottery#2+0.1', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
     { at: '@Should', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@yes', name: 'rewind_2', gain: -11, dur: 0.9 },

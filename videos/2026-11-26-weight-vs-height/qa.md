@@ -2,9 +2,9 @@
 Scripts/voice untouched. Sources: _src/recipes.js (scale, tower, doll, fivex, gap, slider, chip, heart, plane) + yt.js / tt.js / ig.js (build.sh <cut> <yt|tt|ig>, sheet.py). No engine files changed.
 | Cut | File | Narration | Video | Size |
 |---|---|---|---|---|
-| YouTube | video.mp4 | 46.10 s | 46.50 s | 28.1 MB |
-| TikTok | tiktok/video.mp4 | 28.67 s | 29.07 s | 20.8 MB |
-| IG/FB | ig/video.mp4 | 22.25 s | 22.67 s | 14.6 MB |
+| YouTube | video.mp4 | 46.10 s | 46.50 s | 26.6 MB |
+| TikTok | tiktok/video.mp4 | 28.67 s | 29.07 s | 19.5 MB |
+| IG/FB | ig/video.mp4 | 22.25 s | 22.67 s | 14.0 MB |
 Mix: -14.0 LUFS, true peak -1.36 / -1.42 / -1.31 dBFS. 1-fps timestamped contact_sheet.png in each cut. captions.srt from sentences.json (3 files).
 ## On-screen facts (all from research.md)
 | Shown | Value | research.md |
@@ -43,3 +43,11 @@ Starting pile/tower on frame 0 (4,500 bills, 36 in) are staging values, not clai
 - Hook shows -$202,980 exact while the voice says "two hundred grand" (beats.md said -$200,000).
 - IG caption censors the profanity (F*CK-UP) while the voice says it.
 - Doll header and slider header clip under the WHAT IF pill on tight zooms.
+
+## Layout rework (coordinator feedback, 2026-11-25)
+- Counters (lb / bills / $) moved from under the piles to the top of the scale and tower, so they stay above screen y ~1280 in every framing; tower shortened (8 px per inch) so the stack never reaches them.
+- Whole-stage framing (F0/FR) reworked: hook, buttons, counters, piles end at y ~1260; gap banner now sits below the piles at world y 580.
+- Overlay texts and the "~1 G A BILL" chip live in their own lane (y 345, under the pill); A/B buttons fade out while overlay texts show (and during payoff zooms).
+- "peek" beats on the tower/gap replaced with side placement so the storyteller no longer covers counters. Slider (TT) framed whole so its header clears the pill.
+- Verified on real frames extracted with ffmpeg (0 s, every ~2 s, overlay moments) for all three cuts.
+Known remaining: pile/platform can reach the caption band during the payoff zoom; ask-bubble sits over dimmed counters in the final presenter shot; digit smear during roll.

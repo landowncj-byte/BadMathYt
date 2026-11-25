@@ -136,26 +136,26 @@
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 17.1,
+   "at": 16.9,
    "name": "swipe_2"
   },
   {
    "gain": -12,
    "dur": 0.9,
-   "at": 17.35,
+   "at": 17.1,
    "name": "riser_2"
-  },
-  {
-   "gain": -8,
-   "dur": 1.2,
-   "at": 18.5,
-   "name": "sub_drop_1"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 18.58,
+   "at": 18.73,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -8,
+   "dur": 1.2,
+   "at": 18.88,
+   "name": "sub_drop_1"
   },
   {
    "gain": -11,

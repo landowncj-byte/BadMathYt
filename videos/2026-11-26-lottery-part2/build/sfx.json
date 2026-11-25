@@ -296,28 +296,28 @@
    "name": "success_chime_1"
   },
   {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 39,
-   "name": "swipe_2"
-  },
-  {
    "gain": -12,
    "dur": 0.9,
-   "at": 39.2,
+   "at": 38.26,
    "name": "riser_2"
   },
   {
-   "gain": -10,
-   "dur": 0.7,
-   "at": 39.51,
-   "name": "whoosh_2"
+   "gain": -13,
+   "dur": 0.45,
+   "at": 38.36,
+   "name": "swipe_2"
   },
   {
    "gain": -8,
    "dur": 1.2,
    "at": 39.61,
    "name": "sub_drop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 39.81,
+   "name": "whoosh_2"
   },
   {
    "gain": -11,

@@ -1,8 +1,8 @@
 // Instagram/Facebook cut — directed to ig/voice/beats.md. DECODED. Stations: A hook (0,0) · B rulebook (1800,60) · C cheque fan (3600,300) · D year jump (1800,1500) · F Texas (0,2000+)
 const HOOK = (id, inn, out) => ({ id, type: 'hook', at: [0, -570], in: inn, ...(out ? { out } : {}), props: { stamp: 'PART 2', lines: [[['VIRGINIA ', 'paper'], ['PAID', 'good']], [['$27,000,000', 'gold']]], size: 112 } });
 BM2.scene({
-  series: 'decoded', title: 'PART 2 · LOTTERY · 1992', duration: 23.78,
-  footnote: ['NO CONVICTIONS: THE 1992 PURCHASE WAS LEGAL AND VIRGINIA PAID · SOURCES: UPI · WASHINGTON POST', 'ROANOKE TIMES (1992) · VIRGINIAN-PILOT (1997) · KUT · HOUSTON CHRONICLE (TEXAS 2023)', 'ILLUSTRATIONS: TICKETS · CHEQUES · RULEBOOK · SIGN (GENERIC, NOT REAL DOCUMENTS)'],
+  series: 'whatif', title: 'PART 2 · LOTTERY · 1992', duration: 23.78,
+  footnote: ['THE 1992 PURCHASE WAS LEGAL AND VIRGINIA PAID · SOURCES: UPI · WASHINGTON POST', 'ROANOKE TIMES (1992) · VIRGINIAN-PILOT (1997) · KUT · HOUSTON CHRONICLE (TEXAS 2023)', 'ILLUSTRATIONS: TICKETS · CHEQUES · RULEBOOK · SIGN (GENERIC, NOT REAL DOCUMENTS)'],
   elements: [
     { id: 'mtn1', type: 'mountain', at: [0, 175], in: -4, props: { rows: 8, thumpAt: 0.04, seed: 3 } },
     HOOK('hook', 0, '@Why-0.12'),
@@ -14,11 +14,11 @@ BM2.scene({
     // C
     { id: 'fan', type: 'chequefan', at: [3600, 1830], in: '@About-0.4', props: { at: '@year-0.1', per: 0.03, valAt: '@1', yearAt: '@year', nAt: '@20' } },
     // D
-    { id: 'ycal', type: 'yearcal', at: [1800, 1500], in: '@rules+0.2', props: { flipAt: '@Texas-0.25', labelAt: '@Texas-0.25', dur: 0.6, yearsAt: 99999 } },
+    { id: 'ycal', type: 'yearcal', at: [1800, 1500], in: '@rules+0.2', props: { flipAt: '@Texas-0.5', labelAt: '@Texas-0.5', dur: 0.6, yearsAt: 99999 } },
     // F
     { id: 'mtn1s', type: 'mountain', at: [-560, 3010], scale: 0.45, in: '@Texas', props: { rows: 6, seed: 3 } },
-    { id: 'mtn2', type: 'mountain', at: [0, 2780], in: '@2023+0.4', props: { rows: 12, seed: 8, thumpAt: '@95' } },
-    { id: 'jack', type: 'counter', at: [0, 2400], in: '@2023+0.5', props: { at: '@again-0.05', dur: 1.0, to: 95000000, prefix: '$', label: 'TEXAS · 2023', sub: 'JACKPOT · AGAIN', tone: 'good', size: 150, w: 900 } },
+    { id: 'mtn2', type: 'mountain', at: [0, 2780], in: '@it#2', props: { rows: 12, seed: 8, thumpAt: '@95' } },
+    { id: 'jack', type: 'counter', at: [0, 2400], in: '@it#2+0.05', props: { at: '@again-0.05', dur: 1.0, to: 95000000, prefix: '$', label: 'TEXAS · 2023', sub: 'JACKPOT · AGAIN', tone: 'good', size: 150, w: 900 } },
     HOOK('hook2', '@yes+0.05'),
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@Double-0.05', out: '@Double+1.15', props: { s: 1 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
@@ -39,8 +39,8 @@ BM2.scene({
     { at: '@Then-0.1', beat: 'side-by-side', focus: 'book', move: 'whip', sx: 640, sy: 830, fill: 0.7, maxH: 840, st: 'corner-left', pose: 'point' },
     { at: '@rules', beat: 'zoom-on-number', focus: 'book.stamp', fill: 0.94, sy: 880, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@rules+0.7', beat: 'side-by-side', focus: 'ycal', move: 'whip', sx: 640, sy: 830, fill: 0.7, maxH: 840, st: 'corner-left', pose: 'shrug' },
-    { at: '@Texas-0.3', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.72, maxH: 400, sy: 700, st: 'corner-left', pose: 'point', dur: 0.45 },
-    { at: '@it#2', beat: 'side-by-side', focus: ['jack', 'mtn2', 'mtn1s'], move: 'whip', fill: 0.92, maxH: 1050, sy: 800, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
+    { at: '@Texas-0.5', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.72, maxH: 400, sy: 700, st: 'corner-left', pose: 'point', dur: 0.45 },
+    { at: '@it#2+0.15', beat: 'side-by-side', focus: ['jack', 'mtn2', 'mtn1s'], move: 'whip', fill: 0.92, maxH: 1050, sy: 800, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
     { at: '@95', beat: 'zoom-on-number', focus: 'jack', fill: 0.94, maxH: 520, sy: 780, st: { x: 120, y: 1370, s: 0.9 }, pose: 'shock', dur: 0.4, lead: 0.12 },
     { at: '@million#2', beat: 'graphic-hero', focus: ['jack', 'mtn2', 'mtn1s'], fill: 0.92, maxH: 1050, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.7 },
     { at: '@lottery#2', beat: 'presenter-front', focus: 'jack', sy: 780, pose: 'talk' },
@@ -57,7 +57,7 @@ BM2.scene({
     { at: '@About-0.3', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@year', name: 'coins_drop_1', gain: -12, dur: 1.1 }, { at: '@1', name: 'ding_2', gain: -8, dur: 0.7 },
     { at: '@Send', name: 'swoosh_2', gain: -9, dur: 1.0 },
     { at: '@Then-0.1', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@changed', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@rules', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@rules', name: 'thud_2', gain: -8, dur: 0.4 },
-    { at: '@Texas-0.25', name: 'riser_2', gain: -12, dur: 0.9 }, { at: '@2023+0.4', name: 'sub_drop_1', gain: -8, dur: 1.2 }, { at: '@again-0.05', name: 'money_counter_2', gain: -11, dur: 1.0 },
+    { at: '@Texas-0.5', name: 'riser_2', gain: -12, dur: 0.9 }, { at: '@it#2', name: 'sub_drop_1', gain: -8, dur: 1.2 }, { at: '@again-0.05', name: 'money_counter_2', gain: -11, dur: 1.0 },
     { at: '@95', name: 'cinematic_hit_1', gain: -3, dur: 1.2 }, { at: '@95', name: 'deep_boom_1', gain: -3, dur: 1.4 }, { at: '@95+0.1', name: 'cash_register_1', gain: -8, dur: 0.9 },
     { at: '@lottery#2', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@yes', name: 'rewind_2', gain: -11, dur: 0.9 },
   ],
