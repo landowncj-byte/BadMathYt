@@ -1,42 +1,12 @@
 [
- [
-  "A million bucks, two briefcases left. Stay or switch? Your gut's wrong.",
-  0.25
- ],
- [
-  "Three cases, one has the cash. You picked one.",
-  0.25
- ],
- [
-  "The host knows where the cash is, and always opens an empty one.",
-  0.25
- ],
- [
-  "Tap the heart if you're thinking fifty-fifty.",
-  0.25
- ],
- [
-  "[breath] Nah. Your pick was one in three. Still is.",
-  0.25
- ],
- [
-  "Send this to the friend who'll argue.",
-  0.25
- ],
- [
-  "The other\u2014 the case he skipped? That one's two in three. Yeah.",
-  0.3
- ],
- [
-  "Don't buy two in three? Follow, this page settles arguments.",
-  0.4
- ],
- [
-  "The real game-show host tried it himself. Guess what won? Switching.",
-  0.3
- ],
- [
-  "So\u2026 stay or switch? One word.",
-  0.45
- ]
+ ["A million bucks, two briefcases left. Stay or switch? 'Cause your gut's wrong.", 0.3],
+ ["Three cases, one has the cash, and you picked one.", 0.25],
+ ["The host knows where the cash is, and always opens an empty one.", 0.25],
+ ["Tap the heart if you're thinking fifty-fifty.", 0.25],
+ ["[breath] Nah, your pick was one in three, and still is.", 0.25],
+ ["Send this to the friend who'll argue.", 0.25],
+ ["The other— the case he skipped? That one's two in three.", 0.7],
+ ["Don't buy it? Follow, this page settles arguments.", 0.4],
+ ["The real game-show host tried it himself, and guess what won? Switching.", 0.6],
+ ["So… stay or switch?", 0.45]
 ]

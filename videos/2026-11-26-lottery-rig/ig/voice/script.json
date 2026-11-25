@@ -1,22 +1,7 @@
 [
- [
-  "The lottery's own security director rigged the damn thing in five states.",
-  0.25
- ],
- [
-  "Wait, it's worse: he told a court he wrote code to predict numbers.",
-  0.25
- ],
- [
-  "Send this to whoever plays every week.",
-  0.3
- ],
- [
-  "Biggest ticket, sixteen point five million advertised? Follow, guess what it paid.",
-  0.35
- ],
- [
-  "Not a fucking cent. [sigh] He got up to twenty-five years. You still trust the damn lottery?",
-  0.45
- ]
+ ["The lottery's own security director rigged the damn thing in five states.", 0.25],
+ ["Wait, it's worse: he told a court he wrote code to predict numbers.", 0.25],
+ ["Send this to whoever plays every week.", 0.3],
+ ["The biggest ticket was advertised at sixteen point five million. [beat] Follow, guess what it paid.", 0.35],
+ ["Not a fucking cent. [sigh] He got up to twenty-five years in prison. [beat] You still trust the damn lottery?", 0.45]
 ]

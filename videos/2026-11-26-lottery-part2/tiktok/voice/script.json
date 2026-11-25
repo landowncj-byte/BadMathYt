@@ -1,42 +1,12 @@
 [
- [
-  "Part two. Somebody bought nearly every lottery combo again. Ninety-five million bucks.",
-  0.25
- ],
- [
-  "[breath] But first, Virginia, ninety-two: they'd won twenty-seven million. Did the state pay?",
-  0.25
- ],
- [
-  "Tap the heart if you're guessing no.",
-  0.25
- ],
- [
-  "Yeah, it paid. Nobody could prove a rule got broken.",
-  0.25
- ],
- [
-  "Then Virginia rushed in rules against bulk buying. Cute.",
-  0.25
- ],
- [
-  "Send this to the friend who says the lottery's unbeatable.",
-  0.25
- ],
- [
-  "'Cause Texas, twenty twenty-three, same\u2014 basically the same play.",
-  0.25
- ],
- [
-  "How'd it end? Follow, it's wild.",
-  0.4
- ],
- [
-  "[gasp] Texas ended up shutting down its whole lottery commission.",
-  0.3
- ],
- [
-  "Should buying every combo be legal? One word.",
-  0.45
- ]
+ ["Part two. Somebody bought nearly every lottery combo again, for ninety-five million bucks.", 0.6],
+ ["[breath] But first, Virginia, ninety-two: they'd won twenty-seven million. [beat] Did the state pay?", 0.25],
+ ["Tap the heart if you're guessing no.", 0.25],
+ ["Yeah, it paid, 'cause nobody could prove a rule got broken.", 0.25],
+ ["Then Virginia rushed in rules against bulk buying. Cute.", 0.25],
+ ["Send this to the friend who says the lottery's unbeatable.", 0.25],
+ ["'Cause Texas, twenty twenty-three, was the same— basically the same play.", 0.25],
+ ["How'd it end? Follow, 'cause it's wild.", 0.4],
+ ["[gasp] Texas ended up shutting down its whole lottery commission.", 0.6],
+ ["Should buying every combo be legal?", 0.45]
 ]

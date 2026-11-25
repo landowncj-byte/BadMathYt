@@ -1,22 +1,7 @@
 [
- [
-  "A billionaire says he paid over two million for fake-ass wine.",
-  0.25
- ],
- [
-  "Double-tap if you drink cheap shit anyway. But the seller? Prosecutors called his house a wine factory.",
-  0.25
- ],
- [
-  "Send this to your wine-snob friend.",
-  0.3
- ],
- [
-  "What busted him? His bottles said nineteen forty-five. The winery first made that wine in nineteen eighty-two.",
-  0.35
- ],
- [
-  "[sigh] Ten years, dumbass. Could you taste fake wine?",
-  0.45
- ]
+ ["A billionaire says he paid over two million for fake-ass wine.", 0.6],
+ ["Double-tap if you drink cheap shit anyway. But prosecutors called the seller's house a wine factory.", 0.25],
+ ["Send this to your wine-snob friend.", 0.3],
+ ["So what busted him? His bottles said nineteen forty-five, but the winery first made that wine in nineteen eighty-two.", 0.7],
+ ["[sigh] He got ten years in prison, dumbass. Could you taste fake wine?", 0.45]
 ]

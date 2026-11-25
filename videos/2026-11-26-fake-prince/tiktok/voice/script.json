@@ -1,11 +1,11 @@
 [
  ["Imagine faking Saudi royalty, then ordering pork at dinner. This idiot did.", 0.25],
- ["[breath] But— rewind. Miami. Ferrari with diplomatic plates? Fake. Bodyguards' badges? Fake.", 0.25],
- ["Tap the heart if you'd have bought it.", 0.25],
- ["Investors did. They lost over eight million bucks.", 0.25],
- ["Prosecutors said he'd been arrested or convicted eleven times for this.", 0.25],
- ["Send this to the friend who trusts anyone in a Ferrari.", 0.25],
- ["He got eighteen-plus years. So what got him? Follow, it's so dumb.", 0.4],
- ["[gasp] Then dinner. He orders pork. His character wouldn't eat it.", 0.3],
+ ["[breath] But— rewind to Miami, where his Ferrari's diplomatic plates and bodyguards' badges were fake.", 0.25],
+ ["Tap the heart if you'd buy it.", 0.25],
+ ["Investors did, and they lost over eight million bucks.", 0.7],
+ ["Prosecutors said he'd been arrested or convicted eleven times for this.", 0.3],
+ ["Send this to whoever trusts anyone in a Ferrari.", 0.25],
+ ["He was sentenced to eighteen-plus years in prison. [beat] So what got him? Follow, it's dumb.", 0.4],
+ ["[gasp] Then at dinner he orders pork, which his character wouldn't eat.", 0.6],
  ["What's dumber: the pork, or the eleven?", 0.45]
 ]

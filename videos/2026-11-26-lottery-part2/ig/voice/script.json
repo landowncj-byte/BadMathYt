@@ -1,8 +1,8 @@
 [
- ["Part two. Virginia had to pay those lottery legends twenty-seven fucking million.", 0.25],
- ["Why? Nobody could prove a broken rule. Double-tap if you love it.", 0.25],
- ["About one point three mil a year, twenty years.", 0.3],
+ ["Part two. Virginia had to pay those lottery legends twenty-seven fucking million.", 0.6],
+ ["Why? 'Cause nobody could prove a broken rule. Double-tap if you love it.", 0.25],
+ ["That's about one point three mil a year, for twenty years.", 0.5],
  ["Send this to whoever says the house always wins.", 0.35],
- ["Then Virginia changed its rules. [sigh] Texas, twenty twenty-three: it happened again. Ninety-five million.", 0.3],
+ ["Then Virginia changed its rules. [sigh] But Texas, twenty twenty-three, it happened again, for ninety-five million.", 0.6],
  ["Lottery legends: yes or no?", 0.45]
 ]

@@ -1,54 +1,15 @@
 [
- [
-  "Grab the hundreds here, and the average guy loses two hundred grand.",
-  0.3
- ],
- [
-  "[breath] Two piles of cash. Your weight in twenties, or your height in hundreds, stacked flat?",
-  0.25
- ],
- [
-  "Hundreds are worth five times more. Easy, right?",
-  0.25
- ],
- [
-  "Hit like if you picked the stack.",
-  0.3
- ],
- [
-  "But say a bill weighs about a gram. One pound is four hundred fifty-four bills.",
-  0.25
- ],
- [
-  "One inch of stack? Two hundred thirty-three.",
-  0.3
- ],
- [
-  "Average American man, per the CDC: one ninety-nine pounds, about five nine.",
-  0.25
- ],
- [
-  "Send this to the friend who'd grab the hundreds without— without blinking.",
-  0.3
- ],
- [
-  "His height in hundreds? One point six million. And that stack weighs thirty-five pounds.",
-  0.3
- ],
- [
-  "His weight's next. Follow, this page does the math you didn't.",
-  0.45
- ],
- [
-  "His weight in twenties: one point eight million.",
-  0.3
- ],
- [
-  "[sigh] The small bills win, by two hundred grand.",
-  0.3
- ],
- [
-  "So… twenties or hundreds? One word.",
-  0.4
- ]
+ ["Grab the hundreds here, and the average guy loses two hundred grand.", 0.6],
+ ["[breath] Two piles of cash: your weight in twenties, or your height in hundreds, stacked flat?", 0.25],
+ ["Hundreds are worth five times more. Easy, right?", 0.25],
+ ["Hit like if you picked the stack.", 0.3],
+ ["But say a bill weighs about a gram, so one pound is four hundred fifty-four bills.", 0.5],
+ ["And one inch of stack is two hundred thirty-three.", 0.5],
+ ["Per the CDC, the average American man is one ninety-nine pounds, about five nine.", 0.25],
+ ["Send this to the friend who'd grab hundreds without— without blinking.", 0.3],
+ ["His height in hundreds is one point six million, and it weighs thirty-five pounds.", 0.5],
+ ["His weight's next. Follow, this page does the math you didn't.", 0.45],
+ ["His weight in twenties is one point eight million.", 0.7],
+ ["[sigh] The small bills win, by two hundred grand.", 0.7],
+ ["So… twenties or hundreds? One word.", 0.4]
 ]

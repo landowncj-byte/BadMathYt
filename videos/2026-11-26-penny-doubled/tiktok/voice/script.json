@@ -1,11 +1,11 @@
 [
- ["You took the doubling penny over a million bucks. Day twenty: about five grand.", 0.25],
- ["[breath] Regret it yet? The deal: one penny, doubles daily, thirty days, no taxes.", 0.25],
- ["Tap the heart if you'd be sweating, 'cause day ten was five bucks. Five.", 0.25],
- ["Day twenty-seven? Six hundred seventy-one grand. Still— still losing to the million.", 0.25],
+ ["You took the doubling penny over a million bucks. Day twenty, you've got about five grand.", 0.6],
+ ["[breath] Regret it yet? The deal's one penny that doubles daily for thirty days, no taxes.", 0.25],
+ ["Tap the heart if you'd be sweating, 'cause day ten was five bucks.", 0.25],
+ ["Day twenty-seven, you're at six hundred seventy-one grand, and still— still losing to the million.", 0.6],
  ["Send this to the friend who'd quit right here.", 0.25],
  ["Day twenty-eight, you finally pass it.", 0.25],
  ["Follow, 'cause the last day's stupid.", 0.4],
- ["Day thirty: [gasp] five point three seven million.", 0.3],
- ["So: penny or million? One word.", 0.45]
+ ["Day thirty, you've got [gasp] five point three seven million.", 0.8],
+ ["So, penny or million? One word.", 0.45]
 ]

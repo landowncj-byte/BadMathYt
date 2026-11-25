@@ -1,46 +1,13 @@
 [
- [
-  "The lottery's own security director rigged the lottery. In five states.",
-  0.3
- ],
- [
-  "[breath] Eddie Tipton. His whole job? Protect the computers that pick the numbers.",
-  0.25
- ],
- [
-  "Instead, he later told a court, he wrote code to predict the winning numbers.",
-  0.25
- ],
- [
-  "Hit like if you've always said it's rigged. Yeah.",
-  0.3
- ],
- [
-  "Here's the payout plan. He said he gave the numbers to other people, who won and shared it with him.",
-  0.25
- ],
- [
-  "[smack] Send this to your— to whoever in your family still plays every week.",
-  0.3
- ],
- [
-  "Then the big one. A ticket hits a jackpot advertised at sixteen point five million.",
-  0.3
- ],
- [
-  "How much got paid out? Follow, this page reads the court files.",
-  0.45
- ],
- [
-  "Zero. Nobody ever collected it.",
-  0.3
- ],
- [
-  "Twenty seventeen, he pleads guilty. The sentence? Up to twenty-five years.",
-  0.3
- ],
- [
-  "So… still trust the lottery? Yes or no.",
-  0.4
- ]
+ ["The lottery's own security director rigged the lottery in five states.", 0.5],
+ ["[breath] Eddie Tipton's whole job? Protecting the computers that pick the numbers.", 0.25],
+ ["Instead, he later told a court, he wrote code to predict the winning numbers.", 0.25],
+ ["Hit like if you've always said it's rigged. Yeah.", 0.3],
+ ["Here's the payout plan: he said he gave the numbers to other people, who won and shared it with him.", 0.25],
+ ["[smack] Send this to your— to whoever in your family still plays every week.", 0.3],
+ ["Then comes the big one: a ticket hits a jackpot advertised at sixteen point five million.", 0.7],
+ ["How much got paid out? Follow, this page reads the court files.", 0.45],
+ ["Zero. Nobody ever collected it.", 0.7],
+ ["In twenty seventeen he pleaded guilty, and he was sentenced to up to twenty-five years in prison.", 0.7],
+ ["So… still trust the lottery? Yes or no.", 0.4]
 ]
