@@ -1,20 +1,20 @@
-const F0 = { x: 0, y: -87, w: 1240, h: 1425 };
-const FR = { fill: 0.86, maxH: 1100, sx: 560, sy: 855 };
+const F0 = { x: 0, y: -190, w: 1240, h: 1220 };
+const FR = { fill: 0.86, maxH: 1000, sx: 560, sy: 800 };
 const HOOK = { lines: [[['WRONG PICK =', 'paper']], [['−$202,980', 'bad']]], size: 96 };
 const KEEP = ['hook', 'endt', 'scale', 'tower'];
-const GAPBOX = [{ x: 0, y: 790, w: 1000, h: 640 }];
+const GAPBOX = [{ x: 0, y: 200, w: 1240, h: 1280 }];
 BM2.scene({
   series: 'whatif', title: 'WEIGHT VS HEIGHT', duration: 29.07,
   footnote: ['HYPOTHETICAL · NOBODY IS OFFERING THIS · NOT FINANCIAL ADVICE', 'ASSUMES ≈1 G & 0.0043 IN PER BILL · CRISP, FLAT, WHOLE NOTES', 'AVG US MAN = CDC 199.0 LB · 68.9 IN (AUG 2021–AUG 2023)'],
   elements: [
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: '@Hundreds-0.2', props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: 28.6, props: HOOK },
-    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
+    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { btnOff: [['@Hundreds', '@His'], ['@1#2', '@cheat']], slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
       { t: 0, v: 4500 }, { t: '@1#2', v: 4500 }, { t: '@1#2+0.85', v: 90264, e: 'expo' }, { t: 28.2, v: 90264 }, { t: 29.0, v: 4500 }] } },
-    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@100s', '@Hundreds'], endAt: 28.5, rise: [
+    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { btnOff: [['@Hundreds', '@His'], ['@1#2', '@cheat']], slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@100s', '@Hundreds'], endAt: 28.5, rise: [
       { t: 0, v: 36 }, { t: '@height#2', v: 36 }, { t: '@1+0.3', v: 68.9, e: 'out' }, { t: 28.2, v: 68.9 }, { t: 29.0, v: 36 }] } },
     { id: 'doll', type: 'doll', at: [0, 40], in: '@Average', out: '@Send-0.1', props: { lbAt: '@grandma', hAt: '@height#2' } },
-    { id: 'gap', type: 'gap', at: [0, 850], in: '@200#2-0.2', out: 28.5, props: { to: 202980 } },
+    { id: 'gap', type: 'gap', at: [0, 580], in: '@200#2-0.2', out: 28.5, props: { to: 202980 } },
     { id: 'you', type: 'doll', at: [1750, 40], in: '@Now-0.1', props: { mode: 'you' } },
     { id: 'slide', type: 'slider', at: [2650, 0], in: '@height#3-0.2', props: { xAt: '@2+0.05', takeAt: '@take-0.05', rows: [{ at: 24.3, h: '5′4″', inch: 64, lb: 164 }, { at: 24.65, h: '5′9″', inch: 69, lb: 177 }, { at: 25.0, h: '6′0″', inch: 72, lb: 185 }] } },
     // screen
@@ -31,15 +31,15 @@ BM2.scene({
     { at: 0, beat: 'side-by-side', focus: F0, ...FR, pose: 'shock', st: { x: 540, y: 1250, s: 1.25 }, keep: KEEP },
     { at: '@200', beat: 'zoom-on-number', focus: 'hook', fill: 0.8, sy: 560, rot: 0.008, pose: 'point', keep: KEEP },
     { at: 3.9, beat: 'pull-back', focus: F0, ...FR, pose: 'talk', keep: KEEP },
-    { at: '@Hundreds', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 1150, sy: 800, st: 'right', pose: 'point', keep: ['tower'] },
-    { at: '@heart', beat: 'presenter-front', focus: 'tower', fill: 0.7, sy: 800, pose: 'you', keep: ['tower'] },
+    { at: '@Hundreds', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'right', pose: 'point', keep: ['tower'] },
+    { at: '@heart', beat: 'presenter-front', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, pose: 'you', keep: ['tower'] },
     { at: '@okay', beat: 'pull-back', focus: F0, ...FR, pose: 'shrug', keep: KEEP },
     { at: '@Average', beat: 'graphic-hero', focus: 'doll', fill: 0.55, maxH: 900, sy: 860, st: 'corner-left', pose: 'idle', keep: ['doll'] },
     { at: '@grandma', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@height#2', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.8, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@Send', beat: 'peek', focus: 'tower', sy: 860, maxH: 1000, pose: 'you' },
-    { at: '@His', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 1150, sy: 800, st: 'right', pose: 'point' },
+    { at: '@Send', beat: 'peek', focus: 'tower', sy: 850, maxH: 900, pose: 'you' },
+    { at: '@His', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 900, sy: 850, st: 'right', pose: 'point' },
     { at: '@1#2', beat: 'zoom-on-number', focus: 'scale.total', fill: 0.86, sy: 780, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.5, keep: ['scale'] },
     { at: '@200#2', beat: 'zoom-on-number', focus: 'gap.num', fill: 0.88, sy: 800, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@more', beat: 'graphic-hero', focus: GAPBOX, fill: 0.9, sy: 780, st: 'corner-left', pose: 'shrug' },

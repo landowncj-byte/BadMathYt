@@ -67,7 +67,7 @@
       if (lidA > 0.01) { g.save(); g.globalAlpha *= lidA; g.translate(0, 150 + lidY); g.rotate(lidR); const dome = () => { g.beginPath(); g.ellipse(0, 0, 236, 270, 0, Math.PI, 0); g.lineTo(236, 12); g.quadraticCurveTo(0, 36, -236, 12); g.closePath(); };
         B.shadowed(g, dome, '#b9bfc9', 0.35); g.save(); dome(); g.clip(); const sg = g.createLinearGradient(-236, 0, 236, 0); sg.addColorStop(0, 'rgba(0,0,0,.28)'); sg.addColorStop(0.3, 'rgba(255,255,255,.55)'); sg.addColorStop(0.6, 'rgba(255,255,255,.05)'); sg.addColorStop(1, 'rgba(0,0,0,.35)'); g.fillStyle = sg; g.fillRect(-240, -280, 480, 320); g.restore();
         g.fillStyle = '#d7dbe2'; g.beginPath(); g.ellipse(0, -266, 34, 30, 0, 0, 7); g.fill(); g.fillStyle = '#9aa1ad'; g.fillRect(-14, -258, 28, 16); g.restore(); }
-      g.restore(); tag(g, 'ILLUSTRATION', 0, p.h / 2 - 8);
+      g.restore(); tag(g, 'ILLUSTRATION', 0, 174, '#8a8f98');
     },
   });
 
@@ -158,13 +158,13 @@
   // ---------- taken: "$8 MILLION TAKEN · PER DOJ" counter on a paper card, cash bricks slide in ----------
   B.register('taken', {
     defaults: { w: 880, h: 700, at: 99999, dur: 1.4, brickAt: 99999 }, size: p => [p.w, p.h],
-    anchors: p => ({ value: [0, 20, p.w * 0.92, 250], head: [0, -p.h / 2 + 60, p.w, 120] }),
+    anchors: p => ({ value: [0, 20, p.w * 0.95, 250], head: [0, -p.h / 2 + 60, p.w, 120] }),
     draw(g, p, env) {
       const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift }); band(g, theme, x0, y0, w, h, 26, 'TAKEN FROM INVESTORS', 58);
       txt(g, 'MORE THAN', 0, y0 + 190, F.cap(48), theme.inkSoft);
       const rt = t - p.at, v = t < p.at ? 0 : countAt(rt, p.dur, 0, 8000000), land = rt - p.dur, spd = rt > 0 && rt < p.dur ? Math.abs(countAt(rt + 0.02, p.dur, 0, 8000000) - v) / 0.02 : 0;
-      const s = 1 + (land > 0 ? 0.13 * hit(land, 6) : 0) + (env.hot === 'value' ? 0.03 * env.hotK : 0), o = { font: F.hero(172), size: 172, color: t >= p.at ? theme.badInk : theme.inkSoft, prefix: '$', speed: spd }, rw = B.rollWidth(g, 8000000, o).w;
-      g.save(); g.translate(0, y0 + 360); g.scale(s, s); if (t < p.at - 0.05) txt(g, '$ — — —', 0, 0, F.hero(172), theme.rule); else roll(g, v, 0, 0, o); if (land > 0) marker(g, -rw / 2, 112, rw, 10, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); if (land > -0.1) burst(g, 0, y0 + 360, 360, theme.bad, land, 20, 0.55);
+      const s = 1 + (land > 0 ? 0.13 * hit(land, 6) : 0) + (env.hot === 'value' ? 0.03 * env.hotK : 0), o = { font: F.hero(150), size: 150, color: t >= p.at ? theme.badInk : theme.inkSoft, prefix: '$', speed: spd }, rw = B.rollWidth(g, 8000000, o).w;
+      g.save(); g.translate(0, y0 + 360); g.scale(s, s); if (t < p.at - 0.05) txt(g, '$ — — —', 0, 0, F.hero(150), theme.rule); else roll(g, v, 0, 0, o); if (land > 0) marker(g, -rw / 2, 98, rw, 10, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); if (land > -0.1) burst(g, 0, y0 + 360, 360, theme.bad, land, 20, 0.55);
       // bricks
       for (let i = 0; i < 6; i++) { const bl = t - (p.brickAt + i * 0.07); if (bl <= 0) continue; const k = spring(bl, { f: 3, z: 0.55 }), side = i % 2 ? 1 : -1, row = Math.floor(i / 2), bx = side * (w / 2 - 130), by = y0 + h - 70 - row * 56;
         g.save(); g.globalAlpha = clamp(bl / 0.06); g.translate(bx + side * (1 - k) * 260, by); clay(g, -90, -26, 180, 52, 10, '#1FA366', { shadowK: 0.5 }); g.fillStyle = theme.paper; g.fillRect(-18, -26, 36, 52); txt(g, '$', 0, 2, F.hero(30), '#1FA366'); g.restore(); }
@@ -183,8 +183,8 @@
       g.save(); g.translate(0, y0 + 285); g.scale(s, s); roll(g, n, 0, 0, o); if (land > 0) { const rw = B.rollWidth(g, 11, o).w; marker(g, -rw / 2, 150, rw, 12, theme.badInk, clamp(land / 0.3), 0.9); } g.restore(); if (land > -0.05) burst(g, 0, y0 + 285, 380, theme.bad, land, 20, 0.55);
       // tick strip
       for (let i = 0; i < 11; i++) { const on = n > i && t >= p.at; g.fillStyle = on ? theme.badInk : theme.rule; g.fillRect(x0 + 60 + i * ((w - 120) / 11), y0 + 612, (w - 120) / 11 - 8, 16); }
-      { const r = rise(t, p.tabAt, 30); if (r.on) { g.save(); g.globalAlpha = r.a; g.translate(150, y0 + 430 + r.y); g.rotate(-0.03); paper(g, -150, -38, 300, 76, 10, { fill: '#F5E6A8' }); txt(g, 'SINCE 1988', 0, 4, F.cap(42), theme.ink); g.restore(); } }
-      { const r = rise(t, p.srcAt, 20); if (r.on) { g.save(); g.globalAlpha = r.a; g.translate(140, y0 + 525 + r.y); g.rotate(0.02); paper(g, -200, -38, 400, 76, 10, { fill: theme.paper }); g.strokeStyle = theme.badInk; g.lineWidth = 4; rr(g, -193, -31, 386, 62, 6); g.stroke(); txt(g, 'PROSECUTORS SAID', 0, 4, F.cap(34), theme.badInk); g.restore(); } }
+      { const r = rise(t, p.tabAt, 30); if (r.on) { g.save(); g.globalAlpha = r.a; g.translate(215, y0 + 430 + r.y); g.rotate(-0.03); paper(g, -150, -38, 300, 76, 10, { fill: '#F5E6A8' }); txt(g, 'SINCE 1988', 0, 4, F.cap(42), theme.ink); g.restore(); } }
+      { const r = rise(t, p.srcAt, 20); if (r.on) { g.save(); g.globalAlpha = r.a; g.translate(190, y0 + 525 + r.y); g.rotate(0.02); paper(g, -200, -38, 400, 76, 10, { fill: theme.paper }); g.strokeStyle = theme.badInk; g.lineWidth = 4; rr(g, -193, -31, 386, 62, 6); g.stroke(); txt(g, 'PROSECUTORS SAID', 0, 4, F.cap(34), theme.badInk); g.restore(); } }
       
     },
   });
@@ -214,7 +214,7 @@
     defaults: { w: 640, h: 640, at: 99999, tagAt: 99999 }, size: p => [p.w, p.h],
     draw(g, p, env) {
       const { t, theme } = env; clay(g, -180, 40, 360, 250, 120, '#59647a', { shadowK: 0.5 }); clay(g, -34, -20, 68, 80, 22, '#6d778c', { shadowK: 0.3 }); clay(g, -92, -180, 184, 214, 92, '#8c96aa', { shadowK: 0.5 });
-      { const k = spring(t - p.at, 'bouncy'), a = clamp((t - p.at) / 0.06); if (a > 0) { g.save(); g.globalAlpha *= a; g.translate(150, -230); g.scale(0.4 + 0.6 * k, 0.4 + 0.6 * k); g.rotate(0.12); B.shadowed(g, () => { g.beginPath(); g.arc(0, 0, 86, 0, 7); }, theme.gold, 0.3); txt(g, '?', 0, 8, F.hero(150), '#5a3f08'); g.restore(); burst(g, 150, -230, 160, theme.gold, t - p.at - 0.05, 10, 0.4); } }
+      { const k = spring(t - p.at, 'bouncy'), a = clamp((t - p.at) / 0.06); if (a > 0) { g.save(); g.globalAlpha *= a; g.translate(-170, -230); g.scale(0.4 + 0.6 * k, 0.4 + 0.6 * k); g.rotate(0.12); B.shadowed(g, () => { g.beginPath(); g.arc(0, 0, 86, 0, 7); }, theme.gold, 0.3); txt(g, '?', 0, 8, F.hero(150), '#5a3f08'); g.restore(); burst(g, -170, -230, 160, theme.gold, t - p.at - 0.05, 10, 0.4); } }
       { const r = rise(t, p.tagAt, 26); if (r.on) { g.save(); g.globalAlpha = r.a; g.translate(0, 250 + r.y); paper(g, -270, -52, 540, 104, 14, { fill: theme.paper }); txt(g, 'A VICTIM NOTICED', 0, -8, F.hero(58), theme.badInk); txt(g, 'PER AP', 0, 36, F.mono(22), theme.inkSoft); g.restore(); } }
       tag(g, 'ILLUSTRATION · FACELESS', 0, p.h / 2 - 6);
     },
@@ -257,33 +257,33 @@ BM2.scene({
   footnote: ['PLEADED GUILTY 2018 · SENTENCED MAY 31, 2019 · SOURCES: DOJ S.D. FLORIDA, AP', 'ILLUSTRATIONS / PROPS (GENERIC)'],
   elements: [
     { id: 'hook', type: 'hook', at: [0, -400], in: 0, out: 4.6, props: { lines: [[['11×', 'bad']], [['SAME FAKE-PRINCE ACT', 'paper']], [['ARRESTED OR CONVICTED · PROSECUTORS SAID', 'gold']]], sizes: [300, 62, 38], lh: 1.05 } },
-    { id: 'royal', type: 'royal', at: [-100, 190], in: -1, props: { crownAt: -5, sq: [[0, 4.8], [21.55, 99]] } },
+    { id: 'royal', type: 'royal', at: [-100, 190], in: -1, props: { crownAt: -5, sq: [[-0.3, 4.8], [21.55, 99]] } },
     { id: 'hook2', type: 'hook', at: [0, -400], in: 21.5, props: { lines: [[['11×', 'bad']], [['SAME FAKE-PRINCE ACT', 'paper']], [['ARRESTED OR CONVICTED · PROSECUTORS SAID', 'gold']]], sizes: [300, 62, 38], lh: 1.05 } },
-    { id: 'dumber', type: 'text', layer: 'screen', at: [540, 410], in: '@gets-0.1', out: '@Fake-0.15', props: { lines: [[['IT GETS DUMBER', 'gold']]], size: 84 } },
+    { id: 'dumber', type: 'text', layer: 'screen', at: [540, 345], in: '@gets-0.1', out: '@Fake#2-0.15', props: { lines: [[['IT GETS DUMBER', 'gold']]], size: 84 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@double-0.05', out: '@double+1.15', props: { s: 1 } },
-    { id: 'plates', type: 'plates', at: [1700, -290], in: '@Fake-0.5', props: { rollAt: '@Fake', peelAt: '@diplomatic', fakeAt: '@plates' } },
-    { id: 'guards', type: 'guards', at: [1700, 290], in: '@Fake-0.5', props: { flipAt: '@badges', fakeAt: '@badges+0.5' } },
+    { id: 'plates', type: 'plates', at: [1700, -290], in: '@Fake#2-0.5', props: { rollAt: '@Fake#2', peelAt: '@diplomatic', fakeAt: '@plates' } },
+    { id: 'guards', type: 'guards', at: [1700, 290], in: '@Fake#2-0.5', props: { flipAt: '@badges', fakeAt: '@badges+0.5' } },
     { id: 'taken', type: 'taken', at: [3400, 0], in: '@over-0.4', props: { at: '@eight', dur: 1.0, brickAt: '@over' } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
     { id: 'cloche', type: 'cloche', at: [360, 190], in: '@What-0.5', out: 21.45, props: { liftAt: '@ordered' } },
-    { id: 'verdict', type: 'verdict', at: [0, 1500], in: '@dinner+0.1', props: { guiltyAt: '@18+0.1', yearsAt: '@18+0.35', subAt: 99999 } },
+    { id: 'verdict', type: 'verdict', at: [0, 2600], in: '@dinner+0.1', out: 21.0, props: { guiltyAt: '@18+0.1', yearsAt: '@18+0.35', subAt: 99999 } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@would', out: 21.4, props: { l1: 'WOULD YOU HAVE', l2: 'CAUGHT IT?', size: 50, tail: 'left' } },
   ],
   beats: [
-    { at: 0, beat: 'side-by-side', focus: ['hook', 'royal'], sx: 540, sy: 790, fill: 0.98, maxH: 900, st: { x: 900, y: 1350, s: 1.1 }, pose: 'shock' },
-    { at: '@11', beat: 'zoom-on-number', focus: 'hook', fill: 1.0, maxH: 720, sx: 540, sy: 700, st: { x: 900, y: 1350, s: 1.1 }, dur: 0.45 },
+    { at: 0, beat: 'side-by-side', focus: ['hook', 'royal'], sx: 540, sy: 850, fill: 0.98, maxH: 860, st: { x: 900, y: 1350, s: 1.1 }, pose: 'shock' },
+    { at: '@11', beat: 'zoom-on-number', focus: 'hook', fill: 1.0, maxH: 720, sx: 540, sy: 740, st: { x: 900, y: 1350, s: 1.1 }, dur: 0.45 },
     { at: '@Wait', beat: 'presenter-front', focus: ['hook', 'royal'], sy: 800, pose: 'you' },
-    { at: '@Fake', beat: 'side-by-side', focus: ['plates', 'guards'], move: 'whip', sx: 540, sy: 830, fill: 0.84, maxH: 900, st: 'corner-left', pose: 'point' },
+    { at: '@Fake#2', beat: 'side-by-side', focus: ['plates', 'guards'], move: 'whip', sx: 540, sy: 830, fill: 0.84, maxH: 900, st: 'corner-left', pose: 'point' },
     { at: '@over', beat: 'side-by-side', focus: 'taken', move: 'whip', sx: 540, sy: 800, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'point' },
-    { at: '@eight', beat: 'zoom-on-number', focus: 'taken.value', fill: 0.92, maxH: 560, sy: 780, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@eight', beat: 'zoom-on-number', focus: 'taken.value', fill: 0.9, maxH: 560, sy: 780, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@Send', beat: 'peek', focus: 'taken', sy: 800, fill: 0.9, maxH: 860, pose: 'you', dur: 0.8 },
     { at: '@What', beat: 'side-by-side', focus: 'cloche', move: 'whip', sx: 540, sy: 840, fill: 0.8, maxH: 700, st: 'corner-left', pose: 'chin', blur: 7, dim: 0.4 },
     { at: '@pork', beat: 'zoom-on-number', focus: 'cloche.ticket', fill: 0.92, maxH: 700, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@18', beat: 'side-by-side', focus: 'verdict', move: 'whip', sx: 540, sy: 880, fill: 0.9, maxH: 880, st: 'corner-left', pose: 'shock', lead: 0.45 },
     { at: '@busts', beat: 'zoom-on-number', focus: 'verdict.years', fill: 0.72, maxH: 640, sy: 900, st: 'corner-left', pose: 'idle', dur: 0.5 },
     { at: '@would', beat: 'presenter-front', focus: 'verdict', sy: 860, pose: 'you', dur: 0.8 },
-    { at: 21.15, beat: 'side-by-side', focus: ['hook2', 'royal'], move: 'whip', sx: 540, sy: 790, fill: 0.98, maxH: 900, st: { x: 900, y: 1350, s: 1.1 }, pose: 'shock' },
+    { at: 21.15, beat: 'side-by-side', focus: ['hook2', 'royal'], move: 'whip', sx: 540, sy: 850, fill: 0.98, maxH: 860, st: { x: 900, y: 1350, s: 1.1 }, pose: 'shock' },
   ],
   poses: [],
   shakes: [[0.05, 16], ['@diplomatic', 8], ['@plates', 8], ['@eight+1.0', 10], ['@ordered', 14], ['@pork', 26], ['@18+0.1', 16]],
@@ -292,7 +292,7 @@ BM2.scene({
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.05, name: 'thud_1', gain: -6, dur: 0.4 }, { at: 0.1, name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
     { at: '@double', name: 'heartbeat_1', gain: -8, dur: 0.9 },
-    { at: '@Fake', name: 'swoosh_2', gain: -10, dur: 0.9 }, { at: '@diplomatic', name: 'swipe_2', gain: -10, dur: 0.5 }, { at: '@plates', name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: '@badges', name: 'click_2', gain: -8, dur: 0.3 }, { at: '@badges+0.5', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@Fake#2', name: 'swoosh_2', gain: -10, dur: 0.9 }, { at: '@diplomatic', name: 'swipe_2', gain: -10, dur: 0.5 }, { at: '@plates', name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: '@badges', name: 'click_2', gain: -8, dur: 0.3 }, { at: '@badges+0.5', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
     { at: '@over', name: 'coins_drop_1', gain: -12, dur: 1.2 }, { at: '@eight', name: 'money_counter_2', gain: -10, dur: 1.0 }, { at: '@eight+1.0', name: 'cash_register_1', gain: -8, dur: 0.9 },
     { at: '@Send', name: 'swoosh_2', gain: -9, dur: 1.0 },
     { at: '@What', name: 'riser_2', gain: -13, dur: 1.2 }, { at: '@ordered', name: 'cinematic_hit_1', gain: -3, dur: 1.2 }, { at: '@pork', name: 'deep_boom_1', gain: -3, dur: 1.4 },

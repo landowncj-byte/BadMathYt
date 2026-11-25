@@ -15,6 +15,7 @@
   // piecewise keyframes [{t, v, e}] -> value (and speed of change)
   const EAS = { out: ease.out, in: ease.in, expo: ease.expo, inOut: ease.inOut, lin: x => x };
   const kfv = (K, t) => { if (!K || !K.length) return [0, 0]; if (t <= K[0].t) return [K[0].v, 0]; for (let i = 0; i < K.length - 1; i++) { const a = K[i], b = K[i + 1]; if (t < b.t) { const u = lin(t, a.t, b.t), e = (EAS[b.e || 'inOut'] || ease.inOut), v = lerp(a.v, b.v, e(u)), v2 = lerp(a.v, b.v, e(Math.min(1, u + 0.02 / Math.max(0.05, b.t - a.t)))); return [v, Math.abs(v2 - v) / 0.02]; } } return [K[K.length - 1].v, 0]; };
+  const offA = (p, t) => { let o = 0; for (const [a, b] of (p.btnOff || [])) o = Math.max(o, clamp((t - a) / 0.1) * (1 - clamp((t - b) / 0.1))); return 1 - o; };
   const bill = (g, x, y, w, h, c) => { clay(g, x, y, w, h - 1, Math.min(5, h / 3), c || GREEN, { shadowK: 0.4 }); g.fillStyle = 'rgba(245,243,238,.8)'; g.fillRect(x + w * 0.42, y + 1, w * 0.16, h - 3); };
   const btn = (g, th, letter, label, col, x, y, w, k, hi) => { g.save(); g.translate(x, y); g.scale(k, k); clay(g, -w / 2, -56, w, 112, 30, col, { shadowK: 0.7 });
     g.fillStyle = '#0B0F14'; g.beginPath(); g.arc(-w / 2 + 62, 0, 40, 0, 7); g.fill(); txt(g, letter, -w / 2 + 62, 4, F.hero(54), col);
@@ -23,20 +24,20 @@
   // ---------- scale ----------
   B.register('scale', {
     defaults: { fill: [{ t: 0, v: 0 }], slamAt: -1, btnAt: -1, pulses: [], bigAt: 99999, hold: 0 }, ownEnter: true,
-    size: () => [600, 1250],
-    anchors: () => ({ btn: [0, -470, 560, 130], dial: [0, -290, 300, 300], pile: [0, 130, 580, 480], lb: [0, 430, 480, 70], count: [0, 485, 540, 70], total: [0, 565, 580, 130], all: [0, 90, 600, 1250] }),
+    size: () => [600, 960],
+    anchors: () => ({ btn: [0, -485, 560, 130], dial: [0, -40, 220, 220], pile: [0, 210, 580, 420], lb: [0, -366, 480, 60], count: [0, -318, 540, 60], total: [0, -218, 580, 120], all: [0, -55, 600, 960] }),
     draw(g, p, env) {
       const { t, theme, lift } = env; const [n, spd] = kfv(p.fill, t), lb = n / LB, big = clamp(n / 90264);
       let dy = 0, sq = 1;
       if (p.slamAt > -0.5) { const s = t - p.slamAt; if (s < 0) dy = -110; else { dy = -110 * (1 - ease.in(clamp(s / 0.22))); if (s > 0.22) { sq = 1 - 0.07 * B.hit(s - 0.22, 9); } } }
       g.save(); g.translate(0, dy); g.translate(0, 350); g.scale(1 / sq, sq); g.translate(0, -350);
       // button A
-      { const bk = p.btnAt < -0.5 ? 1 : Math.max(0, spring(t - p.btnAt, 'bouncy')); let pu = 0; for (const q of p.pulses) if (t >= q && t < q + 0.5) pu = 0.06 * Math.sin((t - q) / 0.5 * Math.PI); btn(g, theme, 'A', 'YOUR WEIGHT IN $20s', theme.good, 0, -470, 540, (0.5 + 0.5 * bk) * (1 + pu), pu > 0.01); }
+      { const bk = p.btnAt < -0.5 ? 1 : Math.max(0, spring(t - p.btnAt, 'bouncy')); let pu = 0; for (const q of p.pulses) if (t >= q && t < q + 0.5) pu = 0.06 * Math.sin((t - q) / 0.5 * Math.PI); g.save(); g.globalAlpha *= offA(p, t); btn(g, theme, 'A', 'YOUR WEIGHT IN $20s', theme.good, 0, -485, 540, (0.5 + 0.5 * bk) * (1 + pu), pu > 0.01); g.restore(); }
       // dial
-      const dc = [0, -290], R = 138; g.save(); g.translate(dc[0], dc[1]); B.shadowed(g, () => { g.beginPath(); g.arc(0, 0, R, 0, 7); }, theme.paper, 0.5); g.fillStyle = theme.paper; g.beginPath(); g.arc(0, 0, R, 0, 7); g.fill();
-      g.strokeStyle = theme.ink; g.lineWidth = 4; for (let i = 0; i <= 20; i++) { const a = lerp(-2.2, 0.7 + Math.PI * 0.0, i / 20) - 0.0, a2 = -2.35 + i / 20 * 4.7 - Math.PI / 2 + Math.PI / 2; const aa = -Math.PI * 1.25 + i / 20 * Math.PI * 1.5; const l = i % 5 === 0 ? 26 : 14; g.beginPath(); g.moveTo(Math.cos(aa) * (R - 12), Math.sin(aa) * (R - 12)); g.lineTo(Math.cos(aa) * (R - 12 - l), Math.sin(aa) * (R - 12 - l)); g.stroke(); }
-      const na = -Math.PI * 1.25 + clamp(lb / 250) * Math.PI * 1.5 + (spd > 0 ? 0.03 * Math.sin(t * 40) : 0); g.save(); g.rotate(na); g.fillStyle = theme.bad; g.beginPath(); g.moveTo(-14, -6); g.lineTo(R - 28, 0); g.lineTo(-14, 6); g.closePath(); g.fill(); g.restore(); g.fillStyle = theme.ink; g.beginPath(); g.arc(0, 0, 12, 0, 7); g.fill();
-      txt(g, 'LB', 0, 70, F.monoX(26), theme.inkSoft); g.restore();
+      const dc = [0, -40], R = 92; g.save(); g.translate(dc[0], dc[1]); B.shadowed(g, () => { g.beginPath(); g.arc(0, 0, R, 0, 7); }, theme.paper, 0.5); g.fillStyle = theme.paper; g.beginPath(); g.arc(0, 0, R, 0, 7); g.fill();
+      g.strokeStyle = theme.ink; g.lineWidth = 4; for (let i = 0; i <= 20; i++) { const a = lerp(-2.2, 0.7 + Math.PI * 0.0, i / 20) - 0.0, a2 = -2.35 + i / 20 * 4.7 - Math.PI / 2 + Math.PI / 2; const aa = -Math.PI * 1.25 + i / 20 * Math.PI * 1.5; const l = i % 5 === 0 ? 20 : 11; g.beginPath(); g.moveTo(Math.cos(aa) * (R - 12), Math.sin(aa) * (R - 12)); g.lineTo(Math.cos(aa) * (R - 12 - l), Math.sin(aa) * (R - 12 - l)); g.stroke(); }
+      const na = -Math.PI * 1.25 + clamp(lb / 250) * Math.PI * 1.5 + (spd > 0 ? 0.03 * Math.sin(t * 40) : 0); g.save(); g.rotate(na); g.fillStyle = theme.bad; g.beginPath(); g.moveTo(-10, -5); g.lineTo(R - 24, 0); g.lineTo(-10, 5); g.closePath(); g.fill(); g.restore(); g.fillStyle = theme.ink; g.beginPath(); g.arc(0, 0, 12, 0, 7); g.fill();
+      txt(g, 'LB', 0, 46, F.monoX(22), theme.inkSoft); g.restore();
       // platform
       clay(g, -290, 330, 580, 84, 30, theme.navy, { shadowK: 0.8 }); g.fillStyle = 'rgba(255,255,255,.14)'; rr(g, -270, 340, 540, 16, 8); g.fill();
       // pile
@@ -46,10 +47,10 @@
       else for (let i = 0; i < nb; i++) { const k = i % 91, layer = Math.floor(i / 91); let r = 0, c = k; while (c >= 13 - r) { c -= 13 - r; r++; } const x = (c - (13 - r - 1) / 2) * 40 + (hash(i * 3.1) - 0.5) * 8, y = -(r * 15 + layer * 6 + 12); g.save(); g.translate(x, y); g.rotate((hash(i * 7.7) - 0.5) * 0.12); bill(g, -21, -9, 42, 18); g.restore(); }
       g.restore();
       // counters
-      const lbS = n < 1 ? 0 : lb; roll(g, lbS, 0, 430, { font: F.monoX(48), size: 48, color: theme.paper, suffix: ' LB', decimals: 1, speed: spd * 0.01 });
-      roll(g, Math.round(n), 0, 485, { font: F.monoX(40), size: 40, color: theme.accent, suffix: n < 1.5 && n > 0.5 ? ' BILL' : ' BILLS', speed: spd });
-      const bump = 1 + 0.1 * B.hit(t - p.bigAt, 7) * (t >= p.bigAt ? 1 : 0); g.save(); g.translate(0, 565); g.scale(bump, bump); roll(g, Math.round(n) * 20, 0, 0, { font: F.hero(112), size: 112, color: theme.good, prefix: '$', speed: spd * 20 }); g.restore();
-      if (t >= p.bigAt) burst(g, 0, 565, 330, theme.good, t - p.bigAt - 0.05, 20, 0.6);
+      const lbS = n < 1 ? 0 : lb; roll(g, lbS, 0, -366, { font: F.monoX(44), size: 44, color: theme.paper, suffix: ' LB', decimals: 1, speed: spd * 0.01 });
+      roll(g, Math.round(n), 0, -318, { font: F.monoX(36), size: 36, color: theme.accent, suffix: n < 1.5 && n > 0.5 ? ' BILL' : ' BILLS', speed: spd });
+      const bump = 1 + 0.1 * B.hit(t - p.bigAt, 7) * (t >= p.bigAt ? 1 : 0); g.save(); g.translate(0, -218); g.scale(bump, bump); roll(g, Math.round(n) * 20, 0, 0, { font: F.hero(100), size: 100, color: theme.good, prefix: '$', speed: spd * 20 }); g.restore();
+      if (t >= p.bigAt) burst(g, 0, -218, 330, theme.good, t - p.bigAt - 0.05, 20, 0.6);
       g.restore();
     },
   });
@@ -57,14 +58,14 @@
   // ---------- tower ----------
   B.register('tower', {
     defaults: { rise: [{ t: 0, v: 0 }], slamAt: -1, btnAt: -1, pulses: [], inchAt: 99999, inchOut: 99999, tagAt: 99999, sagAt: 99999, nopeAt: 99999, nopeOut: 99999, endAt: 99999 }, ownEnter: true,
-    size: () => [600, 1250],
-    anchors: () => ({ btn: [0, -470, 560, 130], stack: [0, 20, 200, 760], tape: [-150, 20, 130, 760], base: [0, 385, 520, 140], inch: [320, 372, 520, 140], count: [0, 485, 540, 70], total: [0, 565, 580, 130], tag: [240, -190, 280, 240], all: [0, 90, 600, 1250] }),
+    size: () => [600, 960],
+    anchors: () => ({ btn: [0, -485, 560, 130], stack: [0, 125, 200, 560], tape: [-130, 125, 130, 560], base: [0, 385, 520, 140], inch: [320, 372, 520, 140], lb: [0, -366, 480, 60], count: [0, -318, 540, 60], total: [0, -218, 580, 120], tag: [240, -190, 280, 240], all: [0, 90, 600, 1250] }),
     draw(g, p, env) {
-      const { t, theme } = env; const [inch, spd] = kfv(p.rise, t), PX = 11, nb = Math.floor(inch / 0.0043), top = 400 - inch * PX;
+      const { t, theme } = env; const [inch, spd] = kfv(p.rise, t), PX = 8, nb = Math.floor(inch / 0.0043), top = 400 - inch * PX;
       let dy = 0, sq = 1; if (p.slamAt > -0.5) { const s = t - p.slamAt; if (s < 0) dy = 160; else { dy = 160 * (1 - ease.out(clamp(s / 0.3))); if (s > 0.3) sq = 1 + 0.05 * B.hit(s - 0.3, 9); } }
       const sag = t >= p.sagAt && t < p.endAt ? 0.05 * (1 - Math.exp(-(t - p.sagAt) * 4)) * 1 : 0;
       g.save(); g.translate(0, dy); g.translate(0, 400); g.scale(1, sq); g.translate(0, -400);
-      { const bk = p.btnAt < -0.5 ? 1 : Math.max(0, spring(t - p.btnAt, 'bouncy')); let pu = 0; for (const q of p.pulses) if (t >= q && t < q + 0.5) pu = 0.06 * Math.sin((t - q) / 0.5 * Math.PI); btn(g, theme, 'B', 'YOUR HEIGHT IN $100s', theme.accent, 0, -470, 560, (0.5 + 0.5 * bk) * (1 + pu), pu > 0.01); }
+      { const bk = p.btnAt < -0.5 ? 1 : Math.max(0, spring(t - p.btnAt, 'bouncy')); let pu = 0; for (const q of p.pulses) if (t >= q && t < q + 0.5) pu = 0.06 * Math.sin((t - q) / 0.5 * Math.PI); g.save(); g.globalAlpha *= offA(p, t); btn(g, theme, 'B', 'YOUR HEIGHT IN $100s', theme.accent, 0, -485, 560, (0.5 + 0.5 * bk) * (1 + pu), pu > 0.01); g.restore(); }
       // ground
       g.fillStyle = rgba(theme.paper, 0.3); rr(g, -290, 400, 580, 8, 4); g.fill();
       // tape measure (left of tower)
@@ -87,9 +88,9 @@
       // NOPE stamp
       if (t >= p.nopeAt && t < p.nopeOut) { const s = t - p.nopeAt, k = 1 + 1.2 * (1 - ease.expo(clamp(s / 0.2))); g.save(); g.translate(0, 120); g.rotate(-0.16); g.scale(k, k); g.globalAlpha *= clamp(s / 0.06); const f = F.hero(130), tw = mw('NOPE', f) + 70; clay(g, -tw / 2, -90, tw, 180, 20, theme.bad, { shadowK: 0.8 }); g.strokeStyle = theme.paper; g.lineWidth = 8; rr(g, -tw / 2 + 12, -78, tw - 24, 156, 14); g.stroke(); txt(g, 'NOPE', 0, 8, f, theme.paper); g.restore(); }
       // counters
-      roll(g, inch, 0, 430, { font: F.monoX(48), size: 48, color: theme.paper, suffix: ' IN', decimals: 1, speed: spd * 0.01 });
-      roll(g, nb, 0, 485, { font: F.monoX(40), size: 40, color: theme.accent, suffix: ' BILLS', speed: spd * 233 });
-      g.save(); g.translate(0, 565); roll(g, nb * 100, 0, 0, { font: F.hero(112), size: 112, color: theme.accent, prefix: '$', speed: spd * 23300 }); g.restore();
+      roll(g, inch, 0, -366, { font: F.monoX(44), size: 44, color: theme.paper, suffix: ' IN', decimals: 1, speed: spd * 0.01 });
+      roll(g, nb, 0, -318, { font: F.monoX(36), size: 36, color: theme.accent, suffix: ' BILLS', speed: spd * 233 });
+      g.save(); g.translate(0, -218); roll(g, nb * 100, 0, 0, { font: F.hero(100), size: 100, color: theme.accent, prefix: '$', speed: spd * 23300 }); g.restore();
       g.restore();
     },
   });
@@ -187,8 +188,8 @@
       B.shadowed(g, sh, '#F5F3EE', 0.5); g.fillStyle = '#F5F3EE'; sh(); g.fill(); g.fillStyle = '#D8D3C7'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-34, 0); g.lineTo(-60, 44); g.closePath(); g.fill(); g.strokeStyle = 'rgba(11,15,20,.35)'; g.lineWidth = 2; g.beginPath(); g.moveTo(70, 0); g.lineTo(-34, 0); g.stroke(); g.restore(); },
   });
 })();
-const F0 = { x: 0, y: -87, w: 1240, h: 1425 };
-const FR = { fill: 0.86, maxH: 1100, sx: 560, sy: 855 };
+const F0 = { x: 0, y: -190, w: 1240, h: 1220 };
+const FR = { fill: 0.86, maxH: 1000, sx: 560, sy: 800 };
 const HOOK = { lines: [[['AVG MAN LOSES', 'paper']], [['−$202,980', 'bad']]], size: 96 };
 const KEEP = ['hook', 'endt', 'scale', 'tower'];
 BM2.scene({
@@ -197,14 +198,14 @@ BM2.scene({
   elements: [
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: 3.6, props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: 45.8, props: HOOK },
-    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
+    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { btnOff: [['@easy', '@Hit-0.05'], ['@Hit', '@But-0.1'], ['@gram-0.4', '@One'], ['@One', '@One#2-0.1'], ['@Average#2', '@Send'], ['@His#2', 45.6]], slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
       { t: 0, v: 4500 }, { t: 13.45, v: 4500 }, { t: 13.7, v: 0, e: 'out' }, { t: 14.9, v: 0 }, { t: 14.96, v: 1 }, { t: '@One', v: 1 }, { t: '@bills', v: 454, e: 'expo' },
       { t: 33.8, v: 454 }, { t: 37.4, v: 31000, e: 'in' }, { t: '@1#2', v: 31000 }, { t: '@million#2', v: 90264, e: 'expo' }, { t: 45.3, v: 90264 }, { t: 46.3, v: 4500 }] } },
-    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@hundreds#2'], inchAt: '@inch', inchOut: '@Average#2-0.1', tagAt: '@35', sagAt: '@win', endAt: 45.65, rise: [
+    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { btnOff: [['@easy', '@Hit-0.05'], ['@Hit', '@But-0.1'], ['@gram-0.4', '@One'], ['@One', '@One#2-0.1'], ['@Average#2', '@Send'], ['@His#2', 45.6]], slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@hundreds#2'], inchAt: '@inch', inchOut: '@Average#2-0.1', tagAt: '@35', sagAt: '@win', endAt: 45.65, rise: [
       { t: 0, v: 36 }, { t: 29.4, v: 36 }, { t: '@million', v: 68.9, e: 'out' }, { t: 45.3, v: 68.9 }, { t: 46.3, v: 36 }] } },
     { id: 'five', type: 'fivex', at: [0, 20], in: '@hundreds#3-0.1', out: '@Hit-0.1', props: { xAt: '@five' } },
     { id: 'doll', type: 'doll', at: [0, 40], in: '@Average#2', out: '@Send-0.1', props: { lbAt: '@99-0.3', hAt: '@5-0.1' } },
-    { id: 'gap', type: 'gap', at: [0, 850], in: '@win-0.1', out: 45.6, props: { to: 202980, flipAt: '@grand#2+0.35' } },
+    { id: 'gap', type: 'gap', at: [0, 580], in: '@win-0.1', out: 45.6, props: { to: 202980, flipAt: '@grand#2+0.35' } },
     // screen-fixed
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Two', props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'easy', type: 'text', layer: 'screen', at: [540, 345], in: '@easy', out: '@Hit-0.05', props: { lines: [[['EASY?', 'accent']]], size: 96 } },
@@ -222,19 +223,19 @@ BM2.scene({
     { at: '@200', beat: 'zoom-on-number', focus: 'hook', fill: 0.8, sy: 560, rot: 0.008, pose: 'point', keep: KEEP },
     { at: 3.5, beat: 'pull-back', focus: F0, ...FR, pose: 'talk', keep: KEEP },
     // two piles
-    { at: '@weight', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.8, maxH: 1150, sy: 800, st: 'corner', pose: 'point' },
-    { at: '@height', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 1150, sy: 800, st: 'corner-left', pose: 'point' },
+    { at: '@weight', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'point' },
+    { at: '@height', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'point' },
     { at: '@flat', beat: 'pull-back', focus: F0, ...FR, pose: 'chin', keep: KEEP },
     // x5
     { at: '@hundreds#3', beat: 'presenter-front', focus: 'five', fill: 0.7, sy: 780, pose: 'you', keep: ['five'] },
     { at: '@five', beat: 'zoom-on-number', focus: 'five.x', fill: 0.75, sy: 740, rot: 0.01, st: 'corner-left', pose: 'shock', keep: ['five'] },
-    { at: '@Hit', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 1150, sy: 800, st: 'right', pose: 'point', keep: ['tower'] },
+    { at: '@Hit', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'right', pose: 'point', keep: ['tower'] },
     // twist 1: scale
-    { at: '@But', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 1150, sy: 800, st: 'corner', pose: 'idle' },
+    { at: '@But', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 900, sy: 850, st: 'corner', pose: 'idle' },
     { at: '@gram', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.78, sy: 820, rot: -0.008, st: 'corner', pose: 'point' },
-    { at: '@454', beat: 'zoom-on-number', focus: 'scale.count', fill: 0.8, sy: 780, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@454', beat: 'zoom-on-number', focus: 'scale.count', fill: 0.5, sy: 560, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
     // twist 2: tower inch
-    { at: '@One#2', beat: 'peek', focus: 'tower', move: 'whip', sy: 860, maxH: 1000, pose: 'idle' },
+    { at: '@One#2', beat: 'peek', focus: 'tower', move: 'whip', sy: 850, maxH: 900, pose: 'idle' },
     { at: '@inch', beat: 'zoom-on-number', focus: 'tower.base', fill: 0.8, sy: 860, rot: -0.01, st: 'corner-left', pose: 'point' },
     { at: '@233', beat: 'zoom-on-number', focus: 'tower.inch', fill: 0.85, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     // average man
@@ -242,21 +243,21 @@ BM2.scene({
     { at: '@99', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@5', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     // send
-    { at: '@Send', beat: 'peek', focus: 'tower', sy: 860, maxH: 1000, pose: 'you' },
+    { at: '@Send', beat: 'peek', focus: 'tower', sy: 850, maxH: 900, pose: 'you' },
     // height in hundreds
-    { at: '@His', beat: 'graphic-hero', focus: 'tower', fill: 0.8, maxH: 1150, sy: 820, st: 'corner-left', pose: 'idle' },
+    { at: '@His', beat: 'graphic-hero', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'idle' },
     { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.78, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@35', beat: 'zoom-on-number', focus: 'tower.tag', fill: 0.62, sy: 800, rot: -0.012, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@pounds#2', beat: 'pull-back', focus: 'tower', fill: 0.8, maxH: 1150, sy: 820, st: 'corner-left', pose: 'idle' },
+    { at: '@pounds#2', beat: 'pull-back', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'idle' },
     // follow
-    { at: '@His#2', beat: 'presenter-front', focus: 'scale', sy: 800, pose: 'chin', keep: ['scale'] },
-    { at: '@follow', beat: 'presenter-front', focus: 'scale', sy: 800, pose: 'follow', keep: ['scale'] },
+    { at: '@His#2', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'chin', keep: ['scale'] },
+    { at: '@follow', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'follow', keep: ['scale'] },
     // payoff
-    { at: '@His#3', beat: 'graphic-hero', focus: 'scale', fill: 0.84, maxH: 1150, sy: 800, st: 'right', pose: 'point' },
+    { at: '@His#3', beat: 'graphic-hero', focus: 'scale', fill: 0.84, maxH: 900, sy: 850, st: 'right', pose: 'point' },
     { at: '@1#2', beat: 'zoom-on-number', focus: 'scale.total', fill: 0.84, sy: 780, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.5, keep: ['scale'] },
-    { at: 40.5, beat: 'graphic-hero', focus: [{ x: 0, y: 790, w: 1000, h: 640 }], fill: 0.9, sy: 780, st: 'corner-left', pose: 'idle' },
+    { at: 40.5, beat: 'graphic-hero', focus: [{ x: 0, y: 200, w: 1240, h: 1280 }], fill: 0.9, sy: 810, st: 'corner-left', pose: 'idle' },
     { at: '@200#2', beat: 'zoom-on-number', focus: 'gap.num', fill: 0.88, sy: 800, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@So', beat: 'presenter-front', focus: [{ x: 0, y: 790, w: 1000, h: 640 }], sy: 800, pose: 'shrug' },
+    { at: '@So', beat: 'presenter-front', focus: [{ x: 0, y: 200, w: 1240, h: 1280 }], sy: 810, pose: 'shrug' },
     { at: 45.65, beat: 'side-by-side', focus: F0, move: 'whip', ...FR, pose: 'shock', keep: KEEP },
   ],
   poses: [['@follow', 'follow', { target: [650, 1120] }]],

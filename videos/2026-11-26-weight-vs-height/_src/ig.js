@@ -1,5 +1,5 @@
-const F0 = { x: 0, y: -87, w: 1240, h: 1425 };
-const FR = { fill: 0.86, maxH: 1100, sx: 560, sy: 855 };
+const F0 = { x: 0, y: -190, w: 1240, h: 1220 };
+const FR = { fill: 0.86, maxH: 1000, sx: 560, sy: 800 };
 const HOOK = { lines: [[['ONE PICK IS', 'paper']], [['A $200K F*CK-UP', 'bad']]], size: 88 };
 const KEEP = ['hook', 'endt', 'scale', 'tower'];
 BM2.scene({
@@ -8,12 +8,12 @@ BM2.scene({
   elements: [
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: '@Hundreds-0.2', props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: 22.0, props: HOOK },
-    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
+    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { btnOff: [['@Hundreds', '@So#2-0.1']], slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
       { t: 0, v: 4500 }, { t: '@1#2', v: 4500 }, { t: '@1#2+0.9', v: 90264, e: 'expo' }, { t: 21.7, v: 90264 }, { t: 22.4, v: 4500 }] } },
-    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@100s'], nopeAt: '@nope', nopeOut: '@Average-0.1', endAt: 21.9, rise: [
+    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { btnOff: [['@Hundreds', '@So#2-0.1']], slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@100s'], nopeAt: '@nope', nopeOut: '@Average-0.1', endAt: 21.9, rise: [
       { t: 0, v: 36 }, { t: '@height#2', v: 36 }, { t: '@1+0.4', v: 68.9, e: 'out' }, { t: 21.7, v: 68.9 }, { t: 22.4, v: 36 }] } },
     { id: 'doll', type: 'doll', at: [0, 40], in: '@Average', out: '@weight#2-0.15', props: { lbAt: '@gramma', hAt: '@height#2' } },
-    { id: 'gap', type: 'gap', at: [0, 850], in: '@Send-0.4', out: 21.9, props: { to: 202980 } },
+    { id: 'gap', type: 'gap', at: [0, 580], in: '@Send-0.4', out: 21.9, props: { to: 202980 } },
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Hundreds', props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'hund', type: 'text', layer: 'screen', at: [540, 345], in: '@Hundreds', out: '@Average-0.1', props: { lines: [[['HUNDREDS?', 'accent']]], size: 90 } },
     { id: 'g1', type: 'chip', layer: 'screen', at: [540, 345], in: '@gramma-0.4', out: '@weight#2-0.15', props: { text: '≈1 G A BILL · ASSUMED', size: 30 } },
@@ -26,19 +26,19 @@ BM2.scene({
     { at: 0, beat: 'side-by-side', focus: F0, ...FR, pose: 'shock', st: { x: 540, y: 1250, s: 1.25 }, keep: KEEP },
     { at: '@fuck', beat: 'zoom-on-number', focus: 'hook', fill: 0.8, sy: 560, rot: 0.008, pose: 'shock', keep: KEEP },
     { at: 4.3, beat: 'pull-back', focus: F0, ...FR, pose: 'talk', keep: KEEP },
-    { at: '@Hundreds', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 1150, sy: 800, st: 'right', pose: 'point', keep: ['tower'] },
-    { at: '@double', beat: 'presenter-front', focus: 'tower', fill: 0.7, sy: 800, pose: 'you', keep: ['tower'] },
-    { at: '@nope', beat: 'zoom-on-number', focus: 'tower', fill: 0.8, sy: 820, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['tower'] },
+    { at: '@Hundreds', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'right', pose: 'point', keep: ['tower'] },
+    { at: '@double', beat: 'presenter-front', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, pose: 'you', keep: ['tower'] },
+    { at: '@nope', beat: 'zoom-on-number', focus: 'tower', fill: 0.8, sy: 850, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['tower'] },
     { at: '@Average', beat: 'graphic-hero', focus: 'doll', fill: 0.55, maxH: 900, sy: 860, st: 'corner-left', pose: 'idle', keep: ['doll'] },
     { at: '@gramma', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@height#2', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.8, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@weight#2', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 1150, sy: 800, st: 'right', pose: 'point' },
+    { at: '@weight#2', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 900, sy: 850, st: 'right', pose: 'point' },
     { at: '@1#2', beat: 'zoom-on-number', focus: 'scale.total', fill: 0.88, sy: 780, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.5, keep: ['scale'] },
-    { at: '@Send', beat: 'peek', focus: [{ x: 0, y: 700, w: 1100, h: 900 }], sy: 840, maxH: 900, pose: 'you' },
+    { at: '@Send', beat: 'peek', focus: [{ x: 0, y: 200, w: 1240, h: 1280 }], sy: 810, maxH: 900, pose: 'you' },
     { at: '@they\'d', beat: 'zoom-on-number', focus: 'gap.num', fill: 0.88, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@For', beat: 'graphic-hero', focus: 'scale', fill: 0.84, maxH: 1150, sy: 800, st: 'left', pose: 'you' },
-    { at: '@So#2', beat: 'presenter-front', focus: 'scale', fill: 0.8, sy: 800, pose: 'chin', keep: ['scale'] },
+    { at: '@For', beat: 'graphic-hero', focus: 'scale', fill: 0.84, maxH: 900, sy: 850, st: 'left', pose: 'you' },
+    { at: '@So#2', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'chin', keep: ['scale'] },
     { at: 21.9, beat: 'side-by-side', focus: F0, move: 'whip', ...FR, pose: 'shock', st: { x: 540, y: 1250, s: 1.25 }, keep: KEEP },
   ],
   shakes: [[0.3, 10], ['@1#2', 18], ['@nope', 10], ['@they\'d', 8]],
