@@ -245,4 +245,5 @@
     window.ready = Promise.all([loadImgs(), ...fonts.map(([f, u, w]) => new FontFace(f, `url(${base}fonts/${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))]).then(() => { build(); window.render(0); if (err) throw err; });
   };
   B.base = document.currentScript ? document.currentScript.src.replace(/[^/]*$/, '') : '';
+  B.makeT = makeT; B.deepT = deepT; B.norm = norm; // used by story.js (character / scene system)
 })();
