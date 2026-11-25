@@ -64,3 +64,6 @@ Every build session: `list_inbox_conversations` (unreadOnly) → auto-reply to n
 
 ## PostFast YouTube cap (discovered 2026-11-25)
 PostFast allows **max 10 YouTube posts per UTC day** (counted by scheduled time; error `platformRateLimit.youtube`). ET 20:00 and later = next UTC day. Standard day fits: UTC day D = ET(D−1) 20:00 + 22:00 (2) + ET(D) 08:00–18:00 Shorts (6) + 17:00 long-form (1) = 9. Before creating YouTube posts, `list_posts` (platform YOUTUBE) for that UTC day and count; if full, move the YouTube cut to the next ET slot at/after 20:00 (TikTok/IG/FB keep their slot). Extra evening catch-up slots (21:00/23:00/23:30 ET) eat the NEXT UTC day's YouTube budget — avoid them unless needed.
+
+## Usage pacing (user rule 2026-11-25)
+The usage meter/reset time isn't visible to Claude. So: before any heavy job, tell the user an estimate **in time** ("~2 h of heavy work", "nightly batch ≈ 3–4 h"), not percentages. Pace: Sonnet/Haiku for building/rendering, no duplicate agents, short replies, max 3 build agents at once. If a limit hits mid-batch, everything already scheduled still posts; resume from HANDOFF.md §7.
