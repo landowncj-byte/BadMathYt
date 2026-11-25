@@ -177,6 +177,7 @@ Run `python3 brand/tools/script_gate.py videos/<slug> --all` (un-voiced drafts: 
 98. Everything new is saved to the repo so a new window can continue. — 2026-11-25 "make sure this info is asaved on your brain"
 99. This is a long-term project; keep the system files current after every work block. — 2026-11-25 "this is a long-term plan for me"
 100. A rule in a file is not enough — every script and video is CHECKED against the gates above before voice / queue. — 2026-11-25 (root cause of the 1% fee failure: STYLE §13 existed and was not checked)
+101. BROAD TOPICS: money is the topic, the audience is EVERYONE. Every topic must pass the "grandma / 16-year-old" test — the subject (brand, person, game, product, event, everyday cost) is recognizable in 2 seconds with zero finance knowledge. No niche finance topics (obscure fraudsters, crypto tokens, fund mechanics, fee structures) unless framed through something everyone knows. — 2026-11-25 "the topic is money, but the audience is everyone"
 
 ---
 

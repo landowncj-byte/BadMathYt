@@ -12,6 +12,7 @@ MODEL SPLIT (user rule):
 1. ANALYTICS FIRST: pull get_post_analytics for the last 7 days (all platforms) and append today's block to ANALYTICS.md. Give our winners and losers to Fable along with its competitor findings. On Sunday (US Eastern), Fable refreshes competitors.md fully, and you write the weekly review and apply its 3–5 changes. Never repeat a topic. Copy competitor PATTERNS, never their topics, scripts, footage or audio.
 
 2. RESEARCH: one Fable agent researches the next day's batch: at least 8 Short topics, plus 1 long-form topic ONLY on Monday, Wednesday or Friday (US Eastern). Every number is sourced; anything unverifiable is cut.
+   - BROAD TOPICS (user rule 2026-11-25): money is the topic, the audience is EVERYONE. Every topic must be something most people already know (famous brands, celebrities, sports, games, movies, food, everyday bills, viral stories) — the grandma / 16-year-old test: recognizable in 2 seconds with zero finance knowledge. No niche finance topics unless framed through something everyone knows. Fable ranks ideas by mass recognizability first.
    - DECODED must be 100% accurate (STYLE §19): court-proven only; every fact primary-sourced or confirmed by 2+ independent sources, else cut.
    - WHAT IF: random, off-the-wall premises are welcome (about half of each day's topics) as long as money is the theme. The math and real-world inputs must still be exact, and assumptions labeled.
 
@@ -46,6 +47,8 @@ MODEL SPLIT (user rule):
    - AI labels OFF (user rule 2026-11-25): youtubeContainsSyntheticMedia false, tiktokIsAigc false, instagramIsAiGenerated false. No "AI-narrated" in captions; keep "not financial advice" in YouTube descriptions.
 
 6. AFTER EACH POST is queued, send the user a short note with the video and its slot. Commit and push everything to main. If time or usage runs out, stop after the last finished-and-queued video and tell the user how many of the 8 per platform are covered and what's left. Give time-based (not percentage) usage estimates before heavy work.
+
+LONG-FORM topics follow the same broad rule: the Do Kwon long-form planned for Friday 11/27 is DROPPED (too niche); Fable picks a mass-recognizable long-form instead.
 
 Pending promise: the lottery TikTok promised a "Part 2" (what happened after the 1992 Virginia win). Research is in research/2026-11-25/lottery-part2/. Make it soon.
 

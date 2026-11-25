@@ -6,7 +6,10 @@ series:
   what_if: "Economics thought experiments. Curious, playful. Bright cinematic AI scenes. Accent Highlighter #FFD60A."
   decoded: "How real, documented scams worked. Tense, investigative, dry humor. Dark case-file visuals. Accent Loss Red #FF3B30."
 audience: >
-  US, 18-28, mostly young men with first jobs and first paychecks, scrolling Shorts at night.
+  EVERYONE (user rule 2026-11-25): money is the topic, the audience is everyone — not finance nerds.
+  Topics must be things most people already know or touch: famous brands, games, celebrities, sports,
+  everyday purchases, viral news, movies, holidays, food, jobs, rent, the lottery. Zero finance background needed.
+  Core viewers still skew US, 18-28, mostly young men with first jobs and first paychecks, scrolling Shorts at night.
   Want: to feel smarter than the people around them, see how the money game actually works, spot a con before it gets them.
   Tired of: rich-guy gurus, "stop buying lattes" lectures, stock picks, slow intros, obvious AI slop.
 goal: "Growth first, then ad revenue."
@@ -126,3 +129,4 @@ decisions:
 - 2026-11-25: Pexels MCP idea dropped by owner (no API key available). Stock stays Wikimedia Commons only.
 - 2026-11-25: Installed free stock sources (no keys): Openverse (Flickr/StockSnap/Wikimedia/museums), Library of Congress, Wikimedia Commons → brand/tools/stock.py; hosts live.staticflickr.com, cdn.stocksnap.io, www.loc.gov, tile.loc.gov added.
 - 2026-11-25: Owner: no pauses on emphasized moments + scripts feel chopped up → STYLE §23 + RULES (beats after big numbers, full sentences), [beat] tag (0.7 s) in humanize.py, gate checks CHOPPY + NO BEAT. Applies to every new script; Thursday scripts get rewritten together with their photo pass.
+- 2026-11-25: BROAD TOPICS — user: "the topic is money, but the audience is everyone." Pick topics most people already know (famous brands, celebrities, sports, games, movies, food, everyday bills, viral stories). Cut niche finance topics (obscure fraudsters, crypto tokens, fee structures, fund mechanics) unless the hook is about something everyone knows. Test: would a random 16-year-old or their grandma recognize the subject in the first 2 seconds?
