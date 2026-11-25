@@ -29,3 +29,10 @@ Captions: words.json timing, fixed to sentences.json wording (Year 20?, To— to
 - First push-in (0.4-0.6 s) crops the hook text for ~1 s on all cuts, then pull-back restores it.
 - Year-40 fee tag is not shown separately; payoff is the dropped bill card. Fee ghost block rips off Fund B just before.
 - Storyteller corner-left overlaps chart axis labels; HUD pill overlaps card tops on tight zooms.
+## PHOTO PASS (2026-11-25)
+Added 2 stock photos (paper frames, screen layer, small; no cover.png, no watermarks, no logos, no people; scripts/voice/timing unchanged). Footnote line added to all cuts.
+| File | Page | License | Author | Used |
+|---|---|---|---|---|
+| brand/photos/stock/piggy-bank-coins/5.jpg ("Piggy Bank") | https://www.flickr.com/photos/59937401@N07/5929478505 | CC BY 2.0 | Images_of_Money | piggy at "sounds like nothing" (YT ~12.4-14.5 s, TT ~8.2-10 s, IG ~6-7 s) |
+| brand/photos/stock/stacked-coins/1.jpg ("Stacked Coins") | https://www.flickr.com/photos/21898655@N05/4368910389 | CC BY-SA 2.0 | fran.trudeau | coins at "Whatever" (YT ~21.8-23.2 s), "Send this to your friend" (TT 16.7-18.3 s, IG 13.2-15.1 s) |
+Footnote: PHOTOS: IMAGES_OF_MONEY (CC BY 2.0), FRAN.TRUDEAU (CC BY-SA 2.0), VIA FLICKR. Re-rendered with --force, re-mixed (-14 LUFS, peaks -1.1/-1.4/-1.4), sheets regenerated. YT re-encoded crf 25 (16.5 MB). script_gate not re-run (scripts untouched; known newer-rule FAIL accepted).

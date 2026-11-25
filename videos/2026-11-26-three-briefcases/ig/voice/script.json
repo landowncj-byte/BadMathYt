@@ -1,7 +1,26 @@
 [
- ["This puzzle beat nearly a thousand PhDs. Think your ass is smarter?", 0.25],
- ["Three briefcases, and one has a million. Double-tap once you've picked.", 0.25],
- ["The host knows where the money is and always opens an empty one. So it's fifty-fifty? Bullshit.", 0.3],
- ["Send this to someone who'd swear it's fifty-fifty.", 0.35],
- ["Staying wins one in three, but switching wins two. [beat] [sigh] So, stay or switch? Don't join the PhDs.", 0.45]
+ [
+  "This puzzle beat nearly a thousand PhDs. Think your ass is smarter?",
+  0.25
+ ],
+ [
+  "Three briefcases, one has a million. Double-tap once you've picked.",
+  0.25
+ ],
+ [
+  "The host knows where the money is and always opens an empty one. Fifty-fifty? Bullshit.",
+  0.25
+ ],
+ [
+  "Send this to someone who'd swear it's fifty-fifty.",
+  0.25
+ ],
+ [
+  "Staying wins one in three, but switching wins two. [beat]",
+  0.3
+ ],
+ [
+  "So, stay or switch? Don't join the PhDs.",
+  0.25
+ ]
 ]

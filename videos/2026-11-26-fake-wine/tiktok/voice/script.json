@@ -1,10 +1,38 @@
 [
- ["A billionaire says he paid over two million for fake wine.", 0.6],
- ["[gasp] And the seller? Prosecutors said he mixed old wine with newer wine and rebottled it.", 0.25],
- ["Tap the heart if your wine cost ten bucks.", 0.25],
- ["He got convicted and sentenced to ten years in prison. [beat] But how'd he get caught?", 0.25],
- ["[smack] Send this to the friend who— who swirls the glass.", 0.25],
- ["And nope, it wasn't a taste test. The dumb part's next, so follow.", 0.4],
- ["His bottles said nineteen forty-five, but the winery first made that wine in nineteen eighty-two.", 0.7],
- ["Could you taste fake wine?", 0.45]
+ [
+  "A billionaire says he paid over two million for fake wine.",
+  0.6
+ ],
+ [
+  "[gasp] And the seller? Prosecutors said he mixed old wine with newer wine and rebottled it.",
+  0.25
+ ],
+ [
+  "Tap the heart if your wine cost ten bucks.",
+  0.25
+ ],
+ [
+  "He got convicted and sentenced to ten years in prison. [beat] But how'd he get caught?",
+  0.25
+ ],
+ [
+  "[smack] Send this to the friend who\u2014 who swirls the glass.",
+  0.25
+ ],
+ [
+  "And nope, it wasn't a taste test.",
+  0.3
+ ],
+ [
+  "The dumb part's next, so follow.",
+  0.4
+ ],
+ [
+  "His bottles said nineteen forty-five, but the winery first made that wine in nineteen eighty-two.",
+  0.7
+ ],
+ [
+  "Could you taste fake wine?",
+  0.45
+ ]
 ]
