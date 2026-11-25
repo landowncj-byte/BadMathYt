@@ -22,7 +22,7 @@ BM2.scene({
     // ---- S: three steps ----
     { id: 'steps', type: 'steps', at: [5100, 1900], in: '@Yeah-0.3', props: { open: ['@step#3', '@step#4', '@step#5'], codeAt: '@wrote', predAt: '@predict', passAt: '@passed', per: 0.34, winAt: '@won', shareAt: '@shared', heads: ['HE WROTE CODE', 'HE PASSED THE NUMBERS', 'THEY WON · THEY SHARED'] } },
     // ---- M: five-state map ----
-    { id: 'map', type: 'usmap', at: [3400, 1900], in: '@And-0.2', props: { at: '@five+0.05', per: 0.16, endAt: END, label: '5 STATES', sub: 'PLEADED GUILTY' } },
+    { id: 'map', type: 'usmap', at: [3400, 1900], in: '@And#2-0.2', props: { at: '@five+0.05', per: 0.16, endAt: END, label: '5 STATES', sub: 'PLEADED GUILTY' } },
     // ---- B2: the same billboard again ----
     { id: 'tk', type: 'ticket', at: [1700, 1900], enter: 'drop', in: '@Now-0.3', props: { style: 'billboard', at: -100, dur: 0.1, askAt: '@guess#2', drainAt: '@Nobody#2-0.95', drainDur: 0.9, head: '2010 · ADVERTISED JACKPOT', askLabel: 'PAID TO', askQ: '?', payLabel: 'PAID', stamp: 'NOT ONE DOLLAR' } },
     // ---- P: verdict ----
@@ -33,7 +33,7 @@ BM2.scene({
     { id: 'p2', type: 'text', layer: 'screen', at: [540, 345], in: '@guess-0.4', out: '@guess+1.0', props: { lines: [[['NOBODY CAN GUESS', 'paper']]], size: 64 } },
     { id: 'p3', type: 'text', layer: 'screen', at: [540, 345], in: '@broke-0.1', out: '@broke+1.3', props: { lines: [[['HE BROKE IT', 'bad']]], size: 76 } },
     { id: 'p4', type: 'text', layer: 'screen', at: [540, 345], in: '@knew-0.2', out: '@threw', props: { lines: [[['KNEW THE DICE FIRST', 'gold']]], size: 60 } },
-    { id: 'p5', type: 'text', layer: 'screen', at: [540, 345], in: '@Okay', out: '@Meet-0.2', props: { lines: [[['OKAY, REWIND', 'gold']]], size: 76 } },
+    { id: 'p5', type: 'text', layer: 'screen', at: [540, 325], in: '@Okay', out: '@Meet-0.2', props: { lines: [[['OKAY, REWIND', 'gold']]], size: 62 } },
     { id: 'knew', type: 'text', layer: 'screen', at: [540, 345], in: '@impossible', out: "@Here's-0.1", props: { lines: [[['IMPOSSIBLE TO CHEAT?', 'paper']]], size: 56 } },
     // ---- live number + beat label ----
     { id: 'hud', type: 'hud', layer: 'screen', at: [825, 250], in: -1, z: 90, props: { keys: [
@@ -41,7 +41,7 @@ BM2.scene({
       { at: '@Meet', label: 'INFO SECURITY\nDIRECTORS', v: 1 }, { at: '@He', label: 'OFFICE\nDRAWING', v: 1 }, { at: '@many', label: 'STATES\nSERVED', v: 'MANY' },
       { at: "@computer's", label: 'NUMBERS YOU\nCAN GUESS', v: 0, tone: 'gold' }, { at: "@Here's", label: 'JOB:\nKEEP IT SAFE', v: 1 },
       { at: '@Yeah', label: 'STEPS TO\nTHE TRICK', v: 3, tone: 'gold' }, { at: '@step#3', label: 'THE TRICK', v: 'STEP 1' }, { at: '@predict', label: 'WINNING NUMBERS\nPREDICTED', v: 'YES', tone: 'bad' }, { at: '@step#4', label: 'THE TRICK', v: 'STEP 2' }, { at: '@step#5', label: 'THE TRICK', v: 'STEP 3' },
-      { at: '@And', label: 'STATES\nRIGGED', v: 5, tone: 'bad' }, { at: '@Now', label: 'THE YEAR', v: '2010' }, { at: '@guess#2', label: 'PAID OUT', v: '$ ?', tone: 'gold' }, { at: '@Nobody#2', label: 'PAID OUT', v: 0, prefix: '$', tone: 'bad' },
+      { at: '@And#2', label: 'STATES\nRIGGED', v: 5, tone: 'bad' }, { at: '@Now', label: 'THE YEAR', v: '2010' }, { at: '@guess#2', label: 'PAID OUT', v: '$ ?', tone: 'gold' }, { at: '@Nobody#2', label: 'PAID OUT', v: 0, prefix: '$', tone: 'bad' },
       { at: '@2017', label: 'PLEADED\nGUILTY', v: '2017' }, { at: '@25', label: 'PRISON,\nUP TO', v: 25, suffix: ' YRS', tone: 'bad' }, { at: END - 0.7, label: 'ADVERTISED\nJACKPOT', v: 16.5, prefix: '$', suffix: 'M', dec: 1, tone: 'gold' }] } },
     { id: 'bl', type: 'blabel', layer: 'screen', at: [90, 192], in: -1, z: 91, props: { keys: [{ at: 0, text: 'THE JACKPOT' }, { at: '@Meet', text: 'THE JOB' }, { at: '@Yeah', text: 'THE TRICK' }, { at: '@Now', text: 'THE JACKPOT' }, { at: '@2017', text: 'THE SENTENCE' }, { at: END - 0.7, text: 'THE JACKPOT' }] } },
     // ---- CTA micro-moments ----
@@ -60,7 +60,7 @@ BM2.scene({
     { at: '@year', beat: 'graphic-hero', focus: ['yrs.grid', 'yrs.count'], fill: 0.9, maxH: 800, sy: 700, st: 'corner', pose: 'point', point: 'yrs.grid', dur: 0.6 },
     { at: '@330', beat: 'zoom-on-number', focus: 'yrs.count', fill: 0.9, maxH: 480, sy: 900, rot: 0.02, st: 'corner', pose: 'shock', dur: 0.4, lead: 0.15 },
     { at: '@walks', beat: 'presenter-front', focus: 'yrs', sy: 760, pose: 'shrug' },
-    { at: '@rewind-0.1', beat: 'graphic-hero', focus: 'yrs', fill: 0.8, maxH: 900, sy: 740, st: 'corner', pose: 'you', dur: 0.6 },
+    { at: '@Okay-0.1', beat: 'graphic-hero', focus: 'yrs', fill: 0.8, maxH: 840, sy: 820, st: 'corner', pose: 'you', dur: 0.6 },
     { at: '@Meet', beat: 'side-by-side', focus: 'off', move: 'whip', sx: 540, sy: 820, fill: 0.92, maxH: 900, st: 'corner', pose: 'point', point: 'off.name' },
     { at: '@He', beat: 'zoom-on-number', focus: 'off.bld', fill: 0.55, maxH: 620, sy: 800, st: 'corner', pose: 'shrug', dur: 0.55 },
     { at: '@Multistate', beat: 'graphic-hero', focus: 'off.sign', fill: 0.88, maxH: 330, sy: 760, st: 'corner', pose: 'point', point: 'off.sign', dur: 0.5 },
@@ -70,12 +70,13 @@ BM2.scene({
     { at: '@lotteries', beat: 'graphic-hero', focus: 'off.pins', fill: 0.8, maxH: 640, sy: 790, st: 'corner', pose: 'point', point: 'off.pins', dur: 0.6 },
     { at: '@many', beat: 'zoom-on-number', focus: 'off.many', fill: 0.6, maxH: 320, sy: 800, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: "@computer's-0.3", beat: 'side-by-side', focus: 'robot', move: 'whip', sx: 540, sy: 760, fill: 0.8, maxH: 900, st: 'corner', pose: 'point', point: 'robot.head' },
-    { at: '@whole', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.6, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
+    { at: '@whole', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.42, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
     { at: '@picking', beat: 'graphic-hero', focus: 'robot.balls', fill: 0.95, maxH: 420, sy: 700, st: 'corner', pose: 'point', point: 'robot.balls', dur: 0.55 },
     { at: '@nobody', beat: 'graphic-hero', focus: ['robot', 'ph2'], fill: 0.9, maxH: 1000, sy: 780, st: 'corner-left', pose: 'shrug', dur: 0.7 },
     { at: '@robot', beat: 'zoom-on-number', focus: 'robot.play', fill: 0.6, maxH: 520, sy: 760, st: 'corner-left', pose: 'point', point: 'robot.cup', dur: 0.5 },
     { at: '@rolling', beat: 'graphic-hero', focus: 'robot.play', fill: 0.64, maxH: 520, sy: 780, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@Tap', beat: 'presenter-front', focus: 'robot', sy: 760, pose: 'chin' },
+    { at: '@impossible', beat: 'side-by-side', focus: 'robot', sx: 700, sy: 760, fill: 0.7, maxH: 900, st: 'left', pose: 'shrug', dur: 0.7 },
     { at: "@Here's", beat: 'side-by-side', focus: 'bd', move: 'whip', sx: 540, sy: 800, fill: 0.7, maxH: 900, st: 'corner', pose: 'point', point: 'bd.title', dur: 0.9 },
     { at: '@information', beat: 'zoom-on-number', focus: 'bd.title', fill: 0.52, maxH: 360, sy: 950, st: 'corner', pose: 'point', point: 'bd.title', dur: 0.5 },
     { at: '@keeping', beat: 'graphic-hero', focus: 'bd', fill: 0.72, maxH: 900, sy: 900, st: 'corner-left', pose: 'chin', dur: 0.6 },
@@ -96,12 +97,14 @@ BM2.scene({
     { at: '@step#5', beat: 'graphic-hero', focus: 'steps.b3', fill: 0.86, maxH: 440, sy: 660, st: 'corner', pose: 'point', point: 'steps.b3', dur: 0.55 },
     { at: '@won', beat: 'zoom-on-number', focus: 'steps.b3', fill: 0.92, maxH: 400, sy: 680, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@him#2', beat: 'pull-back', focus: 'steps', fill: 0.8, maxH: 1050, sy: 760, st: 'corner', pose: 'idle', dur: 0.8 },
-    { at: '@And', beat: 'side-by-side', focus: 'map', move: 'whip', sx: 540, sy: 800, fill: 0.9, maxH: 900, st: 'corner', pose: 'point', point: 'map.grid' },
+    { at: '@And#2', beat: 'side-by-side', focus: 'map', move: 'whip', sx: 540, sy: 800, fill: 0.9, maxH: 900, st: 'corner', pose: 'point', point: 'map.grid' },
     { at: '@states#2+0.35', beat: 'zoom-on-number', focus: 'map.label', fill: 0.8, maxH: 400, sy: 780, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@Now', beat: 'side-by-side', focus: 'tk', move: 'whip', sx: 540, sy: 800, fill: 0.8, maxH: 1000, st: 'corner', pose: 'point', point: 'tk.head' },
     { at: '@2010', beat: 'zoom-on-number', focus: 'tk.head', fill: 0.8, maxH: 400, sy: 700, st: 'corner', pose: 'shock', dur: 0.55 },
     { at: '@scheme', beat: 'graphic-hero', focus: 'tk', fill: 0.84, maxH: 1000, sy: 800, st: 'corner', pose: 'point', point: 'tk.head', dur: 0.7 },
     { at: '@guess#2', beat: 'graphic-hero', focus: 'tk.paid', fill: 0.72, maxH: 560, sy: 980, st: 'corner', pose: 'shrug', dur: 0.6 },
+    { at: '@16#2', beat: 'zoom-on-number', focus: 'tk.total', fill: 0.9, maxH: 560, sy: 680, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@got', beat: 'graphic-hero', focus: 'tk.paid', fill: 0.72, maxH: 560, sy: 980, st: 'corner', pose: 'shrug', dur: 0.5 },
     { at: '@Follow', beat: 'side-by-side', focus: 'tk', sx: 700, sy: 800, fill: 0.7, maxH: 1000, st: 'left', pose: 'follow', dur: 0.6 },
     { at: '@Nobody#2-0.1', beat: 'zoom-on-number', focus: 'tk.paid', fill: 0.86, maxH: 640, sy: 1010, rot: 0.02, st: 'corner', pose: 'shock', dur: 0.4, lead: 0.15 },
     { at: '@dollars', beat: 'pull-back', focus: 'tk', fill: 0.8, maxH: 980, sy: 800, st: 'corner', pose: 'shock', dur: 0.8 },

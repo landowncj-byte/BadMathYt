@@ -271,3 +271,5 @@ Owner rules (RULES.md) win over skill defaults (e.g. no AI disclosure, our CTA p
 - Every big number gets an everyday comparison (a car, rent, a year of groceries, a stadium full of people).
 - Recap the key number once before the payoff.
 - Still a story: stakes, mystery, twist, payoff (§18). Simple ≠ boring.
+
+> OWNER RULE 2026-11-25 (RULES 104): NO breathing/sigh/gasp/smack sounds, NO long pauses. Natural gaps only (~0.22 s, ~0.38 s on big numbers). Do not write noise tags into scripts.

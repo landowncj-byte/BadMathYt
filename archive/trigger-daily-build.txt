@@ -51,3 +51,5 @@ LONG-FORM topics follow the same broad rule: the Do Kwon long-form planned for F
 Pending promise: the lottery TikTok promised a "Part 2" (what happened after the 1992 Virginia win). Research is in research/2026-11-25/lottery-part2/. Make it soon.
 
 7. MEMORY (user rule: never lose context): at the end, update HANDOFF.md §7 (current state), run python3 archive/export.py (add --raw if this session was compacted since the last export), update archive/LATEST.md, and commit + push. If this session has been context-compacted 3 or more times, or summaries are losing detail, start a successor session per HANDOFF.md §8/§10 and move both scheduled tasks to it (archive/triggers.md).
+
+> OWNER RULE 2026-11-25 (RULES 104): NO breathing/sigh/gasp/smack sounds, NO long pauses. Natural gaps only (~0.22 s, ~0.38 s on big numbers). Do not write noise tags into scripts.

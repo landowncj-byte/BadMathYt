@@ -65,7 +65,7 @@ BM2.scene({
     { at: '@lotteries', beat: 'graphic-hero', focus: 'off.pins', fill: 0.8, maxH: 640, sy: 790, st: 'corner', pose: 'point', point: 'off.pins', dur: 0.6 },
     { at: '@many', beat: 'zoom-on-number', focus: 'off.many', fill: 0.6, maxH: 320, sy: 800, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@See', beat: 'side-by-side', focus: 'robot', move: 'whip', sx: 540, sy: 760, fill: 0.8, maxH: 900, st: 'corner', pose: 'point', point: 'robot.head' },
-    { at: '@computer', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.6, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
+    { at: '@computer', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.42, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
     { at: '@job', beat: 'graphic-hero', focus: 'robot', fill: 0.8, maxH: 900, sy: 760, st: 'corner', pose: 'point', point: 'robot.head', dur: 0.6 },
     { at: '@picks', beat: 'graphic-hero', focus: 'robot.balls', fill: 0.95, maxH: 420, sy: 700, st: 'corner', pose: 'point', point: 'robot.balls', dur: 0.55 },
     { at: '@nobody', beat: 'graphic-hero', focus: ['robot', 'ph2'], fill: 0.9, maxH: 1000, sy: 780, st: 'corner-left', pose: 'shrug', dur: 0.7 },

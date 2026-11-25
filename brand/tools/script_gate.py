@@ -23,7 +23,7 @@ facts grade, humanized feel) stay with the director — see the SCRIPT GATE in R
 import json, os, re, sys
 
 RATE = 3.3           # words/s inside a line (measured on the 2026-11-25 Liam cuts: 3.1–3.5)
-TAG_S = 0.45         # seconds one [breath]/[sigh]/... adds
+TAG_S = 0.0          # noise tags add no time any more (owner 2026-11-25: no breathing)
 PLATFORM = {"": "YouTube", "tiktok": "TikTok", "ig": "IG/FB"}
 # owner 2026-11-25: "90 seconds is the target timing" (Decoded) + "65 seconds for the what ifs" — same on every platform
 SERIES_LEN = {"decoded": (80, 100, 250), "whatif": (62, 75, 185)}   # (min_s, max_s, max_words) — HARD FLOOR: every cut > 60 s (TikTok monetization)
@@ -229,8 +229,8 @@ def gate(cut_dir, script_name=None):
     for i, (l, pz) in enumerate(script[:-1]):
         tail = re.sub(r"\[[^\]]*\]\s*$", "", l).strip()
         last_sent = re.split(r"(?<=[.!?])\s+", tail)[-1]
-        if re.search(NUM, last_sent, re.I) and re.search(BIG, last_sent, re.I) and pz < 0.5 and not re.search(r"\[(pause|beat)\]\s*$", l):
-            fails.append(f"NO BEAT after a big number: line {i+1} ends on \"{last_sent[:60]}\" with only {pz:.2f} s — give it ≥ 0.5 s (or end the line with [beat]) so it lands")
+        if re.search(NUM, last_sent, re.I) and re.search(BIG, last_sent, re.I) and pz < 0.45 and not re.search(r"\[(pause|beat)\]\s*$", l):
+            fails.append(f"NO BEAT after a big number: line {i+1} ends on \"{last_sent[:60]}\" with only {pz:.2f} s — give it ≥ 0.45 s (or end the line with [beat]) so it lands")
     setup_end = next((t0 for t0, _, tx in cl[1:] if re.search(r"\?|\b(but|wait|except|then|until|worse)\b", tx, re.I)), dur)
     if setup_end / dur > 0.30: warns.append(f"first turn/question after the hook comes at {pct(setup_end)} — setup is too long (target < 20%)")
     longest = max(len(words(l)) for l, _ in script)
@@ -243,7 +243,8 @@ def gate(cut_dir, script_name=None):
     # 6 humanize (warnings — the director judges feel)
     if re.search(STIFF, clean, re.I): warns.append(f"stiff phrasing \"{re.search(STIFF, clean, re.I).group(0)}\" — use contractions")
     tags = [t for t in re.findall(r"\[([^\]]*)\]", raw) if t.lower() in ALLOWED_TAGS]
-    if not 1 <= len(tags) <= 3: warns.append(f"{len(tags)} sound tags (target 1–3 per Short: [breath] [sigh] [gasp] [smack])")
+    noisy = [t for t in tags if t.lower() not in ("pause", "beat")]
+    if noisy: warns.append(f"{len(noisy)} breath/noise tags {noisy} are IGNORED by the voice now (owner: no breathing) — remove them from the script")
     if "—" not in raw and "--" not in raw and key != "ig": warns.append("no self-correction/restart (\"four— no, four point two\") — one per Short, never inside a Decoded fact")
     if not re.search(r"\byou(?:r|'re|'d|'ll)?\b", clean, re.I): warns.append("never talks to the viewer (\"you\")")
 

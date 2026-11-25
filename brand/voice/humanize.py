@@ -39,14 +39,21 @@ def show_text(line): return re.sub(r'\s*\[(\w+)\]\s*', ' ', clean(line)).strip()
 def _trim(a, sr):
     nz = np.where(np.abs(a) > 0.01)[0]
     return a[max(0, nz[0] - int(.02 * sr)): nz[-1] + int(.05 * sr)] if len(nz) else a
-def build(k, lines, voice='am_liam', auto_breath=True):
+# OWNER RULE 2026-11-25 ~20:30 UTC: "get rid of the breathing too, all of the pauses are weird".
+# -> NO breath/sigh/gasp/sniff/smack/throat noises (tags are stripped), NO auto inhales,
+#    and pauses are normalised to natural conversational gaps (NATURAL_GAP / LAND_GAP).
+NATURAL_GAP = 0.22   # normal gap between lines (s)
+LAND_GAP = 0.38      # a slightly longer gap where the script asked for a landing (>= 0.45 s or [beat])
+def natural_pause(p):
+    return LAND_GAP if p >= 0.45 else NATURAL_GAP
+def build(k, lines, voice='am_liam', auto_breath=False):
     """lines: [(text_with_tags, pause_after_s)]. Returns audio, sr, sentences (start/end/show text)."""
     out, marks, t, sr = [], [], 0.0, 24000
     for i, (line, pause) in enumerate(lines):
         line = clean(line)
         parts = re.split(r'(\[\w+\])', line)
-        if auto_breath and i > 0 and not line.strip().startswith('[') and _h(line, 'auto') % 3 == 0:
-            parts = ['[breath]'] + parts
+        ends_beat = bool(re.search(r'\[beat\]\s*$', line))
+        pause = LAND_GAP if ends_beat else natural_pause(pause)
         seg = []
         start_t = None
         for p in parts:
@@ -55,10 +62,8 @@ def build(k, lines, voice='am_liam', auto_breath=True):
             m = re.fullmatch(r'\[(\w+)\]', p)
             if m:
                 tag = m.group(1)
-                if tag == 'pause': seg.append(np.zeros(int(0.35 * sr), 'float32')); continue
-                if tag == 'beat': seg.append(np.zeros(int(0.7 * sr), 'float32')); continue  # owner: let big numbers land
-                if tag in TAGS: seg += [noise(tag, line, sr), np.zeros(int(0.05 * sr), 'float32')]
-                continue
+                if tag in ('pause', 'beat') and not ends_beat: seg.append(np.zeros(int(0.25 * sr), 'float32'))
+                continue  # human-noise tags are ignored (owner: no breathing)
             a, sr = say(k, p, voice=voice); a = _trim(a, sr)
             if start_t is None: start_t = t + sum(len(x) for x in seg) / sr
             seg += [a, np.zeros(int(0.06 * sr), 'float32')]

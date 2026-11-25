@@ -75,3 +75,5 @@ Stage 2 (build):
 - BEAT LABEL: a small pinned label that changes per section (THE PITCH · THE TRICK · THE CATCH · THE MATH · THE SENTENCE / THE BET · THE TWIST · THE ANSWER).
 - LAYOUT FLIP every 8–10 s (full scene ↔ split / board ↔ close-up), on top of the 2–3 s micro-changes.
 - Steps are numbered boxes that open one at a time.
+
+> OWNER RULE 2026-11-25 (RULES 104): NO breathing/sigh/gasp/smack sounds, NO long pauses. Natural gaps only (~0.22 s, ~0.38 s on big numbers). Do not write noise tags into scripts.
