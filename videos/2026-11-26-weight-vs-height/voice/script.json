@@ -1,15 +1,94 @@
 [
- ["Grab the hundreds here, and the average guy loses two hundred grand.", 0.6],
- ["[breath] Two piles of cash: your weight in twenties, or your height in hundreds, stacked flat?", 0.25],
- ["Hundreds are worth five times more. Easy, right?", 0.25],
- ["Hit like if you picked the stack.", 0.3],
- ["But say a bill weighs about a gram, so one pound is four hundred fifty-four bills.", 0.5],
- ["And one inch of stack is two hundred thirty-three.", 0.5],
- ["Per the CDC, the average American man is one ninety-nine pounds, about five nine.", 0.25],
- ["Send this to the friend who'd grab hundreds without— without blinking.", 0.3],
- ["His height in hundreds is one point six million, and it weighs thirty-five pounds.", 0.5],
- ["His weight's next. Follow, this page does the math you didn't.", 0.45],
- ["His weight in twenties is one point eight million.", 0.7],
- ["[sigh] The small bills win, by two hundred grand.", 0.7],
- ["So… twenties or hundreds? One word.", 0.4]
+ [
+  "Choosing hundred dollar bills here costs the average guy two hundred grand.",
+  0.8
+ ],
+ [
+  "[breath] Okay, picture it. A stranger offers you two piles of cash, and you get to keep one.",
+  0.5
+ ],
+ [
+  "Pile one: you step on a scale, and he pays you your weight in twenty dollar bills.",
+  0.6
+ ],
+ [
+  "Pile two: he stacks hundred dollar bills flat, like a deck of cards, until the stack's as tall as you.",
+  0.6
+ ],
+ [
+  "Now, one hundred is worth five twenties, so the hundreds should win easy, right?",
+  0.5
+ ],
+ [
+  "Hit like if that's the pile you'd grab.",
+  0.6
+ ],
+ [
+  "But wait. Money doesn't just have a value, it also has a weight and a thickness.",
+  0.5
+ ],
+ [
+  "Every bill weighs about one gram, and it doesn't matter what number's printed on it.",
+  0.6
+ ],
+ [
+  "So one pound of twenties is a thick brick of bills, worth about nine thousand dollars.",
+  0.8
+ ],
+ [
+  "Bills are also super thin, so it takes a whole lot of them to stack up one inch.",
+  0.5
+ ],
+ [
+  "One inch of hundreds is worth about twenty-three thousand dollars.",
+  0.8
+ ],
+ [
+  "So one inch of hundreds equals about two and a half pounds of twenties.",
+  0.7
+ ],
+ [
+  "Send this to the friend who'd grab the hundreds without— without even blinking.",
+  0.5
+ ],
+ [
+  "Here's the catch, though: your body has way more pounds than inches.",
+  0.6
+ ],
+ [
+  "Per the CDC, the average American man weighs one hundred ninety-nine pounds.",
+  0.7
+ ],
+ [
+  "And he's about five foot nine, which is only sixty-nine inches tall.",
+  0.7
+ ],
+ [
+  "That's almost three pounds for every single inch of him.",
+  0.7
+ ],
+ [
+  "So let's count it. His height in hundreds comes to about one point six million dollars.",
+  0.8
+ ],
+ [
+  "His weight's next, and yeah, follow, because this page does the math you skipped.",
+  0.6
+ ],
+ [
+  "His weight in twenties comes to about one point eight million dollars.",
+  0.9
+ ],
+ [
+  "[sigh] The small bills beat the big ones by two hundred grand.",
+  0.8
+ ],
+ [
+  "That's like getting a hundred bucks a day for over five years.",
+  0.7
+ ],
+ [
+  "So, are you still choosing the hundred dollar bills?",
+  0.5
+ ]
 ]

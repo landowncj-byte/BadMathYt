@@ -1,10 +1,90 @@
 [
- ["Your weight in twenties, or your height in hundreds? Pick wrong and you lose two hundred grand.", 0.6],
- ["[breath] Hundreds, right? Tap the heart if so. No judgment— okay, some.", 0.25],
- ["Average American guy, about a gram a bill: his height in hundreds is one point six mil.", 0.4],
- ["Send this to the friend who'd grab hundreds.", 0.25],
- ["But his weight in twenties is one point eight, so two hundred grand more.", 0.7],
- ["Your cheat code's next, and it's worth a follow.", 0.4],
- ["Height in inches times two point five six: if you weigh more, take the twenties.", 0.3],
- ["So, weight or height?", 0.45]
+ [
+  "Twenty dollar bills beat hundreds here, and your bathroom scale decides it.",
+  0.8
+ ],
+ [
+  "[breath] Okay so, somebody offers you two piles of free cash, and you only get one.",
+  0.5
+ ],
+ [
+  "Pile A is your body weight in twenty dollar bills, so you literally stand on a scale.",
+  0.6
+ ],
+ [
+  "Pile B is hundred dollar bills stacked flat, until the stack is as tall as you are.",
+  0.6
+ ],
+ [
+  "You said hundreds, right? Because a hundred is five twenties, so it feels obvious.",
+  0.5
+ ],
+ [
+  "Tap the heart if you did. No judgment— okay, a little judgment.",
+  0.6
+ ],
+ [
+  "Now let's run it on the average American guy, using CDC numbers.",
+  0.5
+ ],
+ [
+  "He weighs one hundred ninety-nine pounds.",
+  0.6
+ ],
+ [
+  "And every single bill weighs about one gram, twenties and hundreds the same.",
+  0.6
+ ],
+ [
+  "So his weight in twenties comes out to about one point eight million dollars.",
+  0.9
+ ],
+ [
+  "Then we stack hundreds up to the top of his head, about five foot nine.",
+  0.6
+ ],
+ [
+  "That stack comes out to about one point six million dollars.",
+  0.9
+ ],
+ [
+  "So the bigger bill would've cost him two hundred grand.",
+  0.8
+ ],
+ [
+  "Send this to the friend who'd grab the hundreds instantly.",
+  0.5
+ ],
+ [
+  "Wait, how do the small bills win? Well, a pound of twenties is about nine grand.",
+  0.7
+ ],
+ [
+  "And an inch of hundreds is about twenty-three grand.",
+  0.7
+ ],
+ [
+  "An inch is worth more, sure, but you've got way more pounds than inches.",
+  0.6
+ ],
+ [
+  "Now here's your personal cheat code, and it's honestly worth a follow.",
+  0.6
+ ],
+ [
+  "Take your height in inches, and multiply it by two point five six.",
+  0.8
+ ],
+ [
+  "For a five foot nine guy, that number is about one seventy-seven.",
+  0.8
+ ],
+ [
+  "If you weigh more than your number, you take the twenties. Weigh less, and you take the hundreds.",
+  0.8
+ ],
+ [
+  "So what's your bathroom scale saying, twenties or hundreds?",
+  0.5
+ ]
 ]
