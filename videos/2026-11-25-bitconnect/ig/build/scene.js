@@ -332,7 +332,7 @@ BM2.scene({
   ],
   poses: [],
   shakes: [[0.0, 12], ['@getting', 12], ['@played-0.12', 16], ['@billion', 20], ['@promoter', 14], ['@38', 22]],
-  captions: { emph: { '1%': 'bad', billion: 'bad', '38': 'bad', ass: 'bad', played: 'bad', prosecutors: 'accent', grand: 'good' }, fix: [] },
+  captions: { gap: 16, emph: { '1%': 'bad', billion: 'bad', '38': 'bad', ass: 'bad', played: 'bad', prosecutors: 'accent', grand: 'good' }, fix: [] },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.4 }, { at: 0.05, name: 'punch_1', gain: -9, dur: 0.5 },

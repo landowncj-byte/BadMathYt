@@ -151,7 +151,7 @@
       const emphOf = w => { const k = norm(w); for (const [key, tn] of Object.entries(capO.emph)) if (norm(key) === k) return { good: theme.good, bad: theme.bad, accent: theme.accent }[tn] || tn; return null; };
       function captions(g, t) {
         if (!capO || capO.hide.some(([a, b]) => t >= T(a) && t < T(b))) return; const ch = chunks.find(c => t >= c.s && t < c.e); if (!ch) return;
-        const k = clamp(spring(t - ch.s + 0.12, 'stiff'), 0, 1.15); g.save(); g.font = F.cap(capO.size); const sp = g.measureText(' ').width, lines = [[]]; let lw = 0;
+        const k = clamp(spring(t - ch.s + 0.12, 'stiff'), 0, 1.15); g.save(); g.font = F.cap(capO.size); const sp = g.measureText(' ').width + (capO.gap || 0), lines = [[]]; let lw = 0;
         for (const w of ch.ws) { const s = w.w.toUpperCase(), ww = g.measureText(s).width; if (lw + ww > capO.width && lines[lines.length - 1].length) { lines.push([]); lw = 0; } lines[lines.length - 1].push({ s, ww, w }); lw += ww + sp; }
         g.translate(W / 2, capO.y - ((lines.length - 1) * capO.lh) / 2); g.scale(0.86 + 0.14 * k, 0.86 + 0.14 * k); g.globalAlpha = clamp(k * 1.6); g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
         lines.forEach((ln, li) => { const tw = ln.reduce((a, p) => a + p.ww, 0) + sp * (ln.length - 1); let px = -tw / 2;

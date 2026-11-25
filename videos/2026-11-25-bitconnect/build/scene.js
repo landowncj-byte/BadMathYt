@@ -363,7 +363,7 @@ BM2.scene({
   ],
   poses: [['@Follow', 'follow', { target: [830, 1180] }]],
   shakes: [[0.06, 14], ['@dumbest', 16], ['@billionaire', 20], [34.16, 16], ['@guilty-0.15', 14], ['@38', 22]],
-  captions: { emph: { '1': 'bad', dumbest: 'bad', '$2.4': 'bad', billions: 'bad', '37': 'good', billionaire: 'bad', prosecutors: 'accent', guilty: 'bad', '38': 'bad', down: 'bad' },
+  captions: { gap: 16, emph: { '1': 'bad', dumbest: 'bad', '$2.4': 'bad', billions: 'bad', '37': 'good', billionaire: 'bad', prosecutors: 'accent', guilty: 'bad', '38': 'bad', down: 'bad' },
     fix: [['hand it at', 'handed it'], ['1389,', '1,389,'], ['its 1.4', "it's 1.4"], ['2018,', '2018,'], ['investors money', "investors' money"]] },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
