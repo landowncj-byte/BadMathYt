@@ -17,14 +17,14 @@ MODEL SPLIT (user rule):
 
 3. BUILD — MINIMUM 8 posts per platform per day. Each topic gets THREE separate scripts, voices and edits, each built on the story loop (STYLE §18) and humanized (STYLE §21).
    - Write like telling a friend, not reading a fact sheet: contractions, small reactions like "Yeah." / "Wait.", talk to the viewer, spoken rhythm, and everyday words real people use (like, literally, honestly, bucks, grand, no way, bro, it gets worse). Use heavier slang on TikTok/IG.
-   - Add human speech imperfections: a few um/uh fillers, one self-correction, and [breath]/[sigh]/[chuckle]/[gasp]/[smack] tags. Captions come from the script minus the tags.
+   - Add human touches: one self-correction ("she— she had…") and [breath]/[sigh]/[gasp]/[smack] tags. NO um/uh fillers and NO laugh/[chuckle] (user rule 2026-11-25). Captions come from the script minus the tags.
    - YouTube Shorts: ad-safe edgy hook, 40–55 s.
    - TikTok @color.me.saved: spicy, 25–40 s, comment bait.
    - Instagram badmath.tv + Facebook BadMath.tv: the most vulgar and disrespectful cut, 15–25 s, built for sends and saves.
    - Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
    - VISUALS (STYLE §20): build every NEW video with engine v2 (brand/engine-v2, READY) + brand/VISUAL-V2.md: camera push-ins on spoken numbers, the storyteller moving in front of and behind graphics, satisfying springs, no neon. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only. Set the scene's duration to the narration length + ~0.4 s.
 
-4. VOICE: Shorts use the FREE Kokoro voice am_liam (user pick), voiced through brand/voice/humanize.py build(k, lines), which handles fillers, real CC0 breaths and human noises, and pronunciation fixes. No energy mode. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
+4. VOICE: Shorts use the FREE Kokoro voice am_liam (user pick), voiced through brand/voice/humanize.py build(k, lines), which adds real CC0 breaths and human noises, strips any um/uh or chuckle, and handles pronunciation fixes. No energy mode. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
 
 5. QUEUE:
    - Upload to uguu.se: curl -F "files[]=@video.mp4" https://uguu.se/upload

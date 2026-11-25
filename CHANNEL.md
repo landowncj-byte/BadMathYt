@@ -113,3 +113,4 @@ decisions:
 - 2026-11-25: Scripts must be humanized (STYLE §21) — conversational, contractions, small reactions, talk to the viewer.
 - 2026-11-25: Scripts use everyday human words/slang (STYLE §21 list), light on YouTube, heavier on TikTok/IG.
 - 2026-11-25: Human speech imperfections: fillers, self-corrections, CC0 breath/sigh/chuckle/sniff/lip-smack/throat sounds via brand/voice/humanize.py; mock Short sent (research/humanize-demo).
+- 2026-11-25: User: "drop the uhms, it doesn't sound right at all" + "that laugh is hella out of place" → no um/uh fillers and no [chuckle]/laugh in any script; humanize.py strips both automatically. Breaths/sighs/gasps/lip smacks stay.
