@@ -1,53 +1,16 @@
-# QA: weight-vs-height (What If, engine v2) 2026-11-25
-Scripts/voice untouched. Sources: _src/recipes.js (scale, tower, doll, fivex, gap, slider, chip, heart, plane) + yt.js / tt.js / ig.js (build.sh <cut> <yt|tt|ig>, sheet.py). No engine files changed.
-| Cut | File | Narration | Video | Size |
-|---|---|---|---|---|
-| YouTube | video.mp4 | 46.10 s | 46.50 s | 26.6 MB |
-| TikTok | tiktok/video.mp4 | 28.67 s | 29.07 s | 19.5 MB |
-| IG/FB | ig/video.mp4 | 22.25 s | 22.67 s | 14.0 MB |
-Mix: -14.0 LUFS, true peak -1.36 / -1.42 / -1.31 dBFS. 1-fps timestamped contact_sheet.png in each cut. captions.srt from sentences.json (3 files).
-## On-screen facts (all from research.md)
-| Shown | Value | research.md |
-|---|---|---|
-| Hook / loop number | AVG MAN LOSES -$202,980 (IG: "A $200K F*CK-UP"; spoken "two hundred grand") | gap $202,980 |
-| Avg man inputs | 199.0 LB, 68.9 IN (≈5'9"), CDC Aug 2021-Aug 2023 | CDC FastStats |
-| Weight pile | 90,264 bills, $1,805,280 (live counters, dial 199.0 LB) | 90,264 x $20 |
-| Height stack | 16,023 bills, $1,602,300 (live counters, tape 68.9 IN) | 16,023 x $100 |
-| Gap banner | +$202,980 | 1,805,280 - 1,602,300 |
-| 1 lb / 1 in | 454 bills / 233 bills | 453.59 g; 232.56/in |
-| Stack weight | 35 LB luggage tag (YT) | 35.3 lb |
-| Flip number | FLIP POINT 2.56 LB PER INCH (YT gap banner, IG footnote); TT slider HEIGHT x 2.56, 5'4"=164, 5'9"=177, 6'0"=185 LB | 2.5635; 164.1 / 176.9 / 184.6 |
-| Assumptions | footnote: HYPOTHETICAL, NOBODY IS OFFERING THIS, NOT FINANCIAL ADVICE; ASSUMES ~1 G and 0.0043 IN PER BILL, CRISP, FLAT, WHOLE NOTES; CDC avg man. HYPOTHETICAL chip; "~1 GRAM A BILL (ASSUMED)" text. Doll labelled ILLUSTRATION. | ASSUMES block |
-| A/B choices | two big buttons A: YOUR WEIGHT IN $20s / B: YOUR HEIGHT IN $100s from frame 0 | |
-Starting pile/tower on frame 0 (4,500 bills, 36 in) are staging values, not claims; the loop returns to them.
-## VIDEO GATE
-| # | YT | TT | IG |
-|---|---|---|---|
-| V1 script_gate PASS | Y | Y (warn 88 words) | Y (warn 64 words) |
-| V2 watched 1-fps sheet | Y | Y | Y |
-| V3 frame 0 slam + hook text + boom | Y | Y | Y |
-| V4 change every 2-3 s | mostly (3.5-5.6 s wide hold ~2 s) | Y | weak: 17-20 s holds the scale shot (counter only) |
-| V5 push-ins on spoken numbers, storyteller travels | Y | Y | Y |
-| V6 heart / plane / follow / bubble | Y (heart, plane, follow, bubble) | Y | Y (heart, plane, bubble; no follow in script) |
-| V7 payoff biggest hit, loops to frame 0 | hit at 82 %; ends 8 s after (script tail) | hit at 60 % + 2.56 slam at 80 %; ends 4 s after | hit at 52 %; ends 10 s after |
-| V8 brand lock, no neon | Y | Y | Y |
-| V9 numbers match research, HYPOTHETICAL, ILLUSTRATION | Y | Y | Y |
-| V10 captions from sentences, no tags | Y (twenties/hundreds spelled; 199, 5'9") | Y | Y (F*CK-UP censored on screen) |
-| V11 voice listen-check | not done | not done | not done |
-| V12 CC0 sfx, -14 LUFS, peak ok | Y | Y | Y |
-| V13 post settings | n/a (not posting) | | |
+# QA: weight-vs-height (What If, engine v2) — RE-EDIT v3, 2026-11-25
+Scripts/voice untouched (voice/ v3). Sources: _src/recipes.js + recipes2.js (new: offer, gram, rows, calendar, totals) + yt.js / tt.js / ig.js (build.sh <cut> <yt|tt|ig>); v1 scenes kept as *.v1.js. No engine files changed.
+| Cut | File | Narration | Video | Size | Loudness |
+|---|---|---|---|---|---|
+| YouTube | video.mp4 | 70.89 s | 71.20 s | 19.4 MB | -14.0 LUFS, -1.3 dBTP |
+| TikTok | tiktok/video.mp4 | 65.64 s | 66.03 s | 17.9 MB | -14.0 LUFS, -1.3 dBTP |
+| IG/FB | ig/video.mp4 | 65.69 s | 66.10 s | 17.3 MB | -14.0 LUFS, -1.4 dBTP |
+captions.srt from sentences.json; 1-fps contact_sheet.png per cut. script_gate --all: PASS x3.
+Photos: D.L. (CC BY-SA 2.0) scale; THE.COMEDIAN (CC BY 2.0) $100 stack, via Flickr (footnote).
+On-screen numbers all from beats-v3 math: 199.0 lb, 68.9 in, 90,264 x $20 = $1,805,280, 16,023 x $100 = $1,602,300, gap $202,980, 454 bills/lb ($9,080 counter), 233 bills/in, 2,030 days = 5.6 yrs, x2.56 (5'4"=164, 5'9"=177, 6'0"=185 lb).
+## VIDEO GATE (YT / TT / IG)
+V1 PASS all. V2 1-fps sheets viewed: Y. V3 frame 0 slam + hook: Y. V4 change every ~2.5 s: mostly; TT cheat-code card 50-57 s and IG 56-58 s hold longer with only counters/camera drift. V5 push-ins + travelling storyteller: Y. V6 heart/plane/follow/bubble: Y (TT heart on 'heart', IG on 'tap'). V7 payoff hit ~80% (YT 83%, IG 83%, TT slider 85%); loops to frame 0. V8 no neon: Y. V9 numbers/HYPOTHETICAL/ILLUSTRATION: Y. V10 captions from script words; hook caption shows "$200,000" (spoken "two hundred grand"). V11 voice listen-check not done. V12 CC0 sfx, -14 LUFS: Y.
 ## Doubts
-- Payoff-to-end gap is long on YT and IG because the fixed scripts put lines after the payoff.
-- Sparse middle on IG 17-20 s. Overlay texts now sit at y 345 (under the pill), clear of counters/captions; "THE SCALE PAYS" and "HUNDREDS, RIGHT?" still touch the A/B buttons for ~1 s. The assumed-1-g note is a dark chip so it stays legible over the doll card.
-- Rolling counters smear digits mid-spin (engine odometer); settles on exact values.
-- Hook shows -$202,980 exact while the voice says "two hundred grand" (beats.md said -$200,000).
-- IG caption censors the profanity (F*CK-UP) while the voice says it.
-- Doll header and slider header clip under the WHAT IF pill on tight zooms.
-
-## Layout rework (coordinator feedback, 2026-11-25)
-- Counters (lb / bills / $) moved from under the piles to the top of the scale and tower, so they stay above screen y ~1280 in every framing; tower shortened (8 px per inch) so the stack never reaches them.
-- Whole-stage framing (F0/FR) reworked: hook, buttons, counters, piles end at y ~1260; gap banner now sits below the piles at world y 580.
-- Overlay texts and the "~1 G A BILL" chip live in their own lane (y 345, under the pill); A/B buttons fade out while overlay texts show (and during payoff zooms).
-- "peek" beats on the tower/gap replaced with side placement so the storyteller no longer covers counters. Slider (TT) framed whole so its header clears the pill.
-- Verified on real frames extracted with ffmpeg (0 s, every ~2 s, overlay moments) for all three cuts.
-Known remaining: pile/platform can reach the caption band during the payoff zoom; ask-bubble sits over dimmed counters in the final presenter shot; digit smear during roll.
+- Scene durations are narration+0.3/0.4 (YT 71.20 vs 71.29).
+- Inch stack (1 in) is small on screen; relies on the zoom beat.
+- 1-second test / per-beat keyframe sheet done via stills on YT and TT; IG went straight to render after check.

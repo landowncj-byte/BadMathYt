@@ -505,7 +505,7 @@ BM2.scene({
   captions: {
     gap: 16,
     emph: { '$35': 'good', '95': 'bad', '1945.': 'bad', '1982.': 'bad', '37': 'bad', '$2': 'bad', fake: 'bad', convicted: 'bad', fraud: 'bad', '10': 'bad', '$28': 'bad', FBI: 'accent', dumbass: 'bad', damn: 'bad' },
-    fix: [['Rudy Kerniawin', 'Rudy Kurniawan']],
+    fix: [['Rudy Kerniawin', 'Rudy Kurniawan'], ['parts next so', "part's next, so"], ['Double tap', 'Double-tap'], ['wine snob', 'wine-snob']],
   },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [

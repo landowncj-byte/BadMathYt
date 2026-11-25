@@ -1,7 +1,7 @@
 // YouTube cut — v3 re-edit (66 s). Stations (world x): 0 table3 · 1750 calendar · 3500 column · 5250 letters · 7000 the three starts · 8750 100 cases
 const F0 = { x: 0, y: 10, w: 900, h: 1360 };      // frame 0 and the loop frame share this framing
-const ST = { sx: 560, sy: 975, maxH: 1110 };
-const HOOK = { lines: [[['≈1,000 PhDs', 'paper']], [['GOT THIS ', 'paper'], ['WRONG', 'bad']]], size: 100 };
+const ST = { sx: 560, sy: 1010, maxH: 1230 };
+const HOOK = { lines: [[['≈1,000 PhDs', 'paper']], [['GOT THIS ', 'paper'], ['WRONG', 'bad']]], size: 120 };
 const LOOP = '@So#4-0.4';   // whip back to the frame-0 composition just before the final question
 const P = 'brand/photos/stock/briefcase-cash/7.jpg';
 BM2.scene({
@@ -40,9 +40,9 @@ BM2.scene({
   ],
   beats: [
     // THE BET
-    { at: 0, beat: 'side-by-side', focus: F0, fill: 0.70, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
-    { at: '@thousand', beat: 'zoom-on-number', focus: 'hook', fill: 0.96, sy: 700, rot: 0.008, pose: 'point', keep: ['hook', 'src', 'tbl'] },
-    { at: '@got', beat: 'pull-back', focus: F0, fill: 0.70, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'talk', keep: ['hook', 'src', 'tbl'] },
+    { at: 0, beat: 'side-by-side', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
+    { at: '@thousand', beat: 'zoom-on-number', focus: 'hook', fill: 0.86, sy: 760, rot: 0.008, pose: 'point', keep: ['hook', 'src', 'tbl'] },
+    { at: '@got', beat: 'pull-back', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'talk', keep: ['hook', 'src', 'tbl'] },
     { at: '@wrong', beat: 'zoom-on-number', focus: 'tbl.diploma', fill: 0.78, sy: 860, rot: -0.01, pose: 'shock', keep: ['hook', 'src', 'tbl'] },
     { at: '@Your', beat: 'presenter-front', focus: 'tbl', sy: 880, pose: 'you', keep: ['turn'] },
     { at: '@Picture', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 860, st: 'corner-left', pose: 'idle' },
@@ -65,33 +65,33 @@ BM2.scene({
     { at: '@50', beat: 'zoom-on-number', focus: 'tbl.fifty', fill: 0.8, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock' },
     // THE TWIST
     { at: '@columnist-0.1', beat: 'peek', focus: 'col', move: 'whip', sy: 930, maxH: 800, pose: 'idle' },
-    { at: '@1990', beat: 'zoom-on-number', focus: 'col.stamp', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point' },
-    { at: '@switch#2', beat: 'zoom-on-number', focus: 'col.ans', fill: 0.95, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@1990', beat: 'zoom-on-number', focus: 'col.stamp', fill: 0.42, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point' },
+    { at: '@switch#2', beat: 'zoom-on-number', focus: 'col.ans', fill: 0.9, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
     { at: '@By', beat: 'graphic-hero', focus: 'mail', move: 'whip', fill: 0.9, maxH: 800, sy: 930, st: 'corner-left', pose: 'shock' },
     { at: '@thousand#2', beat: 'zoom-on-number', focus: 'mail.count', fill: 0.92, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point' },
     { at: '@wrote', beat: 'pull-back', focus: 'mail', fill: 0.9, maxH: 800, sy: 930, st: 'corner-left', pose: 'shrug' },
     { at: '@wrong#2', beat: 'zoom-on-number', focus: 'mail.pile', fill: 0.9, sy: 980, rot: 0.01, st: 'corner-left', pose: 'shock' },
     // THE CHECK
-    { at: '@Let\'s-0.1', beat: 'graphic-hero', focus: 'brd.rows', move: 'whip', fill: 0.98, maxH: 800, sy: 880, st: 'corner-left', pose: 'idle' },
-    { at: '@every#2', beat: 'graphic-hero', focus: 'brd.all', fill: 0.7, maxH: 800, sy: 880, st: 'corner-left', pose: 'point', point: 'brd.row0' },
-    { at: '@one#2-0.2', beat: 'graphic-hero', focus: 'brd.row0', fill: 0.98, sy: 860, st: 'corner-left', pose: 'point' },
-    { at: '@empty#3', beat: 'zoom-on-number', focus: 'brd.row0', fill: 1.0, sy: 880, rot: 0.01, st: 'corner-left', pose: 'chin' },
+    { at: '@Let\'s-0.1', beat: 'graphic-hero', focus: 'brd.rows', move: 'whip', fill: 0.98, maxH: 720, sy: 850, st: 'corner-left', pose: 'idle' },
+    { at: '@every#2', beat: 'graphic-hero', focus: 'brd.rows', fill: 0.9, maxH: 720, sy: 850, st: 'corner-left', pose: 'point', point: 'brd.row0' },
+    { at: '@one#2-0.2', beat: 'graphic-hero', focus: 'brd.row0', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
+    { at: '@empty#3', beat: 'zoom-on-number', focus: 'brd.row0', fill: 1.0, sy: 800, rot: 0.01, st: 'corner-left', pose: 'chin' },
     { at: '@loses', beat: 'zoom-on-number', focus: 'brd.v0', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Send', beat: 'presenter-front', focus: 'brd.rows', sy: 860, pose: 'you' },
-    { at: '@two#2-0.2', beat: 'graphic-hero', focus: 'brd.row1', fill: 0.98, sy: 860, st: 'corner-left', pose: 'point' },
-    { at: '@so#2', beat: 'zoom-on-number', focus: 'brd.row1', fill: 1.0, sy: 880, rot: -0.01, st: 'corner-left', pose: 'chin' },
+    { at: '@Send', beat: 'presenter-front', focus: 'brd.rows', sy: 850, pose: 'you' },
+    { at: '@two#2-0.2', beat: 'graphic-hero', focus: 'brd.row1', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
+    { at: '@so#2', beat: 'zoom-on-number', focus: 'brd.row1', fill: 1.0, sy: 800, rot: -0.01, st: 'corner-left', pose: 'chin' },
     { at: '@wins', beat: 'zoom-on-number', focus: 'brd.v1', fill: 0.42, maxH: 520, sy: 840, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@three#2-0.2', beat: 'graphic-hero', focus: 'brd.row2', fill: 0.98, sy: 860, st: 'corner-left', pose: 'point' },
-    { at: '@so#3', beat: 'zoom-on-number', focus: 'brd.row2', fill: 1.0, sy: 880, rot: 0.01, st: 'corner-left', pose: 'chin' },
+    { at: '@three#2-0.2', beat: 'graphic-hero', focus: 'brd.row2', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
+    { at: '@so#3', beat: 'zoom-on-number', focus: 'brd.row2', fill: 1.0, sy: 800, rot: 0.01, st: 'corner-left', pose: 'chin' },
     { at: '@again', beat: 'zoom-on-number', focus: 'brd.v2', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
     { at: '@That\'s#2', beat: 'zoom-on-number', focus: 'brd.sum', fill: 0.92, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Follow-0.1', beat: 'graphic-hero', focus: 'brd.rows', fill: 0.98, maxH: 800, sy: 880, st: 'left', pose: 'follow' },
+    { at: '@Follow-0.1', beat: 'graphic-hero', focus: 'brd.rows', fill: 0.98, maxH: 720, sy: 850, st: 'left', pose: 'follow' },
     // THE ANSWER
     { at: '@Make-0.3', beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'idle' },
     { at: '@pick#5', beat: 'zoom-on-number', focus: 'fan.pick', fill: 0.5, sy: 860, rot: 0.01, st: 'corner-left', pose: 'point' },
     { at: '@98', beat: 'zoom-on-number', focus: 'fan.count', fill: 0.8, sy: 560, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@98+0.9', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shock' },
-    { at: '@99', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 860, rot: 0.012, st: 'corner-left', pose: 'shock', dur: 0.4 },
+    { at: '@99', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 1030, rot: 0.012, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@time', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shrug' },
     { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.70, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
   ],

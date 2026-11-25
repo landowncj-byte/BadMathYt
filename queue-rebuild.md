@@ -5,10 +5,10 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 
 | # | Topic | Folder | Cuts | Stage | Old held post ids |
 |---|---|---|---|---|---|
-| 1 | Weight vs height | 2026-11-26-weight-vs-height | YT/TT/IG | BUILDING (Sonnet) | 0a50e94d 1ecd4500 b5b54e16 e7f2c3e7 |
+| 1 | Weight vs height | 2026-11-26-weight-vs-height | YT/TT/IG | ✅ QUEUED Thu 11/26 08:00 ET all 4 (new posts e2a344f7 9293dad0 1786f767 3eb82dcb; old held deleted) | 0a50e94d 1ecd4500 b5b54e16 e7f2c3e7 |
 | 2 | Fake wine | 2026-11-26-fake-wine | YT/TT/IG | BUILDING (Sonnet) | 47a76198 ad700081 f3a73160 fc608a0a |
 | 3 | Three briefcases | 2026-11-26-three-briefcases | YT/TT/IG | BUILDING (Sonnet, with motion tips + playbook) | 2751cbc5 45421b23 571e0493 f988b64a |
-| 4 | Lottery rig | 2026-11-26-lottery-rig | YT/TT/IG | SCRIPTS DONE (83–86 s; IG "missed the jackpot" fixed) → build | 0d774d4d 2266d545 47151aa9 9a492028 |
+| 4 | Lottery rig | 2026-11-26-lottery-rig | YT/TT/IG | BUILDING (Sonnet) | 0d774d4d 2266d545 47151aa9 9a492028 |
 | 5 | Fake prince | 2026-11-26-fake-prince | YT/TT/IG | SCRIPTS DONE (~88–89 s, pork lines softened, re-voiced, PASS) → build | 36948ee3 ae6a2407 d9fb0a6e fe767f3f |
 | 6 | Penny doubled | 2026-11-26-penny-doubled | YT/TT/IG | SCRIPTS DONE (65–66 s, PASS) → build | 675107e4 9ee165e0 be13bba7 fff3cd16 |
 | 7 | Lottery part 2 | 2026-11-26-lottery-part2 | YT/TT/IG | todo | 02332cc2 59b1dbd7 5ff43156 924e355a |
@@ -18,8 +18,8 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 | 11 | 1% fee | 2026-11-25-one-percent-fee | YT/TT/IG | todo | 84693daa 8d2e249f e7151863 f0c43680 |
 | 12 | McDonald's (YT only; TT/IG/FB already published) | 2026-11-25-mcdonalds-monopoly | YT | todo | d8049c59 |
 | 13 | Overdraft (YT only; TT/IG/FB already published) | 2026-11-25-overdraft-apr | YT | todo | e28911b1 |
-| — | OneCoin — DROPPED (too niche, RULES 101) | 2026-11-26-onecoin | — | delete held posts | 04020e47 3817b205 3a48ae03 8c61a1df |
-| — | BitConnect — DROPPED (too niche, RULES 101) | 2026-11-25-bitconnect | — | delete held posts | 2c5b4252 969645a8 dda62340 4d7d21b6 |
+| — | OneCoin — DROPPED (too niche, RULES 101) | 2026-11-26-onecoin | — | held posts DELETED | 04020e47 3817b205 3a48ae03 8c61a1df |
+| — | BitConnect — DROPPED (too niche, RULES 101) | 2026-11-25-bitconnect | — | held posts DELETED | 2c5b4252 969645a8 dda62340 4d7d21b6 |
 Full post ids: PostFast list_posts (approvalStatus NEEDS_WORK).
 - 2026-11-25 ~17:45 UTC: owner asked to study Robert McKeaveney (IG) for hooks + marketing — Fable agent → research/creators/robertmckeaveney/PLAYBOOK.md; apply to remaining rebuilds.
 - 2026-11-25 ~19:20 UTC (owner): ALSO STUDY (1) reel https://www.instagram.com/reel/Dczr8MGgHeo/ ("great video"); (2) ad reel https://www.instagram.com/reel/DgKyckoxQfg/ ("an ad but good info"); (3) Notion "Claude Motion Tips" https://withian.notion.site/Claude-Motion-Tips-3ef057be92ba807db689d2571b6b7adf — read ALL sub-pages + every link on the page, and USE them in our videos (→ research/claude-motion-tips/, apply to brand/BUILD-BRIEF.md / VISUAL-V2.md).
