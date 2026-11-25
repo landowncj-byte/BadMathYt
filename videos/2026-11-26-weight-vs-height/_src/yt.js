@@ -45,7 +45,7 @@ BM2.scene({
     // pile one
     { at: '@Pile', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'point' },
     { at: '@weight', beat: 'zoom-on-number', focus: 'scale.dial', fill: 0.62, sy: 760, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
-    { at: '@20s-0.001', beat: 'pull-back', focus: 'scale', fill: 0.82, maxH: 950, sy: 850, st: 'corner', pose: 'idle', drift: 0.03 },
+    { at: '@bills#2+0.3', beat: 'pull-back', focus: 'scale', fill: 0.82, maxH: 950, sy: 850, st: 'corner', pose: 'idle', drift: 0.03 },
     // pile two
     { at: '@Pile#2', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'point' },
     { at: '@stacked', beat: 'zoom-on-number', focus: 'tower.stack', fill: 0.62, sy: 780, rot: -0.01, st: 'corner-left', pose: 'point', dur: 0.5 },
@@ -75,7 +75,7 @@ BM2.scene({
     { at: '@grab', beat: 'peek', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, pose: 'shock' },
     // the catch
     { at: '@But#2', beat: 'graphic-hero', focus: 'rows', move: 'whip', fill: 0.94, maxH: 900, sy: 780, st: 'corner', pose: 'point' },
-    { at: '@pounds', beat: 'zoom-on-number', focus: 'rows.lb', fill: 0.9, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['rows'] },
+    { at: '@way', beat: 'zoom-on-number', focus: 'rows.lb', fill: 0.9, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['rows'] },
     { at: '@inches', beat: 'zoom-on-number', focus: 'rows.inch', fill: 0.9, sy: 780, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['rows'] },
     { at: '@inches+0.7', beat: 'pull-back', focus: 'rows', fill: 0.94, maxH: 900, sy: 780, st: 'corner', pose: 'chin', keep: ['rows'], drift: 0.03 },
     // the average man
@@ -108,7 +108,7 @@ BM2.scene({
   ],
   poses: [['@follow', 'follow', { target: [650, 1120] }]],
   shakes: [[0.3, 10], ['@20s#3', 18], ['@200', 8], ['@Keep', 6]],
-  captions: { gap: 16, emph: { '200': 'bad', '454': 'good', '23': 'good', '20s': 'good', '9': 'good' }, fix: [['But weight,', 'But wait,'], ['For the', 'Per the'], ['20s','twenties'], ['$20','twenty'], ['here','here,']] },
+  captions: { gap: 16, emph: { '200': 'bad', '454': 'good', '23': 'good', '20s': 'good', '9': 'good' }, fix: [['$20 bills','twenty dollar bills'], ['$100 bills','hundred dollar bills'], ['$100 is','A hundred is'], ['$100 bucks','a hundred bucks'], ['$200 ,000.','two hundred grand.'], ['200 grand.','two hundred grand.'], ['But weight,','But wait,'], ['For the','Per the'], ['here','here,']]] },
   bed: { name: 'upbeat_bed_2', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.2, name: 'paper_slam_1', gain: -6, dur: 0.5 }, { at: 0.3, name: 'thud_1', gain: -8, dur: 0.4 },
