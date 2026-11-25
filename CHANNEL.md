@@ -110,3 +110,6 @@ decisions:
 - 2026-11-25: Usage pacing — give time-based estimates before heavy jobs (meter not visible to Claude). Voice samples: research/voice-plain/ (21 plain voices); user to pick; energy mode stays default until then.
 - 2026-11-25: Shorts voice = am_liam, plain (user: 'liam is great'). Energy mode off.
 - 2026-11-25: All unposted Shorts (Wed parlay/overdraft/McDonald's) re-voiced to am_liam with brand/voice/revoice.py (same timings), re-mixed and re-scheduled. Every Short from Wed onward is Liam; long-forms stay Owen.
+- 2026-11-25: Scripts must be humanized (STYLE §21) — conversational, contractions, small reactions, talk to the viewer.
+- 2026-11-25: Scripts use everyday human words/slang (STYLE §21 list), light on YouTube, heavier on TikTok/IG.
+- 2026-11-25: Human speech imperfections: fillers, self-corrections, CC0 breath/sigh/chuckle/sniff/lip-smack/throat sounds via brand/voice/humanize.py; mock Short sent (research/humanize-demo).

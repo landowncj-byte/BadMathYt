@@ -215,3 +215,30 @@ The user likes the animation but wants it better: the storyteller must stop stan
 - Applies to **new videos only**. Already-scheduled or already-built videos stay as they are.
 - Once `brand/engine-v2/READY` exists, every new build uses engine v2 and VISUAL-V2.md; Opus's direction notes must specify camera moves on spoken numbers and storyteller choreography beats.
 - **BRAND LOCK (user rule 2026-11-25):** v2 evolves the look, it does NOT rebrand. The storyteller keeps the same design (coin face, features, navy suit, red bowtie, proportions, expression style) — only his motion/staging and render quality improve. Profile pictures, the DECODED red pill / WHAT IF pill, the Anton·Inter·JetBrains Mono type, the BAD MATH wordmark and the series colors stay exactly the same. Only the neon-glow backgrounds, flat staging and stiff motion change. A viewer must instantly recognize a v2 video as the same channel.
+
+## 21. Humanize every script (user rule 2026-11-25: "humanize the scripts a bit")
+Scripts must sound like a real person telling a friend something wild — not a narrator reading a fact sheet. Apply to all three cuts (YouTube a little cleaner, TikTok/IG looser).
+- **Talk, don't list.** Contractions always (it's, didn't, you'd). Mix short punches with one longer run-on sentence. No three-item fact lists in a row.
+- **React.** Small human reactions between facts: "Yeah.", "Wait.", "Okay, so…", "And it gets dumber.", "I'm not kidding.", "Think about that for a sec." (1–3 per Short, never every line.)
+- **Talk to the viewer.** "you", "your", rhetorical questions ("Guess how many were real?").
+- **Round numbers the way people say them** when exactness isn't the point ("like four million fake customers", "about seventeen grand"), but keep the exact figure on screen. Decoded facts stay exact where the number IS the point.
+- **Spoken rhythm for the voice:** commas and periods where a person would breathe; one idea per sentence; avoid stacked numbers in one sentence.
+- **Keep** the hook gate (§14), story loop (§18), woven CTAs (§13) and accuracy rules (§19) — humanizing never adds facts or changes meaning.
+
+Before → after (from real scripts):
+- "Her startup, Frank, claimed four point two five million users. The SEC says the real number was fewer than three hundred thousand." → "Her startup, Frank, said it had over four million users. Real number? According to the SEC… under three hundred thousand. Yeah."
+- "Month one, you pay a hundred forty-three dollars. Your debt goes down by fifty." → "So month one, you pay a hundred forty-three bucks. And your debt goes down… fifty. Fifty dollars."
+- "Ten coin flips. Your real chance of hitting all ten: one in one thousand twenty-four." → "That's basically ten coin flips in a row. Your odds of hitting all ten? One in a thousand twenty-four. Not great."
+
+**Words real people use (user rule 2026-11-25: "add words humans would use").** Sprinkle naturally — 2–5 per Short, never forced, never two in one sentence. Audience is US 18–28.
+- Everyday: like, literally, honestly, basically, straight up, for real, legit, kinda, sorta, gonna, wanna, gotta, y'know, I mean, okay so, anyway, right?, crazy, insane, wild, nuts, ridiculous, a ton of, a bunch of, bucks, grand (=$1,000), a K, mil (=million).
+- Reactions: no way, wait what, nah, bro, dude, bruh, oh it gets worse, you can't make this up, I'm not even kidding, let that sink in, sit with that, imagine, be so for real, plot twist, and here's the kicker.
+- Casual put-downs (roast the con/habit, never the viewer as a person): clown, genius (sarcastic), absolute legend (ironic), cooked, got played, fell for it, rookie move, sus, wildin', delulu.
+- Per platform: **YouTube** light touch (everyday words + a couple of reactions, ad-safe). **TikTok** more slang (bro, lowkey, highkey, ngl, cooked, wildin'). **IG/FB** heaviest + profanity allowed (§15).
+- Write them so the voice can say them: "N G L" → write "not gonna lie"; "lowkey" fine; avoid emoji-only slang in the SAY text. On-screen captions still show the words as written.
+
+**Human speech imperfections (user rule 2026-11-25: "add mistakes humans make while speaking — uhms, breaths" + "more inhale and human noise sounds").** Voice every Short with `brand/voice/humanize.py` `build(k, lines)`:
+- Write fillers into the SAY text: "um", "uh", "like", "just", "so"; one self-correction or restart per Short ("she, uh, she had…", "not, uh, not catch it"); occasional trailing "…right?". ~2–4 fillers per 30 s — enough to sound human, not sloppy. Never inside a number or a Decoded fact.
+- Inline sound tags (real CC0 human noises in `brand/sfx-library/breath/`): `[breath]` `[gasp]` `[sigh]` `[sniff]` `[smack]` `[throat]` `[chuckle]` `[pause]`. Auto soft inhales are added before ~1 in 3 lines. Use [chuckle] after an absurd number, [sigh] after a sad verdict, [gasp] on a shock reveal, [smack] before a CTA. 1–3 tagged noises per Short.
+- Captions show what was said minus the [tags]; take caption text from script/sentences, not Whisper (Whisper drops/mangles fillers).
+- Example: research/humanize-demo/mock-short.mp4 (Javice TikTok, humanized).

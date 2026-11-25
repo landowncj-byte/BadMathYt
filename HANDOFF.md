@@ -26,7 +26,7 @@ Last updated: 2026-11-25 ~02:35 UTC (Tue Nov 24, ~9:35 PM ET). Session that wrot
 ## 3. The user's standing rules (short version — full list in CHANNEL.md log)
 - **Volume:** minimum **8 posts per platform per day** + **1 long-form on Mon/Wed/Fri** (YouTube only, 17:00 ET). Build ahead freely, but **never schedule more than 7 days out**.
 - **Three different cuts per topic** (§15): YouTube Shorts (ad-safe edgy, 40–55 s), TikTok (spicy, 25–40 s, comment bait), Instagram + Facebook (most vulgar/disrespectful, 15–25 s, sends + saves). Same facts, different script/voice/edit.
-- **Hooks are #1, retention #2** (§14): outrageous/negative/edgy first line ("This guy was so dumb…", "You're probably an idiot if…"), always true. Story loop every time (§18): stakes → big question → twist → rehooks.
+- **Hooks are #1, retention #2** (§14): outrageous/negative/edgy first line ("This guy was so dumb…", "You're probably an idiot if…"), always true. Story loop every time (§18): stakes → big question → twist → rehooks. **Humanized scripts (§21):** contractions, small reactions, everyday slang, um/uh fillers, self-corrections, and real CC0 breaths/sighs/chuckles via `brand/voice/humanize.py` (demo: research/humanize-demo/mock-short.mp4).
 - **Auto-publish with no approval** (standing authorization 2026-11-24). Revocable only by "stop auto-posting".
 - **Comments: hybrid** (§17) — auto-reply to normal comments; flag sensitive ones to the user.
 - **Visuals v2** (§20): camera push-ins on spoken numbers, storyteller moves in front of/behind graphics, satisfying spring motion, NO neon. Fable built `brand/engine-v2` once (2026-11-25) and handed it to Opus; Fable stays research-only.
