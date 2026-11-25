@@ -4,4 +4,4 @@ STUB VISUAL ON-SCREEN TEXT
 | 3 | x | m | 2 |
 | 4 | x | m | 2 |
 | 5 | x | m | 2 |
-This guy guarded the lottery's computers. Then he rigged it. Five states.
+This guy guarded the lottery computers. Then he rigged it. Five states.
