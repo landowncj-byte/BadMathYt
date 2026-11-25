@@ -44,3 +44,11 @@ The new narration is much longer, so this is a RE-EDIT, not a re-time.
 4. Rules: no watermarks and no logos. Nothing in the caption band (y > ~1340). The frame-0 hook is visible. Temporary text exits cleanly. Scene duration = narration + 0.4 s. No neon.
 5. Render with `bm2.cjs render --force` ONE cut at a time, mix, rebuild captions.srt, make the contact sheets, and LOOK at the real frames. Fix anything wrong. Run the VIDEO GATE in RULES.md.
 6. Don't kill processes you didn't start (no broad pkill). Don't touch PostFast. Commit nothing. Report: file paths, durations, sizes, loudness, the gate results, and any issues.
+
+## Stage 2 add-on — MOTION TIPS (owner 2026-11-25; research/claude-motion-tips/README.md)
+- ONE-SECOND TEST FIRST: before the full scene, build and render the hardest effect of the cut as a 1-second clip. Look at it, fix it, then build the rest.
+- KEYFRAME CHECK BEFORE THE FINAL RENDER: make a contact sheet with one frame per beat/transition plus the first and final hold, labelled with timestamps. Check for cropped text, overlaps and elements vanishing mid-transition. Fix them, then do the full render.
+- CHOREOGRAPHY: content enters AFTER its container starts moving and leaves BEFORE the next move, so text never overlaps. Add a short blur on transitions. Springs, never linear, with only a tiny overshoot. One accent element carries each transition.
+- SIMULATE THE REAL THING where a What If allows it: actual doubling, actual counted stacks, actual simulated games with a live tally. Don't use a drawing of it.
+- LOOP: the final frame echoes the first frame.
+- Once the engine adds `sketch` (Rough.js hand-drawn diagrams), `physics` (Matter.js falling and stacking) and `marker` (highlight strokes), use them for the step-by-step explanations and the money piles.

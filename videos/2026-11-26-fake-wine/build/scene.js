@@ -292,111 +292,259 @@
       g.restore();
     },
   });
+
+  // =================== v3 (REBUILD-LONGER) recipes ===================
+  // ---------- gavel: wooden mallet + block; strikes at `at` ----------
+  B.register('gavel', {
+    defaults: { at: 99999 }, ownEnter: true, size: () => [420, 300],
+    draw(g, p, env) {
+      const { t, lt, theme } = env, sp = spring(Math.max(0, lt), 'snappy'), ga = p.at;
+      const ang = t < ga - 0.35 ? 0.9 : t < ga ? lerp(0.9, 0, ease.in(lin(t, ga - 0.35, ga))) : -0.12 * hit(t - ga, 9) * Math.max(0, Math.sin((t - ga) * 18));
+      g.save(); g.scale(0.7 + 0.3 * sp, 0.7 + 0.3 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.3);
+      clay(g, -190, 70, 300, 52, 14, theme.manila, { shadowK: 0.5 }); clay(g, -150, 44, 220, 36, 10, '#B9955A', { shadowK: 0.3 });
+      g.save(); g.translate(150, 0); g.rotate(ang); clay(g, -200, -11, 210, 22, 9, theme.manila, { shadowK: 0.3 }); clay(g, -250, -72, 84, 144, 14, '#B9955A', { shadowK: 0.3 }); g.restore();
+      g.restore(); if (ga < 90) burst(g, -50, 70, 210, theme.paper, t - ga - 0.02, 14, 0.4);
+    },
+  });
+
+  // ---------- auction: generic auction scene (ILLUSTRATION): a lot bottle, paddles popping up, bids climbing ----------
+  B.register('auction', {
+    defaults: { w: 900, h: 780, bids: [99999, 99999, 99999], head: 'AUCTION' }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 65, p.w, 130], bottle: [0, -50, 300, 300], bars: [0, 220, p.w * 0.8, 230], pads: [0, -40, p.w * 0.95, 300] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 130); g.restore();
+      txt(g, p.head, x0 + 40, y0 + 66, F.hero(76), theme.paper, 'left'); txt(g, 'ILLUSTRATION', x0 + w - 28, y0 + 28, F.mono(15), 'rgba(245,243,238,.7)', 'right');
+      g.save(); g.translate(0, -52); g.scale(0.38, 0.38); bottleBody(g, { dust: true }, theme, 0.1, () => labelDraw(g, { year: 'LOT' }, theme)); g.restore();
+      const pad = (x, y, s, at, rot) => { if (t < at - 0.01) return; const k = spring(Math.max(0, t - at), 'bouncy'); g.save(); g.translate(x, y + (1 - k) * 260 * s); g.rotate(rot); g.scale(s, s);
+        clay(g, -26, 20, 52, 250, 16, '#B9955A', { shadowK: 0.5 }); B.shadowed(g, () => { g.beginPath(); g.arc(0, -90, 125, 0, 7); }, theme.paper, 0.1); g.strokeStyle = theme.ink; g.lineWidth = 8; g.beginPath(); g.arc(0, -90, 108, 0, 7); g.stroke(); txt(g, 'BID', 0, -86, F.hero(96), theme.ink); g.restore(); };
+      pad(-300, 10, 0.5, p.bids[0], -0.12); pad(300, -20, 0.5, p.bids[1], 0.1); pad(-170, 70, 0.42, p.bids[2], 0.05);
+      const by = y0 + h - 140; g.strokeStyle = theme.rule; g.lineWidth = 4; g.beginPath(); g.moveTo(-250, by); g.lineTo(250, by); g.stroke();
+      [[-150, 56, p.bids[0]], [0, 100, p.bids[1]], [150, 146, p.bids[2]]].forEach(([x, hh, at], i) => { const k = spring(Math.max(0, t - at), 'snappy'); if (t < at) return; clay(g, x - 45, by - hh * k, 90, hh * k, 10, i === 2 ? theme.good : theme.gold, { shadowK: 0.4 }); });
+      txt(g, 'HIGHEST BID WINS THE BOTTLE', 0, by + 44, F.cap(30), theme.ink); txt(g, 'EXAMPLE BIDS · NO REAL PRICES', 0, by + 78, F.mono(15), theme.inkSoft);
+      g.restore();
+    },
+  });
+
+  // ---------- calendar: chips of $1,000 fill the days, the years counter rolls to 95 ----------
+  B.register('calendar', {
+    defaults: { w: 780, h: 900, at: 99999, dur: 1.7, yrsAt: 99999, yrsDur: 0.9, to: 95 }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 70, p.w, 140], grid: [0, -90, p.w * 0.92, 420], years: [0, p.h / 2 - 210, p.w * 0.9, 220] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4); g.rotate(0.012);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.bad; g.fillRect(x0, y0, w, 130); g.restore();
+      for (const x of [-190, 190]) { clay(g, x - 12, y0 - 26, 24, 60, 10, theme.ink, { shadowK: 0.3 }); }
+      txt(g, '$1,000 A DAY', 0, y0 + 80, F.hero(78), theme.paper); txt(g, 'ILLUSTRATION', x0 + w - 28, y0 + 24, F.mono(14), 'rgba(245,243,238,.75)', 'right');
+      const cols = 7, rows = 6, cw = 92, ch = 66, gx = x0 + (w - cols * cw) / 2, gy = y0 + 160, N = cols * rows, n = clamp(lin(t, p.at, p.at + p.dur)) * N;
+      for (let i = 0; i < N; i++) { const cx = gx + (i % cols) * cw + cw / 2, cy = gy + Math.floor(i / cols) * ch + ch / 2; g.fillStyle = theme.paperShade; rr(g, cx - 40, cy - 28, 80, 56, 9); g.fill();
+        if (i < n) { const k = spring(Math.max(0, n - i) / 6, 'bouncy'); g.save(); g.translate(cx, cy); g.scale(0.4 + 0.6 * Math.min(1, k), 0.4 + 0.6 * Math.min(1, k)); g.fillStyle = theme.gold; g.beginPath(); g.arc(0, 0, 25, 0, 7); g.fill(); g.strokeStyle = theme.ink; g.lineWidth = 3; g.beginPath(); g.arc(0, 0, 19, 0, 7); g.stroke(); txt(g, '$1K', 0, 5, F.mono(15), theme.ink); g.restore(); } }
+      const mt = t - p.yrsAt; if (mt > -0.01) { const o = { font: F.hero(150), size: 150, color: theme.ink, speed: mt < p.yrsDur ? p.to / p.yrsDur * 0.5 : 0 }, v = countAt(Math.max(0, mt), p.yrsDur, 0, p.to), land = mt - p.yrsDur, nw = B.rollWidth(g, p.to, o).w, sw = mw(' YEARS', F.hero(150)), tot = nw + sw, s = 1 + (land > 0 ? 0.14 * hit(land, 6) : 0);
+        g.save(); g.translate(0, y0 + h - 170); g.scale(s, s); roll(g, v, -tot / 2, 0, { ...o, align: 'left' }); txt(g, ' YEARS', -tot / 2 + nw, 0, F.hero(150), theme.badInk, 'left'); if (land > 0) marker(g, -tot / 2, 18, tot, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + h - 170, 300, theme.bad, land, 18, 0.55); }
+      txt(g, 'OUR MATH: ≈$35M ÷ $1,000 A DAY ≈ 95 YEARS', 0, y0 + h - 34, F.mono(18), theme.inkSoft);
+      g.restore();
+    },
+  });
+
+  // ---------- factory: the 3-step "wine factory" diagram (PROSECUTORS SAID). rows light up at s1 / s2 / s3 ----------
+  B.register('factory', {
+    defaults: { w: 920, h: 920, s1: 99999, s2: 99999, s3: 99999, head: 'THE “WINE FACTORY”', sub: 'PROSECUTORS SAID · ILLUSTRATION', t1: 'MIX', d1: 'OLDER WINE + NEWER WINE', t2: 'REBOTTLE', d2: 'OLD BOTTLES · NEW CORKS + WAX', t3: 'LABEL', d3: 'THOUSANDS OF LABELS' }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 70, p.w, 140], r1: [0, -p.h / 2 + 270, p.w * 0.94, 210], r2: [0, -p.h / 2 + 500, p.w * 0.94, 210], r3: [0, -p.h / 2 + 730, p.w * 0.94, 210] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, p.head, 0, y0 + 74, F.hero(70), theme.paper); txt(g, p.sub, 0, y0 + 120, F.mono(19), 'rgba(245,243,238,.8)');
+      const rows = [[p.s1, p.t1, p.d1], [p.s2, p.t2, p.d2], [p.s3, p.t3, p.d3]];
+      rows.forEach(([at, tt, dd], i) => { const cy = y0 + 270 + i * 230, on = t - at, k = spring(Math.max(0, on), 'snappy'), act = on > -0.01;
+        g.fillStyle = theme.paperShade; rr(g, x0 + 36, cy - 90, w - 72, 180, 18); g.fill(); if (!act) { g.fillStyle = theme.rule; for (let j = 0; j < 2; j++) { rr(g, x0 + 200, cy - 20 + j * 40, (w - 440) * (j ? 0.6 : 0.9), 18, 8); g.fill(); } return; }
+        g.save(); g.translate(0, (1 - k) * 22); g.globalAlpha *= clamp(on / 0.1 + 0.2);
+        marker(g, x0 + 36, cy - 90, w - 72, 180, theme.gold, clamp(on / 0.35), 0.2);
+        g.save(); g.translate(x0 + 110, cy); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.fillStyle = theme.badInk; g.beginPath(); g.arc(0, 0, 56, 0, 7); g.fill(); txt(g, String(i + 1), 0, 24, F.hero(76), theme.paper); g.restore();
+        txt(g, tt, x0 + 190, cy - 18, F.hero(66), theme.ink, 'left'); txt(g, dd, x0 + 190, cy + 40, F.mono(22), theme.inkSoft, 'left');
+        const ix = x0 + w - 170;
+        if (i === 0) { const pk = clamp(on / 0.8); for (const [dx, col] of [[-52, '#8A5A2B'], [52, '#6A1E3A']]) { g.save(); g.translate(ix + dx, cy - 30); g.rotate(-Math.sign(dx) * 0.8 * Math.min(1, pk * 2)); clay(g, -26, -34, 52, 68, 12, col, { shadowK: 0.4 }); g.restore(); }
+          g.fillStyle = '#5a1e34'; g.beginPath(); g.moveTo(ix - 40, cy + 6); g.lineTo(ix + 40, cy + 6); g.lineTo(ix + 26, cy + 60); g.lineTo(ix - 26, cy + 60); g.closePath(); g.fill();
+          g.strokeStyle = '#6A1E3A'; g.lineWidth = 8; g.setLineDash([10, 8]); g.lineDashOffset = -on * 80; g.beginPath(); g.moveTo(ix + 24, cy - 8); g.lineTo(ix + 6, cy + 10); g.stroke(); g.beginPath(); g.moveTo(ix - 24, cy - 8); g.lineTo(ix - 6, cy + 10); g.stroke(); g.setLineDash([]); }
+        else if (i === 1) { g.save(); g.translate(ix, cy + 6); g.scale(0.17, 0.17); B.shadowed(g, () => bpath(g), GLASS, 0.1); const ck = ease.out(clamp(on / 0.3)); clay(g, -26, lerp(-480, -340, ck), 52, 80, 12, '#B9955A', { shadowK: 0.3 }); if (on > 0.35) { g.fillStyle = RED; g.beginPath(); g.ellipse(0, -330, 56, 30, 0, 0, 7); g.fill(); } g.restore(); }
+        else { for (let j = 0; j < 5; j++) { g.save(); g.translate(ix - 60 + j * 30, cy + 8); g.rotate((j - 2) * 0.22 * ease.out(clamp(on / 0.4))); paper(g, -28, -42, 56, 84, 5, { lift: 0.05 }); g.fillStyle = theme.ink; g.fillRect(-18, -26, 36, 5); g.fillRect(-18, -12, 26, 5); g.fillRect(-18, 2, 30, 5); g.restore(); } }
+        g.restore(); });
+      for (const yy of [y0 + 380 + 0, y0 + 610]) { g.fillStyle = theme.inkSoft; g.beginPath(); g.moveTo(-18, yy); g.lineTo(18, yy); g.lineTo(0, yy + 16); g.closePath(); g.fill(); }
+      g.restore();
+    },
+  });
+
+  // ---------- bgrid: $2.1 MILLION ÷ 219 BOTTLES = about $9,600 each (our math) ----------
+  B.register('bgrid', {
+    defaults: { w: 880, h: 920, at: 99999, dur: 1.5, valAt: 99999, valDur: 0.9 }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 70, p.w, 140], grid: [0, -40, p.w * 0.92, 420], each: [0, p.h / 2 - 200, p.w * 0.9, 220] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4); g.rotate(-0.01);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 130); g.restore();
+      txt(g, '$2.1M ÷ 219 BOTTLES', 0, y0 + 80, F.hero(70), theme.paper); txt(g, 'ILLUSTRATION', x0 + w - 28, y0 + 24, F.mono(14), 'rgba(245,243,238,.75)', 'right');
+      const cols = 20, rows = 11, cw = 39, ch = 39, gx = x0 + (w - cols * cw) / 2, gy = y0 + 160, N = 219, n = clamp(lin(t, p.at, p.at + p.dur)) * N;
+      for (let i = 0; i < N; i++) { if (i >= n) { g.fillStyle = theme.paperShade; g.fillRect(gx + (i % cols) * cw + 13, gy + Math.floor(i / cols) * ch + 6, 12, 28); continue; }
+        const cx = gx + (i % cols) * cw + cw / 2, cy = gy + Math.floor(i / cols) * ch + ch / 2, k = clamp((n - i) / 8); g.save(); g.translate(cx, cy); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.fillStyle = i === N - 1 ? theme.badInk : GLASS; rr(g, -9, -4, 18, 24, 5); g.fill(); g.fillRect(-4, -18, 8, 16); g.fillStyle = RED; g.fillRect(-5, -20, 10, 5); g.restore(); }
+      const mt = t - p.valAt; txt(g, 'EACH ≈', 0, y0 + h - 270, F.cap(34), theme.inkSoft);
+      if (mt > -0.01) { const o = { font: F.hero(140), size: 140, color: theme.ink, prefix: '$', speed: mt < p.valDur ? 9600 / p.valDur * 0.4 : 0 }, v = countAt(Math.max(0, mt), p.valDur, 0, 9600), land = mt - p.valDur, nw = B.rollWidth(g, 9600, o).w, s = 1 + (land > 0 ? 0.14 * hit(land, 6) : 0);
+        g.save(); g.translate(0, y0 + h - 150); g.scale(s, s); roll(g, v, -nw / 2, 0, { ...o, align: 'left', color: theme.badInk }); if (land > 0) marker(g, -nw / 2, 18, nw, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + h - 150, 300, theme.bad, land, 18, 0.55); }
+      txt(g, 'OUR MATH: $2.1 MILLION ÷ 219 ≈ $9,600', 0, y0 + h - 34, F.mono(18), theme.inkSoft);
+      g.restore();
+    },
+  });
 })();
-// YouTube cut — Stations: hook (0,0) · case board (1800,0) · catalogue+winemaker+timeline (3600..5000,0) · arrest card (4600,1800) · bench (3500,1800) · folder/verdict (1800,1800) · peel payoff (0,1800)
+// YouTube cut v3 (chronological). World: row0 hook(0,0) board(1800,0) auction(3600,0) sale(5400,0) · row1 calendar(5400,1800) record(3600,1800) lot(1800,1800) timeline(0,1800) · row2 door(0,3600) bench(1800,3600) factory(3600,3600) cheque(5400,3600) · folder/verdict(5400,5400)
+const SB = 'side-by-side', GH = 'graphic-hero', ZN = 'zoom-on-number', PF = 'presenter-front', PK = 'peek';
+const ICE = 'brand/photos/rudy-kurniawan/2.jpg', KIT = 'brand/photos/rudy-kurniawan/3.jpg';
 BM2.scene({
-  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 51.93,
-  footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: BOTTLE, LABELS, BENCH, CATALOGUE, WINEMAKER (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
+  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 93.24,
+  footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: BOTTLE, LABELS, AUCTION, BENCH, CATALOGUE, WINEMAKER (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
-    // ---- S1 frame 0: label says 1945 next to the winery timeline card FIRST MADE: 1982 ----
-    { id: 'hook', type: 'text', at: [20, -330], in: -1, props: { lines: [[['LABEL: ', 'paper'], ['1945', 'gold']]], size: 120, per: 0 } },
-    { id: 'bottle', type: 'bottle', at: [-300, 110], in: -1, props: { year: '1945', slam: true } },
-    { id: 'card', type: 'wintl', at: [330, 150], in: -1, props: { firstAt: 0, axisAt: '@Wade', sub: 'PER TRIAL TESTIMONY · ILLUSTRATION' } },
-    // ---- S2 case board ----
-    { id: 'tag', type: 'photo', at: [1480, -320], in: '@Ruddy-0.4', props: { src: 'brand/photos/rudy-kurniawan/2.jpg', name: 'RUDY KURNIAWAN', role: 'WINE DEALER · 2006', credit: 'U.S. ICE · PUBLIC DOMAIN', treatment: 'paper', w: 420, aspect: 0.86, fx: 0.5, fy: 0.3, tilt: -0.03 } },
-    { id: 'conv', type: 'stamp', at: [1930, -380], rot: 0.09, in: '@Ruddy+0.5', props: { text: 'CONVICTED 2013', tone: 'bad', size: 52 } },
-    { id: 'pad', type: 'paddle', at: [1380, 190], in: '@in-0.1', props: { at: '@2006' } },
-    { id: 'cellar', type: 'counter', at: [1960, 150], in: '@2006-0.3', props: { label: 'HIS CELLAR · 2 AUCTIONS', sub: '2006', to: 35, prefix: '≈$', suffix: ' MILLION', at: '@35', dur: 1.0, tone: 'good', size: 120, w: 760 } },
-    // ---- S3 catalogue -> winemaker objects -> timeline ----
-    { id: 'lot', type: 'lotpage', at: [3500, 20], in: '@York-0.5', props: { yearAt: '@1945#2' } },
-    { id: 'silh', type: 'silh', at: [4200, 90], in: '@actual-0.3', rot: -0.03, props: {} },
-    { id: 'wd', type: 'stamp', at: [3640, 260], rot: -0.1, in: '@objected', props: { text: 'WITHDRAWN', tone: 'bad', size: 84 } },
-    { id: 'tl2', type: 'wintl', at: [4950, 60], in: '@family-0.4', props: { headNote: 'THE WINE\'S TIMELINE', firstAt: '@family', axisAt: '@family+0.4', bracketAt: '@1982#2', sub: 'HIS FAMILY STARTED IN 1982 · TRIAL TESTIMONY' } },
-    // ---- S4 arrest + bench ----
-    { id: 'door', type: 'card', at: [4640, 1800], rot: 0.02, in: '@2012-0.3', props: { w: 640, h: 360, lines: [{ t: 'ARRESTED AT HOME', size: 62, font: 'hero', tone: 'ink', gap: 100 }, { t: '2012', size: 130, font: 'hero', tone: 'bad', at: '@2012', mark: 'bad', gap: 100 }, { t: 'PER DOJ', size: 26, font: 'mono', tone: 'soft' }] } },
-    { id: 'kit', type: 'photo', at: [3560, 1208], in: '@Prosecutors-0.1', props: { src: 'brand/photos/rudy-kurniawan/3.jpg', name: '', credit: 'U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN', treatment: 'paper', w: 460, aspect: 0.68, fx: 0.5, fy: 0.5, tilt: 0.025 } },
-    { id: 'bench', type: 'bench', at: [3560, 1800], in: '@FBI', props: { pourAt: '@called+0.3', corkAt: '@factory-0.5', labelAt: '@factory', printAt: '@Thousands', printDur: 1.4, tagAt: '@Prosecutors', tag: 'PROSECUTORS: “WINE FACTORY”' } },
-    // ---- S5 closed folder, then verdict ----
-    { id: 'folder', type: 'folder', at: [1800, 1800], in: '@What-0.4', out: '@Convicted-0.02', props: { q: 'WHAT DID IT COST HIM?' } },
-    { id: 'verdict', type: 'wverdict', at: [1800, 1800], in: '@Convicted-0.1', props: { convAt: '@Convicted', yearsAt: '@10', payAt: '@28' } },
-    // ---- S6 payoff: label peels and floats ----
-    { id: 'peel', type: 'bottle', at: [0, 1900], in: '@37-0.5', props: { year: '1945', peelAt: '@37', peelDur: 0.8 } },
-    { id: 'off', type: 'stamp', at: [30, 1560], rot: -0.08, in: '@37+0.7', props: { text: '37 YEARS OFF', tone: 'bad', size: 84 } },
-    // ---- screen-fixed micro-moments (small, <= 1.5 s) ----
-    { id: 'tw', type: 'text', layer: 'screen', at: [540, 410], in: '@Wade', out: '@tries+0.15', props: { lines: [[['WAIT. WHAT?', 'paper']]], size: 84 } },
-    { id: 'club', type: 'text', layer: 'screen', at: [540, 400], in: '@Hit+0.1', out: '@Hit+1.6', props: { lines: [[['$12 CLUB', 'gold']]], size: 84 } },
-    { id: 'sb', type: 'bottle', layer: 'screen', at: [790, 1090], scale: 0.46, in: '@Hit', out: '@Hit+1.6', props: { sticker: '$12', screw: true, dust: false } },
+    // ---- S0 frame 0 ----
+    { id: 'hook', type: 'text', at: [0, -430], in: -1, props: { lines: [[['COLLECTORS PAID', 'paper']], [['MILLIONS', 'gold']], [['BOTTLED AT HOME', 'bad']]], size: 92, per: 0 } },
+    { id: 'pad1', type: 'paddle', at: [-330, 90], scale: 0.75, in: -1, props: { at: 0 } },
+    { id: 'pad2', type: 'paddle', at: [-110, 150], scale: 0.6, rot: 0.1, in: -1, props: { at: 0.1 } },
+    { id: 'bench0', type: 'bench', at: [330, 170], scale: 0.55, in: -1, props: {} },
+    { id: 'fraud', type: 'slamstamp', at: [0, 400], rot: -0.08, in: -1, props: { text: 'FRAUD', tone: 'bad', size: 110 } },
+    // ---- S1 case board ----
+    { id: 'tag', type: 'photo', at: [1560, 20], in: '@wait-0.35', props: { src: ICE, name: 'RUDY KURNIAWAN', role: 'WINE COLLECTOR · 2006', credit: 'U.S. ICE · PUBLIC DOMAIN', treatment: 'paper', w: 420, aspect: 0.86, fx: 0.5, fy: 0.3, tilt: -0.03 } },
+    { id: 'wc', type: 'text', at: [2190, 40], in: '@a-0.1', props: { lines: [[['WINE', 'paper']], [['COLLECTOR', 'gold']], [['CALIFORNIA', 'paper']]], size: 84 } },
+    // ---- S2 auction ----
+    { id: 'auc', type: 'auction', at: [3600, 0], in: '@rare-0.4', props: { bids: ['@bid', '@against', '@other'] } },
+    // ---- S3 sale ----
+    { id: 'gav', type: 'gavel', at: [5240, -300], in: '@2006-0.4', props: { at: '@2006' } },
+    { id: 'cellar', type: 'counter', at: [5400, 90], in: '@2006-0.3', props: { label: 'HIS COLLECTION SOLD', sub: '2006 · 2 AUCTIONS', to: 35, prefix: '≈$', suffix: ' MILLION', at: '@$35', dur: 1.0, tone: 'good', size: 120, w: 800 } },
+    // ---- S4 calendar ----
+    { id: 'cal', type: 'calendar', at: [5400, 1800], in: "@that's-0.4", props: { at: "@that's", dur: 1.5, yrsAt: '@for#4', yrsDur: 0.9 } },
+    // ---- S5 record ----
+    { id: 'gav2', type: 'gavel', at: [3380, 1560], in: '@one#2-0.3', props: { at: '@set' } },
+    { id: 'rtx', type: 'text', at: [3600, 1330], in: '@one#2', out: '@then', props: { lines: [[['ONE OF HIS SALES', 'paper']]], size: 62 } },
+    { id: 'rec', type: 'stamp', at: [3650, 1900], rot: -0.06, in: '@world-0.15', props: { text: 'WORLD RECORD', tone: 'bad', size: 120 } },
+    // ---- S6 catalogue / winemaker ----
+    { id: 'lot', type: 'lotpage', at: [1650, 1800], in: '@then-0.4', props: { yearAt: '@1945' } },
+    { id: 'silh', type: 'silh', at: [2330, 1850], rot: -0.03, in: '@winemaker-0.3', props: {} },
+    { id: 'wd', type: 'stamp', at: [1720, 2090], rot: -0.1, in: '@objected', props: { text: 'WITHDRAWN', tone: 'bad', size: 84 } },
+    // ---- S7 timeline ----
+    { id: 'tl2', type: 'wintl', at: [0, 1800], in: '@family-0.5', props: { headNote: "THE WINE'S TIMELINE", firstAt: '@1982', axisAt: '@family', bracketAt: '@37', sub: 'HIS FAMILY STARTED IN 1982 · TRIAL TESTIMONY' } },
+    // ---- S8 arrest ----
+    { id: 'door', type: 'card', at: [0, 3600], rot: 0.02, in: '@2012-0.3', props: { w: 640, h: 360, lines: [{ t: 'ARRESTED AT HOME', size: 62, font: 'hero', tone: 'ink', gap: 100 }, { t: '2012', size: 130, font: 'hero', tone: 'bad', at: '@2012', mark: 'bad', gap: 100 }, { t: 'PER DOJ', size: 26, font: 'mono', tone: 'soft' }] } },
+    // ---- S9 bench + kitchen photo ----
+    { id: 'kit', type: 'photo', at: [1800, 3008], in: '@prosecutors-0.1', props: { src: KIT, name: '', credit: 'U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN', treatment: 'paper', w: 460, aspect: 0.68, fx: 0.5, fy: 0.5, tilt: 0.025 } },
+    { id: 'bench', type: 'bench', at: [1800, 3600], in: '@prosecutors-0.3', props: { tagAt: '@prosecutors', tag: 'PROSECUTORS: “WINE FACTORY”', printAt: '@factory', printDur: 1.4 } },
+    // ---- S10 the three steps ----
+    { id: 'fac', type: 'factory', at: [3600, 3600], in: '@worked-0.3', props: { s1: '@first', s2: '@then#2', s3: '@then#3' } },
+    // ---- S11 cheque ----
+    { id: 'chq', type: 'cheque', at: [5400, 3660], in: '@billionaire-0.3', props: { amount: '$2.1 MILLION', top: 'PAID BY A BILLIONAIRE', note: 'HE TOLD THE JURY' } },
+    { id: 'fk', type: 'text', at: [5400, 3120], in: '@fakes-0.25', props: { lines: [[['“FAKES”', 'bad']]], size: 110 } },
+    // ---- S12 folder -> verdict ----
+    { id: 'folder', type: 'folder', at: [5400, 5400], in: '@what-0.4', out: '@convicted-0.02', props: { q: 'WHAT DID IT COST HIM?' } },
+    { id: 'verdict', type: 'wverdict', at: [5400, 5400], in: '@convicted-0.1', props: { convAt: '@convicted', yearsAt: '@10', payAt: '@$28' } },
+    // ---- screen micro-moments ----
+    { id: 'tw', type: 'text', layer: 'screen', at: [540, 365], in: '@wait', out: '@name', props: { lines: [[['WAIT, WHO IS HE?', 'paper']]], size: 76 } },
+    { id: 'auct', type: 'text', layer: 'screen', at: [540, 400], in: '@gets+0.1', out: '@where', props: { lines: [[['WHAT’S AN AUCTION?', 'gold']]], size: 70 } },
+    { id: 'club', type: 'text', layer: 'screen', at: [540, 400], in: '@hit+0.1', out: '@hit+1.6', props: { lines: [[['$12 CLUB', 'gold']]], size: 84 } },
+    { id: 'sb', type: 'bottle', layer: 'screen', at: [790, 1090], scale: 0.46, in: '@hit', out: '@hit+1.6', props: { sticker: '$12', screw: true, dust: false } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 830], in: '@like-0.05', out: '@like+1.15', props: { s: 1 } },
-    { id: 'gl', type: 'glass', layer: 'screen', at: [330, 1190], in: '@Send-0.1', out: '@Send+1.25', props: { s: 0.8 } },
-    { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
-    { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
-    { id: 'mag', type: 'mag', layer: 'screen', at: [830, 1010], in: '@Follow-0.05', out: '@Follow+1.45', props: { press: 0.5 } },
-    { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@Follow-0.05', out: '@Follow+1.45', props: { press: 0.5 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@would', out: '@yes+0.1', props: { l1: 'WOULD YOU HAVE', l2: 'CHECKED?', size: 54, tail: 'left' } },
+    { id: 'gl', type: 'glass', layer: 'screen', at: [330, 1190], in: '@send-0.1', out: '@send+1.25', props: { s: 0.8 } },
+    { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@send-0.05', out: '@send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
+    { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@send+0.15', out: '@send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
+    { id: 'how', type: 'text', layer: 'screen', at: [540, 400], in: '@and#1+0.0', out: '@first-0.2', props: { lines: [[['HOW IT WORKED', 'gold']]], size: 76 } },
+    { id: 'mag', type: 'mag', layer: 'screen', at: [830, 1010], in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.5 } },
+    { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.5 } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@would', out: '@wine#10+0.7', props: { l1: 'WOULD YOU HAVE', l2: 'PAID?', size: 54, tail: 'left' } },
   ],
   beats: [
-    { at: 0, beat: 'side-by-side', focus: ['hook', 'bottle', 'card'], sx: 540, sy: 840, fill: 0.9, maxH: 1050, st: { x: 900, y: 1350, s: 1.0 }, pose: 'shock' },
-    { at: '@1945', beat: 'zoom-on-number', focus: 'bottle.year', fill: 0.62, maxH: 600, sx: 520, sy: 790, st: 'corner', dur: 0.45 },
-    { at: '@winery', beat: 'graphic-hero', focus: ['hook', 'bottle', 'card'], sx: 540, sy: 840, fill: 0.9, maxH: 1050, st: { x: 900, y: 1350, s: 1.0 }, pose: 'point', dur: 0.6 },
-    { at: '@1982', beat: 'zoom-on-number', focus: 'card.first', fill: 0.9, maxH: 700, sx: 540, sy: 780, st: 'corner', pose: 'shock', dur: 0.45 },
-    { at: '@Wade', beat: 'presenter-front', focus: 'card', sy: 760, pose: 'shock' },
-    { at: '@tries+0.15', beat: 'side-by-side', focus: ['bottle', 'card'], sx: 540, sy: 800, fill: 0.92, maxH: 1100, st: 'corner', pose: 'shrug', dur: 0.7 },
-    { at: '@Ruddy', beat: 'side-by-side', focus: ['tag', 'conv', 'pad', 'cellar'], move: 'whip', sx: 540, sy: 790, fill: 0.9, maxH: 1100, st: 'corner-left', pose: 'point' },
-    { at: '@35', beat: 'zoom-on-number', focus: 'cellar.value', fill: 0.78, maxH: 520, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@million', beat: 'graphic-hero', focus: ['tag', 'pad', 'cellar'], sy: 790, fill: 0.9, maxH: 1100, st: 'corner-left', dur: 0.6 },
-    { at: '@Hit', beat: 'presenter-front', focus: 'cellar', sy: 700, pose: 'talk' },
-    { at: '@12', beat: 'presenter-front', focus: 'cellar', sy: 700, zoom: 1.08, pose: 'you', dur: 0.4 },
-    { at: '@Then', beat: 'side-by-side', focus: 'lot', move: 'whip', sx: 540, sy: 800, fill: 0.7, maxH: 960, st: 'right', pose: 'point' },
-    { at: '@1945#2', beat: 'zoom-on-number', focus: 'lot.year', fill: 0.62, maxH: 520, sy: 780, st: 'corner', pose: 'shock', dur: 0.5 },
-    { at: '@But', beat: 'side-by-side', focus: ['lot', 'silh', 'wd'], sx: 540, sy: 800, fill: 0.95, maxH: 1100, st: 'corner', pose: 'point', dur: 0.8 },
-    { at: '@objected', beat: 'zoom-on-number', focus: 'wd', fill: 0.62, maxH: 520, sy: 790, st: 'corner', pose: 'shock', dur: 0.4 },
-    { at: '@family', beat: 'graphic-hero', focus: 'tl2', sx: 560, sy: 800, fill: 0.78, maxH: 1000, st: 'corner-left', pose: 'point', dur: 0.8 },
-    { at: '@1982#2', beat: 'zoom-on-number', focus: 'tl2.bracket', fill: 0.62, maxH: 700, sy: 950, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@Send', beat: 'presenter-front', focus: 'tl2', sy: 770, pose: 'talk' },
-    { at: '@sniffs', beat: 'presenter-front', focus: 'tl2', sy: 770, zoom: 1.0, pose: 'shrug', dur: 0.6 },
-    { at: '@2012', beat: 'graphic-hero', focus: 'door', move: 'whip', sx: 540, sy: 790, fill: 0.88, maxH: 700, st: 'corner-left', pose: 'shock' },
-    { at: '@Prosecutors', beat: 'side-by-side', focus: ['bench', 'kit'], sx: 540, sy: 905, fill: 0.92, maxH: 880, st: 'corner-left', pose: 'point', dur: 0.9 },
-    { at: '@Thousands', beat: 'zoom-on-number', focus: 'bench.printer', fill: 0.62, maxH: 520, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@What', beat: 'side-by-side', focus: 'folder', move: 'whip', sx: 540, sy: 790, fill: 0.7, maxH: 960, st: 'left', pose: 'point' },
-    { at: '@Follow', beat: 'graphic-hero', focus: 'folder', sy: 790, fill: 0.7, maxH: 960, st: 'corner-left', dur: 0.8 },
-    { at: '@Convicted', beat: 'zoom-on-number', focus: 'verdict.conv', fill: 0.8, maxH: 600, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 },
-    { at: '@10', beat: 'zoom-on-number', focus: 'verdict.years', fill: 0.8, maxH: 560, sy: 920, st: 'corner-left', pose: 'shock', dur: 0.45 },
-    { at: '@28', beat: 'zoom-on-number', focus: 'verdict.pay', fill: 0.84, maxH: 640, sy: 940, rot: 0.02, st: 'corner-left', pose: 'shock', dur: 0.45 },
-    { at: '@back', beat: 'pull-back', focus: 'verdict', fill: 0.7, maxH: 900, sy: 880, st: 'corner-left', pose: 'idle' },
-    { at: '@37', beat: 'zoom-on-number', focus: ['peel', 'off'], move: 'whip', fill: 0.78, maxH: 1150, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@would', beat: 'presenter-front', focus: 'peel', sy: 860, keep: ['off'], pose: 'talk' },
-    { at: '@yes', beat: 'wide', st: { x: 250, y: 1330, s: 1.2 }, pose: 'idle' },
-    { at: '@no+0.45', beat: 'side-by-side', focus: ['hook', 'bottle', 'card'], move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 1050, st: { x: 900, y: 1350, s: 1.0 }, pose: 'shock' },
+    { at: 0, beat: SB, focus: ['hook', 'pad1', 'bench0', 'fraud'], sx: 540, sy: 840, fill: 0.9, maxH: 1150, st: { x: 920, y: 1350, s: 1.0 }, pose: 'shock' },
+    { at: '@millions', beat: ZN, focus: 'hook', fill: 0.86, maxH: 600, sy: 720, st: 'corner', pose: 'shock', dur: 0.45 },
+    { at: '@bottled', beat: SB, focus: ['bench0', 'fraud'], fill: 0.85, maxH: 900, sy: 830, st: 'corner-left', pose: 'point', dur: 0.8 },
+    { at: '@wait', beat: SB, focus: 'tag', move: 'whip', sx: 540, sy: 900, fill: 0.58, maxH: 820, st: { x: 930, y: 1390, s: 0.85 }, pose: 'shock' },
+    { at: '@rudy', beat: ZN, focus: 'tag.name', fill: 0.8, maxH: 300, sy: 800, st: { x: 930, y: 1390, s: 0.85 }, pose: 'point', dur: 0.45 },
+    { at: '@a', beat: SB, focus: ['tag', 'wc'], sx: 540, sy: 790, fill: 0.95, maxH: 1100, st: 'corner-left', pose: 'point', dur: 0.8 },
+    { at: '@rare', beat: SB, focus: 'auc', move: 'whip', sx: 540, sy: 800, fill: 0.88, maxH: 960, st: 'left', pose: 'point' },
+    { at: '@auctions', beat: ZN, focus: 'auc.head', fill: 0.8, maxH: 300, sy: 560, st: 'corner', pose: 'point', dur: 0.45 },
+    { at: '@rich', beat: PK, focus: 'auc', fill: 0.82, sy: 880, pose: 'point', dur: 0.8 },
+    { at: '@bid', beat: ZN, focus: 'auc.pads', fill: 0.9, maxH: 420, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.45 },
+    { at: '@other', beat: GH, focus: 'auc.bars', fill: 0.8, maxH: 420, sy: 800, st: 'corner-left', dur: 0.6 },
+    { at: '@bottle', beat: ZN, focus: 'auc.bottle', fill: 0.5, maxH: 600, sy: 790, st: 'corner', pose: 'point', dur: 0.5 },
+    { at: '@2006', beat: SB, focus: ['gav', 'cellar'], move: 'whip', sx: 540, sy: 790, fill: 0.88, maxH: 1100, st: 'corner-left', pose: 'point' },
+    { at: '@$35', beat: ZN, focus: 'cellar.value', fill: 0.78, maxH: 520, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@million', beat: GH, focus: ['gav', 'cellar'], sy: 790, fill: 0.9, maxH: 1100, st: 'corner-left', dur: 0.7 },
+    { at: "@that's", beat: SB, focus: 'cal', move: 'whip', sx: 540, sy: 880, fill: 0.78, maxH: 850, st: 'left', pose: 'point' },
+    { at: '@000', beat: ZN, focus: 'cal.head', fill: 0.8, maxH: 300, sy: 560, st: 'corner', pose: 'point', dur: 0.45 },
+    { at: '@for#4', beat: ZN, focus: 'cal.years', fill: 0.8, maxH: 420, sy: 850, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@years+0.2', beat: GH, focus: 'cal', sy: 880, fill: 0.8, maxH: 850, st: 'corner-left', dur: 0.8 },
+    { at: '@hit', beat: PF, focus: 'cal', sy: 760, pose: 'talk' },
+    { at: '@12', beat: PF, focus: 'cal', sy: 760, zoom: 1.08, pose: 'you', dur: 0.4 },
+    { at: '@one#2', beat: SB, focus: ['gav2', 'rtx', 'rec'], move: 'whip', sx: 540, sy: 800, fill: 0.9, maxH: 1100, st: 'corner-left', pose: 'point' },
+    { at: '@record', beat: ZN, focus: 'rec', fill: 0.8, maxH: 500, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.45 },
+    { at: '@then', beat: SB, focus: 'lot', move: 'whip', sx: 540, sy: 880, fill: 0.66, maxH: 800, st: 'right', pose: 'point' },
+    { at: '@french', beat: GH, focus: 'lot', sy: 880, fill: 0.7, maxH: 800, st: 'corner', dur: 0.7 },
+    { at: '@1945', beat: ZN, focus: 'lot.year', fill: 0.62, maxH: 520, sy: 840, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@but', beat: SB, focus: ['lot', 'silh', 'wd'], sx: 540, sy: 880, fill: 0.92, maxH: 900, st: 'corner', pose: 'point', dur: 0.8 },
+    { at: '@objected', beat: ZN, focus: 'wd', fill: 0.62, maxH: 520, sy: 790, st: 'corner', pose: 'shock', dur: 0.4 },
+    { at: '@family', beat: GH, focus: 'tl2', move: 'whip', sx: 560, sy: 800, fill: 0.78, maxH: 1000, st: 'corner-left', pose: 'point' },
+    { at: '@1982', beat: ZN, focus: 'tl2.first', fill: 0.9, maxH: 700, sy: 780, st: 'corner', pose: 'shock', dur: 0.45 },
+    { at: '@so', beat: GH, focus: 'tl2', sy: 800, fill: 0.8, maxH: 1000, st: 'corner-left', dur: 0.7 },
+    { at: '@37', beat: ZN, focus: 'tl2.bracket', fill: 0.62, maxH: 700, sy: 950, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@older', beat: PK, focus: 'tl2', fill: 0.8, sy: 880, pose: 'talk', dur: 0.8 },
+    { at: '@send', beat: PF, focus: 'tl2', sy: 770, pose: 'talk' },
+    { at: '@sniffs', beat: PF, focus: 'tl2', sy: 770, zoom: 1.0, pose: 'shrug', dur: 0.6 },
+    { at: '@2012', beat: GH, focus: 'door', move: 'whip', sx: 540, sy: 790, fill: 0.88, maxH: 700, st: 'corner-left', pose: 'shock' },
+    { at: '@arrested', beat: ZN, focus: 'door', fill: 0.95, maxH: 640, sy: 790, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@prosecutors', beat: SB, focus: ['bench', 'kit'], move: 'whip', sx: 540, sy: 905, fill: 0.92, maxH: 880, st: 'corner-left', pose: 'point', dur: 0.9 },
+    { at: '@factory', beat: ZN, focus: 'bench.tag', fill: 0.7, maxH: 300, sy: 640, st: 'corner-left', pose: 'shock', dur: 0.45 },
+    { at: '@and#1', beat: PK, focus: ['bench', 'kit'], fill: 0.9, maxH: 880, sy: 905, pose: 'talk', dur: 0.8 },
+    { at: '@worked-0.2', beat: GH, focus: 'fac', move: 'whip', sx: 540, sy: 870, fill: 0.78, maxH: 820, st: 'left', pose: 'point' },
+    { at: '@first', beat: ZN, focus: 'fac.r1', fill: 0.9, maxH: 420, sy: 900, st: 'corner', pose: 'point', dur: 0.5 },
+    { at: '@then#2', beat: ZN, focus: 'fac.r2', fill: 0.9, maxH: 420, sy: 880, st: 'corner-left', pose: 'point', dur: 0.5 },
+    { at: '@wax', beat: PK, focus: 'fac', fill: 0.75, maxH: 820, sy: 870, pose: 'talk', dur: 0.8 },
+    { at: '@then#3', beat: ZN, focus: 'fac.r3', fill: 0.9, maxH: 420, sy: 780, st: 'corner', pose: 'point', dur: 0.5 },
+    { at: '@thousands', beat: ZN, focus: 'fac.r3', fill: 1.0, maxH: 320, sy: 780, st: 'corner-left', pose: 'shock', dur: 0.45 },
+    { at: '@labels#2+0.2', beat: GH, focus: 'fac', sy: 870, fill: 0.78, maxH: 820, st: 'corner', dur: 0.8 },
+    { at: '@billionaire', beat: SB, focus: 'chq', move: 'whip', sx: 540, sy: 820, fill: 0.88, maxH: 1000, st: 'left', pose: 'point' },
+    { at: '@$2', beat: ZN, focus: 'chq.amount', fill: 0.86, maxH: 520, sy: 800, st: 'corner', pose: 'shock', dur: 0.45 },
+    { at: '@fakes', beat: GH, focus: ['chq', 'fk'], sy: 850, fill: 0.9, maxH: 1200, st: 'corner-left', dur: 0.7 },
+    { at: '@what', beat: SB, focus: 'folder', move: 'whip', sx: 540, sy: 790, fill: 0.7, maxH: 960, st: 'left', pose: 'point' },
+    { at: '@follow', beat: GH, focus: 'folder', sy: 790, fill: 0.7, maxH: 960, st: 'corner-left', dur: 0.8 },
+    { at: '@verdicts', beat: PF, focus: 'folder', sy: 790, pose: 'talk', dur: 0.6 },
+    { at: '@2013', beat: ZN, focus: 'folder', fill: 0.9, maxH: 900, sy: 790, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@convicted', beat: ZN, focus: 'verdict.conv', fill: 0.8, maxH: 600, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 },
+    { at: '@10', beat: ZN, focus: 'verdict.years', fill: 0.8, maxH: 560, sy: 920, st: 'corner-left', pose: 'shock', dur: 0.45 },
+    { at: '@back', beat: GH, focus: 'verdict', fill: 0.72, maxH: 950, sy: 880, st: 'corner-left', pose: 'idle', dur: 0.8 },
+    { at: '@$28', beat: ZN, focus: 'verdict.pay', fill: 0.8, maxH: 640, sy: 1010, rot: 0.02, st: 'corner-left', pose: 'shock', dur: 0.45 },
+    { at: '@million#3+0.9', beat: 'pull-back', focus: 'verdict', fill: 0.7, maxH: 900, sy: 880, st: 'corner-left', pose: 'idle' },
+    { at: '@would', beat: PF, focus: 'verdict', sy: 860, pose: 'talk' },
+    { at: '@wine#10+0.75', beat: SB, focus: ['hook', 'pad1', 'bench0', 'fraud'], move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 1150, st: { x: 920, y: 1350, s: 1.0 }, pose: 'shock' },
   ],
-  poses: [['@Follow-0.1', 'follow', { target: [830, 1010] }], ['@Follow+1.5', 'talk']],
-  shakes: [[0.05, 14], ['@1982', 10], ['@Convicted', 18], ['@10', 12], ['@28', 14], ['@37', 14]],
+  poses: [['@follow-0.1', 'follow', { target: [830, 1010] }], ['@follow+1.5', 'talk']],
+  shakes: [[0.05, 14], ['@2006', 8], ['@set', 8], ['@1982', 12], ['@convicted', 18], ['@10', 12], ['@$28', 14]],
   captions: {
     gap: 16,
-    emph: { '1945.': 'bad', '1982.': 'bad', '$35': 'good', '$12.': 'accent', Convicted: 'bad', '10': 'bad', '$28': 'bad', '37': 'bad', FBI: 'accent' },
-    fix: [['Wade who', 'Wait, who'], ['that,', 'that?'], ['Ruddy Kerniawin', 'Rudy Kurniawan'], ['seller', 'cellar'], ['35', '$35'], ['12.', '$12.'], ['What it', "What'd it"], ['him, follow', 'him? Follow'], ['28', '$28'], ['off,', 'off.'], ['would you', 'Would you'], ['Yes or', 'Yes or']],
+    emph: { '$35': 'good', '$35.': 'good', 'million': 'good', '95': 'bad', '$12': 'accent', '1945.': 'bad', '1982.': 'bad', '37': 'bad', FBI: 'accent', convicted: 'bad', '10': 'bad', '$28': 'bad', fakes: 'bad', fraud: 'bad' },
+    fix: [['Wade who', 'Wait, who'], ['Ruddy Kerniawin', 'Rudy Kurniawan']],
   },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.04, name: 'rubber_stamp_2', gain: -7, dur: 0.5 }, { at: 0.1, name: 'thud_1', gain: -9, dur: 0.4 },
-    { at: '@1945', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@1982', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
-    { at: '@Wade', name: 'record_scratch_stop_1', gain: -12, dur: 0.6 },
-    { at: '@Ruddy', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@Ruddy+0.5', name: 'rubber_stamp_2', gain: -9, dur: 0.5 },
-    { at: '@2006', name: 'pop_2', gain: -8, dur: 0.4 }, { at: '@35', name: 'money_counter_2', gain: -10, dur: 1.2 }, { at: '@35+1.0', name: 'ding_2', gain: -8, dur: 0.7 },
+    { at: '@wait', name: 'record_scratch_stop_1', gain: -12, dur: 0.6 }, { at: '@wait+0.3', name: 'paper_slam_2', gain: -10, dur: 0.5 },
+    { at: '@rare', name: 'swipe_2', gain: -12, dur: 0.4 }, { at: '@bid', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@against', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@other', name: 'pop_2', gain: -9, dur: 0.3 },
+    { at: '@2006', name: 'gavel_1', gain: -6, dur: 0.8 }, { at: '@$35', name: 'money_counter_2', gain: -10, dur: 1.2 }, { at: '@$35+1.0', name: 'ding_2', gain: -8, dur: 0.7 },
+    { at: "@that's", name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@for#4', name: 'money_counter_2', gain: -12, dur: 0.9 }, { at: '@years+0.2', name: 'cash_register_1', gain: -10, dur: 0.9 },
     { at: '@like', name: 'heartbeat_1', gain: -8, dur: 0.9 },
-    { at: '@Then', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@1945#2', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@1945#2', name: 'ding_2', gain: -10, dur: 0.7 },
-    { at: '@actual', name: 'swipe_2', gain: -12, dur: 0.4 }, { at: '@objected', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@objected', name: 'deep_boom_2', gain: -9, dur: 0.36 },
-    { at: '@family', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@1982#2', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
-    { at: '@Send', name: 'swoosh_2', gain: -9, dur: 1.0 },
-    { at: '@2012', name: 'door_slam_1', gain: -8, dur: 0.6 }, { at: '@FBI', name: 'pop_1', gain: -10, dur: 0.4 },
-    { at: '@called+0.3', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@factory-0.5', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@factory', name: 'paper_slam_2', gain: -9, dur: 0.5 },
-    { at: '@Thousands', name: 'typewriter_1', gain: -11, dur: 1.4 },
-    { at: '@What', name: 'paper_slam_2', gain: -10, dur: 0.5 },
-    { at: '@Follow+0.5', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@Follow+0.58', name: 'success_chime_1', gain: -12, dur: 1.0 },
-    { at: '@Convicted-0.9', name: 'riser_2', gain: -14, dur: 0.9 },
-    { at: '@Convicted', name: 'gavel_1', gain: -3, dur: 0.8 }, { at: '@Convicted', name: 'cinematic_hit_1', gain: -3, dur: 1.2 }, { at: '@Convicted', name: 'deep_boom_1', gain: -3, dur: 1.4 },
+    { at: '@set', name: 'gavel_2', gain: -6, dur: 0.8 }, { at: '@record', name: 'rubber_stamp_2', gain: -5, dur: 0.5 },
+    { at: '@then', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@1945', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@1945', name: 'ding_2', gain: -10, dur: 0.7 },
+    { at: '@winemaker', name: 'swipe_2', gain: -12, dur: 0.4 }, { at: '@objected', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@objected', name: 'deep_boom_2', gain: -9, dur: 0.36 },
+    { at: '@family', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@1982', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@1982', name: 'deep_boom_1', gain: -6, dur: 1.2 }, { at: '@37', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@send', name: 'swoosh_2', gain: -9, dur: 1.0 },
+    { at: '@2012', name: 'door_slam_1', gain: -8, dur: 0.6 }, { at: '@prosecutors', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@factory', name: 'typewriter_1', gain: -12, dur: 1.4 },
+    { at: '@first', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@then#2', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@then#3', name: 'paper_slam_2', gain: -9, dur: 0.5 }, { at: '@thousands', name: 'typewriter_1', gain: -11, dur: 1.2 },
+    { at: '@billionaire', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@$2', name: 'money_counter_2', gain: -11, dur: 0.8 }, { at: '@fakes', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
+    { at: '@what', name: 'swipe_2', gain: -11, dur: 0.4 }, { at: '@follow+0.5', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.58', name: 'success_chime_1', gain: -12, dur: 1.0 },
+    { at: '@convicted-0.9', name: 'riser_2', gain: -14, dur: 0.9 }, { at: '@convicted', name: 'gavel_1', gain: -3, dur: 0.8 }, { at: '@convicted', name: 'cinematic_hit_1', gain: -3, dur: 1.2 }, { at: '@convicted', name: 'deep_boom_1', gain: -3, dur: 1.4 },
     { at: '@10', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@10', name: 'cell_door_1', gain: -8, dur: 1.0 },
-    { at: '@28', name: 'money_counter_2', gain: -10, dur: 0.9 }, { at: '@28+0.9', name: 'cash_register_1', gain: -8, dur: 0.9 },
-    { at: '@37', name: 'whoosh_2', gain: -9, dur: 0.6 }, { at: '@37+0.7', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
-    { at: '@would', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@no+0.45', name: 'rewind_2', gain: -11, dur: 0.7 },
+    { at: '@$28', name: 'money_counter_2', gain: -10, dur: 0.9 }, { at: '@$28+0.9', name: 'cash_register_1', gain: -8, dur: 0.9 },
+    { at: '@would', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@wine#10+0.75', name: 'rewind_2', gain: -11, dur: 0.7 },
   ],
 });
