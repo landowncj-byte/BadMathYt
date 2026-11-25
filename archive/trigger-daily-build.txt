@@ -7,7 +7,7 @@ MODEL SPLIT (user rule):
 
 1. ANALYTICS FIRST: pull get_post_analytics for the last 7 days (all platforms) and append today's block to ANALYTICS.md. Give our winners and losers to Fable together with its competitor findings. On Sunday (US Eastern), Fable refreshes competitors.md fully, and you write the weekly review and apply its 3–5 changes. Never repeat a topic. Copy competitor PATTERNS, never their topics, scripts, footage or audio.
 
-2. RESEARCH: one Fable agent researches the next day's batch. That is at least 8 Short topics, plus ONLY on Monday, Wednesday or Friday (US Eastern) 1 long-form topic. Every number is sourced; anything unverifiable is cut. Decoded = court-proven only, otherwise "alleged".
+2. RESEARCH: one Fable agent researches the next day's batch. That is at least 8 Short topics, plus ONLY on Monday, Wednesday or Friday (US Eastern) 1 long-form topic. Every number is sourced; anything unverifiable is cut. DECODED = 100% accurate (STYLE §19): court-proven only, every fact primary-sourced or confirmed by 2+ independent sources, else cut. WHAT IF = random, off-the-wall premises are welcome (aim for about half the daily topics to be wild What Ifs) as long as money is the theme; math and real-world inputs must still be exact and assumptions labeled.
 
 3. BUILD — MINIMUM 8 posts per platform per day. Each topic gets THREE separate scripts, voices and edits:
    - YouTube Shorts: ad-safe edgy hook, 40–55 s.

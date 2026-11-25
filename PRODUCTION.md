@@ -15,7 +15,7 @@ Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` 
 - Every video has its own story/insight, script, visuals and edit. Shared engine/character/brand are production tools, never the content.
 - Rotate series and formats: Shorts alternate What If / Decoded; no two consecutive uploads use the same format (Counter, Scale Swap, Pitch vs Math, Case File, Dilemma/Two Buttons, Spot the Tell, Timeline, Myth vs Math).
 - Long-form topics are bigger stories (a case or a hypothetical with 3–5 chapters), not stretched Shorts.
-- Decoded = documented/court-proven only; pending = "alleged". What If = assumptions labeled on screen.
+- Decoded = 100% accurate (STYLE §19): court-proven only; every fact primary-sourced or confirmed by 2+ independent sources, else cut; pending = "alleged". What If = anything goes as long as money is the theme (random/absurd premises welcome), but the math and real-world inputs must be correct and assumptions labeled on screen.
 - Log every chosen idea in `ideas.md` (date, series, format, title, one-line angle, sources) at the moment it's picked.
 
 ## Daily pipeline

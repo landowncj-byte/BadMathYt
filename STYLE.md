@@ -196,3 +196,15 @@ Write the loop explicitly in each DIRECTION/script note: `STAKES: … / QUESTION
 - One object per beat, centered, minimal background; one accent color doing the work.
 - Kinetic captions with **one emphasis word per line** styled differently (theirs: italic serif accent). Ours: the emphasis word in Anton + series color.
 - CTA style that worked there: "Send this to a [specific person] who needs …" + a **comment-keyword prompt**. We can use comment keywords for engagement ("comment PART 2", "comment MATH") — never for links/products.
+
+## 19. Series rules — What If = go wild · Decoded = zero errors (user rule 2026-11-25)
+**WHAT IF — creative freedom.** Topics can be random, absurd, off-the-wall, as long as **money is the main theme**. Examples of the energy: "What if you got a penny every time someone on Earth blinked?", "What if you robbed every vending machine in America?", "What if you paid rent in Chuck E. Cheese tickets?", "What if Jeff Bezos dropped a $100 bill — is it worth picking up?", "What if you sold your house one LEGO brick at a time?". Rotate wildly different premises so the feed never feels repetitive.
+- The premise can be ridiculous; **the math cannot be wrong**. Every assumption is stated on screen ("ASSUMES…"), every real-world input (prices, populations, rates) uses a real sourced number, and the arithmetic is double-checked by Opus.
+- Label it as a hypothetical — never present a What If as something that happened.
+
+**DECODED — 100% accurate, no exceptions.** The user does not want to get caught up in inaccurate information.
+- Only cases with a **conviction, guilty plea, or final SEC/court judgment**. Anything pending = "alleged" (or skip the topic).
+- **Every on-screen/voiced fact needs a primary source (DOJ/SEC/court/regulator) or at least two independent reputable sources** that agree. One source = cut it. Conflicting sources = use the conservative/attributed version ("the FBI said…", "later counts put it at…").
+- No invented quotes, no dramatized dialogue presented as real, no "illustration" ambiguity — anything illustrative is labeled ILLUSTRATION on screen.
+- Fable flags every figure's grade in research.md; Opus refuses to script any Decoded line that isn't VERIFIED or ✔2. When in doubt, leave it out.
+- Corrections: if a posted Decoded video is found to contain an error, tell the user immediately and propose deleting/replacing it.

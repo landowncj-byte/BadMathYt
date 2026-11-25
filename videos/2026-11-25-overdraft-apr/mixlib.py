@@ -30,6 +30,6 @@ def mix(base,DUR,FX,BEDS,voice='voice/narration.wav',sfx='sfx/'):
         lim=round(10**((tp-0.0)/20),3)
         af=f"loudnorm=I=-14:TP={tp}:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,volume={gtrim}dB,aresample=192000,alimiter=limit={lim}:level=false:attack=1:release=60,aresample=48000,afade=t=in:d=0.03,afade=t=out:st={DUR-0.08}:d=0.08"
         subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i","build/mixpre.wav","-af",af,"-c:a","pcm_s16le","build/mix.wav"],check=True)
-        subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i","build/video_noaudio.mp4","-i","build/mix.wav","-map","0:v","-map","1:a","-c:v","copy","-c:a","aac","-b:a","192k","-movflags","+faststart","video.mp4"],check=True)
+        subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i","build/video_noaudio.mp4","-i","build/mix.wav","-map","0:v","-map","1:a","-c:v","copy","-c:a","aac","-b:a","192k","-aac_pns","0","-aac_is","0","-aac_tns","0","-movflags","+faststart","video.mp4"],check=True)
         I,pk=meas("video.mp4"); print("try trim",gtrim,"LUFS",I,"peak",pk)
-        if pk<=-1.2 and abs(I+14)<=.4: break
+        if pk<=-1.05 and abs(I+14)<=.4: break
