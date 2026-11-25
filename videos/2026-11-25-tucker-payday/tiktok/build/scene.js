@@ -331,7 +331,7 @@ BM2.scene({
     { id: 'verdict', type: 'verdict', at: [3000, 2650], in: '@jury-0.4', props: { guiltyAt: '@guilty', countsAt: '@14', monthsAt: '@16', subAt: '@years' } },
     { id: 'ticks', type: 'ticks', at: [3000, 3120], in: '@jury-0.4', props: { at: '@14', dur: 0.8 } },
     { id: 'fp', type: 'text', layer: 'screen', at: [560, 400], in: '@Tap', out: '@He\'d-0.1', props: { lines: [[['FINE PRINT?', 'paper']]], size: 74 } },
-    { id: 'pstore', type: 'photo', at: [1300,1750], rot: 0, in: '@Scott-0.4', props: { src: 'brand/photos/stock/tucker-payday/payday-sign.jpg', tag: 'STOCK PHOTO · ILLUSTRATIVE', credit: 'T. WEBSTER · CC BY', w: 360, aspect: 0.87, treatment: 'polaroid', tilt: -0.06, fx: 0.5, fy: 0.5 } },
+    { id: 'pstore', type: 'photo', at: [1300,1750], rot: 0, in: '@Scott-0.4', props: { src: 'brand/photos/stock/tucker-payday/payday-sign.jpg', tag: 'STOCK PHOTO · ILLUSTRATIVE', credit: 'T. WEBSTER · CC BY', w: 360, aspect: 0.98, treatment: 'polaroid', tilt: -0.06, fx: 0.5, fy: 0.5 } },
     { id: 'pcourt', type: 'photo', at: [3000,2840], rot: 0, in: '@jury-0.4', out: '@16-0.1', props: { src: 'brand/photos/stock/tucker-payday/courthouse.jpg', tag: 'SDNY COURTHOUSE · ILLUSTRATIVE', credit: 'K. LUND · CC BY-SA', w: 420, aspect: 0.6, treatment: 'polaroid', tilt: 0.05, fx: 0.5, fy: 0.45 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@heart-0.05', out: '@heart+1.15', props: { s: 1 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },

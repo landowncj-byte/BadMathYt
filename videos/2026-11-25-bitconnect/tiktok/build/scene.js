@@ -281,7 +281,7 @@ const BKS = { x: 190, y: 1330, s: 0.95, layer: 'back' };
 const TXT = (lines, size, extra = {}) => ({ lines, size, ...extra });
 BM2.scene({
   series: 'decoded', title: 'CASE: BITCONNECT · 2017', duration: 34.23,
-  footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS'],
+  footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS', 'PHOTOS: ANTANACOINS, CC BY-SA 3.0 · FEDERAL JUDICIARY, PUBLIC DOMAIN · VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- station A: tiny chip + red flag (frame 0) ----
     { id: 'flag', type: 'flag', at: [-260, 0], in: -1, props: { furlAt: -0.12, backAt: 33.0, chip: 'SOUNDS TINY' } },
@@ -297,6 +297,8 @@ BM2.scene({
     { id: 'bot', type: 'bot', at: [1750, 1750], in: '@Prosecutors-0.5', props: { h: 780, noTaken: true, curtainAt: '@new-0.1', tagAt: '@Prosecutors' } },
     // ---- station D: promoter case ----
     { id: 'case', type: 'case', at: [3500, 1750], in: '@Top-0.4', props: { guiltyAt: '@promoter', monthsAt: '@38' } },
+    { id: 'court', type: 'photo', at: [4160, 1790], in: '@Top-0.3', props: { src: 'brand/photos/stock/edward-j-schwartz-united-states-courthouse/1.jpg', name: 'FEDERAL COURT', role: 'SAN DIEGO', credit: 'PHOTO: FEDERAL JUDICIARY · PUBLIC DOMAIN', w: 400, aspect: 1.2, tilt: 0.05, fx: 0.5, fy: 0.5 } },
+    { id: 'coin', type: 'photo', at: [2470, 40], in: '@per-0.3', out: '@Tap+0.3', props: { src: 'brand/photos/stock/physical-bitcoin-coin/5.jpg', name: 'BITCOIN', role: 'STOCK PHOTO', credit: 'PHOTO: ANTANACOINS · CC BY-SA 3.0', w: 380, aspect: 1.0, tilt: -0.05, fx: 0.5, fy: 0.5 } },
     // ---- screen-fixed micro moments ----
     { id: 'heart', type: 'heart', layer: 'screen', at: [830, 640], in: '@hard-0.1', out: '@hard+1.3', props: {} },
     { id: 'hyped', type: 'text', layer: 'screen', at: [540, 500], in: '@hyped', out: 10.35, props: TXT([[['HYPED?', 'paper']]], 96) },
@@ -313,7 +315,7 @@ BM2.scene({
     { at: '@BitConnect', beat: 'side-by-side', focus: 'tick', move: 'whip', sy: 800, fill: 0.74, maxH: 960, pose: 'point' },
     { at: '@about', beat: 'graphic-hero', focus: 'tick', st: 'corner-left', fill: 0.82, maxH: 900, sy: 850, pose: 'point' },
     { at: '@one#2', beat: 'zoom-on-number', focus: ['tick.r1', 'tick.r2'], fill: 0.88, maxH: 560, sy: 880, st: BKS, rot: -0.012, dur: 0.5 },
-    { at: '@per-0.1', beat: 'pull-back', focus: 'tick', fill: 0.8, maxH: 880, sy: 850, st: 'corner-left' },
+    { at: '@per-0.1', beat: 'pull-back', focus: ['tick', 'coin'], fill: 0.8, maxH: 880, sy: 850, st: 'corner-left' },
     // 8.2-10.3 heart
     { at: '@Tap', beat: 'presenter-front', focus: 'tick', sy: 760, pose: 'talk' },
     // 10.3-: counter
@@ -339,8 +341,8 @@ BM2.scene({
     { at: '@Top', beat: 'side-by-side', focus: 'case', move: 'whip', sy: 760, fill: 0.74, maxH: 950, pose: 'point' },
     { at: '@promoter-0.15', beat: 'zoom-on-number', focus: ['case.who', 'case.guilty'], fill: 0.9, sy: 820, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@38', beat: 'zoom-on-number', focus: ['case.guilty', 'case.months'], fill: 0.94, maxH: 700, zoom: 1.05, sy: 830, st: BKS, dur: 0.4 },
-    { at: 30.8, beat: 'pull-back', focus: 'case', fill: 0.8, maxH: 950, sy: 770, st: 'corner-left', pose: 'idle' },
-    { at: 31.6, beat: 'presenter-front', focus: 'case', sy: 760, pose: 'chin' },
+    { at: 30.8, beat: 'pull-back', focus: ['case', 'court'], fill: 0.8, maxH: 950, sy: 770, st: 'corner-left', pose: 'idle' },
+    { at: 31.6, beat: 'presenter-front', focus: ['case', 'court'], keep: ['court'], sy: 760, pose: 'chin' },
     // 33: back to the chip = frame 0
     { at: 33.0, beat: 'zoom-on-number', focus: ['hookT2', 'flag'], move: 'whip', fill: 0.86, maxH: 1200, sy: 900, st: FR, pose: 'talk' },
   ],

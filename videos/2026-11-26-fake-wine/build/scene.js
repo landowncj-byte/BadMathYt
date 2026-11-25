@@ -296,14 +296,14 @@
 // YouTube cut — Stations: hook (0,0) · case board (1800,0) · catalogue+winemaker+timeline (3600..5000,0) · arrest card (4600,1800) · bench (3500,1800) · folder/verdict (1800,1800) · peel payoff (0,1800)
 BM2.scene({
   series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 48.68,
-  footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: BOTTLE, LABELS, BENCH, CATALOGUE, WINEMAKER (GENERIC)'],
+  footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: BOTTLE, LABELS, BENCH, CATALOGUE, WINEMAKER (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S1 frame 0: label says 1945 next to the winery timeline card FIRST MADE: 1982 ----
     { id: 'hook', type: 'text', at: [20, -330], in: -1, props: { lines: [[['LABEL: ', 'paper'], ['1945', 'gold']]], size: 120, per: 0 } },
     { id: 'bottle', type: 'bottle', at: [-300, 110], in: -1, props: { year: '1945', slam: true } },
     { id: 'card', type: 'wintl', at: [330, 150], in: -1, props: { firstAt: 0, axisAt: '@Wait', sub: 'PER TRIAL TESTIMONY · ILLUSTRATION' } },
     // ---- S2 case board ----
-    { id: 'tag', type: 'card', at: [1480, -330], in: '@Ruddy-0.4', props: { w: 640, h: 200, lines: [{ t: 'RUDY KURNIAWAN', size: 62, font: 'hero', tone: 'ink', gap: 70 }, { t: 'WINE DEALER · 2006', size: 28, font: 'mono', tone: 'soft', gap: 14 }] } },
+    { id: 'tag', type: 'photo', at: [1480, -320], in: '@Ruddy-0.4', props: { src: 'brand/photos/rudy-kurniawan/2.jpg', name: 'RUDY KURNIAWAN', role: 'WINE DEALER · 2006', credit: 'U.S. ICE · PUBLIC DOMAIN', treatment: 'paper', w: 420, aspect: 0.86, fx: 0.5, fy: 0.3, tilt: -0.03 } },
     { id: 'conv', type: 'stamp', at: [1930, -380], rot: 0.09, in: '@Ruddy+0.5', props: { text: 'CONVICTED 2013', tone: 'bad', size: 52 } },
     { id: 'pad', type: 'paddle', at: [1380, 190], in: '@in-0.1', props: { at: '@2006' } },
     { id: 'cellar', type: 'counter', at: [1960, 150], in: '@2006-0.3', props: { label: 'HIS CELLAR · 2 AUCTIONS', sub: '2006', to: 35, prefix: '≈$', suffix: ' MILLION', at: '@35', dur: 1.0, tone: 'good', size: 120, w: 760 } },
@@ -314,6 +314,7 @@ BM2.scene({
     { id: 'tl2', type: 'wintl', at: [4950, 60], in: '@family-0.4', props: { headNote: 'THE WINE\'S TIMELINE', firstAt: '@family', axisAt: '@family+0.4', bracketAt: '@1982#2', sub: 'HIS FAMILY STARTED IN 1982 · TRIAL TESTIMONY' } },
     // ---- S4 arrest + bench ----
     { id: 'door', type: 'card', at: [4640, 1800], rot: 0.02, in: '@2012-0.3', props: { w: 640, h: 360, lines: [{ t: 'ARRESTED AT HOME', size: 62, font: 'hero', tone: 'ink', gap: 100 }, { t: '2012', size: 130, font: 'hero', tone: 'bad', at: '@2012', mark: 'bad', gap: 100 }, { t: 'PER DOJ', size: 26, font: 'mono', tone: 'soft' }] } },
+    { id: 'kit', type: 'photo', at: [3560, 1208], in: '@Prosecutors-0.1', props: { src: 'brand/photos/rudy-kurniawan/3.jpg', name: '', credit: 'U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN', treatment: 'paper', w: 460, aspect: 0.68, fx: 0.5, fy: 0.5, tilt: 0.025 } },
     { id: 'bench', type: 'bench', at: [3560, 1800], in: '@FBI', props: { pourAt: '@called+0.3', corkAt: '@factory-0.5', labelAt: '@factory', printAt: '@Thousands', printDur: 1.4, tagAt: '@Prosecutors', tag: 'PROSECUTORS: “WINE FACTORY”' } },
     // ---- S5 closed folder, then verdict ----
     { id: 'folder', type: 'folder', at: [1800, 1800], in: '@So-0.4', out: '@Convicted-0.02', props: { q: 'WHAT DID IT COST HIM?' } },
@@ -354,7 +355,7 @@ BM2.scene({
     { at: '@Send', beat: 'presenter-front', focus: 'tl2', sy: 770, pose: 'talk' },
     { at: '@sniffs', beat: 'presenter-front', focus: 'tl2', sy: 770, zoom: 1.0, pose: 'shrug', dur: 0.6 },
     { at: '@2012', beat: 'graphic-hero', focus: 'door', move: 'whip', sx: 540, sy: 790, fill: 0.88, maxH: 700, st: 'corner-left', pose: 'shock' },
-    { at: '@Prosecutors', beat: 'side-by-side', focus: 'bench', sx: 540, sy: 800, fill: 0.92, maxH: 1000, st: 'corner-left', pose: 'point', dur: 0.9 },
+    { at: '@Prosecutors', beat: 'side-by-side', focus: ['bench', 'kit'], sx: 540, sy: 905, fill: 0.92, maxH: 880, st: 'corner-left', pose: 'point', dur: 0.9 },
     { at: '@Thousands', beat: 'zoom-on-number', focus: 'bench.printer', fill: 0.62, maxH: 520, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@So', beat: 'side-by-side', focus: 'folder', move: 'whip', sx: 540, sy: 790, fill: 0.7, maxH: 960, st: 'left', pose: 'point' },
     { at: '@Follow', beat: 'graphic-hero', focus: 'folder', sy: 790, fill: 0.7, maxH: 960, st: 'corner-left', dur: 0.8 },

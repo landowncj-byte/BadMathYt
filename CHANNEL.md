@@ -123,3 +123,4 @@ decisions:
 - 2026-11-25: User: "find real pictures of everyone you use in the videos and use stock images where you see fit; Canva is connected" → RULES.md real-photo rule; brand/tools/photos.py (Wikimedia Commons, licensed only); environment hosts commons.wikimedia.org + upload.wikimedia.org added; engine v2 gets a `photo` element. First use: today's long-form (Madoff, Ponzi, De Angelis, Markopolos — all public domain).
 - 2026-11-25: Owner: Short covers = first or last frame, "I'll set it myself" → no cover.png for Shorts. Long-form thumbnails keep real photos.
 - 2026-11-25: Owner: stock only where a clean free photo exists, no watermarks ever; no Canva AI stock.
+- 2026-11-25: Pexels MCP idea dropped by owner (no API key available). Stock stays Wikimedia Commons only.

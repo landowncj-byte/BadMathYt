@@ -1,10 +1,12 @@
 // Instagram/Facebook cut — Stations: cheque+crate (0,0) · bench (1750,0) · payoff bottle+timeline (3500,0) · verdict (5200,0)
 BM2.scene({
   series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 22.58,
-  footnote: ['CONVICTED 2013 · 10 YEARS · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: CHEQUE, CRATE, BENCH, BOTTLE, LABELS (GENERIC)'],
+  footnote: ['CONVICTED 2013 · 10 YEARS · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: CHEQUE, CRATE, BENCH, BOTTLE, LABELS (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'cheque', type: 'cheque', at: [0, 20], in: -1, props: { amount: '$2.1 MILLION', top: 'FOR FAKE-ASS WINE', note: 'HE TOLD THE JURY' } },
     { id: 'fake', type: 'slamstamp', at: [210, 250], rot: 0.1, in: -1, props: { text: 'FAKE', tone: 'bad', size: 130 } },
+    { id: 'rk', type: 'photo', at: [1470, -640], in: '@seller-0.3', props: { src: 'brand/photos/rudy-kurniawan/2.jpg', name: 'RUDY KURNIAWAN', role: 'THE SELLER', credit: 'U.S. ICE · PUBLIC DOMAIN', treatment: 'paper', w: 380, aspect: 0.86, fx: 0.5, fy: 0.3, tilt: -0.03 } },
+    { id: 'kit', type: 'photo', at: [2020, -640], in: '@prosecutors-0.1', props: { src: 'brand/photos/rudy-kurniawan/3.jpg', name: '', credit: 'U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN', treatment: 'paper', w: 480, aspect: 0.68, fx: 0.5, fy: 0.5, tilt: 0.025 } },
     { id: 'bench', type: 'bench', at: [1750, 0], in: '@Double+0.6', props: { pourAt: '@house', corkAt: '@factory-0.6', labelAt: '@factory-0.2', printAt: '@factory', printDur: 1.2, tagAt: '@prosecutors', tag: 'PROSECUTORS: “WINE FACTORY”' } },
     { id: 'tbottle', type: 'bottle', at: [3200, 60], in: '@What-0.4', props: { year: '1945', turnAt: '@bottle-0.1' } },
     { id: 'tcard', type: 'wintl', at: [3830, 100], in: '@What-0.4', props: { firstAt: '@1982', axisAt: '@winery', bracketAt: '@1982+0.5', sub: 'PER TRIAL TESTIMONY · ILLUSTRATION' } },
@@ -14,7 +16,7 @@ BM2.scene({
     { id: 'club', type: 'text', layer: 'screen', at: [540, 400], in: '@Double+0.1', out: '@Double+1.9', props: { lines: [[['CHEAP WINE CLUB', 'gold']]], size: 70 } },
     { id: 'sb', type: 'bottle', layer: 'screen', at: [790, 1090], scale: 0.46, in: '@Double', out: '@Double+1.7', props: { sticker: '$6', screw: true, dust: false } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 830], in: '@Double-0.05', out: '@Double+1.15', props: { s: 1 } },
-    { id: 'sec', type: 'text', layer: 'screen', at: [540, 400], in: '@seller-0.1', out: '@Send-0.2', props: { lines: [[['THE SELLER?', 'paper']]], size: 84 } },
+    { id: 'sec', type: 'text', layer: 'screen', at: [540, 335], in: '@seller-0.1', out: '@prosecutors+0.1', props: { lines: [[['THE SELLER?', 'paper']]], size: 84 } },
     { id: 'gl', type: 'glass', layer: 'screen', at: [330, 1190], in: '@Send-0.1', out: '@Send+1.25', props: { s: 0.8 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
@@ -25,7 +27,7 @@ BM2.scene({
     { at: '@$2', beat: 'zoom-on-number', focus: 'cheque.amount', fill: 0.86, maxH: 520, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.45 },
     { at: '@fake', beat: 'graphic-hero', focus: ['cheque', 'fake'], sy: 840, fill: 0.9, maxH: 1050, st: 'corner-left', pose: 'point', dur: 0.6 },
     { at: '@Double', beat: 'presenter-front', focus: 'cheque', sy: 760, pose: 'talk' },
-    { at: '@seller', beat: 'side-by-side', focus: 'bench', move: 'whip', sx: 540, sy: 800, fill: 0.92, maxH: 1000, st: 'corner-left', pose: 'point' },
+    { at: '@seller', beat: 'side-by-side', focus: ['bench', 'rk', 'kit'], move: 'whip', sx: 540, sy: 905, fill: 0.92, maxH: 880, st: 'corner-left', pose: 'point' },
     { at: '@factory', beat: 'zoom-on-number', focus: 'bench.printer', fill: 0.6, maxH: 520, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@Send', beat: 'presenter-front', focus: 'bench', sy: 760, pose: 'talk' },
     { at: '@What', beat: 'side-by-side', focus: ['tbottle', 'tcard'], move: 'whip', sx: 540, sy: 840, fill: 0.92, maxH: 1050, st: { x: 900, y: 1350, s: 1.0 }, pose: 'point' },
