@@ -201,7 +201,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         if (fl) { const ft = t - fl[0]; burst(g, cx, cy, 120, theme.bad, ft - 0.03, 12, 0.45); if (ft < 1.2) { g.save(); g.strokeStyle = rgba(theme.bad, 0.9 * (1 - lin(ft, 0.6, 1.2))); g.lineWidth = 7; rr(g, cx - 89, cy - 45, 178, 90, 18); g.stroke(); g.restore(); } }
       }
       // ---- pile vs bar ----
-      const baseY = y0 + 1100, H = 300, dd = Math.max(day, 1), v = dol(1) * Math.pow(2, dd - 1), vmax = Math.max(1e6, v), hm = 1e6 / vmax * H, hp = day < 0.99 ? 0 : Math.max(14, v / vmax * H), mx = -220, px = 190, bw = 290, pw = 240;
+      const baseY = y0 + 1100, H = 280, dd = Math.max(day, 1), v = dol(1) * Math.pow(2, dd - 1), vmax = Math.max(1e6, v), hm = 1e6 / vmax * H, hp = day < 0.99 ? 0 : Math.max(14, v / vmax * H), mx = -220, px = 190, bw = 290, pw = 240;
       g.fillStyle = theme.ink; g.fillRect(x0 + 40, baseY, w - 80, 6);
       if (hm > 1) { clay(g, mx - bw / 2, baseY - hm, bw, hm, 14, '#1FA366', { shadowK: 0.6 }); g.save(); rr(g, mx - bw / 2, baseY - hm, bw, hm, 14); g.clip(); g.fillStyle = 'rgba(0,0,0,.13)'; for (let y = baseY - 18; y > baseY - hm; y -= 18) g.fillRect(mx - bw / 2, y, bw, 2.5); g.fillStyle = 'rgba(245,243,238,.82)'; g.fillRect(mx - 24, baseY - hm, 48, hm); g.restore(); }
       txt(g, '$1,000,000', mx, baseY - hm - 38, F.hero(54), theme.goodInk);
@@ -252,7 +252,7 @@ BM2.scene({
     { id: 'board', type: 'board', at: [1750, 0], in: '@doubles', props: { unrollAt: '@doubles+0.15',
       ticker: [[0, 0], [11.8, 0], [13.0, 10], [16.0, 10], [17.35, 20], [21.0, 20], [24.9, 27], [36.5, 27], [36.95, 28], [38.45, 28], [39.5, 30], [41.0, 30], [42.3, 20]],
       glow: [[27.7, 28], [28.0, 29], [28.3, 30]], flash: [[24.95, 27]], rainAt: 39.45, rainEnd: 41.4,
-      notes: [{ at: '@190-0.2', out: '@Send+0.3', text: 'A IS STILL ≈190× BIGGER', tone: 'bad' }, { at: '@still#2-0.1', out: '@Cause', text: '3 DAYS LEFT · STILL BEHIND', tone: 'bad' }] } },
+      notes: [{ at: '@190-0.2', out: '@Send+0.3', text: 'A IS STILL ≈190× BIGGER', tone: 'bad' }, { at: '@still#2-0.1', out: '@Cause', text: '3 DAYS LEFT · STILL BEHIND', tone: 'bad' }, { at: '@math', out: 36.5, text: 'DAY 28…', tone: 'ink', fg: '#FFD60A' }] } },
     { id: 'ab', type: 'ab', at: [1750, -60], in: 4.4, out: '@Okay-0.05', props: { aAt: '@million#2', bAt: '@penny#2', splitAt: '@doubles', wiggleAt: '@Everybody+0.25' } },
     { id: 'pie', type: 'pie', at: [1750, -130], in: '@Cause-0.1', out: '@Follow-0.1', props: { r: 230, center: { to: 87.5, suffix: '%', decimals: 1, at: '@seven', dur: 0.9, label: 'IN THE LAST 3 DAYS', tone: 'accent' },
       slices: [{ value: 12.5, tone: 'soft', label: 'DAYS 1–27', at: '@Cause' }, { value: 87.5, tone: 'accent', label: 'DAYS 28–30', at: '@seven-0.1' }] } },
@@ -263,7 +263,6 @@ BM2.scene({
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@like', props: { s: 1, dur: 0.9 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@Follow+0.05', out: '@Follow+1.45', props: { press: 0.55 } },
-    { id: 't28', type: 'text', layer: 'screen', at: [540, 400], in: '@math', out: 36.5, props: { lines: [[['DAY 28…', 'accent']]], size: 130 } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@holding-0.3', out: 44.1, props: { l1: 'DAY 20 · STILL HOLDING?', l2: 'YES / NO · COMMENT', size: 44, tail: 'left' } },
   ],
   beats: [
@@ -298,7 +297,7 @@ BM2.scene({
     { at: '@last', beat: 'zoom-on-number', focus: 'pie.center', fill: 0.6, sy: 760, rot: 0.01, st: ST, pose: 'shock', dur: 0.5, blur: 9, dim: 0.6 },
     // follow -> payoff
     { at: '@Follow', beat: 'presenter-front', focus: 'board', sy: 820, pose: 'follow' },
-    { at: '@math', beat: 'graphic-hero', focus: 'board.cal', fill: 0.9, sy: 780, st: ST, pose: 'point', dur: 1.0 },
+    { at: '@math', beat: 'graphic-hero', focus: 'board', fill: 0.9, maxH: 1020, sy: 830, st: ST, pose: 'point', dur: 1.0 },
     { at: '@28', beat: 'zoom-on-number', focus: 'board.t28', fill: 0.5, sy: 760, rot: -0.01, st: ST, pose: 'shock', dur: 0.5 },
     { at: '@1', beat: 'graphic-hero', focus: 'board.pile', fill: 0.92, maxH: 700, sy: 800, st: ST, pose: 'shock' },
     { at: 38.45, beat: 'zoom-on-number', focus: 'board.day', fill: 0.62, sy: 640, rot: 0.01, st: ST, pose: 'shock', dur: 0.5 },

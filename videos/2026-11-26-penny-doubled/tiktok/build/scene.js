@@ -201,7 +201,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         if (fl) { const ft = t - fl[0]; burst(g, cx, cy, 120, theme.bad, ft - 0.03, 12, 0.45); if (ft < 1.2) { g.save(); g.strokeStyle = rgba(theme.bad, 0.9 * (1 - lin(ft, 0.6, 1.2))); g.lineWidth = 7; rr(g, cx - 89, cy - 45, 178, 90, 18); g.stroke(); g.restore(); } }
       }
       // ---- pile vs bar ----
-      const baseY = y0 + 1100, H = 300, dd = Math.max(day, 1), v = dol(1) * Math.pow(2, dd - 1), vmax = Math.max(1e6, v), hm = 1e6 / vmax * H, hp = day < 0.99 ? 0 : Math.max(14, v / vmax * H), mx = -220, px = 190, bw = 290, pw = 240;
+      const baseY = y0 + 1100, H = 280, dd = Math.max(day, 1), v = dol(1) * Math.pow(2, dd - 1), vmax = Math.max(1e6, v), hm = 1e6 / vmax * H, hp = day < 0.99 ? 0 : Math.max(14, v / vmax * H), mx = -220, px = 190, bw = 290, pw = 240;
       g.fillStyle = theme.ink; g.fillRect(x0 + 40, baseY, w - 80, 6);
       if (hm > 1) { clay(g, mx - bw / 2, baseY - hm, bw, hm, 14, '#1FA366', { shadowK: 0.6 }); g.save(); rr(g, mx - bw / 2, baseY - hm, bw, hm, 14); g.clip(); g.fillStyle = 'rgba(0,0,0,.13)'; for (let y = baseY - 18; y > baseY - hm; y -= 18) g.fillRect(mx - bw / 2, y, bw, 2.5); g.fillStyle = 'rgba(245,243,238,.82)'; g.fillRect(mx - 24, baseY - hm, 48, hm); g.restore(); }
       txt(g, '$1,000,000', mx, baseY - hm - 38, F.hero(54), theme.goodInk);
@@ -237,6 +237,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
 })();
 const ST = { x: 125, y: 1330, s: 0.9, layer: 'front' };
 const F0 = { x: 0, y: -100, w: 780, h: 1020 };
+const F0e = { x: 0, y: 2100, w: 780, h: 1020 };
 const FR = { fill: 0.82, maxH: 1010, sx: 600, sy: 830 };
 const HOOK = { lines: [[['YOU PICKED', 'paper']], [['THE PENNY', 'accent']]], size: 150 };
 BM2.scene({
@@ -247,13 +248,13 @@ BM2.scene({
     { id: 'hook', type: 'text', at: [0, -400], in: -1, out: 2.4, props: HOOK },
     { id: 'art', type: 'hookart', at: [0, 80], in: -1, out: 2.45, props: { variant: 'slap' } },
     // --- the calendar page slams down on day 20 ---
-    { id: 'board', type: 'board', at: [0, 0], enter: 'slam', in: 2.35, out: 33.1, props: {
+    { id: 'board', type: 'board', at: [0, 0], enter: 'slam', in: 2.35, out: 33.2, props: {
       ticker: [[0, 20], [9.4, 20], [10.9, 10], [12.9, 10], [14.05, 27], [21.0, 27], [21.7, 28], [26.5, 28], [28.5, 30]],
       glow: [[19.0, 28], [19.35, 29], [19.7, 30]], flash: [[14.1, 27]], rainAt: 28.45, rainEnd: 30.5,
-      notes: [{ at: 2.8, out: 4.7, text: 'DAY 20 · $5,242.88', tone: 'ink', fg: '#FFD60A' }, { at: '@Still', out: '@Send-0.2', text: 'STILL BEHIND', tone: 'bad' }, { at: '@28', out: '@Follow-0.2', text: 'DAY 28 · AHEAD', tone: 'good' }] } },
+      notes: [{ at: 2.8, out: 4.7, text: 'DAY 20 · $5,242.88', tone: 'ink', fg: '#FFD60A' }, { at: '@Still', out: '@Send-0.2', text: 'STILL BEHIND', tone: 'bad' }, { at: '@28', out: '@Follow-0.2', text: 'DAY 28 · AHEAD', tone: 'good' }, { at: '@last', out: 27.6, text: 'DAY 30…', tone: 'ink', fg: '#FFD60A' }] } },
     // --- loop frame ---
-    { id: 'endt', type: 'text', at: [0, -400], in: 33.2, props: HOOK },
-    { id: 'art2', type: 'hookart', at: [0, 80], in: 33.2, props: { variant: 'slap', reAt: 33.4 } },
+    { id: 'endt', type: 'text', at: [0, 1800], in: 33.0, props: HOOK },
+    { id: 'art2', type: 'hookart', at: [0, 2280], in: 33.0, props: { variant: 'slap', reAt: 33.4 } },
     // --- screen-fixed ---
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: 0.4, props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'reg', type: 'text', layer: 'screen', at: [540, 430], in: '@Regret', out: '@One-0.1', props: { lines: [[['REGRET', 'bad']], ['IT YET?']], size: 120 } },
@@ -261,8 +262,7 @@ BM2.scene({
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@heart', props: { s: 1, dur: 0.9 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@Follow+0.05', out: '@Follow+1.45', props: { press: 0.55 } },
-    { id: 'd30', type: 'text', layer: 'screen', at: [540, 430], in: '@last', out: 27.0, props: { lines: [[['DAY 30…', 'accent']]], size: 150 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@So-0.1', out: 33.1, props: { l1: 'PENNY or MILLION?', l2: 'ONE WORD · COMMENT', size: 48, tail: 'left' } },
+        { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@So-0.1', out: 33.1, props: { l1: 'PENNY or MILLION?', l2: 'ONE WORD · COMMENT', size: 48, tail: 'left' } },
   ],
   beats: [
     { at: 0, beat: 'side-by-side', focus: F0, ...FR, pose: 'shock', keep: ['hook', 'art', 'endt', 'art2'] },
@@ -283,12 +283,12 @@ BM2.scene({
     { at: '@28', beat: 'zoom-on-number', focus: 'board.t28', fill: 0.5, sy: 760, rot: 0.01, st: ST, pose: 'shock', dur: 0.5 },
     { at: '@finally', beat: 'zoom-on-number', focus: 'board.meter', fill: 0.9, sy: 700, rot: -0.01, st: ST, pose: 'shock', dur: 0.5 },
     { at: '@Follow', beat: 'presenter-front', focus: 'board', sy: 820, pose: 'follow' },
-    { at: '@last', beat: 'graphic-hero', focus: 'board.cal', fill: 0.9, sy: 800, st: ST, pose: 'point' },
+    { at: '@last', beat: 'graphic-hero', focus: 'board', fill: 0.9, maxH: 1020, sy: 830, st: ST, pose: 'point' },
     { at: '@30#2', beat: 'zoom-on-number', focus: 'board.day', fill: 0.62, sy: 640, rot: 0.01, st: ST, pose: 'shock', dur: 0.5 },
     { at: '@5', beat: 'zoom-on-number', focus: 'board.stack', fill: 0.9, maxH: 570, sy: 700, rot: -0.01, st: ST, pose: 'shock', dur: 0.55 },
     { at: 30.3, beat: 'graphic-hero', focus: 'board', fill: 0.9, maxH: 1020, sy: 830, st: ST, pose: 'idle', dur: 1.0 },
     { at: '@So', beat: 'presenter-front', focus: 'board', sy: 820, pose: 'you' },
-    { at: 33.1, beat: 'side-by-side', focus: F0, move: 'whip', ...FR, pose: 'shock', keep: ['hook', 'art', 'endt', 'art2'] },
+    { at: 33.0, beat: 'side-by-side', focus: F0e, move: 'whip', ...FR, pose: 'shock', keep: ['hook', 'art', 'endt', 'art2'] },
   ],
   poses: [['@Follow', 'follow', { target: [650, 1120] }]],
   shakes: [[0.1, 8], [2.35, 10], ['@5', 20], ['@28', 8]],

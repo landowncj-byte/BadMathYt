@@ -50,7 +50,7 @@ BM2.scene({
     { at: 19.0, beat: 'side-by-side', focus: F0e, move: 'whip', ...FR, pose: 'shock', keep: ['ab', 'art', 'ab2', 'art2', 'pick'] },
   ],
   shakes: [[0.1, 8], ['@Pick', 8], ['@5', 20], ['@27', 8]],
-  captions: { emph: { 'million': 'good', 'penny': 'accent', 'double': 'accent', '20,': 'accent', 'grand.': 'accent', '27,': 'bad', 'losing.': 'bad', '5.37': 'good', 'fucking': 'bad', 'Seven': 'accent', 'eighths': 'accent' }, fix: [['penny,', 'penny?'], ['double tap.', 'Double-tap.'], ['30 days.', '30 days?'], ['5.37', '$5.37'], ['30,', '30?'], ['So penny', 'So, penny']] },
+  captions: { emph: { 'million': 'good', 'penny': 'accent', 'double': 'accent', '20,': 'accent', 'grand.': 'accent', '27,': 'bad', 'losing.': 'bad', '5.37': 'good', 'fucking': 'bad', 'Seven': 'accent', 'eighths': 'accent' }, fix: [['penny,', 'penny?'], ['double tap.', 'Double-tap.'], ['30 days.', '30 days?'], ['5.37', '$5.37'], ['30,', '30?'], ['So penny', 'So, penny'], ['or million.', 'or million?']] },
   bed: { name: 'upbeat_bed_2', gain: -1 },
   sfx: [
     { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.06, name: 'paper_slam_1', gain: -7, dur: 0.5 },
