@@ -263,7 +263,8 @@
       bd(Q.two, 'zoom-on-number', 'dbl.r2', { fill: 0.98, sy: 800, rot: 0.008, st: 'corner-left', pose: 'point' }),
       bd(Q.four, 'zoom-on-number', 'dbl.r3', { fill: 0.98, sy: 800, rot: -0.008, st: 'corner-left', pose: 'shock' }),
       bd(Q.dblTail, 'graphic-hero', 'dbl', { fill: 0.92, maxH: 880, sy: 885, st: 'corner-left', pose: 'chin' }),
-      bd(Q.like, 'presenter-front', 'dbl', { sy: 885, st: undefined, pose: 'you' }),
+      ...(c.line5 ? c.line5(bd) : []),
+      bd(Q.like, 'presenter-front', Q.likeFocus || 'dbl', { sy: 885, st: undefined, pose: 'you' }),
       // THE WAIT — week, day 10, day 20
       ...c.waitBeats(bd),
       // THE TURN

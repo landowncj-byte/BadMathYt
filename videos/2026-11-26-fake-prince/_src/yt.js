@@ -164,7 +164,7 @@ BM2.scene({
   shakes: [[0.05, 14], ['@$8+1.3', 10], ['@fake#2', 8], ['@11', 14], ['@guilty', 14], ['@18', 12], ['@pork', 26], ['@flag', 12]],
   captions: {
     emph: { '$8': 'bad', million: 'bad', fake: 'bad', '11': 'bad', '18': 'bad', pork: 'bad', '30': 'accent', '22': 'accent', royalty: 'accent', dumber: 'bad' },
-    fix: [['the slip up.', 'the slip-up.']],
+    fix: [['the slip up.', 'the slip-up.'], ['Spend 1,000', 'Spend $1,000']],
     gap: 16,
   },
   bed: { name: 'tense_bed_2', gain: -1 },

@@ -164,7 +164,7 @@ BM2.scene({
   shakes: [[0.05, 14], ['@8+1.3', 10], ['@fake', 8], ['@11#2', 14], ['@guilty', 14], ['@18', 12], ['@pork', 26], ['@suspicious', 10]],
   captions: {
     emph: { '8': 'bad', million: 'bad', fake: 'bad', '11': 'bad', '18': 'bad', pork: 'bad', '30': 'accent', '22': 'accent', royalty: 'accent', dumber: 'bad', dumb: 'bad', 'dumbest': 'bad' },
-    fix: [['than 8 million', 'than $8 million'], ["how'd he how this dumbest", "how'd he— how'd this dumbass"], ['Follow the', 'Follow, the'], ['answer so dumb.', "answer's so dumb."], ['dumber the pork', 'dumber, the pork']],
+    fix: [['than 8 million', 'than $8 million'], ["how'd he how this dumbass", "how'd he— how'd this dumbass"], ['Follow, the answers so dumb.', "Follow, the answer's so dumb."], ['the hard', 'the heart']],
     gap: 16,
   },
   bed: { name: 'tense_bed_2', gain: -1 },

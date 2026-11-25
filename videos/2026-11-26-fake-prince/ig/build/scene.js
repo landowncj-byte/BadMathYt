@@ -652,7 +652,7 @@ BM2.scene({
   shakes: [[0.05, 14], ['@8+1.3', 10], ['@fake', 8], ['@11', 14], ['@guilty', 12], ['@18', 20], ['@order#2', 14], ['@tipped', 12]],
   captions: {
     emph: { '8': 'bad', million: 'bad', fake: 'bad', '11': 'bad', '18': 'bad', pork: 'bad', '30': 'accent', '22': 'accent', royalty: 'accent', dumber: 'bad', dumbass: 'bad', 'dumbest': 'bad' },
-    fix: [],
+    fix: [['than 8 million', 'than $8 million'], ['Follow cause', "Follow, 'cause"]],
     gap: 16,
   },
   bed: { name: 'tense_bed_2', gain: -1 },
