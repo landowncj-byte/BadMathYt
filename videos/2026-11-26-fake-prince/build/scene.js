@@ -499,9 +499,9 @@ BM2.scene({
   elements: [
     // ---- S0 frame 0 (loop target) ----
     { id: 'hook', type: 'hook', at: [0, -430], in: 0, out: '@dinner+0.05', props: { lines: [[['FAKE PRINCE · ', 'paper'], ['~30 YEARS', 'gold']], [['THEN HE ORDERED DINNER', 'bad']]], sizes: [74, 74] } },
-    { id: 'hook2', type: 'hook', at: [0, -430], in: '@Would#4+0.3', props: { lines: [[['FAKE PRINCE · ', 'paper'], ['~30 YEARS', 'gold']], [['THEN HE ORDERED DINNER', 'bad']]], sizes: [74, 74] } },
-    { id: 'royal', type: 'royal', at: [-200, 105], in: -1, props: { crownAt: 0, offAt: 60, reAt: '@Would#4+0.3' } },
-    { id: 'cloche', type: 'cloche', at: [330, 145], in: -1, props: { slamIn: true, liftAt: 61, closeAt: '@Would#4+0.3' } },
+    { id: 'hook2', type: 'hook', at: [0, -430], in: '@Would#3+0.3', props: { lines: [[['FAKE PRINCE · ', 'paper'], ['~30 YEARS', 'gold']], [['THEN HE ORDERED DINNER', 'bad']]], sizes: [74, 74] } },
+    { id: 'royal', type: 'royal', at: [-200, 105], in: -1, props: { crownAt: 0, offAt: 60, reAt: '@Would#3+0.3' } },
+    { id: 'cloche', type: 'cloche', at: [330, 145], in: -1, props: { slamIn: true, liftAt: 61, closeAt: '@Would#3+0.3' } },
     // ---- S1 who ----
     { id: 'mug', type: 'photo', at: [1700, 30], in: '@So-0.35', props: { src: MUG, name: 'ANTHONY GIGNAC', role: 'FLORIDA · MIAMI BOOKING PHOTO', credit: 'MIAMI-DADE COUNTY · PUBLIC DOMAIN', treatment: 'mugshot', w: 450, aspect: 1.02, fx: 0.74, fy: 0.4, tilt: -0.03 } },
     { id: 'zero', type: 'text', at: [2370, 20], in: '@zero-0.2', props: { lines: [[['ZERO', 'bad']], [['ROYAL', 'paper']], [['BLOOD', 'paper']]], size: 104 } },
@@ -548,7 +548,7 @@ BM2.scene({
     { id: 'mag', type: 'mag', layer: 'screen', at: [830, 1010], in: '@Follow-0.05', out: '@Follow+1.45', props: { press: 0.5 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@Follow-0.05', out: '@Follow+1.45', props: { press: 0.5 } },
     { id: 'slip', type: 'text', layer: 'screen', at: [540, 440], in: '@never-0.2', out: '@At-0.05', props: { lines: [[['THE SLIP-UP…', 'gold']]], size: 92 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@Would#4', out: '@caught+0.5', props: { l1: 'WOULD YOU HAVE', l2: 'CAUGHT IT?', size: 52, tail: 'left' } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@Would#3', out: '@caught+0.5', props: { l1: 'WOULD YOU HAVE', l2: 'CAUGHT IT?', size: 52, tail: 'left' } },
     { id: 'hud', type: 'hud', layer: 'screen', at: [0, 0], in: -1, props: {
       labels: [{ at: -1, text: 'THE PITCH' }, { at: '@First-0.25', text: 'THE PROPS' }, { at: '@Okay-0.2', text: 'THE MONEY' }, { at: '@gets-0.25', text: 'THE SENTENCE' }, { at: '@After-0.2', text: 'THE SLIP' }],
       items: [{ at: 0, label: 'THE ACT · YEAR', from: 1988, to: 2017, dur: 2.4, commas: false }, { at: '@zero', label: 'ROYAL BLOOD', to: 0, dur: 0.5 }, { at: '@First', label: 'PROPS SO FAR', to: 1, dur: 0.4 }, { at: '@Then#2', label: 'PROPS SO FAR', to: 2, dur: 0.4 },
@@ -601,7 +601,7 @@ BM2.scene({
     { at: '@million', beat: GH, focus: 'taken', sy: 800, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'shock', dur: 0.8 },
     // $1,000 a day
     { at: '@Spend', beat: SB, focus: 'cal', move: 'whip', sx: 540, sy: 860, fill: 0.72, maxH: 850, st: 'left', pose: 'point' },
-    { at: '@000', beat: ZN, focus: 'cal.head', fill: 0.8, maxH: 300, sy: 600, st: 'corner', pose: 'point', dur: 0.45 },
+    { at: '@thousand', beat: ZN, focus: 'cal.head', fill: 0.8, maxH: 300, sy: 600, st: 'corner', pose: 'point', dur: 0.45 },
     { at: '@every', beat: GH, focus: 'cal', sy: 860, fill: 0.72, maxH: 850, st: 'corner-left', dur: 0.7 },
     { at: '@22', beat: ZN, focus: 'cal.years', fill: 0.8, maxH: 420, sy: 850, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@years#2+0.25', beat: GH, focus: 'cal', sy: 860, fill: 0.72, maxH: 850, st: 'corner-left', pose: 'idle', dur: 0.8 },
@@ -648,14 +648,14 @@ BM2.scene({
     // red flag
     { at: '@30#3-0.1', beat: SB, focus: ['fl', 'flag'], move: 'whip', sx: 540, sy: 880, fill: 0.78, maxH: 1000, st: 'corner-left', pose: 'idle' },
     { at: '@flag', beat: ZN, focus: 'flag', fill: 0.6, maxH: 420, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 },
-    { at: '@Would#4', beat: PF, focus: ['fl', 'flag'], sy: 880, pose: 'talk' },
+    { at: '@Would#3', beat: PF, focus: ['fl', 'flag'], sy: 880, pose: 'talk' },
     { at: '@caught', beat: SB, focus: ['hook2', 'royal', 'cloche'], move: 'whip', sx: 540, sy: 930, fill: 0.98, maxH: 960, st: { x: 130, y: 1350, s: 1.1 }, pose: 'shock' },
   ],
   poses: [['@Follow-0.1', 'follow', { target: [830, 1010] }], ['@Follow+1.5', 'talk']],
   shakes: [[0.05, 14], ['@$8+1.3', 10], ['@fake#2', 8], ['@11', 14], ['@guilty', 14], ['@18', 12], ['@pork', 26], ['@flag', 12]],
   captions: {
     emph: { '$8': 'bad', million: 'bad', fake: 'bad', '11': 'bad', '18': 'bad', pork: 'bad', '30': 'accent', '22': 'accent', royalty: 'accent', dumber: 'bad' },
-    fix: [['the slip up.', 'the slip-up.'], ['Spend 1,000', 'Spend $1,000']],
+    fix: [['the slip up.', 'the slip-up.']],
     gap: 16,
   },
   bed: { name: 'tense_bed_2', gain: -1 },
@@ -682,6 +682,6 @@ BM2.scene({
     { at: "@Here's", name: 'swipe_2', gain: -11, dur: 0.4 }, { at: '@Saudi#3', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@Islam', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@So#4', name: 'click_1', gain: -9, dur: 0.3 },
     { at: '@victim-0.1', name: 'rubber_stamp_2', gain: -7, dur: 0.5 }, { at: '@victim', name: 'pop_1', gain: -8, dur: 0.5 }, { at: '@suspicious', name: 'thud_1', gain: -8, dur: 0.4 },
     { at: '@flag', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@flag', name: 'deep_boom_2', gain: -8, dur: 0.5 },
-    { at: '@Would#4', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@caught', name: 'thud_1', gain: -8, dur: 0.4 },
+    { at: '@Would#3', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@caught', name: 'thud_1', gain: -8, dur: 0.4 },
   ],
 });

@@ -6,12 +6,12 @@ const Q = {
   send: '@Send', follow: null, seven: '@seven', pieIn: '@Almost-0.2', pieOut: '@So#3-0.2', boomIn: '@past', boom: '@5', ask: '@penny#4-0.2', loop: '@million#7+0.2',
 };
 const K = [[0, 1], ['@two#2-0.25', 1], ['@two#2+0.05', 2], ['@four-0.25', 2], ['@four+0.05', 3], ['@twice', 3], ['@before-0.1', 3], ['@before+0.2', 4],
-  ['@weekend-0.3', 3], ['@64', 7], ['@10-0.45', 7], ['@10+0.1', 10], ['@20-0.35', 10], ['@20+0.1', 20],
+  ['@week-0.3', 3], ['@64', 7], ['@10-0.45', 7], ['@10+0.1', 10], ['@20-0.35', 10], ['@20+0.1', 20],
   ['@day#6-0.4', 20], ['@27+0.0', 27], ['@28-0.15', 27], ['@28+0.15', 28], ['@29-0.15', 28], ['@29+0.15', 29], ['@5-0.55', 29], ['@5-0.05', 30],
   ['@So#3-0.05', 30], ['@So#3+0.45', 20], ['@million#7+0.1', 20], ['@million#7+0.6', 1]];
 const HOOK = { lines: [[['TAKING THE MILLION', 'paper']], [['COSTS YOU ', 'paper'], ['OVER $4,000,000', 'bad']]], size: 84 };
 const S = PDS.make({
-  dur: 65.66, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150, drop: 110 },
+  dur: 68.67, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150, drop: 110 },
   stamps: [{ id: 'stamp', type: 'stamp', at: [-40, 230], rot: -0.08, in: '@$4', out: Q.hookEnd, props: { text: 'OVER $4M LOST', tone: 'bad', size: 72 } }],
   hookBeats: [
     { at: 0.45, beat: 'zoom-on-number', focus: 'hook', fill: 0.82, sy: 570, rot: 0.008, pose: 'point', keep: ['hook', 'art', 'endt'] },
@@ -27,7 +27,7 @@ const S = PDS.make({
   ],
   waitBeats: bd => [
     bd('@Cause', 'graphic-hero', 'board', { move: 'whip', fill: 0.9, maxH: 1010, sy: 860, pose: 'shrug' }),
-    bd('@weekend', 'zoom-on-number', 'board.t7', { fill: 0.4, sy: 700, rot: 0.01, pose: 'point', dur: 0.5 }),
+    bd('@week', 'zoom-on-number', 'board.t7', { fill: 0.4, sy: 700, rot: 0.01, pose: 'point', dur: 0.5 }),
     bd('@64+0.05', 'graphic-hero', 'pile', { move: 'whip', fill: 0.92, maxH: 860, sy: 900, pose: 'shock' }),
     bd('@10-0.1', 'graphic-hero', 'pile.pen', { fill: 0.7, maxH: 760, sy: 900, pose: 'point' }),
     bd('@five', 'zoom-on-number', 'pile.count', { fill: 0.7, sy: 900, rot: -0.01, pose: 'shock', dur: 0.5 }),
@@ -67,7 +67,7 @@ const S = PDS.make({
   shakes: [[0.1, 8], ['@$4', 8], ['@5', 26], ['@past', 12], ['@27', 8], ['@64', 6]],
   poses: [['@Double', 'you'], ['@Send', 'you']],
   captions: { gap: 16, emph: { '64': 'good', 'cents.': 'good', million: 'good', '190': 'bad', '27,': 'bad', 'losing.': 'bad', 'fucking': 'bad', '28,': 'good', '30,': 'good', 'seven': 'accent', 'eighths': 'accent', 'penny': 'accent', 'grand.': 'accent', 'nuts.': 'accent', 'idiot.': 'bad' },
-    fix: [['$5 .37', '$5.37'], ['5 .37', '$5.37'], ['671', '$671'], ["Cause yeah,", "'Cause yeah,"], ['Cause', "'Cause"]] },
+    fix: [['5.37', '$5.37'], ['671', '$671'], ["Cause yeah,", "'Cause yeah,"], ['Cause', "'Cause"]] },
   sfx: [
     { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.06, name: 'paper_slam_1', gain: -7, dur: 0.5 },
     { at: '@$4', name: 'rubber_stamp_2', gain: -5, dur: 0.5 },
@@ -76,7 +76,7 @@ const S = PDS.make({
     { at: '@Doubling\'s-0.3', name: 'swoosh_1', gain: -9, dur: 0.8 }, { at: '@two#2', name: 'pop_1', gain: -8, dur: 0.4 }, { at: '@two#2+0.1', name: 'coin_single_1', gain: -9, dur: 0.5 }, { at: '@four', name: 'pop_2', gain: -8, dur: 0.4 }, { at: '@four+0.12', name: 'coin_single_1', gain: -9, dur: 0.5 },
     { at: '@twice', name: 'pop_2', gain: -9, dur: 0.4 }, { at: '@before', name: 'ding_2', gain: -9, dur: 0.6 },
     { at: '@four+0.5', name: 'ding_1', gain: -11, dur: 0.6 }, { at: '@Double', name: 'pop_2', gain: -9, dur: 0.3 },
-    { at: '@weekend-0.3', name: 'money_counter_1', gain: -13, dur: 1.0 }, { at: '@64', name: 'ding_2', gain: -9, dur: 0.6 },
+    { at: '@week-0.3', name: 'money_counter_1', gain: -13, dur: 1.0 }, { at: '@64', name: 'ding_2', gain: -9, dur: 0.6 },
     { at: '@10-0.45', name: 'money_counter_1', gain: -13, dur: 0.9 }, { at: '@10+0.1', name: 'ding_2', gain: -8, dur: 0.6 },
     { at: '@20-0.35', name: 'money_counter_2', gain: -13, dur: 1.4 }, { at: '@20+0.1', name: 'ding_2', gain: -8, dur: 0.6 },
     { at: '@190-0.2', name: 'click_1', gain: -9, dur: 0.25 }, { at: '@Send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 },

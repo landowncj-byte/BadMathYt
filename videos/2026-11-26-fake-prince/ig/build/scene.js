@@ -496,7 +496,7 @@ const MUG = 'brand/photos/anthony-gignac/1.jpg';
 const HOOK = { lines: [[['FAKE SAUDI PRINCE', 'paper']], [['THEN ORDERED PORK', 'bad']]], sizes: [96, 96] };
 const F0 = { sx: 540, sy: 930, fill: 0.98, maxH: 960, st: { x: 130, y: 1350, s: 1.1 } };
 BM2.scene({
-  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 87.08,
+  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 84.13,
   footnote: ['PLEADED GUILTY 2018 · SENTENCED MAY 31, 2019 · SOURCES: DOJ S.D. FLORIDA, AP', 'ABOUT 30 YEARS = 1988 TO THE 2017 ARREST · ILLUSTRATIONS / PROPS (GENERIC)', 'PHOTO: MIAMI-DADE COUNTY BOOKING PHOTO · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S0 frame 0 (loop target): crown + PORK ticket ----
@@ -652,7 +652,7 @@ BM2.scene({
   shakes: [[0.05, 14], ['@8+1.3', 10], ['@fake', 8], ['@11', 14], ['@guilty', 12], ['@18', 20], ['@order#2', 14], ['@tipped', 12]],
   captions: {
     emph: { '8': 'bad', million: 'bad', fake: 'bad', '11': 'bad', '18': 'bad', pork: 'bad', '30': 'accent', '22': 'accent', royalty: 'accent', dumber: 'bad', dumbass: 'bad', 'dumbest': 'bad' },
-    fix: [['than 8 million', 'than $8 million'], ['Follow cause', "Follow, 'cause"]],
+    fix: [['than 8 million', 'than $8 million']],
     gap: 16,
   },
   bed: { name: 'tense_bed_2', gain: -1 },

@@ -454,10 +454,9 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     const K = c.K, HOOK = c.hook.text, ART = { variant: c.hook.variant, drop: c.hook.drop };
     const els = [
       { id: 'hook', type: 'text', at: [0, c.hook.y ?? -330], in: -1, out: Q.hookEnd, props: HOOK },
-      { id: 'art', type: 'hookart', at: [0, c.hook.ay ?? 150], in: -1, out: Q.hookEnd2, props: { ...ART } },
+      { id: 'art', type: 'hookart', at: [0, c.hook.ay ?? 150], in: -1, props: { ...ART, reAt: Q.loopArt } },
       ...(c.stamps || []),
       { id: 'endt', type: 'text', at: [0, c.hook.y ?? -330], in: Q.loop, props: HOOK },
-      { id: 'art2', type: 'hookart', at: [0, (c.hook.ay ?? 150) + 2300], in: -1, props: { ...ART, reAt: Q.loopArt } },
       // station 1: the deal (A / B)
       { id: 'ab', type: 'ab', at: [1750, -60], in: Q.abIn, out: Q.abOut, props: { aAt: Q.a, bAt: Q.b, splitAt: Q.doubles, wiggleAt: Q.wiggle ?? NEVER } },
       // station 2: baby-level doubling
@@ -468,8 +467,8 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       { id: 'pile', type: 'pile', at: [7000, 0], in: Q.boardIn, props: { K } },
       // station 5: the 7/8 pie
       { id: 'pie', type: 'pie', at: [8750, -130], in: Q.pieIn, out: Q.pieOut, props: { r: 230, center: { size: 92, to: 87.5, suffix: '%', decimals: 1, at: Q.seven, dur: 0.9, label: 'LAST 3 DAYS', tone: 'paper' },
-        slices: [{ value: 12.5, tone: 'soft', label: 'DAYS 1–27', at: Q.pieIn }, { value: 87.5, tone: 'accent', label: 'DAYS 28–30', at: Q.seven + '-0.1' }] } },
-      { id: 'pieT', type: 'text', at: [8750, 178], in: Q.seven + '-0.1', out: Q.pieOut, props: { lines: [[['DAYS 28–30 = ', 'paper'], ['7/8', 'accent'], [' OF IT', 'paper']]], size: 54 } },
+        slices: [{ value: 12.5, tone: 'soft', at: Q.pieIn }, { value: 87.5, tone: 'accent', at: Q.seven + '-0.1' }] } },
+      { id: 'pieT', type: 'text', at: [8750, 168], in: Q.seven + '-0.1', out: Q.pieOut, props: { lines: [[['DAYS 28–30 = ', 'paper'], ['7/8', 'accent'], [' OF IT', 'paper']]], size: 54 } },
       // station 6: day 30
       { id: 'boom', type: 'boom', at: [10500, 0], in: Q.boomIn, props: { K, boomAt: Q.boom } },
       // screen-fixed
@@ -531,7 +530,7 @@ const K = [[0, 1], ['@two-0.25', 1], ['@two+0.05', 2], ['@four-0.25', 2], ['@fou
   ['@So#3-0.05', 30], ['@So#3+0.45', 20], ['@penny#6+0.1', 20], ['@penny#6+0.6', 1]];
 const HOOK = { lines: [[['1¢ BEATS ', 'paper'], ['$1,000,000', 'good']], [['BUT FIRST IT TORTURES YOU', 'accent']]], size: 80 };
 const S = PDS.make({
-  dur: 67.65, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150 },
+  dur: 71.19, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150 },
   stamps: [{ id: 'stamp', type: 'stamp', at: [-60, 230], rot: -0.08, in: '@tortures', out: Q.hookEnd, props: { text: '27 DAYS BEHIND', tone: 'bad', size: 70 } }],
   hookBeats: [
     { at: 0.45, beat: 'zoom-on-number', focus: 'hook', fill: 0.82, sy: 570, rot: 0.008, pose: 'point', keep: ['hook', 'art', 'endt'] },
@@ -575,7 +574,7 @@ const S = PDS.make({
     bd('@And#3', 'graphic-hero', 'boom', { move: 'whip', fill: 0.92, maxH: 860, sy: 900, pose: 'chin' }),
     bd('@$5#3-0.1', 'zoom-on-number', 'boom.num', { fill: 0.96, sy: 760, rot: 0.012, pose: 'shock', dur: 0.4 }),
     bd('@$5#3+1.6', 'graphic-hero', 'boom', { fill: 0.92, maxH: 860, sy: 900, pose: 'shock', dur: 0.9 }),
-    bd('@Almost-0.1', 'graphic-hero', ['pie', 'pieT'], { move: 'whip', st: { x: 955, y: 1330, s: 0.8, layer: 'front' }, fill: 0.7, maxH: 800, sy: 850, pose: 'point', blur: 9, dim: 0.6, keep: ['pieT'] }),
+    bd('@Almost-0.1', 'graphic-hero', ['pie', 'pieT'], { move: 'whip', st: { x: 955, y: 1330, s: 0.8, layer: 'front' }, fill: 0.6, maxH: 700, sy: 800, pose: 'point', blur: 9, dim: 0.6, keep: ['pieT'] }),
     bd('@last', 'zoom-on-number', 'pie.center', { fill: 0.5, sy: 800, rot: 0.01, pose: 'shock', dur: 0.5, blur: 9, dim: 0.6, keep: ['pieT'] }),
     bd('@So#3', 'graphic-hero', 'board', { move: 'whip', fill: 0.9, maxH: 1010, sy: 860, pose: 'chin' }),
     bd('@holding', 'presenter-front', 'board', { sy: 860, pose: 'you' }),

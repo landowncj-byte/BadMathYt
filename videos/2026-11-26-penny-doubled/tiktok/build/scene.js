@@ -520,7 +520,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
 // TikTok cut — v3 re-edit (66 s). Same stations as yt.js; different hook (slap), order (day-20 teaser first, then "back up") and tone.
 const Q = {
   hookEnd: '@Wait-0.12', hookEnd2: '@Wait-0.02', abBeat: '@Wait-0.05', loopArt: '@word+0.5', abIn: '@Wait-0.1', a: '@million#2', b: '@single', doubles: '@doubles', thirty: '@30', taxes: '@taxes',
-  dblIn: '@Doubling-0.3', two: '@two', four: '@four', dblTail: '@four+0.5', dblOut: '@day#3-0.15', likeFocus: 'pile', like: '@hard', abOut: '@Doubling-0.4',
+  dblIn: '@Doubling-0.3', two: '@two', four: '@four', dblTail: '@four+0.5', dblOut: '@day#3-0.15', likeFocus: 'pile', like: '@heart', abOut: '@Doubling-0.4',
   boardIn: '@Doubling-0.8', unroll: '@So#2-0.1', lWait: '@So#2-0.1', lTurn: '@Three#2-0.2', lAns: '@30#2-0.4',
   send: '@Send', follow: '@Follow', seven: '@seven', pieIn: '@Almost-0.2', pieOut: '@So#3-0.2', boomIn: '@pass', boom: '@5', ask: '@So#3+0.1', loop: '@word+0.3',
 };
@@ -531,7 +531,7 @@ const K = [[0, 1], ['@20-0.25', 1], ['@20+0.15', 20], ['@Wait-0.05', 20], ['@Wai
   ['@So#3-0.05', 30], ['@So#3+0.45', 20], ['@word+0.2', 20], ['@word+0.7', 1]];
 const HOOK = { lines: [[['YOU PICKED', 'paper']], [['THE PENNY', 'accent']]], size: 120 };
 const S = PDS.make({
-  dur: 65.33, K, q: Q, hook: { variant: 'slap', text: HOOK, y: -300, ay: 170 },
+  dur: 68.96, K, q: Q, hook: { variant: 'slap', text: HOOK, y: -300, ay: 170 },
   stamps: [{ id: 'stamp', type: 'stamp', at: [0, 140], rot: -0.07, in: '@20', out: Q.hookEnd, props: { text: 'DAY 20 = $5,242.88', tone: 'ink', size: 62 } }],
   hookBeats: [
     { at: 0.45, beat: 'zoom-on-number', focus: 'art.penny', fill: 0.62, sy: 900, rot: 0.008, pose: 'point', keep: ['hook', 'art', 'endt'] },
@@ -587,16 +587,16 @@ const S = PDS.make({
     { id: 'pass', type: 'stamp', layer: 'screen', at: [540, 470], rot: -0.06, in: '@pass', out: '@29', props: { text: 'PASSES THE MILLION', tone: 'good', size: 66 } },
   ],
   shakes: [[0.1, 8], ['@20', 8], ['@5', 26], ['@pass', 12], ['@27', 8], ['@64', 6]],
-  poses: [['@hard', 'you'], ['@Send', 'you']],
+  poses: [['@heart', 'you'], ['@Send', 'you']],
   captions: { gap: 16, emph: { '64': 'good', 'cents.': 'good', million: 'good', '190': 'bad', '27,': 'bad', 'losing': 'bad', '28,': 'good', '30,': 'good', 'seven': 'accent', 'eighths': 'accent', 'penny': 'accent', 'stupid.': 'bad', 'grand.': 'accent' },
-    fix: [['hard', 'heart'], ['cause the', "'cause the"], ['ending, stupid.', "ending's stupid."], ['$5 .37', '$5.37'], ['5 .37', '$5.37'], ['671', '$671']] },
+    fix: [['cause the', "'cause the"], ['ending, stupid.', "ending's stupid."], ['5.37', '$5.37'], ['671', '$671']] },
   sfx: [
     { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.06, name: 'paper_slam_1', gain: -7, dur: 0.5 },
     { at: '@20', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@Wait-0.05', name: 'rewind_1', gain: -13, dur: 0.9 },
     { at: '@million#2', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@single', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@doubles', name: 'coin_single_1', gain: -9, dur: 0.5 },
     { at: '@taxes', name: 'click_2', gain: -10, dur: 0.3 },
     { at: '@Doubling-0.3', name: 'swoosh_1', gain: -9, dur: 0.8 }, { at: '@two', name: 'pop_1', gain: -8, dur: 0.4 }, { at: '@two+0.1', name: 'coin_single_1', gain: -9, dur: 0.5 }, { at: '@four', name: 'pop_2', gain: -8, dur: 0.4 }, { at: '@four+0.12', name: 'coin_single_1', gain: -9, dur: 0.5 },
-    { at: '@four+0.5', name: 'ding_1', gain: -11, dur: 0.6 }, { at: '@hard', name: 'pop_2', gain: -9, dur: 0.3 },
+    { at: '@four+0.5', name: 'ding_1', gain: -11, dur: 0.6 }, { at: '@heart', name: 'pop_2', gain: -9, dur: 0.3 },
     { at: '@after', name: 'money_counter_1', gain: -13, dur: 1.0 }, { at: '@64', name: 'ding_2', gain: -9, dur: 0.6 },
     { at: '@day#5-0.5', name: 'money_counter_1', gain: -13, dur: 0.9 }, { at: '@day#5+0.4', name: 'ding_2', gain: -8, dur: 0.6 }, { at: '@sandwich', name: 'pop_1', gain: -9, dur: 0.4 },
     { at: '@day#6-0.3', name: 'money_counter_2', gain: -13, dur: 1.4 }, { at: '@20#2+0.1', name: 'ding_2', gain: -8, dur: 0.6 },
