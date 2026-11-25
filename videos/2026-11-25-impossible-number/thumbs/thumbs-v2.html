@@ -115,10 +115,10 @@ function D(imgs){const c=document.getElementById('d').getContext('2d');stage(c);
     const g=c.createLinearGradient(16,16,220,220);g.addColorStop(0,'rgba(255,255,255,.12)');g.addColorStop(1,'rgba(0,0,0,.12)');c.fillStyle=g;c.fillRect(16,16,204,204);c.restore();
     c.strokeStyle='rgba(11,15,20,.25)';c.lineWidth=2;c.beginPath();c.roundRect(16,16,204,204,6);c.stroke();
     c.fillStyle=INK;c.font='31px Anton';c.textAlign='center';c.letterSpacing='1px';c.fillText(name,w/2,260);c.letterSpacing='0px';
-    e();stamp(c,'CAUGHT',x+w/2+6,y+198,46,srot);};
+    e();stamp(c,'CAUGHT',x+w/2+6,y+208,44,srot);};
   pol(40,365,-2.5,imgs[0],[105,10,300],'CHARLES PONZI',-7);
   pol(298,375,1.5,imgs[1],[60,15,290],'TINO DE ANGELIS',5);
-  pol(556,365,-1,imgs[2],[95,5,790],'BERNIE MADOFF',-4);
+  pol(556,365,-1,imgs[2],[110,0,760],'BERNIE MADOFF',-4);
   character(c,1050,330,170);
   vignette(c);}
 (async()=>{await loadFonts();A();B();C();D(await Promise.all([P+'charles-ponzi/2.jpg',P+'tino-de-angelis/1.jpg',P+'bernie-madoff/2.jpg'].map(loadImg)));window.READY=true;})();
