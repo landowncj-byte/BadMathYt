@@ -33,7 +33,7 @@ BM2.scene({
     { id: 'inv', type: 'investors', at: [3100, 1800], in: '@Now#2-0.3', props: { head: 'INVESTORS', figAt: '@investors', meter: 'LEGIT', meterAt: '@legit', mdur: 0.8 } },
     { id: 'taken', type: 'taken', at: [1300, 1800], in: '@lost-0.4', props: { at: '@8', dur: 1.3, brickAt: '@lost+0.2' } },
     { id: 'cal', type: 'calendar', at: [-500, 1800], in: '@Spend-0.4', props: { at: '@Spend+0.2', dur: 1.7, yrsAt: '@22', yrsDur: 0.9, to: 22 } },
-    { id: 'cos', type: 'costume', at: [-500, 3600], in: '@But#3-0.3', props: { plateAt: '@But#3', badgeAt: '@But#3+0.3', fakeAt: '@fake#2', fake2At: '@badges#2' } },
+    { id: 'cos', type: 'costume', at: [-500, 3600], in: '@But#3-0.3', props: { plateAt: '@But#3', badgeAt: '@But#3+0.3', fakeAt: '@fake', fake2At: '@badges#2' } },
     { id: 'tally', type: 'tally', at: [1300, 3600], in: '@gets-0.5', props: { at: '@arrested', dur: 1.05, tabAt: '@Prosecutors', srcAt: '@said' } },
     // ---- dinner (back at the table) ----
     { id: 'royal2', type: 'royal', at: [2750, 3760], scale: 0.7, in: '@dinner#2-0.5', props: { crownAt: '@dinner#2-0.2', offAt: '@suspicious#2+0.2', reAt: 99999 } },
@@ -64,7 +64,7 @@ BM2.scene({
       items: [{ at: 0, label: 'PORK ORDERS THAT BLEW IT', from: 0, to: 1, dur: 0.9 }, { at: '@zero', label: 'ROYAL BLOOD', to: 0, dur: 0.5 }, { at: '@kept', label: 'YEARS OF THE ACT', from: 0, to: 30, dur: 1.7, prefix: '~' },
         { at: '@First', label: 'PROPS SO FAR', from: 0, to: 1, dur: 0.4 }, { at: '@Then#2', label: 'PROPS SO FAR', to: 2, dur: 0.4 },
         { at: '@lost', label: 'INVESTORS LOST (MORE THAN)', from: 0, to: 8000000, dur: 1.4, prefix: '$' }, { at: '@Spend+0.2', label: 'DAYS AT $1,000', from: 0, to: 8000, dur: 1.9, suffix: ' DAYS' }, { at: '@22', label: 'THAT IS', to: 22, dur: 0.8, suffix: ' YEARS' },
-        { at: '@fake#2', label: 'PROPS THAT WERE REAL', to: 0, dur: 0.5 }, { at: '@arrested', label: 'ARRESTED OR CONVICTED', from: 0, to: 11, dur: 1.0, suffix: '×' }, { at: '@order#2', label: 'DINNER ORDERS THAT TIPPED IT', to: 1, dur: 0.4 },
+        { at: '@fake', label: 'PROPS THAT WERE REAL', to: 0, dur: 0.5 }, { at: '@arrested', label: 'ARRESTED OR CONVICTED', from: 0, to: 11, dur: 1.0, suffix: '×' }, { at: '@order#2', label: 'DINNER ORDERS THAT TIPPED IT', to: 1, dur: 0.4 },
         { at: '@18', label: 'YEARS IN PRISON', from: 0, to: 18, dur: 0.7, suffix: '+' }, { at: '@30#3', label: 'YEARS AS A PRINCE', to: 30, dur: 0.8, prefix: '~' }, { at: '@noticed-0.2', label: 'PORK ORDERS THAT BLEW IT', to: 1, dur: 0.5 }] } },
   ],
   beats: [
@@ -158,7 +158,7 @@ BM2.scene({
     { at: '@noticed', beat: SB, focus: ['hook2', 'royal', 'spike2'], move: 'whip', ...F0, pose: 'shock' },
   ],
   poses: [['@Follow-0.1', 'follow', { target: [830, 1010] }], ['@Follow+1.5', 'talk']],
-  shakes: [[0.05, 14], ['@8+1.3', 10], ['@fake#2', 8], ['@11', 14], ['@guilty', 12], ['@18', 20], ['@order#2', 14], ['@tipped', 12]],
+  shakes: [[0.05, 14], ['@8+1.3', 10], ['@fake', 8], ['@11', 14], ['@guilty', 12], ['@18', 20], ['@order#2', 14], ['@tipped', 12]],
   captions: {
     emph: { '8': 'bad', million: 'bad', fake: 'bad', '11': 'bad', '18': 'bad', pork: 'bad', '30': 'accent', '22': 'accent', royalty: 'accent', dumber: 'bad', dumbass: 'bad', 'dumbest': 'bad' },
     fix: [],
@@ -179,7 +179,7 @@ BM2.scene({
     { at: '@Send', name: 'swoosh_2', gain: -9, dur: 1.0 },
     { at: '@lost+0.2', name: 'coins_drop_1', gain: -12, dur: 1.2 }, { at: '@8', name: 'money_counter_2', gain: -10, dur: 1.3 }, { at: '@8+1.3', name: 'cash_register_1', gain: -8, dur: 0.9 },
     { at: '@Spend+0.2', name: 'money_counter_2', gain: -13, dur: 1.2 }, { at: '@22', name: 'ding_2', gain: -9, dur: 0.7 },
-    { at: '@But#3', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@fake#2', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@badges#2', name: 'rubber_stamp_2', gain: -5, dur: 0.5 },
+    { at: '@But#3', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@fake', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@badges#2', name: 'rubber_stamp_2', gain: -5, dur: 0.5 },
     { at: '@gets', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@arrested', name: 'typewriter_1', gain: -12, dur: 1.0 }, { at: '@11', name: 'deep_boom_2', gain: -6, dur: 0.4 }, { at: '@said', name: 'rubber_stamp_2', gain: -8, dur: 0.5 },
     { at: '@Then#3', name: 'swipe_2', gain: -11, dur: 0.4 }, { at: '@order#2', name: 'cinematic_hit_1', gain: -4, dur: 1.2 }, { at: '@victim', name: 'pop_1', gain: -8, dur: 0.5 }, { at: '@suspicious#2+0.2', name: 'thud_1', gain: -8, dur: 0.4 },
     { at: '@Follow+0.5', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@Follow+0.58', name: 'success_chime_1', gain: -12, dur: 1.0 },
