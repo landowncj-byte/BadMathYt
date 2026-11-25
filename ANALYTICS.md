@@ -4,3 +4,5 @@ Goal metrics: YouTube = views + avg % viewed (loops); TikTok = full-watch rate +
 
 ## 2026-11-24 — baseline
 First Bad Math posts go out tonight (YouTube FTX 20:00 ET, lottery 22:00 ET; TikTok + IG/FB cuts to follow). No data yet.
+
+- 2026-11-25 03:38 UTC comment sweep: 0 unread conversations (no replies, no flags).
