@@ -106,3 +106,4 @@ decisions:
 - 2026-11-25: Visual system v2 requested (STYLE §20): flowing camera push-ins on numbers, moving storyteller (in front / behind graphics), satisfying motion, move away from neon. Fable owns research + spec + engine-v2; new videos only.
 - 2026-11-25: Fable builds engine-v2 once and hands it to Opus; daily pipeline unchanged (Fable research → Opus direct → Sonnet/Haiku build with engine-v2).
 - 2026-11-25: Brand lock — avatar design, profile pictures, pills, fonts, wordmark and series colors stay the same in v2; only backgrounds (no neon), camera/staging and motion change.
+- 2026-11-25: Shorts voice = energy mode (say_energy + Michael/Puck blend, option 5) — user: 'more energy, more sporadic and crazy'. Samples in research/voice-energy/; user may pick another option.
