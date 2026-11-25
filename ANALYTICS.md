@@ -21,3 +21,8 @@ First Bad Math posts go out tonight (YouTube FTX 20:00 ET, lottery 22:00 ET; Tik
 **Read:** winners = the two-button DILEMMA (most reach, longest watch) and salad oil (best retention; a physical "it's not what it looks like" visual). Losers = lottery and Theranos IG cuts (skip 43–52%: the first 3 s don't land). The Tuesday-evening batch averages only 7–9 s of watch: people leave right after the hook, so the second beat (seconds 3–8) is the problem, matching the owner's "bad pacing". Actions: (1) more choose-A-or-B dilemmas; (2) frame 0 must be a physical pattern break, payoff promise in the first line; (3) a turn/question by second ~5; (4) zero comments so far → sharper one-word comment questions.
 
 - 2026-11-25 15:38 UTC comment sweep: 1 real comment (IG two-buttons, @r0hanko: "Or just S&P and pays you 10% per year") → replied (S&P averages ~10% long-run but had -37% in 2008; no advice). 3 others were our own first comments. No flags, no topic requests.
+
+### Comment sweep 2026-11-25 19:38 UTC
+- 2 unread conversations. TikTok McDonald's: only our own first comment, nothing to do.
+- IG "$1M today vs $1K/week" — @r0hanko follow-up: "in the 10-20 years it takes you to make your mil you'll have the ability to pull 4% per year and make more than the 52k. This is so basic". NOT replied (one reply per person per thread; no arguing twice; it's an investing-advice debate). FLAGGED to owner. Note: 4% of $1M = $40K/yr < $52K/yr, but a $1M left invested for 10–20 years could grow enough that 4% beats $52K — the comment has a point depending on assumptions.
+- Replies sent: 0. Removals: 0. Topic requests: 0.

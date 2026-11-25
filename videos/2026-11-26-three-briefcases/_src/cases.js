@@ -29,6 +29,7 @@
     clay(g, -24, y0 + h * 0.34 - 12, 48, 24, 8, shade(GOLD, -0.1), { shadowK: 0.3 });
     g.restore(); g.restore();
   }
+  window.__bcase = bcase;
   function pillTag(g, th, s, x, y, col, fs, k, tc) { // clay pill with a label, landed with a squash. k = 0..1 spring progress
     const f = F.hero(fs), w = mw(s, f) + 56, h = fs + 34; g.save(); g.translate(x, y); g.scale(0.55 + 0.45 * k, 0.55 + 0.45 * k); g.globalAlpha *= clamp(k * 3);
     clay(g, -w / 2, -h / 2, w, h, h / 2.6, col, { shadowK: 0.7 }); txt(g, s, 0, 3, f, tc || th.ink); g.restore(); return w;

@@ -1,0 +1,72 @@
+const F0 = { x: 0, y: 40, w: 900, h: 1340 };      // frame 0 and the loop frame share this framing
+const H1 = { lines: [['BEAT'], [['≈1,000 PhDs', 'bad']]], size: 128 };
+const LOOP = '@PhDs#2+0.4';
+BM2.scene({
+  series: 'whatif', title: 'THREE BRIEFCASES', duration: 24.25,
+  footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW', 'PHOTO: SEMTRIO · CC BY 2.0 · VIA FLICKR'],
+  elements: [
+    // --- station 1: the three cases (frame 0 + loop frame) ---
+    { id: 'hook1', type: 'text', at: [0, -520], in: -1, out: '@Three-0.15', props: H1 },
+    { id: 'src', type: 'text', at: [0, -345], in: 0.3, out: '@Three-0.15', props: { lines: [[['COLUMNIST\'S COUNT · 1990', 'accent']]], size: 36, font: 'mono' } },
+    { id: 'hook2', type: 'text', at: [0, -225], in: '@Think', out: '@Three-0.15', props: { lines: [[['YOU SMARTER?', 'accent']]], size: 120 } },
+    { id: 'endt', type: 'text', at: [0, -520], in: LOOP, props: H1 },
+    { id: 'tbl', type: 'table3', at: [0, 330], in: -1, props: { reAt: LOOP, slam: [-0.36, -0.29, -0.22], tagIn: -1, tagIdx: 1, tagAway: '@Double', numAt: '@Three', pickAt: '@picked', pickIdx: 0,
+      handAt: '@host', handIdx: 2, xrayAt: '@where', flipAt: '@opens', opens: [[2, '@opens', 99999]],
+      pullAt: '@50-0.3', swapAt: '@50', crackAt: '@bullshit+0.25', pullOut: '@Send+0.6', btnAt: '@50+0.2',
+      bars2At: '@Staying', bars2Gap: 1.36, winAt: '@two',
+      diploma: [[0.1, '@PhDs', '@Three-0.3', -150], ['@join', '@join+0.6', 99999, -120]] } },
+    { id: 'cash', type: 'photo', at: [0, 70], in: '@million-0.3', out: '@picked+0.3', props: { src: 'brand/photos/stock/briefcase-cash/7.jpg', name: 'CASH', role: 'STOCK PHOTO', credit: 'PHOTO: SEMTRIO · CC BY 2.0', w: 230, aspect: 0.8, tilt: -0.05, fx: 0.5, fy: 0.5 } },
+    { id: 'bs', type: 'stamp', at: [0, 30], rot: -0.08, in: '@bullshit', out: '@bullshit+1.3', props: { text: 'BULLSH*T', tone: 'bad', size: 120 } },
+    // --- screen-fixed ---
+    { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Three+0.3', props: { text: 'HYPOTHETICAL', size: 24 } },
+    { id: 'asm', type: 'assumes', layer: 'screen', at: [450, 338], in: '@host+0.3', props: { text: 'HOST KNOWS · ALWAYS OPENS AN EMPTY CASE', size: 21 } },
+    { id: 'heart', type: 'heart', layer: 'screen', at: [800, 760], in: '@Double', props: { s: 1, dur: 0.9 } },
+    { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@stay', out: 24.2, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
+  ],
+  beats: [
+    { at: 0, beat: 'side-by-side', focus: F0, fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'you', keep: ['hook1', 'hook2', 'src', 'tbl', 'endt'] },
+    { at: '@thousand', beat: 'zoom-on-number', focus: 'hook1', fill: 0.94, sy: 660, rot: 0.008, pose: 'point', keep: ['hook1', 'src', 'tbl'] },
+    { at: '@Think', beat: 'pull-back', focus: F0, fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'you', keep: ['hook1', 'hook2', 'src', 'tbl'] },
+    { at: '@smarter', beat: 'zoom-on-number', focus: 'hook2', fill: 0.92, sy: 700, rot: -0.01, pose: 'shrug', keep: ['hook1', 'hook2', 'src', 'tbl'] },
+    // stakes
+    { at: '@Three', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 800, st: 'corner-left', pose: 'idle' },
+    { at: '@million', beat: 'zoom-on-number', focus: 'tbl.tag', fill: 0.8, sy: 950, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['cash'] },
+    { at: '@Double', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'left', pose: 'point', point: 'tbl.c0', keep: ['cash'] },
+    { at: '@picked', beat: 'zoom-on-number', focus: 'tbl.pick', fill: 0.72, sy: 620, rot: 0.01, st: 'corner-left', pose: 'point' },
+    // host rule
+    { at: '@The', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
+    { at: '@where', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 820, rot: 0.008, st: 'corner-left', pose: 'chin' },
+    { at: '@opens', beat: 'zoom-on-number', focus: 'tbl.c2', fill: 0.76, sy: 820, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@50', beat: 'zoom-on-number', focus: 'tbl.fifty', fill: 0.8, sy: 660, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@bullshit', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'shrug' },
+    { at: '@Send', beat: 'presenter-front', focus: 'tbl', sy: 820, pose: 'you' },
+    { at: '@50#2', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 820, rot: -0.01, st: 'corner-left', pose: 'chin' },
+    // payoff
+    { at: '@Staying', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.bar0' },
+    { at: '@one#3', beat: 'zoom-on-number', focus: 'tbl.bar0', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point' },
+    { at: '@switching', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'shrug' },
+    { at: '@two', beat: 'zoom-on-number', focus: 'tbl.bar1', fill: 0.66, sy: 760, rot: 0.012, st: 'corner-left', pose: 'shock', dur: 0.4 },
+    { at: '@stay', beat: 'presenter-front', focus: 'tbl', sy: 820, pose: 'chin' },
+    { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'you', keep: ['hook1', 'hook2', 'src', 'tbl', 'endt'] },
+  ],
+  poses: [['@stay', 'chin']],
+  shakes: [[0.3, 10], ['@PhDs', 10], ['@50', 10], ['@bullshit', 14], ['@two', 26], ['@PhDs#2+0.5', 10]],
+  captions: { gap: 16, emph: { thousand: 'bad', 'PhDs.': 'bad', million: 'good', 'bullshit.': 'bad', 'two.': 'good', '50': 'accent', 'empty': 'accent' }, fix: [['smarter.', 'smarter?'], ['one and', 'one in'], ['50-50,', '50-50?'], ['switch,', 'switch?']] },
+  bed: { name: 'lofi_bed_1', gain: -1 },
+  sfx: [
+    { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.16, name: 'thud_1', gain: -8, dur: 0.4 }, { at: 0.3, name: 'paper_slam_1', gain: -7, dur: 0.5 }, { at: 0.5, name: 'swoosh_2', gain: -12, dur: 0.6 },
+    { at: '@PhDs', name: 'rubber_stamp_2', gain: -4, dur: 0.5 },
+    { at: '@Three', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@Three+0.12', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@Three+0.24', name: 'pop_2', gain: -10, dur: 0.4 },
+    { at: '@million', name: 'coin_single_1', gain: -9, dur: 0.6 }, { at: '@Double', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picked', name: 'paper_slam_2', gain: -7, dur: 0.5 }, { at: '@picked+0.02', name: 'click_1', gain: -9, dur: 0.3 },
+    { at: '@host', name: 'swoosh_1', gain: -10, dur: 0.8 }, { at: '@where', name: 'riser_1', gain: -14, dur: 0.9 }, { at: '@host+0.3', name: 'click_2', gain: -9, dur: 0.2 },
+    { at: '@opens', name: 'door_slam_1', gain: -11, dur: 0.45 }, { at: '@opens', name: 'pop_2', gain: -9, dur: 0.3 },
+    { at: '@50', name: 'deep_boom_2', gain: -8, dur: 0.36 }, { at: '@50', name: 'pop_2', gain: -8, dur: 0.3 },
+    { at: '@bullshit', name: 'rubber_stamp_2', gain: -3, dur: 0.5 }, { at: '@bullshit+0.25', name: 'glass_shatter_2', gain: -12, dur: 0.7 }, { at: '@bullshit+0.25', name: 'sub_drop_1', gain: -10, dur: 0.8 },
+    { at: '@Send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 },
+    { at: '@Staying', name: 'rubber_stamp_1', gain: -6, dur: 0.5 }, { at: '@Staying', name: 'thud_2', gain: -9, dur: 0.5 }, { at: '@one#3', name: 'click_1', gain: -8, dur: 0.3 },
+    { at: '@switching', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@two-0.05', name: 'rubber_stamp_2', gain: -3, dur: 0.5 }, { at: '@two-0.05', name: 'deep_boom_1', gain: -2, dur: 1.6 }, { at: '@two-0.05', name: 'cinematic_hit_1', gain: -6, dur: 1.2 },
+    { at: '@join', name: 'swoosh_2', gain: -12, dur: 0.6 },
+    { at: '@PhDs#2+0.3', name: 'whoosh_1', gain: -8, dur: 0.8 }, { at: LOOP, name: 'deep_boom_2', gain: -6, dur: 0.36 }, { at: '@stay-0.05', name: 'pop_1', gain: -9, dur: 0.5 },
+  ],
+});
