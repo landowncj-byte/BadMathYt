@@ -61,7 +61,8 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 - **Posted/scheduled 2026-11-24 (ET):** YouTube 8 (user's 3 + FTX 20:00, Theranos 21:00, lottery 22:00, Fyre 23:00, coffee 23:30); TikTok 8 (user's 3 + FTX, coffee, lottery, Theranos, Fyre); IG/FB 5 each.
 - **Wed 2026-11-25 scheduled (all 4 platforms):** parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00 ET. AI labels OFF (re-created 2026-11-25). Nightly build fills the rest — **YouTube for Wed can only take 14:00 + the 17:00 long-form before 20:00 ET (UTC cap); remaining Wed YouTube Shorts go at 20:00/21:00/22:00/23:00 ET**; TikTok/IG/FB use the normal 14/16/18/20/22 slots.
 - **Next up (Fable's ranked list `research/2026-11-25/ideas.md`):** Javice fake users, Tipton lottery rig, Tucker payday loans, BitConnect, credit-card minimum, 1% fee, OneCoin; **long-form Wed = Do Kwon / Terra-Luna** (Owen voice); **lottery Part 2** (promised on TikTok).
-- **Pending with the user:** none blocking. (They installed nothing yet from the plugin card; watch.sh covers it.)
+- **Visual v2 is LIVE** (brand/engine-v2/READY, prototype research/visual-v2/prototype/video.mp4 sent to the user 2026-11-25). Fable's improvement list: tighter wide-shot recap, storyteller can't yet walk *into* the world, watch for pill/caption collisions on tight zooms, use CRF 19–20.
+- **Pending with the user:** feedback on the v2 sample (none blocking). (They installed nothing yet from the plugin card; watch.sh covers it.)
 - Long-form "The Impossible Number That Exposed Madoff" (videos/2026-11-25-impossible-number) was built earlier; check whether it was ever posted before reusing the slot.
 
 ## 8. How to resume in a NEW session (successor protocol)
