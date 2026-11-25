@@ -15,3 +15,8 @@ Direction (follow beats.md exactly):
 Steps per cut: `node brand/engine-v2/bm2.cjs init <cut>/build --voice <cut>/voice --series <series>` → write scene (shared `_src/` + per-cut files) → `check` → stills → fix collisions → `render` → `python3 brand/engine-v2/mix.py <cut>/build <cut>/voice <cut>/video.mp4` → 1-fps timestamped contact sheet at `<cut>/contact_sheet.png` → look at it and fix problems → `<cut>/captions.srt` from sentences.json → `python3 brand/tools/script_gate.py <folder> --all` must PASS → `qa.md` with the VIDEO GATE table per cut and an on-screen facts table.
 **Render ONE cut at a time and wait for each render in the foreground (poll until the process ends). Never hand back while a render is running.** Keep each video < 40 MB (re-encode with a higher CRF if needed).
 Final reply (short): three paths + durations + sizes, contact sheet paths, VIDEO GATE result per cut, open doubts.
+
+## Lessons from review (2026-11-25) — check these before handing back
+1. Frame 0 shows the FULL hook text; the storyteller never covers it.
+2. Keep all on-screen text, buttons and counters out of the caption band (screen y > ~1340) and never stack on-screen text over counters.
+3. Temporary on-screen text exits cleanly; nothing lingers half-visible or blurred behind captions.

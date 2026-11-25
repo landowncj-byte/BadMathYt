@@ -4,9 +4,9 @@ Engine v2, series decoded, pill title CASE: KURNIAWAN · 2013. Sources `_src/` (
 | Cut | Narration | Video | Size | File |
 |---|---|---|---|---|
 | YouTube | 48.27 s | 48.67 s | 35.8 MB | video.mp4 |
-| TikTok | 28.29 s | 28.70 s | 19.0 MB | tiktok/video.mp4 |
+| TikTok | 28.29 s | 28.70 s | ~19 MB | tiktok/video.mp4 |
 | IG/FB | 22.18 s | 22.57 s | 14.3 MB | ig/video.mp4 |
-Mix: mix.py defaults, master -14 LUFS, peak <= -1.38 dBFS (YT -14.0/-1.46, TT -14.0/-1.38, IG -14.1/-1.46). Sound: brand/sfx-library CC0 only, tense_bed_2; hit on each reveal at the same @word. Captions: captions.srt per cut from voice/sentences.json (tags removed). script_gate.py --all: PASS x3 (TT warn: 86 words, script-side, untouched).
+Mix: mix.py defaults, master -14 LUFS, peak <= -1.38 dBFS (YT -14.0/-1.46, TT see mix.log, IG -14.1/-1.46). Sound: brand/sfx-library CC0 only, tense_bed_2; hit on each reveal at the same @word. Captions: captions.srt per cut from voice/sentences.json (tags removed). script_gate.py --all: PASS x3 (TT warn: 86 words, script-side, untouched).
 
 ## VIDEO GATE (YT / TT / IG)
 | # | Result | Note |
@@ -54,3 +54,4 @@ Not shown on purpose: Ponsot/Acker/Koch names, any lot count, 19,000 labels, $55
 - Whips land on blurred frames at 1-fps samples; intended.
 - Loop: final whip returns to the frame-0 composition at rest (not the slam-scaled frame 0); the slam replays at t=0.
 - YT 35.8 MB (under 40 MB).
+- TikTok re-rendered: CAUGHT HOW? moved up between name tag and stamps and exits at Send-0.3; no world text sits in the caption band (y>1340) in any cut.

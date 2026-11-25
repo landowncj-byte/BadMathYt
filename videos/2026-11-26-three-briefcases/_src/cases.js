@@ -61,7 +61,7 @@
       pullAt: NEVER, pullOut: NEVER, swapAt: NEVER, fiftyAt: NEVER, crackAt: NEVER, btnAt: NEVER, lockAt: NEVER, slideAt: NEVER, tag2At: NEVER, bars2At: NEVER, bars2Gap: 0.28, winAt: NEVER, diploma: [], fiftyLabel: false, btnLabels: ['STAY', 'SWITCH'] },
     size: () => [1000, 760],
     anchors: () => ({ all: [0, -90, 1000, 760], row: [0, 0, 960, 300], c0: [-310, 0, 290, 280], c1: [0, 0, 290, 280], c2: [310, 0, 290, 280], pick: [-310, 20, 270, 190], tag: [0, -30, 360, 300], cash: [0, -30, 360, 300],
-      bar0: [-310, -300, 260, 340], bar1: [0, -300, 260, 340], bars: [0, -300, 900, 360], fifty: [0, -300, 740, 260], btn: [0, 235, 780, 110], desk: [0, 135, 1000, 150], hand: [310, -190, 300, 400], diploma: [300, -150, 360, 260], pulled: [0, 0, 560, 300] }),
+      bar0: [-310, -300, 260, 340], bar1: [0, -300, 260, 340], bars: [0, -300, 900, 360], fifty: [0, -300, 740, 260], btn: [0, 206, 780, 100], desk: [0, 135, 1000, 150], hand: [310, -190, 300, 400], diploma: [300, -150, 360, 260], pulled: [0, 0, 560, 300] }),
     draw(g, p, env) {
       const { t, theme: th } = env, T = t >= p.reAt ? t - p.reAt : t, loop = t >= p.reAt, el = a => (a > NEVER - 1 ? -9 : T - a), CY = 0;
       // positions
@@ -145,8 +145,8 @@
       // STAY / SWITCH buttons
       const bt = T - p.btnAt;
       if (bt > 0) { const win = T - p.winAt; [0, 1].forEach(i => { const k = spring(bt - i * 0.1, 'bouncy'), isSw = i === 1, won = win > 0 && isSw, lost = win > 0 && !isSw; if (bt - i * 0.1 <= 0) return;
-          g.save(); g.translate(X[i], 238 + (1 - clamp(k, 0, 1)) * 40); g.scale(clamp(k, 0.2, 1.1), clamp(k, 0.2, 1.1)); const pr = won ? 1 - 0.1 * hit(win, 9) : 1; g.scale(pr, pr); g.globalAlpha *= (lost ? 0.5 : 1) * clamp(k * 3);
-          clay(g, -125, -42, 250, 84, 42, won ? th.good : isSw ? th.accent : th.paper, { shadowK: 0.7 }); txt(g, (won ? '✓ ' : '') + p.btnLabels[i], 0, 3, F.hero(48), th.ink); g.restore(); }); }
+          g.save(); g.translate(X[i], 206 + (1 - clamp(k, 0, 1)) * 40); g.scale(clamp(k, 0.2, 1.1), clamp(k, 0.2, 1.1)); const pr = won ? 1 - 0.1 * hit(win, 9) : 1; g.scale(pr, pr); g.globalAlpha *= (lost ? 0.5 : 1) * clamp(k * 3);
+          clay(g, -115, -36, 230, 72, 36, won ? th.good : isSw ? th.accent : th.paper, { shadowK: 0.7 }); txt(g, (won ? '✓ ' : '') + p.btnLabels[i], 0, 3, F.hero(44), th.ink); g.restore(); }); }
       // diplomas
       for (const [at, st, out, yr] of p.diploma) { if (loop && at > 2) continue; diploma(g, th, T - at, st > NEVER - 1 ? -9 : T - st, out > NEVER - 1 ? -9 : T - out, yr == null ? -150 : yr); }
     },

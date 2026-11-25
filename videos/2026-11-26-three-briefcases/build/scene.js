@@ -61,7 +61,7 @@
       pullAt: NEVER, pullOut: NEVER, swapAt: NEVER, fiftyAt: NEVER, crackAt: NEVER, btnAt: NEVER, lockAt: NEVER, slideAt: NEVER, tag2At: NEVER, bars2At: NEVER, bars2Gap: 0.28, winAt: NEVER, diploma: [], fiftyLabel: false, btnLabels: ['STAY', 'SWITCH'] },
     size: () => [1000, 760],
     anchors: () => ({ all: [0, -90, 1000, 760], row: [0, 0, 960, 300], c0: [-310, 0, 290, 280], c1: [0, 0, 290, 280], c2: [310, 0, 290, 280], pick: [-310, 20, 270, 190], tag: [0, -30, 360, 300], cash: [0, -30, 360, 300],
-      bar0: [-310, -300, 260, 340], bar1: [0, -300, 260, 340], bars: [0, -300, 900, 360], fifty: [0, -300, 740, 260], btn: [0, 235, 780, 110], desk: [0, 135, 1000, 150], hand: [310, -190, 300, 400], diploma: [300, -150, 360, 260], pulled: [0, 0, 560, 300] }),
+      bar0: [-310, -300, 260, 340], bar1: [0, -300, 260, 340], bars: [0, -300, 900, 360], fifty: [0, -300, 740, 260], btn: [0, 206, 780, 100], desk: [0, 135, 1000, 150], hand: [310, -190, 300, 400], diploma: [300, -150, 360, 260], pulled: [0, 0, 560, 300] }),
     draw(g, p, env) {
       const { t, theme: th } = env, T = t >= p.reAt ? t - p.reAt : t, loop = t >= p.reAt, el = a => (a > NEVER - 1 ? -9 : T - a), CY = 0;
       // positions
@@ -145,8 +145,8 @@
       // STAY / SWITCH buttons
       const bt = T - p.btnAt;
       if (bt > 0) { const win = T - p.winAt; [0, 1].forEach(i => { const k = spring(bt - i * 0.1, 'bouncy'), isSw = i === 1, won = win > 0 && isSw, lost = win > 0 && !isSw; if (bt - i * 0.1 <= 0) return;
-          g.save(); g.translate(X[i], 238 + (1 - clamp(k, 0, 1)) * 40); g.scale(clamp(k, 0.2, 1.1), clamp(k, 0.2, 1.1)); const pr = won ? 1 - 0.1 * hit(win, 9) : 1; g.scale(pr, pr); g.globalAlpha *= (lost ? 0.5 : 1) * clamp(k * 3);
-          clay(g, -125, -42, 250, 84, 42, won ? th.good : isSw ? th.accent : th.paper, { shadowK: 0.7 }); txt(g, (won ? '✓ ' : '') + p.btnLabels[i], 0, 3, F.hero(48), th.ink); g.restore(); }); }
+          g.save(); g.translate(X[i], 206 + (1 - clamp(k, 0, 1)) * 40); g.scale(clamp(k, 0.2, 1.1), clamp(k, 0.2, 1.1)); const pr = won ? 1 - 0.1 * hit(win, 9) : 1; g.scale(pr, pr); g.globalAlpha *= (lost ? 0.5 : 1) * clamp(k * 3);
+          clay(g, -115, -36, 230, 72, 36, won ? th.good : isSw ? th.accent : th.paper, { shadowK: 0.7 }); txt(g, (won ? '✓ ' : '') + p.btnLabels[i], 0, 3, F.hero(44), th.ink); g.restore(); }); }
       // diplomas
       for (const [at, st, out, yr] of p.diploma) { if (loop && at > 2) continue; diploma(g, th, T - at, st > NEVER - 1 ? -9 : T - st, out > NEVER - 1 ? -9 : T - out, yr == null ? -150 : yr); }
     },
@@ -314,9 +314,9 @@ BM2.scene({
     { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@stay', out: 47.5, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
   ],
   beats: [
-    { at: 0, beat: 'side-by-side', focus: F0, fill: 0.84, maxH: 1400, sx: 570, sy: 1030, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
+    { at: 0, beat: 'side-by-side', focus: F0, fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
     { at: '@thousand', beat: 'zoom-on-number', focus: 'hook', fill: 0.96, sy: 640, rot: 0.008, pose: 'point', keep: ['hook', 'src', 'tbl'] },
-    { at: '@got', beat: 'pull-back', focus: F0, fill: 0.84, maxH: 1400, sx: 570, sy: 1030, pose: 'talk', keep: ['hook', 'src', 'tbl'] },
+    { at: '@got', beat: 'pull-back', focus: F0, fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'talk', keep: ['hook', 'src', 'tbl'] },
     { at: '@wrong', beat: 'zoom-on-number', focus: 'tbl.diploma', fill: 0.78, sy: 820, rot: -0.01, pose: 'shock', keep: ['hook', 'src', 'tbl'] },
     { at: '@Your', beat: 'presenter-front', focus: 'tbl', sy: 820, pose: 'you', keep: ['turn'] },
     // stakes
@@ -327,8 +327,8 @@ BM2.scene({
     { at: '@The', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
     { at: '@where', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 820, rot: 0.008, st: 'corner-left', pose: 'chin' },
     { at: '@opens', beat: 'zoom-on-number', focus: 'tbl.c2', fill: 0.76, sy: 820, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Then', beat: 'graphic-hero', focus: 'tbl.pulled', fill: 0.92, sy: 850, st: 'corner-left', pose: 'idle' },
-    { at: '@50', beat: 'zoom-on-number', focus: 'tbl.fifty', fill: 0.9, sy: 700, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@Then', beat: 'graphic-hero', focus: 'tbl.pulled', fill: 0.72, sy: 780, st: 'corner-left', pose: 'idle' },
+    { at: '@50', beat: 'zoom-on-number', focus: 'tbl.fifty', fill: 0.8, sy: 660, rot: 0.01, st: 'corner-left', pose: 'shock' },
     { at: '@Hit', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'left', pose: 'chin', point: 'tbl.fifty' },
     { at: '@Nope', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'shrug' },
     { at: '@one#4', beat: 'zoom-on-number', focus: 'tbl.bar0', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point' },
@@ -356,7 +356,7 @@ BM2.scene({
     { at: '@98+0.9', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'shock' },
     { at: '@99%', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 840, rot: 0.012, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@same', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'shrug' },
-    { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.84, maxH: 1400, sx: 570, sy: 1030, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
+    { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
   ],
   poses: [['@follow', 'follow', { target: [650, 1120] }], ['@Send', 'you'], ['@stay', 'chin']],
   shakes: [[0.3, 10], ['@wrong', 10], ['@50', 10], ['@Nope', 12], ['@two', 10], [24.8, 12], ['@99%', 26], [LOOP + 0.1, 10]],
