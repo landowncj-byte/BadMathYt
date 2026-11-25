@@ -24,8 +24,24 @@ import json, os, re, sys
 
 RATE = 3.3           # words/s inside a line (measured on the 2026-11-25 Liam cuts: 3.1–3.5)
 TAG_S = 0.45         # seconds one [breath]/[sigh]/... adds
-PLATFORM = {         # cut folder -> (name, min_s, max_s, max_words)
-    "": ("YouTube", 60, 90, 225), "tiktok": ("TikTok", 50, 75, 190), "ig": ("IG/FB", 35, 55, 140)}  # owner 2026-11-25: Shorts longer, more context
+PLATFORM = {"": "YouTube", "tiktok": "TikTok", "ig": "IG/FB"}
+# owner 2026-11-25: "90 seconds is the target timing" (Decoded) + "65 seconds for the what ifs" — same on every platform
+SERIES_LEN = {"decoded": (80, 100, 250), "whatif": (58, 72, 180)}   # (min_s, max_s, max_words)
+
+def series_of(cut_dir):
+    """Series from voice/series.txt, else the scene file's series: 'whatif'|'decoded', else the slug; default decoded."""
+    root = os.path.normpath(cut_dir)
+    if os.path.basename(root) in ("tiktok", "ig"): root = os.path.dirname(root)
+    for d in (cut_dir, root):
+        f = os.path.join(d, "voice", "series.txt")
+        if os.path.exists(f): return "whatif" if "what" in open(f).read().lower() else "decoded"
+    for d in (cut_dir, root):
+        for sub in ("build/scene.js",):
+            f = os.path.join(d, sub)
+            if os.path.exists(f):
+                m = re.search(r"series:\s*['\"](\w+)", open(f).read())
+                if m: return "whatif" if "what" in m.group(1).lower() else "decoded"
+    return "decoded"
 WIN = {"like": (0.20, 0.40), "share": (0.45, 0.65), "follow": (0.70, 0.90)}
 MAX_GAP = 6.0        # s between the END of one number/question/turn sentence and the START of the next (pacing proxy)
 MAX_LINE_S = 7.0     # one voiced line longer than this = a dead stretch on screen
@@ -102,7 +118,8 @@ def find(kind, sent):
 def gate(cut_dir, script_name=None):
     cut = os.path.basename(os.path.normpath(cut_dir))
     key = cut if cut in ("tiktok", "ig") else ""
-    name, lo, hi, maxw = PLATFORM[key]
+    name = PLATFORM[key]; ser = series_of(cut_dir)
+    lo, hi, maxw = SERIES_LEN[ser]; name = f"{name} ({ser})"
     script, sent, est, sp = load(cut_dir, script_name)
     fails, warns, info = [], [], []
     raw = " ".join(l for l, _ in script); clean = strip_tags(raw)

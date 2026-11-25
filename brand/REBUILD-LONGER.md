@@ -8,9 +8,8 @@ For each topic you are given (folder `videos/<slug>/`, research in `research/202
 1. Read RULES.md (SCRIPT GATE S1–S17 + S10b, rules 101–102), STYLE.md §14, §15, §18, §19, §21, §22, §23, §24, and the skills in `brand/skills/` (short-form-video-script, hook-writer, storytelling-and-narrative, tiktok-script, viral-hooks). Read the current scripts (`voice/script.json` in root, `tiktok/`, `ig/`) — they are the facts spine, but too short and rushed.
 2. Save each current script as `voice/script.v2.json` (do not overwrite an existing script.v1.json).
 3. Write THREE NEW scripts, each its own hook and order, in `[[line_with_tags, pause_s], ...]` format:
-   - YouTube (root): 60–90 s, ≤ 225 words, ad-safe.
-   - TikTok (`tiktok/`): 50–75 s, ≤ 190 words, spicy, comment bait.
-   - IG/FB (`ig/`): 35–55 s, ≤ 140 words, most vulgar (no slurs).
+   - LENGTH by series, same for all three cuts — DECODED ~90 s (gate 80–100 s, ≤ 250 words); WHAT IF ~65 s (gate 58–72 s, ≤ 180 words). Owner: "90 seconds is the target timing… 65 seconds for the what ifs". The gate reads the series from build/scene.js (series: 'whatif'|'decoded') or voice/series.txt.
+   - YouTube (root): ad-safe. TikTok (`tiktok/`): spicy, comment bait. IG/FB (`ig/`): most vulgar (no slurs). Different hooks/order/tone, same length.
 4. KINDERGARTEN CLARITY (the whole point):
    - Set the scene before the first big number: who, what they did, why anyone trusted it.
    - Explain every term in plain words the first time.

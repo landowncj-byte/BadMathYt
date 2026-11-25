@@ -160,7 +160,7 @@ Every topic gets **three different scripts and edits**, not one video cross-post
 | | **YouTube Shorts** (BadMath) | **TikTok** (@color.me.saved) | **Instagram Reels + Facebook Reels** (badmath.tv) |
 |---|---|---|---|
 | Algorithm favors | viewed-vs-swiped, average % viewed, **loops**, searchable titles, subs from Shorts | completion + **rewatches**, comments, shares, watch-time in first 3 s, trend-native voice | **sends/shares per reach** (DM shares), **saves**, 3-second hold, original content, punchy text that works muted |
-| Length (owner 2026-11-25: longer, more context) | **60–90 s** story with a full arc and full context | **50–75 s**, punchy but every step explained | **35–55 s**, the story explained simply, then the punchline |
+| Length (owner 2026-11-25) | Decoded **~90 s** (80–100) · What If **~65 s** (58–72) | same | same |
 | Hook tone | edgy, ad-safe (no profanity: "dumb", "stupid", "idiot") | edgy + spicy, direct "you"/POV, mild profanity bleeped or swapped ("dumbass", "screwed") — keep TikTok For You–safe | **most disrespectful + vulgar** (user rule): profanity allowed in voice and on screen ("dumbass", "shit", "f***ing"); no slurs, no sexual content, never insult victims or groups |
 | Structure | hook → setup → re-hooks → payoff at 75–80% → loop line | hook → "here's how he did it" fast list → twist → open-ended question for comments | hook → the one insane number → punchline → "send this to…"/"save this" |
 | CTA weave | like / share / follow (§13) | comment bait (a debatable question), follow for part 2, "send to…" | **send** (DMs) and **save**, then follow |
@@ -263,7 +263,7 @@ Owner rules (RULES.md) win over skill defaults (e.g. no AI disclosure, our CTA p
 
 ## §24 Context and clarity in Shorts (owner rule 2026-11-25)
 "The scripts are being rushed and missing too much context… break it down almost to kindergartner level, but these are still very interesting stories."
-- Shorts lengths: YouTube 60–90 s · TikTok 50–75 s · IG/FB 35–55 s. Use the extra time for CONTEXT, not more facts.
+- Shorts lengths: DECODED ~90 s (80–100 s) · WHAT IF ~65 s (58–72 s), same on every platform. Use the extra time for CONTEXT, not more facts.
 - Set the scene first: who is this person, what were they doing, why would anyone trust it — before the first big number.
 - Every term explained in plain words the first time ("a payday loan — a tiny loan you pay back on your next paycheck").
 - One new idea per line. Never stack two numbers in one sentence.
