@@ -1,32 +1,102 @@
 [
  {
-  "text": "The lottery's own security director rigged the damn thing in five states.",
+  "text": "This dumbass rigged the lottery in five states and missed the jackpot.",
   "start": 0.0,
-  "end": 3.635
+  "end": 3.281
  },
  {
-  "text": "Wait, it's worse: he told a court he wrote code to predict numbers.",
-  "start": 4.485,
-  "end": 7.731
+  "text": "His name's Eddie Tipton, but wait for his job title.",
+  "start": 4.481,
+  "end": 7.425
  },
  {
-  "text": "Send this to whoever plays every week.",
-  "start": 7.981,
-  "end": 10.057
+  "text": "He was actually the information security director at the Multi-State Lottery Association.",
+  "start": 8.325,
+  "end": 13.267
  },
  {
-  "text": "The biggest ticket was advertised at sixteen point five million. Follow, guess what it paid.",
-  "start": 10.357,
-  "end": 15.841
+  "text": "That's one office running the damn computers that draw the numbers, for lotteries in many states.",
+  "start": 13.667,
+  "end": 18.412
  },
  {
-  "text": "Not a fucking cent. He got up to twenty-five years in prison.",
-  "start": 16.191,
-  "end": 21.632
+  "text": "And a lottery computer has one job: pick numbers nobody can guess, like a robot rolling dice.",
+  "start": 19.412,
+  "end": 24.529
  },
  {
-  "text": "You still trust the damn lottery?",
-  "start": 21.932,
-  "end": 23.702
+  "text": "So the security guy rigs it? Double-tap if you saw that shit coming.",
+  "start": 24.929,
+  "end": 28.472
+ },
+ {
+  "text": "Okay, here's the scam, nice and slow.",
+  "start": 28.872,
+  "end": 30.986
+ },
+ {
+  "text": "Step one: he later told a court he wrote code that let him predict the winning numbers.",
+  "start": 31.887,
+  "end": 35.802
+ },
+ {
+  "text": "So he knew the dice roll before anybody threw.",
+  "start": 36.302,
+  "end": 38.726
+ },
+ {
+  "text": "Step two: he said he handed those numbers to other people.",
+  "start": 39.726,
+  "end": 42.558
+ },
+ {
+  "text": "Step three: those people won, and shared the winnings with him.",
+  "start": 42.858,
+  "end": 45.592
+ },
+ {
+  "text": "Send this to whoever still plays every damn week.",
+  "start": 46.092,
+  "end": 48.654
+ },
+ {
+  "text": "Now the big one. In twenty ten, a ticket tied to the scheme hit a jackpot.",
+  "start": 49.054,
+  "end": 52.905
+ },
+ {
+  "text": "The billboard prize? It was advertised at sixteen point five million dollars.",
+  "start": 53.805,
+  "end": 57.813
+ },
+ {
+  "text": "Say you make fifty grand a year. That's three hundred thirty years of your life.",
+  "start": 59.213,
+  "end": 62.914
+ },
+ {
+  "text": "Follow, 'cause guess how much of it got paid.",
+  "start": 63.614,
+  "end": 65.895
+ },
+ {
+  "text": "Not a fucking cent. Nobody ever collected it.",
+  "start": 66.395,
+  "end": 68.976
+ },
+ {
+  "text": "In twenty seventeen he pleaded guilty, which means he admitted it in court.",
+  "start": 69.876,
+  "end": 73.798
+ },
+ {
+  "text": "He was sentenced to up to twenty-five years in prison.",
+  "start": 75.548,
+  "end": 78.133
+ },
+ {
+  "text": "So he rigged five states and missed the jackpot. Still trust the damn lottery?",
+  "start": 78.933,
+  "end": 82.901
  }
 ]
