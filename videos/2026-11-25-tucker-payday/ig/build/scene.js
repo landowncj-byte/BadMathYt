@@ -318,7 +318,7 @@
 // IG/FB cut — re-directed to voice/beats.v2.md. Stations: hook (0,0) · calendar (1500,0) · loan form (3000,0) · crowd (3000,1500) · verdict (1500,1500)
 BM2.scene({
   series: 'decoded', title: 'CASE: TUCKER · 2017', duration: 21.69,
-  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR'],
+  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR', 'PHOTOS: TONY WEBSTER (CC BY 2.0) · KEN LUND (CC BY-SA 2.0)', 'VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'hook', type: 'slam', at: [0, 0], in: 0, props: { size: 124, l1: [['$500', 'gold'], [' LOAN', 'paper']], l2: [['$1,925', 'bad'], [' BACK', 'paper']], endAt: 20.0 } },
     { id: 'paycal', type: 'paycal', at: [1500, 0], in: '@How-0.5', props: { paydays: ['@payday', '@took+0.15', '@150+0.3', '@fees', '@and', '@balance'], owedAt: ['@took+0.15', '@150+0.3', '@fees', '@and', '@balance'], neverAt: '@never' } },
@@ -326,6 +326,7 @@ BM2.scene({
     { id: 'crowd', type: 'crowd', at: [3000, 1500], in: 14.3, props: { at: '@four', dur: 1.0, gridAt: 14.8, gridDur: 1.0 } },
     { id: 'verdict', type: 'verdict', at: [1500, 1500], in: '@14-0.4', props: { guiltyAt: '@guilty', countsAt: '@14', monthsAt: '@16', subAt: '@years' } },
     { id: 'ticks', type: 'ticks', at: [1500, 1970], in: '@14-0.4', props: { at: '@14', dur: 0.7 } },
+    { id: 'pcourt', type: 'photo', at: [1300,1360], rot: 0, in: '@14-0.4', props: { src: 'brand/photos/stock/tucker-payday/courthouse.jpg', tag: 'SDNY COURTHOUSE · ILLUSTRATIVE', credit: 'K. LUND · CC BY-SA', w: 380, aspect: 0.8, treatment: 'polaroid', tilt: 0.05, fx: 0.5, fy: 0.45 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@Double-0.05', out: '@Double+1.15', props: { s: 1 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },

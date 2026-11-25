@@ -318,7 +318,7 @@
 // YouTube cut — re-directed to voice/beats.v2.md (2026-11-25). Stations: hook (0,0) · loan form (0,1250) · Tucker (1500,1250) · calendar (3000,1250) · fee tower (4500,1250) · crowd (4500,2650) · verdict (3000,2650)
 BM2.scene({
   series: 'decoded', title: 'CASE: TUCKER · 2017', duration: 47.99,
-  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR · SILHOUETTE'],
+  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR · SILHOUETTE', 'PHOTOS: TONY WEBSTER (CC BY 2.0) · KEN LUND (CC BY-SA 2.0)', 'VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'hook', type: 'slam', at: [0, 0], in: 0, props: { l1: [['LENT ', 'paper'], ['$500', 'gold']], l2: [['TOOK ', 'paper'], ['$1,925', 'bad']], endAt: '@500#3' } },
     { id: 'box', type: 'loanbox', at: [0, 1250], in: -1, props: { at: '@so', dur: 2.3, reset: 99999, amountAt: '@paperwork', totalAt: '@650' } },
@@ -329,6 +329,8 @@ BM2.scene({
     { id: 'crowd', type: 'crowd', at: [4500, 2650], in: 28.94, props: { at: '@four', dur: 1.0, gridAt: 29.5, gridDur: 1.1 } },
     { id: 'verdict', type: 'verdict', at: [3000, 2650], in: '@jury-0.4', props: { guiltyAt: '@convicted', countsAt: '@14#2', monthsAt: '@200', subAt: '@16' } },
     { id: 'ticks', type: 'ticks', at: [3000, 3120], in: '@jury-0.4', props: { at: '@14#2', dur: 0.9 } },
+    { id: 'pstore', type: 'photo', at: [1240,1560], rot: 0, in: '@Scott-0.4', props: { src: 'brand/photos/stock/tucker-payday/payday-sign.jpg', tag: 'STOCK PHOTO · ILLUSTRATIVE', credit: 'T. WEBSTER · CC BY', w: 400, aspect: 0.87, treatment: 'polaroid', tilt: -0.06, fx: 0.5, fy: 0.5 } },
+    { id: 'pcourt', type: 'photo', at: [2780,2210], rot: 0, in: '@jury-0.4', props: { src: 'brand/photos/stock/tucker-payday/courthouse.jpg', tag: 'SDNY COURTHOUSE · ILLUSTRATIVE', credit: 'K. LUND · CC BY-SA', w: 380, aspect: 0.8, treatment: 'polaroid', tilt: 0.05, fx: 0.5, fy: 0.45 } },
     // ---- screen-fixed micro-moments (small, <= 1.5 s) ----
     { id: 'sig', type: 'sig', layer: 'screen', at: [420, 640], in: '@Hit+0.1', out: '@Hit+1.5', props: { dur: 0.8, label: 'SIGNED WITHOUT READING?' } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@like-0.05', out: '@like+1.15', props: { s: 1 } },

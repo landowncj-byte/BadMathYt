@@ -318,7 +318,7 @@
 // TikTok cut — re-directed to voice/beats.v2.md. Stations: hook (0,0) · loan form (0,1250) · Tucker (1500,1250) · auto-renew (3000,1250) · calendar (4500,1250) · paid tower (4500,2650) · verdict (3000,2650)
 BM2.scene({
   series: 'decoded', title: 'CASE: TUCKER · 2017', duration: 34.66,
-  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR · SILHOUETTE'],
+  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR · SILHOUETTE', 'PHOTOS: TONY WEBSTER (CC BY 2.0) · KEN LUND (CC BY-SA 2.0)', 'VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'hook', type: 'slam', at: [0, 0], in: 0, props: { size: 116, l1: [['BORROWED ', 'paper'], ['$500', 'gold']], l2: [['PAID ', 'paper'], ['$1,925', 'bad']], endAt: '@500#3' } },
     { id: 'box', type: 'loanbox', at: [0, 1250], in: -1, props: { at: 99999, amountAt: '@fine', totalAt: '@650' } },
@@ -331,6 +331,8 @@ BM2.scene({
     { id: 'verdict', type: 'verdict', at: [3000, 2650], in: '@jury-0.4', props: { guiltyAt: '@guilty', countsAt: '@14', monthsAt: '@16', subAt: '@years' } },
     { id: 'ticks', type: 'ticks', at: [3000, 3120], in: '@jury-0.4', props: { at: '@14', dur: 0.8 } },
     { id: 'fp', type: 'text', layer: 'screen', at: [560, 400], in: '@Tap', out: '@He\'d-0.1', props: { lines: [[['FINE PRINT?', 'paper']]], size: 74 } },
+    { id: 'pstore', type: 'photo', at: [1240,1560], rot: 0, in: '@Scott-0.4', props: { src: 'brand/photos/stock/tucker-payday/payday-sign.jpg', tag: 'STOCK PHOTO · ILLUSTRATIVE', credit: 'T. WEBSTER · CC BY', w: 400, aspect: 0.87, treatment: 'polaroid', tilt: -0.06, fx: 0.5, fy: 0.5 } },
+    { id: 'pcourt', type: 'photo', at: [2780,2210], rot: 0, in: '@jury-0.4', props: { src: 'brand/photos/stock/tucker-payday/courthouse.jpg', tag: 'SDNY COURTHOUSE · ILLUSTRATIVE', credit: 'K. LUND · CC BY-SA', w: 380, aspect: 0.8, treatment: 'polaroid', tilt: 0.05, fx: 0.5, fy: 0.45 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@heart-0.05', out: '@heart+1.15', props: { s: 1 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },

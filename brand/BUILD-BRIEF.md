@@ -35,5 +35,6 @@ Goal: add real/stock imagery to a finished, queued topic WITHOUT changing script
 5. Re-render each changed cut with --force, ONE at a time, in the foreground; re-mix; regenerate the 1-fps contact sheet; re-run script_gate (must still PASS); check the VIDEO GATE + Lessons from review on real frames (photos must not cover numbers, captions or the hook). Keep files < 40 MB.
 Final reply: per cut — what images were added where (with credits), file path/size, anything skipped.
 
-## Covers / thumbnails (owner 2026-11-25: "update all of the thumbnails too")
-Every Short gets `<folder>/cover.png` (1080×1920, < 2 MB, shared by all three cuts) and every long-form gets a 1280×720 thumbnail. Build it as a still in the v2 look (Ink stage, paper cards, no glows), from the scene's own elements: the topic's real photo (if VERIFIED) or best stock image in a paper/polaroid frame, the hook in big Anton text (≤ 5 words, readable at 200 px tall), one key number, the series pill. Keep the important text inside the centre 1080×1350 (IG grid crop) and away from the bottom 20% (platform UI). Render with the engine (`bm2.cjs stills` at a chosen frame, or a dedicated `cover` scene) and look at it full size and at 270×480. The cover is used as the TikTok/IG/FB cover image (coverImageKey) and the YouTube thumbnail.
+## Covers / thumbnails (owner 2026-11-25)
+Shorts: NO designed cover. The owner sets Short covers himself ("first frame or last frame, I'll set it myself"). Don't make cover.png.
+Long-forms: a 1280×720 thumbnail in the v2 look, with real photos of the people when licensed ones exist.
