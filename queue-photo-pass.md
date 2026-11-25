@@ -17,3 +17,8 @@ Run in slot order, max 3 agents at once, brief = brand/BUILD-BRIEF.md "PHOTO PAS
 | Thu 20:00 | lottery-part2 | n/a | later |
 | Thu 22:00 | onecoin | none | later |
 | Wed 17:00 long-form | impossible-number | 4 real photos | DONE (post ba864099) |
+
+## Thursday re-time + photo (scripts smoothed + re-voiced 2026-11-25 ~17:00 UTC, all 24 PASS the gate)
+Running: weight-vs-height (08:00), fake-wine (10:00, has real photos), three-briefcases (12:00).
+Next, in slot order: lottery-rig (14:00), fake-prince (16:00, Gignac mugshot), penny-doubled (18:00), lottery-part2 (20:00), onecoin (22:00).
+After each: review real frames, re-upload, delete + recreate the 4 posts with the same captions (add photo credits to the YouTube description), approve, commit.
