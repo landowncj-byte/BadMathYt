@@ -69,3 +69,5 @@ PostFast allows **max 10 YouTube posts per UTC day** (counted by scheduled time;
 
 ## Usage pacing (user rule 2026-11-25)
 The usage meter/reset time isn't visible to Claude. So: before any heavy job, tell the user an estimate **in time** ("~2 h of heavy work", "nightly batch ≈ 3–4 h"), not percentages. Pace: Sonnet/Haiku for building/rendering, no duplicate agents, short replies, max 3 build agents at once. If a limit hits mid-batch, everything already scheduled still posts; resume from HANDOFF.md §7.
+
+> CADENCE (RULES 106, 2026-11-25, ElevenLabs Pro): 3 Short topics/day at 11:00 · 15:00 · 19:00 ET (each on YouTube + TikTok + Instagram + Facebook = 12 posts/day), ~50/50 Decoded / What If; long-forms Tue + Fri 17:00 ET. Math in PLAN-CADENCE.md. Replaces "8 per platform per day" and Mon/Wed/Fri long-forms.
