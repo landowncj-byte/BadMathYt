@@ -1,7 +1,7 @@
 // IG/FB cut — re-directed to voice/beats.v2.md. Stations: hook (0,0) · calendar (1500,0) · loan form (3000,0) · crowd (3000,1500) · verdict (1500,1500)
 BM2.scene({
   series: 'decoded', title: 'CASE: TUCKER · 2017', duration: 21.69,
-  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR', 'PHOTOS: TONY WEBSTER (CC BY 2.0) · KEN LUND (CC BY-SA 2.0)', 'VIA WIKIMEDIA COMMONS'],
+  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR', 'PHOTO: KEN LUND (CC BY-SA 2.0)', 'VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'hook', type: 'slam', at: [0, 0], in: 0, props: { size: 124, l1: [['$500', 'gold'], [' LOAN', 'paper']], l2: [['$1,925', 'bad'], [' BACK', 'paper']], endAt: 20.0 } },
     { id: 'paycal', type: 'paycal', at: [1500, 0], in: '@How-0.5', props: { paydays: ['@payday', '@took+0.15', '@150+0.3', '@fees', '@and', '@balance'], owedAt: ['@took+0.15', '@150+0.3', '@fees', '@and', '@balance'], neverAt: '@never' } },

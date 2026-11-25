@@ -255,3 +255,8 @@ Before writing any script, read `brand/skills/short-form-video-script/` (WATCH f
 6. **Loop + CTAs:** the last line flows back to frame 1. CTAs are woven per §13 (like ~30%, send ~55%, follow ~80%, comment question after the payoff) — never a CTA block at the end.
 7. Run `brand/tools/script_gate.py` on the cut; a FAIL means rewrite, not voice.
 Owner rules (RULES.md) win over skill defaults (e.g. no AI disclosure, our CTA placement).
+
+## 23. Flow and breathing room (user rule 2026-11-25)
+- Write in full spoken sentences that connect ("so", "and then", "which means"), the way a person tells a story. Fragments are seasoning, not the meal: max 25% of sentences ≤ 3 words, never three in a row.
+- Let big moments land: after a big number, a verdict or a twist, give a beat (line pause ≥ 0.5 s or `[beat]`). Example: "They took in over two point four billion dollars. [beat]" / "He was sentenced to twenty years in prison. [beat]"
+- Say verdicts as sentences: "He was sentenced to twenty years in prison," not "Twenty years."

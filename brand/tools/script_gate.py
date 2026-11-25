@@ -50,7 +50,7 @@ BANNED = [
 ]
 YT_PROFANITY = r"\b(?:shit\w*|f\*+\w*|fuck\w*|bastard|damn|ass|dumbass|bullshit|bitch\w*|asshole)\b|-ass\b"
 TT_PROFANITY = r"\b(?:shit\w*|fuck\w*|bitch\w*|asshole)\b"
-ALLOWED_TAGS = {"breath", "gasp", "sigh", "sniff", "smack", "throat", "pause"}
+ALLOWED_TAGS = {"breath", "gasp", "sigh", "sniff", "smack", "throat", "pause", "beat"}
 NUM = r"\d|\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|grand|percent|bucks|dollars?|half|double|triple|zero|mil)\b"
 TURN = r"\?|\b(?:but|wait|except|nope|nah|turns\s+out|plot\s+twist|worse|dumber|instead|until|then|so\s+where|here's|guess|yeah|still|never|actually|okay|now)\b"
 THROAT = r"\s*(?:so,?\s+)?(?:hey|hi|hello|what'?s up|welcome|okay so today|today|in this video|in today'?s|let'?s talk about|let me tell you|i want to talk|so i'?ve been|have you ever wondered|did you know|here'?s a (?:video|story)|this (?:video|is a video)|quick (?:story|video)|story time)\b"
@@ -199,6 +199,21 @@ def gate(cut_dir, script_name=None):
         bare = n >= 1 and len(words(tx)) <= 7 and not re.search(r"\?", tx)
         run = run + 1 if bare else 0
         if run == 3: fails.append(f"NUMBER LIST: three bare number sentences in a row ending at {t0:.1f} s — put a reaction or a question between them"); 
+    # 5b sentence flow + breathing room (owner 2026-11-25: "pause after big numbers… the words feel chopped up and put together instead of actually a sentence")
+    BIG = r"\b(hundred|thousand|million|billion|trillion|percent|years?|months?|grand)\b"
+    frag_sents = [x for l, _ in script for x in re.split(r"(?<=[.!?])\s+", re.sub(r"\[[^\]]*\]", "", l)) if x.strip()]
+    short = [x for x in frag_sents if len(words(x)) <= 3]
+    if frag_sents and len(short) / len(frag_sents) > 0.25:
+        fails.append(f"CHOPPY: {len(short)} of {len(frag_sents)} sentences are 3 words or fewer (max 25%) — write full spoken sentences (\"He got two hundred months in prison.\", not \"Guilty. Fourteen counts. Two hundred months.\"): " + " | ".join(short[:5]))
+    run = 0
+    for x in frag_sents:
+        run = run + 1 if len(words(x)) <= 3 else 0
+        if run == 3: fails.append(f"CHOPPY: three fragments in a row ending \"{x.strip()}\" — join them into one sentence"); break
+    for i, (l, pz) in enumerate(script[:-1]):
+        tail = re.sub(r"\[[^\]]*\]\s*$", "", l).strip()
+        last_sent = re.split(r"(?<=[.!?])\s+", tail)[-1]
+        if re.search(NUM, last_sent, re.I) and re.search(BIG, last_sent, re.I) and pz < 0.5 and not re.search(r"\[(pause|beat)\]\s*$", l):
+            fails.append(f"NO BEAT after a big number: line {i+1} ends on \"{last_sent[:60]}\" with only {pz:.2f} s — give it ≥ 0.5 s (or end the line with [beat]) so it lands")
     setup_end = next((t0 for t0, _, tx in cl[1:] if re.search(r"\?|\b(but|wait|except|then|until|worse)\b", tx, re.I)), dur)
     if setup_end / dur > 0.30: warns.append(f"first turn/question after the hook comes at {pct(setup_end)} — setup is too long (target < 20%)")
     longest = max(len(words(l)) for l, _ in script)

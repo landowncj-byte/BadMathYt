@@ -280,7 +280,7 @@ const FR = { x: 150, y: 1330, s: 1.25 };                 // storyteller, front-l
 const TXT = (lines, size, extra = {}) => ({ lines, size, ...extra });
 BM2.scene({
   series: 'decoded', title: 'CASE: BITCONNECT · 2017', duration: 47.62,
-  footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS · APP SCREEN IS AN ILLUSTRATION'],
+  footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS · APP SCREEN IS AN ILLUSTRATION', 'PHOTOS: ANTANACOINS, CC BY-SA 3.0 · FEDERAL JUDICIARY, PUBLIC DOMAIN · VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- station A: cracked phone app + hook (frame 0 slam) ----
     { id: 'phone', type: 'phone', at: [0, 0], in: -1, props: { crackAt: 0.06, coinsAt: '@People', shutAt: '@shut', shutOutAt: 38.4 } },
@@ -300,6 +300,8 @@ BM2.scene({
     { id: 'bot', type: 'bot', at: [3450, 0], in: '@no-0.5', props: { h: 780, noTaken: true, curtainAt: '@who+0.1', tagAt: '@Prosecutors' } },
     // ---- station D: promoter case card ----
     { id: 'case', type: 'case', at: [3450, 1650], in: '@Its#2-0.4', props: { guiltyAt: '@guilty-0.15', monthsAt: '@38' } },
+    { id: 'court', type: 'photo', at: [4110, 1690], in: '@Its#2-0.3', props: { src: 'brand/photos/stock/edward-j-schwartz-united-states-courthouse/1.jpg', name: 'FEDERAL COURT', role: 'SAN DIEGO', credit: 'PHOTO: FEDERAL JUDICIARY · PUBLIC DOMAIN', w: 400, aspect: 1.2, tilt: 0.05, fx: 0.5, fy: 0.5 } },
+    { id: 'coin', type: 'photo', at: [2470, 1690], in: '@BitConnect-0.3', out: '@Hit+0.3', props: { src: 'brand/photos/stock/physical-bitcoin-coin/5.jpg', name: 'BITCOIN', role: 'STOCK PHOTO', credit: 'PHOTO: ANTANACOINS · CC BY-SA 3.0', w: 380, aspect: 1.0, tilt: -0.05, fx: 0.5, fy: 0.5 } },
     // ---- loop copy of the hook (no slam: it slams again on frame 0) ----
     { id: 'hookA2', type: 'slamtext', at: [0, -720], in: 44.35, props: TXT([[['1% A DAY', 'bad']]], 200, { slam: false }) },
     // ---- screen-fixed micro moments ----
@@ -327,7 +329,7 @@ BM2.scene({
     { at: '@posted', beat: 'graphic-hero', focus: 'tick', st: 'corner-left', fill: 0.82, maxH: 900, sy: 850, pose: 'point' },
     { at: 10.5, beat: 'zoom-on-number', focus: ['tick.r2', 'tick.r3'], fill: 0.86, maxH: 560, sy: 900, st: { x: 190, y: 1330, s: 0.95, layer: 'back' }, rot: -0.012, dur: 0.5 },
     // 11.9-14.9: like + "it's not"
-    { at: '@Hit', beat: 'presenter-front', focus: 'tick', sy: 760, pose: 'talk' },
+    { at: '@Hit', beat: 'presenter-front', focus: ['tick', 'coin'], keep: ['coin'], sy: 760, pose: 'talk' },
     { at: '@it\'s', beat: 'presenter-front', focus: 'tick', sy: 760, pose: 'shrug', zoom: 0.86, dur: 0.5 },
     // 15.3-26.8: THE counter
     { at: '@Do', beat: 'side-by-side', focus: 'ctr', move: 'whip', sy: 760, fill: 0.74, maxH: 1000, pose: 'point' },
@@ -356,8 +358,8 @@ BM2.scene({
     { at: '@promoter', beat: 'graphic-hero', focus: ['case.who', 'case.guilty'], fill: 0.86, sy: 760, st: 'corner-left', pose: 'point' },
     { at: '@guilty-0.2', beat: 'zoom-on-number', focus: ['case.who', 'case.guilty'], fill: 0.9, sy: 820, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@38', beat: 'zoom-on-number', focus: ['case.guilty', 'case.months'], fill: 0.94, maxH: 700, zoom: 1.05, sy: 830, st: { x: 190, y: 1330, s: 0.95, layer: 'back' }, dur: 0.4 },
-    { at: 42.3, beat: 'pull-back', focus: 'case', fill: 0.8, maxH: 950, sy: 770, st: 'corner-left', pose: 'idle' },
-    { at: 43.5, beat: 'presenter-front', focus: 'case', sy: 760, pose: 'chin' },
+    { at: 42.3, beat: 'pull-back', focus: ['case', 'court'], fill: 0.8, maxH: 950, sy: 770, st: 'corner-left', pose: 'idle' },
+    { at: 43.5, beat: 'presenter-front', focus: ['case', 'court'], keep: ['court'], sy: 760, pose: 'chin' },
     // 44.5: back to the cracked phone = frame 0
     { at: 44.5, beat: 'zoom-on-number', focus: ['hookA2', 'phone.rate'], move: 'whip', fill: 0.84, maxH: 1000, sy: 900, st: FR, pose: 'talk' },
   ],

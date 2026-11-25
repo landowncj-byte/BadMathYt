@@ -2,7 +2,7 @@
 speaking — uhms, breaths, things like that" + "more inhale and human noise sounds").
 Script lines may contain:
   - fillers/self-corrections written as words: "um", "uh", "like", "she, uh, she had…", "four— no, four point two five"
-  - inline sound tags: [breath] [gasp] [sigh] [sniff] [smack] [throat] [chuckle] [pause]
+  - inline sound tags: [breath] [gasp] [sigh] [sniff] [smack] [throat] [chuckle] [pause] [beat]
 build(k, lines) -> (audio, sr, sentences) with tags turned into real CC0 human noises (brand/sfx-library/breath/),
 plus automatic soft inhales before ~1 in 3 lines that don't already start with a tag.
 SHOW text (captions) = the line with [tags] removed.
@@ -56,6 +56,7 @@ def build(k, lines, voice='am_liam', auto_breath=True):
             if m:
                 tag = m.group(1)
                 if tag == 'pause': seg.append(np.zeros(int(0.35 * sr), 'float32')); continue
+                if tag == 'beat': seg.append(np.zeros(int(0.7 * sr), 'float32')); continue  # owner: let big numbers land
                 if tag in TAGS: seg += [noise(tag, line, sr), np.zeros(int(0.05 * sr), 'float32')]
                 continue
             a, sr = say(k, p, voice=voice); a = _trim(a, sr)

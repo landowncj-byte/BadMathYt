@@ -29,7 +29,7 @@ Mix: voice -16 LUFS, bed tense_bed_2 ducked, master -14 LUFS, peak <= -1 dBTP (m
 | Comment bubble ("WHAT ARE YOU PAYING FOR?" YT / "READ THE FINE PRINT?" TT) + red +FOLLOW -> ✓ FOLLOWING | YT, TT | brand |
 | IG end card: paper plane + "SEND TO THE FRIEND WHO NEVER READS THE FINE PRINT" | IG | brand CTA |
 
-Not shown, on purpose: Ameriloan/brand names, Level 5, the tribal-immunity angle, Muir, FTC/Supreme Court, 1991 conviction, $380M personal take, any photo, any quote.
+Not shown, on purpose: Ameriloan/brand names, Level 5, the tribal-immunity angle, Muir, FTC/Supreme Court, 1991 conviction, $380M personal take, any photo of Tucker (none licensed: silhouette kept), any quote.
 
 ## Caption fixes (Whisper vs sentences.json)
 YT: "$19 .25" -> $1,925; "$14 .25" -> $1,425; 500/650/150 given $ signs. TT: "500 -0650." -> "$500, owe $650."; "auto -renewed," -> "auto-renewed,"; "19 .25" -> $1,925; "print comment?" -> "print? Comment."; 500/150 -> $. IG: "$2 ,000." -> "two grand."; 150 -> $150. Captions never show [tags]; IG shows "bastard"/"damn".
@@ -49,3 +49,11 @@ All CC0 from brand/sfx-library (manifest names), one hit per reveal on the same 
 - Hook "HE TOOK $1,925" refers to DOJ's example borrower, not an average customer; the box says PER DOJ · ONE BORROWER once it rolls.
 - The odometer shows 200 MONTHS in the IG/TT verdicts while the audio says "sixteen years"; the sub-line adds (16 YRS 8 MO).
 - The final wide shot is small (7-8 stations); intended as a map/recap + loop transition.
+
+## PHOTO PASS (2026-11-25) — added stock imagery, script/voice/timing/CTA beats unchanged
+Tucker: no licensed photo (VERIFIED.md) so the silhouette ILLUSTRATION card stays. Stock only, all Wikimedia Commons, no watermark, no readable brand names/logos (sign cropped to exclude the corner sticker and shop logo).
+| Image | Cuts | Where / when | File | Page | License | Author |
+|---|---|---|---|---|---|---|
+| Illuminated "PAYDAY LOANS" shop sign (generic; tag STOCK PHOTO · ILLUSTRATIVE) | YT, TT | polaroid beside the Tucker silhouette card, from "Scott..." until the whip to the next station | brand/photos/stock/tucker-payday/payday-sign.jpg (crop of payday-loan-store/3.jpg) | https://commons.wikimedia.org/wiki/File:Payday_Loans_Store_-_Check_Cashing_and_Pay_Day_Loan_-_Money_Mart_(25469046943).jpg | CC BY 2.0 | Tony Webster |
+| Daniel Patrick Moynihan U.S. Courthouse entrance, SDNY (tag SDNY COURTHOUSE · ILLUSTRATIVE; does not claim the trial was in this building) | YT, TT, IG | polaroid pinned in the empty band of the verdict card, from the card entrance until just before the 200 MONTHS reveal; never covers GUILTY/14 OF 14/200 MONTHS | brand/photos/stock/tucker-payday/courthouse.jpg (= daniel-patrick-moynihan-united-states-courthouse/3.jpg) | https://commons.wikimedia.org/wiki/File:Daniel_Patrick_Moynihan_U.S._Courthouse,_Manhattan,_New_York_(7237347688).jpg | CC BY-SA 2.0 | Ken Lund |
+Skipped: race car (every Commons Le Mans candidate has readable sponsor/team lettering; no generic car card is used in any cut); IG sign (no room, IG stations are full). Footnote now has "PHOTOS: TONY WEBSTER (CC BY 2.0) · KEN LUND (CC BY-SA 2.0)" + "VIA WIKIMEDIA COMMONS" (YT/TT; IG footnote credits Ken Lund only). Re-rendered with --force, re-mixed (-14 LUFS, peak <= -1.3 dBFS), contact sheets regenerated. Photos stay out of captions (y>1340), numbers and hook.

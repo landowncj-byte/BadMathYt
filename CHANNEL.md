@@ -125,3 +125,4 @@ decisions:
 - 2026-11-25: Owner: stock only where a clean free photo exists, no watermarks ever; no Canva AI stock.
 - 2026-11-25: Pexels MCP idea dropped by owner (no API key available). Stock stays Wikimedia Commons only.
 - 2026-11-25: Installed free stock sources (no keys): Openverse (Flickr/StockSnap/Wikimedia/museums), Library of Congress, Wikimedia Commons → brand/tools/stock.py; hosts live.staticflickr.com, cdn.stocksnap.io, www.loc.gov, tile.loc.gov added.
+- 2026-11-25: Owner: no pauses on emphasized moments + scripts feel chopped up → STYLE §23 + RULES (beats after big numbers, full sentences), [beat] tag (0.7 s) in humanize.py, gate checks CHOPPY + NO BEAT. Applies to every new script; Thursday scripts get rewritten together with their photo pass.

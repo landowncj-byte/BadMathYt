@@ -1,0 +1,56 @@
+BEATS (time, beat, focus, storyteller, pose)
+  0.00  graphic-hero  ["hook","deck"]  custom  talk
+  3.78  zoom-on-number  "bank.amount"  corner-left  point
+  6.80  graphic-hero  "deck"  corner-left  point
+  7.28  zoom-on-number  "deck.value"  corner-left  shock
+  9.28  side-by-side  "sheet"  left  point
+  10.62  graphic-hero  "sheet"  corner  point
+  11.74  presenter-front  "sheet"  front  shrug
+  12.86  zoom-on-number  "verdict.months"  corner-left  shock
+  14.64  presenter-front  "verdict"  front  you
+CAPTIONS
+  0.00  She sold
+  0.38  JPMorgan 4
+  1.46  million
+  1.74  customers that
+  2.60  didn't exist,
+  3.78  $175 million,
+  5.58  for a startup
+  6.50  with fewer than
+  7.28  300,000 real
+  8.34  users.
+  9.28  When they asked
+  9.74  for proof, she
+  10.36  had a professor
+  10.90  fake it, bold
+  11.88  as hell.
+  12.86  85 months in
+  13.96  prison.
+  14.64  Send this to
+  15.16  the friend who
+  15.70  fakes their
+  16.14  follower count.
+SFX
+  0 deep_boom_2 -4
+  0.08 money_counter_1 -14
+  3.48 whoosh_2 -10
+  3.78 cash_register_1 -8
+  3.83 money_counter_2 -13
+  6.5 whoosh_2 -10
+  7.08 swipe_2 -13
+  7.18 glass_shatter_2 -8
+  7.48 sub_drop_1 -8
+  8.26 deep_boom_1 -3
+  8.98 whoosh_2 -10
+  9.28 paper_slam_2 -10
+  10.75 money_counter_1 -12
+  11.22 rubber_stamp_2 -3
+  11.22 deep_boom_2 -8
+  11.74 rubber_stamp_2 -3
+  11.74 comedic_sting_1 -9
+  12.56 whoosh_2 -10
+  12.66 gavel_1 -4
+  12.86 money_counter_2 -11
+  13.58 ding_2 -8
+  14.64 swoosh_2 -9
+OK: scene compiles; sfx.json written
