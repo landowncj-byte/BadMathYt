@@ -25,3 +25,12 @@ Final reply (short): three paths + durations + sizes, contact sheet paths, VIDEO
 - Every real person named in the video gets a REAL licensed photo if one exists: `python3 brand/tools/photos.py "<name>"` → `brand/photos/<slug>/` (+ credits.json). Look at the image and its description to confirm it is that person. Show it with the engine's `photo` element (paper frame, name tag, small credit). No licensed photo → silhouette card labelled ILLUSTRATION. Never AI-generate a real person's face.
 - Use licensed stock/real-world images (same tool, or Canva-generated generic imagery labelled ILLUSTRATION) where a real object or place sells the beat. Photos live in paper frames; brand lock unchanged; no real logos.
 - Put photo credits in the footnote ("PHOTOS: …, PUBLIC DOMAIN / CC BY-SA, VIA WIKIMEDIA COMMONS") and list them in qa.md.
+
+## PHOTO PASS on an already-finished video (owner 2026-11-25: "update the scheduled stuff with real photos and stock images")
+Goal: add real/stock imagery to a finished, queued topic WITHOUT changing script, voice, timing, pacing or the CTA beats.
+1. Read `brand/photos/VERIFIED.md` (verified person photos) and the engine `photo` element docs in `brand/engine-v2/README.md` (example: `videos/2026-11-25-impossible-number/build2/src/`).
+2. People: if the person is in VERIFIED.md, replace their silhouette/ILLUSTRATION card with the `photo` element (treatment 'mugshot' for booking photos, else 'paper'), name tag + small credit. If not listed, keep the silhouette.
+3. Stock: add 1–3 real-world images where they sell a beat (place, object, document). Find them with `python3 brand/tools/photos.py "<query>" --n 6 --out brand/photos/stock` (Wikimedia Commons, licensed only). LOOK at every candidate and its description: correct subject, no visible brand logos, no identifiable private people, not graphic. Show it with the `photo` element in a paper/polaroid frame; never full-screen; brand lock unchanged. If nothing good turns up, skip stock rather than force it.
+4. Credits: add "PHOTOS: <credit>, <license>, VIA WIKIMEDIA COMMONS" to the footnote and list every image in qa.md (file, page URL, license, author).
+5. Re-render each changed cut with --force, ONE at a time, in the foreground; re-mix; regenerate the 1-fps contact sheet; re-run script_gate (must still PASS); check the VIDEO GATE + Lessons from review on real frames (photos must not cover numbers, captions or the hook). Keep files < 40 MB.
+Final reply: per cut — what images were added where (with credits), file path/size, anything skipped.
