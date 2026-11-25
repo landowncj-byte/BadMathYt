@@ -25,12 +25,14 @@ FIX = {
     "misappropriated":"mˌɪsɐpɹˈoʊpɹiˌeɪɾᵻd",
     "VIP":            "vˌiːˌaɪpˈiː",
     "FTX":            "ˌɛftˌiːˈɛks",
+    "APR":            "ˌeɪpˌiːˈɑːɹ",        # A-P-R (spaced "A P R" reads as "uh P R")
     "SEC":            "ˌɛsˌiːsˈiː",
     "CEO":            "sˌiːˌiːˈoʊ",
     "Bankman-Fried":  "bˈæŋkmənfɹˈiːd",    # FREED
     "Fyre":           "fˈaɪɚ",
     "Ponzi":          "pˈɑːnzi",
     "Holmes":         "hˈoʊmz",
+    "Jacobson":       "dʒˈeɪkəbsən",       # JAY-kub-sun
 }
 _WORD = re.compile(r"[A-Za-z][A-Za-z'\-]*")
 

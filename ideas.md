@@ -14,4 +14,6 @@
 | 2026-11-24 | What If | Counter | Your Coffee Habit Costs $437,000 | $6/day = $2,190/yr at 7% → $30K/$90K/$207K/$437K over 10–40 yrs (assumption) | arithmetic |
 | 2026-11-25 | What If | Myth vs Math | You're an Idiot If You Bet Parlays | 10-leg at −110 pays 643× on 1-in-1,024 → book keeps 37.2%; $10/day: −$166 singles vs −$1,358 parlays (EV) | arithmetic; Fable research 2026-11-25 (inspired by Coffeezilla gambling outlier pattern) |
 
+| 2026-11-25 | What If | Scale Swap | Your Overdraft Fee Is a 17,000% Loan | CFPB: $34 fee on $24 for 3 days = ~17,000% APR; same loan at card rates ≈ 4¢ | CFPB 2014 (verified primary) |
+| 2026-11-25 | Decoded | Timeline | The Guard Was the Thief: McDonald's Monopoly | Security employee swapped winning pieces; $13M+ (FBI 2001), $24M+ later; trial opened Sept 10, 2001; 37 months | DOJ 2001 #422 (verified primary); Wikipedia |
 Used hooks/formats to avoid repeating verbatim: "$1 every second", "two buttons A/B", "this tank is full of…", "50% in 45 days", "123 vs 20", "this guy was so dumb he committed an $8B fraud", "you're an idiot for buying one lottery ticket", "so shameless she said $100M", "fraud while out on bail", "idiot if you buy coffee every day". PROMISED: lottery Part 2 (what happened after the 1992 win) — make it.
