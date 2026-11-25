@@ -2,7 +2,7 @@
 
 This file is the long-term memory of the Bad Math project. A new Claude session that reads this + the files it points to must be able to continue the work with no other context. **Keep it current** (see "Keeping this file alive" at the bottom).
 
-Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote it: https://claude.ai/code/session_01JmfP7BKYW7KW1MupN5jo5m
+Last updated: 2026-11-25 ~02:35 UTC (Tue Nov 24, ~9:35 PM ET). Session that wrote it: https://claude.ai/code/session_01JmfP7BKYW7KW1MupN5jo5m
 
 ---
 
@@ -14,12 +14,12 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 ## 2. Files that ARE the system (read in this order)
 1. `HANDOFF.md` (this) — overview, state, how to resume.
 2. `CHANNEL.md` — channel config + **dated decision log** (every user rule, newest at the bottom).
-3. `STYLE.md` — creative rules. Key sections: §13 woven CTAs · §14 hook gate (outrageous-but-true hooks) · §15 three platform cuts · §16 pronunciation (say vs show) · §17 comments hybrid mode · §18 story loop · §19 series rules (What If = wild, Decoded = 100% accurate).
+3. `STYLE.md` — creative rules. Key sections: §13 woven CTAs · §14 hook gate (outrageous-but-true hooks) · §15 three platform cuts · §16 pronunciation (say vs show) · §17 comments hybrid mode · §18 story loop · §19 series rules (What If = wild, Decoded = 100% accurate) · §20 visual system v2 + brand lock.
 4. `PRODUCTION.md` — the daily runbook (roles, pipeline, slots, PostFast steps, analytics loop, watching videos).
 5. `ideas.md` — every topic ever used (never repeat) + used hooks + viewer requests.
 6. `ANALYTICS.md` (daily pulls + Sunday reviews), `queue.md` (built-ahead, not yet scheduled).
 7. `research/<date>/` — Fable's research: `competitors.md`, ranked `ideas.md`, `<slug>/research.md`, `longform/`, `lottery-part2/`.
-8. `brand/` — `storyteller.js` (recurring character), `CHARACTER.md`, `MEMES.md`, `PROFILE.md`, `sfx-library/` (131 CC0 sounds + manifest.json), `voice/pronounce.py` + `voice/patch_sentences.py`, `tools/watch.sh`.
+8. `brand/` — `storyteller.js` (recurring character), `CHARACTER.md`, `MEMES.md`, `PROFILE.md`, `sfx-library/` (131 CC0 sounds + manifest.json), `voice/pronounce.py` + `voice/patch_sentences.py`, `tools/watch.sh`, **`engine-v2/` + `VISUAL-V2.md` (current video engine)**.
 9. `videos/<date>-<slug>/` — one folder per topic: `voice/`, `build/`, `video.mp4` (YouTube cut), `tiktok/`, `ig/`, `captions.srt`, `qa.md`, `sfx/CREDITS.md`.
 10. `archive/` — backups of the conversation itself (see §9).
 
@@ -29,6 +29,10 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 - **Hooks are #1, retention #2** (§14): outrageous/negative/edgy first line ("This guy was so dumb…", "You're probably an idiot if…"), always true. Story loop every time (§18): stakes → big question → twist → rehooks.
 - **Auto-publish with no approval** (standing authorization 2026-11-24). Revocable only by "stop auto-posting".
 - **Comments: hybrid** (§17) — auto-reply to normal comments; flag sensitive ones to the user.
+- **Visuals v2** (§20): camera push-ins on spoken numbers, storyteller moves in front of/behind graphics, satisfying spring motion, NO neon. Fable built `brand/engine-v2` once (2026-11-25) and handed it to Opus; Fable stays research-only.
+- **Series rules** (§19): What If = random/off-the-wall money premises welcome (~half of daily topics), math exact. Decoded = 100% accurate: convicted/pleaded/judged only; every fact primary-sourced or 2+ independent sources, else cut.
+- **Usage pacing:** Claude can't see the usage meter. Give the user **time-based** estimates before heavy jobs ("~2 h of heavy work"), keep agents ≤3, use Sonnet/Haiku for builds, short replies.
+- **Profiles:** optimized bios for all 4 platforms in `brand/PROFILE.md` (v2). Recommended the user rename TikTok @color.me.saved → @badmath.tv (not done yet as of 2026-11-25).
 - **Model split:** **Fable** = all research (facts + competitor/viral content research). **Opus** = creation + directing (picks topics, hooks, 3 scripts, pronunciation pass, direction, reviews every contact sheet, approves). **Sonnet** = coding/rendering/mixing. **Haiku** = voice timings, sound, captions, packaging.
 - **Voice:** Shorts = free Kokoro `am_liam` (user pick), plain read via `say()` in `brand/voice/pronounce.py` (correct pronunciation; captions show normal spelling). Long-forms = paid ElevenLabs **Owen – Calm, Trustworthy Narrator**, voice_id `83MXTnoLsr3jX4Sl4gL4` (Creator plan, ~121k credits/month ≈ 3 long-forms/week). Never spend ElevenLabs on Shorts/SFX.
 - **Sound/music:** free CC0 only (`brand/sfx-library`, Openverse/Freesound). No synthesized "slop" beeps.
@@ -38,7 +42,7 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 
 ## 4. Accounts & IDs
 - **PostFast** (MCP connector `mcp.postfa.st`): YouTube **BadMath** `7615365c-4085-4841-ae0b-7af4c8c441de` · TikTok **@color.me.saved** `095075de-53fe-407f-9d08-4b5f47ed8390` (the Bad Math TikTok until the username can be changed) · Instagram **badmath.tv** `1beb5c7d-4c01-4abf-a91f-0880aa3dee7e` (REEL) · Facebook **BadMath.tv** `d999359b-223e-4dfc-a6a1-bf0e120086e5` (REEL). Inbox (comments) works for TikTok/IG/FB, not YouTube.
-- **Publishing flow:** `curl -F "files[]=@video.mp4" https://uguu.se/upload` → `upload_from_url` → `create_posts` (status SCHEDULED, firstComment, AI-disclosure controls) → `approve_posts` APPROVED. (litterbox/tmpfiles refuse uploads from this environment.)
+- **Publishing flow:** `curl -F "files[]=@video.mp4" https://uguu.se/upload` → `upload_from_url` → `create_posts` (status SCHEDULED, firstComment, AI labels OFF: youtubeContainsSyntheticMedia false / tiktokIsAigc false / instagramIsAiGenerated false) → `approve_posts` APPROVED. (litterbox/tmpfiles refuse uploads from this environment.)
 - **YouTube cap:** PostFast allows max 10 YouTube posts per UTC day (see PRODUCTION.md). ET 20:00+ counts toward the next UTC day.
 - **Slots (America/New_York):** 08/10/12/14/16/18/20/22 for Shorts (+ evening catch-up slots if a day is short), long-form 17:00.
 - **ElevenLabs** connector (Creator plan, active). **GitHub** repo above. **Cloud environment** `BadMathYt` `env_01985tBieg9F2mAWpMFVmzKq` (personal): setup script installs Kokoro + Whisper; allowed hosts include Wikipedia, GitHub, Hugging Face, Openverse/Freesound, uguu.se, justice.gov, sec.gov, consumerfinance.gov, YouTube, Instagram (+ `scontent-ord5-1.cdninstagram.com`).
@@ -47,7 +51,7 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 ## 5. Scheduled tasks (fire into the CURRENT session — must be moved on handoff)
 - **Bad Math daily build** `trig_01AxWKDeui5AqNP2bAbWCAk4` — `CRON_TZ=America/New_York 13 1 * * *` (1:13 AM ET). Analytics → Fable research → 8 topics × 3 cuts (+ long-form Mon/Wed/Fri) → publish. Created 2026-11-24; scheduled tasks may expire ~30 days after creation → **renew before ~2026-12-24**.
 - **Bad Math comment sweep** `trig_01Mba35oBybPbDuPUXyWNyCo` — `CRON_TZ=America/New_York 37 10,14,18,22 * * *`.
-- (Old) Salad Oil music trigger fires Nov 29 — obsolete idea (paid music); safe to delete/ignore.
+- (Disabled) Salad Oil paid-music one-shot `trig_01HsuaDHY5sosjY8XzUaTgAT` — disabled 2026-11-25.
 
 ## 6. Production machinery (how a video is made)
 - **Visual system v2 (2026-11-25, owner request): all NEW videos use `brand/engine-v2/`** (camera, depth layers, moving storyteller, no neon glow; brand lock in `brand/VISUAL-V2.md` §0). One `scene.js` per cut: elements + beats timed with `@word` refs. Build: `node brand/engine-v2/bm2.cjs init|check|stills|render` then `python3 brand/engine-v2/mix.py`. Read `brand/engine-v2/README.md`; prototype in `research/visual-v2/prototype/`. The v1 canvas templates below remain for reference only.
@@ -62,7 +66,8 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 - **Wed 2026-11-25 scheduled (all 4 platforms):** parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00 ET. AI labels OFF (re-created 2026-11-25). Nightly build fills the rest — **YouTube for Wed can only take 14:00 + the 17:00 long-form before 20:00 ET (UTC cap); remaining Wed YouTube Shorts go at 20:00/21:00/22:00/23:00 ET**; TikTok/IG/FB use the normal 14/16/18/20/22 slots.
 - **Next up (Fable's ranked list `research/2026-11-25/ideas.md`):** Javice fake users, Tipton lottery rig, Tucker payday loans, BitConnect, credit-card minimum, 1% fee, OneCoin; **long-form Wed = Do Kwon / Terra-Luna** (Owen voice); **lottery Part 2** (promised on TikTok).
 - **Visual v2 is LIVE** (brand/engine-v2/READY, prototype research/visual-v2/prototype/video.mp4 sent to the user 2026-11-25). Fable's improvement list: tighter wide-shot recap, storyteller can't yet walk *into* the world, watch for pill/caption collisions on tight zooms, use CRF 19–20.
-- **Pending with the user:** feedback on the v2 sample (none blocking). (They installed nothing yet from the plugin card; watch.sh covers it.)
+- **User verdict on v2 sample: "actually awesome".** Voice: user picked **am_liam, plain** (energy mode tried, then dropped). 21 voice samples in research/voice-plain/.
+- **Pending with the user:** nothing blocking. Optional: TikTok username change to @badmath.tv; paste the new bios.
 - Long-form "The Impossible Number That Exposed Madoff" (videos/2026-11-25-impossible-number) was built earlier; check whether it was ever posted before reusing the slot.
 
 ## 8. How to resume in a NEW session (successor protocol)

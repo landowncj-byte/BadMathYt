@@ -1,7 +1,13 @@
-# Latest (since last HANDOFF update) — 2026-11-25 ~01:00 UTC (Tue Nov 24, ~8 PM ET)
-- Tonight's 20 posts (FTX, Theranos, lottery, Fyre, coffee across YT/TikTok/IG/FB) scheduled + approved, 20:00–23:30 ET.
-- Wed 8 AM: parlay math scheduled on all 4 platforms.
-- Building: overdraft (→ Wed 10:00) and McDonald's Monopoly (→ Wed 12:00); review contact sheets, then publish.
-- Nightly build (1:13 AM ET) handles the rest of Wednesday from research/2026-11-25 (Javice, Tipton, Tucker, BitConnect, card minimum, 1% fee; long-form Do Kwon in Owen's voice; lottery Part 2).
-- New rules today: Fable researches (facts + competitors), story loop (§18), comments hybrid (§17), pronunciation layer (§16), 8/day minimum, 3 cuts per topic, Owen voice for long-forms.
-- Backup system created: HANDOFF.md + archive/ (this folder).
+# Latest — 2026-11-25 ~02:35 UTC (Tue Nov 24 ~9:35 PM ET)
+- Tonight (Tue): 20 posts live/scheduled 20:00–23:30 ET (FTX, Theranos, lottery, Fyre, coffee) — these still carry the old AI label (set at creation).
+- Wed 2026-11-25: parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00 ET on all 4 platforms (re-created with AI labels OFF).
+- NEW TODAY (all saved in STYLE/PRODUCTION/CHANNEL/HANDOFF + nightly prompt):
+  - Visual system v2 live (brand/engine-v2/READY) — user loved the prototype. Brand lock: avatar/profile/pills/fonts unchanged.
+  - Shorts voice = am_liam plain (user pick). Energy mode exists but OFF.
+  - AI labels OFF on all platforms. PostFast YouTube cap = 10/UTC day.
+  - What If = wild premises OK; Decoded = 100% accurate (§19).
+  - Fable = research (facts + competitors); built engine-v2 once; Opus directs; Sonnet/Haiku build.
+  - Comments hybrid (auto-reply + flag), sweep task 4×/day.
+  - Usage: give time estimates, not %.
+  - Bios v2 in brand/PROFILE.md.
+- Next: Wed 14:00+ slots + Do Kwon long-form (17:00, Owen) + lottery Part 2, from research/2026-11-25/. Nightly build 1:13 AM ET picks up anything not yet built (check videos/2026-11-25-* and list_posts first to avoid duplicates).
