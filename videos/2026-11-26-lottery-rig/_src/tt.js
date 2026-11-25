@@ -78,6 +78,7 @@ BM2.scene({
     { at: '@Tap', beat: 'presenter-front', focus: 'robot', sy: 760, pose: 'chin' },
     { at: '@impossible', beat: 'side-by-side', focus: 'robot', sx: 700, sy: 760, fill: 0.7, maxH: 900, st: 'left', pose: 'shrug', dur: 0.7 },
     { at: "@Here's", beat: 'side-by-side', focus: 'bd', move: 'whip', sx: 540, sy: 800, fill: 0.7, maxH: 900, st: 'corner', pose: 'point', point: 'bd.title', dur: 0.9 },
+    { at: '@title', beat: 'graphic-hero', focus: 'bd', fill: 0.72, maxH: 900, sy: 900, st: 'corner-left', pose: 'point', point: 'bd.title', dur: 0.6 },
     { at: '@information', beat: 'zoom-on-number', focus: 'bd.title', fill: 0.52, maxH: 360, sy: 950, st: 'corner', pose: 'point', point: 'bd.title', dur: 0.5 },
     { at: '@keeping', beat: 'graphic-hero', focus: 'bd', fill: 0.72, maxH: 900, sy: 900, st: 'corner-left', pose: 'chin', dur: 0.6 },
     { at: '@broke', beat: 'zoom-on-number', focus: 'bd.name', fill: 0.6, maxH: 400, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.5 },

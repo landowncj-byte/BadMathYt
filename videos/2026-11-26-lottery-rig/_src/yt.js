@@ -54,6 +54,7 @@ BM2.scene({
   ],
   beats: [
     { at: 0, beat: 'side-by-side', focus: ['hook', 'mach'], sx: 540, sy: 915, fill: 0.95, maxH: 1010, st: { x: 130, y: 1350, s: 1.15 }, pose: 'shock' },
+    { at: '@rigged', beat: 'zoom-on-number', focus: 'hook.a2', fill: 0.95, maxH: 400, sy: 700, st: { x: 130, y: 1350, s: 1.15 }, pose: 'shock', dur: 0.5 },
     { at: '@five-0.1', beat: 'side-by-side', focus: 'map', move: 'whip', sx: 540, sy: 800, fill: 0.9, maxH: 900, st: 'corner', pose: 'point', point: 'map.grid' },
     { at: '@states+0.35', beat: 'zoom-on-number', focus: 'map.label', fill: 0.8, maxH: 400, sy: 780, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@His', beat: 'side-by-side', focus: 'off', move: 'whip', sx: 540, sy: 820, fill: 0.92, maxH: 900, st: 'corner', pose: 'point', point: 'off.name' },

@@ -20,6 +20,12 @@
    "name": "glass_shatter_1"
   },
   {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 1.8,
+   "name": "swipe_2"
+  },
+  {
    "gain": -7,
    "dur": 0.5,
    "at": 2,

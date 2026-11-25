@@ -53,7 +53,7 @@ def phonemes(k, text):
                 print(f"[pronounce] WARN could not place fix for {w!r} (default {wrong!r}) in: {ph}")
     return ph
 
-def say(k, text, voice="am_liam", speed=1.12):   # DEFAULT SHORTS VOICE: am_liam, plain (user pick 2026-11-25)
+def say(k, text, voice="am_liam", speed=1.0):   # DEFAULT SHORTS VOICE: am_liam, plain (user pick 2026-11-25). Speed 1.0 (was 1.12 = rushed; owner 2026-11-25 "rushing… pauses are weird")
     return k.create(phonemes(k, text), voice=voice, speed=speed, lang="en-us", is_phonemes=True)
 
 COMMON = set("""the a an and or but of to in on at for with by from is was were are be been it its this that these those he she they his her their you your

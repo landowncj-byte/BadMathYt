@@ -22,7 +22,7 @@ facts grade, humanized feel) stay with the director — see the SCRIPT GATE in R
 """
 import json, os, re, sys
 
-RATE = 3.3           # words/s inside a line (measured on the 2026-11-25 Liam cuts: 3.1–3.5)
+RATE = 2.95          # words/s inside a line at Kokoro speed 1.0 (was 3.3 at 1.12)
 TAG_S = 0.0          # noise tags add no time any more (owner 2026-11-25: no breathing)
 PLATFORM = {"": "YouTube", "tiktok": "TikTok", "ig": "IG/FB"}
 # owner 2026-11-25: "90 seconds is the target timing" (Decoded) + "65 seconds for the what ifs" — same on every platform
