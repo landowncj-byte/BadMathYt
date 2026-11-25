@@ -21,3 +21,8 @@ videos/*/voice/n16.wav
 **/build/err.txt
 **/video.prefix.mp4
 **/voice/narration.orig.wav
+
+# engine v2 intermediates
+research/visual-v2/prototype/scene/video_noaudio.mp4
+**/mixpre.wav
+research/visual-v2/prototype/scene/mix.wav

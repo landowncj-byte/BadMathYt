@@ -50,6 +50,7 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 - (Old) Salad Oil music trigger fires Nov 29 — obsolete idea (paid music); safe to delete/ignore.
 
 ## 6. Production machinery (how a video is made)
+- **Visual system v2 (2026-11-25, owner request): all NEW videos use `brand/engine-v2/`** (camera, depth layers, moving storyteller, no neon glow; brand lock in `brand/VISUAL-V2.md` §0). One `scene.js` per cut: elements + beats timed with `@word` refs. Build: `node brand/engine-v2/bm2.cjs init|check|stills|render` then `python3 brand/engine-v2/mix.py`. Read `brand/engine-v2/README.md`; prototype in `research/visual-v2/prototype/`. The v1 canvas templates below remain for reference only.
 - Canvas engine: deterministic `window.render(t)` in HTML → Playwright screenshots → ffmpeg (2 parallel parts, concat list paths relative to list file). Templates: Decoded `videos/2026-11-24-fyre-bail/build`, What If `videos/2026-11-24-coffee-invested/build`, long-form engine `videos/2026-11-25-impossible-number/build/engine.js` + `ENGINE.md`.
 - Mix: voice −16 LUFS, beds −24 ducked, master −14 LUFS / ≤ −1 dBTP, two-pass loudnorm.
 - Voice: write `CUTS` lists → `pronounce.say()` (Kokoro) → Whisper word timings (`words.json`) → mouth envelope (`mouth.json`). Re-voice only bad sentences with `brand/voice/patch_sentences.py <voice_dir>`.

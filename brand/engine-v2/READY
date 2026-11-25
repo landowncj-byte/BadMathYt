@@ -1,0 +1,1 @@
+2026-11-25 · engine v2 ready · node brand/engine-v2/bm2.cjs init <build> --voice <voiceDir> --series whatif|decoded → edit scene.js (elements + beats on @word refs) → bm2.cjs check / stills / render → python3 brand/engine-v2/mix.py <build> <voiceDir> <out.mp4> · docs: brand/engine-v2/README.md + brand/VISUAL-V2.md · example: research/visual-v2/prototype/scene/scene.js
