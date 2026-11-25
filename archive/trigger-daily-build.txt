@@ -53,3 +53,5 @@ Pending promise: the lottery TikTok promised a "Part 2" (what happened after the
 7. MEMORY (user rule: never lose context): at the end, update HANDOFF.md §7 (current state), run python3 archive/export.py (add --raw if this session was compacted since the last export), update archive/LATEST.md, and commit + push. If this session has been context-compacted 3 or more times, or summaries are losing detail, start a successor session per HANDOFF.md §8/§10 and move both scheduled tasks to it (archive/triggers.md).
 
 > OWNER RULE 2026-11-25 (RULES 104): NO breathing/sigh/gasp/smack sounds, NO long pauses. Natural gaps only (~0.22 s, ~0.38 s on big numbers). Do not write noise tags into scripts.
+
+> OWNER RULE 2026-11-25 (RULES 105): EVERY video uses the ElevenLabs OWEN voice (voice_id 83MXTnoLsr3jX4Sl4gL4, eleven_v4, one take per cut, generations_count 1) via brand/voice/voice_owen.py. Kokoro/Liam only as a fallback when credits run out (tell the owner).

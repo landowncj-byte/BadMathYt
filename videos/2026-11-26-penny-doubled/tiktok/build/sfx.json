@@ -230,16 +230,16 @@
    "name": "money_counter_2"
   },
   {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 32.42,
-   "name": "swipe_2"
-  },
-  {
    "gain": -8,
    "dur": 0.6,
    "at": 32.72,
    "name": "ding_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 32.92,
+   "name": "swipe_2"
   },
   {
    "gain": -13,

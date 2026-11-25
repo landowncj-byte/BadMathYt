@@ -217,10 +217,9 @@
     const K = c.K, HOOK = c.hook.text, ART = { variant: c.hook.variant, drop: c.hook.drop };
     const els = [
       { id: 'hook', type: 'text', at: [0, c.hook.y ?? -330], in: -1, out: Q.hookEnd, props: HOOK },
-      { id: 'art', type: 'hookart', at: [0, c.hook.ay ?? 150], in: -1, out: Q.hookEnd2, props: { ...ART } },
+      { id: 'art', type: 'hookart', at: [0, c.hook.ay ?? 150], in: -1, props: { ...ART, reAt: Q.loopArt } },
       ...(c.stamps || []),
       { id: 'endt', type: 'text', at: [0, c.hook.y ?? -330], in: Q.loop, props: HOOK },
-      { id: 'art2', type: 'hookart', at: [0, (c.hook.ay ?? 150) + 2300], in: -1, props: { ...ART, reAt: Q.loopArt } },
       // station 1: the deal (A / B)
       { id: 'ab', type: 'ab', at: [1750, -60], in: Q.abIn, out: Q.abOut, props: { aAt: Q.a, bAt: Q.b, splitAt: Q.doubles, wiggleAt: Q.wiggle ?? NEVER } },
       // station 2: baby-level doubling
@@ -231,8 +230,8 @@
       { id: 'pile', type: 'pile', at: [7000, 0], in: Q.boardIn, props: { K } },
       // station 5: the 7/8 pie
       { id: 'pie', type: 'pie', at: [8750, -130], in: Q.pieIn, out: Q.pieOut, props: { r: 230, center: { size: 92, to: 87.5, suffix: '%', decimals: 1, at: Q.seven, dur: 0.9, label: 'LAST 3 DAYS', tone: 'paper' },
-        slices: [{ value: 12.5, tone: 'soft', label: 'DAYS 1–27', at: Q.pieIn }, { value: 87.5, tone: 'accent', label: 'DAYS 28–30', at: Q.seven + '-0.1' }] } },
-      { id: 'pieT', type: 'text', at: [8750, 178], in: Q.seven + '-0.1', out: Q.pieOut, props: { lines: [[['DAYS 28–30 = ', 'paper'], ['7/8', 'accent'], [' OF IT', 'paper']]], size: 54 } },
+        slices: [{ value: 12.5, tone: 'soft', at: Q.pieIn }, { value: 87.5, tone: 'accent', at: Q.seven + '-0.1' }] } },
+      { id: 'pieT', type: 'text', at: [8750, 168], in: Q.seven + '-0.1', out: Q.pieOut, props: { lines: [[['DAYS 28–30 = ', 'paper'], ['7/8', 'accent'], [' OF IT', 'paper']]], size: 54 } },
       // station 6: day 30
       { id: 'boom', type: 'boom', at: [10500, 0], in: Q.boomIn, props: { K, boomAt: Q.boom } },
       // screen-fixed

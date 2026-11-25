@@ -133,3 +133,5 @@ decisions:
 - 2026-11-25: LONGER SHORTS — user: scripts feel rushed and miss context; viewers get lost and scroll. Shorts now DECODED ~90 s (80–100 s) · WHAT IF ~65 s (62–75 s, never under 60 s), same on every platform, explained at kindergarten level (RULES 102). Long-forms unchanged.
 
 > OWNER RULE 2026-11-25 (RULES 104): NO breathing/sigh/gasp/smack sounds, NO long pauses. Natural gaps only (~0.22 s, ~0.38 s on big numbers). Do not write noise tags into scripts.
+
+> OWNER RULE 2026-11-25 (RULES 105): EVERY video uses the ElevenLabs OWEN voice (voice_id 83MXTnoLsr3jX4Sl4gL4, eleven_v4, one take per cut, generations_count 1) via brand/voice/voice_owen.py. Kokoro/Liam only as a fallback when credits run out (tell the owner).

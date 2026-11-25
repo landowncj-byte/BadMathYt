@@ -454,10 +454,9 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     const K = c.K, HOOK = c.hook.text, ART = { variant: c.hook.variant, drop: c.hook.drop };
     const els = [
       { id: 'hook', type: 'text', at: [0, c.hook.y ?? -330], in: -1, out: Q.hookEnd, props: HOOK },
-      { id: 'art', type: 'hookart', at: [0, c.hook.ay ?? 150], in: -1, out: Q.hookEnd2, props: { ...ART } },
+      { id: 'art', type: 'hookart', at: [0, c.hook.ay ?? 150], in: -1, props: { ...ART, reAt: Q.loopArt } },
       ...(c.stamps || []),
       { id: 'endt', type: 'text', at: [0, c.hook.y ?? -330], in: Q.loop, props: HOOK },
-      { id: 'art2', type: 'hookart', at: [0, (c.hook.ay ?? 150) + 2300], in: -1, props: { ...ART, reAt: Q.loopArt } },
       // station 1: the deal (A / B)
       { id: 'ab', type: 'ab', at: [1750, -60], in: Q.abIn, out: Q.abOut, props: { aAt: Q.a, bAt: Q.b, splitAt: Q.doubles, wiggleAt: Q.wiggle ?? NEVER } },
       // station 2: baby-level doubling
@@ -468,8 +467,8 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       { id: 'pile', type: 'pile', at: [7000, 0], in: Q.boardIn, props: { K } },
       // station 5: the 7/8 pie
       { id: 'pie', type: 'pie', at: [8750, -130], in: Q.pieIn, out: Q.pieOut, props: { r: 230, center: { size: 92, to: 87.5, suffix: '%', decimals: 1, at: Q.seven, dur: 0.9, label: 'LAST 3 DAYS', tone: 'paper' },
-        slices: [{ value: 12.5, tone: 'soft', label: 'DAYS 1–27', at: Q.pieIn }, { value: 87.5, tone: 'accent', label: 'DAYS 28–30', at: Q.seven + '-0.1' }] } },
-      { id: 'pieT', type: 'text', at: [8750, 178], in: Q.seven + '-0.1', out: Q.pieOut, props: { lines: [[['DAYS 28–30 = ', 'paper'], ['7/8', 'accent'], [' OF IT', 'paper']]], size: 54 } },
+        slices: [{ value: 12.5, tone: 'soft', at: Q.pieIn }, { value: 87.5, tone: 'accent', at: Q.seven + '-0.1' }] } },
+      { id: 'pieT', type: 'text', at: [8750, 168], in: Q.seven + '-0.1', out: Q.pieOut, props: { lines: [[['DAYS 28–30 = ', 'paper'], ['7/8', 'accent'], [' OF IT', 'paper']]], size: 54 } },
       // station 6: day 30
       { id: 'boom', type: 'boom', at: [10500, 0], in: Q.boomIn, props: { K, boomAt: Q.boom } },
       // screen-fixed
@@ -501,7 +500,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       bd(Q.four, 'zoom-on-number', 'dbl.r3', { fill: 0.98, sy: 800, rot: -0.008, st: 'corner-left', pose: 'shock' }),
       bd(Q.dblTail, 'graphic-hero', 'dbl', { fill: 0.92, maxH: 880, sy: 885, st: 'corner-left', pose: 'chin' }),
       ...(c.line5 ? c.line5(bd) : []),
-      bd(Q.like, 'presenter-front', c.likeFocus || 'dbl', { sy: 885, st: undefined, pose: 'you' }),
+      bd(Q.like, 'presenter-front', Q.likeFocus || 'dbl', { sy: 885, st: undefined, pose: 'you' }),
       // THE WAIT — week, day 10, day 20
       ...c.waitBeats(bd),
       // THE TURN
@@ -555,7 +554,7 @@ const S = PDS.make({
     bd('@day#5+0.9', 'zoom-on-number', 'pile.count', { fill: 0.7, sy: 900, rot: -0.01, pose: 'shock', dur: 0.5 }),
     bd('@sandwich', 'graphic-hero', 'pile', { fill: 0.92, maxH: 860, sy: 900, pose: 'chin' }),
     bd('@day#6', 'graphic-hero', 'board', { move: 'whip', fill: 0.9, maxH: 1010, sy: 860, pose: 'shrug' }),
-    bd('@20#2', 'zoom-on-number', 'board.t20', { fill: 0.4, sy: 700, rot: 0.01, pose: 'point', dur: 0.5 }),
+    bd('@20#2+0.5', 'zoom-on-number', 'board.t20', { fill: 0.4, sy: 700, rot: 0.01, pose: 'point', dur: 0.5 }),
     bd('@grand#2', 'graphic-hero', 'board.pile', { fill: 0.9, maxH: 720, sy: 860, pose: 'shock' }),
     bd('@190', 'zoom-on-number', 'board.pile', { fill: 0.92, maxH: 720, sy: 860, rot: -0.01, pose: 'point', dur: 0.5 }),
     bd('@Send', 'presenter-front', 'board', { sy: 860, pose: 'you' }),
@@ -576,7 +575,7 @@ const S = PDS.make({
     bd('@30#2-0.4', 'graphic-hero', 'boom', { move: 'whip', fill: 0.92, maxH: 860, sy: 900, pose: 'chin' }),
     bd('@5-0.1', 'zoom-on-number', 'boom.num', { fill: 0.96, sy: 760, rot: 0.012, pose: 'shock', dur: 0.4 }),
     bd('@5+1.6', 'graphic-hero', 'boom', { fill: 0.92, maxH: 860, sy: 900, pose: 'shock', dur: 0.9 }),
-    bd('@Almost-0.1', 'graphic-hero', ['pie', 'pieT'], { move: 'whip', st: { x: 955, y: 1330, s: 0.8, layer: 'front' }, fill: 0.7, maxH: 800, sy: 850, pose: 'point', blur: 9, dim: 0.6, keep: ['pieT'] }),
+    bd('@Almost-0.1', 'graphic-hero', ['pie', 'pieT'], { move: 'whip', st: { x: 955, y: 1330, s: 0.8, layer: 'front' }, fill: 0.6, maxH: 700, sy: 800, pose: 'point', blur: 9, dim: 0.6, keep: ['pieT'] }),
     bd('@last', 'zoom-on-number', 'pie.center', { fill: 0.5, sy: 800, rot: 0.01, pose: 'shock', dur: 0.5, blur: 9, dim: 0.6, keep: ['pieT'] }),
     bd('@So#3', 'graphic-hero', 'board', { move: 'whip', fill: 0.9, maxH: 1010, sy: 860, pose: 'chin' }),
     bd('@So#3+0.9', 'presenter-front', 'board', { sy: 860, pose: 'you' }),

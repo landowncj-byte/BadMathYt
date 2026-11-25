@@ -106,7 +106,7 @@ BM2.scene({
     { at: '@pleaded', beat: 'graphic-hero', focus: 'plea', fill: 0.84, maxH: 940, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.6 },
     { at: '@guilty', beat: 'zoom-on-number', focus: 'plea.guilty', fill: 0.9, maxH: 560, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@which', beat: 'side-by-side', focus: ['plea', 'pt'], sx: 540, sy: 830, fill: 0.9, maxH: 960, st: 'corner', pose: 'point', point: 'pt', dur: 0.7 },
-    { at: '@admitted', beat: 'zoom-on-number', focus: 'pt', fill: 0.8, maxH: 320, sy: 900, st: 'corner', pose: 'point', point: 'pt', dur: 0.5 },
+    { at: '@admitted', beat: 'graphic-hero', focus: ['plea', 'pt'], fill: 1.0, maxH: 900, sy: 850, st: 'corner', pose: 'point', point: 'pt', dur: 0.6 },
     { at: '@court#2+0.9', beat: 'side-by-side', focus: 'plea', sx: 690, sy: 830, fill: 0.74, maxH: 940, st: 'left', pose: 'shock', dur: 0.7 },
     { at: '@sentenced', beat: 'graphic-hero', focus: 'plea', fill: 0.84, maxH: 940, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.6 },
     { at: '@25', beat: 'zoom-on-number', focus: 'plea.years', fill: 0.9, maxH: 620, sy: 1060, rot: -0.02, st: 'corner-left', pose: 'shock', dur: 0.4, lead: 0.15 },

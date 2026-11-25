@@ -53,7 +53,7 @@ const S = PDS.make({
     bd('@30#2-0.4', 'graphic-hero', 'boom', { move: 'whip', fill: 0.92, maxH: 860, sy: 900, pose: 'chin' }),
     bd('@5-0.1', 'zoom-on-number', 'boom.num', { fill: 0.96, sy: 760, rot: 0.012, pose: 'shock', dur: 0.4 }),
     bd('@5+1.6', 'graphic-hero', 'boom', { fill: 0.92, maxH: 860, sy: 900, pose: 'shock', dur: 0.9 }),
-    bd('@Almost-0.1', 'graphic-hero', ['pie', 'pieT'], { move: 'whip', st: { x: 955, y: 1330, s: 0.8, layer: 'front' }, fill: 0.7, maxH: 800, sy: 850, pose: 'point', blur: 9, dim: 0.6, keep: ['pieT'] }),
+    bd('@Almost-0.1', 'graphic-hero', ['pie', 'pieT'], { move: 'whip', st: { x: 955, y: 1330, s: 0.8, layer: 'front' }, fill: 0.6, maxH: 700, sy: 800, pose: 'point', blur: 9, dim: 0.6, keep: ['pieT'] }),
     bd('@last#2', 'zoom-on-number', 'pie.center', { fill: 0.5, sy: 800, rot: 0.01, pose: 'shock', dur: 0.5, blur: 9, dim: 0.6, keep: ['pieT'] }),
     bd('@So#3', 'presenter-front', 'board', { move: 'whip', sy: 860, pose: 'shock' }),
     bd('@penny#4-0.3', 'graphic-hero', 'board', { fill: 0.9, maxH: 1010, sy: 860, pose: 'you' }),

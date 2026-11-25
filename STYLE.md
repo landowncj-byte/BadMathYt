@@ -273,3 +273,5 @@ Owner rules (RULES.md) win over skill defaults (e.g. no AI disclosure, our CTA p
 - Still a story: stakes, mystery, twist, payoff (§18). Simple ≠ boring.
 
 > OWNER RULE 2026-11-25 (RULES 104): NO breathing/sigh/gasp/smack sounds, NO long pauses. Natural gaps only (~0.22 s, ~0.38 s on big numbers). Do not write noise tags into scripts.
+
+> OWNER RULE 2026-11-25 (RULES 105): EVERY video uses the ElevenLabs OWEN voice (voice_id 83MXTnoLsr3jX4Sl4gL4, eleven_v4, one take per cut, generations_count 1) via brand/voice/voice_owen.py. Kokoro/Liam only as a fallback when credits run out (tell the owner).
