@@ -1,0 +1,56 @@
+1
+00:00:00,000 --> 00:00:04,128
+This founder was so desperate, she had a professor invent 4 million customers.
+
+2
+00:00:04,328 --> 00:00:08,118
+And JPMorgan bought it. For $175 million.
+
+3
+00:00:08,568 --> 00:00:11,684
+Her startup, Frank, claimed 4.25 million users.
+
+4
+00:00:11,984 --> 00:00:14,742
+Hit like if you've ever padded a number. Just not like this.
+
+5
+00:00:15,042 --> 00:00:18,463
+The SEC says the real number was fewer than 300,000.
+
+6
+00:00:18,863 --> 00:00:24,329
+So when JPMorgan asked to see the customer list, how do you hand over 4 million people who don't exist?
+
+7
+00:00:24,679 --> 00:00:29,405
+According to the SEC, she first asked her own engineer to make fake data. He said no.
+
+8
+00:00:29,755 --> 00:00:35,077
+So prosecutors say a data science professor built a list of over 4 million fake customers instead.
+
+9
+00:00:35,427 --> 00:00:38,467
+Send this to the friend who always rounds up their follower count.
+
+10
+00:00:38,767 --> 00:00:44,108
+The bank paid $175 million. That's about $580 for every real user.
+
+11
+00:00:44,458 --> 00:00:46,885
+Follow along, because the ending is the best part.
+
+12
+00:00:47,185 --> 00:00:50,373
+Guilty on all 4 counts. 85 months in prison.
+
+13
+00:00:50,773 --> 00:00:53,794
+Restitution: $287.5 million.
+
+14
+00:00:54,194 --> 00:00:57,587
+4 million customers. Fewer than 300,000 were real.
+

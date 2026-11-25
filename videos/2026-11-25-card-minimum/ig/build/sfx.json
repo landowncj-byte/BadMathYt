@@ -1,0 +1,165 @@
+{
+ "duration": 19.7,
+ "sfx": [
+  {
+   "gain": -5,
+   "dur": 0.36,
+   "at": 0,
+   "name": "deep_boom_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 1.68,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.8,
+   "at": 1.88,
+   "name": "comedic_sting_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.5,
+   "at": 3.8,
+   "name": "paper_slam_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 4,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 4.3,
+   "name": "pop_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 4.72,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 4.92,
+   "name": "pop_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 5.58,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -9,
+   "dur": 1,
+   "at": 5.78,
+   "name": "cash_register_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 5.92,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 1.4,
+   "at": 6.6,
+   "name": "money_counter_1"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 7.16,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.7,
+   "at": 8.3,
+   "name": "ding_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.7,
+   "at": 8.4,
+   "name": "typewriter_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 8.6,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -9,
+   "dur": 1,
+   "at": 8.9,
+   "name": "cash_register_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 10.26,
+   "name": "pop_2"
+  },
+  {
+   "gain": -3,
+   "dur": 0.5,
+   "at": 11.03,
+   "name": "rubber_stamp_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.36,
+   "at": 11.03,
+   "name": "deep_boom_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 12.18,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -4,
+   "dur": 1.6,
+   "at": 12.38,
+   "name": "deep_boom_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.9,
+   "at": 14.37,
+   "name": "swoosh_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 17.32,
+   "name": "pop_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 17.87,
+   "name": "click_1"
+  },
+  {
+   "gain": -12,
+   "dur": 1.2,
+   "at": 17.92,
+   "name": "success_chime_1"
+  }
+ ],
+ "bed": {
+  "name": "upbeat_bed_2",
+  "gain": -1
+ }
+}
