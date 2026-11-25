@@ -172,7 +172,7 @@ BM2.scene({
     { at: '@26', beat: 'zoom-on-number', focus: 'track.ghost', fill: 0.72, sy: 860, pose: 'point' },
     { at: "@what's", beat: 'presenter-front', focus: 'track', pose: 'you', sy: 770 },
     { at: '@no', beat: 'side-by-side', focus: 'track', side: 'right', st: { x: 840, y: 1330, s: 1.55 }, fill: 0.9, sx: 540, sy: 770, pose: 'chin', others: [3, 0.2] },   // side-eye
-    { at: '@follow', beat: 'wide', focus: ['track', 'rcpt'], fill: 0.74, sy: 770, st: { x: 250, y: 1330, s: 1.4 }, pose: 'follow' },
+    { at: '@follow', beat: 'wide', focus: ['track', 'rcpt'], fill: 0.72, sy: 850, st: { x: 250, y: 1330, s: 1.4 }, pose: 'follow' },
   ],
   poses: [['@some', 'shrug'], ['@comment', 'you'], ['@no', 'chin', { target: [60, 900] }], ['@811>', 'shock']],
   shakes: [['@$50', 16], ['@811', 18], ['@$143', 8]],

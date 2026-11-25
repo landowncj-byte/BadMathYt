@@ -26,3 +26,4 @@ videos/*/voice/n16.wav
 research/visual-v2/prototype/scene/video_noaudio.mp4
 **/mixpre.wav
 research/visual-v2/prototype/scene/mix.wav
+**/build/video_noaudio.mp4

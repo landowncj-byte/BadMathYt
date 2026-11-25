@@ -39,7 +39,7 @@ function writeVoice(sceneDir, voiceDir) {
     for (const t of rest[0].split(',').map(Number)) { await p.evaluate(t => window.render(t), t); await p.screenshot({ path: path.join(out, `s_${t.toFixed(2).padStart(6, '0')}.png`) }); } await b.close(); console.log('stills ->', out);
   } else if (cmd === 'part') { // internal: render frames n0..n1 to one mp4
     const [out, fps, n0, n1] = [rest[0], +rest[1], +rest[2], +rest[3]]; const { b, p } = await page(a1);
-    const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
     for (let n = n0; n < n1; n++) { await p.evaluate(t => window.render(t), n / fps); const buf = await p.screenshot({ type: 'jpeg', quality: 95 }); if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r)); }
     ff.stdin.end(); await new Promise(r => ff.on('close', r)); await b.close();
   } else if (cmd === 'render') {
