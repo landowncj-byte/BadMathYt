@@ -181,3 +181,18 @@ Every post ships with a comment-bait **first comment** (all platforms). Inbox (T
 - **Check with the user first** (flag in the daily note, don't reply): anything about legal threats/defamation, a person claiming to be involved in a case or a victim, self-harm or personal money crises, requests for financial advice, brand/collab/business offers, press, hate/harassment pile-ons, anything we might be wrong about, and anything you're unsure of.
 - **Never:** financial advice, promises, links, DMs asking for money, replies to minors' personal info, deleting legit criticism. Hide/delete only obvious spam, scams, slurs and doxxing (log what was removed).
 - **Daily note to the user:** # replies sent (with 3–5 examples), flagged comments waiting for them, top topic requests.
+
+## 18. The story loop (learned 2026-11-25 from a reference reel the user sent — danishmoosaa, "story loop")
+Every script, all three platform cuts, must run this loop. It's the engine under §14 (hook) and retention:
+1. **Stakes — make them care.** Three things in the first ~5 s: *someone to root for (or against)*, *something at risk*, *a reason it matters right now*. For Decoded: the con artist + the victims' money + "and it's still happening / you're doing it". For What If: YOU + your money + "this is your Tuesday coffee".
+2. **The big question — make them curious.** Put an explicit question in the viewer's head ("is that even possible?", "how did nobody notice?", "where did the other $381 go?"). Say it or show it on screen as a question.
+3. **The unexpected twist — surprise them.** Set up what the viewer expects, then reveal something different (they think the trick was X; it was Y — the guard was the thief; the fee is the loan; the "protection" is the product).
+4. **The rehook — make them curious again.** The moment one question is answered, open the next one ("okay, but how did he get the seals?", "and the timing gets worse"). Every answer ends on a new question until the payoff; the last line loops to the first frame.
+Write the loop explicitly in each DIRECTION/script note: `STAKES: … / QUESTION: … / TWIST: … / REHOOKS: …`. A script with no twist or no rehook fails review.
+
+**Visual lessons from the same reel (apply to our own style, never copy its look):**
+- One **recurring visual device** that carries the structure across the whole video (theirs: a glowing loop ring with numbered nodes that rotates to each step). Ours per series: Decoded = a "case board" with numbered red-string pins; What If = a running counter/meter. Return to it at each step so viewers feel progress.
+- **Numbered step markers** when a video has steps (big "1 / 2 / 3" badges) — progress = retention.
+- One object per beat, centered, minimal background; one accent color doing the work.
+- Kinetic captions with **one emphasis word per line** styled differently (theirs: italic serif accent). Ours: the emphasis word in Anton + series color.
+- CTA style that worked there: "Send this to a [specific person] who needs …" + a **comment-keyword prompt**. We can use comment keywords for engagement ("comment PART 2", "comment MATH") — never for links/products.

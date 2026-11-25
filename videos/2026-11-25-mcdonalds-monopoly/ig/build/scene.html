@@ -1,0 +1,97 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bad Math: McDonald's Monopoly (IG/FB cut)</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../brand/storyteller.js"></script>
+<script src="words.js"></script>
+<script src="base.js"></script>
+<script src="lib.js"></script>
+<script>
+// Bad Math — IG/FB Reels cut. Narration 17.48 s + tail. Disrespectful, meme-like, huge text. Key content y 250–1250.
+const DUR = 17.90, LOOP = 17.52;
+const CAPS = buildCaps(WORDS, toks => {
+  let k = toks.map(x => ({ ...x }));
+  k = mergeSeq(k, ['twenty', 'four', 'million'], '$24,000,000+'); k = mergeSeq(k, ['thirty', 'seven'], '37'); k = k.map(x => /^dumbass/i.test(x.w) ? { ...x, w: 'DUMBA**' + (x.w.match(/[,.?!]+$/) || [''])[0] } : x); return k;
+}, 3);
+window.CAPS = CAPS;
+const CAPCFG = { x: 420, y: 1125, w: 680, size: 76, lh: 88 };
+function hud(c, t) {
+  c.save(); txt(c, 'BAD', 90, 266, '400 44px Anton', PAPER, 'left'); txt(c, 'MATH', 90 + c.measureText('BAD ').width, 266, '400 44px Anton', RED, 'left');
+  rr(c, 90, 292, 118, 30, 6); c.fillStyle = RED; c.fill(); txt(c, 'DECODED', 149, 307, '800 18px Inter', PAPER); txt(c, CASE_TXT, 220, 307, '700 19px JBM', 'rgba(245,243,238,.7)', 'left');
+  txt(c, FOOT_TXT, 90, 1232, '700 21px JBM', 'rgba(245,243,238,.62)', 'left'); c.restore();
+}
+const GRAND = (w, h) => c => pieceFront(c, w, h, '$1,000,000', 'GRAND PRIZE');
+const NOT_YOU = (w, h) => c => pieceUnder(c, w, h, 'NOT YOU', 'TRY AGAIN');
+
+// 0–2.4 HOOK (frame 0): THE GUARD WAS THE THIEF
+function sHook(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.12)'); bgGlow(c, 540, 700, 560, 'rgba(255,59,48,.3)');
+  const j = t < .4 ? (Math.sin(t * 60) > .2 ? 0 : 10) : 0, slam = 1 + .12 * Math.max(0, 1 - t / .3);
+  c.save(); c.translate(j, 0); c.translate(510, 560); c.scale(slam, slam); c.translate(-510, -560);
+  big(c, 'THE GUARD', 450, 395, 190, PAPER, 1, -.03, 0, 880); big(c, 'WAS THE', 420, 560, 190, PAPER, 1, .02, 0, 880); big(c, 'THIEF', 480, 745, 250, RED, 1, -.04, 50, 880); c.restore();
+  guardFig(c, 800, 1030, .5, 1, 1, t);
+}
+// 2.4–4.9 stealing almost all of them
+function sPile(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)');
+  big(c, 'ALMOST', 510, 400, 190, PAPER, lin(t, 3.62, 3.75), -.02, 0, 880); big(c, 'ALL OF THEM', 510, 560, 150, RED, lin(t, 4.14, 4.28), .02, 30, 880);
+  const n = Math.floor(lin(t, 2.7, 4.5) * 24);
+  for (let i = 0; i < n; i++) { const row = Math.floor(i / 4), col = i % 4; const x = 190 + col * 235 + (hash(i) - .5) * 20, y = 1020 - row * 78; const k = back(lin(t, 2.7 + i * .075, 2.7 + i * .075 + .15)); c.save(); c.translate(x, y); c.scale(k, k); c.rotate((hash(i + 2) - .5) * .2); pieceFront(c, 210, 100, '$1M', null, { noCorner: true }); c.restore(); }
+  stamp(c, 'STEALING', 700, 760, 80, RED, .1, lin(t, 3.22, 3.34));
+}
+// 4.9–7.3 $24,000,000+ with MEME #1 boom
+function sBig(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.09)'); bgGlow(c, 540, 650, 540, 'rgba(0,210,106,.28)');
+  if (t < 5.3) big(c, 'OVER', 510, 640, 230, PAPER, lin(t, 4.88, 5.0), -.02, 0, 880);
+  else countUp(c, t, 5.3, .64, 24000000, 510, 640, 210, GREEN);
+  if (t >= 5.94) for (let i = 0; i < 16; i++) { const p0 = (t - 5.96 - i * .05); if (p0 < 0) continue; bill(c, 90 + hash(i) * 850, 330 + p0 * 700, 100, Math.sin(i + t * 4) * .6, .9); }
+  big(c, 'IN PRIZES', 510, 880, 100, HL, lin(t, 6.94, 7.06), .02, 0, 880);
+}
+// 7.3–9.4 SOLD TO FAKE WINNERS
+function sFake(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)');
+  big(c, 'SOLD TO', 510, 470, 130, PAPER, lin(t, 7.46, 7.58), -.02, 0, 880); big(c, 'FAKE WINNERS', 510, 620, 130, RED, lin(t, 8.36, 8.5), .02, 30, 880);
+  for (let i = 0; i < 4; i++) { const col = i % 2, row = Math.floor(i / 2); const x = 300 + col * 360, y = 850 + row * 230; const k = back(lin(t, 7.6 + i * .12, 7.9 + i * .12)); c.save(); c.translate(x, y); c.scale(k, k); rr(c, -160, -90, 320, 180, 20); c.fillStyle = PAPER; c.fill(); silhouette(c, -90, 6, 62, '#3b4656'); txt(c, 'WINNER', 50, -34, '400 44px Anton', INK); txt(c, '$1,000,000', 40, 18, '800 26px Inter', 'rgba(11,15,20,.6)'); c.restore(); stamp(c, 'FAKE', x + 40, y + 30, 54, RED, -.2 + i * .1, lin(t, 8.36 + i * .1, 8.46 + i * .1)); }
+  victimLine(c, t, 7.4, 9.4, 365);
+}
+// 9.4–12.2 PEELING STICKERS LIKE A DUMBA** (endless peeling)
+function sPeel(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.07)');
+  const cyc = .46, n = Math.floor((t - 9.4) / cyc), ph = ((t - 9.4) % cyc) / cyc;
+  const p = eo(clamp(ph / .72)); const w = 640, h = 300;
+  // next stickers waiting underneath
+  for (let k = 3; k >= 1; k--) { c.save(); c.translate(510, 760 + k * 8); c.rotate((k % 2 ? .02 : -.02) * k); rr(c, -w / 2, -h / 2, w, h, 22); c.fillStyle = k % 2 ? '#d9a904' : '#c98f00'; c.fill(); c.restore(); }
+  peelPiece(c, 510, 760, w, h, Math.sin(n * 2.3) * .03, p, GRAND(w, h), NOT_YOU(w, h), { shadow: false, hand: (c2, x, y) => hand(c2, x, y, .8, 1.15) });
+  // counter of peels
+  txt(c, 'PEELED:', 300, 1010, '800 40px JBM', 'rgba(245,243,238,.7)', 'center'); txt(c, String(Math.max(1, n + 1) * 7), 520, 1010, '400 90px Anton', HL, 'left');
+  big(c, 'PEELING STICKERS', 510, 395, 100, PAPER, lin(t, 10.36, 10.5), -.02, 0, 900);
+  big(c, 'LIKE A', 330, 510, 100, PAPER, lin(t, 11.2, 11.3), .02, 0, 900);
+  if (t >= 11.62) { stamp(c, 'DUMBA**', 640, 530, 150, RED, -.06, lin(t, 11.62, 11.74)); }
+}
+// 12.2–14.1 37 months: bars drop
+function sMonths(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)');
+  c.save(); c.translate(510, 660); idCard(c, .85, 'JEROME JACOBSON', 'SECURITY', 'PLEADED GUILTY', { ns: 52, ss: 34 }); c.restore();
+  const drop = eo(lin(t, 12.82, 13.08)); jailBars(c, drop, 330, 1060, 110, 970);
+  if (t >= 12.82 && t < 12.98) { c.fillStyle = `rgba(255,255,255,${.4 * (1 - (t - 12.82) / .16)})`; c.fillRect(0, 0, W, H); }
+  stamp(c, '37 MONTHS', 510, 860, 160, RED, -.05, lin(t, 13.18, 13.3));
+}
+// 14.1–17.5 SEND TO THE FRIEND WHO STILL PEELS THEM
+function sSend(c, t) {
+  bgGrid(c, t, 'rgba(0,150,255,.08)');
+  big(c, 'SEND TO', 510, 380, 150, PAPER, lin(t, 14.06, 14.18), -.02, 0, 880); big(c, 'THE FRIEND', 510, 520, 150, HL, lin(t, 15.0, 15.12), .02, 30, 880);
+  big(c, 'WHO STILL', 510, 650, 120, PAPER, lin(t, 15.34, 15.46), -.01, 0, 880); big(c, 'PEELS THEM', 510, 780, 150, RED, lin(t, 15.82, 15.94), .02, 30, 880);
+  const p = lin(t, 14.1, 15.0); if (p > 0 && p < 1) paperPlane(c, p, [140, 1050], [700, 900], [900, 400], 2.6);
+  const e = eo(lin(t, 15.1, 15.4)); c.save(); c.globalAlpha = e; c.translate(510, 940 + (1 - e) * 40); rr(c, -300, -66, 600, 132, 30); c.fillStyle = '#10151c'; c.fill(); c.strokeStyle = '#3a4656'; c.lineWidth = 4; c.stroke(); silhouette(c, -220, 8, 46, '#3b4656'); txt(c, 'THAT FRIEND', -160, -16, '800 32px Inter', PAPER, 'left'); txt(c, 'still peeling…', -160, 26, '700 26px Inter', 'rgba(245,243,238,.6)', 'left'); c.restore();
+  const sent = back(lin(t, 16.9, 17.15)); if (sent > 0) { c.save(); c.translate(540, 1040); c.scale(sent, sent); rr(c, -230, -42, 460, 84, 28); c.fillStyle = GREEN; c.fill(); txt(c, 'THIS VIDEO  ✓ SENT', 0, 3, '800 34px Inter', INK); c.restore(); }
+}
+const SCENES = [[0, 2.4, sHook], [2.4, 4.9, sPile], [4.9, 7.3, sBig], [7.3, 9.4, sFake], [9.4, 12.2, sPeel], [12.2, 14.1, sMonths], [14.1, LOOP, sSend], [LOOP, 99, (c, t) => sHook(c, .45 + (t - LOOP))]];
+const ST = { pos: { x: 850, y: 1330, s: .88 }, enterAt: -.5, timeline: [[0, 'shock'], [2.4, 'point'], [4.9, 'shock'], [7.3, 'shrug'], [9.4, 'point'], [11.62, 'shrug'], [12.2, 'shock'], [14.1, 'you'], [LOOP, 'shock']] };
+const CFG = { hud, st: ST, caps: CAPS, cap: CAPCFG,
+  shake: [[.02, .4, 30], [3.22, .25, 16], [5.94, .4, 30], [8.36, .3, 18], [11.62, .35, 24], [12.82, .35, 26], [13.18, .3, 22]],
+  punch: [[3.22, .25, .06], [8.36, .25, .06], [11.62, .25, .08], [13.18, .25, .08]], boom: 5.94,
+  glitch: [[0, .4, 1], [LOOP, DUR, 1]] };
+window.render = t => compose(t >= DUR ? 0 : t, SCENES, CFG);
+window.DUR = DUR;
+window.ready = loadFonts(0);
+</script></body></html>

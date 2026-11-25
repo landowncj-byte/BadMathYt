@@ -98,3 +98,4 @@ decisions:
 - 2026-11-25: Model split: Fable = research (ideas, fact-check, number spine, sources → research.md); Opus = creation + directing (hooks, scripts, direction, reviews); Sonnet/Haiku = coding, rendering, voice, sound, packaging.
 - 2026-11-25: Fable also does content research: competitor map + viral outliers + patterns → research/<date>/competitors.md, feeding idea ranking (copy patterns, never topics/scripts/footage).
 - 2026-11-25: Comments = hybrid: auto-reply to normal comments, flag sensitive ones to the user (STYLE §17). Project .claude/settings.json allows PostFast + ElevenLabs speech tools without prompts.
+- 2026-11-25: Adopted the 'story loop' (STYLE §18) from the user's reference reel. Added brand/tools/watch.sh (yt-dlp + Whisper + frame sheet) to watch YouTube/Instagram videos; YouTube/Instagram hosts allowed in the environment.

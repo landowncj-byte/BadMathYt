@@ -100,7 +100,7 @@ function sShare(c, t) {
 // ---- S7 34.3-40.9 scale swap bar chart
 function sScale(c, t) {
   bg(c, t);
-  const BASE = 1150, CX = 210, OX = 440; const th = lin(t, 38.4, 39.4); const z = t < 38.4 ? 1 : Math.exp(Math.log(.045) * eio(th));
+  const BASE = 1090, CX = 210, OX = 440; const th = lin(t, 38.4, 39.4); const z = t < 38.4 ? 1 : Math.exp(Math.log(.045) * eio(th));
   if (t < 35.3) slam(c, lin(t, 34.4, 34.55), 540, 520, () => hero(c, 'FOR SCALE', 0, 0, 190, PAPER, 900));
   const vCard = 22 * eo(lin(t, 35.2, 36.3)), vOD = 17000 * Math.pow(lin(t, 38.06, 38.5), 2.2);
   const hC = vCard * .9 * z, hO = vOD * .9 * z;
@@ -135,10 +135,10 @@ function sCard(c, t) {
 function sVs(c, t) {
   c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t, '0,210,106'); rays(c, t, '255,59,48');
   slam(c, lin(t, 46.99, 47.12), 540, 520, () => { c.shadowColor = GREEN; c.shadowBlur = 40; hero(c, '4¢', 0, 0, 330, GREEN, 700, 'Anton', 400, -.03); });
-  slam(c, lin(t, 47.94, 48.06), 540, 735, () => hero(c, 'VS', 0, 0, 110, PAPER, 300));
-  slam(c, lin(t, 48.35, 48.5), 540, 960, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '$34', 0, 0, 380, RED, 760, 'Anton', 400, .03); });
-  const ck = lin(t, 47.3, 47.8); for (let i = 0; i < 2; i++) if (t > 47.3) coin(c, 170 + i * 80, 1180, 36, 0, 1, '¢');
-  if (t > 48.4) cashStack(c, 880, 1230, 7, lin(t, 48.4, 48.9), '$34');
+  slam(c, lin(t, 47.94, 48.06), 540, 700, () => hero(c, 'VS', 0, 0, 90, PAPER, 300));
+  slam(c, lin(t, 48.35, 48.5), 540, 935, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '$34', 0, 0, 340, RED, 760, 'Anton', 400, .03); });
+  const ck = lin(t, 47.3, 47.8); for (let i = 0; i < 2; i++) if (t > 47.3) coin(c, 200 + i * 80, 1190, 36, 0, 1, '¢');
+  if (t > 48.4) cashStack(c, 660, 1215, 4, lin(t, 48.4, 48.9), '$34');
 }
 // ---- S10 49.7-51.83 "and they call it protection"
 function sEnd(c, t) {

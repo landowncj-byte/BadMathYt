@@ -44,9 +44,9 @@ function t_card(c, t) {
 function t_vs(c, t) {
   c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t, '0,210,106'); rays(c, t, '255,59,48');
   slam(c, lin(t, 16.775, 16.9), 540, 520, () => { c.shadowColor = GREEN; c.shadowBlur = 40; hero(c, '4¢', 0, 0, 330, GREEN, 700, 'Anton', 400, -.03); });
-  slam(c, lin(t, 17.72, 17.85), 540, 735, () => hero(c, 'VS', 0, 0, 110, PAPER, 300));
-  slam(c, lin(t, 18.2, 18.35), 540, 960, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '$34', 0, 0, 380, RED, 760, 'Anton', 400, .03); });
-  if (t > 17.0) for (let i = 0; i < 2; i++) coin(c, 170 + i * 80, 1180, 36, 0, 1, '¢'); if (t > 18.3) cashStack(c, 880, 1230, 7, lin(t, 18.3, 18.8), '$34');
+  slam(c, lin(t, 17.72, 17.85), 540, 700, () => hero(c, 'VS', 0, 0, 90, PAPER, 300));
+  slam(c, lin(t, 18.2, 18.35), 540, 935, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '$34', 0, 0, 340, RED, 760, 'Anton', 400, .03); });
+  if (t > 17.0) for (let i = 0; i < 2; i++) coin(c, 200 + i * 80, 1190, 36, 0, 1, '¢'); if (t > 18.3) cashStack(c, 660, 1215, 4, lin(t, 18.3, 18.8), '$34');
 }
 function t_comment(c, t) {
   bg(c, t, 'rgba(255,214,10,.12)');
@@ -60,7 +60,7 @@ function t_follow(c, t) {
   bg(c, t, 'rgba(255,59,48,.12)');
   slam(c, lin(t, 23.02, 23.15), 540, 470, () => hero(c, 'MORE MATH', 0, 0, 170, PAPER, 940));
   slam(c, lin(t, 24.0, 24.12), 540, 650, () => hero(c, 'YOUR BANK HATES', 0, 0, 120, RED, 940, 'Anton', 400, -.02));
-  phoneBank(c, t, { y: 1000, w: 340, h: 520, bank: { toggle: t > 24.5 ? 0 : 1, bal: '$1,240.18' } });
+  phoneBank(c, t, { x: 300, y: 1000, w: 340, h: 520, bank: { toggle: t > 24.5 ? 0 : 1, bal: '$1,240.18' } });
 }
 const CFG = { DUR: 25.51,
   SCENES: [[0, 2.6, t_hook], [2.6, 5.1, t_days], [5.1, 7.27, t_phone], [7.27, 10.2, t_doc], [10.2, 13.0, t_boom], [13.0, 16.75, t_card], [16.75, 19.7, t_vs], [19.7, 23.0, t_comment], [23.0, 99, t_follow]],
