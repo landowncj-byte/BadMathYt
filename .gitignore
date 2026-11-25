@@ -50,3 +50,8 @@ brand/photos/stock/*
 !brand/photos/stock/daniel-patrick-moynihan-united-states-courthouse/
 !brand/photos/stock/piggy-bank-coins/
 !brand/photos/stock/stacked-coins/
+# third-party creator footage downloaded for study: never commit (patterns only)
+research/creators/**/*.mp4
+research/creators/**/*.webm
+research/creators/**/*.wav
+research/creators/**/*.m4a

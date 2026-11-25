@@ -1,0 +1,15 @@
+[   0.0] Ready? One.
+[   2.1] One, two.
+[   3.9] One, two, three. Okay. One, two, three,
+[   8.1] four.
+[   9.1] One, two, three, four, five. Okay. One,
+[  12.7] two, three, four, five, six. One, two,
+[  17.2] three, four, five, six, seven. One, two,
+[  21.4] three,
+[  22.3] four. Psych!
+[  24.2] >> [music]
+[  25.9] >> Hey.
+[  27.0] Yeah.
+[  29.5] >> [music]
+[  30.2] >> Top.
+[  31.2] Fuego.
