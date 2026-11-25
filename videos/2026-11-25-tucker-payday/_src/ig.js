@@ -9,7 +9,7 @@ BM2.scene({
     { id: 'crowd', type: 'crowd', at: [3000, 1500], in: 14.3, props: { at: '@four', dur: 1.0, gridAt: 14.8, gridDur: 1.0 } },
     { id: 'verdict', type: 'verdict', at: [1500, 1500], in: '@14-0.4', props: { guiltyAt: '@guilty', countsAt: '@14', monthsAt: '@16', subAt: '@years' } },
     { id: 'ticks', type: 'ticks', at: [1500, 1970], in: '@14-0.4', props: { at: '@14', dur: 0.7 } },
-    { id: 'pcourt', type: 'photo', at: [1300,1360], rot: 0, in: '@14-0.4', props: { src: 'brand/photos/stock/tucker-payday/courthouse.jpg', tag: 'SDNY COURTHOUSE · ILLUSTRATIVE', credit: 'K. LUND · CC BY-SA', w: 380, aspect: 0.8, treatment: 'polaroid', tilt: 0.05, fx: 0.5, fy: 0.45 } },
+    { id: 'pcourt', type: 'photo', at: [1500,1690], rot: 0, in: '@14-0.4', out: '@16-0.1', props: { src: 'brand/photos/stock/tucker-payday/courthouse.jpg', tag: 'SDNY COURTHOUSE · ILLUSTRATIVE', credit: 'K. LUND · CC BY-SA', w: 420, aspect: 0.6, treatment: 'polaroid', tilt: 0.05, fx: 0.5, fy: 0.45 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@Double-0.05', out: '@Double+1.15', props: { s: 1 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
