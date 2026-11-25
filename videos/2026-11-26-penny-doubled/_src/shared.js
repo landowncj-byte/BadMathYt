@@ -22,7 +22,7 @@
 
   // ---------- hookart: the frame-0 slam. 'brick' = cash brick drops beside a bouncing penny; 'slap' = penny slapped down, brick yanked off on a string ----------
   B.register('hookart', {
-    defaults: { variant: 'brick', reAt: 99999 },
+    defaults: { variant: 'brick', reAt: 99999, drop: 300 },
     size: () => [760, 760],
     anchors: () => ({ brick: [-150, 170, 470, 400], penny: [215, 190, 300, 320], all: [0, 40, 760, 700] }),
     draw(g, p, env) {
@@ -36,7 +36,7 @@
         g.restore();
       };
       if (p.variant === 'brick') {
-        const dk = ease.in(clamp((te + 0.1) / 0.14)), dy = -300 * (1 - dk), sq = 1 - 0.07 * hit(te - 0.04, 7), u = te - 0.04;
+        const dk = ease.in(clamp((te + 0.1) / 0.14)), dy = -p.drop * (1 - dk), sq = 1 - 0.07 * hit(te - 0.04, 7), u = te - 0.04;
         drawBrick(-150, dy, 0, sq);
         // penny: sits, then hops and spins when the brick lands
         const hop = u > 0 ? 150 * Math.abs(Math.sin(u * 6.5)) * Math.exp(-u * 1.6) : 0, ang = 0.6 + (u > 0 ? 11 * (1 - Math.exp(-u * 1.1)) : 0), sx = Math.abs(Math.cos(ang)) * 0.88 + 0.12;

@@ -235,7 +235,7 @@ BM2.scene({
     { at: '@gram', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.78, sy: 820, rot: -0.008, st: 'corner', pose: 'point' },
     { at: '@454', beat: 'zoom-on-number', focus: 'scale.count', fill: 0.5, sy: 560, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
     // twist 2: tower inch
-    { at: '@One#2', beat: 'peek', focus: 'tower', move: 'whip', sy: 850, maxH: 900, pose: 'idle' },
+    { at: '@One#2', beat: 'graphic-hero', st: 'right', focus: 'tower', move: 'whip', sy: 850, maxH: 900, pose: 'idle' },
     { at: '@inch', beat: 'zoom-on-number', focus: 'tower.base', fill: 0.8, sy: 860, rot: -0.01, st: 'corner-left', pose: 'point' },
     { at: '@233', beat: 'zoom-on-number', focus: 'tower.inch', fill: 0.85, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     // average man
@@ -243,7 +243,7 @@ BM2.scene({
     { at: '@99', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@5', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     // send
-    { at: '@Send', beat: 'peek', focus: 'tower', sy: 850, maxH: 900, pose: 'you' },
+    { at: '@Send', beat: 'graphic-hero', st: 'right', focus: 'tower', sy: 850, maxH: 900, pose: 'you' },
     // height in hundreds
     { at: '@His', beat: 'graphic-hero', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'idle' },
     { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.78, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },

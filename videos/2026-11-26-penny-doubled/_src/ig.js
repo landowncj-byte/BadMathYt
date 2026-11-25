@@ -8,7 +8,7 @@ BM2.scene({
   elements: [
     // --- frame 0: the A/B buttons are the hook; brick + penny slam under them ---
     { id: 'ab', type: 'ab', at: [0, -330], in: -1, props: { aAt: -1, bAt: -1, settle: true, splitAt: '@double' } },
-    { id: 'art', type: 'hookart', at: [0, 200], in: -1, props: { variant: 'brick' } },
+    { id: 'art', type: 'hookart', at: [0, 200], in: -1, props: { variant: 'brick', drop: 110 } },
     { id: 'pick', type: 'stamp', at: [0, 60], rot: -0.06, in: '@Pick', out: '@Said', props: { text: 'PICK.', tone: 'bad', size: 120 } },
     // --- station 2: the board ---
     { id: 'board', type: 'board', at: [1750, 0], in: 4.2, out: 19.0, props: {
@@ -19,7 +19,7 @@ BM2.scene({
       slices: [{ value: 12.5, tone: 'soft', label: 'DAYS 1–27', at: '@Seven-0.1' }, { value: 87.5, tone: 'accent', label: 'DAYS 28–30', at: '@Seven+0.15' }] } },
     // --- loop frame (a separate station so nothing ghosts through) ---
     { id: 'ab2', type: 'ab', at: [0, 1870], in: 19.0, props: { aAt: -1, bAt: -1, settle: true } },
-    { id: 'art2', type: 'hookart', at: [0, 2400], in: 19.0, props: { variant: 'brick', reAt: 19.5 } },
+    { id: 'art2', type: 'hookart', at: [0, 2400], in: 19.0, props: { variant: 'brick', reAt: 19.5, drop: 110 } },
     // --- screen-fixed ---
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: 0.5, props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@double', props: { s: 1, dur: 0.9 } },

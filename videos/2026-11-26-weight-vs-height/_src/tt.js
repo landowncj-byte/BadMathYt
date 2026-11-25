@@ -38,7 +38,7 @@ BM2.scene({
     { at: '@grandma', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@height#2', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.8, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@Send', beat: 'peek', focus: 'tower', sy: 850, maxH: 900, pose: 'you' },
+    { at: '@Send', beat: 'graphic-hero', st: 'right', focus: 'tower', sy: 850, maxH: 900, pose: 'you' },
     { at: '@His', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 900, sy: 850, st: 'right', pose: 'point' },
     { at: '@1#2', beat: 'zoom-on-number', focus: 'scale.total', fill: 0.86, sy: 780, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.5, keep: ['scale'] },
     { at: '@200#2', beat: 'zoom-on-number', focus: 'gap.num', fill: 0.88, sy: 800, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },

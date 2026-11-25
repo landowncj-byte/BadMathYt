@@ -93,7 +93,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
 
   // ---------- hookart: the frame-0 slam. 'brick' = cash brick drops beside a bouncing penny; 'slap' = penny slapped down, brick yanked off on a string ----------
   B.register('hookart', {
-    defaults: { variant: 'brick', reAt: 99999 },
+    defaults: { variant: 'brick', reAt: 99999, drop: 300 },
     size: () => [760, 760],
     anchors: () => ({ brick: [-150, 170, 470, 400], penny: [215, 190, 300, 320], all: [0, 40, 760, 700] }),
     draw(g, p, env) {
@@ -107,7 +107,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         g.restore();
       };
       if (p.variant === 'brick') {
-        const dk = ease.in(clamp((te + 0.1) / 0.14)), dy = -300 * (1 - dk), sq = 1 - 0.07 * hit(te - 0.04, 7), u = te - 0.04;
+        const dk = ease.in(clamp((te + 0.1) / 0.14)), dy = -p.drop * (1 - dk), sq = 1 - 0.07 * hit(te - 0.04, 7), u = te - 0.04;
         drawBrick(-150, dy, 0, sq);
         // penny: sits, then hops and spins when the brick lands
         const hop = u > 0 ? 150 * Math.abs(Math.sin(u * 6.5)) * Math.exp(-u * 1.6) : 0, ang = 0.6 + (u > 0 ? 11 * (1 - Math.exp(-u * 1.1)) : 0), sx = Math.abs(Math.cos(ang)) * 0.88 + 0.12;
@@ -245,7 +245,7 @@ BM2.scene({
   elements: [
     // --- frame 0: the A/B buttons are the hook; brick + penny slam under them ---
     { id: 'ab', type: 'ab', at: [0, -330], in: -1, props: { aAt: -1, bAt: -1, settle: true, splitAt: '@double' } },
-    { id: 'art', type: 'hookart', at: [0, 200], in: -1, props: { variant: 'brick' } },
+    { id: 'art', type: 'hookart', at: [0, 200], in: -1, props: { variant: 'brick', drop: 110 } },
     { id: 'pick', type: 'stamp', at: [0, 60], rot: -0.06, in: '@Pick', out: '@Said', props: { text: 'PICK.', tone: 'bad', size: 120 } },
     // --- station 2: the board ---
     { id: 'board', type: 'board', at: [1750, 0], in: 4.2, out: 19.0, props: {
@@ -256,7 +256,7 @@ BM2.scene({
       slices: [{ value: 12.5, tone: 'soft', label: 'DAYS 1–27', at: '@Seven-0.1' }, { value: 87.5, tone: 'accent', label: 'DAYS 28–30', at: '@Seven+0.15' }] } },
     // --- loop frame (a separate station so nothing ghosts through) ---
     { id: 'ab2', type: 'ab', at: [0, 1870], in: 19.0, props: { aAt: -1, bAt: -1, settle: true } },
-    { id: 'art2', type: 'hookart', at: [0, 2400], in: 19.0, props: { variant: 'brick', reAt: 19.5 } },
+    { id: 'art2', type: 'hookart', at: [0, 2400], in: 19.0, props: { variant: 'brick', reAt: 19.5, drop: 110 } },
     // --- screen-fixed ---
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: 0.5, props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@double', props: { s: 1, dur: 0.9 } },

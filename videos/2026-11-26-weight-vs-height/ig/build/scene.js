@@ -225,7 +225,7 @@ BM2.scene({
     { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.8, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@weight#2', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 900, sy: 850, st: 'right', pose: 'point' },
     { at: '@1#2', beat: 'zoom-on-number', focus: 'scale.total', fill: 0.88, sy: 780, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.5, keep: ['scale'] },
-    { at: '@Send', beat: 'peek', focus: [{ x: 0, y: 200, w: 1240, h: 1280 }], sy: 810, maxH: 900, pose: 'you' },
+    { at: '@Send', beat: 'graphic-hero', st: 'right', focus: [{ x: 0, y: 200, w: 1240, h: 1280 }], sy: 810, maxH: 900, pose: 'you' },
     { at: '@they\'d', beat: 'zoom-on-number', focus: 'gap.num', fill: 0.88, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@For', beat: 'graphic-hero', focus: 'scale', fill: 0.84, maxH: 900, sy: 850, st: 'left', pose: 'you' },
     { at: '@So#2', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'chin', keep: ['scale'] },
