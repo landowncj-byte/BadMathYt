@@ -2,9 +2,9 @@
 Scripts/voice untouched. Source: `_src/cases.js` (table3, fan100, mail, tally, assumes, chip, heart, plane) + `yt.js` / `tt.js` / `ig.js`; `_src/build.sh <cut> <yt|tt|ig>`. No engine files changed.
 | Cut | File | Narration | Video | Size | LUFS / true peak |
 |---|---|---|---|---|---|
-| YouTube | video.mp4 | 47.13 s | 47.53 s | 31.5 MB | -14.0 / -1.47 dBFS |
-| TikTok | tiktok/video.mp4 | 30.95 s | 31.37 s | 19.6 MB | -14.0 / -1.46 |
-| IG/FB | ig/video.mp4 | 23.26 s | 23.66 s | 13.4 MB | -14.0 / -1.45 |
+| YouTube | video.mp4 | 47.13 s | 47.53 s | 31.1 MB | -14.0 / -1.47 dBFS |
+| TikTok | tiktok/video.mp4 | 30.95 s | 31.37 s | 19.0 MB | -14.0 / -1.46 |
+| IG/FB | ig/video.mp4 | 23.26 s | 23.66 s | 13.1 MB | -14.0 / -1.45 |
 Contact sheets (1 fps, timestamped): contact_sheet.png in each cut. script_gate --all: PASS x3 (TikTok warn: 96 words > 90, script is fixed).
 ## VIDEO GATE
 | # | YT | TT | IG |
@@ -39,3 +39,4 @@ Not used: IQ/"smartest", 92%, Erdős, letter quotes, doors/car/goats, host name 
 - Fan100: opened cases are dimmed, the one closed case is only enlarged + stamped 99%; storyteller sometimes overlaps desk tag/buttons on tight zooms; STAY/SWITCH buttons touch captions on a few zoom-ins.
 - Tally bar race appears only in YT (IG/TikTok scripts have no room); TikTok uses the kitchen-table tally marks.
 - Voice not listened to (V11).
+- Re-render 2026-11-25 (coordinator fixes): frame-0 framing lowered/zoomed out so hook text clears the pill and storyteller; STAY/SWITCH buttons raised and 50/50 + pulled zooms reduced so buttons stay above the caption band.
