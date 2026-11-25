@@ -195,3 +195,5 @@ um / uh fillers · laugh / chuckle · energy / hyper voice · neon glow look · 
 - **C9 · Line length.** STYLE §2 "≤ 12 words per line" vs §21 "one longer run-on sentence". Hook ≤ 12 words always; one run-on per Short allowed, but no voiced line over ~7 s.
 - **C10 · Hook vs series tone.** What If "curious, playful" (intake) vs "outrageous, negative" hook gate (newer). The hook is outrageous; the playfulness lives in the middle. A What If must not open with a soft "What if…?" question — the pill already says WHAT IF.
 - **C11 · Follow before payoff vs payoff at 75–80%.** Both sit at ~80%. Order is fixed: follow-promise clause (~72–80%) → half-beat of silence → payoff (~78–85%) → comment question → loop line.
+
+- (2026-11-25, "i like the title, How simple math caught 3 massive frauds") Long-form titles: plain words, outcome first, a number, no insider phrase the viewer must already understand. Post 526cfc00 was replaced by c0419604 with this title.
