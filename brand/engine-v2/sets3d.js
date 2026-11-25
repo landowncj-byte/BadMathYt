@@ -8,7 +8,7 @@
   S.define = (name, def) => (S.sets[name] = def); S.defineProp = (kind, fn) => (S.props[kind] = fn);
   // colour roles: bg = void colour, A = backdrop, B = wall paper, C = accent wall, D = furniture, E = floor, F = darkest, G = highlight paper, lamp, accent (series accent: used sparingly)
   S.themes = {
-    night: { bg: '#0B0F14', A: '#1B2433', B: '#5E1F1B', C: '#C9A66B', D: '#59606B', E: '#2A3647', F: '#0B0F14', G: '#F5F3EE', lamp: '#F4D9A0', accent: '#FF3B30', amb: 0.45, key: 2.6, elev: 0.5, soft: 1 },
+    night: { bg: '#0B0F14', A: '#34465e', B: '#5E1F1B', C: '#C9A66B', D: '#6b7482', E: '#3a4a60', F: '#10151d', G: '#F5F3EE', lamp: '#F4D9A0', accent: '#FF3B30', amb: 1.0, key: 2.3, elev: 0.6, soft: 1 },
     day: { bg: '#FFF4DC', A: '#7FCDEB', B: '#F58A2E', C: '#9BE3C0', D: '#5A3FA0', E: '#FFF4DC', F: '#3D2A73', G: '#F5F3EE', lamp: '#FFF4DC', accent: '#FFD60A', amb: 1.15, key: 1.7, elev: 1.0, soft: 3 },
   };
   const matCache = {}; const mat = (c, o = {}) => { const k = c + JSON.stringify(o); return matCache[k] || (matCache[k] = new T.MeshLambertMaterial(Object.assign({ color: c }, o))); };

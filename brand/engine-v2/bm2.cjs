@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Bad Math engine v2 — command line. Run from anywhere:
-//   node brand/engine-v2/bm2.cjs init   <sceneDir> --voice <voiceDir> [--series whatif|decoded]   create scene.html, scene.js (starter), voice.js
+//   node brand/engine-v2/bm2.cjs init   <sceneDir> --voice <voiceDir> [--series whatif|decoded] [--story]   create scene.html, scene.js (starter), voice.js  (--story: animated-story scenes, see CHARACTERS.md)
+//   node brand/engine-v2/bm2.cjs board  <sceneDir> [outDir]                                       storyboard table + one keyframe per shot in a labelled contact sheet (story scenes)
 //   node brand/engine-v2/bm2.cjs voice  <sceneDir> <voiceDir>                                     rebuild voice.js after a re-voice
 //   node brand/engine-v2/bm2.cjs check  <sceneDir>                                                compile; print beats, captions, sfx with resolved times
 //   node brand/engine-v2/bm2.cjs stills <sceneDir> 0,1.2,10.5 [outDir]                            PNG stills (default <sceneDir>/stills)
@@ -24,8 +25,8 @@ function writeVoice(sceneDir, voiceDir) {
 (async () => {
   if (cmd === 'init') {
     const dir = path.resolve(a1), voiceDir = path.resolve(opt('voice')), rel = path.relative(dir, ENGINE).split(path.sep).join('/'); fs.mkdirSync(dir, { recursive: true });
-    let html = fs.readFileSync(path.join(ENGINE, 'starter/scene.html'), 'utf8').replace(/ENGINE/g, rel); if (opt('format', '') === '16:9') html = html.replace('<canvas id="c" width="1080" height="1920"></canvas>', `<script>window.BM2_FORMAT='16:9'</script><canvas id="c" width="1920" height="1080"></canvas>`); fs.writeFileSync(path.join(dir, 'scene.html'), html);
-    if (!fs.existsSync(path.join(dir, 'scene.js'))) fs.writeFileSync(path.join(dir, 'scene.js'), fs.readFileSync(path.join(ENGINE, 'starter/scene.js'), 'utf8').replace("series: 'whatif'", `series: '${opt('series', 'whatif')}'`));
+    const story = rest.includes('--story'); let html = fs.readFileSync(path.join(ENGINE, story ? 'starter/story.html' : 'starter/scene.html'), 'utf8').replace(/ENGINE/g, rel); if (opt('format', '') === '16:9') html = html.replace('<canvas id="c" width="1080" height="1920"></canvas>', `<script>window.BM2_FORMAT='16:9'</script><canvas id="c" width="1920" height="1080"></canvas>`); fs.writeFileSync(path.join(dir, 'scene.html'), html);
+    if (!fs.existsSync(path.join(dir, 'scene.js'))) fs.writeFileSync(path.join(dir, 'scene.js'), fs.readFileSync(path.join(ENGINE, story ? 'starter/story.js' : 'starter/scene.js'), 'utf8').replace("series: 'whatif'", `series: '${opt('series', 'whatif')}'`));
     writeVoice(dir, voiceDir); console.log('scene ready in', dir, '\nnext: edit scene.js, then `bm2.cjs check` and `bm2.cjs stills`');
   } else if (cmd === 'voice') { writeVoice(path.resolve(a1), path.resolve(rest[0])); }
   else if (cmd === 'check' || cmd === 'sfx') {
@@ -34,6 +35,15 @@ function writeVoice(sceneDir, voiceDir) {
     const names = new Set(JSON.parse(fs.readFileSync(path.join(ENGINE, '../sfx-library/manifest.json'), 'utf8')).map(m => m.name)); for (const x of [...(info.sfx ? info.sfx.sfx : []), ...(info.sfx && info.sfx.bed ? [info.sfx.bed] : [])]) if (!names.has(x.name) && !String(x.name).startsWith('local:')) { errs.push(x.name); console.log(`SFX ERROR: "${x.name}" is not in brand/sfx-library/manifest.json`); }
     if (cmd === 'check') { console.log('BEATS (time, beat, focus, storyteller, pose)'); info.beats.forEach(r => console.log(' ', r.join('  '))); console.log('CAPTIONS'); info.caps.forEach(r => console.log(' ', r.join('  '))); console.log('SFX'); (info.sfx ? info.sfx.sfx : []).forEach(s => console.log(' ', s.at, s.name, s.gain)); }
     console.log(errs.length ? `FAILED: ${errs.length} error(s)` : 'OK: scene compiles; sfx.json written'); await b.close(); process.exit(errs.length ? 1 : 0);
+  } else if (cmd === 'board') {
+    const out = rest[0] && !rest[0].startsWith('--') ? rest[0] : path.join(a1, 'board'); fs.mkdirSync(out, { recursive: true }); const { b, p, errs } = await page(a1);
+    const md = await p.evaluate(() => BM2.storyBoard()); fs.writeFileSync(path.join(out, 'storyboard.md'), md + '\n'); const shots = await p.evaluate(() => BM2.boardInfo());
+    const cols = 6, cw = 270, ch = 480, lab = 74, per = 18; let sheets = 0;
+    for (let s0 = 0; s0 < shots.length; s0 += per) { const part = shots.slice(s0, s0 + per);
+      const url = await p.evaluate(async ({ part, cols, cw, ch, lab, s0 }) => { const rows = Math.ceil(part.length / cols), sh = document.createElement('canvas'); sh.width = cols * cw; sh.height = rows * (ch + lab); const g = sh.getContext('2d'); g.fillStyle = '#0B0F14'; g.fillRect(0, 0, sh.width, sh.height); const src = document.getElementById('c');
+        part.forEach((s, i) => { window.render(s.key); const x = (i % cols) * cw, y = Math.floor(i / cols) * (ch + lab); g.drawImage(src, x, y, cw, ch); g.fillStyle = '#F5F3EE'; g.font = '800 15px sans-serif'; g.fillText(`${s.id}  ${s.t0.toFixed(2)}-${s.t1.toFixed(2)}  ${s.kind}${s.on ? ' ' + [].concat(s.on).join('+') : ''}`, x + 6, y + ch + 18); g.font = '13px sans-serif'; g.fillStyle = '#b9c2cf'; const words = (s.text || '').slice(0, 64); g.fillText(words, x + 6, y + ch + 38); g.fillText(words.length >= 64 ? (s.text || '').slice(64, 128) : '', x + 6, y + ch + 56); });
+        return sh.toDataURL('image/png'); }, { part, cols, cw, ch, lab, s0 }); fs.writeFileSync(path.join(out, `board_${String(++sheets).padStart(2, '0')}.png`), Buffer.from(url.split(',')[1], 'base64')); }
+    console.log(`board -> ${out}  (${shots.length} shots, ${sheets} sheet(s), storyboard.md)`); await b.close(); process.exit(errs.length ? 1 : 0);
   } else if (cmd === 'stills') {
     const out = rest[1] && !rest[1].startsWith('--') ? rest[1] : path.join(a1, 'stills'); fs.mkdirSync(out, { recursive: true }); const { b, p } = await page(a1);
     for (const t of rest[0].split(',').map(Number)) { await p.evaluate(t => window.render(t), t); await p.screenshot({ path: path.join(out, `s_${t.toFixed(2).padStart(6, '0')}.png`) }); } await b.close(); console.log('stills ->', out);

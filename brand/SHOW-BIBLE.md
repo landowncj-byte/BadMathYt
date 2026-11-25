@@ -2,11 +2,15 @@
 
 **Status:** written 2026-11-25 for RULES 107 (owner: "little animated characters… walking around… storyboard each scene… like a movie… something unique with its own feel"). This file is the source of truth for the LOOK, CAST, SHOTS and FORMATS of every new video. RULES.md still wins on everything it covers (facts, CTAs, lengths, voice, labels). Nothing new is built until the pilot (`videos/2026-11-26-fake-wine/STORYBOARD.md`) is approved by the owner.
 
+**Updated 2026-11-25 (owner, RULES 107):** (1) **The storyboard is king.** The pictures alone must tell the story to someone watching on mute, simply enough that anyone, kids included, understands exactly what is going on. See **§ STORYBOARDING THAT TELLS THE STORY** (before §10); it outranks every other storyboard rule. (2) **The base look is 2D characters in a 3D world** (§1.1, §1.5, §4, §5.0). Other styles (noir light, anime impact frames, heist cuts, game-show staging, stop-motion faces, comic split panels) are accents on top of that base.
+
 **What it replaces:** the "graphics on a stage + presenter" layouts of VISUAL-V2. What survives from v2: the engine, the deterministic `render(t)` pipeline, `@word` timing, the paper/clay materials, the captions, the brand lock.
 
 ---
 
 ## 0. The 12 laws (if you read nothing else)
+
+**Law 0, above all the others: THE PICTURE TELLS THE STORY.** Every shot must pass the mute test: a viewer with no sound and no captions, a child included, can say what is happening. If a law below ever fights with this one, this one wins. Full rules and checklist: § STORYBOARDING THAT TELLS THE STORY.
 
 1. **Owen is the only voice.** He narrates everything, including what characters say ("he told the jury…"). No character ever has audio. No speech bubbles as dialogue. A bubble or sign is allowed at most once per video, as a visual gag.
 2. **The story is in the FACES.** Characters act silently with a stop-motion **replacement-face reservoir** (§2.4, 26 named faces). Faces SNAP; they never morph.
@@ -14,10 +18,10 @@
 4. **No lecture slides.** No chart, card or list floats on a stage. Every number is on a prop a character touches (§6).
 5. **A new shot every 1.5–3 s in Shorts**; average shot length 1.5–2.4 s; no shot over 4 s.
 6. **Characters move on twos (15 poses/s, held). The camera, props and numbers move at 30 fps.** That contrast is the house feel.
-7. **Everything is cut paper lit by one lamp.** No glow, no bloom, no neon. Light is a paper shape; shadow is a paper shape.
+7. **Flat paper people in a real 3D paper world, lit by one lamp.** Characters are 2D cut-out cards; sets are 3D pop-up models with real depth; the camera moves through them. One lamp per set throws long real shadows across the floor. No glow, no bloom, no neon.
 8. **Real people are an ARCHETYPE puppet with a name plate, never a likeness.** A licensed real photo may appear only as an EVIDENCE PHOTO prop.
 9. **Red marks the lie (Decoded). Yellow marks the prize (What If).** The series accent is used for nothing else.
-10. **Every video is storyboarded in the §10 template and passes the keyframe board review before the full render.**
+10. **Every video is storyboarded in the §10 template, passes the mute test on paper, and passes the keyframe board review before the full render.**
 11. **Shorts are numbered episodes** with a cold open and a ≤ 1 s sting. **Long-forms are movies** with three acts, chapter cards and credits.
 12. **The first frame is mid-action and the last frame cuts back into it.**
 
@@ -26,10 +30,12 @@
 ## 1. Look and name
 
 ### 1.1 The pitch
-**PAPER TRAIL.** Every Bad Math story happens inside a pop-up book built from the things money leaves behind: banknote paper, receipts, case files, price tags. Small paper "token people" with snap-on stop-motion faces live in fold-out paper sets lit by a single lamp, and we watch them through a movie camera that peeks, pushes in and cuts like a heist film. The host is the only thing in this world that is not paper: he is a gold coin. It mixes six niches on purpose (§A): the confessional intimacy of storytime cartoons, the deadpan map-and-gag rhythm of comedic history, the mid-action cold open of 3D story Shorts, the colour discipline of premium explainers, the impact frames of anime, and the planning montage and freeze-frame intros of heist films. It looks like none of them, because everything is cut paper, everybody moves on twos, and nobody speaks.
+**PAPER TRAIL.** Every Bad Math story happens inside a pop-up book built from the things money leaves behind: banknote paper, receipts, case files, price tags. **Flat 2D paper "token people"** (cut-out cards with snap-on stop-motion faces) live inside **real 3D pop-up paper sets**: card walls that stand up, furniture folded from card, a floor that runs away into the distance. A movie camera travels through that space: it dollies down an aisle, cranes over a crowd, orbits a bottle, looks through a doorway, peeks from behind a prop in the foreground. One lamp per set throws long shadows across the floor. The host is the only thing in this world that is not paper: he is a gold coin.
+
+**The base is "2D characters in a 3D world". Everything else is an accent.** On top of that base we layer twists from other niches (§A): the confessional intimacy of storytime cartoons, the deadpan map-and-gag rhythm of comedic history, the colour discipline of premium explainers, noir lighting, the impact frames of anime, the planning montage and freeze-frame intros of heist films, game-show staging, comic split panels. An accent is used for a moment and for a reason; the 2D-in-3D paper world is on screen all the time. It looks like nobody else's 2D-in-3D because the world is a paper model, everybody moves on twos, the faces snap, and nobody speaks.
 
 ### 1.2 Shape rules
-- **Everything is a cut-out.** Each shape has one flat fill, a 2 px lighter edge on the top-left (the paper's cut edge) and a hard-edged drop shadow offset (+10, +14) px in Shadow `#020409` at α 0.34. No blur on that shadow at layer distance < 40 px; blur 6 px on far layers.
+- **Everything is cut from card.** Each shape has one flat fill and a 2 px lighter edge on the top-left (the paper's cut edge). In the 3D world, shadows are real: the lamp casts them (§1.3). The old painted drop shadow (offset +10, +14 px, Shadow `#020409` at α 0.34) is used only for 2D overlays that sit on the lens, not in the world: tags, name plates, stamps, stickers, photo prints.
 - **Corners:** radius 6–10 px on props, 0 on torn edges. A torn edge is a seeded zig-zag, 6–10 px amplitude, used only on evidence, impact frames and chapter cards.
 - **Characters are outlined, the world is not.** Characters and hand props: Ink `#0B0F14` outline, 5 px at a 520 px-tall figure (scale with the figure; never under 3 px or over 9 px on screen), seeded wobble ±0.6 px so it reads hand-cut. Sets: no outline, only edge + shadow. That is what keeps a character readable against any set.
 - **Proportion of detail:** hero prop (the bottle, the briefcase) gets up to 12 shapes; background props ≤ 5 shapes; crowd figures ≤ 3 shapes.
@@ -37,7 +43,7 @@
 
 ### 1.3 Light rules (how "no neon" is enforced)
 - **One key light per set**, always named in the set file (`lamp: {x, y, dir}`). It is drawn as an opaque paper wedge or pool: warm `#F4D9A0` at α ≤ 0.30 (Decoded), cream `#FFF4DC` at α ≤ 0.22 (What If).
-- **Cast shadows are shapes:** every character and standing prop casts a skewed copy of its silhouette on the floor, away from the lamp, Shadow at α 0.38 (Decoded, length 1.6 × height) or Grape `#3D2A73` at α 0.22 (What If, length 0.5 × height).
+- **Cast shadows are real and long:** every character card and every standing prop casts its silhouette across the 3D floor and up the walls, away from the lamp. Decoded: low lamp, shadow about 1.6 × the figure's height, Shadow colour at α 0.38, hard edge. What If: high lamp, about 0.5 × height, Grape `#3D2A73` at α 0.22, slightly soft. A character's shadow may arrive in a shot before the character does (the winemaker in the doorway).
 - **Gobos (Decoded only):** venetian-blind stripes, window crosses, prison bars, as flat shadow shapes sweeping over characters. Max one gobo per shot.
 - **Banned:** outer glow, bloom, additive blending, gradients with a luminance change over 8 %, lens flares, light text on a glowing plate, any fill with HSL saturation > 85 % covering more than 10 % of the frame. The series accent may cover at most 8 % of the frame (impact frames excepted: 2 frames).
 
@@ -58,6 +64,23 @@ Brand tokens are unchanged: Ink `#0B0F14` · Paper `#F5F3EE` · Money Green `#00
 | Text tags | typewriter mono on manila labels | Anton on scoreboard tiles |
 
 Money is always the same in both: bills Cash Green `#1FA366` with a Paper band, coins Gold. A viewer must tell the series from one frame with the pill covered.
+
+### 1.5 2D characters in a 3D world (the base style)
+Reference recipe (patterns only): the `animated-shorts` skill ("2D characters in a colourful 3D world"). Ours is the paper-model version of it.
+
+| Thing | Rule |
+|---|---|
+| **Characters** | Flat cut-out cards standing upright in the 3D set, like the standees in a board game. All the drawing rules of §2 apply unchanged (Paper heads, Ink outline, replacement faces, on twos). A card has no side view: it turns to face the camera, so a figure is never seen edge-on. |
+| **Sets** | Real 3D pop-up models (§4): a floor plane, card walls, furniture and props folded from card with visible thickness. Depth is real, so near things are big and far things are small without any faking. |
+| **Hand props** | Small things a character holds are 2D cut-outs on the character's card. Things that stand in the room (pedestal, podium, counter, crates, the hero bottle on its stand) are 3D. |
+| **Camera** | A real perspective camera at the height of a token person's eyes unless the shot says otherwise. It moves in every shot (§5.0, §5.3). Long lens for faces, wide lens for rooms. |
+| **Depth of field** | Like photographing a tabletop model: the subject is sharp, the far wall and anything close to the lens are soft. Depth of field is how we point: the sharp thing is the thing to look at. |
+| **Light** | One lamp per set, low and warm (Decoded) or high and bright (What If). Long cast shadows on the floor. Everything else falls off into the backdrop colour. No glow. |
+| **Foreground** | At least one 3D thing between the lens and the subject in every observer shot: a door frame, a row of bottle necks, the backs of heads, a hedge, cell bars. It is dark, soft, and recognisable (never an abstract blob). |
+| **Accents (twists)** | noir blinds and bar shadows · anime impact frames and tension lines · heist freeze-frames, split panels and montage badges · game-show boards, podiums and buzzers · comic split panels · court sketch · security camera. Each is a short departure from the base and returns to it. |
+| **Never** | a flat stage with graphics floating in front of it; a locked-off frame with no depth; a character drawn in 3D; a set drawn as one flat backdrop. |
+
+Readability traps in 2D-in-3D (check on the keyframe board): a card too close to the lens becomes a cut-off blob; a foreground prop cut by the frame edge must still be recognisable; signs lit from the side go grey, so sign faces are unlit; a rail or table edge must cross legs, not faces; a hold with no camera move reads as a freeze.
 
 ---
 
@@ -185,7 +208,7 @@ No cross-fade, no interpolated brows, no morphing mouths, ever. A face change al
 
 ## 4. Sets
 
-Every set is a pop-up diorama with **4 parallax layers** and a fixed floor line. Parallax factor = how much the layer moves per pixel of camera travel.
+**Every set is a real 3D pop-up model** (2026-11-25): a floor, card walls and card furniture with true depth, built once and filmed from any camera mark. The four "layers" below are now **depth zones** of that model, front to back. Use them to place things; the parallax happens by itself because the camera really moves. (The factor column is what the old flat engine used and still describes how much each zone slides in a sideways move.)
 
 | Layer | Factor | Content | Treatment |
 |---|---|---|---|
@@ -194,7 +217,7 @@ Every set is a pop-up diorama with **4 parallax layers** and a fixed floor line.
 | L2 stage | 1.00 | the floor strip the cast walks on, hero props | sharp; characters live here |
 | L3 foreground | 1.40 | a dark out-of-focus edge: door frame, plant, shoulder, bottle necks | Ink-dark, blur 7 px, covers 10–35 % of the frame; this is what the camera "peeks" past |
 
-Floor line (9:16): y = 1320 in wide and medium shots. Set width 2,400–3,200 px so the camera can truck. Set open: layers rise from the fold line over 0.35 s, staggered 60 ms back to front, with a paper `fwump`. Every set has a **night** and a **day** paper theme (so both series can use it) and 2–3 named camera marks (`A`, `B`, `door`).
+Floor line (9:16): y = 1320 in a level wide or medium shot. Set width 2,400–3,200 units and at least as deep as it is wide, so the camera can dolly in as well as truck. Every set has a door or an opening the camera can look or travel through, and one cut-away view (roof or front wall off, like a doll's house) for shots that must show a whole layout in one frame. Set open: layers rise from the fold line over 0.35 s, staggered 60 ms back to front, with a paper `fwump`. Every set has a **night** and a **day** paper theme (so both series can use it) and 2–3 named camera marks (`A`, `B`, `door`).
 
 | Set ID | Layers (L0 / L1 / L2 / L3) | Standard props | Used for |
 |---|---|---|---|
@@ -217,6 +240,14 @@ A new set costs about half a day; an episode may request at most one. Everything
 ---
 
 ## 5. Shot grammar
+
+### 5.0 The camera moves through a 3D paper set (the base)
+1. **Every shot is a camera position and a camera move inside the set**, written as a move through space: dolly in, dolly back, truck, crane up or down, orbit, tilt, a look through a doorway, a peek from behind a foreground prop. "Zoom" and "pan across a flat picture" are not our default any more.
+2. **Depth in every frame:** something near (soft), the subject (sharp), something far (soft).
+3. **The camera has a body.** It stands where a person could stand, at token eye height, except for the named exceptions: crane, top view, security camera, the cut-away.
+4. **A move must tell the viewer something** (law 0): dolly in = "look at this"; dolly back or crane up = "see how big, how many, who is watching"; orbit = "there is something behind it"; travel through a doorway = "we are going in"; a peek = "we are not supposed to see this". A move that says nothing is replaced by the default creep.
+5. **Wide first.** A new set is entered with an establishing move (crane down, dolly in through the door, or the pop-up fold) before any close shot (§ STORYBOARDING rule C1).
+6. **Accents stay 2D on purpose:** impact frames, freeze-frame prints, split panels, court sketches and the top-view map are flat graphic moments. They are short, and we always return to the 3D set.
 
 ### 5.1 The eyewitness rules (law 3)
 1. **Present tense.** The picture shows the event happening on the word, even when Owen uses the past tense. No "here is a diagram of what happened".
@@ -252,17 +283,24 @@ A new set costs about half a day; an episode may request at most one. Everything
 16:9 uses the same codes; H scales by 0.56 and wides hold up to 4 s.
 
 ### 5.3 Camera moves and transitions
-| Move | Spec |
-|---|---|
-| creep (default) | every held shot pushes in 1.5 % per second (Decoded) or drifts sideways 12 px/s (What If). No dead-still frames. |
-| push-in | 0.5–0.6 s, +18–35 % scale, lands within ±2 frames of the spoken number or the face snap. |
-| crash zoom | 0.2 s, +60 %, with a 6-frame overshoot of 4 %. Max 3 per Short. |
-| pull-back | 0.6–0.9 s reveal of scale or of who is watching. |
-| truck | sideways with full parallax, follows a walk at the walk's speed. |
-| whip-pan | 8–10 frames with directional smear; lands on a new subject or a new set. |
-| rack focus | L3 and L2 swap blur in 0.3 s. |
-| Dutch tilt | Decoded only, 3–6°, on lies and arrests. |
-| shake | 14 px, flips sign every frame, dies in 7 frames. Only on impacts. |
+| Move (3D) | Spec | It tells the viewer |
+|---|---|---|
+| creep (default) | every held shot dollies in 1.5 % per second (Decoded) or drifts sideways (What If). No dead-still frames. | "this is live" |
+| dolly in | the camera travels toward the subject, 0.5–0.6 s, +18–35 % size; lands within ±2 frames of the spoken number or the face snap. The foreground slides out of frame as we pass it. | "look at this" |
+| crash dolly | 0.2 s, +60 %, with a 6-frame overshoot of 4 %. Max 3 per Short. | shock |
+| dolly back / pull-back | 0.6–0.9 s; reveals scale, the pile, or who is watching. | "see how much / who else" |
+| crane up / crane down | the camera rises over heads to look down on the room, or sinks from above into the scene; 0.6–1.0 s. | entering a place; "how many" |
+| truck | sideways through the set at a walker's speed; near things pass fast, far things slow. | "come with them" |
+| lead / follow | the camera travels backwards ahead of a walker, or behind their shoulder. | "we are with this person" |
+| orbit | the camera circles a subject 20–60° in 0.4–0.8 s; cards keep facing the lens. | "there is something behind it" |
+| through | the camera passes through a doorway, a window frame, a gap between bottles or between two heads. | "we are going in" |
+| peek | start hidden behind a 3D foreground prop, slide out 40 px to see. | "we should not be seeing this" |
+| POV | we look through something a witness holds or stands at (magnifier ring, keyhole, a torch beam, the doorway they stand in). | "this is what they see" |
+| tilt / pedestal | the camera looks or moves up or down (hands → face, head → the board above it). | links a person to a thing |
+| whip-pan | 8–10 frames with directional smear; lands on a new subject or a new set. | "meanwhile / at the same moment" |
+| rack focus | near and far swap sharpness in 0.3 s. | "now look at that instead" |
+| Dutch tilt | Decoded only, 3–6°, on lies and arrests. | "something is wrong" |
+| shake | 14 px, flips sign every frame, dies in 7 frames. Only on impacts. | a hit |
 
 | Transition | Use | Limit |
 |---|---|---|
@@ -424,12 +462,79 @@ Rules: one sound per visible cause, on the same frame; no sound without a pictur
 
 ---
 
+## § STORYBOARDING THAT TELLS THE STORY (semigenius study)
+
+**Top priority of the storyboard step.** Owner, 2026-11-25: "The narration doesn't have to be the best if the storyboarding is just amazing… focus on the storyboarding being amazing, and the animation simple enough that most people can understand exactly what's going on. The whole goal is to make this accessible to a lot of people."
+
+Source: `research/creators/semigenius/videos.md` (shot-by-shot log) and `STORYBOARD-PLAYBOOK.md`. Evidence: 44 Shorts exist; 5 watched frame by frame, the 5 most-viewed read from 1 fps thumbnails and captions. In the watched ones the picture alone carried about 85–90 % of the story. We take the patterns only: not their character, art, jokes, stories or tone.
+
+**The test.** Cover the captions, turn the sound off, and show the board to someone who has not read the script, or imagine a ten-year-old. They must be able to say, shot by shot, who this is, what they want, what they are doing, and what just went wrong. If they can, the narration can be plain and the video still works. If they cannot, no narration will save it.
+
+### S1. The rules
+
+| # | Rule | How to check it on a row |
+|---|---|---|
+| **S1 Mute test** | Every shot has a `Mute test` cell: one plain sentence saying what a viewer with no sound and no captions understands. | The sentence is concrete, needs no word from the narration, and a child would say it the same way. "He reacts" or "the number is shown" fails. |
+| **S2 One idea per shot** | One shot = one action or one fact = the clause being spoken right now. | No "and then" inside the row. One number per shot. |
+| **S3 Frame 0 is the whole problem** | The first frame holds the villain or hero, the thing everyone wants, and the conflict, readable in half a second. Shot 2 comes within 2 s and turns it. | Describe frame 0 in one sentence that contains a person, an object and a problem. |
+| **S4 Wide before close** | A new place opens with an establishing shot (≤ 2.5 s) that shows one landmark or one sign of 1–3 words. A new character is first seen whole, with their tell. | No close-up in a place we have not seen wide. |
+| **S5 Plant it first** | Anything that will act (the door, the board, the folder, the lamp) is visible at least one shot before it acts. | Trace each acting prop back one shot. |
+| **S6 Cause → effect → face** | Cause and effect are neighbouring shots, cause first, or share one frame. A face follows. Never show an effect whose cause was only spoken. | Draw an arrow from each event to the shot before it. |
+| **S7 Three things** | At most **3 things to read** in a frame: the subject, one object, one context cue. At most **one tag or sign per shot, 1–3 words**. Captions do not count. Crowds are one mass. | Count them. Delete the fourth. |
+| **S8 A tag names; it never tells** | A sign can name a place, a year or a role. An EVENT must be an action in the picture (a stamp lands and the bottle is carried off; not a tag reading CANCELLED on its own). | Hide every tag: does the event still happen? |
+| **S9 Always findable** | Each main character keeps one colour, one tell and **one side of the frame** for the whole video. Direction has a meaning and keeps it (toward the con = he is winning; away = he is paying). Sides flip only when the story flips. | List side and direction per character on the cast sheet. |
+| **S10 Numbers are things** | A number sits on an object in the scene, alone in its shot, changing in front of us. A big number also gets a size picture (a pile beside a person, rows to the vanishing point, a pull-back). A small count is counted on screen. | For each number: what is it printed on, and what shows its size? |
+| **S11 Time is a changed repeat** | Time passing = the same framing with something changed (calendar tile, beard, day/night in a window), never a caption alone. | — |
+| **S12 Layout in one frame** | If the idea depends on where things are (this room / that room, coast to coast, old / new), show both in ONE frame: a cut-away set, a top view, a shelf, a map. | — |
+| **S13 Recurring symbols** | Each recurring idea has one symbol that never varies (§S2 below). At most 6 per video. Introduce each once, clearly; after that it works silently. | Symbol table in the header. |
+| **S14 Feelings are large and held** | One readable face per beat in close-up, 0.8–1.4 s, with its outline cue (sweat, tears, jaw). In a wide, use the cue so the feeling reads at 120 px. Thoughts are one picture in a cloud or a prop held by the face, never words. | — |
+| **S15 Abstract lines get a physical picture** | The narration is final, so when a line is abstract the board must invent the object that makes it visible (a line about years becomes a rack of year-slots that are empty until the right one). Tag it `ILLUSTRATION` when it is our staging. | Any shot whose picture is only text or a number fails. |
+| **S16 The move means something** | The 3D camera move in each shot is chosen from §5.3 for what it tells the viewer. | The row's `Camera` cell names the move and the reason is obvious from the mute test. |
+| **S17 The last picture answers the first** | The ending reuses the opening's composition or symbol, changed. | — |
+| **S18 Delete test** | If a shot can be removed without the mute story losing a step, cut or merge it. | — |
+
+### S2. House symbols (use these before inventing new ones)
+
+| Idea | Symbol | Rule |
+|---|---|---|
+| the liar | the Loss Red pocket square | the only red on a person (law 9) |
+| "this is the lie / the fake" | a Loss Red ring, tag or stamp | drawn on screen, in the shot where it is proved |
+| money | Cash Green bundles with a Paper band; Gold coins | one bundle = one stated amount; piles move, they do not teleport |
+| the year | the flip-tile wall calendar | same prop in every set |
+| a decision | the gavel | sale in the auction, verdict in court |
+| our own arithmetic | the mono `OUR MATH` strip | on the prop |
+| the law arriving | the AGENT's windbreaker and sunglasses bar | same AGENT every episode |
+| "the answer is in here" | the sealed manila folder | FOLLOW opens it |
+
+### S3. Checklist (add to the paper review, before B1)
+
+- [ ] **M1** The `Mute test` column, read top to bottom on its own, tells the whole story to a child.
+- [ ] **M2** Frame 0: person + object + conflict in one picture; ≥ 3 shots in the first 4 s.
+- [ ] **M3** No row holds two events or two numbers.
+- [ ] **M4** Every new place opens wide with one landmark or sign; every new character is first seen whole.
+- [ ] **M5** Every acting prop was planted at least one shot earlier.
+- [ ] **M6** Every event has its cause in the shot before (or the same frame) and a face after.
+- [ ] **M7** No frame has more than 3 things to read or more than one tag (≤ 3 words).
+- [ ] **M8** Hiding every tag does not remove any event.
+- [ ] **M9** Sides, colours and directions are consistent and listed on the cast sheet.
+- [ ] **M10** Every number is on an object, alone in its shot; big numbers have a size picture; time passing is a changed repeat.
+- [ ] **M11** ≤ 6 recurring symbols, listed, never varied.
+- [ ] **M12** Every abstract line has a physical picture.
+- [ ] **M13** Every camera move is a named 3D move with a reason.
+- [ ] **M14** The last picture answers the first.
+- [ ] **M15** After the scene file: play the **silent animatic** (no voice, no captions) to someone who has not read the script and ask them to tell the story back. Fix every shot they could not explain.
+
+### S4. What we do not take from the study
+Their character and cast, the low-poly look, the catchphrases, the swearing, the crude and cruel humour, their plots and film homages, the "fantasy in the video, facts in the description" split, and their 1.1–1.4 s shot speed (Owen's pace keeps §5.5).
+
+---
+
 ## 10. The storyboard (mandatory before any build)
 
 Every video has `videos/<date>-<slug>/STORYBOARD.md` (plus `-tt` / `-ig` for the other cuts), written from the FINAL voiced timings (`voice/sentences.json`, `voice/words.json`). The narration is never changed to fit the board.
 
 ### 10.1 File layout
-1. **Header:** series, episode number + title, cut, duration, counts (scenes, shots, average shot length, observer-shot %, faces used), sets, cast, new assets needed, hidden-penny location, the loop (hook → payoff → last frame).
+1. **Header:** series, episode number + title, cut, duration, counts (scenes, shots, average shot length, observer-shot %, faces used), sets, cast, new assets needed, hidden-penny location, the loop (hook → payoff → last frame), **the mute story in 5–8 sentences, the screen geography (who owns which side, what each direction means) and the symbol table (≤ 6)**.
 2. **Cast & set sheet:** who plays whom (archetype, costume, name plate text), sets with time of day, hero props, evidence photos with credits.
 3. **Scene blocks**, one per scene (a scene = one place and time; a new scene on every set change). Each block has a heading line and one table, one row per shot:
 
@@ -438,10 +543,11 @@ Every video has `videos/<date>-<slug>/STORYBOARD.md` (plus `-tt` / `-ig` for the
 | `#` | scene.shot, e.g. `7.2` |
 | `Time` | start–end in seconds from the voiced timings, cut on a `@word` |
 | `Narration` | the exact words spoken during the shot (from sentences.json), or `(gap)` |
+| `Mute test` | **one plain sentence: what a viewer with no sound and no captions understands from this shot** (rule S1). Written first, before the other cells. |
 | `Shot` | size code + observer type, e.g. `CU · REACTION`, `WS · OVER-CROWD` |
 | `Characters · action / blocking` | who is where (left/centre/right, layer), what they do, on which word |
 | `Face` | reservoir IDs per character, with the snap word: `CON F02 → F12 @objected` |
-| `Camera` | move from §5.3 with its numbers |
+| `Camera` | the 3D move from §5.3 with its numbers: where the camera stands, how it travels, what is in the foreground |
 | `Text / props` | tags, number props and their exact values, stamps, labels (ILLUSTRATION, sources) |
 | `Transition → SFX` | how we leave the shot, and the sounds with their cue word |
 
@@ -453,6 +559,7 @@ Every video has `videos/<date>-<slug>/STORYBOARD.md` (plus `-tt` / `-ig` for the
 ### 10.2 Paper review (before any code)
 | # | Must be YES |
 |---|---|
+| **B0** | **Mute test: checklist M1–M14 of § STORYBOARDING all ticked. This check comes first; a board that fails it is not reviewed further.** |
 | B1 | Every narration word is covered by a shot; shot times come from the voiced files; narration unchanged. |
 | B2 | Shot count and average length inside §5.5; no shot over 4 s. |
 | B3 | Frame 0 is mid-action with the hook words on screen; the last shot matches into frame 0. |
@@ -469,14 +576,14 @@ Every video has `videos/<date>-<slug>/STORYBOARD.md` (plus `-tt` / `-ig` for the
 ### 10.3 Keyframe board review (after the scene file, before the full render)
 1. `node brand/engine-v2/bm2.cjs board <build>`: renders **one keyframe per shot** (at the shot's `key` time, default start + 60 % of its length) into a contact sheet, 6 columns, each cell labelled with shot #, timecode, size code and the narration words. For long-form: one sheet per chapter.
 2. Compare the sheet against the STORYBOARD thumbnails row by row. Check: the face reads at thumbnail size; the subject is not under the captions or the pill; cropped text; overlaps; the accent rule; empty frames; a character missing after a cut; left/right continuity (a character who exits right enters from the left).
-3. Render a **1-second test** of the hardest effect (motion-tips rule) and a **silent animatic pass** at 540 × 960, 15 fps, with the voice, to judge the cutting rhythm.
+3. Render a **1-second test** of the hardest effect (motion-tips rule) and an **animatic pass** at 540 × 960, 15 fps. Watch it twice: first **fully mute with captions off** (M15: can the story be told back?), then with the voice, to judge the cutting rhythm.
 4. Fix, re-board, and write `BOARD REVIEW: PASS <date>` plus the sheet path at the bottom of STORYBOARD.md. Only then run the full render, then the normal VIDEO GATE (RULES).
 5. Pilot only: the board sheet goes to the owner for approval (RULES 107). After the pilot is approved, boards are reviewed by the director, not sent to the owner (RULES: "don't send them to me").
 
 ---
 
 ## 11. Worked pilot
-`videos/2026-11-26-fake-wine/STORYBOARD.md`: DECODED · CASE Nº 001 · THE WINE FACTORY, YouTube cut, 86.4 s, built on the final Owen timings.
+`videos/2026-11-26-fake-wine/STORYBOARD.md`: DECODED · CASE Nº 001 · THE WINE FACTORY, YouTube cut, 86.4 s, built on the final Owen timings. Version 2 (2026-11-25) is the worked example of § STORYBOARDING: a `Mute test` cell on every row, the mute story, screen geography and symbol table in the header, and every camera written as a move through the 3D set.
 
 ---
 
@@ -484,6 +591,8 @@ Every video has `videos/<date>-<slug>/STORYBOARD.md` (plus `-tt` / `-ig` for the
 
 ### 12.1 What the engine already gives us (`brand/engine-v2`)
 Deterministic `render(t)`, Playwright capture, chunked renders; `@word` timing; camera with parallax, shake and motion blur; paper/clay/shadow primitives, grain, springs; captions; `photo` element; number roll; cash stacks; `mix.py`; contact sheets (`sheet`). All of that is kept.
+
+**2D-in-3D (2026-11-25):** the base look needs a real 3D stage: three.js sets, the 2D puppets drawn onto camera-facing cards, one shadow-casting lamp, a perspective camera driven by the shot list (position, orbit, height, depth), depth of field, and 3D foreground props. Work on this has started in `brand/engine-v2/stage3d.js` and `sets3d.js`. Before a storyboard relies on a move, check that the stage can do it; the pilot's asset list names the ones to verify (depth of field, travel through a doorway, 3D foreground occluders, gobos, long shadows).
 
 ### 12.2 What must be built, in priority order for the pilot
 **P0: without these there is no pilot**
@@ -531,12 +640,15 @@ Sources: the repo skills `animated-shorts`, `cartoon-shorts`, `directing-stickma
 | Premium explainer animation | strict palettes, one light direction, rounded consistent shapes, visual metaphors chosen before drawing, fact-checking as part of the brand | the two locked palettes, one lamp per set, metaphors as props, sources in the credits | space-and-glow backgrounds, slide-like infographics |
 | Anime drama beats | impact frames of 1–2 frames, speed lines for 1–3 frames, staccato holds, close-ups on eyes; effects saved for key moments | 2-frame paper impact frames, tension lines, the dramatic close-up, held poses on twos, strict per-video limits | effects on every hit, anime character design |
 | Heist / noir film grammar | the planning montage compresses a method into a minute, split screens run parallel actions, freeze-frame crew intros, low-key light with hard shadows, the inverted detective story | the heist montage for "how it worked", SPLIT, freeze-frame name plates, gobos and long shadows, Dutch tilts, the case desk | glamorising the con: the montage is always tagged as the prosecution's account and ends in the verdict |
+| 2D characters in a 3D world (`animated-shorts` skill) | flat, readable cartoon people stay simple while the world gets depth, light and a travelling camera; the camera can do the storytelling (reveal, scale, peek) | **the base look**: flat paper cards in 3D pop-up sets, gliding camera, depth of field, long lamp shadows | their painted colourful town look, their character design; ours is a paper model under one lamp |
+| Low-poly 3D comedy Shorts (semigenius study, `research/creators/semigenius/`) | the picture tells the whole story: one action per shot, the problem complete in frame 0, wide before close, cause then effect, numbers on objects, almost nothing in frame | § STORYBOARDING: the mute test and rules S1–S18 | their character, look, catchphrases, crude humour, plots, shot speed |
 | Stop-motion puppetry | replacement faces snap between sculpted expressions; holds feel deliberate; handmade materials | the reservoir, the snap rule, on-twos stepping, paper materials | — |
 | Platform guidance | manual mid-rolls belong at natural breaks, not mid-sentence; a video needs 8+ minutes for mid-rolls (Google help page) | mid-rolls on chapter boundaries after a cliffhanger | — |
 
 Web pages consulted: support.google.com/youtube/answer/6175006 (mid-roll placement), kurzgesagt.org/youtube (process: script first, metaphors chosen in sketching), en.wikipedia.org/wiki/Smear_frame, blog.cg-wire.com/smear-frames, backstage.com/magazine/article/how-to-use-montages-in-film-75771, studiobinder.com/blog/what-is-a-deadpan-definition, longstories.ai/blog/retention-benchmarks-animated-youtube-videos (unverified benchmarks, not relied on).
 
 ## Appendix B — conflicts with older files (newest wins; fix when touched)
+- **2026-11-25:** wherever this bible or an older file describes a set as flat parallax layers, a camera move as a zoom or pan over a flat picture, or a shadow as a painted offset shape, read it as the 3D version (§1.5, §4, §5.0, §5.3). Where any storyboard rule conflicts with § STORYBOARDING THAT TELLS THE STORY, that section wins.
 - VISUAL-V2 "one continuous world, graphics come toward the camera" and the README beat presets (`side-by-side`, `graphic-hero`, `presenter-front`) are retired for new videos; shots and sets replace stations and beats. The engine internals stay.
 - RULES 57 / V5 ("storyteller travels in front / behind graphics") now reads: the host watches, pauses and addresses the lens per §2.2.
 - STYLE §18 "case board with red-string pins / running meter" survive as props in `desk` and `stage`, not as the main layout.

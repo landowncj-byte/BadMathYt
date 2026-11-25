@@ -1,0 +1,48 @@
+{
+ "duration": 15.3,
+ "sfx": [
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 3.4,
+   "name": "door_slam_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 4.31,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -8,
+   "dur": 1,
+   "at": 7.88,
+   "name": "deep_boom_1"
+  },
+  {
+   "gain": -4,
+   "dur": 1.2,
+   "at": 7.9,
+   "name": "deep_boom_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 8.8,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 9.2,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 10.1,
+   "name": "gavel_1"
+  }
+ ],
+ "bed": null
+}

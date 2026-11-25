@@ -28,3 +28,13 @@
   P.define('camera', { w: 90, h: 70, grip: [0, -20], draw(g, o, t, s) { g.beginPath(); g.roundRect(-45, -62, 90, 54, 10); fs(g, '#35383d', s.ink, s.ol); g.beginPath(); g.arc(4, -34, 20, 0, TAU); fs(g, '#9fd0ff', s.ink, s.ol); g.beginPath(); g.arc(4, -34, 9, 0, TAU); g.fillStyle = '#25405e'; g.fill(); } });
   P.define('lamp', { w: 80, h: 240, draw(g, o, t, s) { g.beginPath(); g.rect(-5, -230, 10, 230); fs(g, '#3b3b3f', s.ink, s.ol); g.beginPath(); g.roundRect(-30, -250, 60, 34, 8); fs(g, '#ffe9a6', s.ink, s.ol); } });
 })();
+// ---- bible props (appended): bidding paddle, gavel, ledger, folder, cheque
+(function () {
+  const B = window.BM2, P = B.Props, TAU = Math.PI * 2, fs = (g, fill, ink, lw) => { g.fillStyle = fill; g.fill(); g.lineWidth = lw; g.strokeStyle = ink; g.lineJoin = 'round'; g.lineCap = 'round'; g.stroke(); };
+  P.define('paddle', { w: 90, h: 150, grip: [0, -14], draw(g, o, t, s) { g.beginPath(); g.rect(-6, -80, 12, 80); fs(g, '#7a5a3a', s.ink, s.ol); g.beginPath(); g.roundRect(-40, -150, 80, 80, 14); fs(g, o.color || '#F5F3EE', s.ink, s.ol); g.fillStyle = s.ink; g.font = '48px Anton, Impact, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(o.text || '7', 0, -108); } });
+  P.define('gavel', { w: 110, h: 70, grip: [0, -14], draw(g, o, t, s) { g.beginPath(); g.rect(-6, -22, 12, 70); fs(g, '#7a5a3a', s.ink, s.ol); g.beginPath(); g.roundRect(-46, -50, 92, 36, 8); fs(g, '#8a6446', s.ink, s.ol); } });
+  P.define('ledger', { w: 110, h: 140, grip: [0, -60], draw(g, o, t, s) { g.beginPath(); g.roundRect(-55, -140, 110, 140, 8); fs(g, o.color || '#C9A66B', s.ink, s.ol); g.beginPath(); g.moveTo(-40, -110); g.lineTo(40, -110); g.moveTo(-40, -86); g.lineTo(40, -86); g.moveTo(-40, -62); g.lineTo(40, -62); g.lineWidth = 4; g.strokeStyle = s.ink; g.stroke(); } });
+  P.define('folder', { w: 130, h: 100, grip: [0, -50], draw(g, o, t, s) { g.beginPath(); g.roundRect(-65, -100, 130, 100, 6); fs(g, o.color || '#C9A66B', s.ink, s.ol); g.beginPath(); g.roundRect(-65, -112, 54, 16, 4); fs(g, o.color || '#C9A66B', s.ink, s.ol); g.fillStyle = s.ink; g.font = '30px JBM, monospace'; g.textAlign = 'center'; g.fillText(o.text || 'CASE', 0, -42); } });
+  P.define('doorframe', { w: 200, h: 420, draw(g, o, t, s) { g.beginPath(); g.rect(-100, -420, 40, 420); g.rect(60, -420, 40, 420); g.rect(-100, -420, 200, 40); g.fillStyle = o.color || '#2A3647'; g.fill(); } });
+  P.define('plank', { w: 120, h: 60, draw(g, o, t, s) { g.beginPath(); g.rect(-60, -60, 120, 60); fs(g, o.color || '#9a6a3f', s.ink, s.ol); } });
+})();
