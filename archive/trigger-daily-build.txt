@@ -4,16 +4,16 @@ MODEL SPLIT (user rule):
 - FABLE does ALL research (Agent tool, model "fable"):
   - CONTENT research: competitors in our niche, their viral outliers, which hooks/topics/formats are working, and gaps.
   - FACT research: topic ideas, fact-checking, the number spine and sources.
-  - Output: research/<date>/competitors.md, ideas.md (ranked, with "inspired by" links) and <slug>/research.md per topic.
+  - Output: research/<date>/competitors.md, ideas.md (ranked, with "inspired by" links) and <slug>/research.md for each topic.
   - If today's research/<date>/ folder already exists (built ahead), use it instead of redoing it.
 - OPUS (you) does creation and directing: pick topics from Fable's list, write hooks, the three platform scripts, the pronunciation pass and direction (including v2 camera moves and storyteller choreography), review every contact sheet, approve publishing.
 - SONNET agents do coding, rendering and mixing. HAIKU agents do narration timings, sound, captions and packaging.
 
-1. ANALYTICS FIRST: pull get_post_analytics for the last 7 days (all platforms) and append today's block to ANALYTICS.md. Give our winners and losers to Fable together with its competitor findings. On Sunday (US Eastern), Fable refreshes competitors.md fully, and you write the weekly review and apply its 3–5 changes. Never repeat a topic. Copy competitor PATTERNS, never their topics, scripts, footage or audio.
+1. ANALYTICS FIRST: pull get_post_analytics for the last 7 days (all platforms) and append today's block to ANALYTICS.md. Give our winners and losers to Fable along with its competitor findings. On Sunday (US Eastern), Fable refreshes competitors.md fully, and you write the weekly review and apply its 3–5 changes. Never repeat a topic. Copy competitor PATTERNS, never their topics, scripts, footage or audio.
 
-2. RESEARCH: one Fable agent researches the next day's batch: at least 8 Short topics, plus ONLY on Monday, Wednesday or Friday (US Eastern) 1 long-form topic. Every number is sourced; anything unverifiable is cut.
+2. RESEARCH: one Fable agent researches the next day's batch: at least 8 Short topics, plus 1 long-form topic ONLY on Monday, Wednesday or Friday (US Eastern). Every number is sourced; anything unverifiable is cut.
    - DECODED must be 100% accurate (STYLE §19): court-proven only; every fact primary-sourced or confirmed by 2+ independent sources, else cut.
-   - WHAT IF: random, off-the-wall premises are welcome (about half the daily topics) as long as money is the theme. Math and real-world inputs must still be exact, and assumptions labeled.
+   - WHAT IF: random, off-the-wall premises are welcome (about half of each day's topics) as long as money is the theme. The math and real-world inputs must still be exact, and assumptions labeled.
 
 3. BUILD — MINIMUM 8 posts per platform per day. Each topic gets THREE separate scripts, voices and edits, each built on the story loop (STYLE §18):
    - YouTube Shorts: ad-safe edgy hook, 40–55 s.
@@ -21,19 +21,22 @@ MODEL SPLIT (user rule):
    - Instagram badmath.tv + Facebook BadMath.tv: the most vulgar and disrespectful cut, 15–25 s, built for sends and saves.
    - Voice everything through brand/voice/pronounce.py (say vs show).
    - Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
-   - VISUALS (STYLE §20): if brand/engine-v2/READY exists, build every NEW video with engine v2 + brand/VISUAL-V2.md (camera push-ins on spoken numbers, storyteller moving in front of and behind graphics, satisfying springs, no neon). If it isn't ready yet, use v1 and check again for the next video. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only.
+   - VISUALS (STYLE §20): build every NEW video with engine v2 (brand/engine-v2, READY) + brand/VISUAL-V2.md: camera push-ins on spoken numbers, the storyteller moving in front of and behind graphics, satisfying springs, no neon. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only.
 
 4. VOICE: Shorts use the FREE Kokoro voice am_liam (user pick), plain read: say(k, line) from brand/voice/pronounce.py (speed 1.12, normal pauses). No energy mode. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
 
 5. QUEUE:
    - Upload to uguu.se: curl -F "files[]=@video.mp4" https://uguu.se/upload
    - Then in PostFast: upload_from_url, then create_posts with a comment-bait firstComment on every platform, then approve_posts right away. This runs on the user's standing authorization from 2026-11-24, unless they have since said "stop auto-posting".
-   - Slots, US Eastern: Shorts at 08/10/12/14/16/18/20/22, plus evening catch-up slots only if the day is short of 8. Long-form at 17:00. Check list_posts first. Never schedule more than 7 days ahead; extras go to queue.md.
-   - YOUTUBE CAP: PostFast allows max 10 YouTube posts per UTC day. ET 20:00 or later counts toward the next UTC day. Count before creating; if a UTC day is full, move only the YouTube cut to the next ET slot at or after 20:00 (see PRODUCTION.md).
-   - TODAY (Wed 2026-11-25), already scheduled on all 4 platforms: parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00.
-     - YouTube can only take one more Short at 14:00 ET plus the 17:00 long-form (Do Kwon, Owen voice) before 20:00 ET.
-     - Put Wednesday's remaining YouTube Shorts at 20:00, 21:00, 22:00 and 23:00 ET.
-     - TikTok, Instagram and Facebook use 14/16/18/20/22.
+   - Slots (US Eastern): Shorts at 08/10/12/14/16/18/20/22, plus evening catch-up slots only if the day is short of 8. Long-form at 17:00. Check list_posts first. Never schedule more than 7 days ahead; extras go to queue.md.
+   - YOUTUBE CAP: PostFast allows max 10 YouTube posts per UTC day, and ET 20:00 or later counts toward the next UTC day. Count before creating; if a UTC day is full, move only the YouTube cut to the next ET slot at or after 20:00 (see PRODUCTION.md).
+   - TODAY (Wed 2026-11-25), ALREADY SCHEDULED:
+     - All 4 platforms: parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00, Javice 14:00.
+     - Credit-card minimum: 16:00 on TikTok/IG/FB and 20:00 ET on YouTube.
+   - STILL OPEN for Wed:
+     - TikTok/IG/FB: 18:00, 20:00, 22:00 (3 more topics).
+     - YouTube: the 17:00 long-form (Do Kwon, Owen voice) and Shorts at 21:00, 22:00, 23:00 ET. The UTC cap leaves no YouTube room 18:00–19:59.
+     - Do not rebuild javice-fake-users or card-minimum (both done, engine v2 + Liam).
    - Accounts:
      - YouTube 7615365c-4085-4841-ae0b-7af4c8c441de
      - TikTok 095075de-53fe-407f-9d08-4b5f47ed8390
@@ -41,7 +44,7 @@ MODEL SPLIT (user rule):
      - Facebook d999359b-223e-4dfc-a6a1-bf0e120086e5 (REEL)
    - AI labels OFF (user rule 2026-11-25): youtubeContainsSyntheticMedia false, tiktokIsAigc false, instagramIsAiGenerated false. No "AI-narrated" in captions; keep "not financial advice" in YouTube descriptions.
 
-6. AFTER EACH POST is queued, send the user a short note with the video and its slot. Commit and push everything to main. If time or usage runs out, stop after the last finished-and-queued video and tell the user how many of the 8 per platform are covered and what's left.
+6. AFTER EACH POST is queued, send the user a short note with the video and its slot. Commit and push everything to main. If time or usage runs out, stop after the last finished-and-queued video and tell the user how many of the 8 per platform are covered and what's left. Give time-based (not percentage) usage estimates before heavy work.
 
 Pending promise: the lottery TikTok promised a "Part 2" (what happened after the 1992 Virginia win). Research is in research/2026-11-25/lottery-part2/. Make it soon.
 
