@@ -242,3 +242,5 @@ Before → after (from real scripts):
 - Inline sound tags (real CC0 human noises in `brand/sfx-library/breath/`): `[breath]` `[gasp]` `[sigh]` `[sniff]` `[smack]` `[throat]` `[pause]`. **NO laugh/[chuckle]** (user rule 2026-11-25: "that laugh is hella out of place"; humanize.py drops it). Auto soft inhales are added before ~1 in 3 lines. Use [sigh] after a sad verdict, [gasp] on a shock reveal, [smack] before a CTA. 1–3 tagged noises per Short.
 - Captions show what was said minus the [tags]; take caption text from script/sentences, not Whisper (Whisper mangles words).
 - Example: research/humanize-demo/mock-short.mp4 (Javice TikTok, humanized — NOTE: made before the no-um / no-laugh rule; don't copy its fillers or chuckle).
+
+**Long-forms use visual v2 too (user rule 2026-11-25: the old long-form was "trash neon slop").** Build every long-form with engine v2 in 16:9 landscape mode (same world/camera/storyteller grammar, same brand lock, no neon). Never reuse the old neon canvas engine (videos/2026-11-25-impossible-number/build/engine.js) for new work.

@@ -22,7 +22,7 @@ MODEL SPLIT (user rule):
    - TikTok @color.me.saved: spicy, 25–40 s, comment bait.
    - Instagram badmath.tv + Facebook BadMath.tv: the most vulgar and disrespectful cut, 15–25 s, built for sends and saves.
    - Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
-   - VISUALS (STYLE §20): build every NEW video with engine v2 (brand/engine-v2, READY) + brand/VISUAL-V2.md: camera push-ins on spoken numbers, the storyteller moving in front of and behind graphics, satisfying springs, no neon. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only. Set the scene's duration to the narration length + ~0.4 s.
+   - VISUALS (STYLE §20): build every NEW video with engine v2 (brand/engine-v2, READY) + brand/VISUAL-V2.md: camera push-ins on spoken numbers, the storyteller moving in front of and behind graphics, satisfying springs, no neon. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only. Set the scene's duration to the narration length + ~0.4 s. LONG-FORMS use the same engine v2 style in 16:9 landscape mode (user rule: no more neon long-forms).
 
 4. VOICE: Shorts use the FREE Kokoro voice am_liam (user pick), voiced through brand/voice/humanize.py build(k, lines), which adds real CC0 breaths and human noises, strips any um/uh or chuckle, and handles pronunciation fixes. No energy mode. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
 
@@ -35,7 +35,7 @@ MODEL SPLIT (user rule):
      - All 4 platforms: parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00, Javice 14:00.
      - Credit-card minimum: 16:00 on TikTok/IG/FB and 20:00 ET on YouTube.
    - STILL OPEN for Wed:
-     - TikTok/IG/FB: 18:00, 20:00, 22:00 (3 more topics).
+     - TikTok/IG/FB: 18:00 Tucker (rendering); 20:00 BitConnect and 22:00 1% fee are QUEUED. Don't rebuild tucker-payday, bitconnect, one-percent-fee.
      - YouTube: the 17:00 long-form (Do Kwon, Owen voice) and Shorts at 21:00, 22:00, 23:00 ET. The UTC cap leaves no YouTube room 18:00–19:59.
      - Do not rebuild javice-fake-users or card-minimum (both done, engine v2 + Liam).
    - Accounts:
