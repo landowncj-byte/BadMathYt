@@ -22,7 +22,8 @@ def mix(base,DUR,FX,BEDS,voice='voice/narration.wav',sfx='sfx/'):
     m=json.loads(re.search(r'\{[^{}]*"input_i"[^{}]*\}',r,re.S).group(0));print(m)
     def meas(f):
         o=subprocess.run(["ffmpeg","-hide_banner","-i",f,"-af","ebur128=peak=true","-f","null","-"],capture_output=True,text=True).stderr
-        return float(re.findall(r"I:\s+(-?[\d.]+) LUFS",o)[-1]),float(re.findall(r"Peak:\s+(-?[\d.]+) dBFS",o)[-1])
+        p=subprocess.run(["ffmpeg","-hide_banner","-i",f,"-af","aresample=192000,astats=metadata=0","-f","null","-"],capture_output=True,text=True).stderr
+        return float(re.findall(r"I:\s+(-?[\d.]+) LUFS",o)[-1]),max(float(x) for x in re.findall(r"Peak level dB: (-?[\d.]+)",p))
     for tp in (-1.5,-2.5,-3.5,-4.5,-5.5):
         lim=round(10**((tp-0.0)/20),3)
         af=f"loudnorm=I=-14:TP={tp}:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,aresample=192000,alimiter=limit={lim}:level=false:attack=1:release=60,aresample=48000,afade=t=in:d=0.03,afade=t=out:st={DUR-0.08}:d=0.08"
