@@ -1,0 +1,236 @@
+// ===== BitConnect — shared custom recipes =====
+(function () {
+  const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper, clay, marker, burst, roll, countAt, hash, hit } = B;
+  const tone = (n, p) => B.tone(n, p);
+  const MC = document.createElement('canvas').getContext('2d'); const mw = (s, f) => { MC.font = f; return MC.measureText(s).width; };
+  const fmt = (v) => B.fmtNum(Math.round(v), 0, true);
+  const approx = (g, cx, cy, w, col, lw) => { g.save(); g.strokeStyle = col; g.lineWidth = lw; g.lineCap = 'round'; for (const dy of [-lw * 1.1, lw * 1.1]) { g.beginPath(); for (let i = 0; i <= 20; i++) { const u = i / 20, x = cx - w / 2 + u * w, y = cy + dy + Math.sin(u * Math.PI * 2) * lw * 0.9; i ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke(); } g.restore(); };
+
+  const fitW = (g, v, o, maxW) => Math.min(1, maxW / B.rollWidth(g, v, o).w);
+  const coin = (g, x, y, r, a = 1) => { g.save(); g.globalAlpha *= a; g.translate(x, y); const gr = g.createLinearGradient(-r, -r, r, r); gr.addColorStop(0, '#ffe27a'); gr.addColorStop(1, '#F2B705'); g.fillStyle = gr; g.beginPath(); g.arc(0, 0, r, 0, 7); g.fill(); g.strokeStyle = '#B88700'; g.lineWidth = Math.max(2, r * 0.1); g.beginPath(); g.arc(0, 0, r * 0.74, 0, 7); g.stroke(); txt(g, '$', 0, r * 0.05, F.hero(r * 1.1), '#B88700'); g.restore(); };
+  const wallet = (g, x, y, w, h, col, s = 1, a = 1) => { g.save(); g.globalAlpha *= a; g.translate(x, y); g.scale(s, s); clay(g, -w / 2, -h / 2, w, h, 14, col, { shadowK: 0.5 }); g.fillStyle = 'rgba(0,0,0,.2)'; g.fillRect(-w / 2 + 6, -h / 2 + h * 0.2, w - 12, 4); clay(g, w / 2 - w * 0.36, -h * 0.1, w * 0.42, h * 0.36, 10, B.shade(col, -0.22), { shadowK: 0.2 }); g.fillStyle = '#F5F3EE'; g.beginPath(); g.arc(w / 2 - w * 0.15, h * 0.08, h * 0.06, 0, 7); g.fill(); g.restore(); };
+
+  // ---------- compound: THE counter. "$1,000 @ 1% A DAY" with a day ticker, a rolling value and milestone rows that slam in ----------
+  B.register('compound', {
+    defaults: { w: 800, h: 1040, title: '$1,000 @ 1% A DAY', keys: [[0, 0]], rows: [], reset: 99999 },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2, a = { head: [0, y0 + 70, p.w, 140], rate: [-90, y0 + 62, 580, 96], day: [0, y0 + 225, p.w * 0.9, 150], value: [0, y0 + 405, p.w * 0.94, 230] }; p.rows.forEach((r, i) => { a['m' + i] = [0, y0 + 590 + i * 108, p.w * 0.9, 100]; }); return a; },
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2;
+      const F1 = 1e9 / (1000 * Math.pow(1.01, 1389)), val = d => 1000 * Math.pow(1.01, d) * Math.pow(F1, clamp((d - 1095) / 294));
+      const dayAt = tt => { const K = p.keys; let d = K[K.length - 1][1]; if (tt <= K[0][0]) d = K[0][1]; else for (let i = 0; i < K.length - 1; i++) { const a = K[i], b = K[i + 1]; if (tt >= a[0] && tt < b[0]) { d = lerp(a[1], b[1], ease.inOut(clamp((tt - a[0]) / (b[0] - a[0])))); break; } } if (tt >= p.reset) d = lerp(d, 0, ease.inOut(clamp((tt - p.reset) / 0.55))); return d; };
+      const d = dayAt(t), d2 = dayAt(t + 0.02), v = val(d), dv = Math.abs(val(d2) - v) / 0.02, dd = Math.abs(d2 - d) / 0.02;
+      paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); const hg = g.createLinearGradient(0, y0, 0, y0 + 140); hg.addColorStop(0, 'rgba(255,255,255,.12)'); hg.addColorStop(1, 'rgba(0,0,0,.14)'); g.fillStyle = hg; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, p.title, x0 + 36, y0 + 58, F.hero(68), theme.paper, 'left'); txt(g, 'ASSUMES 1% EVERY DAY, COMPOUNDED', x0 + 38, y0 + 110, F.mono(21), rgba(theme.paper, 0.78), 'left');
+      clay(g, x0 + w - 206, y0 + 26, 170, 48, 12, theme.bad, { shadowK: 0.4 }); txt(g, 'OUR MATH', x0 + w - 121, y0 + 51, F.cap(26), theme.paper);
+      // day ticker
+      txt(g, 'DAY', x0 + 50, y0 + 228, F.cap(44), theme.inkSoft, 'left');
+      { let s = 1; for (const r of p.rows) if (t >= r.at && t < p.reset) s += 0.06 * hit(t - r.at, 8); g.save(); g.translate(x0 + w - 50, y0 + 225); g.scale(s, s); g.translate(-(x0 + w - 50), -(y0 + 225)); roll(g, Math.round(d), x0 + w - 50, y0 + 225, { font: F.hero(124), size: 124, color: theme.ink, align: 'right', speed: dd }); g.restore(); }
+      g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 318); g.lineTo(x0 + w - 40, y0 + 318); g.stroke(); g.setLineDash([]);
+      // value
+      { let s = 1; for (const r of p.rows) if (t >= r.at && t < p.reset) { s += 0.09 * hit(t - r.at, 7); burst(g, 0, y0 + 405, w * 0.4, theme.accent, t - r.at, 16, 0.5); }
+        if (env.hot === 'value') s += 0.03 * env.hotK; const o = { font: F.hero(190), size: 190, color: v >= 1e6 ? theme.badInk : theme.ink, prefix: '$', speed: dv }, k = fitW(g, Math.max(v, 1000), o, w - 70);
+        g.save(); g.translate(0, y0 + 425); g.scale(s * k, s * k); roll(g, v, 0, 0, o); g.restore(); }
+      // milestone rows
+      p.rows.forEach((r, i) => {
+        const ry = y0 + 590 + i * 108, lt = t - r.at, gone = t >= p.reset;
+        if (lt < 0 || gone) { g.save(); g.strokeStyle = rgba(theme.rule, 0.9); g.lineWidth = 3; g.setLineDash([9, 9]); rr(g, x0 + 36, ry - 46, w - 72, 92, 18); g.stroke(); g.restore(); return; }
+        const k = spring(lt, 'snappy'), sc = 1.3 - 0.3 * k; g.save(); g.globalAlpha = clamp(lt / 0.06); g.translate(0, ry); g.scale(sc, sc);
+        g.fillStyle = theme.paperShade; rr(g, x0 + 36, -46, w - 72, 92, 18); g.fill(); const c = tone(r.tone || 'bad', true); g.fillStyle = c; rr(g, x0 + 36, -46, 14, 92, 7); g.fill();
+        txt(g, r.day, x0 + 76, 3, F.monoX(38), theme.ink, 'left'); txt(g, r.v, x0 + w - 62, 4, F.hero(r.size || 62), c, 'right'); marker(g, x0 + 60, 30, w - 120, 7, c, clamp((lt - 0.05) / 0.3), 0.5); g.restore(); burst(g, 0, ry, w * 0.36, theme.bad, lt, 14, 0.45);
+      });
+      txt(g, '$1,000 × 1.01 ^ DAYS', 0, y0 + h - 30, F.mono(22), theme.inkSoft);
+    },
+  });
+
+  // ---------- bot: generic TRADING BOT box with a curtain; opens to show coins piped from new wallets to old wallets ----------
+  B.register('bot', {
+    defaults: { w: 820, h: 1140, curtainAt: 99999, tagAt: 99999, coinInAt: 99999, payAt: 99999, takenAt: 99999, takenDur: 1.6, to: 2400000000 },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2; return { head: [0, y0 + 75, p.w, 150], window: [0, y0 + 440, p.w - 100, 500], taken: [0, y0 + 915, p.w * 0.94, 170] }; },
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, ww = w - 100, wh = 500, wx = x0 + 50, wy = y0 + 190, cy = wy + wh / 2;
+      paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 150); const hg = g.createLinearGradient(0, y0, 0, y0 + 150); hg.addColorStop(0, 'rgba(255,255,255,.12)'); hg.addColorStop(1, 'rgba(0,0,0,.14)'); g.fillStyle = hg; g.fillRect(x0, y0, w, 150); g.restore();
+      txt(g, 'BITCONNECT', x0 + 40, y0 + 62, F.hero(84), theme.paper, 'left'); txt(g, '2017 · THE "TRADING BOT"', x0 + 42, y0 + 118, F.mono(24), rgba(theme.paper, 0.78), 'left');
+      // window frame
+      clay(g, wx - 12, wy - 12, ww + 24, wh + 24, 30, theme.manila, { shadowK: 0.5 });
+      g.save(); rr(g, wx, wy, ww, wh, 22); g.clip();
+      const bg = g.createLinearGradient(0, wy, 0, wy + wh); bg.addColorStop(0, '#2a3652'); bg.addColorStop(1, '#161d2e'); g.fillStyle = bg; g.fillRect(wx, wy, ww, wh);
+      const ot = t - p.curtainAt, open = ot > 0;
+      g.translate(0, cy);
+      if (open) {
+        // wallets, pipe, flowing coins
+        const SP = 0.55, spawn = j => 0.35 + j / (6 * SP); let pulseL = 0, pulseR = 0;
+        for (let j = 0; j < 6; j++) for (let m = 0; m < 12; m++) { const ts = spawn(j) + m / SP, ta = ts + 1 / SP; if (ot > ts) pulseL += hit(ot - ts, 12); if (ot > ta) pulseR += hit(ot - ta, 12); }
+        const op = clamp(ot / 0.5);
+        g.save(); g.globalAlpha = op;
+        [-1, 1].forEach(sd => { const pl = sd < 0 ? pulseL : pulseR, col = sd < 0 ? '#9fb0cf' : theme.gold; wallet(g, sd * 262 + sd * -30, -58, 140, 104, B.shade(col, -0.25), 0.92, 0.8); wallet(g, sd * 262 + sd * -14, -32, 140, 104, B.shade(col, -0.1), 0.96, 0.9); wallet(g, sd * 262, -8, 150, 112, col, 1 + 0.06 * pl); txt(g, sd < 0 ? 'NEW WALLETS' : 'OLD WALLETS', sd * 262, 98, F.cap(30), theme.paper); });
+        clay(g, -196, -40, 392, 64, 32, '#8e98a8', { shadowK: 0.3 }); g.fillStyle = 'rgba(11,15,20,.55)'; rr(g, -190, -24, 380, 32, 16); g.fill();
+        for (let j = 0; j < 6; j++) { const lt2 = ot - spawn(j); if (lt2 < 0) continue; const u = (lt2 * SP) % 1, a = clamp(u / 0.06) * clamp((1 - u) / 0.08); coin(g, -190 + u * 380, -8, 21 * (0.55 + 0.45 * a), a); }
+        g.strokeStyle = rgba(theme.good, 0.9); g.lineWidth = 8; g.lineCap = 'round'; g.lineJoin = 'round';
+        for (let i = 0; i < 4; i++) { const u = ((ot * 0.35 + i / 4) % 1), x = -150 + u * 300, a = clamp(u / 0.15) * clamp((1 - u) / 0.15); g.globalAlpha = op * a; g.beginPath(); g.moveTo(x - 10, 50); g.lineTo(x + 8, 62); g.lineTo(x - 10, 74); g.stroke(); }
+        g.restore();
+      }
+      // curtain
+      { const k = open ? ease.inOut(clamp(ot / 0.95)) : 0, half = ww / 2, pw = half * (1 - 0.8 * k) + 2;
+        const panel = (sd) => { const px = sd < 0 ? -half : half - pw; g.save(); g.beginPath(); g.rect(px, -wh / 2, pw, wh); g.clip(); const gr = g.createLinearGradient(px, 0, px + pw, 0); gr.addColorStop(0, '#6c2220'); gr.addColorStop(0.5, '#8d302b'); gr.addColorStop(1, '#6c2220'); g.fillStyle = gr; g.fillRect(px, -wh / 2, pw, wh); const n = 6; for (let i = 0; i < n; i++) { const fx = px + (i + 0.5) * pw / n; const fg = g.createLinearGradient(fx - pw / n / 2, 0, fx + pw / n / 2, 0); fg.addColorStop(0, 'rgba(0,0,0,.28)'); fg.addColorStop(0.5, 'rgba(255,255,255,.07)'); fg.addColorStop(1, 'rgba(0,0,0,.28)'); g.fillStyle = fg; g.fillRect(fx - pw / n / 2, -wh / 2, pw / n, wh); } g.restore(); };
+        if (k < 1) { panel(-1); panel(1); const ta = clamp(1 - ot * 5); if (ta > 0) { g.save(); g.globalAlpha = ta; txt(g, 'TRADING', 0, -52, F.hero(112), theme.paper); txt(g, 'BOT', 0, 62, F.hero(112), theme.paper); g.restore(); } }
+        g.fillStyle = '#3f1411'; g.fillRect(-ww / 2, -wh / 2, ww, 30); g.fillStyle = theme.gold; g.fillRect(-ww / 2, -wh / 2 + 28, ww, 7); }
+      g.restore();
+      // coin slot + coin drop
+      clay(g, -96, wy - 22, 192, 22, 8, '#1b2233', { shadowK: 0.2 });
+      { const lt = t - p.coinInAt; if (lt > -0.05 && lt < 0.5) { g.save(); g.beginPath(); g.rect(-300, wy - 400, 600, 400 - 1); g.clip(); const u = clamp(lt / 0.46); coin(g, 0, lerp(wy - 230, wy - 8, u * u), 34, clamp((lt + 0.05) / 0.08)); g.restore(); } if (lt > 0.46 && lt < 0.9) burst(g, 0, wy - 6, 70, theme.gold, lt - 0.46, 10, 0.4); }
+      // PROSECUTORS SAY tag
+      { const lt = t - p.tagAt; if (lt > 0) { const k = spring(lt, 'snappy'); g.save(); g.translate(x0 + 60 + 215, wy - 8); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.globalAlpha = clamp(lt / 0.08); clay(g, -215, -33, 430, 66, 16, theme.bad, { shadowK: 0.6 }); txt(g, 'PROSECUTORS SAY', 0, 3, F.cap(36), theme.paper); g.restore(); } }
+      // taken in
+      g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 748); g.lineTo(x0 + w - 40, y0 + 748); g.stroke(); g.setLineDash([]);
+      txt(g, 'MONEY TAKEN IN', 0, y0 + 790, F.cap(38), theme.inkSoft);
+      { const lt = t - p.takenAt, yA = y0 + 915; if (lt < 0) { g.fillStyle = theme.rule; rr(g, -300, yA - 40, 600, 80, 40); g.fill(); } else {
+          const v = countAt(lt, p.takenDur, 0, p.to), land = lt - p.takenDur, speed = lt < p.takenDur ? Math.abs(countAt(lt + 0.02, p.takenDur, 0, p.to) - v) / 0.02 : 0, o = { font: F.hero(124), size: 124, color: theme.badInk, prefix: '$', speed }, k = fitW(g, p.to, o, w - 120);
+          let s = 1 + (land > 0 ? 0.1 * hit(land, 6) : 0) + (env.hot === 'taken' ? 0.03 * env.hotK : 0); g.save(); g.translate(0, yA); g.scale(s * k, s * k); const rw = B.rollWidth(g, p.to, o).w; roll(g, v, 0, 0, o); if (land > 0) marker(g, -rw / 2, 78, rw, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, yA, w * 0.38, theme.bad, land, 18, 0.55);
+          const on = lt - 0.2; if (on > 0) { const kk = spring(on, 'snappy'); g.save(); g.translate(0, y0 + 1040); g.scale(0.6 + 0.4 * kk, 0.6 + 0.4 * kk); g.globalAlpha = clamp(on / 0.08); clay(g, -135, -34, 270, 68, 16, theme.navy, { shadowK: 0.5 }); txt(g, 'PER DOJ', 0, 3, F.cap(38), theme.paper); g.restore(); } } }
+      // paid-out coin
+      { const lt = t - p.payAt; if (lt > 0 && lt < 1.1) { const a = clamp((1.1 - lt) / 0.3); coin(g, 60 + lt * 230, wy + wh - 6 - 520 * lt + 1100 * lt * lt, 30, a); } }
+    },
+  });
+
+  // ---------- cliff: generic coin chart that rises, then falls off a cliff (no numbers) ----------
+  B.register('cliff', {
+    defaults: { w: 800, h: 800, drawFrom: 0, fallAt: 99999, shutAt: 99999, title: 'BITCONNECT COIN', sub: 'ILLUSTRATION · NOT REAL PRICES' },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2; return { head: [0, y0 + 70, p.w, 140], plot: [0, y0 + 430, p.w - 100, 480] }; },
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, px0 = x0 + 60, px1 = x0 + w - 60, py0 = y0 + 250, py1 = y0 + h - 70, UF = 0.72;
+      paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); const hg = g.createLinearGradient(0, y0, 0, y0 + 140); hg.addColorStop(0, 'rgba(255,255,255,.12)'); hg.addColorStop(1, 'rgba(0,0,0,.14)'); g.fillStyle = hg; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, p.title, x0 + 36, y0 + 58, F.hero(64), theme.paper, 'left'); txt(g, p.sub, x0 + 38, y0 + 108, F.mono(21), rgba(theme.paper, 0.78), 'left');
+      const Y = u => { if (u <= UF) return 0.16 + 0.72 * Math.pow(u / UF, 1.35) + 0.035 * Math.sin(u * 46) + 0.025 * Math.sin(u * 113 + 1); const y1 = Y(UF), k = clamp((u - UF) / 0.08); return lerp(y1, 0.07, 1 - Math.pow(1 - k, 2.2)) + (u > UF + 0.08 ? 0.012 * Math.sin(u * 90) : 0); };
+      const X = u => lerp(px0, px1, u), YY = u => lerp(py1, py0, Y(u));
+      g.strokeStyle = theme.rule; g.lineWidth = 3; g.beginPath(); g.moveTo(px0, py1 + 14); g.lineTo(px1, py1 + 14); g.moveTo(px0 - 12, py0 - 20); g.lineTo(px0 - 12, py1 + 14); g.stroke();
+      const ft = t - p.fallAt; let uf; if (t < p.drawFrom) uf = 0; else if (ft < 0) uf = UF * clamp((t - p.drawFrom) / (p.fallAt - p.drawFrom)); else if (ft < 0.3) uf = lerp(UF, UF + 0.08, ease.in(ft / 0.3)); else uf = lerp(UF + 0.08, 1, clamp((ft - 0.3) / 0.7, 0, 1) * 1);
+      // shutdown flag
+      { const lt = t - p.shutAt; if (lt > 0) { const k = spring(lt, 'snappy'), fx = X(UF); g.save(); g.globalAlpha = clamp(lt / 0.1); g.strokeStyle = theme.inkSoft; g.lineWidth = 3; g.setLineDash([8, 8]); g.beginPath(); g.moveTo(fx, py0 + 16); g.lineTo(fx, py1 + 14); g.stroke(); g.setLineDash([]); g.translate(fx - 60, py0 - 34); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); clay(g, -150, -36, 300, 72, 16, theme.navy, { shadowK: 0.5 }); txt(g, 'SHUT DOWN', 0, -9, F.cap(30), theme.paper); txt(g, 'JAN 2018', 0, 20, F.mono(24), rgba(theme.paper, 0.85)); g.restore(); } }
+      // line + fill
+      if (uf > 0.002) {
+        const N = 160, pts = []; for (let i = 0; i <= N; i++) { const u = uf * i / N; pts.push([X(u), YY(u), u]); }
+        g.save(); const grd = g.createLinearGradient(0, py0, 0, py1); const fallen = ft > 0; grd.addColorStop(0, rgba(theme.goodInk, 0.22)); grd.addColorStop(1, rgba(fallen ? theme.badInk : theme.goodInk, 0.03)); g.fillStyle = grd; g.beginPath(); g.moveTo(pts[0][0], py1 + 14); pts.forEach(q => g.lineTo(q[0], q[1])); g.lineTo(pts[N][0], py1 + 14); g.closePath(); g.fill();
+        g.lineWidth = 10; g.lineCap = 'round'; g.lineJoin = 'round'; for (let i = 1; i <= N; i++) { g.strokeStyle = pts[i][2] > UF + 0.001 ? theme.badInk : theme.goodInk; g.beginPath(); g.moveTo(pts[i - 1][0], pts[i - 1][1]); g.lineTo(pts[i][0], pts[i][1]); g.stroke(); }
+        const tp = pts[N]; g.fillStyle = tp[2] > UF ? theme.badInk : theme.goodInk; g.beginPath(); g.arc(tp[0], tp[1], 13, 0, 7); g.fill(); g.restore();
+      }
+      // COLLAPSED stamp
+      { const gt = ft - 0.28; if (gt > 0) { const sc = 1 + 1.2 * (1 - ease.expo(gt / 0.2)); g.save(); g.globalAlpha = clamp(gt / 0.08); g.translate(-150, y0 + 335); g.rotate(-0.07); g.scale(sc * 0.82, sc * 0.82); g.fillStyle = rgba(theme.bad, 0.1); rr(g, -265, -78, 530, 156, 18); g.fill(); g.strokeStyle = theme.badInk; g.lineWidth = 10; rr(g, -265, -78, 530, 156, 18); g.stroke(); txt(g, 'COLLAPSED', 0, 6, F.hero(124), theme.badInk); g.restore(); burst(g, -150, y0 + 335, 260, theme.bad, gt - 0.1, 18, 0.5); } }
+    },
+  });
+
+  // ---------- case: promoter case card (pleaded guilty, 38 months, 2022) ----------
+  B.register('case', {
+    defaults: { w: 800, h: 880, guiltyAt: 99999, monthsAt: 99999 },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2; return { head: [0, y0 + 70, p.w, 140], who: [0, y0 + 240, p.w * 0.92, 120], guilty: [0, y0 + 400, p.w * 0.8, 140], months: [0, y0 + 690, p.w * 0.92, 190] }; },
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2;
+      paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); const hg = g.createLinearGradient(0, y0, 0, y0 + 140); hg.addColorStop(0, 'rgba(255,255,255,.12)'); hg.addColorStop(1, 'rgba(0,0,0,.14)'); g.fillStyle = hg; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, 'CASE FILE', x0 + 36, y0 + 58, F.hero(70), theme.paper, 'left'); txt(g, 'BITCONNECT · U.S. PROSECUTION', x0 + 38, y0 + 110, F.mono(22), rgba(theme.paper, 0.78), 'left');
+      txt(g, 'TOP US PROMOTER', 0, y0 + 240, F.hero(96), theme.ink);
+      { const gt = t - p.guiltyAt; if (gt > 0) { const sc = 1 + 1.3 * (1 - ease.expo(gt / 0.2)), a = clamp(gt / 0.08), hot = env.hot === 'guilty' ? 0.03 * env.hotK : 0; g.save(); g.globalAlpha = a; g.translate(0, y0 + 400); g.rotate(-0.05); g.scale(sc + hot, sc + hot); g.fillStyle = rgba(theme.bad, 0.1); rr(g, -320, -72, 640, 144, 18); g.fill(); g.strokeStyle = theme.badInk; g.lineWidth = 10; rr(g, -320, -72, 640, 144, 18); g.stroke(); txt(g, 'PLEADED GUILTY', 0, 6, F.hero(104), theme.badInk); g.restore(); burst(g, 0, y0 + 400, 330, theme.bad, gt - 0.1, 20, 0.55);
+          g.save(); g.globalAlpha = clamp((gt - 0.25) / 0.15); txt(g, 'CONSPIRACY TO COMMIT WIRE FRAUD', 0, y0 + 500, F.monoX(26), theme.inkSoft); g.restore(); } else { g.strokeStyle = rgba(theme.rule, 0.9); g.lineWidth = 3; g.setLineDash([9, 9]); rr(g, -320, y0 + 328, 640, 144, 18); g.stroke(); g.setLineDash([]); } }
+      g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 560); g.lineTo(x0 + w - 40, y0 + 560); g.stroke(); g.setLineDash([]);
+      { const mt = t - p.monthsAt; if (mt > -0.01) { const v = countAt(Math.max(0, mt), 0.7, 0, 38), land = mt - 0.7, s = 1 + (land > 0 ? 0.16 * hit(land, 6) : 0) + (env.hot === 'months' ? 0.03 * env.hotK : 0), o = { font: F.hero(150), size: 150, color: theme.ink, speed: mt < 0.7 ? 38 / 0.5 : 0 };
+          const nw = B.rollWidth(g, 38, o).w, sw = mw(' MONTHS', F.hero(150)), tot = nw + sw; g.save(); g.translate(0, y0 + 680); g.scale(s, s); roll(g, v, -tot / 2, 0, { ...o, align: 'left' }); txt(g, ' MONTHS', -tot / 2 + nw, 0, F.hero(150), theme.badInk, 'left'); if (land > 0) marker(g, -tot / 2, 92, tot, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + 680, 330, theme.bad, land, 18, 0.55);
+          if (land > -0.2) { const on = land + 0.2; g.save(); g.globalAlpha = clamp(on / 0.12); g.translate(0, y0 + 822 + (1 - spring(on, 'snappy')) * 22); txt(g, 'SENTENCED 2022', 0, 0, F.cap(44), theme.inkSoft); g.restore(); } }
+        else { g.fillStyle = theme.rule; rr(g, -250, y0 + 650, 500, 60, 30); g.fill(); } }
+    },
+  });
+  // ---------- plane: paper plane flying across the screen (screen layer) ----------
+  B.register('plane', {
+    defaults: { dur: 1.9, from: [-420, 330], to: [440, -360], s: 2.2 }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, u = ease.out(lin(lt, 0, p.dur)), pos = k => [lerp(p.from[0], p.to[0], k), lerp(p.from[1], p.to[1], k) - Math.sin(Math.PI * k) * 150], [px, py] = pos(u), [qx, qy] = pos(Math.min(1, u + 0.02)), a = Math.atan2(qy - py, qx - px) || -0.6;
+      g.save(); g.strokeStyle = rgba(env.theme.accent, 0.85); g.lineWidth = 6; g.lineCap = 'round'; g.setLineDash([2, 22]); g.beginPath(); for (let i = 0; i <= 30; i++) { const [x, y] = pos(u * i / 30); i ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke(); g.setLineDash([]); g.restore();
+      g.save(); g.translate(px, py); g.rotate(a); const s = p.s * (0.7 + 0.3 * spring(lt, 'snappy')), sh = B.zoomNow || 1; g.scale(s, s);
+      g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 24; g.shadowOffsetY = 14; g.fillStyle = env.theme.paper; g.beginPath(); g.moveTo(70, 0); g.lineTo(-56, -38); g.lineTo(-30, 0); g.lineTo(-56, 38); g.closePath(); g.fill(); g.shadowColor = 'transparent';
+      g.fillStyle = '#D8D3C7'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-30, 0); g.lineTo(-56, 38); g.closePath(); g.fill(); g.fillStyle = 'rgba(255,255,255,.7)'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-56, -38); g.lineTo(-30, -2); g.closePath(); g.fill(); g.strokeStyle = 'rgba(0,0,0,.25)'; g.lineWidth = 2; g.beginPath(); g.moveTo(70, 0); g.lineTo(-30, 0); g.stroke(); g.restore();
+    },
+  });
+})();
+const BK = { x: 190, y: 1330, s: 0.95, layer: 'back' };
+const HOOK = { lines: [[['ABOUT ', 'paper'], ['1% A DAY', 'bad']], [['SOUNDS SMALL.', 'paper']]], size: 100 };
+BM2.scene({
+  series: 'decoded', title: 'CASE: BITCONNECT · 2017', duration: 53.35,
+  footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS · CHART IS AN ILLUSTRATION'],
+  elements: [
+    // ---- station A: THE counter ----
+    { id: 'hook', type: 'text', at: [0, -720], in: -1, out: '@BitConnect-0.2', props: HOOK },
+    { id: 'ctr', type: 'compound', at: [0, 0], in: -1, props: {
+      keys: [[0, 0], ['@After', 22], ['@37', 365], ['@Year#2', 365], ['@1#4', 730], ['@Year#3', 730], ['@53', 1095], ['@By', 1095], ['@billionaire', 1389]],
+      rows: [{ day: 'DAY 365', v: '$37,783', at: '@37', tone: 'good' }, { day: 'DAY 730', v: '$1,427,588', at: '@1#4', tone: 'good' }, { day: 'DAY 1,095', v: '$53,939,174', at: '@53', tone: 'bad' }, { day: 'DAY 1,389', v: '$1,000,000,000', at: '@billionaire', tone: 'bad', size: 56 }],
+      reset: '@one#3+0.15' } },
+    { id: 'hook2', type: 'text', at: [0, -720], in: '@one#3+0.5', props: HOOK },
+    // ---- station B: the trading bot + the money taken in ----
+    { id: 'bot', type: 'bot', at: [1620, 0], in: '@BitConnect-0.4', props: { coinInAt: '@hand', payAt: '@get', curtainAt: '@newer', tagAt: '@Prosecutors', takenAt: '@$2' } },
+    // ---- station C: the coin chart ----
+    { id: 'chart', type: 'cliff', at: [0, 1500], in: '@January-0.4', props: { drawFrom: '@January+0.1', shutAt: '@shut', fallAt: '@collapsed' } },
+    // ---- station D: the promoter case card ----
+    { id: 'case', type: 'case', at: [1620, 1500], in: '@its#2-0.4', props: { guiltyAt: '@guilty', monthsAt: '@38' } },
+    // ---- screen-fixed ----
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [560, 650], in: '@why-0.1', out: '@Follow-0.2', props: { l1: 'WHY WOULD IT NEED YOUR MONEY?', l2: 'COMMENT', size: 46, tail: 'left' } },
+    { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1180], in: '@Follow+0.1', out: '@one#3+0.3', props: { press: 0.85 } },
+  ],
+  beats: [
+    { at: 0, beat: 'side-by-side', focus: ['hook', 'ctr'], sx: 650, sy: 835, fill: 0.7, maxH: 1000, st: { x: 150, y: 1330, s: 1.25 }, pose: 'talk' },
+    { at: '@1', beat: 'zoom-on-number', focus: 'ctr.head', fill: 0.92, sy: 690, st: BK, dur: 0.5 },
+    { at: '@dumbest', beat: 'presenter-front', focus: ['hook', 'ctr'], sy: 760, pose: 'talk' },
+    { at: '@BitConnect', beat: 'side-by-side', focus: 'bot', move: 'whip', sy: 800, fill: 0.72, maxH: 900, pose: 'point' },
+    { at: '@hand', beat: 'zoom-on-number', focus: 'bot.window', fill: 0.84, sy: 900, st: 'corner-left', dur: 0.5 },
+    { at: '@trading', beat: 'graphic-hero', focus: 'bot', st: 'corner-left', sy: 790, fill: 0.78, maxH: 900, pose: 'point' },
+    { at: '@So#2', beat: 'side-by-side', focus: 'ctr', move: 'whip', sy: 760, fill: 0.72, maxH: 1000, pose: 'point' },
+    { at: '@1#2', beat: 'zoom-on-number', focus: 'ctr.head', fill: 0.84, sy: 640, st: 'corner-left', dur: 0.5 },
+    { at: '@After', beat: 'graphic-hero', focus: 'ctr', st: 'corner-left', fill: 0.78, maxH: 1000, sy: 760, pose: 'point' },
+    { at: '@37', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.8, sy: 812, st: BK, rot: 0.012 },
+    { at: '@Year#2-0.2', beat: 'pull-back', focus: 'ctr', fill: 0.78, maxH: 1000, sy: 760, st: 'corner-left' },
+    { at: '@1#4', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.8, sy: 812, st: BK, rot: -0.012 },
+    { at: '@million', beat: 'pull-back', focus: 'ctr', fill: 0.78, maxH: 1000, sy: 760, st: 'corner-left' },
+    { at: '@53', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.8, sy: 812, st: BK, rot: 0.012 },
+    { at: '@By', beat: 'graphic-hero', focus: 'ctr', fill: 0.78, maxH: 1000, sy: 760, st: 'corner-left', pose: 'point' },
+    { at: '@1389', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.8, sy: 812, st: BK, dur: 0.5, rot: -0.012 },
+    { at: '@billionaire', beat: 'zoom-on-number', focus: ['ctr.value', 'ctr.m3'], fill: 0.9, maxH: 780, sy: 850, st: BK, pose: 'shock', dur: 0.5 },
+    { at: '@off', beat: 'pull-back', focus: 'ctr', fill: 0.78, maxH: 1000, sy: 760, st: 'corner-left' },
+    { at: '@No', beat: 'presenter-front', focus: 'ctr', sy: 760, pose: 'shrug' },
+    { at: '@So#3', beat: 'side-by-side', focus: 'bot', move: 'whip', sy: 800, fill: 0.72, maxH: 900, pose: 'chin' },
+    { at: '@Prosecutors', beat: 'graphic-hero', focus: 'bot.window', fill: 0.86, sy: 900, st: 'corner-left', pose: 'point' },
+    { at: '@older', beat: 'pull-back', focus: 'bot', fill: 0.76, maxH: 920, sy: 790, st: 'corner-left' },
+    { at: '@$2', beat: 'zoom-on-number', focus: 'bot.taken', fill: 0.86, sy: 890, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@January', beat: 'side-by-side', focus: 'chart', move: 'whip', sy: 760, fill: 0.72, maxH: 900, pose: 'point' },
+    { at: '@collapsed', beat: 'zoom-on-number', focus: 'chart.plot', fill: 0.84, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@its#2', beat: 'side-by-side', focus: 'case', move: 'whip', sy: 760, fill: 0.72, maxH: 950, pose: 'point' },
+    { at: '@guilty', beat: 'zoom-on-number', focus: ['case.who', 'case.guilty'], fill: 0.88, sy: 820, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@38', beat: 'zoom-on-number', focus: ['case.guilty', 'case.months'], fill: 0.74, maxH: 760, sy: 960, st: BK, dur: 0.5 },
+    { at: '@So#4', beat: 'presenter-front', focus: 'case', sy: 760, pose: 'chin' },
+    { at: '@Follow', beat: 'wide', focus: ['ctr', 'bot', 'chart', 'case'], fill: 0.94, sy: 760, st: { x: 250, y: 1330, s: 1.4 }, pose: 'you', dur: 1.1 },
+    { at: 52.2, beat: 'side-by-side', focus: ['hook2', 'ctr'], move: 'whip', sx: 650, sy: 835, fill: 0.7, maxH: 1000, st: { x: 150, y: 1330, s: 1.25 }, pose: 'talk' },
+  ],
+  poses: [['@Follow', 'follow', { target: [830, 1180] }]],
+  shakes: [['@billionaire', 16], ['@collapsed', 14], ['@guilty', 12], ['@$2+1.6', 10]],
+  captions: { emph: { '$2.4': 'bad', billion: 'bad', billionaire: 'bad', collapsed: 'bad', guilty: 'bad', '38': 'bad', '37,000.': 'good', prosecutors: 'accent' }, fix: [['1389,', '1,389,'], ['54,', '54—']] },
+  bed: { name: 'tense_bed_2', gain: -1 },
+  sfx: [
+    { at: 0, name: 'deep_boom_2', gain: -5, dur: 0.36 }, { at: 0.08, name: 'money_counter_1', gain: -15, dur: 1.4 },
+    { at: '@BitConnect', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@hand', name: 'coin_single_1', gain: -8, dur: 0.6 }, { at: '@get', name: 'coins_drop_1', gain: -10, dur: 0.9 },
+    { at: '@After', name: 'money_counter_1', gain: -13, dur: 1.2 }, { at: '@37', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@37', name: 'paper_slam_2', gain: -11, dur: 0.5 },
+    { at: '@Year#2', name: 'money_counter_2', gain: -14, dur: 0.6 }, { at: '@1#4', name: 'cash_register_2', gain: -8, dur: 0.9 }, { at: '@1#4', name: 'paper_slam_2', gain: -11, dur: 0.5 },
+    { at: '@Year#3', name: 'money_counter_1', gain: -14, dur: 1.4, offset: 0.4 }, { at: '@53', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@53', name: 'paper_slam_2', gain: -10, dur: 0.5 },
+    { at: '@By', name: 'money_counter_2', gain: -12, dur: 1.5 }, { at: '@billionaire', name: 'deep_boom_1', gain: -4, dur: 1.6 }, { at: '@billionaire', name: 'cash_register_1', gain: -7, dur: 0.9 }, { at: '@billionaire', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@No', name: 'record_scratch_1', gain: -10, dur: 0.6 },
+    { at: '@Prosecutors', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@newer', name: 'swoosh_2', gain: -10, dur: 1.0 }, { at: '@newer+0.35', name: 'money_counter_1', gain: -14, dur: 1.6, offset: 0.4 },
+    { at: '@$2', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@$2+0.05', name: 'money_counter_2', gain: -12, dur: 1.6 }, { at: '@$2+1.6', name: 'deep_boom_2', gain: -6, dur: 0.36 },
+    { at: '@January', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@shut', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@collapsed', name: 'tape_stop_1', gain: -10, dur: 0.8 }, { at: '@collapsed+0.05', name: 'sub_drop_1', gain: -7, dur: 1.0 }, { at: '@collapsed+0.28', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@collapsed+0.28', name: 'deep_boom_1', gain: -4, dur: 1.6 },
+    { at: '@its#2', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@guilty', name: 'rubber_stamp_2', gain: -3, dur: 0.5 }, { at: '@guilty', name: 'gavel_1', gain: -5, dur: 0.8 },
+    { at: '@38', name: 'money_counter_2', gain: -11, dur: 0.8 }, { at: '@38+0.72', name: 'ding_2', gain: -8, dur: 0.7 },
+    { at: '@why-0.1', name: 'pop_1', gain: -9, dur: 0.5 },
+    { at: '@Follow+0.95', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@Follow+1.0', name: 'success_chime_1', gain: -12, dur: 1.2 },
+    { at: '@one#3+0.15', name: 'rewind_2', gain: -10, dur: 0.9 },
+  ],
+});

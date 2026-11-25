@@ -1,0 +1,178 @@
+{
+ "duration": 21.06,
+ "sfx": [
+  {
+   "gain": -4,
+   "dur": 0.36,
+   "at": 0,
+   "name": "deep_boom_2"
+  },
+  {
+   "gain": -15,
+   "dur": 1.4,
+   "at": 0.08,
+   "name": "money_counter_1"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 0.6,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -12,
+   "dur": 1.4,
+   "at": 4.38,
+   "name": "money_counter_1"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 6.08,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -4,
+   "dur": 1.6,
+   "at": 6.28,
+   "name": "deep_boom_1"
+  },
+  {
+   "gain": -7,
+   "dur": 0.9,
+   "at": 6.28,
+   "name": "cash_register_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 6.28,
+   "name": "rubber_stamp_2"
+  },
+  {
+   "gain": -10,
+   "dur": 1.2,
+   "at": 8.4,
+   "name": "comedic_sting_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 8.98,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.5,
+   "at": 9.28,
+   "name": "paper_slam_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 11.28,
+   "name": "pop_1"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 11.48,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.9,
+   "at": 11.68,
+   "name": "cash_register_1"
+  },
+  {
+   "gain": -12,
+   "dur": 1.6,
+   "at": 11.73,
+   "name": "money_counter_2"
+  },
+  {
+   "gain": -6,
+   "dur": 0.36,
+   "at": 13.28,
+   "name": "deep_boom_2"
+  },
+  {
+   "gain": -10,
+   "dur": 1,
+   "at": 13.46,
+   "name": "swoosh_2"
+  },
+  {
+   "gain": -14,
+   "dur": 1.4,
+   "at": 13.81,
+   "name": "money_counter_1",
+   "offset": 0.4
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 14.82,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.5,
+   "at": 15.12,
+   "name": "paper_slam_2"
+  },
+  {
+   "gain": -3,
+   "dur": 0.5,
+   "at": 15.26,
+   "name": "rubber_stamp_2"
+  },
+  {
+   "gain": -5,
+   "dur": 0.8,
+   "at": 15.26,
+   "name": "gavel_1"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 15.62,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.8,
+   "at": 15.82,
+   "name": "money_counter_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.7,
+   "at": 16.54,
+   "name": "ding_2"
+  },
+  {
+   "gain": -9,
+   "dur": 1,
+   "at": 18.06,
+   "name": "swoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 20.1,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.8,
+   "at": 20.25,
+   "name": "rewind_2"
+  }
+ ],
+ "bed": {
+  "name": "tense_bed_2",
+  "gain": -1
+ }
+}

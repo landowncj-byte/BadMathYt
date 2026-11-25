@@ -141,6 +141,9 @@ function P(id) { const p = _pc[id]; if (!p) throw new Error('unknown paragraph '
 function Wr(id, q, nth = 1) {
   const p = P(id), qs = String(q).toLowerCase().split(/\s+/).filter(Boolean); let n = 0;
   for (let i = 0; i < p.ws.length; i++) { const e = matchAt(p.ws, i, qs); if (e >= 0 && ++n === nth) return { s: p.ws[i].s, e: p.ws[e].e }; }
+  // word bled into the previous paragraph's alignment (spoken after this paragraph's start - 1.5 s)
+  { const pl = Engine.tl.paragraphs, k0 = pl.findIndex(x => x.id === id); const pp = k0 > 0 ? pl[k0 - 1] : null;
+    if (pp && n === 0) for (let i = 0; i < pp.ws.length; i++) { if (pp.ws[i].s < p.start - 1.5) continue; const e = matchAt(pp.ws, i, qs); if (e >= 0 && ++n === nth) return { s: pp.ws[i].s, e: pp.ws[e].e }; } }
   // fallback: position of the phrase in the script text
   const tx = p.text.toLowerCase(); let idx = -1; for (let k = 0; k < nth; k++) idx = tx.indexOf(qs.join(' '), idx + 1); Engine.missing.push(id + ' "' + q + '" #' + nth);
   const f = idx < 0 ? 0 : idx / tx.length, s = p.start + f * (p.end - p.start); return { s, e: s + .3 };
