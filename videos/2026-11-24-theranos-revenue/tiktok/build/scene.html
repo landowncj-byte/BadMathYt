@@ -129,7 +129,7 @@ function sSplitB(c, t) {
   c.save(); c.globalAlpha = k; rr(c, 70, 340, 450, 740, 26); c.fillStyle = 'rgba(0,210,106,.14)'; c.fill(); c.strokeStyle = GREEN; c.lineWidth = 5; c.stroke();
   rr(c, 560, 340, 450, 740, 26); c.fillStyle = 'rgba(255,59,48,.14)'; c.fill(); c.strokeStyle = RED; c.lineWidth = 5; c.stroke(); c.restore();
   txt(c, 'REFUND', 295, 450, '400 96px Anton', GREEN); txt(c, 'THEM', 295, 550, '400 96px Anton', GREEN); txt(c, 'THEIR', 785, 450, '400 96px Anton', RED); txt(c, 'PROBLEM', 785, 550, '400 78px Anton', RED);
-  const g = clamp(flick, .15, .85) * (win ? 1 : 1); txt(c, Math.round(g * 100) + '%', 295, 780, '800 120px JBM', GREEN); txt(c, Math.round((1 - g) * 100) + '%', 785, 780, '800 120px JBM', RED);
+  const g = clamp(flick, .15, .85) * (win ? 1 : 1); txt(c, '?', 295, 780, '800 140px Anton', GREEN); txt(c, '?', 785, 780, '800 140px Anton', RED);
   rr(c, 100, 900, 390, 40, 20); c.fillStyle = '#1b2430'; c.fill(); c.fillStyle = GREEN; rr(c, 100, 900, 390 * g, 40, 20); c.fill(); rr(c, 590, 900, 390, 40, 20); c.fillStyle = '#1b2430'; c.fill(); c.fillStyle = RED; rr(c, 590, 900, 390 * (1 - g), 40, 20); c.fill();
   const v = back(lin(t, 24.25, 24.5)); c.save(); c.translate(540, 745); c.scale(v, v); c.fillStyle = INK; c.beginPath(); c.arc(0, 0, 50, 0, 7); c.fill(); c.strokeStyle = HL; c.lineWidth = 6; c.stroke(); txt(c, 'VS', 0, 2, '400 52px Anton', HL); c.restore();
   const cm = back(lin(t, 25.96, 26.2)); if (cm > 0) { c.save(); c.translate(540, 1010); c.scale(cm, cm); rr(c, -230, -44, 460, 88, 44); c.fillStyle = HL; c.fill(); txt(c, 'COMMENT ↓', 0, 3, '800 44px Inter', INK); c.restore(); }
