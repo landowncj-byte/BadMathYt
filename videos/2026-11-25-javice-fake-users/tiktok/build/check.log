@@ -1,0 +1,91 @@
+BEATS (time, beat, focus, storyteller, pose)
+  0.00  side-by-side  ["hook","deck"]  custom  talk
+  0.76  zoom-on-number  "deck.value"  corner-left  point
+  3.22  side-by-side  "bank"  left  point
+  4.44  side-by-side  "silh"  right  point
+  5.44  side-by-side  "deck"  left  point
+  6.38  zoom-on-number  "deck.value"  corner-left  point
+  8.32  graphic-hero  "deck"  corner-left  point
+  9.42  zoom-on-number  "deck.value"  corner-left  shock
+  11.28  side-by-side  "sheet"  left  point
+  12.94  peek  "sheet"  peek  idle
+  14.24  graphic-hero  "sheet"  corner  point
+  14.70  zoom-on-number  "sheet.count"  corner  point
+  14.98  pull-back  "sheet"  corner  idle
+  15.84  side-by-side  "bank"  left  point
+  16.72  zoom-on-number  "bank.amount"  corner-left  point
+  19.12  side-by-side  "verdict.guilty"  left  point
+  20.78  zoom-on-number  "verdict.months"  corner-left  shock
+  22.20  presenter-front  "verdict"  front  chin
+  25.02  wide  ["deck","bank","sheet","verdict"]  custom  follow
+CAPTIONS
+  0.00  Imagine faking
+  0.76  4 million
+  1.36  customers to
+  2.30  sell your
+  2.60  startup to JP
+  3.58  Morgan.
+  4.44  The founder of
+  4.96  FRANK DID
+  5.44  claimed users
+  6.38  4.25 million.
+  8.24  The SEC says
+  8.92  fewer than
+  9.42  300,000 were
+  10.46  real.
+  11.28  When the bank
+  11.62  asked for the
+  12.24  list,
+  12.94  prosecutors say
+  13.56  she had a
+  13.96  professor
+  14.24  generate fake
+  14.98  ones.
+  15.84  JP Morgan paid
+  16.72  $175 million.
+  19.12  Guilty on all
+  19.88  four counts, 85
+  21.12  months.
+  22.20  Real question,
+  23.00  how does a
+  23.32  bank that big
+  23.84  not catch it,
+  24.82  comment.
+  25.02  Follow for the
+  26.26  next one.
+SFX
+  0 deep_boom_2 -5
+  0.08 money_counter_1 -14
+  0.56 swipe_2 -13
+  2.92 whoosh_2 -10
+  3.22 paper_slam_2 -10
+  4.14 whoosh_2 -10
+  4.44 pop_2 -8
+  6.18 swipe_2 -13
+  6.74 ding_2 -9
+  9.22 swipe_2 -13
+  9.32 glass_shatter_2 -8
+  9.62 sub_drop_1 -8
+  10.4 deep_boom_1 -3
+  10.4 pop_1 -9
+  10.98 whoosh_2 -10
+  11.28 paper_slam_2 -10
+  12.94 pop_1 -9
+  14.06 money_counter_1 -12
+  14.5 swipe_2 -13
+  14.98 rubber_stamp_2 -3
+  14.98 deep_boom_2 -8
+  15.54 whoosh_2 -10
+  16.52 swipe_2 -13
+  16.72 cash_register_1 -8
+  16.77 money_counter_2 -13
+  18.82 whoosh_2 -10
+  19.12 gavel_1 -4
+  19.12 paper_slam_2 -9
+  20.58 swipe_2 -13
+  20.78 money_counter_2 -11
+  21.5 ding_2 -8
+  22.1 pop_1 -9
+  25.77 click_1 -8
+  25.82 success_chime_1 -12
+OK: scene compiles; sfx.json written
