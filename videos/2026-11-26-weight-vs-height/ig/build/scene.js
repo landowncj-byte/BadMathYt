@@ -203,7 +203,7 @@ BM2.scene({
     { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { btnOff: [['@Hundreds', '@So#2-0.1']], slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@100s'], nopeAt: '@nope', nopeOut: '@Average-0.1', endAt: 21.9, rise: [
       { t: 0, v: 36 }, { t: '@height#2', v: 36 }, { t: '@1+0.4', v: 68.9, e: 'out' }, { t: 21.7, v: 68.9 }, { t: 22.4, v: 36 }] } },
     { id: 'doll', type: 'doll', at: [0, 40], in: '@Average', out: '@weight#2-0.15', props: { lbAt: '@gramma', hAt: '@height#2' } },
-    { id: 'gap', type: 'gap', at: [0, 580], in: '@Send-0.4', out: 21.9, props: { to: 202980 } },
+    { id: 'gap', type: 'gap', at: [0, 580], in: '@Send-0.4', out: '@For', props: { to: 202980 } },
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Hundreds', props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'hund', type: 'text', layer: 'screen', at: [540, 345], in: '@Hundreds', out: '@Average-0.1', props: { lines: [[['HUNDREDS?', 'accent']]], size: 90 } },
     { id: 'g1', type: 'chip', layer: 'screen', at: [540, 345], in: '@gramma-0.4', out: '@weight#2-0.15', props: { text: '≈1 G A BILL · ASSUMED', size: 30 } },

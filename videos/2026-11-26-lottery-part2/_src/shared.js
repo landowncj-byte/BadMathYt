@@ -32,7 +32,7 @@
   B.register('mountain', {
     defaults: { rows: 10, tw: 170, th: 80, dx: 98, dy: 48, thumpAt: 99999, thump2At: 99999, heroAt: 99999, heroOut: 99999, seed: 1, label: '' }, ownEnter: true,
     size: p => mdims(p),
-    anchors: p => { const [w, h] = mdims(p); return { top: [0, -h / 2 + 90, w * 0.45, 190], hero: [0, -h / 2 - 120, 440, 260], base: [0, h / 2 - 60, w, 120], whole: [0, -40, w, h + 200] }; },
+    anchors: p => { const [w, h] = mdims(p); return { top: [0, -h / 2 + 90, w * 0.45, 190], hero: [0, -h / 2 - 60, 440, 260], base: [0, h / 2 - 60, w, 120], whole: [0, -40, w, h + 200] }; },
     draw(g, p, env) {
       const { t, lt } = env, [w, h] = mdims(p), base = (p.rows - 1) * p.dy / 2; let idx = 0; const heroOn = t >= p.heroAt && t < p.heroOut;
       for (let r = 0; r < p.rows; r++) { const n = p.rows - r; for (let c = 0; c < n; c++) { const i = idx++, hh = hash(i * 7.3 + p.seed), isHero = r === p.rows - 1 && c === 0; if (isHero && heroOn) continue;
@@ -40,14 +40,14 @@
         const k = spring(o, 'snappy'); let jump = 0; for (const tt of [p.thumpAt, p.thump2At]) { const tj = t - tt; if (tj > 0 && tj < 1.2) jump += Math.abs(Math.sin(tj * 11)) * Math.exp(-5 * tj) * (24 + hh * 46); }
         ticket(g, x, y + (1 - k) * 170 - jump, p.tw * (0.5 + 0.5 * k), p.th * (0.5 + 0.5 * k), (hash(i * 3.9 + p.seed) - 0.5) * 0.34, i, { sh: 8 }); } }
       if (heroOn || (t >= p.heroOut && t < p.heroOut + 0.5)) { const u = heroOn ? spring(t - p.heroAt, 'snappy') : 1 - ease.out(lin(t, p.heroOut, p.heroOut + 0.4)), bx = 0, by = base - (p.rows - 1) * p.dy;
-        if (u > 0) { const y = by - u * 190, s = 1 + 0.6 * u; g.save(); g.globalAlpha = 0.28 * u; g.fillStyle = '#F5F3EE'; rr(g, -p.tw * s * 0.62, y - p.th * s * 0.8, p.tw * s * 1.24, p.th * s * 1.6, 26); g.fill(); g.restore();
+        if (u > 0) { const y = by - u * 125, s = 1 + 0.55 * u; g.save(); g.globalAlpha = 0.28 * u; g.fillStyle = '#F5F3EE'; rr(g, -p.tw * s * 0.62, y - p.th * s * 0.8, p.tw * s * 1.24, p.th * s * 1.6, 26); g.fill(); g.restore();
           ticket(g, bx, y, p.tw, p.th, -0.05 * u, 0, { s, sh: 22, edge: '#F2B705', edgeW: 6, label: 'TICKET' }); } }
     },
   });
 
   // ---------- cheque: prize cheque with an odometer amount and an optional red record rosette ----------
   B.register('cheque', {
-    defaults: { w: 800, h: 350, to: 27000000, from: 0, at: 0, dur: 1.3, rosetteAt: 99999, rosette: ['STATE', 'RECORD'], payee: 'AN AUSTRALIAN FUND', src: 'PER UPI · MAR 10, 1992', head: 'PRIZE CHEQUE', prefix: '$', suffix: '', size: 118 },
+    defaults: { w: 800, h: 350, to: 27000000, from: 0, at: 0, dur: 1.3, rosetteAt: 99999, rosette: ['STATE', 'RECORD'], payee: 'AN AUSTRALIAN FUND', src: 'PER UPI · MAR 10, 1992', head: 'PRIZE CHEQUE', prefix: '$', suffix: '', size: 108 },
     size: p => [p.w, p.h], anchors: p => ({ amount: [0, 38, p.w * 0.92, 160], rosette: [p.w / 2 - 70, -p.h / 2 + 10, 200, 200] }),
     draw(g, p, env) {
       const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 20, { lift });
@@ -57,7 +57,7 @@
       g.strokeStyle = theme.ink; g.lineWidth = 2; g.beginPath(); g.moveTo(x0 + 136, y0 + 144); g.lineTo(x0 + w * 0.68, y0 + 144); g.stroke();
       const lt = t - p.at, dur = p.dur, v = lt < 0 ? p.from : countAt(Math.max(0, lt), dur, p.from, p.to), land = lt - dur, s = 1 + (land > 0 ? 0.1 * (1 - spring(land, { f: 2.4, z: 0.42 })) : 0.03 * lin(lt, 0, dur)) + (env.hot === 'amount' ? 0.03 * env.hotK : 0);
       const o = { font: F.hero(p.size), size: p.size, color: theme.goodInk, prefix: p.prefix, suffix: p.suffix, decimals: 0, align: 'left', speed: lt > 0 && lt < dur ? Math.abs(countAt(lt + 0.02, dur, p.from, p.to) - v) / 0.02 : 0 };
-      const nw = B.rollWidth(g, p.to, o).w; g.save(); g.translate(0, y0 + h * 0.64); g.scale(s, s); if (land > 0) marker(g, -nw / 2, p.size * 0.6, nw, p.size * 0.07, theme.goodInk, clamp(land / 0.35), 0.9); roll(g, v, -nw / 2, 0, o); g.restore(); burst(g, 0, y0 + h * 0.64, nw * 0.6, theme.good, land, 18, 0.55);
+      const nw = B.rollWidth(g, p.to, o).w; g.save(); g.translate(0, y0 + h * 0.66); g.scale(s, s); if (land > 0) marker(g, -nw / 2, p.size * 0.6, nw, p.size * 0.07, theme.goodInk, clamp(land / 0.35), 0.9); roll(g, v, -nw / 2, 0, o); g.restore(); burst(g, 0, y0 + h * 0.66, nw * 0.6, theme.good, land, 18, 0.55);
       txt(g, p.src, x0 + 40, y0 + h - 34, F.mono(18), theme.inkSoft, 'left');
       const rt = t - p.rosetteAt; if (rt > 0) { const k = spring(rt, 'bouncy'), cx = w / 2 - 70, cy = -h / 2 + 18; g.save(); g.translate(cx, cy); g.rotate(0.18); g.scale(0.3 + 0.7 * k, 0.3 + 0.7 * k); g.globalAlpha = clamp(rt / 0.1);
         g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 16 * zn(); g.shadowOffsetY = 8 * zn(); g.fillStyle = theme.badInk; g.beginPath(); for (let i = 0; i < 28; i++) { const a = i / 28 * Math.PI * 2, rad = i % 2 ? 84 : 98; g.lineTo(Math.cos(a) * rad, Math.sin(a) * rad); } g.closePath(); g.fill(); g.shadowColor = 'transparent';

@@ -32,7 +32,7 @@
   B.register('mountain', {
     defaults: { rows: 10, tw: 170, th: 80, dx: 98, dy: 48, thumpAt: 99999, thump2At: 99999, heroAt: 99999, heroOut: 99999, seed: 1, label: '' }, ownEnter: true,
     size: p => mdims(p),
-    anchors: p => { const [w, h] = mdims(p); return { top: [0, -h / 2 + 90, w * 0.45, 190], hero: [0, -h / 2 - 120, 440, 260], base: [0, h / 2 - 60, w, 120], whole: [0, -40, w, h + 200] }; },
+    anchors: p => { const [w, h] = mdims(p); return { top: [0, -h / 2 + 90, w * 0.45, 190], hero: [0, -h / 2 - 60, 440, 260], base: [0, h / 2 - 60, w, 120], whole: [0, -40, w, h + 200] }; },
     draw(g, p, env) {
       const { t, lt } = env, [w, h] = mdims(p), base = (p.rows - 1) * p.dy / 2; let idx = 0; const heroOn = t >= p.heroAt && t < p.heroOut;
       for (let r = 0; r < p.rows; r++) { const n = p.rows - r; for (let c = 0; c < n; c++) { const i = idx++, hh = hash(i * 7.3 + p.seed), isHero = r === p.rows - 1 && c === 0; if (isHero && heroOn) continue;
@@ -40,14 +40,14 @@
         const k = spring(o, 'snappy'); let jump = 0; for (const tt of [p.thumpAt, p.thump2At]) { const tj = t - tt; if (tj > 0 && tj < 1.2) jump += Math.abs(Math.sin(tj * 11)) * Math.exp(-5 * tj) * (24 + hh * 46); }
         ticket(g, x, y + (1 - k) * 170 - jump, p.tw * (0.5 + 0.5 * k), p.th * (0.5 + 0.5 * k), (hash(i * 3.9 + p.seed) - 0.5) * 0.34, i, { sh: 8 }); } }
       if (heroOn || (t >= p.heroOut && t < p.heroOut + 0.5)) { const u = heroOn ? spring(t - p.heroAt, 'snappy') : 1 - ease.out(lin(t, p.heroOut, p.heroOut + 0.4)), bx = 0, by = base - (p.rows - 1) * p.dy;
-        if (u > 0) { const y = by - u * 190, s = 1 + 0.6 * u; g.save(); g.globalAlpha = 0.28 * u; g.fillStyle = '#F5F3EE'; rr(g, -p.tw * s * 0.62, y - p.th * s * 0.8, p.tw * s * 1.24, p.th * s * 1.6, 26); g.fill(); g.restore();
+        if (u > 0) { const y = by - u * 125, s = 1 + 0.55 * u; g.save(); g.globalAlpha = 0.28 * u; g.fillStyle = '#F5F3EE'; rr(g, -p.tw * s * 0.62, y - p.th * s * 0.8, p.tw * s * 1.24, p.th * s * 1.6, 26); g.fill(); g.restore();
           ticket(g, bx, y, p.tw, p.th, -0.05 * u, 0, { s, sh: 22, edge: '#F2B705', edgeW: 6, label: 'TICKET' }); } }
     },
   });
 
   // ---------- cheque: prize cheque with an odometer amount and an optional red record rosette ----------
   B.register('cheque', {
-    defaults: { w: 800, h: 350, to: 27000000, from: 0, at: 0, dur: 1.3, rosetteAt: 99999, rosette: ['STATE', 'RECORD'], payee: 'AN AUSTRALIAN FUND', src: 'PER UPI · MAR 10, 1992', head: 'PRIZE CHEQUE', prefix: '$', suffix: '', size: 118 },
+    defaults: { w: 800, h: 350, to: 27000000, from: 0, at: 0, dur: 1.3, rosetteAt: 99999, rosette: ['STATE', 'RECORD'], payee: 'AN AUSTRALIAN FUND', src: 'PER UPI · MAR 10, 1992', head: 'PRIZE CHEQUE', prefix: '$', suffix: '', size: 108 },
     size: p => [p.w, p.h], anchors: p => ({ amount: [0, 38, p.w * 0.92, 160], rosette: [p.w / 2 - 70, -p.h / 2 + 10, 200, 200] }),
     draw(g, p, env) {
       const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 20, { lift });
@@ -57,7 +57,7 @@
       g.strokeStyle = theme.ink; g.lineWidth = 2; g.beginPath(); g.moveTo(x0 + 136, y0 + 144); g.lineTo(x0 + w * 0.68, y0 + 144); g.stroke();
       const lt = t - p.at, dur = p.dur, v = lt < 0 ? p.from : countAt(Math.max(0, lt), dur, p.from, p.to), land = lt - dur, s = 1 + (land > 0 ? 0.1 * (1 - spring(land, { f: 2.4, z: 0.42 })) : 0.03 * lin(lt, 0, dur)) + (env.hot === 'amount' ? 0.03 * env.hotK : 0);
       const o = { font: F.hero(p.size), size: p.size, color: theme.goodInk, prefix: p.prefix, suffix: p.suffix, decimals: 0, align: 'left', speed: lt > 0 && lt < dur ? Math.abs(countAt(lt + 0.02, dur, p.from, p.to) - v) / 0.02 : 0 };
-      const nw = B.rollWidth(g, p.to, o).w; g.save(); g.translate(0, y0 + h * 0.64); g.scale(s, s); if (land > 0) marker(g, -nw / 2, p.size * 0.6, nw, p.size * 0.07, theme.goodInk, clamp(land / 0.35), 0.9); roll(g, v, -nw / 2, 0, o); g.restore(); burst(g, 0, y0 + h * 0.64, nw * 0.6, theme.good, land, 18, 0.55);
+      const nw = B.rollWidth(g, p.to, o).w; g.save(); g.translate(0, y0 + h * 0.66); g.scale(s, s); if (land > 0) marker(g, -nw / 2, p.size * 0.6, nw, p.size * 0.07, theme.goodInk, clamp(land / 0.35), 0.9); roll(g, v, -nw / 2, 0, o); g.restore(); burst(g, 0, y0 + h * 0.66, nw * 0.6, theme.good, land, 18, 0.55);
       txt(g, p.src, x0 + 40, y0 + h - 34, F.mono(18), theme.inkSoft, 'left');
       const rt = t - p.rosetteAt; if (rt > 0) { const k = spring(rt, 'bouncy'), cx = w / 2 - 70, cy = -h / 2 + 18; g.save(); g.translate(cx, cy); g.rotate(0.18); g.scale(0.3 + 0.7 * k, 0.3 + 0.7 * k); g.globalAlpha = clamp(rt / 0.1);
         g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 16 * zn(); g.shadowOffsetY = 8 * zn(); g.fillStyle = theme.badInk; g.beginPath(); for (let i = 0; i < 28; i++) { const a = i / 28 * Math.PI * 2, rad = i % 2 ? 84 : 98; g.lineTo(Math.cos(a) * rad, Math.sin(a) * rad); } g.closePath(); g.fill(); g.shadowColor = 'transparent';
@@ -237,20 +237,20 @@ BM2.scene({
   footnote: ['NO CONVICTIONS: THE 1992 PURCHASE WAS LEGAL AND VIRGINIA PAID · SOURCES: UPI · WASHINGTON POST', 'ROANOKE TIMES (1992) · VIRGINIAN-PILOT (1997) · KUT · HOUSTON CHRONICLE (TEXAS 2023)', 'ILLUSTRATIONS: TICKETS · CHEQUES · RULEBOOK · SIGN (GENERIC, NOT REAL DOCUMENTS)'],
   elements: [
     // ---- A: frame 0 ----
-    { id: 'mtn1', type: 'mountain', at: [0, 160], in: -4, props: { rows: 9, thumpAt: 0.04, heroAt: '@tickets', heroOut: '@Was+2.7', seed: 3 } },
-    { id: 'hook', type: 'hook', at: [0, -560], in: 0, out: '@Did-0.12', props: { stamp: 'PART 2', lines: [[['5,000,000+ ', 'gold'], ['TICKETS', 'paper']], [['THEY ', 'paper'], ['WON', 'good']]], size: 112 } },
-    { id: 'q1', type: 'text', at: [0, -520], in: '@Did-0.05', out: '@1992-0.35', props: { lines: [[['DID VIRGINIA', 'paper']], [['PAY?', 'gold']]], size: 128, per: 0.12 } },
+    { id: 'mtn1', type: 'mountain', at: [0, 175], in: -4, props: { rows: 8, thumpAt: 0.04, heroAt: '@tickets', heroOut: '@Was+2.7', seed: 3 } },
+    { id: 'hook', type: 'hook', at: [0, -570], in: 0, out: '@Did-0.12', props: { stamp: 'PART 2', lines: [[['5,000,000+ ', 'gold'], ['TICKETS', 'paper']], [['THEY ', 'paper'], ['WON', 'good']]], size: 106 } },
+    { id: 'q1', type: 'text', at: [0, -560], in: '@Did-0.05', out: '@1992-0.35', props: { lines: [[['DID VIRGINIA', 'paper']], [['PAY?', 'gold']]], size: 128, per: 0.12 } },
     { id: 'pay', type: 'paystamp', at: [390, -120], scale: 0.78, in: -4, props: {} },
     { id: 'yr', type: 'text', at: [0, 505], in: '@1992-0.25', out: '@investigates-0.3', props: { lines: [[['1992', 'gold']]], size: 120 } },
     { id: 'cheque', type: 'cheque', at: [0, 735], in: '@1992-0.1', out: '@investigates-0.3', props: { at: '@27', dur: 1.5, to: 27000000, rosetteAt: '@record' } },
     { id: 'aus', type: 'text', at: [0, 985], in: '@Australian-0.1', out: '@investigates-0.3', props: { lines: [[['WINNER: ', 'paper'], ['A FUND IN AUSTRALIA', 'gold']]], size: 50, font: 'cap', per: 0.1 } },
-    { id: 'inv', type: 'text', at: [0, -330], in: '@investigates-0.1', out: '@snag-0.1', props: { lines: [[['VIRGINIA', 'paper']], [['INVESTIGATES', 'bad']]], size: 100, per: 0.12 } },
+    { id: 'inv', type: 'text', at: [0, -420], in: '@investigates-0.1', out: '@snag-0.1', props: { lines: [[['VIRGINIA', 'paper']], [['INVESTIGATES', 'bad']]], size: 100, per: 0.12 } },
     { id: 'glass', type: 'glass', at: [0, 100], in: '@But-0.1', out: '@snag', props: { at: '@investigates-0.2', dur: 1.3, from: [-330, 60], to: [330, 30], r: 95 } },
-    { id: 'q2', type: 'stamp', at: [0, -445], rot: -0.06, in: '@Was-0.05', out: '@About-0.3', props: { text: 'WAS THIS ONE?', tone: 'accent', size: 58 } },
+    { id: 'q2', type: 'stamp', at: [0, -330], rot: -0.06, in: '@Was-0.05', out: '@About-0.3', props: { text: 'WAS THIS ONE?', tone: 'accent', size: 58 } },
     // ---- B: rulebook ----
     { id: 'book', type: 'rulebook', at: [1800, 60], in: '@snag-0.5', props: { ulAt: '@licensed', lineAt: '@tickets#2', newAt: '@passed', stampAt: '@emergency+0.08' } },
-    { id: 'snag', type: 'text', at: [1800, -650], in: '@snag-0.05', out: '@bought#2', props: { lines: [[['THE SNAG?', 'gold']]], size: 112 } },
-    { id: 'solved', type: 'text', at: [1800, -650], in: '@Problem#2-0.1', out: '@31-0.2', props: { lines: [[['SOLVED?', 'gold']]], size: 120 } },
+    { id: 'snag', type: 'text', layer: 'screen', at: [540, 440], in: '@snag-0.05', out: '@bought#2', props: { lines: [[['THE SNAG?', 'gold']]], size: 112 } },
+    { id: 'solved', type: 'text', layer: 'screen', at: [540, 440], in: '@Problem#2-0.1', out: '@31-0.2', props: { lines: [[['SOLVED?', 'gold']]], size: 120 } },
     // ---- C: calendar ----
     { id: 'cal', type: 'datecal', at: [3600, 20], in: '@About-0.3', props: { tick1At: '@About+0.4', tearAt: '@weeks+0.1', tick2At: '@later+0.2', provedAt: '@nobody' } },
     // ---- D: pay + cheque fan ----
@@ -264,45 +264,45 @@ BM2.scene({
     { id: 'jack', type: 'counter', at: [0, 2400], in: '@2023+0.25', out: '@It#2-0.05', props: { at: '@2023+0.35', dur: 1.2, to: 95000000, prefix: '$', label: 'TEXAS · 2023', sub: 'JACKPOT · AGAIN', tone: 'good', size: 150, w: 900 } },
     { id: 'sign', type: 'sign', at: [0, 2000], in: '@It#2-0.1', props: { dropAt: '@shutting', tagAt: '@lottery#2+0.1' } },
     // ---- end: frame-0 hook again (loop) ----
-    { id: 'hook2', type: 'hook', at: [0, -560], in: '@yes+0.05', props: { stamp: 'PART 2', lines: [[['5,000,000+ ', 'gold'], ['TICKETS', 'paper']], [['THEY ', 'paper'], ['WON', 'good']]], size: 112 } },
+    { id: 'hook2', type: 'hook', at: [0, -570], in: '@yes+0.05', props: { stamp: 'PART 2', lines: [[['5,000,000+ ', 'gold'], ['TICKETS', 'paper']], [['THEY ', 'paper'], ['WON', 'good']]], size: 106 } },
     // ---- screen-fixed micro-moments (small, <= 1.5 s) ----
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@like-0.05', out: '@like+1.15', props: { s: 1 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
-    { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
+    { id: 'sendtx', type: 'text', layer: 'screen', at: [800, 1190], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.55 } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@Should', out: '@no+0.55', props: { l1: 'SHOULD THEY HAVE TO PAY?', l2: 'YES / NO', size: 46, tail: 'left' } },
   ],
   beats: [
-    { at: 0, beat: 'side-by-side', focus: ['hook', 'mtn1'], fill: 0.8, maxH: 1010, sx: 540, sy: 790, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
+    { at: 0, beat: 'side-by-side', focus: ['hook', 'mtn1'], fill: 0.8, maxH: 930, sx: 540, sy: 820, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
     { at: '@5', beat: 'zoom-on-number', focus: 'hook.l1', fill: 0.95, maxH: 400, sx: 540, sy: 760, st: { x: 130, y: 1360, s: 1.0 }, dur: 0.45 },
-    { at: '@lottery', beat: 'graphic-hero', focus: ['hook', 'mtn1'], fill: 0.8, maxH: 1010, sx: 540, sy: 790, st: { x: 940, y: 1360, s: 1.0 }, pose: 'point', dur: 0.7 },
-    { at: '@Did', beat: 'side-by-side', focus: ['q1', 'pay', 'mtn1'], fill: 0.86, maxH: 1010, sx: 540, sy: 800, st: { x: 130, y: 1360, s: 1.0 }, pose: 'chin', dur: 0.6 },
+    { at: '@lottery', beat: 'graphic-hero', focus: ['hook', 'mtn1'], fill: 0.8, maxH: 930, sx: 540, sy: 820, st: { x: 940, y: 1360, s: 1.0 }, pose: 'point', dur: 0.7 },
+    { at: '@Did', beat: 'side-by-side', focus: ['q1', 'pay', 'mtn1'], fill: 0.86, maxH: 930, sx: 540, sy: 820, st: { x: 130, y: 1360, s: 1.0 }, pose: 'chin', dur: 0.6 },
     { at: '@1992-0.25', beat: 'graphic-hero', focus: ['yr', 'cheque'], fill: 0.84, maxH: 920, sy: 790, st: 'corner-left', pose: 'point', dur: 0.8 },
     { at: '@27', beat: 'zoom-on-number', focus: 'cheque.amount', fill: 0.92, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@record', beat: 'graphic-hero', focus: ['cheque', 'aus'], fill: 0.86, maxH: 800, sy: 790, st: 'corner-left', pose: 'point', dur: 0.7 },
-    { at: '@But', beat: 'peek', focus: ['inv', 'mtn1'], move: 'whip', fill: 0.84, maxH: 1000, sy: 790, st: 'peek', pose: 'chin' },
-    { at: '@snag-0.25', beat: 'side-by-side', focus: 'book', move: 'whip', sx: 650, sy: 760, fill: 0.7, maxH: 1000, st: 'corner-left', pose: 'point' },
+    { at: '@But', beat: 'peek', focus: ['inv', 'mtn1'], move: 'whip', fill: 0.84, maxH: 900, sy: 800, st: 'corner', pose: 'chin' },
+    { at: '@snag-0.25', beat: 'side-by-side', focus: 'book', move: 'whip', sx: 640, sy: 830, fill: 0.7, maxH: 840, st: 'corner-left', pose: 'point' },
     { at: '@licensed', beat: 'zoom-on-number', focus: 'book.rule', fill: 0.92, sy: 780, st: 'corner-left', dur: 0.5 },
     { at: '@Was-0.2', beat: 'graphic-hero', focus: ['q2', 'mtn1.hero'], move: 'whip', fill: 0.62, maxH: 860, sy: 790, st: 'corner-left', pose: 'chin' },
     { at: '@hit', beat: 'presenter-front', focus: 'mtn1.hero', sy: 770, pose: 'talk' },
     { at: '@double', beat: 'presenter-front', focus: 'mtn1.hero', sy: 770, zoom: 1.0, pose: 'you', dur: 0.9 },
-    { at: '@About-0.15', beat: 'side-by-side', focus: 'cal', move: 'whip', sx: 650, sy: 800, fill: 0.66, maxH: 960, st: 'corner-left', pose: 'point' },
+    { at: '@About-0.15', beat: 'side-by-side', focus: 'cal', move: 'whip', sx: 650, sy: 830, fill: 0.66, maxH: 840, st: 'corner-left', pose: 'point' },
     { at: '@later', beat: 'zoom-on-number', focus: 'cal.date', fill: 0.82, sy: 780, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@nobody', beat: 'graphic-hero', focus: 'cal', fill: 0.72, maxH: 960, sx: 650, sy: 800, st: 'corner-left', pose: 'chin', dur: 0.7 },
+    { at: '@nobody', beat: 'graphic-hero', focus: 'cal', fill: 0.72, maxH: 840, sx: 650, sy: 830, st: 'corner-left', pose: 'chin', dur: 0.7 },
     { at: '@So-0.2', beat: 'side-by-side', focus: 'pay2', move: 'whip', sx: 600, sy: 780, fill: 0.62, maxH: 700, st: 'corner-left', pose: 'point' },
     { at: '@1', beat: 'zoom-on-number', focus: 'fan.value', fill: 0.84, sy: 840, st: 'corner-left', pose: 'shock', dur: 0.55 },
     { at: '@year', beat: 'graphic-hero', focus: 'fan', fill: 0.9, maxH: 980, sy: 820, st: 'corner-left', pose: 'idle', dur: 0.7 },
     { at: '@years', beat: 'graphic-hero', focus: 'fan', fill: 0.92, maxH: 980, sy: 820, st: 'corner', pose: 'point', dur: 0.8 },
     { at: '@Send', beat: 'graphic-hero', focus: 'fan', fill: 0.86, maxH: 980, sy: 820, st: { x: 140, y: 1330, s: 1.15 }, pose: 'you', dur: 0.8 },
-    { at: '@Then-0.2', beat: 'side-by-side', focus: 'book', move: 'whip', sx: 650, sy: 760, fill: 0.7, maxH: 1000, st: 'corner-left', pose: 'point' },
-    { at: '@emergency', beat: 'zoom-on-number', focus: 'book.stamp', fill: 0.94, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.4 },
-    { at: '@bulk', beat: 'graphic-hero', focus: 'book', fill: 0.7, maxH: 1000, sx: 650, sy: 760, st: 'corner-left', pose: 'point', dur: 0.7 },
-    { at: '@Problem', beat: 'presenter-front', focus: 'book', sy: 760, pose: 'shrug' },
-    { at: '@31-0.1', beat: 'side-by-side', focus: 'ycal', move: 'whip', sx: 640, sy: 790, fill: 0.7, maxH: 1000, st: 'corner-left', pose: 'point' },
-    { at: '@31+0.05', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.88, sy: 780, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@follow-0.1', beat: 'graphic-hero', focus: 'ycal', fill: 0.7, maxH: 1000, sx: 520, sy: 780, st: 'corner-left', pose: 'idle', dur: 0.8 },
+    { at: '@Then-0.2', beat: 'side-by-side', focus: 'book', move: 'whip', sx: 640, sy: 830, fill: 0.7, maxH: 840, st: 'corner-left', pose: 'point' },
+    { at: '@emergency', beat: 'zoom-on-number', focus: 'book.stamp', fill: 0.94, sy: 880, st: 'corner-left', pose: 'shock', dur: 0.4 },
+    { at: '@bulk', beat: 'graphic-hero', focus: 'book', fill: 0.7, maxH: 840, sx: 640, sy: 830, st: 'corner-left', pose: 'point', dur: 0.7 },
+    { at: '@Problem', beat: 'presenter-front', focus: 'book', sy: 830, zoom: 0.85, pose: 'shrug' },
+    { at: '@31-0.1', beat: 'side-by-side', focus: 'ycal', move: 'whip', sx: 640, sy: 830, fill: 0.7, maxH: 840, st: 'corner-left', pose: 'point' },
+    { at: '@31+0.05', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.72, maxH: 400, sy: 700, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@follow-0.1', beat: 'graphic-hero', focus: 'ycal', fill: 0.7, maxH: 840, sx: 520, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.8 },
     { at: '@Somebody', beat: 'presenter-front', focus: 'ycal', sy: 770, pose: 'shock' },
-    { at: '@Texas-0.1', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.9, sy: 780, st: 'corner-left', pose: 'point', dur: 0.45 },
+    { at: '@Texas-0.1', beat: 'zoom-on-number', focus: 'ycal.year', fill: 0.72, maxH: 400, sy: 700, st: 'corner-left', pose: 'point', dur: 0.45 },
     { at: '@2023+0.35', beat: 'side-by-side', focus: ['jack', 'mtn2', 'mtn1s'], move: 'whip', fill: 0.92, maxH: 1050, sy: 800, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
     { at: '@95', beat: 'zoom-on-number', focus: 'jack', fill: 0.94, maxH: 520, sy: 780, st: { x: 120, y: 1370, s: 0.9, dx: 0 }, pose: 'shock', dur: 0.4, lead: 0.12 },
     { at: '@million#4', beat: 'graphic-hero', focus: ['jack', 'mtn2', 'mtn1s'], fill: 0.92, maxH: 1050, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.8 },
@@ -310,7 +310,7 @@ BM2.scene({
     { at: '@shutting', beat: 'zoom-on-number', focus: 'sign', fill: 0.86, maxH: 560, sy: 760, st: 'corner-left', pose: 'shock', dur: 0.45 },
     { at: '@lottery#2', beat: 'graphic-hero', focus: ['sign', 'mtn2'], fill: 0.8, maxH: 1040, sy: 800, st: 'corner-left', pose: 'idle', dur: 0.8 },
     { at: '@Should', beat: 'presenter-front', focus: 'sign', sy: 760, pose: 'talk' },
-    { at: '@yes', beat: 'side-by-side', focus: ['hook2', 'mtn1'], move: 'whip', fill: 0.8, maxH: 1010, sx: 540, sy: 790, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
+    { at: '@yes', beat: 'side-by-side', focus: ['hook2', 'mtn1'], move: 'whip', fill: 0.8, maxH: 930, sx: 540, sy: 820, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
   ],
   poses: [['@follow-0.1', 'follow', { target: [830, 1010] }], ['@follow+1.5', 'talk']],
   shakes: [[0.05, 14], ['@record', 8], ['@emergency', 10], ['@paid', 9], ['@95', 26], ['@shutting', 14]],
