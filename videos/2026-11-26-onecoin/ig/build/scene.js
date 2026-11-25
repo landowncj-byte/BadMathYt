@@ -1,36 +1,337 @@
-// Bad Math v2 — STARTER SCENE. Copy this folder (or run `bm2.cjs init`), then edit. Full reference: brand/engine-v2/README.md
-// Times are seconds OR '@word' refs into words.json: '@$34' (start of the word), '@$34#2' (2nd time it is said),
-// '@cents>' (END of the word), '@math+0.3' (offset). Numeric times are used below so the starter runs with any voice;
-// in a real video, put every beat and reveal on the spoken word.
+// ===== OneCoin — shared custom recipes =====
+(function () {
+  const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper, clay, marker, burst, roll, countAt, hash, hit } = B;
+  const MC = document.createElement('canvas').getContext('2d'); const mw = (s, f) => { MC.font = f; return MC.measureText(s).width; };
+  const GREEN = '#1FA366';
+  const bill = (g, cx, cy, w, h, rot, label) => {
+    g.save(); g.translate(cx, cy); g.rotate(rot); clay(g, -w / 2, -h / 2, w, h, 14, GREEN, { shadowK: 0.6 });
+    g.strokeStyle = 'rgba(245,243,238,.75)'; g.lineWidth = 4; rr(g, -w / 2 + 12, -h / 2 + 12, w - 24, h - 24, 8); g.stroke();
+    g.fillStyle = 'rgba(245,243,238,.92)'; g.beginPath(); g.arc(0, 0, h * 0.27, 0, 7); g.fill(); txt(g, '$', 0, 3, F.hero(h * 0.36), GREEN);
+    if (label) { txt(g, label, -w / 2 + 24, -h / 2 + 36, F.hero(h * 0.2), '#F5F3EE', 'left'); txt(g, label, w / 2 - 24, h / 2 - 36, F.hero(h * 0.2), '#F5F3EE', 'right'); } g.restore();
+  };
+  B.bill = bill;
+
+  // ---------- plane: paper plane flying across the screen (screen layer) ----------
+  B.register('plane', {
+    defaults: { dur: 1.9, from: [-420, 330], to: [440, -360], s: 2.2 }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, u = ease.out(lin(lt, 0, p.dur)), pos = k => [lerp(p.from[0], p.to[0], k), lerp(p.from[1], p.to[1], k) - Math.sin(Math.PI * k) * 150], [px, py] = pos(u), [qx, qy] = pos(Math.min(1, u + 0.02)), a = Math.atan2(qy - py, qx - px) || -0.6;
+      g.save(); g.strokeStyle = rgba(env.theme.accent, 0.85); g.lineWidth = 6; g.lineCap = 'round'; g.setLineDash([2, 22]); g.beginPath(); for (let i = 0; i <= 30; i++) { const [x, y] = pos(u * i / 30); i ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke(); g.setLineDash([]); g.restore();
+      g.save(); g.translate(px, py); g.rotate(a); const s = p.s * (0.7 + 0.3 * spring(lt, 'snappy')), sh = B.zoomNow || 1; g.scale(s, s);
+      g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 24; g.shadowOffsetY = 14; g.fillStyle = env.theme.paper; g.beginPath(); g.moveTo(70, 0); g.lineTo(-56, -38); g.lineTo(-30, 0); g.lineTo(-56, 38); g.closePath(); g.fill(); g.shadowColor = 'transparent';
+      g.fillStyle = '#D8D3C7'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-30, 0); g.lineTo(-56, 38); g.closePath(); g.fill(); g.fillStyle = 'rgba(255,255,255,.7)'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-56, -38); g.lineTo(-30, -2); g.closePath(); g.fill(); g.strokeStyle = 'rgba(0,0,0,.25)'; g.lineWidth = 2; g.beginPath(); g.moveTo(70, 0); g.lineTo(-30, 0); g.stroke(); g.restore();
+    },
+  });
+  // ---------- heart (screen): one pulse, <= 1.2 s ----------
+  B.register('heart', {
+    defaults: { s: 1 }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, k = spring(lt, 'bouncy'), pulse = 1 + 0.3 * Math.max(0, Math.sin(lt * Math.PI * 2 / 0.4 - 0.4)) * (lt < 0.8 ? 1 : 0), sc = (0.4 + 0.6 * k) * pulse * p.s * 1.3, th = env.theme;
+      g.save(); g.scale(sc, sc); const path = () => { g.beginPath(); g.moveTo(0, 62); g.bezierCurveTo(-120, -10, -78, -86, 0, -34); g.bezierCurveTo(78, -86, 120, -10, 0, 62); g.closePath(); };
+      B.shadowed(g, path, th.bad, 0.2); g.save(); path(); g.clip(); const lg = g.createLinearGradient(0, -80, 0, 70); lg.addColorStop(0, 'rgba(255,255,255,.3)'); lg.addColorStop(0.4, 'rgba(255,255,255,0)'); lg.addColorStop(1, 'rgba(0,0,0,.22)'); g.fillStyle = lg; g.fillRect(-130, -90, 260, 170); g.restore();
+      g.strokeStyle = th.paper; g.lineWidth = 8; path(); g.stroke(); g.restore(); burst(g, 0, 0, 90 * p.s, th.bad, lt - 0.05, 8, 0.4);
+    },
+  });
+
+  // ---------- mag (screen): magnifier that taps the +FOLLOW button ----------
+  B.register('mag', {
+    defaults: { press: 0.5, from: [-170, 120] }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, u = ease.out(clamp(lt / 0.4)), dip = lt > p.press ? 0.14 * hit(lt - p.press, 9) : 0, th = env.theme, x = lerp(p.from[0], 70, u), y = lerp(p.from[1], 40, u);
+      g.save(); g.translate(x, y); g.rotate(-0.25); g.scale(0.8 - dip, 0.8 - dip); g.fillStyle = 'rgba(245,243,238,.2)'; g.beginPath(); g.arc(0, 0, 58, 0, 7); g.fill(); g.strokeStyle = th.gold; g.lineWidth = 15; g.beginPath(); g.arc(0, 0, 58, 0, 7); g.stroke();
+      g.strokeStyle = 'rgba(255,255,255,.55)'; g.lineWidth = 6; g.beginPath(); g.arc(0, 0, 40, 3.5, 4.6); g.stroke(); g.strokeStyle = th.ink; g.lineWidth = 18; g.lineCap = 'round'; g.beginPath(); g.moveTo(42, 42); g.lineTo(96, 100); g.stroke(); g.restore();
+    },
+  });
+  // ===== OneCoin — custom recipes (generic clay coin, no real logos, ILLUSTRATION labels) =====
+  const BRASS = '#C9962B', BRASS_D = '#8F6A18', BRASS_L = '#E8C468';
+  const fit = (s, mk, size, maxW) => { let z = size; while (z > 20 && mw(s, mk(z)) > maxW) z -= 2; return z; };
+  const rise = (t, at, d = 18) => { const o = t - at; return { a: clamp(o / 0.12), y: (1 - spring(Math.max(0, o), 'snappy')) * d, on: o > 0 }; };
+  const person = (g, cx, cy, r, col) => { g.fillStyle = col; g.beginPath(); g.arc(cx, cy - r * 0.45, r * 0.34, 0, 7); g.fill(); g.beginPath(); g.moveTo(cx - r * 0.62, cy + r * 0.62); g.quadraticCurveTo(cx - r * 0.62, cy + r * 0.05, cx, cy + r * 0.05); g.quadraticCurveTo(cx + r * 0.62, cy + r * 0.05, cx + r * 0.62, cy + r * 0.62); g.closePath(); g.fill(); };
+
+  // generic brass clay coin: ridged edge, inner rim, blank diamond emblem (not any real coin's logo)
+  function coinFace(g, cx, cy, r) {
+    B.shadowed(g, () => { g.beginPath(); g.arc(cx, cy, r, 0, 7); }, BRASS, 0.15);
+    g.save(); g.beginPath(); g.arc(cx, cy, r, 0, 7); g.clip();
+    const lg = g.createLinearGradient(cx - r, cy - r, cx + r, cy + r); lg.addColorStop(0, 'rgba(255,240,190,.5)'); lg.addColorStop(0.5, 'rgba(255,255,255,0)'); lg.addColorStop(1, 'rgba(60,35,0,.38)'); g.fillStyle = lg; g.fillRect(cx - r, cy - r, 2 * r, 2 * r);
+    g.strokeStyle = 'rgba(90,60,10,.55)'; g.lineWidth = Math.max(2, r * 0.025);
+    for (let i = 0; i < 44; i++) { const a = i / 44 * Math.PI * 2; g.beginPath(); g.moveTo(cx + Math.cos(a) * r * 0.9, cy + Math.sin(a) * r * 0.9); g.lineTo(cx + Math.cos(a) * r * 0.99, cy + Math.sin(a) * r * 0.99); g.stroke(); }
+    g.restore();
+    g.strokeStyle = BRASS_D; g.lineWidth = r * 0.055; g.beginPath(); g.arc(cx, cy, r * 0.76, 0, 7); g.stroke();
+    g.strokeStyle = 'rgba(255,240,190,.6)'; g.lineWidth = r * 0.02; g.beginPath(); g.arc(cx, cy, r * 0.69, 0, 7); g.stroke();
+    const dia = (s, col) => { g.fillStyle = col; g.beginPath(); g.moveTo(cx, cy - r * s); g.lineTo(cx + r * s * 0.72, cy); g.lineTo(cx, cy + r * s); g.lineTo(cx - r * s * 0.72, cy); g.closePath(); g.fill(); };
+    dia(0.38, BRASS_D); dia(0.26, BRASS_L);
+  }
+  // k = 0 whole .. 1 cracked open hollow (two halves drift apart, dark cavity between)
+  function coin(g, cx, cy, r, k, seed = 0) {
+    if (k <= 0.001) { coinFace(g, cx, cy, r); return; }
+    const n = 9, pts = []; for (let i = 0; i <= n; i++) pts.push([(hash(i * 2.3 + seed) - 0.5) * r * 0.3 * (i % 2 ? 1 : -1), -r * 1.06 + i / n * r * 2.12]);
+    const gap = r * 0.34 * k;
+    g.save(); g.beginPath(); g.arc(cx, cy, r * 0.995, 0, 7); g.clip();
+    g.fillStyle = '#0B0F14'; g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(cx + x - gap / 2, cy + y) : g.moveTo(cx + x - gap / 2, cy + y)); for (let i = n; i >= 0; i--) g.lineTo(cx + pts[i][0] + gap / 2, cy + pts[i][1]); g.closePath(); g.fill();
+    g.restore();
+    for (const s of [-1, 1]) {
+      g.save(); g.translate(cx + s * gap / 2, cy + s * k * r * 0.025); g.rotate(s * k * 0.08); g.beginPath();
+      g.moveTo(s * r * 1.6, -r * 1.6); pts.forEach(([x, y]) => g.lineTo(x, y)); g.lineTo(s * r * 1.6, r * 1.6); g.closePath(); g.clip(); coinFace(g, 0, 0, r); g.restore();
+    }
+  }
+  const chainDraw = (g, x, y, lt, th) => {
+    const k = spring(lt, 'bouncy'); if (lt < 0) return;
+    g.save(); g.translate(x + 80, y); g.scale(0.4 + 0.6 * k, 0.4 + 0.6 * k); g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 16; g.shadowOffsetY = 8; g.strokeStyle = th.paper; g.lineWidth = 24; g.beginPath(); g.ellipse(0, 0, 70, 40, 0, 0, 7); g.stroke(); g.restore();
+    for (let i = 0; i < 2; i++) { const a = clamp((lt - 0.25 - i * 0.15) / 0.2); if (a <= 0) continue; g.save(); g.globalAlpha = a * 0.7; g.strokeStyle = th.paper; g.lineWidth = 14; g.setLineDash([16, 14]); g.beginPath(); g.ellipse(x + 205 + i * 100, y, 42, 26, 0, 0, 7); g.stroke(); g.restore(); }
+    const kx = spring(lt - 0.6, 'bouncy'); if (lt > 0.6) { g.save(); g.translate(x + 400, y); g.scale(0.3 + 0.7 * kx, 0.3 + 0.7 * kx); g.fillStyle = th.bad; g.beginPath(); g.arc(0, 0, 44, 0, 7); g.fill(); g.strokeStyle = th.paper; g.lineWidth = 12; g.lineCap = 'round'; g.beginPath(); g.moveTo(-18, -18); g.lineTo(18, 18); g.moveTo(18, -18); g.lineTo(-18, 18); g.stroke(); g.restore(); }
+  };
+
+  // ---------- ochook: frame-0 slam. variants yt (coin alone) | ig (cash tower + coin) ----------
+  B.register('ochook', {
+    defaults: { variant: 'yt', chainAt: 99999, endAt: 99999 }, ownEnter: true, size: () => [960, 1100],
+    anchors: () => ({ num: [0, -330, 940, 150], red: [0, -150, 940, 180], coin: [-150, 170, 500, 500], chain: [250, 170, 560, 200] }),
+    draw(g, p, env) {
+      const { t, lt, theme } = env, k0 = hit(lt, 8), s = 1 + 0.035 * k0; g.save(); g.scale(s, s);
+      const close = ease.inOut(lin(t, p.endAt, p.endAt + 0.5));
+      const T = (str, y, font, col) => { g.save(); g.shadowColor = 'rgba(0,0,0,.5)'; g.shadowBlur = 18 * B.zoomNow; g.shadowOffsetY = 8 * B.zoomNow; txt(g, str, 0, y, font, col); g.restore(); };
+      T('MORE THAN', -480, F.cap(54), theme.paper);
+      const nz = fit('$4,000,000,000', z => F.hero(z), 160, 860); T('$4,000,000,000', -360, F.hero(nz), theme.paper);
+      { const k = clamp(lt / 0.2), sc = 1 + 0.15 * (1 - ease.out(k)); g.save(); g.translate(350, -505); g.rotate(0.05); g.scale(sc, sc); paper(g, -118, -30, 236, 60, 10, { fill: theme.paper }); g.strokeStyle = theme.badInk; g.lineWidth = 4; rr(g, -112, -24, 224, 48, 6); g.stroke(); txt(g, 'PER DOJ', 0, 3, F.cap(30), theme.badInk); g.restore(); }
+      const rz = fit('NO TRUE PUBLIC BLOCKCHAIN', z => F.hero(z), 96, 860); T('NO TRUE PUBLIC BLOCKCHAIN', -210, F.hero(rz), theme.bad);
+      T('— PROSECUTORS SAID', -125, F.cap(46), theme.paper);
+      // art
+      let cx = -150, cy = 260, r = 205;
+      if (p.variant === 'ig') {
+        cx = -140; r = 150; const n = 6, base = 520;
+        for (let i = 0; i < n; i++) { const kk = spring(lt - i * 0.045, 'snappy'); g.save(); g.translate(cx, base - i * 46 + (1 - kk) * 800); B.bill(g, (hash(i * 4.1) - 0.5) * 24, 0, 400, 130, (hash(i + 3) - 0.5) * 0.06, i === n - 1 ? '$' : ''); g.restore(); }
+        cy = base - (n - 1) * 46 - 65 - r + 30;
+        const ck = lt < 0.35 ? 1.2 - 0.2 * ease.out(clamp(lt / 0.35)) : 1; g.save(); g.translate(cx, cy); g.scale(ck, ck); coin(g, 0, 0, r, ease.out(clamp((lt - 0.4) / 0.25)) * (1 - close), 3); g.restore();
+      } else {
+        const ck = 1 + 0.18 * (1 - ease.out(clamp(lt / 0.2))); g.save(); g.translate(cx, cy); g.scale(ck, ck); coin(g, 0, 0, r, ease.out(clamp((lt - 0.2) / 0.3)) * (1 - close), 3); g.restore();
+      }
+      chainDraw(g, cx + r - 10, cy, t - p.chainAt, theme);
+      g.restore(); burst(g, 0, -300, 520, theme.bad, lt + 0.1, 20, 0.6);
+    },
+  });
+
+  // ---------- chain: a cracked coin, one loose paper link, then nothing (+ red stamp) ----------
+  B.register('chain', {
+    defaults: { at: 99999, stampAt: 99999 }, size: () => [980, 560],
+    draw(g, p, env) {
+      const { t, theme } = env; const k = ease.out(clamp((t - p.at) / 0.3));
+      coin(g, -330, -40, 170, k, 5); chainDraw(g, -150, -40, t - p.at - 0.35, theme);
+      const st = t - p.stampAt; if (st > 0) { const kk = clamp(1.9 * (1 - ease.expo(st / 0.22)) + 1), al = clamp(st / 0.06); g.save(); g.globalAlpha = al; g.translate(0, 215); g.rotate(-0.05); g.scale(kk, kk); paper(g, -440, -70, 880, 140, 14, { fill: theme.paper }); g.strokeStyle = theme.badInk; g.lineWidth = 6; rr(g, -430, -60, 860, 120, 8); g.stroke(); txt(g, 'NO TRUE PUBLIC BLOCKCHAIN', 0, -14, F.hero(fit('NO TRUE PUBLIC BLOCKCHAIN', z => F.hero(z), 70, 800)), theme.badInk); txt(g, 'PROSECUTORS SAID', 0, 36, F.mono(30), theme.inkSoft); g.restore(); burst(g, 0, 215, 420, theme.bad, st - 0.1, 16, 0.5); }
+    },
+  });
+
+  // ---------- people: AT LEAST 3,500,000 PEOPLE (PER DOJ) + a grid of neutral figures ----------
+  B.register('people', {
+    defaults: { w: 880, h: 1010, at: 99999, dur: 1.3, gridAt: 99999, gridDur: 1.0 }, size: p => [p.w, p.h], anchors: p => ({ num: [0, -p.h / 2 + 300, p.w * 0.94, 270], grid: [0, 210, p.w * 0.9, 540] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 124); g.restore(); txt(g, 'THE SCALE', x0 + 40, y0 + 62, F.hero(66), theme.paper, 'left'); txt(g, 'PER DOJ', x0 + w - 34, y0 + 36, F.mono(20), 'rgba(245,243,238,.75)', 'right');
+      txt(g, 'AT LEAST', 0, y0 + 186, F.cap(32), theme.inkSoft); const lt = t - p.at, size = 158, o0 = { font: F.hero(size), size, color: theme.ink }, rw = B.rollWidth(g, 3500000, o0).w;
+      const v = lt < 0 ? 0 : countAt(lt, p.dur, 0, 3500000), land = lt - p.dur, spd = lt > 0 && lt < p.dur ? Math.abs(countAt(lt + 0.02, p.dur, 0, 3500000) - v) / 0.02 : 0, sc = 1 + (land > 0 ? 0.12 * hit(land, 6) : 0) + (env.hot === 'num' ? 0.03 * env.hotK : 0);
+      g.save(); g.translate(0, y0 + 285); g.scale(sc, sc); if (lt < 0) { g.fillStyle = theme.rule; rr(g, -rw / 2, -48, rw, 96, 48); g.fill(); } else { roll(g, v, 0, 0, { ...o0, speed: spd }); if (land > 0) marker(g, -rw / 2, 92, rw, 8, theme.badInk, clamp(land / 0.3), 0.9); } g.restore(); if (lt > 0) burst(g, 0, y0 + 285, rw * 0.55, theme.bad, land, 18, 0.5);
+      txt(g, 'PEOPLE', 0, y0 + 410, F.hero(76), theme.ink);
+      g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 480); g.lineTo(x0 + w - 40, y0 + 480); g.stroke(); g.setLineDash([]);
+      const cols = 8, rows = 6, gx = x0 + 70, gy = y0 + 580;
+      for (let i = 0; i < cols * rows; i++) { const c = i % cols, r0 = Math.floor(i / cols), px = gx + c * 100, py = gy + r0 * 88, dly = hash(i * 1.7) * 0.8 + (c + r0) * 0.03, k = spring(t - (p.gridAt + dly), 'bouncy'); if (t < p.gridAt + dly) continue; g.save(); g.globalAlpha = clamp((t - p.gridAt - dly) / 0.1); g.translate(px, py); g.scale(0.3 + 0.7 * k, 0.3 + 0.7 * k); person(g, 0, 0, 66, i % 7 === 0 ? theme.navy : '#59606B'); g.restore(); }
+      txt(g, 'ILLUSTRATION', x0 + w - 28, y0 + h - 24, F.mono(18), '#9aa0a8', 'right');
+    },
+  });
+
+  // ---------- pyr: ONECOIN name tag + a pyramid of paper figures, each layer wider ----------
+  B.register('pyr', {
+    defaults: { w: 860, h: 860, at: 99999, step: 0.35 }, size: p => [p.w, p.h],
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 130); g.restore();
+      txt(g, 'ONECOIN', x0 + 40, y0 + 68, F.hero(78), theme.paper, 'left'); txt(g, 'ILLUSTRATION', x0 + w - 34, y0 + 36, F.mono(18), 'rgba(245,243,238,.7)', 'right');
+      txt(g, 'PYRAMID-STYLE SALES NETWORK', 0, y0 + 190, F.cap(34), theme.inkSoft);
+      for (let L = 0; L < 5; L++) { const n = L + 1, ti = p.at + L * p.step, k = spring(t - ti, 'bouncy'); if (t < ti) continue; const y = y0 + 280 + L * 120, sp = 120;
+        g.save(); g.globalAlpha = clamp((t - ti) / 0.1); g.translate(0, (1 - k) * -90);
+        g.fillStyle = L === 0 ? rgba(theme.bad, 0.9) : theme.rule; rr(g, -(n * sp) / 2 - 10, y - 50, n * sp + 20, 112, 20); g.fill();
+        for (let i = 0; i < n; i++) person(g, -(n - 1) * sp / 2 + i * sp, y, 74, L === 0 ? theme.paper : theme.navy); g.restore(); }
+          },
+  });
+
+  // ---------- publed: GENERIC public ledger. Blocks flip open one by one: anyone can check ----------
+  B.register('publed', {
+    defaults: { w: 860, h: 470, at: 99999, step: 0.28 }, size: p => [p.w, p.h], anchors: p => ({ blocks: [0, 10, p.w * 0.94, 260], head: [0, -p.h / 2 + 62, p.w, 124] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 124); g.restore();
+      txt(g, 'PUBLIC LEDGER', x0 + 40, y0 + 64, F.hero(66), theme.paper, 'left'); txt(g, 'GENERIC · ILLUSTRATION', x0 + w - 34, y0 + 36, F.mono(18), 'rgba(245,243,238,.7)', 'right');
+      const bw = 168, gap = 36, bx0 = -(4 * bw + 3 * gap) / 2, by = y0 + 150;
+      for (let i = 0; i < 4; i++) { const bx = bx0 + i * (bw + gap), ti = p.at + i * p.step, o = clamp((t - ti) / 0.3);
+        if (i < 3) { g.fillStyle = theme.rule; g.fillRect(bx + bw - 2, by + 90, gap + 4, 16); }
+        g.save(); g.fillStyle = theme.paperShade; rr(g, bx, by, bw, 200, 14); g.fill(); g.strokeStyle = theme.rule; g.lineWidth = 2; rr(g, bx, by, bw, 200, 14); g.stroke();
+        txt(g, 'BLOCK ' + (i + 1), bx + bw / 2, by + 26, F.mono(20), theme.inkSoft);
+        if (o > 0) { g.globalAlpha = clamp(o * 2); for (let j = 0; j < 3; j++) { g.fillStyle = theme.rule; rr(g, bx + 18, by + 58 + j * 34, bw - 36 - (j === 2 ? 40 : 0), 14, 7); g.fill(); } g.strokeStyle = theme.goodInk; g.lineWidth = 9; g.lineCap = 'round'; g.lineJoin = 'round'; const ck = ease.out(clamp((t - ti - 0.1) / 0.25)); g.beginPath(); g.moveTo(bx + bw / 2 - 26, by + 164); g.lineTo(bx + bw / 2 - 8, by + 180 + 0 * ck); g.lineTo(bx + bw / 2 - 8 + 40 * ck, by + 180 - 36 * ck); g.stroke(); g.globalAlpha = 1; }
+        // lid flips up (scaleY -> 0) revealing the contents
+        const lid = 1 - ease.out(o); if (lid > 0.02) { g.save(); g.translate(bx, by); g.scale(1, lid); g.fillStyle = theme.navy; rr(g, 0, 0, bw, 200, 14); g.fill(); g.restore(); txt(g, 'CLOSED', bx + bw / 2, by + 100 * lid + 4, F.mono(22), 'rgba(245,243,238,' + lid + ')'); }
+        g.restore(); }
+      txt(g, 'ANYONE CAN OPEN IT · ANYONE CAN CHECK', 0, y0 + h - 56, F.cap(30), theme.ink);
+    },
+  });
+
+  // ---------- privcoin: clay coin with a glass "ledger window" that frosts over + padlock + TRUST US ----------
+  B.register('privcoin', {
+    defaults: { w: 860, h: 700, lockAt: 99999, trustAt: 99999, knockAt: 99999 }, size: p => [p.w, p.h], anchors: p => ({ coin: [0, -40, 520, 440], lock: [0, -20, 300, 220], trust: [0, 260, 760, 120] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 124); g.restore();
+      txt(g, 'ONECOIN', x0 + 40, y0 + 64, F.hero(66), theme.paper, 'left'); txt(g, 'ILLUSTRATION · GENERIC COIN', x0 + w - 34, y0 + 36, F.mono(18), 'rgba(245,243,238,.7)', 'right');
+      const cy = y0 + 140 + 200, r = 200; const kn = t - p.knockAt; g.save(); if (kn > 0 && kn < 0.6) g.translate(Math.sin(kn * 60) * 8 * (1 - kn / 0.6), 0); coinFace(g, 0, cy, r);
+      // the glass window cut into the coin face
+      const ww = 250, wh = 170, wx = -ww / 2, wy = cy - wh / 2 + 0; g.fillStyle = '#12161d'; rr(g, wx, wy, ww, wh, 18); g.fill();
+      g.save(); rr(g, wx, wy, ww, wh, 18); g.clip(); g.strokeStyle = 'rgba(245,243,238,.18)'; g.lineWidth = 6; for (let i = 0; i < 4; i++) { g.beginPath(); g.moveTo(wx + 20, wy + 30 + i * 34); g.lineTo(wx + ww - 20 - (i % 2) * 40, wy + 30 + i * 34); g.stroke(); }
+      const fr = ease.out(clamp((t - p.lockAt) / 0.3)); if (fr > 0) { g.fillStyle = 'rgba(232,236,242,' + (0.94 * fr) + ')'; g.fillRect(wx, wy, ww, wh); g.strokeStyle = 'rgba(160,170,184,' + (0.55 * fr) + ')'; g.lineWidth = 3; for (let i = -8; i < 12; i++) { g.beginPath(); g.moveTo(wx + i * 30, wy + wh); g.lineTo(wx + i * 30 + 120, wy); g.stroke(); } txt(g, 'PRIVATE', 0, cy - 16, F.hero(58), 'rgba(89,96,107,' + fr + ')'); }
+      g.restore(); g.strokeStyle = BRASS_D; g.lineWidth = 8; rr(g, wx, wy, ww, wh, 18); g.stroke(); g.strokeStyle = 'rgba(255,255,255,.5)'; g.lineWidth = 3; g.beginPath(); g.moveTo(wx + 24, wy + 16); g.lineTo(wx + 24, wy + 80); g.stroke();
+      // padlock clicks on
+      { const lk = t - p.lockAt - 0.15; if (lk > 0) { const k = spring(lk, 'bouncy'); g.save(); g.translate(0, cy + wh / 2 + 52 + (1 - k) * -90); g.rotate((1 - k) * 0.4); g.strokeStyle = '#59606B'; g.lineWidth = 18; g.beginPath(); g.arc(0, -42, 34, Math.PI, 0); g.stroke(); clay(g, -52, -20, 104, 82, 14, '#3a4350', { shadowK: 0.5 }); g.fillStyle = theme.gold; g.beginPath(); g.arc(0, 14, 11, 0, 7); g.fill(); g.fillRect(-4, 14, 8, 22); g.restore(); } }
+      g.restore();
+      { const r2 = rise(t, p.trustAt, 24); if (r2.on) { g.save(); g.globalAlpha = r2.a; g.translate(0, y0 + h - 100 + r2.y); g.rotate(-0.04); clay(g, -250, -48, 500, 96, 16, theme.bad, { shadowK: 0.5 }); txt(g, 'TRUST US', 0, 6, F.hero(78), theme.paper); g.restore(); burst(g, 0, y0 + h - 100, 300, theme.bad, t - p.trustAt - 0.1, 14, 0.45); } else txt(g, 'ONECOIN SAID IT WAS PRIVATE', 0, y0 + h - 58, F.cap(30), theme.inkSoft); }
+    },
+  });
+
+  // ---------- dial: a hand grips the pointer and simply turns the price dial. SET BY THE COMPANY ----------
+  B.register('dial', {
+    defaults: { w: 860, h: 820, at: 99999, dur: 1.6, chipAt: 99999 }, size: p => [p.w, p.h], anchors: p => ({ dial: [0, -40, 700, 460], hand: [200, -180, 360, 360], chip: [0, 300, 760, 220] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 124); g.restore();
+      txt(g, 'THE PRICE', x0 + 40, y0 + 64, F.hero(66), theme.paper, 'left'); txt(g, 'ILLUSTRATION', x0 + w - 34, y0 + 36, F.mono(18), 'rgba(245,243,238,.7)', 'right');
+      const px = 0, py = y0 + 480, R = 310, a0 = -Math.PI * 0.94, a1 = -Math.PI * 0.14, u = ease.inOut(clamp((t - p.at) / p.dur)), step = Math.round(u * 24) / 24, ang = lerp(a0, a1, t < p.at ? 0 : lerp(u, step, 0.5));
+      g.lineCap = 'round'; g.strokeStyle = theme.paperShade; g.lineWidth = 56; g.beginPath(); g.arc(px, py, R, Math.PI * 1.04, Math.PI * 1.9); g.stroke();
+      for (let i = 0; i <= 20; i++) { const a = lerp(a0, a1, i / 20), L = i % 5 === 0 ? 46 : 28; g.strokeStyle = i / 20 <= (t < p.at ? -1 : u) ? theme.badInk : theme.inkSoft; g.lineWidth = i % 5 === 0 ? 8 : 5; g.beginPath(); g.moveTo(px + Math.cos(a) * (R - 10), py + Math.sin(a) * (R - 10)); g.lineTo(px + Math.cos(a) * (R - 10 - L), py + Math.sin(a) * (R - 10 - L)); g.stroke(); }
+      txt(g, 'LOW', px + Math.cos(a0) * (R + 54) + 10, py + Math.sin(a0) * (R + 54) + 40, F.mono(22), theme.inkSoft); txt(g, 'HIGH', px + Math.cos(a1) * (R + 54) - 10, py + Math.sin(a1) * (R + 54) + 40, F.mono(22), theme.inkSoft);
+      const tl = R - 40, tx = px + Math.cos(ang) * tl, ty = py + Math.sin(ang) * tl;
+      g.save(); g.strokeStyle = theme.badInk; g.lineWidth = 18; g.shadowColor = 'rgba(2,4,9,.35)'; g.shadowBlur = 14; g.shadowOffsetY = 8; g.beginPath(); g.moveTo(px, py); g.lineTo(tx, ty); g.stroke(); g.restore();
+      clay(g, px - 44, py - 44, 88, 88, 44, '#3a4350', { shadowK: 0.6 });
+      // the clay hand: forearm out along the pointer, fist on the tip, thumb + knuckles
+      { const hk = ease.out(clamp((t - (p.at - 0.5)) / 0.4)); if (hk > 0) { const dx = Math.cos(ang), dy = Math.sin(ang); g.save(); g.globalAlpha = hk; g.translate(tx + dx * 20, ty + dy * 20 - (1 - hk) * 60);
+        g.save(); g.rotate(Math.atan2(dy, dx)); clay(g, 20, -34, 190, 68, 30, '#C98F6B', { shadowK: 0.5 }); clay(g, 110, -42, 56, 84, 10, theme.navy, { shadowK: 0.4 }); g.restore();
+        clay(g, -46, -46, 92, 92, 40, '#D9A27A', { shadowK: 0.6 }); g.strokeStyle = 'rgba(90,50,20,.5)'; g.lineWidth = 4; for (let i = 0; i < 3; i++) { g.beginPath(); g.moveTo(-34, -22 + i * 22); g.lineTo(34, -22 + i * 22); g.stroke(); } clay(g, -20, -64, 56, 34, 16, '#E3B08C', { shadowK: 0.3 }); g.restore(); } }
+      { const r2 = rise(t, p.chipAt, 24); if (r2.on) { g.save(); g.globalAlpha = r2.a; g.translate(0, y0 + h - 120 + r2.y); g.rotate(-0.03); clay(g, -380, -62, 760, 124, 18, theme.bad, { shadowK: 0.5 }); const sz = fit('SET BY THE COMPANY', z => F.hero(z), 78, 700); txt(g, 'SET BY THE COMPANY', 0, -10, F.hero(sz), theme.paper); txt(g, 'PROSECUTORS SAID', 0, 40, F.mono(28), 'rgba(245,243,238,.9)'); g.restore(); burst(g, 0, y0 + h - 120, 320, theme.bad, t - p.chipAt - 0.1, 14, 0.45); } else txt(g, 'THE PRICE?', 0, y0 + h - 110, F.hero(88), theme.ink); }
+    },
+  });
+
+  // ---------- dealt: private ledger strip (3 cells) with coins in it; then coins dealt PAST its end onto bare table; label slams; they crack hollow ----------
+  B.register('dealt', {
+    defaults: { w: 960, h: 760, at: 99999, dealAt: [], hoverAt: 99999, slamAt: 99999, crackAt: 99999 }, size: p => [p.w, p.h], anchors: p => ({ strip: [-210, -100, 560, 200], gap: [330, -100, 440, 200], off: [330, -100, 440, 220], label: [0, 150, 760, 260] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 124); g.restore();
+      txt(g, 'THEIR OWN LEDGER', x0 + 40, y0 + 64, F.hero(62), theme.paper, 'left'); txt(g, 'ILLUSTRATION', x0 + w - 34, y0 + 36, F.mono(18), 'rgba(245,243,238,.7)', 'right');
+      const cell = 150, sx0 = x0 + 50, sy = y0 + 300; const sk = ease.out(clamp((t - p.at) / 0.35));
+      g.save(); g.globalAlpha = sk; g.fillStyle = theme.paperShade; rr(g, sx0 - 10, sy - 100, cell * 3 + 20, 200, 18); g.fill(); g.strokeStyle = theme.inkSoft; g.lineWidth = 5; rr(g, sx0 - 10, sy - 100, cell * 3 + 20, 200, 18); g.stroke();
+      for (let i = 0; i < 3; i++) { g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([8, 8]); rr(g, sx0 + i * cell + 6, sy - 80, cell - 12, 160, 12); g.stroke(); g.setLineDash([]); const ck = spring(t - (p.at + 0.15 + i * 0.12), 'bouncy'); if (t > p.at + 0.15 + i * 0.12) coin(g, sx0 + i * cell + cell / 2, sy, 58 * (0.5 + 0.5 * ck), 0); }
+      g.restore(); txt(g, 'END OF LEDGER', sx0 + cell * 3 + 60, sy - 128, F.mono(22), theme.inkSoft, 'left');
+      { const ex = sx0 + cell * 3 + 18; g.save(); g.globalAlpha = sk; g.strokeStyle = theme.badInk; g.lineWidth = 8; g.beginPath(); g.moveTo(ex + 20, sy - 108); g.lineTo(ex + 20, sy + 108); g.stroke(); g.restore(); }
+      // bare table beyond the end
+      const off = [[0, 0], [1, 0], [2, 0]], nOff = 3;
+      for (let i = 0; i < nOff; i++) { const ta = p.dealAt[i] ?? 99999, o = t - ta; if (o < -0.02) continue; const k = spring(Math.max(0, o), 'bouncy'), fx = sx0 + cell * 3 + 120 + i * 150, fy = sy + (hash(i * 3.3) - 0.5) * 30;
+        g.save(); g.globalAlpha = clamp((o + 0.02) / 0.05); const sxF = lerp(sx0 + 40, fx, ease.out(clamp(o / 0.18))), syF = fy - (1 - k) * 160; coin(g, sxF, syF, 62, clamp((t - p.crackAt - i * 0.08) / 0.3) * 1, i * 2 + 1); g.restore(); if (o > 0.1 && o < 0.5) { g.save(); g.strokeStyle = rgba(theme.ink, 0.25 * (1 - o / 0.5)); g.lineWidth = 4; g.beginPath(); g.ellipse(fx, fy + 62, 62 + 40 * o, 14 + 10 * o, 0, 0, 7); g.stroke(); g.restore(); } }
+      // label: blank hovers, then slams down on the coins
+      const hv = t - p.hoverAt, sl = t - p.slamAt;
+      if (hv > 0 && sl < 0) { const k = spring(hv, 'snappy'); g.save(); g.translate(0, y0 + 480 - (1 - k) * 40 + Math.sin(hv * 4) * 6); g.rotate(-0.03); paper(g, -330, -90, 660, 180, 14, { fill: theme.paper, lift: 0.4 }); g.strokeStyle = theme.rule; g.lineWidth = 4; g.setLineDash([12, 10]); rr(g, -318, -78, 636, 156, 8); g.stroke(); g.setLineDash([]); txt(g, '?', 0, 18, F.hero(120), theme.inkSoft); g.restore(); }
+      if (sl > 0) { const kk = clamp(2.1 * (1 - ease.expo(sl / 0.2)) + 1), al = clamp(sl / 0.05); g.save(); g.globalAlpha = al; g.translate(0, y0 + 520); g.rotate(-0.05); g.scale(kk, kk); paper(g, -400, -130, 800, 260, 16, { fill: theme.paper, lift: 0.3 }); g.strokeStyle = theme.badInk; g.lineWidth = 8; rr(g, -388, -118, 776, 236, 10); g.stroke();
+        txt(g, '“FAKE COINS”', 0, -22, F.hero(fit('“FAKE COINS”', z => F.hero(z), 140, 700)), theme.badInk); txt(g, 'THEIR TERM · PROSECUTORS SAID', 0, 70, F.cap(36), theme.ink); g.restore(); burst(g, 0, y0 + 520, 460, theme.bad, sl - 0.08, 22, 0.65); }
+      if (sl < 0 && hv < 0) txt(g, 'COINS PAST THE END OF THE LEDGER', x0 + w - 40, y0 + h - 50, F.cap(30), theme.inkSoft, 'right');
+    },
+  });
+
+  // ---------- pile: a heap of coins on the table; the label slaps on and every coin cracks hollow ----------
+  B.register('pile', {
+    defaults: { labelAt: 0, slamS: 0.18, crackAt: 0.15, endAt: 99999, sub: 'INTERNAL TERM · PROSECUTORS SAID', h: 760 }, ownEnter: true, size: p => [960, p.h],
+    anchors: () => ({ label: [0, 120, 780, 250], coins: [0, 20, 860, 420] }),
+    draw(g, p, env) {
+      const { t, lt, theme } = env, lb = t - p.labelAt, k0 = lb >= 0 ? hit(lb, 8) : 0, close = ease.inOut(lin(t, p.endAt, p.endAt + 0.5));
+      g.save(); g.scale(1 + 0.12 * k0, 1 + 0.12 * k0);
+      const C = [[-250, 150, 150], [50, 210, 155], [300, 140, 140], [-100, 10, 150], [190, 0, 145]];
+      C.forEach(([x, y, r], i) => { const cr = clamp((t - p.crackAt - i * 0.06) / 0.3); const da = p.dropAt ?? (p.labelAt - 0.5), dr = spring(t - (da + i * 0.05), 'bouncy'); g.save(); g.translate(0, (1 - Math.min(1, dr)) * -300 * (t < p.labelAt + 0.3 ? 1 : 0)); coin(g, x, y, r, cr * (1 - close), i * 3 + 2); g.restore(); });
+      if (lb > -0.01) { const kk = p.slamS * (1 - ease.expo(Math.max(0, lb) / 0.2)) + 1, al = p.slamS < 0.5 ? 1 : clamp((lb + 0.01) / 0.05), up = ease.out(clamp((t - p.endAt) / 0.35)); g.save(); g.globalAlpha = al * (1 - up); g.translate(0, 110 - up * 160); g.rotate(-0.08); g.scale(kk, kk); paper(g, -390, -118, 780, 236, 16, { fill: theme.paper, lift: 0.3 }); g.strokeStyle = theme.badInk; g.lineWidth = 8; rr(g, -378, -106, 756, 212, 10); g.stroke();
+        txt(g, '“FAKE COINS”', 0, -18, F.hero(fit('“FAKE COINS”', z => F.hero(z), 130, 680)), theme.badInk); txt(g, p.sub, 0, 62, F.cap(34), theme.ink); g.restore(); burst(g, 0, 110, 460, theme.bad, lb - 0.05, 22, 0.65); }
+      g.restore();
+    },
+  });
+
+  // ---------- verdict: faceless clay bust + name card (ILLUSTRATION), optional EUR/month row, gavel, PLEADED GUILTY stamp, 20 YEARS ----------
+  B.register('verdict', {
+    defaults: { w: 800, euro: false, euroAt: 99999, guiltyAt: 99999, yearsAt: 99999, subAt: 99999 }, size: p => [p.w, p.euro ? 1100 : 860],
+    anchors(p) { const h = p.euro ? 1100 : 860, y0 = -h / 2, e = p.euro ? 230 : 0; return { head: [0, y0 + 70, p.w, 140], euro: [0, y0 + 430, p.w * 0.92, 190], guilty: [0, y0 + 380 + e, p.w * 0.92, 200], years: [0, y0 + 600 + e, p.w * 0.92, 220], all: [0, 0, p.w, h] }; },
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.euro ? 1100 : 860, x0 = -w / 2, y0 = -h / 2, e = p.euro ? 230 : 0; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, 'THE CO-FOUNDER', x0 + 40, y0 + 70, F.hero(66), theme.paper, 'left'); txt(g, 'ILLUSTRATION', x0 + w - 34, y0 + 34, F.mono(18), 'rgba(245,243,238,.7)', 'right');
+      // gavel
+      const ga = p.guiltyAt, ang = t < ga - 0.3 ? -0.95 : t < ga ? lerp(-0.95, 0.1, ease.in(lin(t, ga - 0.3, ga))) : 0.1 - 0.35 * hit(t - ga, 9) * Math.max(0, Math.sin((t - ga) * 18));
+      g.save(); g.translate(x0 + w - 120, y0 + 100); clay(g, -62, 6, 124, 22, 8, theme.manila, { shadowK: 0.3 }); g.translate(0, -2); g.rotate(ang); clay(g, -9, -118, 18, 124, 8, theme.manila, { shadowK: 0.3 }); clay(g, -50, -150, 100, 58, 12, '#B9955A', { shadowK: 0.3 }); g.restore();
+      // faceless clay bust
+      { g.save(); g.translate(x0 + 120, y0 + 250); const sg = g.createLinearGradient(0, -20, 0, 110); sg.addColorStop(0, '#6a7282'); sg.addColorStop(1, '#3a4350'); clay(g, -78, 40, 156, 90, 40, '#4a5260', { shadowK: 0.4 }); clay(g, -14, 12, 28, 40, 6, '#59606B', { shadowK: 0.2 }); clay(g, -50, -78, 100, 100, 50, '#7c8596', { shadowK: 0.4 }); g.restore(); }
+      txt(g, 'KARL SEBASTIAN', x0 + 230, y0 + 222, F.hero(46), theme.ink, 'left'); txt(g, 'GREENWOOD', x0 + 230, y0 + 282, F.hero(66), theme.ink, 'left');
+      const dash = y => { g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y); g.lineTo(x0 + w - 40, y); g.stroke(); g.setLineDash([]); };
+      dash(y0 + 350);
+      if (p.euro) { const et = t - p.euroAt; if (et > -0.01) { const v = countAt(Math.max(0, et), 0.9, 0, 20000000), land = et - 0.9, o = { font: F.hero(112), size: 112, color: theme.badInk, prefix: '€', speed: et < 0.9 ? 20000000 / 0.6 : 0 }, s = 1 + (land > 0 ? 0.12 * hit(land, 6) : 0) + (env.hot === 'euro' ? 0.03 * env.hotK : 0), rw = B.rollWidth(g, 20000000, o).w;
+          txt(g, 'ABOUT', 0, y0 + 395, F.cap(30), theme.inkSoft); g.save(); g.translate(0, y0 + 470); g.scale(s, s); roll(g, v, 0, 0, o); if (land > 0) marker(g, -rw / 2, 72, rw, 8, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + 470, 300, theme.bad, land, 16, 0.5); txt(g, 'A MONTH', 0, y0 + 555, F.hero(54), theme.ink); }
+        dash(y0 + 360 + e); }
+      { const gt = t - ga; if (gt > 0) { const sc = 1 + 1.3 * (1 - ease.expo(gt / 0.2)), a = clamp(gt / 0.08), yy = y0 + 450 + e, hot = env.hot === 'guilty' ? 0.03 * env.hotK : 0; g.save(); g.globalAlpha = a; g.translate(0, yy); g.rotate(-0.04); g.scale(sc + hot, sc + hot); marker(g, -300, -70, 600, 130, theme.badInk, clamp((gt - 0.1) / 0.3), 0.16); txt(g, 'PLEADED GUILTY', 0, 0, F.hero(fit('PLEADED GUILTY', z => F.hero(z), 110, 640)), theme.badInk); g.restore(); burst(g, 0, yy, 320, theme.bad, gt - 0.1, 20, 0.55); } }
+      dash(y0 + 520 + e);
+      { const yt = t - p.yearsAt; if (yt > -0.01) { const v = countAt(Math.max(0, yt), 0.7, 0, 20), land = yt - 0.7, s = 1 + (land > 0 ? 0.16 * hit(land, 6) : 0) + (env.hot === 'years' ? 0.03 * env.hotK : 0), o = { font: F.hero(190), size: 190, color: theme.ink, speed: yt < 0.7 ? 20 / 0.5 : 0 };
+          const nw = B.rollWidth(g, 20, o).w, sw = mw(' YEARS', F.hero(190)), tot = nw + sw; g.save(); g.translate(0, y0 + 650 + e); g.scale(s, s); roll(g, v, -tot / 2, 0, { ...o, align: 'left' }); txt(g, ' YEARS', -tot / 2 + nw, 0, F.hero(190), theme.badInk, 'left'); if (land > 0) marker(g, -tot / 2, 124, tot, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + 650 + e, 360, theme.bad, land, 18, 0.55); }
+        const r = rise(t, p.subAt, 22); if (r.on) { g.save(); g.globalAlpha = r.a; g.translate(0, y0 + h - 70 + r.y); txt(g, 'PLEA DEC 2022 · SENTENCED SEPT 12, 2023', 0, 0, F.cap(30), theme.inkSoft); g.restore(); } }
+    },
+  });
+})();
+// OneCoin — Instagram/Facebook Reels cut (decoded). Stations: hook (0,0) · dial (1750,0) · verdict (3500,0) · payoff pile (5250,0)
 BM2.scene({
-  series: 'decoded',            // 'whatif' (yellow pill) or 'decoded' (red pill)
-  title: 'STARTER',            // small mono label next to the pill
-  duration: 14,                // seconds = narration length (+ ~0.3 s tail)
-  footnote: ['ASSUMPTIONS / SOURCE LINE GOES HERE'],
-  // ---- 1. ELEMENTS: the graphics, placed in one continuous world. Put each "station" ~1500-1800 px apart. ----
+  series: 'decoded', title: 'CASE: ONECOIN', duration: 23.52,
+  footnote: ['CO-FOUNDER PLEADED GUILTY DEC 2022 · 20 YEARS (SEPT 12, 2023) · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: COINS · CASH · DIAL (GENERIC)'],
   elements: [
-    { id: 'hook', type: 'text', at: [0, -420], in: -1, out: 3.2, props: { lines: [[['$1', 'good'], [' A SECOND', 'paper']], ['FOREVER?']], size: 140 } },
-    { id: 'num', type: 'counter', at: [0, 80], in: -1, props: { label: 'AFTER ONE DAY', to: 86400, prefix: '$', at: 1.0, dur: 1.4, tone: 'good', size: 190 } },
-    { id: 'chart', type: 'bars', at: [1700, 0], in: 4.8, props: { h: 700, items: [
-      { id: 'a', label: 'MILLION', sub: '11.6 days', value: 11.6, display: { decimals: 1 }, tone: 'good', at: 5.6 },
-      { id: 'b', label: 'BILLION', sub: '11,574 days', value: 11574, tone: 'bad', at: 7.4 }] } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [560, 650], in: 10.4, out: 12.2, props: { l1: 'YOUR GUESS?', l2: 'COMMENT', size: 58, tail: 'left' } },
-    { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: 12.4, props: { press: 0.8 } },
+    { id: 'hook', type: 'ochook', at: [0, 0], in: 0, props: { variant: 'ig', chainAt: '@blockchain', endAt: '@blockchain#2' } },
+    { id: 'dial', type: 'dial', at: [1750, 0], in: '@The-0.3', props: { at: '@company-0.1', dur: 1.0, chipAt: '@set' } },
+    { id: 'verdict', type: 'verdict', at: [3500, 0], in: 13.7, props: { guiltyAt: '@got', yearsAt: '@20', subAt: '@years' } },
+    { id: 'pile', type: 'pile', at: [5250, 0], in: '@inside-0.1', props: { dropAt: '@inside', labelAt: '@fake', slamS: 1.0, crackAt: '@fake+0.05' } },
+    { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@double-0.05', out: '@double+1.15', props: { s: 1 } },
+    { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
+    { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@Would-0.05', out: '@blockchain#2+0.15', props: { l1: 'WOULD YOU HAVE CHECKED?', l2: 'YES / NO', size: 46, tail: 'left' } },
   ],
-  // ---- 2. BEATS: camera + storyteller choreography. One beat every 1.5-3 s. ----
   beats: [
-    { at: 0,    beat: 'side-by-side',    focus: ['hook', 'num'], fill: 0.72, sx: 640, sy: 830, pose: 'talk' },   // frame 0 already shows the number
-    { at: 1.0,  beat: 'zoom-on-number',  focus: 'num.value' },                                           // push in as the number is said
-    { at: 3.2,  beat: 'presenter-front', focus: 'num' },                                                 // he steps in front and talks
-    { at: 4.9,  beat: 'peek',            focus: 'chart', move: 'whip', sy: 860, maxH: 820 },             // whip to the chart; he goes behind it
-    { at: 7.4,  beat: 'zoom-on-number',  focus: 'chart.b_top', fill: 0.8, st: 'corner-left', pose: 'shock' },
-    { at: 9.0,  beat: 'pull-back',       focus: 'chart', st: 'corner-left' },
-    { at: 10.2, beat: 'presenter-front', focus: 'chart', pose: 'you' },
-    { at: 12.3, beat: 'wide',            st: { x: 250, y: 1330, s: 1.4 }, pose: 'follow' },
+    { at: 0, beat: 'side-by-side', focus: 'hook', sx: 520, sy: 830, fill: 0.8, maxH: 1000, st: { x: 940, y: 1350, s: 1.15 }, pose: 'shock' },
+    { at: '@four', beat: 'zoom-on-number', focus: 'hook.num', fill: 0.9, maxH: 700, sx: 520, sy: 780, st: { x: 940, y: 1350, s: 1.15 }, dur: 0.45 },
+    { at: '@no', beat: 'zoom-on-number', focus: 'hook.red', fill: 0.96, maxH: 700, sx: 530, sy: 800, st: { x: 940, y: 1350, s: 1.15 }, pose: 'point', dur: 0.45 },
+    { at: '@blockchain', beat: 'side-by-side', focus: 'hook.chain', fill: 0.72, maxH: 600, sx: 540, sy: 800, st: 'corner', pose: 'point', dur: 0.6 },
+    { at: '@Prosecutors', beat: 'presenter-front', focus: 'hook', sy: 770, pose: 'talk' },
+    { at: '@wild', beat: 'presenter-front', focus: 'hook', sy: 770, zoom: 1.0, pose: 'shock', dur: 0.9 },
+    { at: '@The', beat: 'side-by-side', focus: 'dial', move: 'whip', sx: 560, sy: 810, fill: 0.84, maxH: 980, st: 'corner-left', pose: 'point' },
+    { at: '@company', beat: 'zoom-on-number', focus: 'dial.dial', fill: 0.92, maxH: 640, sx: 540, sy: 700, st: 'corner-left', pose: 'shock', dur: 0.6 },
+    { at: '@set', beat: 'zoom-on-number', focus: 'dial.chip', fill: 0.96, maxH: 400, sy: 800, st: 'corner-left', pose: 'point', dur: 0.45 },
+    { at: '@Send', beat: 'presenter-front', focus: 'dial', sy: 770, pose: 'you' },
+    { at: '@still', beat: 'graphic-hero', focus: 'dial.dial', fill: 0.9, maxH: 640, sy: 700, st: 'corner-left', pose: 'shrug', dur: 0.8 },
+    { at: 13.95, beat: 'side-by-side', focus: 'verdict', move: 'whip', sx: 540, sy: 790, fill: 0.8, maxH: 940, st: 'corner-left', pose: 'point' },
+    { at: '@got', beat: 'zoom-on-number', focus: 'verdict.guilty', fill: 0.86, maxH: 360, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.4 },
+    { at: '@20', beat: 'zoom-on-number', focus: 'verdict.years', fill: 0.9, maxH: 480, sy: 820, rot: 0.02, st: 'corner-left', pose: 'shock', dur: 0.4, lead: 0.15 },
+    { at: '@years+0.5', beat: 'pull-back', focus: 'verdict', fill: 0.78, maxH: 940, sy: 790, st: 'corner-left', pose: 'idle', dur: 0.6 },
+    { at: '@And', beat: 'side-by-side', focus: 'pile', move: 'whip', sx: 540, sy: 790, fill: 0.9, maxH: 780, st: 'corner-left', pose: 'chin' },
+    { at: '@called', beat: 'graphic-hero', focus: 'pile.coins', fill: 0.9, maxH: 560, sy: 800, st: 'corner-left', pose: 'point', dur: 0.7 },
+    { at: '@fake-0.05', beat: 'zoom-on-number', focus: 'pile.label', fill: 0.9, maxH: 560, sy: 900, rot: -0.015, st: { x: 120, y: 1390, s: 1.3 }, pose: 'shock', dur: 0.35, lead: 0.12 },
+    { at: '@Would', beat: 'presenter-front', focus: 'pile', sy: 770, pose: 'talk' },
+    { at: '@blockchain#2', beat: 'side-by-side', focus: 'hook', move: 'whip', sx: 520, sy: 830, fill: 0.8, maxH: 1000, st: { x: 940, y: 1350, s: 1.15 }, pose: 'shock' },
   ],
-  poses: [[12.4, 'follow', { target: [600, 1120] }]],   // extra pose changes between beats
-  shakes: [[2.4, 14], [8.1, 12]],                        // camera shake on the hits (time, px)
-  captions: { emph: { '$1': 'good', billion: 'bad' } }, // spoken words to colour: good | bad | accent
-  bed: { name: 'upbeat_bed_2', gain: -1 },
-  sfx: [{ at: 0, name: 'deep_boom_2', gain: -5, dur: 0.36 }, { at: 1.0, name: 'money_counter_1', gain: -11, dur: 1.4 }, { at: 2.4, name: 'ding_2', gain: -8, dur: 0.7 }, { at: 7.4, name: 'riser_1', gain: -12, dur: 0.7 }, { at: 8.1, name: 'deep_boom_1', gain: -4, dur: 1.6 }, { at: 13.25, name: 'click_1', gain: -8, dur: 0.3 }],
+  shakes: [[0.05, 14], ['@four', 8], ['@set', 10], ['@got', 14], ['@20', 22], ['@fake', 28]],
+  captions: {
+    gap: 16,
+    emph: { four: 'bad', billion: 'bad', bucks: 'bad', blockchain: 'bad', public: 'bad', price: 'bad', company: 'bad', '20': 'bad', years: 'bad', fake: 'bad', coins: 'accent', fucking: 'bad' },
+    fix: [],
+  },
+  bed: { name: 'tense_bed_2', gain: -1 },
+  sfx: [
+    { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.03, name: 'coins_drop_1', gain: -9, dur: 0.9 }, { at: 0.4, name: 'glass_shatter_2', gain: -12, dur: 0.6 },
+    { at: '@four', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@no', name: 'thud_1', gain: -9, dur: 0.4 }, { at: '@blockchain', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@blockchain+0.6', name: 'wrong_buzzer_1', gain: -14, dur: 0.5 },
+    { at: '@double', name: 'heartbeat_1', gain: -8, dur: 0.9 },
+    { at: '@company-0.1', name: 'clock_ticking_1', gain: -12, dur: 1.1 }, { at: '@set', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@set', name: 'deep_boom_2', gain: -8, dur: 0.36 },
+    { at: '@Send', name: 'swoosh_2', gain: -9, dur: 1.0 },
+    { at: 13.95, name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@got', name: 'gavel_1', gain: -4, dur: 0.8 }, { at: '@20', name: 'cinematic_hit_1', gain: -4, dur: 1.2 }, { at: '@20', name: 'money_counter_2', gain: -11, dur: 0.8 }, { at: '@20+0.7', name: 'cell_door_1', gain: -8, dur: 1.0 },
+    { at: '@inside', name: 'riser_1', gain: -13, dur: 1.6 }, { at: '@inside+0.05', name: 'coins_drop_2', gain: -10, dur: 0.9 }, { at: '@some', name: 'thud_1', gain: -10, dur: 0.4 },
+    { at: '@fake', name: 'cinematic_hit_1', gain: -3, dur: 1.2 }, { at: '@fake', name: 'deep_boom_1', gain: -3, dur: 1.4 }, { at: '@fake', name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: '@fake+0.07', name: 'glass_shatter_2', gain: -9, dur: 0.7 },
+    { at: '@Would', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@blockchain#2', name: 'rewind_2', gain: -11, dur: 0.9 },
+  ],
 });

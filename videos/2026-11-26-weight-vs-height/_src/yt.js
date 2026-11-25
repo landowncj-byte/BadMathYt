@@ -8,10 +8,10 @@ BM2.scene({
   elements: [
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: 3.6, props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: 45.8, props: HOOK },
-    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { btnOff: [['@easy', '@Hit-0.05'], ['@Hit', '@But-0.1'], ['@gram-0.4', '@One'], ['@One', '@One#2-0.1'], ['@Average#2', '@Send'], ['@His#2', 45.6]], slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
+    { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { btnOff: [['@easy', '@Hit-0.05'], ['@Hit', '@But-0.1'], ['@gram-0.4', '@One'], ['@One', '@One#2-0.1'], ['@Average#2', '@Send'], ['@His', '@His#2'], ['@His#2', 45.6]], slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@20s'], bigAt: '@1#2', fill: [
       { t: 0, v: 4500 }, { t: 13.45, v: 4500 }, { t: 13.7, v: 0, e: 'out' }, { t: 14.9, v: 0 }, { t: 14.96, v: 1 }, { t: '@One', v: 1 }, { t: '@bills', v: 454, e: 'expo' },
       { t: 33.8, v: 454 }, { t: 37.4, v: 31000, e: 'in' }, { t: '@1#2', v: 31000 }, { t: '@million#2', v: 90264, e: 'expo' }, { t: 45.3, v: 90264 }, { t: 46.3, v: 4500 }] } },
-    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { btnOff: [['@easy', '@Hit-0.05'], ['@Hit', '@But-0.1'], ['@gram-0.4', '@One'], ['@One', '@One#2-0.1'], ['@Average#2', '@Send'], ['@His#2', 45.6]], slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@hundreds#2'], inchAt: '@inch', inchOut: '@Average#2-0.1', tagAt: '@35', sagAt: '@win', endAt: 45.65, rise: [
+    { id: 'tower', type: 'tower', at: [300, 0], in: -1, props: { btnOff: [['@easy', '@Hit-0.05'], ['@Hit', '@But-0.1'], ['@gram-0.4', '@One'], ['@One', '@One#2-0.1'], ['@Average#2', '@Send'], ['@His', '@His#2'], ['@His#2', 45.6]], slamAt: 0.05, btnAt: 0.2, pulses: ['@height', '@hundreds#2'], inchAt: '@inch', inchOut: '@Average#2-0.1', tagAt: '@35', sagAt: '@win', endAt: 45.65, rise: [
       { t: 0, v: 36 }, { t: 29.4, v: 36 }, { t: '@million', v: 68.9, e: 'out' }, { t: 45.3, v: 68.9 }, { t: 46.3, v: 36 }] } },
     { id: 'five', type: 'fivex', at: [0, 20], in: '@hundreds#3-0.1', out: '@Hit-0.1', props: { xAt: '@five' } },
     { id: 'doll', type: 'doll', at: [0, 40], in: '@Average#2', out: '@Send-0.1', props: { lbAt: '@99-0.3', hAt: '@5-0.1' } },
@@ -42,7 +42,7 @@ BM2.scene({
     { at: '@Hit', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'right', pose: 'point', keep: ['tower'] },
     // twist 1: scale
     { at: '@But', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 900, sy: 850, st: 'corner', pose: 'idle' },
-    { at: '@gram', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.78, sy: 820, rot: -0.008, st: 'corner', pose: 'point' },
+    { at: '@gram', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.6, sy: 900, rot: -0.008, st: 'corner', pose: 'point' },
     { at: '@454', beat: 'zoom-on-number', focus: 'scale.count', fill: 0.5, sy: 560, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
     // twist 2: tower inch
     { at: '@One#2', beat: 'graphic-hero', st: 'right', focus: 'tower', move: 'whip', sy: 850, maxH: 900, pose: 'idle' },

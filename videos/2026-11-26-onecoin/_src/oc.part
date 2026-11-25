@@ -54,9 +54,9 @@
       let cx = -150, cy = 260, r = 205;
       if (p.variant === 'ig') {
         cx = -140; r = 150; const n = 6, base = 520;
-        for (let i = 0; i < n; i++) { const kk = spring(lt - i * 0.045, 'snappy'); g.save(); g.translate(cx, base - i * 46 - (1 - kk) * 700); B.bill(g, (hash(i * 4.1) - 0.5) * 24, 0, 400, 130, (hash(i + 3) - 0.5) * 0.06, i === n - 1 ? '$' : ''); g.restore(); }
+        for (let i = 0; i < n; i++) { const kk = spring(lt - i * 0.045, 'snappy'); g.save(); g.translate(cx, base - i * 46 + (1 - kk) * 800); B.bill(g, (hash(i * 4.1) - 0.5) * 24, 0, 400, 130, (hash(i + 3) - 0.5) * 0.06, i === n - 1 ? '$' : ''); g.restore(); }
         cy = base - (n - 1) * 46 - 65 - r + 30;
-        const ck = lt < 0.35 ? 1.5 - 0.5 * ease.out(clamp(lt / 0.35)) : 1; g.save(); g.translate(cx, cy); g.scale(ck, ck); coin(g, 0, 0, r, ease.out(clamp((lt - 0.4) / 0.25)) * (1 - close), 3); g.restore();
+        const ck = lt < 0.35 ? 1.2 - 0.2 * ease.out(clamp(lt / 0.35)) : 1; g.save(); g.translate(cx, cy); g.scale(ck, ck); coin(g, 0, 0, r, ease.out(clamp((lt - 0.4) / 0.25)) * (1 - close), 3); g.restore();
       } else {
         const ck = 1 + 0.18 * (1 - ease.out(clamp(lt / 0.2))); g.save(); g.translate(cx, cy); g.scale(ck, ck); coin(g, 0, 0, r, ease.out(clamp((lt - 0.2) / 0.3)) * (1 - close), 3); g.restore();
       }
@@ -202,7 +202,7 @@
       const { t, lt, theme } = env, lb = t - p.labelAt, k0 = lb >= 0 ? hit(lb, 8) : 0, close = ease.inOut(lin(t, p.endAt, p.endAt + 0.5));
       g.save(); g.scale(1 + 0.12 * k0, 1 + 0.12 * k0);
       const C = [[-250, 150, 150], [50, 210, 155], [300, 140, 140], [-100, 10, 150], [190, 0, 145]];
-      C.forEach(([x, y, r], i) => { const cr = clamp((t - p.crackAt - i * 0.06) / 0.3); const dr = spring(t - (p.labelAt - 0.5 + i * 0.05), 'bouncy'); g.save(); g.translate(0, (1 - Math.min(1, dr)) * -300 * (t < p.labelAt + 0.3 ? 1 : 0)); coin(g, x, y, r, cr * (1 - close), i * 3 + 2); g.restore(); });
+      C.forEach(([x, y, r], i) => { const cr = clamp((t - p.crackAt - i * 0.06) / 0.3); const da = p.dropAt ?? (p.labelAt - 0.5), dr = spring(t - (da + i * 0.05), 'bouncy'); g.save(); g.translate(0, (1 - Math.min(1, dr)) * -300 * (t < p.labelAt + 0.3 ? 1 : 0)); coin(g, x, y, r, cr * (1 - close), i * 3 + 2); g.restore(); });
       if (lb > -0.01) { const kk = p.slamS * (1 - ease.expo(Math.max(0, lb) / 0.2)) + 1, al = p.slamS < 0.5 ? 1 : clamp((lb + 0.01) / 0.05), up = ease.out(clamp((t - p.endAt) / 0.35)); g.save(); g.globalAlpha = al * (1 - up); g.translate(0, 110 - up * 160); g.rotate(-0.08); g.scale(kk, kk); paper(g, -390, -118, 780, 236, 16, { fill: theme.paper, lift: 0.3 }); g.strokeStyle = theme.badInk; g.lineWidth = 8; rr(g, -378, -106, 756, 212, 10); g.stroke();
         txt(g, '“FAKE COINS”', 0, -18, F.hero(fit('“FAKE COINS”', z => F.hero(z), 130, 680)), theme.badInk); txt(g, p.sub, 0, 62, F.cap(34), theme.ink); g.restore(); burst(g, 0, 110, 460, theme.bad, lb - 0.05, 22, 0.65); }
       g.restore();
