@@ -7,6 +7,8 @@ Series: Decoded (long). Not used before (ideas.md has Madoff, Ponzi, Salad Oil, 
 
 **Access note:** DOJ/SEC/news pages were read via search-result extracts; Wikipedia (Terra, Do Kwon) read directly. ✔2 = two sources; ✔1 = one; ⚠ = verify before use.
 
+**Primary re-check 2026-11-25 (second pass):** the network was opened for justice.gov / sec.gov, but current justice.gov press-release pages returned only an automated bot-verification interstitial (no article text) and sec.gov returned HTTP 403 "Request Rate Threshold Exceeded", on two attempts ~30 s apart. I did not try to get around either. **So the DOJ/SEC figures below keep their existing grades (✔2 / ✔1 / ⚠); none could be upgraded to VERIFIED (primary).** A person opening the listed URLs in a browser can close this in minutes.
+
 ## Thumbnail: the single strongest impossible number
 **"$40,000,000,000 → $0 IN 7 DAYS"** (DOJ uses "$40 billion"; Wikipedia says "almost $45 billion" of market cap in one week — use 40, the court figure).
 Runner-up for A/B: **"20% — 'RISK-FREE'"** or **"6,500,000,000,000 COINS"**.

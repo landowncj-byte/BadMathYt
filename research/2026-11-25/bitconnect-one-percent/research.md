@@ -3,6 +3,8 @@ Decoded · Counter · compiled 2026-11-24/25
 
 **Access note:** DOJ/SEC pages read via search-result extracts; Wikipedia read directly. ✔2 / ✔1 / ⚠.
 
+**Primary re-check 2026-11-25 (second pass):** the network was opened for justice.gov / sec.gov, but current justice.gov press-release pages returned only an automated bot-verification interstitial (no article text) and sec.gov returned HTTP 403 "Request Rate Threshold Exceeded", on two attempts ~30 s apart. I did not try to get around either. **So the DOJ/SEC figures below keep their existing grades (✔2 / ✔1 / ⚠); none could be upgraded to VERIFIED (primary).** A person opening the listed URLs in a browser can close this in minutes.
+
 ## Story beats
 1. 2016–17: BitConnect launches a coin (BCC) and a "Lending Program": hand over Bitcoin, get BCC, "lend" it to the platform.
 2. THE PITCH: a "volatility software trading bot" will earn you up to **40% a month**; the site posted returns averaging about **1% per day**.

@@ -12,5 +12,6 @@
 | 2026-11-24 | Decoded | Claimed vs Real | She Said $100 Million. It Was $100 Thousand. | Theranos 2014 revenue lie 1000x, $700M raised, $9B, 4 counts, 11y3m | Wikipedia (Theranos, Elizabeth Holmes; SEC; WSJ 2015) |
 | 2026-11-24 | Decoded | Case File | Arrested for Fraud. Did More Fraud on Bail. | Fyre: $12K VIP, $90M pitch vs ~$60K business, cheese sandwiches, bail ticket scam, 6 yrs, Fyre 2 | Wikipedia (Fyre Festival, Billy McFarland) |
 | 2026-11-24 | What If | Counter | Your Coffee Habit Costs $437,000 | $6/day = $2,190/yr at 7% → $30K/$90K/$207K/$437K over 10–40 yrs (assumption) | arithmetic |
+| 2026-11-25 | What If | Myth vs Math | You're an Idiot If You Bet Parlays | 10-leg at −110 pays 643× on 1-in-1,024 → book keeps 37.2%; $10/day: −$166 singles vs −$1,358 parlays (EV) | arithmetic; Fable research 2026-11-25 (inspired by Coffeezilla gambling outlier pattern) |
 
 Used hooks/formats to avoid repeating verbatim: "$1 every second", "two buttons A/B", "this tank is full of…", "50% in 45 days", "123 vs 20", "this guy was so dumb he committed an $8B fraud", "you're an idiot for buying one lottery ticket", "so shameless she said $100M", "fraud while out on bail", "idiot if you buy coffee every day". PROMISED: lottery Part 2 (what happened after the 1992 win) — make it.

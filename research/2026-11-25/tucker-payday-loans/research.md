@@ -3,6 +3,8 @@ Decoded · Pitch vs Math · compiled 2026-11-24/25
 
 **Access note:** DOJ pages read via search-result extracts (not opened); Wikipedia read directly. ✔2 = two sources; ✔1 = one; ⚠ = verify.
 
+**Primary re-check 2026-11-25 (second pass):** the network was opened for justice.gov / sec.gov, but current justice.gov press-release pages returned only an automated bot-verification interstitial (no article text) and sec.gov returned HTTP 403 "Request Rate Threshold Exceeded", on two attempts ~30 s apart. I did not try to get around either. **So the DOJ/SEC figures below keep their existing grades (✔2 / ✔1 / ⚠); none could be upgraded to VERIFIED (primary).** A person opening the listed URLs in a browser can close this in minutes.
+
 ## Story beats
 1. Scott Tucker, Kansas businessman — already convicted once (1991, a fake lending company; served a year in Leavenworth) — builds an online payday-loan group from the late 1990s/2001: brands like Ameriloan, 500 FastCash, One Click Cash, United Cash Loans.
 2. THE PITCH (the legally required "Truth in Lending" box): borrow $500, total repayment **$650**.

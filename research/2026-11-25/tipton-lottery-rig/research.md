@@ -3,6 +3,8 @@ Decoded · Case File · compiled 2026-11-24/25
 
 **Access note:** main source is Wikipedia's "Hot Lotto fraud scandal" (read directly) plus news extracts via search (CNN Money, CBS, The Gazette, NBC). ✔2 / ✔1 / ⚠ as elsewhere.
 
+**Primary re-check 2026-11-25 (second pass):** this was an **Iowa state** prosecution (Iowa Attorney General / Polk County court), so there is no DOJ release; the Iowa AG and Iowa court sites were not on the allowed list. Nothing here could be upgraded to VERIFIED (primary). Figures keep their existing grades. Best primary to open by hand: Iowa Attorney General press releases of June 29 and Aug 22, 2017 (iowaattorneygeneral.gov) and State v. Tipton, 897 N.W.2d 653 (Iowa 2017) (citation from memory — confirm).
+
 ## Story beats
 1. Eddie Tipton is **information security director** of the Multi-State Lottery Association (MUSL) in Iowa — the office that runs the computers that draw numbers for games in many states. He helped write the random number generator (RNG) software.
 2. Around 2005–06 he hides extra code in it: if a drawing falls on **one of three dates** (May 27, Nov 23, Dec 29), on a Wednesday or Saturday, after 8 p.m., the "random" numbers become predictable to him.

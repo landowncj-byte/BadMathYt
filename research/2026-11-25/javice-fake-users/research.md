@@ -3,6 +3,8 @@ Decoded · Spot the Tell · research compiled 2026-11-24/25
 
 **Access note:** DOJ, SEC and news pages could not be opened from this sandbox; they were read through search-result extracts. Wikipedia was read directly. "✔2" = seen in two independent sources; "✔1" = one source extract; "⚠" = verify before use.
 
+**Primary re-check 2026-11-25 (second pass):** the network was opened for justice.gov / sec.gov, but current justice.gov press-release pages returned only an automated bot-verification interstitial (no article text) and sec.gov returned HTTP 403 "Request Rate Threshold Exceeded", on two attempts ~30 s apart. I did not try to get around either. **So the DOJ/SEC figures below keep their existing grades (✔2 / ✔1 / ⚠); none could be upgraded to VERIFIED (primary).** A person opening the listed URLs in a browser can close this in minutes.
+
 ## Story beats
 1. 2016: Charlie Javice, in her early 20s, founds **Frank**, a website that helps students fill in the federal aid form (FAFSA). 2019: Forbes 30 Under 30.
 2. 2021: she shops the company to big banks. The pitch: Frank has **4.25 million** users (the website said 4.25 million students). In reality it had **fewer than 300,000** (SEC) — prosecutors said "several hundred thousand".

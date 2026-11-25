@@ -19,6 +19,7 @@ At standard −110 pricing the book keeps about 4.5% of a single bet. Multiply t
 - House edge = 1 − 0.9545ⁿ
 
 ## Number spine (all computed; script: Python, 2026-11-25)
+**Second pass 2026-11-25: every row re-derived independently with exact fractions (−110 = decimal 21/11; return per leg = 21/22). All values reproduced: edges 4.55 / 8.88 / 13.03 / 20.75 / 31.08 / 37.20 / 42.78%; 10-leg payout 643.08×; $10 ticket returns $6,430.81 vs fair $10,240 (short $3,809.19); $10/day for 365 days: expected loss $1,357.87 on 10-leggers vs $165.91 on singles. VERIFIED (arithmetic). No changes.** The Illinois/New Jersey hold rows remain secondary (regulator sites not on the allowed list).
 | Figure | Exact value | What it means | Source | As-of |
 |---|---|---|---|---|
 | 1 leg | pays 1.91×, true odds 1 in 2, return 95.45% → **edge 4.55%** | Baseline "vig" | arithmetic | — |

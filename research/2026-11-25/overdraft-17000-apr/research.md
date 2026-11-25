@@ -1,7 +1,7 @@
 # Overdraft — "Your bank's overdraft fee is a 17,000% loan"
 What If · Scale Swap · arithmetic + one CFPB example · compiled 2026-11-24/25
 
-**Access note:** consumerfinance.gov read via search-result extracts.
+**Access note:** first pass used search extracts. **Second pass 2026-11-25: the CFPB press release was opened directly and the key figures are VERIFIED (primary).**
 
 ## The claim in one line
 Treat a flat overdraft fee as the interest on a tiny, very short loan, and annualise it the way every other loan is quoted: the CFPB's own example comes out at about 17,000% APR.
@@ -16,9 +16,9 @@ Treat a flat overdraft fee as the interest on a tiny, very short loan, and annua
 APR = (fee / amount borrowed) × (365 / days) × 100
 | Figure | Exact value | What it means | Source (URL) | Date / as-of |
 |---|---|---|---|---|
-| CFPB example | $34 fee, $24 overdraft, 3 days → (34/24) × (365/3) = **17,236%** → CFPB rounds to "17,000 percent APR" | The killer number | https://www.consumerfinance.gov/about-us/newsroom/cfpb-finds-small-debit-purchases-lead-to-expensive-overdraft-charges/ ; coverage: https://consumerist.com/2014/07/31/cfpb-report-typical-overdraft-situation-is-comparable-to-small-dollar-loan-with-17000-interest-rate | CFPB study 2014-07-31 ✔2 |
-| Median fee in study | $34 | At the large banks studied | same | 2014 |
-| Typical overdrawn purchase | majority of debit-card overdraft fees were on transactions of **$24 or less**, most repaid within **3 days** | Why the example is typical, not extreme | same | 2014 |
+| CFPB example | $34 fee, $24 overdraft, 3 days → (34/24) × (365/3) = **17,236%** → CFPB rounds to "17,000 percent APR" | The killer number | https://www.consumerfinance.gov/about-us/newsroom/cfpb-finds-small-debit-purchases-lead-to-expensive-overdraft-charges/ ; coverage: https://consumerist.com/2014/07/31/cfpb-report-typical-overdraft-situation-is-comparable-to-small-dollar-loan-with-17000-interest-rate | **VERIFIED (primary)** — CFPB release dated JUL 31, 2014, opened 2026-11-25 |
+| Median fee in study | $34 ("The median overdraft fee at the banks studied was $34.") | At the large banks studied | same | **VERIFIED (primary)** |
+| Typical overdrawn purchase | majority of debit-card overdraft fees were on transactions of **$24 or less**, most repaid within **3 days** | Why the example is typical, not extreme | same | **VERIFIED (primary)** — "the majority of debit card overdraft fees are incurred on transactions of $24 or less and … the majority of overdrafts are repaid within three days"; also "More than half become positive within three days; and more than 75 percent become positive within a week." |
 | CFPB 2024 restatement | under $26, repaid in 3 days → "over 16,000 percent" | Newer wording; ($35/$26)×(365/3)=16,378% | https://files.consumerfinance.gov/f/documents/cfpb_overdraft-credit-very-large-financial-institutions_fact-sheet_2024-01.pdf | Jan 2024 ✔1 |
 | $5 coffee version | $35 fee on a $5 overdraft, 3 days → (35/5)×(365/3) = **85,167%** | Our own illustration — label "example" | arithmetic | — |
 | Scale swap: payday loan | ~700% (see tucker-payday-loans) → overdraft example is ≈ 24.6× that (17,236 ÷ 700) | "Loan sharks charge less" beat | arithmetic; DOJ for 700% | — |
@@ -31,7 +31,11 @@ APR = (fee / amount borrowed) × (365 / days) × 100
 Nobody. This is legal pricing. Never say "scam"/"fraud"/"illegal". "Robbed" in a hook is hyperbole about price — keep it clearly figurative ("works out to").
 
 ## On-screen-safe quotes
-- CFPB (2014 press release, as summarised in search extract): if a consumer borrowed $24 for three days and paid a $34 finance charge, "such a loan would carry a 17,000 percent annual percentage rate (APR)." — re-open the CFPB page to confirm exact wording before quoting; otherwise paraphrase and cite "CFPB, 2014".
+Both VERIFIED verbatim on the CFPB page (https://www.consumerfinance.gov/about-us/newsroom/cfpb-finds-small-debit-purchases-lead-to-expensive-overdraft-charges/, dated July 31, 2014; the page is marked "archived content"):
+- CFPB: **"Put in lending terms, if a consumer borrowed $24 for three days and paid the median overdraft fee of $34, such a loan would carry a 17,000 percent annual percentage rate (APR)."**
+- CFPB Director Richard Cordray: **"Overdraft fees should not be 'gotchas' when people use their debit cards."**
+- Also on the page (useful stat): "18 percent of opted-in accounts overdraft more than ten times per year, compared to 6 percent for non-opted-in accounts."
+- Underlying report: https://files.consumerfinance.gov/f/201407_cfpb_report_data-point_overdrafts.pdf (not opened).
 
 ## Commonly repeated but NOT verifiable — don't say
 - "Banks make $30 billion a year on overdraft" — older figure; recent CFPB estimates are far lower (single-digit billions). Not checked; leave out.
