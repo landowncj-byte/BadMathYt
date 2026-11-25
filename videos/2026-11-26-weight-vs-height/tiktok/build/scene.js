@@ -208,9 +208,9 @@ BM2.scene({
     { id: 'slide', type: 'slider', at: [2650, 0], in: '@height#3-0.2', props: { xAt: '@2+0.05', takeAt: '@take-0.05', rows: [{ at: 24.3, h: '5′4″', inch: 64, lb: 164 }, { at: 24.65, h: '5′9″', inch: 69, lb: 177 }, { at: 25.0, h: '6′0″', inch: 72, lb: 185 }] } },
     // screen
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Hundreds', props: { text: 'HYPOTHETICAL', size: 24 } },
-    { id: 'hund', type: 'text', layer: 'screen', at: [540, 1235], in: '@Hundreds', out: '@Average-0.1', props: { lines: [[['HUNDREDS, RIGHT?', 'accent']]], size: 96 } },
-    { id: 'g1', type: 'text', layer: 'screen', at: [540, 1235], in: '@grandma-0.4', out: '@Send-0.1', props: { lines: [[['≈1 GRAM A BILL (ASSUMED)', 'accent']]], size: 62 } },
-    { id: 'nowt', type: 'text', layer: 'screen', at: [540, 1235], in: '@Now', out: '@cheat', props: { lines: [[['NOW YOU', 'accent']]], size: 120 } },
+    { id: 'hund', type: 'text', layer: 'screen', at: [540, 345], in: '@Hundreds', out: '@Average-0.1', props: { lines: [[['HUNDREDS, RIGHT?', 'accent']]], size: 80 } },
+    { id: 'g1', type: 'chip', layer: 'screen', at: [540, 345], in: '@grandma-0.4', out: '@Send-0.1', props: { text: '≈1 G A BILL · ASSUMED', size: 30 } },
+    { id: 'nowt', type: 'text', layer: 'screen', at: [540, 345], in: '@Now', out: '@cheat', props: { lines: [[['NOW YOU', 'accent']]], size: 96 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@heart', props: { s: 1, dur: 0.9 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@follow+0.05', out: '@follow+1.45', props: { press: 0.55 } },
