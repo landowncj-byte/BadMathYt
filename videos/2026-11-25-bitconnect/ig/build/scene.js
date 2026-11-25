@@ -281,7 +281,7 @@ const BKS = { x: 190, y: 1330, s: 0.95, layer: 'back' };
 const TXT = (lines, size, extra = {}) => ({ lines, size, ...extra });
 BM2.scene({
   series: 'decoded', title: 'CASE: BITCONNECT · 2017', duration: 20.93,
-  footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS'],
+  footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS', 'PHOTO: FEDERAL JUDICIARY, PUBLIC DOMAIN, VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- station A: wallet on strings (frame 0) ----
     { id: 'puppet', type: 'puppet', at: [0, 0], in: -1, props: { dropAt: -0.12, yankAt: '@getting', yankAt2: '@played-0.15' } },
@@ -297,6 +297,7 @@ BM2.scene({
     { id: 'bot', type: 'bot', at: [3500, 0], in: '@crypto-0.6', props: { h: 780, noTaken: true, curtainAt: '@new-0.1', tagAt: '@prosecutors' } },
     // ---- station D: promoter case ----
     { id: 'case', type: 'case', at: [3500, 1750], in: '@Top-0.4', props: { guiltyAt: '@promoter', monthsAt: '@38' } },
+    { id: 'court', type: 'photo', at: [4210, 1790], in: '@Top-0.3', props: { src: 'brand/photos/stock/edward-j-schwartz-united-states-courthouse/1.jpg', name: 'FEDERAL COURT', role: 'SAN DIEGO', credit: 'PHOTO: FEDERAL JUDICIARY · PUBLIC DOMAIN', w: 400, aspect: 1.2, tilt: 0.05, fx: 0.5, fy: 0.5 } },
     // ---- screen-fixed micro moments ----
     { id: 'heart', type: 'heart', layer: 'screen', at: [830, 640], in: '@tap-0.1', out: '@tap+1.3', props: {} },
     { id: 'easy', type: 'text', layer: 'screen', at: [540, 500], in: '@easy', out: 5.75, props: TXT([[['EASY MONEY?', 'paper']]], 90) },
@@ -326,7 +327,7 @@ BM2.scene({
     { at: '@Top', beat: 'side-by-side', focus: 'case', move: 'whip', sy: 760, fill: 0.74, maxH: 950, pose: 'point' },
     { at: '@promoter-0.15', beat: 'zoom-on-number', focus: ['case.who', 'case.guilty'], fill: 0.9, sy: 820, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@38', beat: 'zoom-on-number', focus: ['case.guilty', 'case.months'], fill: 0.94, maxH: 700, zoom: 1.05, sy: 830, st: BKS, dur: 0.4 },
-    { at: 19.1, beat: 'pull-back', focus: 'case', fill: 0.8, maxH: 950, sy: 770, st: 'corner-left', pose: 'idle' },
+    { at: 19.1, beat: 'pull-back', focus: ['case', 'court'], fill: 0.8, maxH: 950, sy: 770, st: 'corner-left', pose: 'idle' },
     // 19.55: whip back to the wallet = frame 0
     { at: 19.55, beat: 'zoom-on-number', focus: ['hookI3', 'puppet.wallet'], move: 'whip', fill: 0.86, maxH: 1300, sy: 1000, st: FR, pose: 'talk' },
   ],

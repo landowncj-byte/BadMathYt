@@ -124,3 +124,4 @@ decisions:
 - 2026-11-25: Owner: Short covers = first or last frame, "I'll set it myself" → no cover.png for Shorts. Long-form thumbnails keep real photos.
 - 2026-11-25: Owner: stock only where a clean free photo exists, no watermarks ever; no Canva AI stock.
 - 2026-11-25: Pexels MCP idea dropped by owner (no API key available). Stock stays Wikimedia Commons only.
+- 2026-11-25: Installed free stock sources (no keys): Openverse (Flickr/StockSnap/Wikimedia/museums), Library of Congress, Wikimedia Commons → brand/tools/stock.py; hosts live.staticflickr.com, cdn.stocksnap.io, www.loc.gov, tile.loc.gov added.
