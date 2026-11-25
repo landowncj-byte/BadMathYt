@@ -1,34 +1,46 @@
 [
  [
-  "They call it just one percent. Over forty years it's three hundred sixteen grand.",
-  0.3
- ],
- [
-  "Two identical funds. One charges one percent more a year.",
-  0.2
- ],
- [
-  "Five hundred a month, forty years, seven percent before fees. Hypothetical.",
-  0.3
- ],
- [
-  "Ten years in, the gap's forty-six hundred. Nobody cares.",
+  "One percent sounds tiny. It ate three hundred sixteen grand.",
   0.25
  ],
  [
-  "[breath] Forty years in? Three hundred sixteen thousand dollars. Gone.",
-  0.3
+  "[breath] Same two funds, except one charges one percent more a year.",
+  0.25
  ],
  [
-  "That's more than the two hundred forty grand you even put in.",
-  0.3
+  "Tap the heart if that sounds like nothing.",
+  0.25
  ],
  [
-  "Would you even notice a one percent fee? Be honest. Comment.",
-  0.3
+  "Five hundred a month, forty years, an assumed seven percent.",
+  0.25
  ],
  [
-  "[smack] Follow.",
+  "Year ten? The gap's forty-six hundred bucks. Whatever.",
+  0.25
+ ],
+ [
+  "Send this to your friend with their first real job.",
+  0.25
+ ],
+ [
+  "Year thirty? A hundred seven grand. Yeah.",
+  0.25
+ ],
+ [
+  "Year forty's next, and it's ugly. Follow, this page catches the quiet ones.",
   0.4
+ ],
+ [
+  "Three hundred sixteen grand. To\u2014 to a fee.",
+  0.3
+ ],
+ [
+  "You only put in two forty. [sigh]",
+  0.3
+ ],
+ [
+  "Still tiny?",
+  0.45
  ]
 ]

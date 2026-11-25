@@ -1,22 +1,27 @@
 [
  {
-  "text": "A one percent fee sounds like nothing. It's a slow-ass robbery, and it's legal.",
+  "text": "One percent sounds like nothing. It's a slow-ass robbery, and it's legal.",
   "start": 0.0,
-  "end": 3.994
+  "end": 3.687
  },
  {
-  "text": "Five hundred a month for forty years at seven percent. The one percent fee eats three hundred sixteen grand.",
-  "start": 4.844,
-  "end": 10.175
+  "text": "Ever checked your fees? Double-tap if that's a no.",
+  "start": 4.537,
+  "end": 6.971
  },
  {
-  "text": "That's more than you ever put in.",
-  "start": 10.425,
-  "end": 13.226
+  "text": "Five hundred a month for forty years, at an assumed seven percent. That fee eats three hundred sixteen grand.",
+  "start": 7.221,
+  "end": 12.82
  },
  {
-  "text": "Send this to the friend who's never checked their fees.",
-  "start": 14.126,
-  "end": 16.596
+  "text": "Send this to the friend who hasn't checked either.",
+  "start": 13.12,
+  "end": 15.285
+ },
+ {
+  "text": "You only put in two forty. Still think one percent's nothing?",
+  "start": 16.235,
+  "end": 20.97
  }
 ]

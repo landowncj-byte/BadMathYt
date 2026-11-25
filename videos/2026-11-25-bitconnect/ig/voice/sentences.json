@@ -1,22 +1,32 @@
 [
  {
-  "text": "If something pays you one percent a day, you're not investing. You're getting your ass played.",
+  "text": "One percent a day? You're not investing. You're getting your ass played.",
   "start": 0.0,
-  "end": 4.006
+  "end": 3.018
  },
  {
-  "text": "A thousand bucks at one percent a day is a billion dollars in under four years. Come on.",
-  "start": 4.256,
-  "end": 8.941
+  "text": "Double-tap if that sounds like easy money.",
+  "start": 3.268,
+  "end": 5.55
  },
  {
-  "text": "BitConnect sold that dream. Prosecutors say two point four billion came in, and new money paid old money.",
-  "start": 9.191,
-  "end": 14.757
+  "text": "A grand at one percent a day? That's a billion bucks in under four years.",
+  "start": 5.8,
+  "end": 9.375
  },
  {
-  "text": "Top promoter? Thirty-eight months. Send this to your friend with the crypto bot.",
-  "start": 15.007,
-  "end": 20.264
+  "text": "Send this to your friend with the crypto bot.",
+  "start": 9.675,
+  "end": 11.908
+ },
+ {
+  "text": "BitConnect sold that. But prosecutors say new money paid old money.",
+  "start": 12.808,
+  "end": 16.502
+ },
+ {
+  "text": "Top U.S. promoter? Thirty-eight months.",
+  "start": 16.802,
+  "end": 20.076
  }
 ]

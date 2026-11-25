@@ -1,18 +1,22 @@
 [
  [
-  "A one percent fee sounds like nothing. It's a slow-ass robbery, and it's legal.",
+  "One percent sounds like nothing. It's a slow-ass robbery, and it's legal.",
   0.25
  ],
  [
-  "Five hundred a month for forty years at seven percent. The one percent fee eats three hundred sixteen grand.",
+  "Ever checked your fees? Double-tap if that's a no.",
   0.25
  ],
  [
-  "That's more than you ever put in. [sigh]",
+  "Five hundred a month for forty years, at an assumed seven percent. That fee eats three hundred sixteen grand.",
   0.3
  ],
  [
-  "Send this to the friend who's never checked their fees.",
-  0.4
+  "Send this to the friend who hasn't checked either.",
+  0.35
+ ],
+ [
+  "You only put in two forty. [sigh] Still think one percent's nothing?",
+  0.45
  ]
 ]

@@ -1,42 +1,57 @@
 [
  {
-  "text": "They call it just one percent. Over forty years it's three hundred sixteen grand.",
+  "text": "One percent sounds tiny. It ate three hundred sixteen grand.",
   "start": 0.0,
-  "end": 4.122
+  "end": 3.378
  },
  {
-  "text": "Two identical funds. One charges one percent more a year.",
-  "start": 4.422,
-  "end": 7.894
+  "text": "Same two funds, except one charges one percent more a year.",
+  "start": 4.228,
+  "end": 7.616
  },
  {
-  "text": "Five hundred a month, forty years, seven percent before fees. Hypothetical.",
-  "start": 8.694,
-  "end": 12.634
+  "text": "Tap the heart if that sounds like nothing.",
+  "start": 7.866,
+  "end": 9.887
  },
  {
-  "text": "Ten years in, the gap's forty-six hundred. Nobody cares.",
-  "start": 12.934,
-  "end": 16.132
+  "text": "Five hundred a month, forty years, an assumed seven percent.",
+  "start": 10.137,
+  "end": 13.08
  },
  {
-  "text": "Forty years in? Three hundred sixteen thousand dollars. Gone.",
-  "start": 16.982,
-  "end": 20.267
+  "text": "Year ten? The gap's forty-six hundred bucks. Whatever.",
+  "start": 13.33,
+  "end": 16.309
  },
  {
-  "text": "That's more than the two hundred forty grand you even put in.",
-  "start": 21.167,
-  "end": 23.945
+  "text": "Send this to your friend with their first real job.",
+  "start": 16.559,
+  "end": 19.072
  },
  {
-  "text": "Would you even notice a one percent fee? Be honest. Comment.",
-  "start": 24.845,
-  "end": 27.866
+  "text": "Year thirty? A hundred seven grand. Yeah.",
+  "start": 19.922,
+  "end": 22.225
  },
  {
-  "text": "Follow.",
-  "start": 28.229,
-  "end": 28.954
+  "text": "Year forty's next, and it's ugly. Follow, this page catches the quiet ones.",
+  "start": 23.075,
+  "end": 26.99
+ },
+ {
+  "text": "Three hundred sixteen grand. To\u2014 to a fee.",
+  "start": 27.39,
+  "end": 29.738
+ },
+ {
+  "text": "You only put in two forty.",
+  "start": 30.638,
+  "end": 33.578
+ },
+ {
+  "text": "Still tiny?",
+  "start": 33.878,
+  "end": 34.904
  }
 ]
