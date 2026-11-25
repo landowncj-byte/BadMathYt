@@ -46,9 +46,9 @@
 
   // ---------- bot: generic TRADING BOT box with a curtain; opens to show coins piped from new wallets to old wallets ----------
   B.register('bot', {
-    defaults: { w: 820, h: 1140, curtainAt: 99999, tagAt: 99999, coinInAt: 99999, payAt: 99999, takenAt: 99999, takenDur: 1.6, to: 2400000000 },
+    defaults: { w: 820, h: 1140, noTaken: false, curtainAt: 99999, tagAt: 99999, coinInAt: 99999, payAt: 99999, takenAt: 99999, takenDur: 1.6, to: 2400000000 },
     size: p => [p.w, p.h],
-    anchors(p) { const y0 = -p.h / 2; return { head: [0, y0 + 75, p.w, 150], window: [0, y0 + 440, p.w - 100, 500], taken: [0, y0 + 915, p.w * 0.94, 170] }; },
+    anchors(p) { const y0 = -p.h / 2; return { head: [0, y0 + 75, p.w, 150], pipe: [0, y0 + 440, p.w - 100, 500], window: [0, y0 + 440, p.w - 100, 500], taken: [0, y0 + 915, p.w * 0.94, 170] }; },
     draw(g, p, env) {
       const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, ww = w - 100, wh = 500, wx = x0 + 50, wy = y0 + 190, cy = wy + wh / 2;
       paper(g, x0, y0, w, h, 26, { lift });
@@ -85,12 +85,14 @@
       // PROSECUTORS SAY tag
       { const lt = t - p.tagAt; if (lt > 0) { const k = spring(lt, 'snappy'); g.save(); g.translate(x0 + 60 + 215, wy - 8); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.globalAlpha = clamp(lt / 0.08); clay(g, -215, -33, 430, 66, 16, theme.bad, { shadowK: 0.6 }); txt(g, 'PROSECUTORS SAY', 0, 3, F.cap(36), theme.paper); g.restore(); } }
       // taken in
+      if (!p.noTaken) {
       g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 748); g.lineTo(x0 + w - 40, y0 + 748); g.stroke(); g.setLineDash([]);
       txt(g, 'MONEY TAKEN IN', 0, y0 + 790, F.cap(38), theme.inkSoft);
       { const lt = t - p.takenAt, yA = y0 + 915; if (lt < 0) { g.fillStyle = theme.rule; rr(g, -300, yA - 40, 600, 80, 40); g.fill(); } else {
           const v = countAt(lt, p.takenDur, 0, p.to), land = lt - p.takenDur, speed = lt < p.takenDur ? Math.abs(countAt(lt + 0.02, p.takenDur, 0, p.to) - v) / 0.02 : 0, o = { font: F.hero(124), size: 124, color: theme.badInk, prefix: '$', speed }, k = fitW(g, p.to, o, w - 120);
           let s = 1 + (land > 0 ? 0.1 * hit(land, 6) : 0) + (env.hot === 'taken' ? 0.03 * env.hotK : 0); g.save(); g.translate(0, yA); g.scale(s * k, s * k); const rw = B.rollWidth(g, p.to, o).w; roll(g, v, 0, 0, o); if (land > 0) marker(g, -rw / 2, 78, rw, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, yA, w * 0.38, theme.bad, land, 18, 0.55);
           const on = lt - 0.2; if (on > 0) { const kk = spring(on, 'snappy'); g.save(); g.translate(0, y0 + 1040); g.scale(0.6 + 0.4 * kk, 0.6 + 0.4 * kk); g.globalAlpha = clamp(on / 0.08); clay(g, -135, -34, 270, 68, 16, theme.navy, { shadowK: 0.5 }); txt(g, 'PER DOJ', 0, 3, F.cap(38), theme.paper); g.restore(); } } }
+      }
       // paid-out coin
       { const lt = t - p.payAt; if (lt > 0 && lt < 1.1) { const a = clamp((1.1 - lt) / 0.3); coin(g, 60 + lt * 230, wy + wh - 6 - 520 * lt + 1100 * lt * lt, 30, a); } }
     },
@@ -155,67 +157,213 @@
       g.fillStyle = '#D8D3C7'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-30, 0); g.lineTo(-56, 38); g.closePath(); g.fill(); g.fillStyle = 'rgba(255,255,255,.7)'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-56, -38); g.lineTo(-30, -2); g.closePath(); g.fill(); g.strokeStyle = 'rgba(0,0,0,.25)'; g.lineWidth = 2; g.beginPath(); g.moveTo(70, 0); g.lineTo(-30, 0); g.stroke(); g.restore();
     },
   });
+
+  // ===== v3 recipes (rebuild 2026-11-25): slam text, phone, ticker, heart, flag, puppet =====
+  const segs3 = l => (typeof l === 'string' ? [[l, null]] : l.map(x => (typeof x === 'string' ? [x, null] : x)));
+  const path = (g, pts) => { g.beginPath(); pts.forEach((p, i) => (i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1]))); };
+
+  // ---------- slamtext: hook text that SLAMS in (huge -> 1) with an ink outline; no glow ----------
+  B.register('slamtext', {
+    defaults: { lines: [[['TEXT', 'paper']]], size: 120, lh: 1.04, slam: true, over: 0.5, dur: 0.26, at0: 0 }, ownEnter: true,
+    size: p => [Math.max(...p.lines.map(l => mw(segs3(l).map(s => s[0]).join(''), F.hero(p.size)))), p.lines.length * p.size * p.lh],
+    draw(g, p, { lt }) {
+      const font = F.hero(p.size), n = p.lines.length, u = clamp((lt - p.at0) / p.dur), k = p.slam ? 1 + p.over * (1 - ease.expo(u)) - 0.05 * B.wobble(lt - p.at0 - p.dur, 5, 9) : 1, a = p.slam ? 1 : clamp(lt / 0.12);
+      g.save(); g.scale(k, k); g.globalAlpha *= a; g.textBaseline = 'middle'; g.textAlign = 'left'; g.font = font; g.lineJoin = 'round';
+      p.lines.forEach((line, li) => { const ss = segs3(line), tw = mw(ss.map(s => s[0]).join(''), font); let x = -tw / 2; const y = (li - (n - 1) / 2) * p.size * p.lh;
+        for (const [s, tn] of ss) { g.save(); g.shadowColor = 'rgba(2,4,9,.55)'; g.shadowBlur = 14; g.shadowOffsetY = 8; g.strokeStyle = '#0B0F14'; g.lineWidth = p.size * 0.1; g.strokeText(s, x, y); g.restore(); g.fillStyle = tone(tn || 'paper', false); g.fillText(s, x, y); x += mw(s, font); } });
+      g.restore();
+    },
+  });
+
+  // ---------- phone: generic "crypto app" phone. cracks on crackAt, coins pour in on coinsAt, SHUT DOWN shutter on shutAt, clean again at resetAt ----------
+  B.register('phone', {
+    defaults: { w: 640, h: 1060, crackAt: 99999, shutAt: 99999, shutOutAt: 99999, coinsAt: 99999, coinN: 9 },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2; return { screen: [0, 0, p.w - 60, p.h - 120], rate: [0, y0 + 360, p.w - 100, 280], top: [0, y0 + 40, p.w, 120] }; },
+    draw(g, p, env) {
+      const { t, theme } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sx = x0 + 26, sy = y0 + 26, sw = w - 52, sh = h - 52;
+      // coins fall into the slot at the top edge (clipped above it)
+      if (t >= p.coinsAt && t < p.coinsAt + p.coinN * 0.13 + 0.9) { g.save(); g.beginPath(); g.rect(-w, y0 - 900, w * 2, 900 + 34); g.clip();
+        for (let i = 0; i < p.coinN; i++) { const l = t - p.coinsAt - i * 0.13; if (l < 0 || l > 0.55) continue; const u = clamp(l / 0.4); coin(g, (hash(i * 3.1) - 0.5) * 150, lerp(y0 - 520, y0 + 70, u * u), 40, 1); } g.restore(); }
+      clay(g, x0, y0, w, h, 64, '#1b2233', { shadowK: 0.7 });
+      g.save(); rr(g, sx, sy, sw, sh, 44); g.clip();
+      const bg = g.createLinearGradient(0, sy, 0, sy + sh); bg.addColorStop(0, '#1d2a40'); bg.addColorStop(1, '#0f1521'); g.fillStyle = bg; g.fillRect(sx, sy, sw, sh);
+      clay(g, -70, sy + 14, 140, 30, 15, '#05080d', { shadowK: 0.1 });
+      txt(g, 'YOUR CRYPTO APP', 0, sy + 96, F.monoX(26), rgba(theme.paper, 0.7)); txt(g, 'EARNINGS TODAY', 0, sy + 180, F.cap(34), rgba(theme.paper, 0.9));
+      txt(g, '+1.00%', 0, sy + 320, F.hero(196), theme.good); txt(g, 'EVERY. SINGLE. DAY.', 0, sy + 440, F.monoX(30), rgba(theme.paper, 0.75));
+      const n = 11, bw = (sw - 90) / n; for (let i = 0; i < n; i++) { const bh = 70 + i * 36 + (i % 3) * 10; clay(g, sx + 45 + i * bw + 4, sy + sh - 120 - bh, bw - 8, bh, 8, theme.good, { shadowK: 0.3 }); }
+      txt(g, 'ILLUSTRATION', 0, sy + sh - 52, F.mono(20), rgba(theme.paper, 0.45));
+      if (t >= p.crackAt) { const r = ease.out(clamp((t - p.crackAt) / 0.16)), cx = 70, cy = -90; g.lineCap = 'round'; g.lineJoin = 'round';
+        const rays = []; for (let i = 0; i < 10; i++) { const a0 = i * 0.628 + hash(i * 1.7) * 0.5, pts = [[cx, cy]]; let x = cx, y = cy, a = a0; for (let s = 0; s < 6; s++) { a += (hash(i * 9.1 + s) - 0.5) * 0.7; const L = 70 + hash(i * 4.3 + s * 2.1) * 120; x += Math.cos(a) * L; y += Math.sin(a) * L; pts.push([x, y]); } rays.push(pts); }
+        for (const pass of [0, 1]) { g.strokeStyle = pass ? 'rgba(255,255,255,.92)' : 'rgba(0,0,0,.55)'; g.lineWidth = pass ? 4 : 8; rays.forEach(pts => { const m = Math.max(1, Math.round(r * (pts.length - 1))); path(g, pts.slice(0, m + 1)); g.stroke(); }); }
+        g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; for (const rr0 of [150, 290]) { if (r < 0.7) break; g.beginPath(); for (let i = 0; i <= 10; i++) { const a = i * 0.628, d = rr0 * (0.85 + hash(i * 2.3 + rr0) * 0.3); i ? g.lineTo(cx + Math.cos(a) * d, cy + Math.sin(a) * d) : g.moveTo(cx + Math.cos(a) * d, cy + Math.sin(a) * d); } g.stroke(); }
+        const fl = hit(t - p.crackAt, 16); if (fl > 0.02) { g.fillStyle = `rgba(255,255,255,${0.55 * fl})`; g.fillRect(sx, sy, sw, sh); } }
+      // SHUT DOWN shutter
+      { const lt = t - p.shutAt; if (lt > 0 && t < p.shutOutAt + 0.35) { const u = ease.in(clamp(lt / 0.2)) * (1 - ease.inOut(clamp((t - p.shutOutAt) / 0.3))), bounce = lt > 0.2 ? 0.035 * sh * Math.exp(-(lt - 0.2) * 9) * Math.sin((lt - 0.2) * 34) : 0, bh = sh * u + bounce;
+          g.fillStyle = theme.navy; g.fillRect(sx, sy, sw, bh); g.fillStyle = 'rgba(0,0,0,.22)'; for (let y = sy + 30; y < sy + bh; y += 34) g.fillRect(sx, y, sw, 4);
+          g.fillStyle = theme.gold; g.fillRect(sx, sy + bh - 22, sw, 22); if (u > 0.55) { txt(g, 'SHUT', 0, -70, F.hero(180), theme.paper); txt(g, 'DOWN', 0, 90, F.hero(180), theme.bad); txt(g, 'JAN 2018', 0, 230, F.cap(54), theme.paper); } burst(g, 0, sy + bh, sw * 0.5, theme.gold, lt - 0.2, 14, 0.4); } }
+      g.restore();
+    },
+  });
+
+  // ---------- ticker: BitConnect "posted returns" card. +1% rows print one by one; source chip (alleged) ----------
+  B.register('ticker', {
+    defaults: { w: 820, h: 920, rowAt: [], srcAt: 99999, srcText: 'SOURCE: SEC COMPLAINT · ALLEGED' },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2, a = { head: [0, y0 + 70, p.w, 140], src: [0, y0 + p.h - 110, p.w * 0.92, 90] }; for (let i = 0; i < 4; i++) a['r' + i] = [0, y0 + 250 + i * 128, p.w * 0.9, 116]; return a; },
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2;
+      paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); const hg = g.createLinearGradient(0, y0, 0, y0 + 140); hg.addColorStop(0, 'rgba(255,255,255,.12)'); hg.addColorStop(1, 'rgba(0,0,0,.14)'); g.fillStyle = hg; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, 'BITCONNECT', x0 + 36, y0 + 58, F.hero(76), theme.paper, 'left'); txt(g, 'POSTED RETURNS · ABOUT 1% A DAY', x0 + 38, y0 + 110, F.mono(22), rgba(theme.paper, 0.78), 'left');
+      const labs = ['DAY 1', 'DAY 2', 'DAY 3', 'AND SO ON'];
+      for (let i = 0; i < 4; i++) { const ry = y0 + 250 + i * 128, lt = t - (p.rowAt[i] ?? 99999);
+        if (lt < 0) { g.save(); g.strokeStyle = rgba(theme.rule, 0.9); g.lineWidth = 3; g.setLineDash([9, 9]); rr(g, x0 + 36, ry - 52, w - 72, 104, 18); g.stroke(); g.restore(); continue; }
+        const k = spring(lt, 'snappy'), sc = 1.25 - 0.25 * k; g.save(); g.globalAlpha = clamp(lt / 0.06); g.translate(0, ry); g.scale(sc, sc);
+        g.fillStyle = theme.paperShade; rr(g, x0 + 36, -52, w - 72, 104, 18); g.fill(); g.fillStyle = theme.goodInk; rr(g, x0 + 36, -52, 14, 104, 7); g.fill();
+        txt(g, labs[i], x0 + 76, 4, F.monoX(40), theme.ink, 'left'); txt(g, '+1%', x0 + w - 62, 6, F.hero(84), theme.goodInk, 'right'); marker(g, x0 + 60, 36, w - 120, 7, theme.goodInk, clamp((lt - 0.05) / 0.3), 0.5); g.restore(); burst(g, 0, ry, w * 0.34, theme.good, lt, 12, 0.4); }
+      { const lt = t - p.srcAt; if (lt > 0) { const k = spring(lt, 'snappy'); g.save(); g.translate(0, y0 + h - 110 + (1 - k) * 30); g.globalAlpha = clamp(lt / 0.08); clay(g, -w * 0.43, -38, w * 0.86, 76, 18, theme.navy, { shadowK: 0.5 }); txt(g, p.srcText, 0, 3, F.monoX(27), theme.paper); g.restore(); } else { g.strokeStyle = rgba(theme.rule, 0.9); g.lineWidth = 3; g.setLineDash([9, 9]); rr(g, -w * 0.43, y0 + h - 148, w * 0.86, 76, 18); g.stroke(); g.setLineDash([]); } }
+    },
+  });
+
+  // ---------- heart: small like-pulse (screen layer, <= 1.5 s) ----------
+  B.register('heart', {
+    defaults: { s: 1 }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, k = 0.35 + 0.65 * spring(lt, 'snappy'), pul = 1 + 0.22 * hit(lt - 0.5, 9) * (lt > 0.5 ? 1 : 0), s = p.s * k * pul * 1.5;
+      g.save(); g.scale(s, s);
+      const r = lin(lt, 0.0, 0.55); if (r > 0 && r < 1) { g.strokeStyle = rgba(env.theme.paper, 0.7 * (1 - r)); g.lineWidth = 5; g.beginPath(); g.arc(0, -4, 60 + 70 * ease.out(r), 0, 7); g.stroke(); }
+      const r2 = lin(lt, 0.5, 1.05); if (r2 > 0 && r2 < 1) { g.strokeStyle = rgba(env.theme.paper, 0.7 * (1 - r2)); g.lineWidth = 5; g.beginPath(); g.arc(0, -4, 60 + 70 * ease.out(r2), 0, 7); g.stroke(); }
+      g.shadowColor = 'rgba(2,4,9,.45)'; g.shadowBlur = 18; g.shadowOffsetY = 10;
+      const hp = () => { g.beginPath(); g.moveTo(0, 42); g.bezierCurveTo(-112, -28, -52, -104, 0, -42); g.bezierCurveTo(52, -104, 112, -28, 0, 42); g.closePath(); };
+      hp(); const gr = g.createLinearGradient(-60, -80, 60, 50); gr.addColorStop(0, '#ff6b60'); gr.addColorStop(1, '#E0281E'); g.fillStyle = gr; g.fill(); g.shadowColor = 'transparent';
+      g.save(); hp(); g.clip(); g.fillStyle = 'rgba(255,255,255,.28)'; g.beginPath(); g.ellipse(-34, -52, 30, 16, -0.6, 0, 7); g.fill(); g.restore();
+      g.restore();
+    },
+  });
+
+  // ---------- flag: tiny "1% A DAY" chip; a huge red flag unfurls out of it (TikTok hook). furls back on backAt ----------
+  B.register('flag', {
+    defaults: { furlAt: -0.12, backAt: 99999, label: 'RED FLAG', chip: '1% A DAY' }, size: () => [900, 1000],
+    draw(g, p, env) {
+      const { t, theme } = env, ku = clamp((t - p.furlAt) / 0.42), k0 = ku <= 0 ? 0 : (1 - Math.pow(1 - ku, 3)) * (1 + 0.1 * Math.sin(ku * Math.PI)), kb = ease.inOut(clamp((t - p.backAt) / 0.5)), k = Math.max(0, k0 * (1 - kb)), top = -330, FW = 700, FH = 360;
+      // pole
+      g.fillStyle = '#8e98a8'; rr(g, -9, top - 24, 18, 700, 9); g.fill(); g.fillStyle = theme.gold; g.beginPath(); g.arc(0, top - 26, 20, 0, 7); g.fill();
+      // cloth
+      if (k > 0.01) { const w = FW * k, N = 22, up = [], dn = []; for (let i = 0; i <= N; i++) { const u = i / N, x = 9 + u * w, ph = t * 7 - u * 5, wave = Math.sin(ph) * (10 + 16 * u) * Math.min(1, k * 1.2); up.push([x, top + 4 + wave]); dn.push([x, top + FH - 4 + wave * 1.1 + u * 24]); }
+        g.save(); g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 24; g.shadowOffsetY = 14; g.beginPath(); up.forEach((q, i) => (i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1]))); for (let i = N; i >= 0; i--) g.lineTo(dn[i][0], dn[i][1]); g.closePath(); const fg = g.createLinearGradient(0, top, 0, top + FH); fg.addColorStop(0, '#ff5a50'); fg.addColorStop(1, '#c9241a'); g.fillStyle = fg; g.fill(); g.shadowColor = 'transparent'; g.clip();
+        for (let i = 0; i < N; i += 2) { g.fillStyle = 'rgba(0,0,0,.13)'; g.beginPath(); g.moveTo(up[i][0], up[i][1]); g.lineTo(up[i + 1][0], up[i + 1][1]); g.lineTo(dn[i + 1][0], dn[i + 1][1]); g.lineTo(dn[i][0], dn[i][1]); g.fill(); }
+        const ta = clamp((k - 0.7) / 0.3); if (ta > 0) { g.globalAlpha *= ta; txt(g, 'RED', 9 + w * 0.5, top + FH * 0.3 + Math.sin(t * 7 - 2.5) * 14, F.hero(122), theme.paper); txt(g, 'FLAG', 9 + w * 0.5, top + FH * 0.72 + Math.sin(t * 7 - 2.5) * 14, F.hero(122), theme.paper); } g.restore(); }
+      // chip
+      { const pk = 1 + 0.08 * hit(t - p.furlAt - 0.1, 9) * (t > p.furlAt ? 1 : 0); g.save(); g.translate(0, 372); g.scale(pk, pk); clay(g, -190, -52, 380, 104, 52, theme.paper, { shadowK: 0.6 }); txt(g, p.chip, 0, 5, F.hero(62), theme.badInk); g.restore(); }
+    },
+  });
+
+  // ---------- puppet: wallet on strings from a control bar; strings drop at dropAt, yank at yankAt / yankAt2 ----------
+  B.register('puppet', {
+    defaults: { dropAt: -0.1, yankAt: 99999, yankAt2: 99999 }, size: () => [760, 1100],
+    anchors: () => ({ wallet: [0, 170, 520, 400], bar: [0, -440, 600, 80] }),
+    draw(g, p, env) {
+      const { t, theme } = env, yk = at => { const l = t - at; return l < 0 ? 0 : 170 * Math.abs(Math.sin(l * 14)) * Math.exp(-l * 3.6); }, off = yk(p.yankAt) + yk(p.yankAt2), dk = ease.out(clamp((t - p.dropAt) / 0.38)), tilt = off * 0.0007;
+      const wy = 170 - off, barY = -440 + (1 - dk) * -700 - off * 0.5;
+      const anchors = [[-250, -60], [-90, -96], [90, -96], [250, -60]], tops = [[-260, 0], [-90, 0], [90, 0], [260, 0]];
+      g.save(); g.translate(0, barY); g.rotate(tilt); clay(g, -310, -22, 620, 44, 16, theme.manila, { shadowK: 0.5 }); clay(g, -26, -70, 52, 56, 12, '#8e98a8', { shadowK: 0.3 }); g.restore();
+      g.strokeStyle = rgba(theme.paper, 0.9); g.lineWidth = 4; g.lineCap = 'round';
+      anchors.forEach((a, i) => { const bx = tops[i][0] * Math.cos(tilt) + 0, by = barY + tops[i][0] * Math.sin(tilt); g.beginPath(); g.moveTo(bx, by); g.lineTo(a[0], wy + a[1]); g.stroke(); });
+      g.save(); g.translate(0, wy); g.rotate(-tilt * 2); wallet(g, 0, 0, 340, 250, theme.gold, 1.5, 1); g.restore();
+      g.save(); g.translate(-60, wy - 20); g.rotate(-0.08); clay(g, -190, -52, 380, 104, 52, theme.paper, { shadowK: 0.6 }); txt(g, '1% A DAY', 0, 5, F.hero(62), theme.badInk); g.restore();
+    },
+  });
 })();
-const BK = { x: 190, y: 1330, s: 0.95, layer: 'back' };
-const HOOK = { lines: [[['1% A DAY', 'bad']], [['SOUNDS TINY, RIGHT?', 'paper']]], size: 108 };
+// TikTok rebuild (beats.v2.md). Word times from voice/words.json (final voice).
+const FR = { x: 150, y: 1330, s: 1.25 };
+const BKS = { x: 190, y: 1330, s: 0.95, layer: 'back' };
+const TXT = (lines, size, extra = {}) => ({ lines, size, ...extra });
 BM2.scene({
-  series: 'decoded', title: 'CASE: BITCONNECT · 2017', duration: 34.36,
+  series: 'decoded', title: 'CASE: BITCONNECT · 2017', duration: 34.23,
   footnote: ['PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC', 'OUR MATH: $1,000 × 1.01^DAYS'],
   elements: [
-    { id: 'hook', type: 'text', at: [0, -690], in: -1, out: '@BitConnect-0.15', props: HOOK },
-    { id: 'hook2', type: 'text', at: [0, -690], in: '@BitConnect-0.05', out: '@Do-0.1', props: { lines: [[['BITCONNECT POSTED', 'paper']], [['ABOUT ', 'paper'], ['1% A DAY', 'bad']]], size: 96 } },
-    { id: 'ctr', type: 'compound', at: [0, 0], in: -1, props: { h: 920,
-      keys: [[0, 0], ['@One', 15], ['@37', 365], ['@Two', 365], ['@1#5', 730], [14.7, 730], ['@billionaire', 1389]],
-      rows: [{ day: 'DAY 365', v: '$37,783', at: '@37', tone: 'good' }, { day: 'DAY 730', v: '$1,427,588', at: '@1#5', tone: 'good' }, { day: 'DAY 1,389', v: '$1,000,000,000', at: '@billionaire', tone: 'bad', size: 56 }],
-      reset: 33.5 } },
-    { id: 'hook3', type: 'text', at: [0, -690], in: 33.85, props: HOOK },
-    { id: 'bot', type: 'bot', at: [1620, 0], in: '@Prosecutors-0.4', props: { curtainAt: '@new', tagAt: '@Prosecutors', takenAt: '@$2' } },
-    { id: 'case', type: 'case', at: [810, 1500], in: '@top-0.4', props: { guiltyAt: '@promoter', monthsAt: '@38' } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [560, 650], in: '@Would', out: '@Follow-0.2', props: { l1: 'WOULD YOU HAVE PUT IN $1,000?', l2: 'COMMENT', size: 46, tail: 'left' } },
-    { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1180], in: '@Follow+0.1', out: 33.6, props: { press: 0.7 } },
+    // ---- station A: tiny chip + red flag (frame 0) ----
+    { id: 'flag', type: 'flag', at: [-260, 0], in: -1, props: { furlAt: -0.12, backAt: 33.0, chip: 'SOUNDS TINY' } },
+    { id: 'hookT', type: 'slamtext', at: [0, -640], in: 0, out: 4.4, props: TXT([[['1% A DAY', 'bad']]], 196, { over: 0.22 }) },
+    { id: 'hookT2', type: 'slamtext', at: [0, -640], in: 33.0, props: TXT([[['1% A DAY', 'bad']]], 196, { slam: false }) },
+    // ---- station T: SEC card ----
+    { id: 'tick', type: 'ticker', at: [1750, 0], in: '@BitConnect-0.4', props: { rowAt: [5.1, 5.74, 6.5, 6.95], srcAt: '@per', srcText: 'SOURCE: SEC · ALLEGED' } },
+    // ---- station B: THE counter ----
+    { id: 'ctr', type: 'compound', at: [0, 1750], in: '@Do-0.5', props: { h: 940,
+      keys: [[0, 0], [10.8, 0], [11.7, 14], [12.3, 90], [12.94, 365], [14.82, 730], [16.0, 760], [17.5, 810], [18.8, 940], [20.04, 1095], [21.16, 1389]],
+      rows: [{ day: 'DAY 365', v: '$37,783', at: '@37', tone: 'good' }, { day: 'DAY 730', v: '$1,427,588', at: '@1', tone: 'good' }, { day: 'DAY 1,389', v: '$1,000,000,000', at: '@billionaire', tone: 'bad', size: 56 }] } },
+    // ---- station C: bot -> pipe ----
+    { id: 'bot', type: 'bot', at: [1750, 1750], in: '@Prosecutors-0.5', props: { h: 780, noTaken: true, curtainAt: '@new-0.1', tagAt: '@Prosecutors' } },
+    // ---- station D: promoter case ----
+    { id: 'case', type: 'case', at: [3500, 1750], in: '@Top-0.4', props: { guiltyAt: '@promoter', monthsAt: '@38' } },
+    // ---- screen-fixed micro moments ----
+    { id: 'heart', type: 'heart', layer: 'screen', at: [830, 640], in: '@hard-0.1', out: '@hard+1.3', props: {} },
+    { id: 'hyped', type: 'text', layer: 'screen', at: [540, 500], in: '@hyped', out: 10.35, props: TXT([[['HYPED?', 'paper']]], 96) },
+    { id: 'send', type: 'text', layer: 'screen', at: [610, 1235], in: '@Send', out: '@Send+1.3', props: TXT([[['SEND ', 'accent'], ['THIS', 'paper']]], 80) },
+    { id: 'plane', type: 'plane', layer: 'screen', at: [540, 790], in: '@Send-0.05', out: '@Send+1.3', props: { dur: 1.25, s: 1.5, from: [-380, 330], to: [420, -300] } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [560, 650], in: '@Would', out: 33.5, props: { l1: 'WOULD YOU HAVE BOUGHT IN?', l2: 'COMMENT', size: 46, tail: 'left' } },
+    { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1180], in: '@Follow+0.1', out: '@Follow+1.55', props: { press: 0.8 } },
   ],
   beats: [
-    { at: 0, beat: 'side-by-side', focus: ['hook', 'ctr'], sx: 650, sy: 835, fill: 0.7, maxH: 1000, st: { x: 150, y: 1330, s: 1.25 }, pose: 'talk' },
-    { at: '@Bro', beat: 'presenter-front', focus: ['hook', 'ctr'], sy: 760, pose: 'talk' },
-    { at: '@BitConnect', beat: 'graphic-hero', focus: ['hook2', 'ctr'], sy: 835, fill: 0.72, maxH: 1000, st: 'corner-left', pose: 'point' },
-    { at: '@1#2', beat: 'zoom-on-number', focus: 'ctr.head', fill: 0.92, sy: 690, st: BK, dur: 0.5 },
-    { at: '@Do', beat: 'graphic-hero', focus: 'ctr', st: 'corner-left', fill: 0.78, maxH: 1000, sy: 760, pose: 'point' },
-    { at: '@1#3', beat: 'zoom-on-number', focus: 'ctr.head', fill: 0.92, sy: 690, st: BK, dur: 0.5 },
-    { at: '@One', beat: 'graphic-hero', focus: 'ctr', st: 'corner-left', fill: 0.78, maxH: 1000, sy: 760, pose: 'point' },
-    { at: '@37', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.8, sy: 812, st: BK, rot: 0.012, dur: 0.5 },
-    { at: '@Two', beat: 'pull-back', focus: 'ctr', fill: 0.78, maxH: 1000, sy: 760, st: 'corner-left' },
-    { at: '@1#5', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.8, sy: 812, st: BK, rot: -0.012, dur: 0.5 },
-    { at: '@million', beat: 'pull-back', focus: 'ctr', fill: 0.78, maxH: 1000, sy: 760, st: 'corner-left' },
-    { at: '@day#4', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.8, sy: 812, st: BK, rot: 0.012, dur: 0.5 },
-    { at: '@billionaire', beat: 'zoom-on-number', focus: ['ctr.value', 'ctr.m2'], fill: 0.9, maxH: 780, sy: 850, st: BK, pose: 'shock', dur: 0.5 },
-    { at: '@Off', beat: 'pull-back', focus: 'ctr', fill: 0.78, maxH: 1000, sy: 760, st: 'corner-left' },
-    { at: '@no', beat: 'presenter-front', focus: 'ctr', sy: 760, pose: 'shrug' },
-    { at: '@Prosecutors', beat: 'side-by-side', focus: 'bot', move: 'whip', sy: 800, fill: 0.72, maxH: 900, pose: 'point' },
-    { at: '@new', beat: 'graphic-hero', focus: 'bot.window', fill: 0.86, sy: 900, st: 'corner-left', pose: 'point' },
-    { at: '@$2', beat: 'zoom-on-number', focus: 'bot.taken', fill: 0.86, sy: 890, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@top', beat: 'side-by-side', focus: 'case', move: 'whip', sy: 760, fill: 0.72, maxH: 950, pose: 'point' },
-    { at: '@38', beat: 'zoom-on-number', focus: ['case.guilty', 'case.months'], fill: 0.74, maxH: 760, sy: 960, st: BK, pose: 'shock', dur: 0.5 },
-    { at: '@Would', beat: 'presenter-front', focus: 'case', sy: 760, pose: 'chin' },
-    { at: '@Follow-0.3', beat: 'wide', focus: ['ctr', 'bot', 'case'], fill: 0.94, sy: 760, st: { x: 250, y: 1330, s: 1.4 }, pose: 'you', dur: 1.0 },
-    { at: 33.65, beat: 'side-by-side', focus: ['hook3', 'ctr'], move: 'whip', sx: 650, sy: 835, fill: 0.7, maxH: 1000, st: { x: 150, y: 1330, s: 1.25 }, pose: 'talk' },
+    { at: 0, beat: 'zoom-on-number', focus: ['hookT', 'flag'], fill: 0.86, maxH: 1200, sy: 900, st: FR, pose: 'shock', dur: 0.5 },
+    { at: '@it\'s', beat: 'zoom-on-number', focus: { x: 200, y: -170, w: 700, h: 380 }, fill: 0.9, maxH: 640, sy: 700, st: BKS, rot: -0.012, dur: 0.5 },
+    { at: '@bro-0.05', beat: 'presenter-front', focus: ['hookT', 'flag'], sy: 760, pose: 'talk' },
+    // 4.5-8: SEC card
+    { at: '@BitConnect', beat: 'side-by-side', focus: 'tick', move: 'whip', sy: 800, fill: 0.74, maxH: 960, pose: 'point' },
+    { at: '@about', beat: 'graphic-hero', focus: 'tick', st: 'corner-left', fill: 0.82, maxH: 900, sy: 850, pose: 'point' },
+    { at: '@one#2', beat: 'zoom-on-number', focus: ['tick.r1', 'tick.r2'], fill: 0.88, maxH: 560, sy: 880, st: BKS, rot: -0.012, dur: 0.5 },
+    { at: '@per-0.1', beat: 'pull-back', focus: 'tick', fill: 0.8, maxH: 880, sy: 850, st: 'corner-left' },
+    // 8.2-10.3 heart
+    { at: '@Tap', beat: 'presenter-front', focus: 'tick', sy: 760, pose: 'talk' },
+    // 10.3-: counter
+    { at: '@Do', beat: 'side-by-side', focus: 'ctr', move: 'whip', sy: 760, fill: 0.74, maxH: 1000, pose: 'point' },
+    { at: '@thousand', beat: 'zoom-on-number', focus: 'ctr.head', fill: 0.92, sy: 690, st: BKS, dur: 0.5 },
+    { at: '@year-0.1', beat: 'graphic-hero', focus: 'ctr', st: 'corner-left', fill: 0.8, maxH: 1000, sy: 760, pose: 'point' },
+    { at: '@37', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.82, sy: 812, st: BKS, rot: 0.012 },
+    { at: 14.0, beat: 'pull-back', focus: 'ctr', fill: 0.8, maxH: 1000, sy: 760, st: 'corner-left' },
+    { at: '@1', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.84, sy: 812, st: BKS, rot: -0.012 },
+    { at: 15.9, beat: 'graphic-hero', focus: 'ctr', fill: 0.8, maxH: 1000, sy: 760, st: 'corner-left', pose: 'point' },
+    { at: '@Send', beat: 'graphic-hero', focus: 'ctr', fill: 0.86, maxH: 1000, sy: 820, st: 'corner-left', pose: 'you' },
+    { at: 19.0, beat: 'pull-back', focus: 'ctr', fill: 0.8, maxH: 1000, sy: 760, st: 'corner-left' },
+    { at: '@1389', beat: 'zoom-on-number', focus: 'ctr.value', fill: 0.84, sy: 812, st: BKS, rot: 0.012, dur: 0.5 },
+    { at: '@billionaire', beat: 'zoom-on-number', focus: ['ctr.value', 'ctr.m2'], fill: 0.9, maxH: 760, sy: 850, st: BKS, pose: 'shock', dur: 0.4 },
+    { at: '@be', beat: 'presenter-front', focus: 'ctr', sy: 760, pose: 'shrug' },
+    // 23.3-: pipe
+    { at: '@Prosecutors', beat: 'side-by-side', focus: 'bot', move: 'whip', sy: 800, fill: 0.74, maxH: 960, pose: 'point' },
+    { at: '@money', beat: 'zoom-on-number', focus: 'bot.pipe', fill: 0.94, maxH: 560, sy: 880, st: BKS, pose: 'point', dur: 0.5 },
+    { at: 25.0, beat: 'pull-back', focus: 'bot', fill: 0.78, maxH: 960, sy: 790, st: 'corner-left' },
+    // 26-28: follow
+    { at: '@Follow-0.05', beat: 'wide', focus: ['flag', 'tick', 'ctr', 'bot'], fill: 0.94, sy: 760, st: { x: 250, y: 1330, s: 1.4 }, pose: 'you', dur: 1.0 },
+    // 28.4-: payoff
+    { at: '@Top', beat: 'side-by-side', focus: 'case', move: 'whip', sy: 760, fill: 0.74, maxH: 950, pose: 'point' },
+    { at: '@promoter-0.15', beat: 'zoom-on-number', focus: ['case.who', 'case.guilty'], fill: 0.9, sy: 820, st: 'corner-left', pose: 'shock', dur: 0.4 },
+    { at: '@38', beat: 'zoom-on-number', focus: ['case.guilty', 'case.months'], fill: 0.94, maxH: 700, zoom: 1.05, sy: 830, st: BKS, dur: 0.4 },
+    { at: 30.8, beat: 'pull-back', focus: 'case', fill: 0.8, maxH: 950, sy: 770, st: 'corner-left', pose: 'idle' },
+    { at: 31.6, beat: 'presenter-front', focus: 'case', sy: 760, pose: 'chin' },
+    // 33: back to the chip = frame 0
+    { at: 33.0, beat: 'zoom-on-number', focus: ['hookT2', 'flag'], move: 'whip', fill: 0.86, maxH: 1200, sy: 900, st: FR, pose: 'talk' },
   ],
   poses: [['@Follow', 'follow', { target: [830, 1180] }]],
-  shakes: [['@billionaire', 16], ['@promoter', 12], ['@$2+1.6', 10]],
-  captions: { emph: { '1': 'bad', billionaire: 'bad', '$2.4': 'bad', billion: 'bad', '38': 'bad', '37': 'good', prosecutors: 'accent' }, fix: [['1389', '1,389'], ['bod', 'bot']] },
+  shakes: [[0.0, 12], ['@it\'s', 12], ['@billionaire', 20], ['@promoter', 14], ['@38', 22]],
+  captions: { emph: { '1': 'bad', '%': 'bad', flag: 'bad', billionaire: 'bad', '37': 'good', prosecutors: 'accent', '38': 'bad', heart: 'bad' },
+    fix: [['hard if', 'heart if'], ['tap the hard', 'tap the heart'], ['1389,', '1,389,'], ['bought-ins?', 'bought in?'], ['its 1.4', '1.4']] },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
-    { at: 0, name: 'deep_boom_2', gain: -5, dur: 0.36 }, { at: 0.08, name: 'money_counter_1', gain: -15, dur: 1.4 },
-    { at: '@BitConnect', name: 'pop_1', gain: -9, dur: 0.5 },
-    { at: '@One', name: 'money_counter_1', gain: -13, dur: 0.8 }, { at: '@37', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@37', name: 'paper_slam_2', gain: -11, dur: 0.5 },
-    { at: '@Two', name: 'money_counter_2', gain: -14, dur: 0.6 }, { at: '@1#5', name: 'cash_register_2', gain: -8, dur: 0.9 }, { at: '@1#5', name: 'paper_slam_2', gain: -11, dur: 0.5 },
-    { at: '@day#4', name: 'money_counter_2', gain: -12, dur: 1.2 }, { at: '@billionaire', name: 'deep_boom_1', gain: -4, dur: 1.6 }, { at: '@billionaire', name: 'cash_register_1', gain: -7, dur: 0.9 }, { at: '@billionaire', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
-    { at: '@no', name: 'record_scratch_1', gain: -10, dur: 0.6 },
-    { at: '@Prosecutors', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@Prosecutors', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@new', name: 'swoosh_2', gain: -10, dur: 1.0 }, { at: '@new+0.35', name: 'money_counter_1', gain: -14, dur: 1.6, offset: 0.4 },
-    { at: '@$2', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@$2+0.05', name: 'money_counter_2', gain: -12, dur: 1.6 }, { at: '@$2+1.6', name: 'deep_boom_2', gain: -6, dur: 0.36 },
-    { at: '@top', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@promoter', name: 'rubber_stamp_2', gain: -3, dur: 0.5 }, { at: '@promoter', name: 'gavel_1', gain: -5, dur: 0.8 },
-    { at: '@38', name: 'money_counter_2', gain: -11, dur: 0.8 }, { at: '@38+0.72', name: 'ding_2', gain: -8, dur: 0.7 },
-    { at: '@Would', name: 'pop_1', gain: -9, dur: 0.5 },
-    { at: '@Follow+0.8', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@Follow+0.85', name: 'success_chime_1', gain: -12, dur: 1.2 },
-    { at: 33.5, name: 'rewind_2', gain: -10, dur: 0.9 },
+    { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.4 }, { at: 0.05, name: 'punch_1', gain: -9, dur: 0.5 },
+    { at: '@it\'s', name: 'riser_1', gain: -14, dur: 1.0 }, { at: '@red', name: 'alarm_1', gain: -16, dur: 0.8 },
+    { at: '@BitConnect', name: 'paper_slam_2', gain: -10, dur: 0.5 },
+    { at: 5.1, name: 'click_1', gain: -8, dur: 0.3 }, { at: 5.74, name: 'click_1', gain: -8, dur: 0.3 }, { at: 6.5, name: 'click_1', gain: -7, dur: 0.3 }, { at: 6.95, name: 'click_1', gain: -8, dur: 0.3 }, { at: '@per', name: 'pop_1', gain: -10, dur: 0.4 },
+    { at: '@hard-0.1', name: 'pop_2', gain: -8, dur: 0.5 },
+    { at: 11.0, name: 'money_counter_1', gain: -13, dur: 1.4 }, { at: '@37', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@37', name: 'paper_slam_2', gain: -11, dur: 0.5 },
+    { at: '@1', name: 'cash_register_2', gain: -8, dur: 0.9 }, { at: '@1', name: 'paper_slam_2', gain: -11, dur: 0.5 }, { at: 16.0, name: 'money_counter_2', gain: -14, dur: 1.6 },
+    { at: '@Send-0.05', name: 'swoosh_2', gain: -9, dur: 1.0 }, { at: '@1389', name: 'money_counter_1', gain: -12, dur: 1.4, offset: 0.4 },
+    { at: '@billionaire', name: 'deep_boom_1', gain: -4, dur: 1.6 }, { at: '@billionaire', name: 'cash_register_1', gain: -7, dur: 0.9 }, { at: '@billionaire', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@be', name: 'record_scratch_1', gain: -10, dur: 0.6 },
+    { at: '@Prosecutors', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@Prosecutors', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@new-0.1', name: 'swoosh_2', gain: -10, dur: 1.0 }, { at: '@new+0.25', name: 'money_counter_1', gain: -14, dur: 1.6, offset: 0.4 },
+    { at: '@Follow+0.85', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@Follow+0.9', name: 'success_chime_1', gain: -12, dur: 1.2 },
+    { at: '@Top', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@promoter', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@promoter', name: 'gavel_1', gain: -6, dur: 0.8 },
+    { at: '@38', name: 'cinematic_hit_1', gain: -3, dur: 1.6 }, { at: '@38', name: 'money_counter_2', gain: -11, dur: 0.8 }, { at: '@38+0.72', name: 'ding_2', gain: -8, dur: 0.7 },
+    { at: '@Would', name: 'pop_1', gain: -9, dur: 0.5 }, { at: 32.95, name: 'rewind_2', gain: -11, dur: 0.9 },
   ],
 });

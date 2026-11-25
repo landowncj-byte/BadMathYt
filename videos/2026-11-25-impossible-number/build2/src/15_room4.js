@@ -57,7 +57,7 @@ bt('@P57', 'presenter-front', ['perf', 'ask56'], { fill: 0.62, maxH: 800, sy: 48
 po('@P57:subscribe', 'follow', [1470, 870]); po('@P57:comments', 'you'); po('@P57:then', 'point'); sf('@P57:subscribe+0.05', 'pop_2', -9, 0.3); sf('@P57:subscribe+1.05', 'click_1', -8, 0.3); sf('@P57:subscribe+1.1', 'success_chime_1', -12, 1.2);
 sf('@P57:comments-0.3', 'pop_1', -9, 0.3); bt('@P57:then', 'side-by-side', 'tankthumb', { fill: 0.3, maxH: 520, sx: 820, sy: 500, st: 'corner', pose: 'point' }); sf('@P57:then-0.4', 'swoosh_1', -11, 0.6); sf('@P57:tank', 'pop_2', -8, 0.3);
 // END CARD (15 s): wordmark, two YouTube end-screen slots, storyteller waving, music
-const END0 = 482.6;
-el('wm', 'text', 960, 140, END0 - 0.1, { lines: [[['BAD MATH', 'paper']]], size: 150, shadow: true }, { layer: 'screen' });
-el('slots', 'endslots', 0, 0, END0 + 0.1, { rl: 'WATCH NEXT', cl: 'SUBSCRIBE' }, { layer: 'screen' });
-bt(END0, 'wide', { x: XE, y: 0, w: 1000, h: 600 }, { move: 'whip', dur0: 0.9, fill: 0.5, sy: 470, st: { x: 1075, y: 1064, s: 1.05, layer: 'front' }, pose: 'wave', stDur: 0.9, arc: 0.2 }); sf(END0 - 0.2, 'swoosh_1', -9, 0.8); sf(END0 + 0.4, 'success_chime_2', -12, 1.4);
+const END0 = '@P57>+0.3';
+el('wm', 'text', 960, 140, '@P57>+0.2', { lines: [[['BAD MATH', 'paper']]], size: 150, shadow: true }, { layer: 'screen' });
+el('slots', 'endslots', 0, 0, '@P57>+0.4', { rl: 'WATCH NEXT', cl: 'SUBSCRIBE' }, { layer: 'screen' });
+bt(END0, 'wide', { x: XE, y: 0, w: 1000, h: 600 }, { move: 'whip', dur0: 0.9, fill: 0.5, sy: 470, st: { x: 1075, y: 1064, s: 1.05, layer: 'front' }, pose: 'wave', stDur: 0.9, arc: 0.2 }); sf('@P57>+0.1', 'swoosh_1', -9, 0.8); sf('@P57>+0.7', 'success_chime_2', -12, 1.4);

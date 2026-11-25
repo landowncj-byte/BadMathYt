@@ -25,7 +25,7 @@
     const byP = {}; for (const p of paras || []) byP[p.id] = { ...p, ws: words.filter(w => w.p === p.id) };
     return function T(ref) {
       if (typeof ref === 'number') return ref; if (typeof ref !== 'string' || ref[0] !== '@') throw new Error('bad time ref: ' + JSON.stringify(ref));
-      const pm = ref.slice(1).match(/^(P\d+)(?::(.*?))?(?:#(\d+))?(>)?([+-]\d*\.?\d+)?$/);
+      const pm = ref.slice(1).match(/^(P\d+[a-z]?)(?::(.*?))?(?:#(\d+))?(>)?([+-]\d*\.?\d+)?$/);
       if (pm && byP[pm[1]]) { const P = byP[pm[1]], off = +(pm[5] || 0);
         if (pm[2] == null) return (pm[4] ? P.end : P.start) + off;
         if (pm[2][0] === '#' || pm[2] === '') { const w = P.ws[(+(pm[2].slice(1) || pm[3] || 1)) - 1]; if (!w) throw new Error(`time ref ${ref}: paragraph has ${P.ws.length} words`); return (pm[4] ? w.e : w.s) + off; }
@@ -94,8 +94,17 @@
         const c = Math.cos(e.rot), s = Math.sin(e.rot); return { x: e.at[0] + (cx * c - cy * s) * e.scale, y: e.at[1] + (cx * s + cy * c) * e.scale, w: w * e.scale, h: h * e.scale };
       };
       // ----- beats -> camera keys, storyteller keys, focus keys, pose timeline -----
-      const beats = (spec.beats || []).map(b => ({ ...BEATS[b.beat || 'graphic-hero'], ...b, t: T(b.at) })).sort((a, b) => a.t - b.t);
+      const beats = (spec.beats || []).map(b => ({ ...BEATS[b.beat || 'graphic-hero'], ...b, t: T(b.at), _ust: b.st })).sort((a, b) => a.t - b.t);
       if (!beats.length) throw new Error('scene needs at least one beat');
+      // opt-in (spec.travel = {every: 12}): the storyteller changes side every `every` s and on every whip, steps out of the way of wide shots
+      if (spec.travel) { const every = spec.travel.every || 12, DEFST = { 'graphic-hero': 'corner', 'zoom-on-number': 'corner', 'pull-back': 'corner', wide: 'corner', 'side-by-side': 'left', 'presenter-front': 'front', peek: 'peek', 'over-shoulder': 'shoulder' }; let cur = 'corner', since = -99;
+        beats.forEach(b => { const name = b.beat || 'graphic-hero', eff = b._ust !== undefined ? b._ust : DEFST[name], ts = typeof eff === 'string' ? eff : 'custom';
+          if (b._ust !== undefined || !['graphic-hero', 'zoom-on-number', 'pull-back', 'wide'].includes(name)) { if (ts !== cur) since = b.t; cur = ts; return; }
+          const wide = (b.fill ?? 0.5) >= 0.7 || name === 'wide', move = b.move === 'whip', sxv = b.sx ?? 880;
+          if (wide) { if (cur === 'corner-left') { cur = 'corner'; since = b.t; } b.st = 'corner'; return; }
+          if ((move && b.t - since >= 4) || b.t - since >= every) { cur = cur === 'corner-left' ? 'corner' : 'corner-left'; since = b.t; }
+          if (cur === 'corner-left') { b.st = 'corner-left'; b.sx = Math.max(sxv, 1040); } });
+      }
       const camKeys = [], stKeys = [], focusKeys = [], poseTL = [], sfx = [];
       const worldIds = els.filter(e => e.layer === 'mid').map(e => e.id);
       beats.forEach((b, i) => {

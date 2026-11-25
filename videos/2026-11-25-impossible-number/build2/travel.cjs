@@ -1,0 +1,5 @@
+const { chromium } = require('playwright'); const path = require('path');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1920, height: 1080 } }); await p.goto('file://' + path.resolve(__dirname, 'scene.html')); await p.evaluate(() => window.ready);
+  const r = await p.evaluate(() => { const o = []; for (let t = 0; t < 495; t += 0.5) { const s = BM2.debug.stTrack.at(t); o.push([t, Math.round(s.x), s.layer, +s.s.toFixed(2)]); } return o; }); await b.close();
+  let runs = [], cur = r[0]; for (const q of r) { if (Math.abs(q[1] - cur[1]) > 100 || Math.abs(q[3] - cur[3]) > 0.3 || q[2] !== cur[2]) { runs.push([cur[0], q[0], cur[1]]); cur = q; } } runs.push([cur[0], 495, cur[1]]);
+  const long = runs.filter(x => x[1] - x[0] > 14); console.log('spot changes', runs.length, 'longest run', Math.max(...runs.map(x => x[1] - x[0])), 's; runs > 14 s:', JSON.stringify(long)); console.log('time share left (<600):', (r.filter(q => q[1] < 600).length / r.length).toFixed(2), ' front/back layer share:', (r.filter(q => q[2] === 'back').length / r.length).toFixed(2)); })();

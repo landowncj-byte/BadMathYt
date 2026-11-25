@@ -49,7 +49,7 @@
 
   // ---------- twin: two identical funds growing side by side, year ticker, gap tag, ghost block ----------
   B.register('twin', {
-    defaults: { w: 900, h: 1100, ticker: [[0, 0]], gaps: [], ghostAt: 99999, tagFinal: false, feeTagAt: -1, ripAt: 99999, depAt: -1, rateAt: -1, bpAt: -1, bpOut: 99999, coinAt: -1 },
+    defaults: { w: 900, h: 1100, ticker: [[0, 0]], gaps: [], ghostAt: 99999, tagFinal: false, feeTagAt: -1, ripAt: 99999, chips: null, depAt: -1, rateAt: -1, bpAt: -1, bpOut: 99999, coinAt: -1 },
     size: p => [p.w, p.h],
     anchors: p => ({ head: [0, -485, 900, 130], year: [270, -485, 340, 120], tag: [0, -300, 840, 110], btag: [185, 507, 340, 100], base: [0, 335, 780, 210], tops: [0, -150, 780, 230], ghost: [185, -92, 330, 190], cols: [0, 110, 780, 640], names: [0, 485, 780, 130] }),
     draw(g, p, env) {
@@ -73,8 +73,8 @@
       const col = (cx, hh, c) => { if (hh < 1) return; clay(g, cx - cw / 2, baseY - hh, cw, hh, 14, c, { shadowK: 0.6 }); g.save(); rr(g, cx - cw / 2, baseY - hh, cw, hh, 14); g.clip(); g.fillStyle = 'rgba(0,0,0,.10)'; for (let y = baseY - 26; y > baseY - hh; y -= 26) g.fillRect(cx - cw / 2, y, cw, 3); g.restore(); };
       // blueprint columns (same fund, same size) before the money flows
       if (p.bpAt > -0.5 && t >= p.bpAt && t < p.bpOut + 0.4) { const bt = t - p.bpAt, k = Math.max(0, spring(bt, 'bouncy')), kb = Math.max(0, spring(bt - 0.12, 'bouncy')), fo = 1 - ease.in(lin(t, p.bpOut, p.bpOut + 0.35)), bh = 330, wob = 1 + 0.025 * Math.sin(bt * 14) * Math.exp(-bt * 3);
-        g.save(); g.globalAlpha *= clamp(bt / 0.1) * fo; for (const [cx, kk, c] of [[ax, k, theme.good], [bx, kb, theme.gold]]) { const hh = bh * kk * wob; g.fillStyle = rgba(c, 0.22); rr(g, cx - cw / 2, baseY - hh, cw, hh, 14); g.fill(); g.strokeStyle = c; g.lineWidth = 5; g.setLineDash([16, 10]); rr(g, cx - cw / 2, baseY - hh, cw, hh, 14); g.stroke(); g.setLineDash([]); }
-        if (bt > 0.3) txt(g, '= SAME', 0, baseY - bh * 0.5, F.hero(64), theme.ink); g.restore(); }
+        g.save(); g.globalAlpha *= clamp(bt / 0.1) * fo; for (const [cx, kk, c] of [[ax, k, theme.good], [bx, kb, theme.gold]]) { const hh = bh * kk * wob * (cx === bx && p.feeTagAt > -0.5 && t >= p.feeTagAt ? 1 - 0.14 * Math.min(1.1, spring(t - p.feeTagAt, 'bouncy')) : 1); g.fillStyle = rgba(c, 0.22); rr(g, cx - cw / 2, baseY - hh, cw, hh, 14); g.fill(); g.strokeStyle = c; g.lineWidth = 5; g.setLineDash([16, 10]); rr(g, cx - cw / 2, baseY - hh, cw, hh, 14); g.stroke(); g.setLineDash([]); }
+        if (bt > 0.3 && !(p.feeTagAt > -0.5 && t >= p.feeTagAt)) txt(g, '= SAME', 0, baseY - bh * 0.5, F.hero(64), theme.ink); g.restore(); }
       // coins dripping into both columns while the clock runs
       if (speed > 0.25 || (p.coinAt > -0.5 && t >= p.coinAt && t < p.coinAt + 3)) for (let i = 0; i < 10; i++) { const ph = ((t * 1.7 + i / 10) % 1), cx = (i % 2 ? bx : ax) + (hash(i * 3.3) - 0.5) * 140, cy = lerp(baseY - 640, baseY - Math.max(40, (i % 2 ? hB : hA)) - 20, ph * ph); g.save(); g.globalAlpha *= Math.min(1, ph * 6) * (1 - lin(ph, 0.9, 1)); g.translate(cx, cy); g.scale(1, 0.55); g.fillStyle = '#8a6408'; g.beginPath(); g.arc(0, 8, 17, 0, 7); g.fill(); g.fillStyle = '#F2B705'; g.beginPath(); g.arc(0, 0, 17, 0, 7); g.fill(); g.strokeStyle = 'rgba(138,100,8,.7)'; g.lineWidth = 3; g.beginPath(); g.arc(0, 0, 10, 0, 7); g.stroke(); g.restore(); }
       // ghost block: what the fee takes from fund B
@@ -94,7 +94,9 @@
       if (p.feeTagAt > -0.5 && t >= p.feeTagAt) { const ft = t - p.feeTagAt, k = spring(ft, 'bouncy'); g.save(); g.translate(bx, baseY + 107); g.rotate(-0.07 * (1 - k)); g.scale(0.3 + 0.7 * k, 0.3 + 0.7 * k); g.globalAlpha *= clamp(ft / 0.06); const f = F.monoX(30), tw = mw('+1% A YEAR', f) + 56; clay(g, -tw / 2, -27, tw, 54, 27, theme.bad, { shadowK: 0.6 }); g.fillStyle = theme.paper; g.beginPath(); g.arc(-tw / 2 + 24, 0, 7, 0, 7); g.fill(); txt(g, '+1% A YEAR', 10, 2, f, theme.paper); g.restore(); burst(g, bx, baseY + 107, 130, theme.bad, ft - 0.04, 12, 0.4); }
       // gap tag (fixed zone under the header): the latest callout
       let cur = null; for (const gp of p.gaps) if (t >= gp.at) cur = gp;
-      if (!cur) for (const [at, s1] of [[p.depAt, '$500 / MONTH × 40 YEARS'], [p.rateAt, 'ASSUMES 7% BEFORE FEES · NOT A FORECAST']]) { if (at > -0.5 && t >= at) { const ct = t - at, k = spring(ct, 'bouncy'), f = F.monoX(s1[0] === '$' ? 38 : 27), tw = mw(s1, f) + 60; if (s1[0] === '$' && p.rateAt > -0.5 && t >= p.rateAt) continue;
+      if (!cur && p.chips) { const f = F.monoX(30), its = p.chips.map(([at, s1]) => [at, s1, mw(s1, f) + 48]), tot = its.reduce((a, i) => a + i[2] + 16, -16); let x = -tot / 2;
+        for (const [at, s1, cw2] of its) { if (t >= at) { const ct = t - at, k = spring(ct, 'bouncy'); g.save(); g.translate(x + cw2 / 2, -300); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.globalAlpha *= clamp(ct / 0.08); clay(g, -cw2 / 2, -36, cw2, 72, 36, s1[0] === 'A' ? theme.navy : theme.ink, { shadowK: 0.6 }); txt(g, s1, 0, 2, f, s1[0] === 'A' ? theme.paper : theme.accent); g.restore(); burst(g, x + cw2 / 2, -300, 150, theme.accent, ct - 0.05, 10, 0.35); } x += cw2 + 16; } }
+      if (!cur && !p.chips) for (const [at, s1] of [[p.depAt, '$500 / MONTH × 40 YEARS'], [p.rateAt, 'ASSUMES 7% BEFORE FEES · NOT A FORECAST']]) { if (at > -0.5 && t >= at) { const ct = t - at, k = spring(ct, 'bouncy'), f = F.monoX(s1[0] === '$' ? 38 : 27), tw = mw(s1, f) + 60; if (s1[0] === '$' && p.rateAt > -0.5 && t >= p.rateAt) continue;
         g.save(); g.translate(0, -300); g.scale(0.55 + 0.45 * k, 0.55 + 0.45 * k); g.globalAlpha *= clamp(ct / 0.08); clay(g, -tw / 2, -44, tw, 88, 44, s1[0] === '$' ? theme.ink : theme.navy, { shadowK: 0.6 }); txt(g, s1, 0, 2, f, s1[0] === '$' ? theme.accent : theme.paper); g.restore(); burst(g, 0, -300, 260, theme.accent, ct - 0.05, 12, 0.35); } }
       if (cur) { const gt = t - cur.at, k = spring(gt, 'bouncy'), vs = cur.year >= 40; const gap = fv(0.07, cur.year) - fv(0.06, cur.year), a = vs ? 'A ' + fmt(fv(0.07, 40)) : null;
         g.save(); g.translate(0, -300); g.scale(0.55 + 0.45 * k, 0.55 + 0.45 * k); g.globalAlpha *= clamp(gt / 0.08);

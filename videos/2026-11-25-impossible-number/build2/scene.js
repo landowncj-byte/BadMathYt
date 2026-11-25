@@ -416,6 +416,24 @@
       txt(g, p.rl, rx + rw / 2, ry - 34, F.cap(30), rgba(theme.paper, 0.8)); txt(g, p.cl, cx, cy + cr + 40, F.cap(30), rgba(theme.paper, 0.8)); g.restore(); },
   });
 })();
+// ===== part D: CTA micro-moments (screen layer): heart pulse, paper-plane flick =====
+(function () {
+  const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, clay, burst, hit } = B;
+  const heartPath = (g, s) => { g.beginPath(); g.moveTo(0, s * 0.35); g.bezierCurveTo(-s * 1.1, -s * 0.25, -s * 0.55, -s * 0.95, 0, -s * 0.4); g.bezierCurveTo(s * 0.55, -s * 0.95, s * 1.1, -s * 0.25, 0, s * 0.35); g.closePath(); };
+  // heart: pops, pulses twice, three small hearts float up, fades. Total ~1.4 s. (v2 look: clay red, soft shadow, no glow)
+  B.register('heart', { defaults: { s: 70 }, ownEnter: true, size: p => [p.s * 3, p.s * 3],
+    draw(g, p, env) { const { lt } = env, d = 1.4; if (lt < 0 || lt > d) return; const k = clamp(spring(lt, 'bouncy'), 0, 1.3), pul = 1 + 0.22 * hit(lt - 0.35, 9) * (lt > 0.35 ? 1 : 0) + 0.18 * hit(lt - 0.75, 9) * (lt > 0.75 ? 1 : 0), a = 1 - ease.in(lin(lt, 1.1, d));
+      g.save(); g.globalAlpha = a; g.translate(0, -26 * ease.out(lin(lt, 0, d))); g.scale(k * pul, k * pul);
+      B.shadowed(g, () => heartPath(g, p.s), '#FF3B30', 0.3); g.save(); heartPath(g, p.s); g.clip(); const lg = g.createLinearGradient(-p.s, -p.s, p.s, p.s); lg.addColorStop(0, 'rgba(255,255,255,.35)'); lg.addColorStop(0.5, 'rgba(255,255,255,0)'); lg.addColorStop(1, 'rgba(0,0,0,.22)'); g.fillStyle = lg; g.fillRect(-p.s * 1.3, -p.s, p.s * 2.6, p.s * 1.6); g.restore(); g.restore();
+      for (let i = 0; i < 3; i++) { const u = lin(lt, 0.3 + i * 0.12, 1.3 + i * 0.05); if (u <= 0 || u >= 1) continue; g.save(); g.globalAlpha = Math.sin(Math.PI * u); g.translate((i - 1) * p.s * 0.9 + Math.sin(u * 5 + i) * 10, -p.s * 0.9 - u * 120); g.scale(0.28, 0.28); heartPath(g, p.s); g.fillStyle = '#FF3B30'; g.fill(); g.restore(); }
+      burst(g, 0, 0, p.s * 1.1, '#FF3B30', lt - 0.3, 10, 0.4); } });
+  // plane: a paper plane is flicked from his hand and flies off up-right (path in screen px). ~1.3 s
+  B.register('plane', { defaults: { dx: 230, dy: -360 }, ownEnter: true, size: () => [200, 200],
+    draw(g, p, env) { const { lt, theme } = env, d = 1.3; if (lt < 0 || lt > d) return; const u = ease.out(lin(lt, 0, d)), x = p.dx * u, y = p.dy * u + 120 * Math.sin(Math.PI * u) * (1 - u) * -1 * -1 - 80 * Math.sin(Math.PI * u), ang = Math.atan2(p.dy - 160 * (1 - 2 * u), p.dx), sc = 1 + 0.5 * (1 - u) * 0 - 0.35 * u, a = 1 - ease.in(lin(lt, 1.0, d));
+      g.save(); g.globalAlpha = a * 0.5; g.strokeStyle = theme.paper; g.lineWidth = 4; g.lineCap = 'round'; g.setLineDash([2, 16]); g.beginPath(); for (let i = 0; i <= 20; i++) { const v = u * i / 20, xx = p.dx * v, yy = p.dy * v - 80 * Math.sin(Math.PI * v); i ? g.lineTo(xx, yy) : g.moveTo(xx, yy); } g.stroke(); g.restore();
+      g.save(); g.globalAlpha = a; g.translate(x, y); g.rotate(ang + Math.sin(lt * 9) * 0.12); g.scale(sc * 1.6, sc * 1.6); const path = () => { g.beginPath(); g.moveTo(34, 0); g.lineTo(-30, -22); g.lineTo(-14, 0); g.lineTo(-30, 22); g.closePath(); };
+      B.shadowed(g, path, theme.paper, 0.4); g.fillStyle = 'rgba(20,24,30,.16)'; g.beginPath(); g.moveTo(34, 0); g.lineTo(-14, 0); g.lineTo(-30, 22); g.closePath(); g.fill(); g.strokeStyle = 'rgba(11,15,20,.25)'; g.lineWidth = 2; g.beginPath(); g.moveTo(34, 0); g.lineTo(-14, 0); g.stroke(); g.restore(); } });
+})();
 // ===== scene: THE IMPOSSIBLE NUMBER THAT EXPOSED MADOFF (long-form, engine v2, 1920x1080) =====
 const E = [], BT = [], SF = [], PO = [], SK = [];
 const X1 = 17000, X2 = 55000, X3 = 95000, X4 = 145000, XE = 170000;   // rooms of the world: cold open, Ponzi, oil, Madoff, test, end card
@@ -507,7 +525,7 @@ el('q12', 'queue', R1(3), 120, '@P12-0.3', { n: 12, at: '@P12+0.3', capsAt: '@P1
 el('day', 'counter', R1(3) - 0, -340, '@P12:by-0.2', { label: 'BY JULY · POURING IN', sub: 'PER DAY', to: 1000000, prefix: '$', at: '@P12:million-0.5', dur: 0.8, tone: 'good', size: 150, w: 880, underline: false }, { out: '@P13-0.05' });
 el('police', 'stamp', R1(3) - 150, -100, '@P13:police+0.1', { text: "MOST OF BOSTON'S POLICE FORCE", tone: 'accent', size: 62 }, { rot: -0.05, out: '@P14-0.2' });
 bt('@P12', 'graphic-hero', 'q12', { move: 'whip', fill: 0.84, sy: 520, pose: 'point' }); bt('@P12:early', 'zoom-on-number', 'q12.line', { fill: 0.7, maxH: 360, sy: 560 });
-bt('@P12:word', 'zoom-on-number', 'q12.door', { fill: 0.3, maxH: 520, sy: 520, st: 'corner' }); bt('@P12:july', 'graphic-hero', ['day', 'q12'], { fill: 0.6, sy: 470, pose: 'point' });
+bt('@P12:word', 'zoom-on-number', 'q12.door', { fill: 0.3, maxH: 520, sy: 520 }); bt('@P12:july', 'presenter-front', ['day', 'q12'], { fill: 0.6, sy: 470, sx: 800, pose: 'shock', keep: ['day'] });
 bt('@P12:million', 'zoom-on-number', 'day.value', { fill: 0.48, maxH: 400, pose: 'shock' }); sk('@P12:million+0.4', 10);
 sf('@P12:early', 'crowd_ooh_1', -18, 2.5); sf('@P12:million-0.5', 'money_counter_1', -11, 0.9); sf('@P12:million+0.3', 'cash_register_1', -8, 0.9);
 bt('@P13', 'graphic-hero', 'q12', { fill: 0.84, sy: 520, pose: 'point' }); bt('@P13:police', 'graphic-hero', ['q12', 'police'], { fill: 0.7, maxH: 700, sy: 480, pose: 'shock' }); sf('@P13:police+0.1', 'rubber_stamp_2', -5, 0.5); sf('@P13:police', 'pop_1', -12, 0.4);
@@ -746,9 +764,9 @@ bt('@P48:morning', 'graphic-hero', 'cal48', { move: 'whip', fill: 0.34, maxH: 52
 bt('@P48:arrested', 'zoom-on-number', ['arr', 'cuffs'], { fill: 0.5, maxH: 520, sy: 470, pose: 'shock', dur: 0.5 }); sf('@P48:arrested-0.1', 'rubber_stamp_2', -3, 0.5); sf('@P48:arrested', 'cell_door_2', -9, 1.2); sk('@P48:arrested', 14);
 // S15: $64.8 billion; $35-55 billion never existed
 el('f648', 'counter', R3(15), -130, '@P49-0.2', { label: 'PROSECUTORS PUT THE FRAUD AT', to: 64.8, decimals: 1, prefix: '$', suffix: 'B', at: '@P49:$64-0.2', dur: 1.0, tone: 'bad', size: 200, w: 1000, underline: true }, { out: '@P50-0.2' });
-el('br49', 'bracket', R3(15), 360, '@P49:35-0.4', { w: 900, at: '@P49:35-0.3', lines: [{ t: '$35–55B', hero: true, tone: 'bad', size: 70 }, { t: 'NEVER EXISTED · MARKOPOLOS ESTIMATE', size: 30 }] }, { out: '@P50-0.2' });
+el('br49', 'bracket', R3(15), 360, '@P49:$35-0.4', { w: 900, at: '@P49:$35-0.3', lines: [{ t: '$35–55B', hero: true, tone: 'bad', size: 70 }, { t: 'NEVER EXISTED · MARKOPOLOS ESTIMATE', size: 30 }] }, { out: '@P50-0.2' });
 bt('@P49', 'graphic-hero', 'f648', { move: 'whip', fill: 0.42, maxH: 760, sy: 450, pose: 'point' }); bt('@P49:$64', 'zoom-on-number', 'f648.value', { fill: 0.5, maxH: 420, sy: 440, pose: 'shock' }); sf('@P49:$64-0.2', 'money_counter_1', -10, 1.1); sf('@P49:billion+0.3', 'deep_boom_1', -4, 1.8); sf('@P49:billion+0.35', 'cash_register_1', -8, 0.9); sk('@P49:billion+0.3', 14);
-bt('@P49:based', 'pull-back', ['f648', 'br49'], { fill: 0.5, maxH: 760, sy: 490, pose: 'idle' }); bt('@P49:35', 'zoom-on-number', 'br49', { fill: 0.5, maxH: 420, sy: 540, pose: 'point' }); sf('@P49:35-0.3', 'swoosh_2', -11, 0.6); sf('@P49:55+0.3', 'pop_1', -8, 0.3);
+bt('@P49:based', 'pull-back', ['f648', 'br49'], { fill: 0.5, maxH: 760, sy: 490, pose: 'idle' }); bt('@P49:$35', 'zoom-on-number', 'br49', { fill: 0.5, maxH: 420, sy: 540, pose: 'point' }); sf('@P49:$35-0.3', 'swoosh_2', -11, 0.6); sf('@P49:$55+0.3', 'pop_1', -8, 0.3);
 bt('@P49:never', 'graphic-hero', ['f648', 'br49'], { fill: 0.5, maxH: 760, sy: 490, pose: 'shrug' });
 // S16: guilty, 150 years, died in prison
 el('jail50', 'jail', R3(16), 40, '@P50-0.2', { dropAt: '@P50+0.1', plaqueAt: '@P50+0.4', head: '', lines: [{ t: '11 FEDERAL CRIMES', size: 66, at: '@P50:11-0.1', tone: 'ink' }, { t: '150 YEARS', size: 120, at: '@P50:150-0.1', tone: 'bad' }] }, { out: '@P51-0.2' });
@@ -815,10 +833,32 @@ bt('@P57', 'presenter-front', ['perf', 'ask56'], { fill: 0.62, maxH: 800, sy: 48
 po('@P57:subscribe', 'follow', [1470, 870]); po('@P57:comments', 'you'); po('@P57:then', 'point'); sf('@P57:subscribe+0.05', 'pop_2', -9, 0.3); sf('@P57:subscribe+1.05', 'click_1', -8, 0.3); sf('@P57:subscribe+1.1', 'success_chime_1', -12, 1.2);
 sf('@P57:comments-0.3', 'pop_1', -9, 0.3); bt('@P57:then', 'side-by-side', 'tankthumb', { fill: 0.3, maxH: 520, sx: 820, sy: 500, st: 'corner', pose: 'point' }); sf('@P57:then-0.4', 'swoosh_1', -11, 0.6); sf('@P57:tank', 'pop_2', -8, 0.3);
 // END CARD (15 s): wordmark, two YouTube end-screen slots, storyteller waving, music
-const END0 = 482.6;
-el('wm', 'text', 960, 140, END0 - 0.1, { lines: [[['BAD MATH', 'paper']]], size: 150, shadow: true }, { layer: 'screen' });
-el('slots', 'endslots', 0, 0, END0 + 0.1, { rl: 'WATCH NEXT', cl: 'SUBSCRIBE' }, { layer: 'screen' });
-bt(END0, 'wide', { x: XE, y: 0, w: 1000, h: 600 }, { move: 'whip', dur0: 0.9, fill: 0.5, sy: 470, st: { x: 1075, y: 1064, s: 1.05, layer: 'front' }, pose: 'wave', stDur: 0.9, arc: 0.2 }); sf(END0 - 0.2, 'swoosh_1', -9, 0.8); sf(END0 + 0.4, 'success_chime_2', -12, 1.4);
+const END0 = '@P57>+0.3';
+el('wm', 'text', 960, 140, '@P57>+0.2', { lines: [[['BAD MATH', 'paper']]], size: 150, shadow: true }, { layer: 'screen' });
+el('slots', 'endslots', 0, 0, '@P57>+0.4', { rl: 'WATCH NEXT', cl: 'SUBSCRIBE' }, { layer: 'screen' });
+bt(END0, 'wide', { x: XE, y: 0, w: 1000, h: 600 }, { move: 'whip', dur0: 0.9, fill: 0.5, sy: 470, st: { x: 1075, y: 1064, s: 1.05, layer: 'front' }, pose: 'wave', stDur: 0.9, arc: 0.2 }); sf('@P57>+0.1', 'swoosh_1', -9, 0.8); sf('@P57>+0.7', 'success_chime_2', -12, 1.4);
+// ---------------- woven CTA micro-moments (RULES §CTAs): small, on the voiced word, never a banner ----------------
+// LIKE (P13b): heart pulse next to him
+el('heart', 'heart', 1620, 760, '@P13b:like-0.15', { s: 64 }, { layer: 'screen', out: '@P13b:like+1.5' });
+sf('@P13b:like-0.1', 'pop_2', -8, 0.3); sf('@P13b:like+0.35', 'ding_2', -11, 0.7); sf('@P13b:like+0.75', 'pop_1', -12, 0.3);
+bt('@P13b', 'graphic-hero', ['q12', 'police'], { fill: 0.7, maxH: 700, sx: 860, sy: 480, st: 'corner', pose: 'you' });
+po('@P13b:like', 'you');
+bt('@P13b:bought', 'zoom-on-number', 'q12.line', { fill: 0.6, maxH: 420, sx: 860, sy: 540, st: 'corner', pose: 'point' });
+bt('@P13b:most', 'zoom-on-number', 'police', { fill: 0.5, maxH: 300, sx: 860, sy: 480, st: 'corner', pose: 'shock' }); sf('@P13b:most', 'crowd_ooh_1', -16, 1.6);
+// SEND (P29b): paper-plane flick from his hand
+el('plane', 'plane', 1690, 930, '@P29b:send-0.05', { dx: 190, dy: -330 }, { layer: 'screen', out: '@P29b:send+1.5' });
+sf('@P29b:send-0.05', 'swoosh_2', -9, 1.0);
+bt('@P29b', 'graphic-hero', ['bars29', 'never'], { fill: 0.7, maxH: 700, sx: 860, sy: 480, st: 'corner', pose: 'you' });
+po('@P29b:send', 'you');
+bt('@P29b:friend', 'graphic-hero', 'bars29', { fill: 0.36, maxH: 600, sx: 860, sy: 520, st: 'corner', pose: 'point' });
+bt('@P29b:receipt', 'zoom-on-number', 'never', { fill: 0.5, maxH: 300, sx: 860, sy: 440, st: 'corner', pose: 'shrug' }); sf('@P29b:receipt', 'paper_slam_2', -12, 0.5);
+// SUBSCRIBE (P47b): he taps a small SUBSCRIBE button
+el('sub47', 'follow', 1480, 880, '@P47b:subscribe-0.2', { press: 0.7, labels: ['SUBSCRIBE', '✓ SUBSCRIBED'] }, { layer: 'screen', out: '@P47b:subscribe+1.6' });
+sf('@P47b:subscribe-0.15', 'pop_2', -9, 0.3); sf('@P47b:subscribe+0.55', 'click_1', -8, 0.3); sf('@P47b:subscribe+0.6', 'success_chime_1', -12, 1.2);
+bt('@P47b', 'graphic-hero', 'bars47', { fill: 0.4, maxH: 640, sx: 860, sy: 500, st: 'corner', pose: 'follow' });
+po('@P47b:subscribe', 'follow', [1480, 880]); po('@P47b:now+1.0', 'point');
+bt('@P47b:because', 'zoom-on-number', 'bars47.down_top', { fill: 0.34, maxH: 420, sx: 860, sy: 400, st: 'corner', pose: 'point' });
+bt('@P47b:where', 'graphic-hero', 'bars47', { fill: 0.4, maxH: 640, sx: 860, sy: 520, st: 'corner', pose: 'shock' }); sk('@P47b:apart', 10); sf('@P47b:apart', 'sub_drop_1', -9, 1.0);
 const STAGES = [
   { at: '@P08-0.7', dur: 1.2, theme: SEPIA },
   { at: '@P20:tank-0.2', dur: 1.6, theme: {} },
@@ -826,11 +866,11 @@ const STAGES = [
 STAGES.push({ at: '@P34-0.7', dur: 1.2, theme: { stage: ['#26354A', '#152030', '#0B0F14'], blobs: [['#1F5F7A', 0.58], ['#2A4278', 0.55], ['#1E4A4A', 0.5], ['#1F5F7A', 0.4]], dust: '#DCEBFF' } });
 STAGES.push({ at: '@P51-0.7', dur: 1.2, theme: {} });
 BM2.scene({
-  series: 'decoded', title: 'CASE FILE: THE IMPOSSIBLE NUMBER', duration: 497.6, fps: 30,
+  series: 'decoded', title: 'CASE FILE: THE IMPOSSIBLE NUMBER', duration: 510.4, fps: 30,
   footnote: ['DOCUMENTED CASES · SOURCES IN DESCRIPTION · NOT FINANCIAL ADVICE'],
   elements: E, beats: BT, poses: PO, shakes: SK, sfx: SF,
-  stages: STAGES, hudOff: [[482.6, 520]],
-  captions: { fix: [], hide: [[482.6, 520]], emph: {
+  stages: STAGES, hudOff: [['@P57>+0.3', 900]], travel: { every: 10 },
+  captions: { fix: [], hide: [['@P57>+0.3', 900]], emph: {
     '123': 'good', '10.5%': 'good', '17': 'accent', still: 'good', safety: 'good', '$65': 'bad', '20': 'bad', fake: 'bad', impossible: 'bad', cannot: 'bad', water: 'bad', existed: 'bad', exist: 'bad', fraud: 'bad', '$180': 'bad', bankrupt: 'bad', '$7': 'bad', '$234': 'bad', '$64.8': 'bad',
     '27,000': 'good', '160': 'bad', '900,000': 'bad', '55,000': 'good', '50%': 'bad', arrested: 'bad', guilty: 'bad', '150': 'bad', '4%': 'bad', '$20': 'bad', '$75': 'bad', greed: 'bad', cracked: 'bad', crashed: 'bad', crashing: 'bad', wiggles: 'good', perfect: 'accent', smooth: 'accent' } },
 });

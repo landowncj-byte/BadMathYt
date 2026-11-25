@@ -166,88 +166,237 @@
     },
   });
 })();
-const HOOK = { lines: [[['$500 LOAN', 'paper']], [['FORM SAID ', 'paper'], ['$650', 'paper']], [['HE TOOK ', 'paper'], ['$1,925', 'bad']]], size: 104 };
+
+// ===== v2 re-direct additions (2026-11-25): slam hook, ticks, tower, crowd, renew, crack, heart, sig, mag =====
+(function () {
+  const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper, clay, marker, burst, roll, countAt, hash, hit } = B;
+  const MC = document.createElement('canvas').getContext('2d'); const mw = (s, f) => { MC.font = f; return MC.measureText(s).width; };
+  const segW = (segs, size) => segs.reduce((a, s) => a + mw(s[0], F.hero(size)), 0);
+  const GREEN = '#1FA366';
+  const bill = (g, cx, cy, w, h, rot, label) => {
+    g.save(); g.translate(cx, cy); g.rotate(rot); clay(g, -w / 2, -h / 2, w, h, 14, GREEN, { shadowK: 0.6 });
+    g.strokeStyle = 'rgba(245,243,238,.75)'; g.lineWidth = 4; rr(g, -w / 2 + 12, -h / 2 + 12, w - 24, h - 24, 8); g.stroke();
+    g.fillStyle = 'rgba(245,243,238,.92)'; g.beginPath(); g.arc(0, 0, h * 0.27, 0, 7); g.fill(); txt(g, '$', 0, 3, F.hero(h * 0.36), GREEN);
+    if (label) { txt(g, label, -w / 2 + 24, -h / 2 + 36, F.hero(h * 0.2), '#F5F3EE', 'left'); txt(g, label, w / 2 - 24, h / 2 - 36, F.hero(h * 0.2), '#F5F3EE', 'right'); } g.restore();
+  };
+  B.bill = bill;
+
+  // ---------- slam: frame-0 pattern break. Text + a $500 bill + a claw yanking a taller stack + a red source stamp ----------
+  B.register('slam', {
+    defaults: { l1: [['LENT ', 'paper'], ['$500', 'gold']], l2: [['TOOK ', 'paper'], ['$1,925', 'bad']], size: 124, endAt: 99999, n: 8 }, ownEnter: true, size: () => [960, 1000],
+    anchors: () => ({ a1: [-60, -190, 760, 640], a2: [150, -20, 800, 900], bill: [-240, 90, 380, 220], stack: [250, 130, 380, 560] }),
+    draw(g, p, env) {
+      const { t, lt, theme } = env, k0 = hit(lt, 8), s = 1 + 0.15 * k0; g.save(); g.scale(s, s); g.rotate(-0.025 * k0);
+      // claw cycle: yank = 1 (stack lifted) .. 0 (claw grabbing); calm at the end so the loop closes on frame 0
+      const per = 2.4; let yank = 0.5 + 0.5 * Math.cos(2 * Math.PI * lt / per); if (t >= p.endAt) yank = lerp(yank, 1, ease.out(lin(t, p.endAt, p.endAt + 0.6)));
+      const baseY = 330, step = 30, n = p.n, topY = baseY - n * step - 60 * 0 , lift = yank * 70, sx = 250;
+      // single bill (left)
+      bill(g, -240, 130, 380, 200, -0.07, '$500');
+      // stack (right)
+      for (let i = 0; i < n; i++) { const wob = (hash(i * 3.3) - 0.5) * 20, y = baseY - i * step - lift * (0.35 + 0.65 * i / n); bill(g, sx + wob, y - 60, 360, 120, (hash(i + 9) - 0.5) * 0.06, i === n - 1 ? '$' : ''); }
+      // claw (diagonal arm from the right, prongs on the top bill)
+      { const hx = sx, hy = baseY - (n - 1) * step - 60 - lift - 108; g.save(); g.lineCap = 'round'; g.strokeStyle = '#59606B'; g.lineWidth = 30; g.beginPath(); g.moveTo(600, -190); g.lineTo(hx, hy); g.stroke(); g.strokeStyle = '#c9ccd2'; g.lineWidth = 12; g.beginPath(); g.moveTo(600, -202); g.lineTo(hx, hy - 10); g.stroke();
+        g.fillStyle = '#59606B'; g.beginPath(); g.arc(hx, hy, 40, 0, 7); g.fill(); g.strokeStyle = '#59606B'; g.lineWidth = 22; for (const d of [-1, 1]) { g.beginPath(); g.moveTo(hx + d * 28, hy + 20); g.quadraticCurveTo(hx + d * 120, hy + 40, hx + d * 112, hy + 108); g.stroke(); }
+        g.fillStyle = '#c9ccd2'; g.beginPath(); g.arc(hx, hy, 18, 0, 7); g.fill(); g.restore(); }
+      // text
+      const line = (segs, y) => { const w = segW(segs, p.size); let x = -w / 2; g.save(); g.shadowColor = 'rgba(0,0,0,.5)'; g.shadowBlur = 18 * B.zoomNow; g.shadowOffsetY = 8 * B.zoomNow; for (const [s0, tn] of segs) { txt(g, s0, x, y, F.hero(p.size), B.tone(tn, false), 'left'); x += mw(s0, F.hero(p.size)); } g.restore(); };
+      line(p.l1, -370); line(p.l2, -235);
+      // red source stamp thumps in
+      { const k = clamp(lt / 0.2), sc = 1 + 0.45 * (1 - ease.out(k)); g.save(); g.translate(150, 395); g.rotate(0.06); g.scale(sc, sc); paper(g, -290, -42, 580, 84, 10, { fill: theme.paper }); g.strokeStyle = theme.badInk; g.lineWidth = 5; rr(g, -280, -34, 560, 68, 6); g.stroke(); txt(g, 'PER DOJ · ONE BORROWER', 0, 3, F.cap(34), theme.badInk); g.restore(); }
+      g.restore(); burst(g, 0, -100, 560, theme.bad, lt + 0.1, 20, 0.6);
+    },
+  });
+
+  // ---------- ticks: 14 check boxes tick in a fast run ----------
+  B.register('ticks', {
+    defaults: { w: 780, at: 99999, dur: 0.9 }, size: p => [p.w, 190],
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, x0 = -w / 2, y0 = -95; paper(g, x0, y0, w, 190, 22, { lift });
+      for (let i = 0; i < 14; i++) { const r = Math.floor(i / 7), c = i % 7, cx = x0 + 70 + c * 106, cy = y0 + 56 + r * 80, ti = p.at + (i / 14) * p.dur, k = clamp((t - ti) / 0.16);
+        g.save(); g.translate(cx, cy); g.strokeStyle = theme.inkSoft; g.lineWidth = 4; rr(g, -28, -28, 56, 56, 8); g.stroke();
+        if (k > 0) { const pop = 1 + 0.25 * hit(t - ti, 12); g.scale(pop, pop); g.fillStyle = rgba(theme.bad, 0.16 * k); rr(g, -28, -28, 56, 56, 8); g.fill(); g.strokeStyle = theme.badInk; g.lineWidth = 10; g.lineCap = 'round'; g.lineJoin = 'round'; g.beginPath(); g.moveTo(-17, 2); g.lineTo(-4, 16); g.lineTo(k >= 1 ? 19 : lerp(-4, 19, ease.out(clamp((k - 0.5) * 2))), k >= 1 ? -16 : lerp(16, -16, ease.out(clamp((k - 0.5) * 2)))); g.stroke(); }
+        g.restore(); }
+    },
+  });
+
+  // ---------- tower: fee slips stack up beside the single $500 bill; counter rolls; source chip ----------
+  B.register('tower', {
+    defaults: { w: 800, h: 920, to: 1425, at: 99999, dur: 1.2, slipAt: 99999, slipDur: 1.0, label: 'FEES PAID', head: 'WHAT ONE BORROWER PAID', n: 9, foot: 'SOURCE: U.S. DOJ · SDNY' },
+    size: p => [p.w, p.h], anchors: p => ({ total: [0, -170, p.w * 0.9, 220], bill: [-230, 300, 340, 190] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 116); g.restore();
+      txt(g, p.head, x0 + 36, y0 + 60, F.hero(54), theme.paper, 'left'); txt(g, 'PER DOJ', x0 + w - 30, y0 + 34, F.mono(20), 'rgba(245,243,238,.75)', 'right');
+      txt(g, p.label, 0, y0 + 168, F.cap(36), theme.inkSoft);
+      const lt = t - p.at, v = lt < 0 ? 0 : countAt(lt, p.dur, 0, p.to), land = lt - p.dur, spd = lt > 0 && lt < p.dur ? Math.abs(countAt(lt + 0.02, p.dur, 0, p.to) - v) / 0.02 : 0, s = 1 + (land > 0 ? 0.14 * hit(land, 6) : 0) + (env.hot === 'total' ? 0.03 * env.hotK : 0), o = { font: F.hero(190), size: 190, color: theme.badInk, prefix: '$', speed: spd }, rw = B.rollWidth(g, p.to, o).w;
+      g.save(); g.translate(0, y0 + 300); g.scale(s, s); if (lt < 0) { g.fillStyle = theme.rule; rr(g, -rw / 2, -50, rw, 100, 50); g.fill(); } else { roll(g, v, 0, 0, o); if (land > 0) marker(g, -rw / 2, 100, rw, 9, theme.badInk, clamp(land / 0.3), 0.9); } g.restore(); if (lt > 0) burst(g, 0, y0 + 300, 360, theme.bad, land, 20, 0.55);
+      g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 440); g.lineTo(x0 + w - 40, y0 + 440); g.stroke(); g.setLineDash([]);
+      // the single $500 bill (left) and the slip tower (right)
+      { const bk = spring(t - (p.slipAt - 0.3), 'snappy'); if (t > p.slipAt - 0.3) { g.save(); g.globalAlpha = clamp((t - p.slipAt + 0.3) / 0.1); g.translate(0, (1 - bk) * -60); bill(g, -230, y0 + h - 260, 330, 175, -0.05, '$500'); txt(g, 'THE LOAN', -230, y0 + h - 130, F.cap(28), theme.inkSoft); g.restore(); } }
+      for (let i = 0; i < p.n; i++) { const ti = p.slipAt + (i / p.n) * p.slipDur, k = spring(t - ti, 'bouncy'); if (t < ti) continue; g.save(); g.globalAlpha = clamp((t - ti) / 0.08); g.translate(160 + (hash(i * 5.1) - 0.5) * 16, y0 + h - 150 - i * 50 - (1 - k) * 320); g.rotate((hash(i + 2) - 0.5) * 0.05); paper(g, -150, -23, 300, 46, 8, { fill: theme.paperShade, lift: 0 });
+        g.fillStyle = theme.bad; g.fillRect(-142, -15, 8, 30); txt(g, 'FEE', -108, 2, F.mono(22), theme.inkSoft, 'left'); g.strokeStyle = theme.rule; g.lineWidth = 3; g.beginPath(); g.moveTo(-40, 2); g.lineTo(130, 2); g.stroke(); g.restore(); }
+      txt(g, p.foot, 0, y0 + h - 40, F.mono(20), theme.inkSoft);
+    },
+  });
+
+  // ---------- crowd: one borrower multiplies into a grid; counter rolls to 4,500,000 ----------
+  B.register('crowd', {
+    defaults: { w: 880, h: 1100, at: 99999, dur: 1.1, gridAt: 99999, gridDur: 1.0 }, size: p => [p.w, p.h], anchors: p => ({ borrowers: [0, -p.h / 2 + 300, p.w * 0.94, 300], grid: [0, 190, p.w * 0.9, 540] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 124); g.restore(); txt(g, 'THE SCALE', x0 + 40, y0 + 62, F.hero(66), theme.paper, 'left'); txt(g, 'PER DOJ', x0 + w - 34, y0 + 36, F.mono(20), 'rgba(245,243,238,.75)', 'right');
+      txt(g, 'AT LEAST', 0, y0 + 190, F.cap(32), theme.inkSoft); const lt = t - p.at, size = 150, o0 = { font: F.hero(size), size, color: theme.badInk }, rw = B.rollWidth(g, 4500000, o0).w;
+      const v = lt < 0 ? 0 : countAt(lt, p.dur, 0, 4500000), land = lt - p.dur, spd = lt > 0 && lt < p.dur ? Math.abs(countAt(lt + 0.02, p.dur, 0, 4500000) - v) / 0.02 : 0, sc = 1 + (land > 0 ? 0.12 * hit(land, 6) : 0) + (env.hot === 'borrowers' ? 0.03 * env.hotK : 0);
+      g.save(); g.translate(0, y0 + 290); g.scale(sc, sc); if (lt < 0) { g.fillStyle = theme.rule; rr(g, -rw / 2, -45, rw, 90, 45); g.fill(); } else { roll(g, v, 0, 0, { ...o0, speed: spd }); if (land > 0) marker(g, -rw / 2, 90, rw, 8, theme.badInk, clamp(land / 0.3), 0.9); } g.restore(); if (lt > 0) burst(g, 0, y0 + 290, rw * 0.55, theme.bad, land, 18, 0.5);
+      txt(g, 'BORROWERS', 0, y0 + 420, F.cap(40), theme.ink);
+      g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 480); g.lineTo(x0 + w - 40, y0 + 480); g.stroke(); g.setLineDash([]);
+      // people grid: 8 x 6, the first one (red) is "one borrower", the rest multiply from it
+      const person = (cx, cy, r, col) => { g.fillStyle = col; g.beginPath(); g.arc(cx, cy - r * 0.45, r * 0.34, 0, 7); g.fill(); g.beginPath(); g.moveTo(cx - r * 0.62, cy + r * 0.62); g.quadraticCurveTo(cx - r * 0.62, cy + r * 0.05, cx, cy + r * 0.05); g.quadraticCurveTo(cx + r * 0.62, cy + r * 0.05, cx + r * 0.62, cy + r * 0.62); g.closePath(); g.fill(); };
+      const cols = 8, rows = 6, gx = x0 + 70, gy = y0 + 560;
+      for (let i = 0; i < cols * rows; i++) { const c = i % cols, r0 = Math.floor(i / cols), px = gx + c * 100, py = gy + r0 * 88, dly = (hash(i * 1.7) * 0.8 + (c + r0) * 0.03) * p.gridDur / 1.0, k = spring(t - (p.gridAt + dly), 'bouncy');
+        if (i === 0) { const k0 = spring(t - (p.gridAt - 0.5), 'bouncy'); if (t > p.gridAt - 0.5) { g.save(); g.translate(px, py); g.scale(0.4 + 0.6 * k0 + 0.5 * hit(t - p.gridAt, 5), 0.4 + 0.6 * k0 + 0.5 * hit(t - p.gridAt, 5)); person(0, 0, 70, theme.badInk); g.restore(); } continue; }
+        if (t < p.gridAt + dly) continue; g.save(); g.globalAlpha = clamp((t - p.gridAt - dly) / 0.1); g.translate(px, py); g.scale(0.3 + 0.7 * k, 0.3 + 0.7 * k); person(0, 0, 66, '#59606B'); g.restore(); }
+    },
+  });
+
+  // ---------- renew: a $500 loan with arrows spinning around it (auto-renew) ----------
+  B.register('renew', {
+    defaults: { w: 700, h: 700, at: 99999 }, size: p => [p.w, p.h],
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 118); g.restore(); txt(g, 'AUTO-RENEW', x0 + 38, y0 + 60, F.hero(66), theme.paper, 'left'); txt(g, 'ILLUSTRATION', x0 + w - 30, y0 + 32, F.mono(18), 'rgba(245,243,238,.7)', 'right');
+      const lt = t - p.at, k = lt > 0 ? spring(lt, 'snappy') : 0, rot = lt > 0 ? 3.4 * lt : 0; g.save(); g.translate(0, 40); bill(g, 0, 0, 300, 160, -0.05, '$500');
+      g.strokeStyle = theme.badInk; g.fillStyle = theme.badInk; g.lineWidth = 26; g.lineCap = 'round'; g.globalAlpha = clamp(lt / 0.2);
+      for (let q = 0; q < 2; q++) { const a0 = rot + q * Math.PI + 0.35, a1 = a0 + Math.PI * 0.72, R = 235 * (0.8 + 0.2 * k); g.beginPath(); g.ellipse(0, 0, R, R * 0.92, 0, a0, a1); g.stroke(); const ex = Math.cos(a1) * R, ey = Math.sin(a1) * R * 0.92, tx = -Math.sin(a1), ty = Math.cos(a1) * 0.92; g.save(); g.translate(ex, ey); g.rotate(Math.atan2(ty, tx)); g.beginPath(); g.moveTo(40, 0); g.lineTo(-18, -36); g.lineTo(-18, 36); g.closePath(); g.fill(); g.restore(); }
+      g.restore(); txt(g, 'AGAIN. AND AGAIN.', 0, y0 + h - 56, F.cap(36), theme.inkSoft);
+    },
+  });
+
+  // ---------- crack: jagged crack across the loan form's total ----------
+  B.register('crack', {
+    defaults: { at: 99999, w: 780, y: 140 }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.t - p.at; if (lt < 0) return; const k = ease.out(clamp(lt / 0.28)), pts = [[-340, -50], [-250, 10], [-170, -30], [-80, 40], [-10, -10], [70, 50], [150, 0], [240, 60], [330, 10]], n = Math.floor(pts.length * k) + 1;
+      g.save(); g.translate(0, p.y); g.lineJoin = 'round'; g.lineCap = 'round'; for (const [c, wd] of [['#F5F3EE', 16], ['#0B0F14', 8]]) { g.strokeStyle = c; g.lineWidth = wd; g.beginPath(); pts.slice(0, n).forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.stroke(); }
+      g.strokeStyle = '#0B0F14'; g.lineWidth = 5; g.beginPath(); g.moveTo(-80, 40); g.lineTo(-100, 110); g.moveTo(150, 0); g.lineTo(190, -70); g.stroke(); g.restore();
+    },
+  });
+
+  // ---------- heart (screen): one pulse, <= 1.2 s ----------
+  B.register('heart', {
+    defaults: { s: 1 }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, k = spring(lt, 'bouncy'), pulse = 1 + 0.3 * Math.max(0, Math.sin(lt * Math.PI * 2 / 0.4 - 0.4)) * (lt < 0.8 ? 1 : 0), sc = (0.4 + 0.6 * k) * pulse * p.s * 1.3, th = env.theme;
+      g.save(); g.scale(sc, sc); const path = () => { g.beginPath(); g.moveTo(0, 62); g.bezierCurveTo(-120, -10, -78, -86, 0, -34); g.bezierCurveTo(78, -86, 120, -10, 0, 62); g.closePath(); };
+      B.shadowed(g, path, th.bad, 0.2); g.save(); path(); g.clip(); const lg = g.createLinearGradient(0, -80, 0, 70); lg.addColorStop(0, 'rgba(255,255,255,.3)'); lg.addColorStop(0.4, 'rgba(255,255,255,0)'); lg.addColorStop(1, 'rgba(0,0,0,.22)'); g.fillStyle = lg; g.fillRect(-130, -90, 260, 170); g.restore();
+      g.strokeStyle = th.paper; g.lineWidth = 8; path(); g.stroke(); g.restore(); burst(g, 0, 0, 90 * p.s, th.bad, lt - 0.05, 8, 0.4);
+    },
+  });
+
+  // ---------- sig: a pen scribbles a signature (screen) ----------
+  B.register('sig', {
+    defaults: { dur: 0.9, label: '' }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, u = ease.inOut(clamp(lt / p.dur)), th = env.theme, f = v => { const x = -190 + v * 380, y = Math.sin(v * 17) * 24 * (1 - v * 0.4) - Math.sin(v * 5.5) * 30; return [x, y]; };
+      g.save(); g.strokeStyle = th.paper; g.lineWidth = 11; g.lineCap = 'round'; g.lineJoin = 'round'; g.beginPath(); const N = 90; for (let i = 0; i <= N * u; i++) { const [x, y] = f(i / N); i ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke();
+      g.strokeStyle = 'rgba(245,243,238,.5)'; g.lineWidth = 5; g.beginPath(); g.moveTo(-230, 58); g.lineTo(230, 58); g.stroke(); txt(g, 'X', -250, 36, F.hero(46), th.paper, 'right');
+      const [px, py] = f(u); g.translate(px, py); g.rotate(-0.8); clay(g, -8, -90, 16, 80, 6, th.gold, { shadowK: 0.3 }); g.fillStyle = th.ink; g.beginPath(); g.moveTo(-8, -10); g.lineTo(8, -10); g.lineTo(0, 12); g.closePath(); g.fill(); g.restore();
+      if (p.label) { g.save(); g.translate(0, 130); txt(g, p.label, 0, 0, F.cap(44), th.paper); g.restore(); }
+    },
+  });
+
+  // ---------- mag (screen): magnifier that taps the +FOLLOW button ----------
+  B.register('mag', {
+    defaults: { press: 0.5, from: [-170, 120] }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, u = ease.out(clamp(lt / 0.4)), dip = lt > p.press ? 0.14 * hit(lt - p.press, 9) : 0, th = env.theme, x = lerp(p.from[0], 70, u), y = lerp(p.from[1], 40, u);
+      g.save(); g.translate(x, y); g.rotate(-0.25); g.scale(0.8 - dip, 0.8 - dip); g.fillStyle = 'rgba(245,243,238,.2)'; g.beginPath(); g.arc(0, 0, 58, 0, 7); g.fill(); g.strokeStyle = th.gold; g.lineWidth = 15; g.beginPath(); g.arc(0, 0, 58, 0, 7); g.stroke();
+      g.strokeStyle = 'rgba(255,255,255,.55)'; g.lineWidth = 6; g.beginPath(); g.arc(0, 0, 40, 3.5, 4.6); g.stroke(); g.strokeStyle = th.ink; g.lineWidth = 18; g.lineCap = 'round'; g.beginPath(); g.moveTo(42, 42); g.lineTo(96, 100); g.stroke(); g.restore();
+    },
+  });
+})();
+// YouTube cut — re-directed to voice/beats.v2.md (2026-11-25). Stations: hook (0,0) · loan form (0,1250) · Tucker (1500,1250) · calendar (3000,1250) · fee tower (4500,1250) · crowd (4500,2650) · verdict (3000,2650)
 BM2.scene({
-  series: 'decoded', title: 'CASE: TUCKER · 2017', duration: 54.5,
-  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR · SILHOUETTE · CAR'],
+  series: 'decoded', title: 'CASE: TUCKER · 2017', duration: 47.99,
+  footnote: ['CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM (GENERIC) · CALENDAR · SILHOUETTE'],
   elements: [
-    // ---- station A: the loan disclosure + hook ----
-    { id: 'hook', type: 'text', at: [0, -570], in: -1, props: HOOK },
-    { id: 'box', type: 'loanbox', at: [0, 0], in: -1, props: { at: '@$19', dur: 1.25, reset: '@paperwork', rdur: 0.8, amountAt: '@500', totalAt: '@650' } },
-    // ---- station B: Tucker ----
-    { id: 'silh', type: 'silh', at: [1550, 0], rot: -0.03, in: '@His-0.4' },
-    { id: 'tag', type: 'text', at: [1550, 440], in: '@Payday-0.05', props: { lines: [[['PAYDAY LOANS', 'paper']], [['ONLINE', 'bad']]], size: 78 } },
-    // ---- station C: the paycheck calendar + the rate ----
-    { id: 'paycal', type: 'paycal', at: [3100, 0], in: '@Every-0.5', props: { paydays: ['@payday#2+0.15', '@renewed', '@default', "@he'd", '@150', '@fees'], owedAt: ['@500#2', '@$500#2'], neverAt: '@never', bigAt: '@$14', bigDur: 1.1 } },
-    { id: 'rate', type: 'rate', at: [3100, 1180], in: "@that's-0.4", props: { at: '@700', dur: 0.9 } },
-    // ---- station D: the scale, the car ----
-    { id: 'scale', type: 'scale', at: [1550, 1250], in: '@At-0.4', props: { bAt: '@four', bDur: 0.9, rAt: '@three', rDur: 1.0 } },
-    { id: 'car', type: 'car', at: [0, 1250], in: '@So-0.2', props: { driveAt: '@pro-0.1', ownAt: '@his#2' } },
-    // ---- station E: the verdict ----
-    { id: 'verdict', type: 'verdict', at: [-1550, 1250], in: '@October-0.4', props: { guiltyAt: '@convicted', countsAt: '@14', monthsAt: '@200', subAt: '@16' } },
-    // ---- screen-fixed ----
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [560, 650], in: '@what-0.1', out: '@Follow-0.1', props: { l1: 'WHAT ARE YOU PAYING FOR?', l2: 'COMMENT', size: 54, tail: 'left' } },
-    { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1180], in: '@Follow+0.1', out: '@next+0.5', props: { press: 0.85 } },
+    { id: 'hook', type: 'slam', at: [0, 0], in: 0, props: { l1: [['LENT ', 'paper'], ['$500', 'gold']], l2: [['TOOK ', 'paper'], ['$1,925', 'bad']], endAt: '@500#3' } },
+    { id: 'box', type: 'loanbox', at: [0, 1250], in: -1, props: { at: '@so', dur: 2.3, reset: 99999, amountAt: '@paperwork', totalAt: '@650' } },
+    { id: 'silh', type: 'silh', at: [1500, 1250], rot: -0.03, in: '@Scott-0.4', props: { sub: 'ONLINE PAYDAY LOANS' } },
+    { id: 'conv', type: 'stamp', at: [1700, 1010], rot: 0.12, in: '@loans,', props: { text: 'CONVICTED 2017', tone: 'bad', size: 70 } },
+    { id: 'paycal', type: 'paycal', at: [3000, 1250], in: '@Every-0.5', props: { paydays: ['@payday#2+0.1', '@renewed', '@default', '@150', '@fees', '@500#2'], owedAt: ['@renewed', '@default', '@150', '@fees', '@500#2'], neverAt: '@move' } },
+    { id: 'tower', type: 'tower', at: [4500, 1250], in: '@Justice-0.4', props: { to: 1425, at: '@14', dur: 1.2, slipAt: 21.9, slipDur: 2.0, label: 'FEES PAID · ONE BORROWER' } },
+    { id: 'crowd', type: 'crowd', at: [4500, 2650], in: 28.94, props: { at: '@four', dur: 1.0, gridAt: 29.5, gridDur: 1.1 } },
+    { id: 'verdict', type: 'verdict', at: [3000, 2650], in: '@jury-0.4', props: { guiltyAt: '@convicted', countsAt: '@14#2', monthsAt: '@200', subAt: '@16' } },
+    { id: 'ticks', type: 'ticks', at: [3000, 3120], in: '@jury-0.4', props: { at: '@14#2', dur: 0.9 } },
+    // ---- screen-fixed micro-moments (small, <= 1.5 s) ----
+    { id: 'sig', type: 'sig', layer: 'screen', at: [420, 640], in: '@Hit+0.1', out: '@Hit+1.5', props: { dur: 0.8, label: 'SIGNED WITHOUT READING?' } },
+    { id: 'heart', type: 'heart', layer: 'screen', at: [800, 930], in: '@like-0.05', out: '@like+1.15', props: { s: 1 } },
+    { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
+    { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
+    { id: 'ending', type: 'text', layer: 'screen', at: [540, 400], in: '@sentence-0.05', out: '@follow+0.2', props: { lines: [[['THE SENTENCE…', 'paper']]], size: 78 } },
+    { id: 'mag', type: 'mag', layer: 'screen', at: [830, 1010], in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.55 } },
+    { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.55 } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: "@what's", props: { l1: "WHAT'S THE FEE FOR?", l2: 'COMMENT', size: 54, tail: 'left' } },
   ],
   beats: [
-    { at: 0, beat: 'side-by-side', focus: ['hook', 'box'], sx: 650, sy: 800, fill: 0.74, maxH: 860, st: { x: 150, y: 1330, s: 1.25 }, pose: 'talk' },
-    { at: '@$500', beat: 'zoom-on-number', focus: 'box.amount', fill: 0.8, sy: 790, st: 'corner-left', dur: 0.5 },
-    { at: '@$650', beat: 'zoom-on-number', focus: 'box.total', fill: 0.84, sy: 790, st: 'corner-left', rot: 0.012, dur: 0.5 },
-    { at: '@$19', beat: 'zoom-on-number', focus: 'box.total', fill: 0.86, sy: 790, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@$19+1.5', beat: 'pull-back', focus: 'box', fill: 0.76, sy: 770, st: 'corner-left' },
-    { at: '@His', beat: 'side-by-side', focus: 'silh', move: 'whip', st: 'right', sx: 400, sy: 780, fill: 0.5, maxH: 640, pose: 'point' },
-    { at: '@Payday', beat: 'side-by-side', focus: ['silh', 'tag'], st: 'right', sx: 400, sy: 860, fill: 0.5, maxH: 900, pose: 'point' },
-    { at: '@paperwork', beat: 'side-by-side', focus: 'box', move: 'whip', sy: 760, fill: 0.7, maxH: 900, pose: 'point' },
-    { at: '@500', beat: 'zoom-on-number', focus: 'box.amount', fill: 0.8, sy: 790, st: 'corner-left', dur: 0.5 },
-    { at: '@650', beat: 'zoom-on-number', focus: 'box.total', fill: 0.84, sy: 790, st: 'corner-left', dur: 0.5 },
-    { at: '@Every', beat: 'side-by-side', focus: 'paycal', move: 'whip', sy: 770, fill: 0.7, maxH: 930, pose: 'point' },
-    { at: '@150', beat: 'zoom-on-number', focus: 'paycal.p4', fill: 0.46, maxH: 520, sy: 740, st: 'corner-left', dur: 0.5 },
-    { at: '@500#2', beat: 'zoom-on-number', focus: 'paycal.owed', fill: 0.78, sy: 800, st: 'corner', dur: 0.5, pose: 'shock' },
-    { at: '@moved', beat: 'pull-back', focus: 'paycal', fill: 0.76, maxH: 930, sy: 770, st: 'corner-left' },
-    { at: '@Justice', beat: 'graphic-hero', focus: 'paycal', st: 'corner-left', sy: 770, fill: 0.78, maxH: 930, pose: 'point' },
-    { at: '@$14', beat: 'zoom-on-number', focus: 'paycal.fees', fill: 0.8, sy: 810, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@$500#2', beat: 'zoom-on-number', focus: 'paycal.owed', fill: 0.78, sy: 800, st: 'corner', dur: 0.5 },
-    { at: '@loan#3', beat: 'pull-back', focus: 'paycal', fill: 0.76, maxH: 930, sy: 770, st: 'corner-left' },
-    { at: "@that's", beat: 'graphic-hero', focus: 'rate', move: 'whip', st: 'corner-left', fill: 0.8, sy: 780, pose: 'point' },
-    { at: '@700', beat: 'zoom-on-number', focus: 'rate.hero', fill: 0.84, sy: 790, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@At', beat: 'side-by-side', focus: 'scale', move: 'whip', sy: 760, fill: 0.76, maxH: 940, pose: 'point' },
-    { at: '@four', beat: 'zoom-on-number', focus: 'scale.borrowers', fill: 0.82, sy: 780, st: 'corner-left', dur: 0.5 },
-    { at: '@three', beat: 'zoom-on-number', focus: 'scale.revenue', fill: 0.86, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@So', beat: 'presenter-front', focus: 'scale', sy: 760, pose: 'shrug' },
-    { at: '@pro', beat: 'side-by-side', focus: 'car', move: 'whip', sy: 780, fill: 0.8, pose: 'point' },
-    { at: '@October', beat: 'side-by-side', focus: 'verdict', move: 'whip', sy: 760, fill: 0.7, maxH: 900, pose: 'point' },
-    { at: '@convicted', beat: 'zoom-on-number', focus: 'verdict.guilty', fill: 0.7, sy: 790, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@14', beat: 'zoom-on-number', focus: 'verdict.counts', fill: 0.84, sy: 780, st: 'corner-left', dur: 0.5 },
-    { at: '@200', beat: 'zoom-on-number', focus: 'verdict.months', fill: 0.68, sy: 860, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@16', beat: 'graphic-hero', focus: 'verdict', fill: 0.76, maxH: 900, sy: 760, st: 'corner-left', pose: 'idle' },
+    { at: 0, beat: 'side-by-side', focus: 'hook', sx: 520, sy: 830, fill: 0.8, maxH: 1000, st: { x: 130, y: 1350, s: 1.15 }, pose: 'shock' },
+    { at: '@500', beat: 'zoom-on-number', focus: 'hook.a1', fill: 0.9, maxH: 700, sx: 520, sy: 780, st: { x: 130, y: 1350, s: 1.15 }, dur: 0.45 },
+    { at: '@two', beat: 'zoom-on-number', focus: 'hook.a2', fill: 0.96, maxH: 900, sx: 420, sy: 800, st: { x: 130, y: 1350, s: 1.15 }, pose: 'shock', dur: 0.45 },
+    { at: '@The', beat: 'graphic-hero', focus: 'box', move: 'whip', sy: 830, fill: 0.84, maxH: 900, st: 'corner-left', pose: 'point' },
+    { at: '@650', beat: 'zoom-on-number', focus: 'box.total', fill: 0.88, sy: 830, st: 'corner-left', dur: 0.5 },
+    { at: "@where'd", beat: 'pull-back', focus: 'box', fill: 0.8, maxH: 900, sy: 830, st: 'corner', pose: 'shock' },
+    { at: '@Scott', beat: 'side-by-side', focus: ['silh', 'conv'], move: 'whip', st: 'right', sx: 400, sy: 790, fill: 0.5, maxH: 860, pose: 'point' },
+    { at: "@here's", beat: 'graphic-hero', focus: 'silh', fill: 0.78, maxH: 880, sy: 780, st: 'corner-left', pose: 'you', dur: 0.8 },
+    { at: '@Hit', beat: 'presenter-front', focus: 'silh', sy: 770, pose: 'talk' },
+    { at: '@without', beat: 'presenter-front', focus: 'silh', sy: 770, zoom: 1.0, pose: 'you', dur: 0.9 },
+    { at: '@Every', beat: 'side-by-side', focus: 'paycal', move: 'whip', sy: 800, sx: 650, fill: 0.68, maxH: 930, st: 'corner-left', pose: 'point' },
+    { at: '@150', beat: 'zoom-on-number', focus: 'paycal.p3', fill: 0.46, maxH: 520, sy: 740, st: 'corner-left', dur: 0.5 },
+    { at: '@fees', beat: 'pull-back', focus: 'paycal', fill: 0.7, maxH: 930, sx: 650, sy: 800, st: 'corner-left', dur: 0.8 },
+    { at: '@And', beat: 'zoom-on-number', focus: 'paycal.owed', fill: 0.76, sy: 860, st: 'corner', pose: 'shock', dur: 0.7 },
+    { at: '@move', beat: 'zoom-on-number', focus: 'paycal.owed', fill: 0.86, sy: 860, st: 'corner', dur: 0.35, lead: 0.1 },
+    { at: '@Justice-0.18', beat: 'side-by-side', focus: 'tower', move: 'whip', sy: 770, fill: 0.74, maxH: 960, st: 'left', pose: 'point' },
+    { at: '@14', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.86, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: 24.96, beat: 'pull-back', focus: 'tower', fill: 0.78, maxH: 960, sy: 770, st: 'corner-left' },
+    { at: '@Send', beat: 'side-by-side', focus: 'paycal', move: 'whip', sx: 650, sy: 800, fill: 0.68, maxH: 930, st: 'corner-left', pose: 'you' },
+    { at: '@small', beat: 'zoom-on-number', focus: 'paycal.p0', fill: 0.44, maxH: 520, sy: 740, st: 'corner-left', dur: 0.5, pose: 'shrug' },
+    { at: 29.34, beat: 'graphic-hero', focus: 'crowd', move: 'whip', sy: 780, fill: 0.84, maxH: 960, st: 'corner-left', pose: 'point' },
+    { at: '@four', beat: 'zoom-on-number', focus: 'crowd.borrowers', fill: 0.86, sy: 780, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@borrowers', beat: 'pull-back', focus: 'crowd', fill: 0.84, maxH: 980, sy: 770, st: 'corner' },
+    { at: '@jury', beat: 'zoom-on-number', focus: 'verdict.guilty', move: 'whip', fill: 0.74, sy: 860, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@14#2', beat: 'graphic-hero', focus: ['verdict', 'ticks'], fill: 0.8, maxH: 900, sy: 830, st: 'corner-left', pose: 'point', dur: 0.7 },
+    { at: '@sentence', beat: 'presenter-front', focus: 'verdict', sy: 760, pose: 'talk' },
+    { at: '@reads', beat: 'graphic-hero', focus: 'verdict.months', fill: 0.62, maxH: 520, sy: 880, st: 'corner-left', pose: 'idle', dur: 1.2 },
+    { at: '@200', beat: 'zoom-on-number', focus: 'verdict.months', fill: 0.9, maxH: 640, sy: 880, rot: 0.02, st: 'corner-left', pose: 'shock', dur: 0.4, lead: 0.15 },
+    { at: '@16', beat: 'graphic-hero', focus: 'verdict', fill: 0.78, maxH: 900, sy: 830, st: 'corner-left', pose: 'idle' },
     { at: '@So#2', beat: 'presenter-front', focus: 'verdict', sy: 760, pose: 'chin' },
-    { at: '@Follow', beat: 'wide', focus: ['hook', 'box', 'silh', 'paycal', 'rate', 'scale', 'car', 'verdict'], fill: 0.94, sy: 760, st: { x: 250, y: 1330, s: 1.3 }, pose: 'follow', dur: 1.1 },
-    { at: '@next+0.1', beat: 'side-by-side', focus: ['hook', 'box'], move: 'whip', sx: 650, sy: 800, fill: 0.74, maxH: 860, st: { x: 150, y: 1330, s: 1.25 }, pose: 'talk' },
+    { at: '@500#3', beat: 'side-by-side', focus: 'hook', move: 'whip', sx: 520, sy: 830, fill: 0.8, maxH: 1000, st: { x: 130, y: 1350, s: 1.15 }, pose: 'shock' },
   ],
-  poses: [['@paying', 'you'], ['@Follow', 'follow', { target: [830, 1180] }], ['@Then', 'shock'], ['@next+0.5', 'talk']],
-  shakes: [['@$19+1.2', 14], ['@never', 10], ['@$14+1.1', 12], ['@convicted', 14], ['@200+0.7', 10]],
+  poses: [['@follow-0.1', 'follow', { target: [830, 1010] }], ['@follow+1.5', 'talk']],
+  shakes: [[0.05, 14], ['@move', 10], ['@14', 10], ['@convicted', 16], ['@200', 26], ['@Hit', 0]],
   captions: {
-    emph: { '$500': 'accent', '$650': 'accent', '$1,925': 'bad', '$1,425': 'bad', '$150': 'bad', '700%': 'bad', '14': 'bad', '200': 'bad', million: 'bad', billion: 'bad', racing: 'bad', convicted: 'bad' },
-    fix: [['$19.25.', '$1,925.'], ['$14.25', '$1,425'], ['500,', '$500,'], ['650', '$650'], ['150', '$150'], ['500', '$500']],
+    emph: { '$500': 'accent', '$650': 'accent', '$1,925': 'bad', '$1,425': 'bad', '$150': 'bad', '14': 'bad', '200': 'bad', million: 'bad', grand: 'bad', convicted: 'bad', '500': 'accent', '650': 'accent' },
+    fix: [['500', '$500'], ['650,', '$650,'], ['150', '$150'], ['500,', '$500,'], ['14.25', '$1,425'], ['200', '200']],
   },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
-    { at: 0, name: 'deep_boom_2', gain: -5, dur: 0.36 },
-    { at: '@$500', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@$650', name: 'paper_slam_2', gain: -11, dur: 0.5 },
-    { at: '@$19', name: 'money_counter_1', gain: -9, dur: 1.4 }, { at: '@$19+1.2', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@$19+1.25', name: 'deep_boom_1', gain: -5, dur: 1.4 },
-    { at: '@His', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@Payday', name: 'pop_1', gain: -9, dur: 0.5 },
-    { at: '@paperwork', name: 'rewind_2', gain: -10, dur: 0.9 }, { at: '@500', name: 'click_1', gain: -10, dur: 0.3 }, { at: '@650', name: 'ding_2', gain: -9, dur: 0.7 },
+    { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.03, name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@500', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@two', name: 'thud_1', gain: -9, dur: 0.4 },
+    { at: '@paperwork', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@650', name: 'ding_2', gain: -9, dur: 0.7 }, { at: '@so', name: 'money_counter_1', gain: -11, dur: 1.6 },
+    { at: '@Scott', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@loans,', name: 'rubber_stamp_2', gain: -8, dur: 0.5 },
+    { at: '@Hit+0.1', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@like', name: 'heartbeat_1', gain: -8, dur: 0.9 },
     { at: '@Every', name: 'paper_slam_2', gain: -10, dur: 0.5 },
-    { at: '@payday#2+0.15', name: 'thud_1', gain: -12, dur: 0.4 }, { at: '@renewed', name: 'thud_1', gain: -12, dur: 0.4 }, { at: '@default', name: 'thud_1', gain: -12, dur: 0.4 }, { at: "@he'd", name: 'thud_1', gain: -12, dur: 0.4 }, { at: '@150', name: 'thud_1', gain: -9, dur: 0.4 }, { at: '@150', name: 'coin_single_2', gain: -10, dur: 0.6 }, { at: '@fees', name: 'thud_1', gain: -12, dur: 0.4 },
-    { at: '@500#2', name: 'ding_2', gain: -8, dur: 0.7 }, { at: '@never', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@never', name: 'deep_boom_2', gain: -8, dur: 0.36 },
-    { at: '@$14', name: 'money_counter_2', gain: -10, dur: 1.2 }, { at: '@$14+1.1', name: 'cash_register_1', gain: -8, dur: 0.9 }, { at: '@$500#2', name: 'ding_2', gain: -9, dur: 0.7 },
-    { at: "@that's", name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@700', name: 'money_counter_1', gain: -11, dur: 1.0 }, { at: '@700+0.9', name: 'ding_2', gain: -8, dur: 0.7 },
-    { at: '@At', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@four', name: 'money_counter_1', gain: -11, dur: 1.0 }, { at: '@four+0.9', name: 'ding_2', gain: -9, dur: 0.7 },
-    { at: '@three', name: 'money_counter_2', gain: -10, dur: 1.1 }, { at: '@three+1.0', name: 'deep_boom_1', gain: -5, dur: 1.4 }, { at: '@three+1.0', name: 'cash_register_1', gain: -9, dur: 0.9 },
-    { at: '@pro-0.4', name: 'riser_2', gain: -14, dur: 1.2 }, { at: '@pro+0.8', name: 'thud_1', gain: -8, dur: 0.5 }, { at: '@his#2', name: 'pop_1', gain: -9, dur: 0.5 },
-    { at: '@October', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@convicted', name: 'gavel_1', gain: -4, dur: 0.8 }, { at: '@convicted', name: 'paper_slam_2', gain: -9, dur: 0.5 },
-    { at: '@14', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@200', name: 'money_counter_2', gain: -11, dur: 0.8 }, { at: '@200+0.72', name: 'ding_2', gain: -8, dur: 0.7 }, { at: '@16', name: 'pop_2', gain: -9, dur: 0.3 },
-    { at: '@what-0.1', name: 'pop_1', gain: -9, dur: 0.5 },
-    { at: '@Follow+0.95', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@Follow+1.0', name: 'success_chime_1', gain: -12, dur: 1.2 }, { at: '@next', name: 'rewind_2', gain: -11, dur: 0.9 },
+    { at: '@payday#2+0.1', name: 'thud_1', gain: -12, dur: 0.4 }, { at: '@renewed', name: 'thud_1', gain: -12, dur: 0.4 }, { at: '@default', name: 'thud_1', gain: -12, dur: 0.4 }, { at: '@150', name: 'thud_1', gain: -9, dur: 0.4 }, { at: '@150', name: 'coin_single_2', gain: -10, dur: 0.6 }, { at: '@fees', name: 'thud_1', gain: -12, dur: 0.4 }, { at: '@500#2', name: 'thud_1', gain: -12, dur: 0.4 },
+    { at: '@500#2', name: 'ding_2', gain: -8, dur: 0.7 }, { at: '@move', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@move', name: 'deep_boom_2', gain: -8, dur: 0.36 },
+    { at: '@Justice-0.18', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@one', name: 'coins_drop_1', gain: -12, dur: 1.2 },
+    { at: '@14', name: 'money_counter_2', gain: -10, dur: 1.2 }, { at: '@14+1.2', name: 'cash_register_1', gain: -8, dur: 0.9 },
+    { at: '@Send', name: 'swoosh_2', gain: -9, dur: 1.0 },
+    { at: 29.34, name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@four', name: 'money_counter_1', gain: -11, dur: 1.0 }, { at: '@four+1.0', name: 'ding_2', gain: -9, dur: 0.7 },
+    { at: '@convicted', name: 'gavel_1', gain: -4, dur: 0.8 }, { at: '@convicted', name: 'paper_slam_2', gain: -9, dur: 0.5 },
+    { at: '@14#2', name: 'typewriter_1', gain: -12, dur: 0.9 },
+    { at: '@follow+0.5', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.58', name: 'success_chime_1', gain: -12, dur: 1.0 },
+    { at: '@for', name: 'riser_2', gain: -14, dur: 1.15 },
+    { at: '@200', name: 'cinematic_hit_1', gain: -3, dur: 1.2 }, { at: '@200', name: 'deep_boom_1', gain: -3, dur: 1.4 }, { at: '@200+0.1', name: 'money_counter_2', gain: -11, dur: 0.8 }, { at: '@200+0.7', name: 'cell_door_1', gain: -6, dur: 1.0 },
+    { at: "@what's", name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@500#3', name: 'rewind_2', gain: -11, dur: 0.9 },
   ],
 });

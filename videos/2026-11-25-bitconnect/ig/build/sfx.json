@@ -1,173 +1,221 @@
 {
- "duration": 21.06,
+ "duration": 20.93,
  "sfx": [
   {
    "gain": -4,
-   "dur": 0.36,
+   "dur": 0.4,
    "at": 0,
    "name": "deep_boom_2"
   },
   {
-   "gain": -15,
-   "dur": 1.4,
-   "at": 0.08,
-   "name": "money_counter_1"
+   "gain": -9,
+   "dur": 0.5,
+   "at": 0.05,
+   "name": "punch_1"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 0.6,
+   "at": 1.74,
    "name": "swipe_2"
   },
   {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 2.04,
+   "name": "cartoon_boing_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 2.37,
+   "name": "cartoon_boing_2"
+  },
+  {
+   "gain": -4,
+   "dur": 0.5,
+   "at": 2.4,
+   "name": "rubber_stamp_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.5,
+   "at": 2.4,
+   "name": "thud_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.5,
+   "at": 3.42,
+   "name": "pop_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 5.5,
+   "name": "whoosh_2"
+  },
+  {
    "gain": -12,
-   "dur": 1.4,
-   "at": 4.38,
+   "dur": 2,
+   "at": 5.8,
    "name": "money_counter_1"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 6.08,
+   "at": 6.1,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.9,
+   "at": 6.3,
+   "name": "cash_register_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 7.56,
    "name": "swipe_2"
   },
   {
    "gain": -4,
    "dur": 1.6,
-   "at": 6.28,
+   "at": 7.76,
    "name": "deep_boom_1"
   },
   {
    "gain": -7,
    "dur": 0.9,
-   "at": 6.28,
+   "at": 7.76,
    "name": "cash_register_1"
   },
   {
    "gain": -6,
    "dur": 0.5,
-   "at": 6.28,
+   "at": 7.76,
    "name": "rubber_stamp_2"
   },
   {
-   "gain": -10,
-   "dur": 1.2,
-   "at": 8.4,
-   "name": "comedic_sting_1"
+   "gain": -13,
+   "dur": 0.45,
+   "at": 8.3,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -9,
+   "dur": 1,
+   "at": 9.71,
+   "name": "swoosh_2"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 8.98,
+   "at": 10.72,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 11.02,
+   "name": "record_scratch_1"
   },
   {
    "gain": -10,
    "dur": 0.5,
-   "at": 9.28,
+   "at": 12.9,
    "name": "paper_slam_2"
   },
   {
    "gain": -9,
    "dur": 0.5,
-   "at": 11.28,
+   "at": 14.28,
    "name": "pop_1"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 11.48,
+   "at": 14.76,
    "name": "swipe_2"
-  },
-  {
-   "gain": -8,
-   "dur": 0.9,
-   "at": 11.68,
-   "name": "cash_register_1"
-  },
-  {
-   "gain": -12,
-   "dur": 1.6,
-   "at": 11.73,
-   "name": "money_counter_2"
-  },
-  {
-   "gain": -6,
-   "dur": 0.36,
-   "at": 13.28,
-   "name": "deep_boom_2"
   },
   {
    "gain": -10,
    "dur": 1,
-   "at": 13.46,
+   "at": 14.96,
    "name": "swoosh_2"
   },
   {
    "gain": -14,
-   "dur": 1.4,
-   "at": 13.81,
+   "dur": 1.6,
+   "at": 15.31,
    "name": "money_counter_1",
    "offset": 0.4
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 14.82,
+   "at": 16.58,
    "name": "whoosh_2"
   },
   {
    "gain": -10,
    "dur": 0.5,
-   "at": 15.12,
+   "at": 16.88,
    "name": "paper_slam_2"
   },
   {
-   "gain": -3,
+   "gain": -13,
+   "dur": 0.45,
+   "at": 17.01,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -4,
    "dur": 0.5,
-   "at": 15.26,
+   "at": 17.36,
    "name": "rubber_stamp_2"
   },
   {
-   "gain": -5,
+   "gain": -6,
    "dur": 0.8,
-   "at": 15.26,
+   "at": 17.36,
    "name": "gavel_1"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 15.62,
+   "at": 17.7,
    "name": "swipe_2"
+  },
+  {
+   "gain": -3,
+   "dur": 1.6,
+   "at": 17.9,
+   "name": "cinematic_hit_1"
   },
   {
    "gain": -11,
    "dur": 0.8,
-   "at": 15.82,
+   "at": 17.9,
    "name": "money_counter_2"
   },
   {
    "gain": -8,
    "dur": 0.7,
-   "at": 16.54,
+   "at": 18.62,
    "name": "ding_2"
-  },
-  {
-   "gain": -9,
-   "dur": 1,
-   "at": 18.06,
-   "name": "swoosh_2"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 20.1,
+   "at": 19.25,
    "name": "whoosh_2"
   },
   {
-   "gain": -10,
+   "gain": -11,
    "dur": 0.8,
-   "at": 20.25,
+   "at": 19.5,
    "name": "rewind_2"
   }
  ],

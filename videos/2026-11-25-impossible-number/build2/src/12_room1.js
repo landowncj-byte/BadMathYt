@@ -30,7 +30,7 @@ el('q12', 'queue', R1(3), 120, '@P12-0.3', { n: 12, at: '@P12+0.3', capsAt: '@P1
 el('day', 'counter', R1(3) - 0, -340, '@P12:by-0.2', { label: 'BY JULY · POURING IN', sub: 'PER DAY', to: 1000000, prefix: '$', at: '@P12:million-0.5', dur: 0.8, tone: 'good', size: 150, w: 880, underline: false }, { out: '@P13-0.05' });
 el('police', 'stamp', R1(3) - 150, -100, '@P13:police+0.1', { text: "MOST OF BOSTON'S POLICE FORCE", tone: 'accent', size: 62 }, { rot: -0.05, out: '@P14-0.2' });
 bt('@P12', 'graphic-hero', 'q12', { move: 'whip', fill: 0.84, sy: 520, pose: 'point' }); bt('@P12:early', 'zoom-on-number', 'q12.line', { fill: 0.7, maxH: 360, sy: 560 });
-bt('@P12:word', 'zoom-on-number', 'q12.door', { fill: 0.3, maxH: 520, sy: 520, st: 'corner' }); bt('@P12:july', 'graphic-hero', ['day', 'q12'], { fill: 0.6, sy: 470, pose: 'point' });
+bt('@P12:word', 'zoom-on-number', 'q12.door', { fill: 0.3, maxH: 520, sy: 520 }); bt('@P12:july', 'presenter-front', ['day', 'q12'], { fill: 0.6, sy: 470, sx: 800, pose: 'shock', keep: ['day'] });
 bt('@P12:million', 'zoom-on-number', 'day.value', { fill: 0.48, maxH: 400, pose: 'shock' }); sk('@P12:million+0.4', 10);
 sf('@P12:early', 'crowd_ooh_1', -18, 2.5); sf('@P12:million-0.5', 'money_counter_1', -11, 0.9); sf('@P12:million+0.3', 'cash_register_1', -8, 0.9);
 bt('@P13', 'graphic-hero', 'q12', { fill: 0.84, sy: 520, pose: 'point' }); bt('@P13:police', 'graphic-hero', ['q12', 'police'], { fill: 0.7, maxH: 700, sy: 480, pose: 'shock' }); sf('@P13:police+0.1', 'rubber_stamp_2', -5, 0.5); sf('@P13:police', 'pop_1', -12, 0.4);

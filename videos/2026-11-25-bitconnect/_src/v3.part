@@ -5,10 +5,10 @@
 
   // ---------- slamtext: hook text that SLAMS in (huge -> 1) with an ink outline; no glow ----------
   B.register('slamtext', {
-    defaults: { lines: [[['TEXT', 'paper']]], size: 120, lh: 1.04, slam: true, dur: 0.26, at0: 0 }, ownEnter: true,
+    defaults: { lines: [[['TEXT', 'paper']]], size: 120, lh: 1.04, slam: true, over: 0.5, dur: 0.26, at0: 0 }, ownEnter: true,
     size: p => [Math.max(...p.lines.map(l => mw(segs3(l).map(s => s[0]).join(''), F.hero(p.size)))), p.lines.length * p.size * p.lh],
     draw(g, p, { lt }) {
-      const font = F.hero(p.size), n = p.lines.length, u = clamp((lt - p.at0) / p.dur), k = p.slam ? 1 + 0.9 * (1 - ease.expo(u)) - 0.05 * B.wobble(lt - p.at0 - p.dur, 5, 9) : 1, a = p.slam ? 1 : clamp(lt / 0.12);
+      const font = F.hero(p.size), n = p.lines.length, u = clamp((lt - p.at0) / p.dur), k = p.slam ? 1 + p.over * (1 - ease.expo(u)) - 0.05 * B.wobble(lt - p.at0 - p.dur, 5, 9) : 1, a = p.slam ? 1 : clamp(lt / 0.12);
       g.save(); g.scale(k, k); g.globalAlpha *= a; g.textBaseline = 'middle'; g.textAlign = 'left'; g.font = font; g.lineJoin = 'round';
       p.lines.forEach((line, li) => { const ss = segs3(line), tw = mw(ss.map(s => s[0]).join(''), font); let x = -tw / 2; const y = (li - (n - 1) / 2) * p.size * p.lh;
         for (const [s, tn] of ss) { g.save(); g.shadowColor = 'rgba(2,4,9,.55)'; g.shadowBlur = 14; g.shadowOffsetY = 8; g.strokeStyle = '#0B0F14'; g.lineWidth = p.size * 0.1; g.strokeText(s, x, y); g.restore(); g.fillStyle = tone(tn || 'paper', false); g.fillText(s, x, y); x += mw(s, font); } });
