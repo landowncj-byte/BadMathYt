@@ -381,10 +381,10 @@
 })();
 // TikTok cut v3 (~85 s) — Decoded, spicy. Stations: A hook=billboard (0,0) · Y years (1700,0) · O office (3400,0) · R robot+badge (5100,0)
 //   · S steps (5100,1900) · M map (3400,1900) · B2 billboard (1700,1900) · P plea (0,1900)
-const END = 76.91;
+const END = 81.88;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 77.21,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 82.18,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     // ---- A: frame 0 = the jackpot nobody collected ----
@@ -461,6 +461,7 @@ BM2.scene({
     { at: "@Here's", beat: 'side-by-side', focus: 'bd', move: 'whip', sx: 540, sy: 800, fill: 0.7, maxH: 900, st: 'corner', pose: 'point', point: 'bd.title', dur: 0.9 },
     { at: '@title', beat: 'graphic-hero', focus: 'bd', fill: 0.72, maxH: 900, sy: 900, st: 'corner-left', pose: 'point', point: 'bd.title', dur: 0.6 },
     { at: '@information', beat: 'zoom-on-number', focus: 'bd.title', fill: 0.52, maxH: 360, sy: 950, st: 'corner', pose: 'point', point: 'bd.title', dur: 0.5 },
+    { at: '@guy', beat: 'side-by-side', focus: 'bd', sx: 700, sy: 900, fill: 0.62, maxH: 900, st: 'left', pose: 'shrug', dur: 0.6 },
     { at: '@keeping', beat: 'graphic-hero', focus: 'bd', fill: 0.72, maxH: 900, sy: 900, st: 'corner-left', pose: 'chin', dur: 0.6 },
     { at: '@broke', beat: 'zoom-on-number', focus: 'bd.name', fill: 0.6, maxH: 400, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@Yeah', beat: 'side-by-side', focus: 'steps', move: 'whip', sx: 540, sy: 760, fill: 0.78, maxH: 1050, st: 'corner', pose: 'point', point: 'steps.h1' },
@@ -489,7 +490,7 @@ BM2.scene({
     { at: '@got', beat: 'graphic-hero', focus: 'tk.paid', fill: 0.72, maxH: 560, sy: 980, st: 'corner', pose: 'shrug', dur: 0.5 },
     { at: '@Follow', beat: 'side-by-side', focus: 'tk', sx: 700, sy: 800, fill: 0.7, maxH: 1000, st: 'left', pose: 'follow', dur: 0.6 },
     { at: '@Nobody#2-0.1', beat: 'zoom-on-number', focus: 'tk.paid', fill: 0.86, maxH: 640, sy: 1010, rot: 0.02, st: 'corner', pose: 'shock', dur: 0.4, lead: 0.15 },
-    { at: '@dollars', beat: 'pull-back', focus: 'tk', fill: 0.8, maxH: 980, sy: 800, st: 'corner', pose: 'shock', dur: 0.8 },
+    { at: '@dollar', beat: 'pull-back', focus: 'tk', fill: 0.8, maxH: 980, sy: 800, st: 'corner', pose: 'shock', dur: 0.8 },
     { at: '@2017', beat: 'zoom-on-number', focus: 'plea.year', move: 'whip', fill: 0.42, maxH: 480, sy: 900, st: 'corner-left', pose: 'point' },
     { at: '@pleaded', beat: 'graphic-hero', focus: 'plea', fill: 0.84, maxH: 940, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.6 },
     { at: '@guilty', beat: 'zoom-on-number', focus: 'plea.guilty', fill: 0.9, maxH: 560, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 },
@@ -504,7 +505,7 @@ BM2.scene({
   ],
   poses: [['@Follow-0.1', 'follow', { target: [830, 1010] }], ['@Follow+1.5', 'talk']],
   shakes: [[0.05, 14], ['@never', 8], ['@330', 10], ['@Nobody#2-0.05', 26], ['@guilty', 14], ['@25', 22], ['@prison+0.1', 10]],
-  captions: { emph: { jackpot: 'accent', never: 'bad', collected: 'bad', '330': 'bad', Nobody: 'bad', '25': 'bad', guilty: 'bad', '16': 'accent', five: 'bad', broke: 'bad' }, gap: 16, fix: [['16.5 million', '$16.5 million'], ['a dollars, not ones.', 'a dollar. Not one.'], ['Step one, he', 'Step one: he'], ['Step two, he', 'Step two: he'], ['Step three, those', 'Step three: those'], ['every, every', 'every— every'], ['rewind.', 'rewind.']] },
+  captions: { emph: { jackpot: 'accent', never: 'bad', collected: 'bad', '330': 'bad', Nobody: 'bad', '25': 'bad', guilty: 'bad', '16': 'accent', five: 'bad', broke: 'bad' }, gap: 16, fix: [['16.5 million', '$16.5 million'], ['a dollar, not once.', 'a dollar. Not one.'], ['Step one, he', 'Step one: he'], ['Step two, he', 'Step two: he'], ['Step three, those', 'Step three: those'], ['every, every', 'every— every'], ['rewind.', 'rewind.']] },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.03, name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: 0.1, name: 'glass_shatter_1', gain: -12, dur: 0.6 },
