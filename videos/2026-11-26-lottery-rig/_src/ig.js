@@ -41,7 +41,7 @@ BM2.scene({
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@Send-0.05', out: '@Send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [270, 335], in: '@Send+0.15', out: '@Send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@Follow-0.05', out: '@Follow+1.45', props: { press: 0.5 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@trust-0.2', props: { l1: 'STILL TRUST THE', l2: 'DAMN LOTTERY?', size: 46, tail: 'left' } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@trust-0.2', out: END - 0.35, props: { l1: 'STILL TRUST THE', l2: 'DAMN LOTTERY?', size: 46, tail: 'left' } },
   ],
   beats: [
     { at: 0, beat: 'side-by-side', focus: ['hook', 'mach'], sx: 540, sy: 915, fill: 0.95, maxH: 1010, st: { x: 130, y: 1350, s: 1.15 }, pose: 'shock' },
@@ -100,6 +100,8 @@ BM2.scene({
     { at: '@pleaded', beat: 'graphic-hero', focus: 'plea', fill: 0.84, maxH: 940, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.6 },
     { at: '@guilty', beat: 'zoom-on-number', focus: 'plea.guilty', fill: 0.9, maxH: 560, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@which', beat: 'side-by-side', focus: ['plea', 'pt'], sx: 540, sy: 830, fill: 0.9, maxH: 960, st: 'corner', pose: 'point', point: 'pt', dur: 0.7 },
+    { at: '@admitted', beat: 'zoom-on-number', focus: 'pt', fill: 0.8, maxH: 320, sy: 900, st: 'corner', pose: 'point', point: 'pt', dur: 0.5 },
+    { at: '@court#2+0.9', beat: 'side-by-side', focus: 'plea', sx: 690, sy: 830, fill: 0.74, maxH: 940, st: 'left', pose: 'shock', dur: 0.7 },
     { at: '@sentenced', beat: 'graphic-hero', focus: 'plea', fill: 0.84, maxH: 940, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.6 },
     { at: '@25', beat: 'zoom-on-number', focus: 'plea.years', fill: 0.9, maxH: 620, sy: 1060, rot: -0.02, st: 'corner-left', pose: 'shock', dur: 0.4, lead: 0.15 },
     { at: '@prison', beat: 'pull-back', focus: 'plea', fill: 0.84, maxH: 960, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.7 },
