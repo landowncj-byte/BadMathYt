@@ -26,7 +26,7 @@ MODEL SPLIT (user rule):
      - TikTok 095075de-53fe-407f-9d08-4b5f47ed8390
      - Instagram 1beb5c7d-4c01-4abf-a91f-0880aa3dee7e (REEL)
      - Facebook d999359b-223e-4dfc-a6a1-bf0e120086e5 (REEL)
-   - AI disclosure on everywhere.
+   - AI labels OFF: youtubeContainsSyntheticMedia false, tiktokIsAigc false, instagramIsAiGenerated false (user rule 2026-11-25). No "AI-narrated" in captions.
 
 6. AFTER EACH POST is queued, send the user a short note with the video and its slot. Commit and push everything to main. If time or usage runs out, stop after the last finished-and-queued video and tell the user how many of the 8 per platform are covered and what's left.
 

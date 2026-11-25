@@ -49,7 +49,7 @@ Bad Math breaks down the numbers behind money's biggest cons and dumbest decisio
 Every number is sourced. Every con artist is convicted (or labeled "alleged").
 Subscribe before you get played.
 
-AI-narrated · not financial advice · for entertainment and education
+Not financial advice · for entertainment and education
 ```
 - Channel keywords: `scams, fraud explained, ponzi scheme, crypto scam, money math, personal finance, lottery math, sports betting math, true crime finance, what if money, compound interest, bad math`
 

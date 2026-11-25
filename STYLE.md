@@ -75,7 +75,7 @@ On frame 0: visual + ≤ 7-word on-screen hook in Anton + voice, all at once.
 - What If: say which parts are assumptions on screen and in voice ("assume no taxes", "hypothetically").
 - Decoded: only documented or court-proven cases. Anything pending is "alleged". Cite the court records, regulator releases (SEC/DOJ/FTC) or major reporting.
 - No advice, no picks, no guaranteed returns. The narrator never pitches Tape.
-- The synthetic-content disclosure is always on, and the About section says "AI-narrated".
+- AI labels are OFF (user rule 2026-11-25: original animation + a generic narrator, no real person imitated). Never imitate a real person's voice or likeness — if a video ever would, the label goes back on for that video.
 
 ## 9. CTA
 **Storyteller prompts (on screen, no extra voice):** comment bubble from the storyteller right after the payoff (one question tied to the story, 2–3 s), then the red "+ FOLLOW" button he taps in the last ~2 s over the loop. Never mid-video before the payoff, never both at once. No links, no Tape mentions on TikTok/Instagram. Character rules: brand/CHARACTER.md.
@@ -166,7 +166,7 @@ Every topic gets **three different scripts and edits**, not one video cross-post
 | CTA weave | like / share / follow (§13) | comment bait (a debatable question), follow for part 2, "send to…" | **send** (DMs) and **save**, then follow |
 | Caption | title ≤ 60 chars + description w/ sources | short, spicy, 3–5 hashtags, a question | hook line + 1–2 lines + 3–5 hashtags; FB uses the same Reel |
 
-Guardrails for all three (unchanged): facts verified; "fraud"/"criminal" only for convicted people; mock behavior and con artists, never victims; AI disclosure on; no "link in bio", no Tape.
+Guardrails for all three (unchanged): facts verified; "fraud"/"criminal" only for convicted people; mock behavior and con artists, never victims; no "link in bio", no Tape.
 
 ## 16. Pronunciation — say it like a person, show it like normal text (user rule 2026-11-24)
 The free Kokoro voice mangles some words ("dumbass" → "dumb-bass", "Theranos", "Alameda", "VIP"...). Every script has two layers:

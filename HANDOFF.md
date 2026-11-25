@@ -32,12 +32,13 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 - **Model split:** **Fable** = all research (facts + competitor/viral content research). **Opus** = creation + directing (picks topics, hooks, 3 scripts, pronunciation pass, direction, reviews every contact sheet, approves). **Sonnet** = coding/rendering/mixing. **Haiku** = voice timings, sound, captions, packaging.
 - **Voice:** Shorts = free Kokoro `am_michael` (speed 1.12) via `brand/voice/pronounce.py` (correct pronunciation; captions show normal spelling). Long-forms = paid ElevenLabs **Owen – Calm, Trustworthy Narrator**, voice_id `83MXTnoLsr3jX4Sl4gL4` (Creator plan, ~121k credits/month ≈ 3 long-forms/week). Never spend ElevenLabs on Shorts/SFX.
 - **Sound/music:** free CC0 only (`brand/sfx-library`, Openverse/Freesound). No synthesized "slop" beeps.
-- **No** "link in bio", no financial advice, no picks, AI disclosure on every post, no real logos/brands in art, never copy competitors' topics/scripts/footage (copy patterns only). Memes: only user-supplied Vlipsy clips under MEMES.md guardrails; never scrape Vlipsy.
+- **No** "link in bio", no financial advice, no picks, AI labels OFF on all platforms (2026-11-25; we never imitate real people — if a video ever does, label that one), no real logos/brands in art, never copy competitors' topics/scripts/footage (copy patterns only). Memes: only user-supplied Vlipsy clips under MEMES.md guardrails; never scrape Vlipsy.
 - **Budget:** ~$150/mo (Claude Max + ElevenLabs Creator).
 
 ## 4. Accounts & IDs
 - **PostFast** (MCP connector `mcp.postfa.st`): YouTube **BadMath** `7615365c-4085-4841-ae0b-7af4c8c441de` · TikTok **@color.me.saved** `095075de-53fe-407f-9d08-4b5f47ed8390` (the Bad Math TikTok until the username can be changed) · Instagram **badmath.tv** `1beb5c7d-4c01-4abf-a91f-0880aa3dee7e` (REEL) · Facebook **BadMath.tv** `d999359b-223e-4dfc-a6a1-bf0e120086e5` (REEL). Inbox (comments) works for TikTok/IG/FB, not YouTube.
 - **Publishing flow:** `curl -F "files[]=@video.mp4" https://uguu.se/upload` → `upload_from_url` → `create_posts` (status SCHEDULED, firstComment, AI-disclosure controls) → `approve_posts` APPROVED. (litterbox/tmpfiles refuse uploads from this environment.)
+- **YouTube cap:** PostFast allows max 10 YouTube posts per UTC day (see PRODUCTION.md). ET 20:00+ counts toward the next UTC day.
 - **Slots (America/New_York):** 08/10/12/14/16/18/20/22 for Shorts (+ evening catch-up slots if a day is short), long-form 17:00.
 - **ElevenLabs** connector (Creator plan, active). **GitHub** repo above. **Cloud environment** `BadMathYt` `env_01985tBieg9F2mAWpMFVmzKq` (personal): setup script installs Kokoro + Whisper; allowed hosts include Wikipedia, GitHub, Hugging Face, Openverse/Freesound, uguu.se, justice.gov, sec.gov, consumerfinance.gov, YouTube, Instagram (+ `scontent-ord5-1.cdninstagram.com`).
 - `.claude/settings.json` in the repo allows PostFast + ElevenLabs speech tools without permission prompts.
@@ -56,7 +57,7 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 
 ## 7. Current state (update every work block)
 - **Posted/scheduled 2026-11-24 (ET):** YouTube 8 (user's 3 + FTX 20:00, Theranos 21:00, lottery 22:00, Fyre 23:00, coffee 23:30); TikTok 8 (user's 3 + FTX, coffee, lottery, Theranos, Fyre); IG/FB 5 each.
-- **Wed 2026-11-25 scheduled (all 4 platforms):** parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00 ET. Nightly build fills 14:00+ and the 17:00 long-form.
+- **Wed 2026-11-25 scheduled (all 4 platforms):** parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00 ET. AI labels OFF (re-created 2026-11-25). Nightly build fills the rest — **YouTube for Wed can only take 14:00 + the 17:00 long-form before 20:00 ET (UTC cap); remaining Wed YouTube Shorts go at 20:00/21:00/22:00/23:00 ET**; TikTok/IG/FB use the normal 14/16/18/20/22 slots.
 - **Next up (Fable's ranked list `research/2026-11-25/ideas.md`):** Javice fake users, Tipton lottery rig, Tucker payday loans, BitConnect, credit-card minimum, 1% fee, OneCoin; **long-form Wed = Do Kwon / Terra-Luna** (Owen voice); **lottery Part 2** (promised on TikTok).
 - **Pending with the user:** none blocking. (They installed nothing yet from the plugin card; watch.sh covers it.)
 - Long-form "The Impossible Number That Exposed Madoff" (videos/2026-11-25-impossible-number) was built earlier; check whether it was ever posted before reusing the slot.
