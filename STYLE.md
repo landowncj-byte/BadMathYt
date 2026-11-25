@@ -174,3 +174,10 @@ The free Kokoro voice mangles some words ("dumbass" → "dumb-bass", "Theranos",
 - **SHOW layer (captions, on-screen text, .srt):** always the normal spelling from the script — never the respelling, never Whisper's spelling.
 - **Before voicing any script:** run `audit(k, text)` and check every name, acronym, profanity and long/rare word; fix anything wrong. **After voicing:** Whisper the narration with the names as `initial_prompt` and confirm each risky word comes back right.
 - Already-built narration with a newly-found bad word: `python brand/voice/patch_sentences.py <voice_dir>` re-voices only those sentences at their original times, then re-run the cut's `build/mix.py` and re-mux.
+
+## 17. Comments — hybrid mode (user rule 2026-11-25: "do both")
+Every post ships with a comment-bait **first comment** (all platforms). Inbox (TikTok, Instagram, Facebook via PostFast; YouTube has no inbox) is checked a few times a day and during every build.
+- **Auto-reply (no asking)** to normal comments: reactions, jokes, "wow", "is this real?" (answer with the source), topic requests ("do Enron!" → "noted 👀" + log it in ideas.md), friendly disagreement on the math (show the math once). Voice: short, dry, funny, Bad Math persona; roast the con artist / the bad math, **never the commenter**; no profanity on YouTube/TikTok replies, mild only on IG/FB; max ~1 reply per person per thread; never argue twice.
+- **Check with the user first** (flag in the daily note, don't reply): anything about legal threats/defamation, a person claiming to be involved in a case or a victim, self-harm or personal money crises, requests for financial advice, brand/collab/business offers, press, hate/harassment pile-ons, anything we might be wrong about, and anything you're unsure of.
+- **Never:** financial advice, promises, links, DMs asking for money, replies to minors' personal info, deleting legit criticism. Hide/delete only obvious spam, scams, slurs and doxxing (log what was removed).
+- **Daily note to the user:** # replies sent (with 3–5 examples), flagged comments waiting for them, top topic requests.

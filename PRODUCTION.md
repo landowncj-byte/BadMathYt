@@ -50,3 +50,6 @@ Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` 
 - **Weekly review (every Sunday ET, before building):** write `## Week of …` in `ANALYTICS.md`: which topics, series (Decoded/What If), formats, hook patterns, lengths, platforms and slots won/lost, with numbers. Then write **3–5 concrete changes** for next week (e.g. "more court-convicted villains", "IG cuts under 18 s", "drop the 08:00 slot"), and apply them: update STYLE.md/PRODUCTION.md if it's a rule change, re-rank ideas, and revise or replace any already-scheduled post in the next 7 days that the data says will underperform.
 - **Replicate winners, never repeat them:** a winning video gets a *new* topic with the same ingredients (hook pattern, structure, length, villain type) — never the same topic or script (uniqueness rules still apply). Log "inspired by <winner>" in ideas.md.
 - Small samples: don't overreact to < 500 views; judge patterns over ≥ 3 posts.
+
+## Comments (STYLE.md §17 — hybrid)
+Every build session: `list_inbox_conversations` (unreadOnly) → auto-reply to normal comments per §17 (preview_comment_reply → reply_to_comment; standing authorization 2026-11-25), flag sensitive ones to the user, log topic requests in ideas.md, `mark_inbox_conversation_read`. Include a comments summary in the daily note.

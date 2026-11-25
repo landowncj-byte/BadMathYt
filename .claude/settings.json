@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__PostFast",
+      "mcp__ElevenLabs__account_get_usage",
+      "mcp__ElevenLabs__creative_list_voices",
+      "mcp__ElevenLabs__creative_create_flow",
+      "mcp__ElevenLabs__creative_generate_speech",
+      "mcp__ElevenLabs__creative_get_flow_run_status"
+    ]
+  }
+}

@@ -97,3 +97,4 @@ decisions:
 - 2026-11-24: Pronunciation layer (STYLE §16, brand/voice/pronounce.py): voice reads corrected phonemes/respellings, captions show normal spelling. Tonight's FTX (all cuts) + Theranos re-voiced; FTX posts replaced before 8 PM.
 - 2026-11-25: Model split: Fable = research (ideas, fact-check, number spine, sources → research.md); Opus = creation + directing (hooks, scripts, direction, reviews); Sonnet/Haiku = coding, rendering, voice, sound, packaging.
 - 2026-11-25: Fable also does content research: competitor map + viral outliers + patterns → research/<date>/competitors.md, feeding idea ranking (copy patterns, never topics/scripts/footage).
+- 2026-11-25: Comments = hybrid: auto-reply to normal comments, flag sensitive ones to the user (STYLE §17). Project .claude/settings.json allows PostFast + ElevenLabs speech tools without prompts.
