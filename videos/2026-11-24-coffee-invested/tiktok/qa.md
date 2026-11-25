@@ -1,0 +1,13 @@
+# QA: coffee-invested, TikTok cut
+- video.mp4: 1080x1920, 30 fps, 794 frames, 26.47 s, H.264 + AAC 192k, faststart. build/video_noaudio.mp4 kept. Narration untouched (26.01 s).
+- Loudness (final file, ebur128): -14.0 LUFS integrated, true peak -1.4 dBTP. Two-pass loudnorm master; voice stem -16 LUFS before the sum; CC0 bed ducked by sidechain.
+- Freeze check (freezedetect d=0.8 s): none.
+- Frame 0: cup slam + glitch, "$400,000 COFFEE?" Anton, storyteller pose "you". IDIOT TAX stamp at 1.16 s, cup cracks at 1.96 s. Ends with a glitch back into frame 0.
+- Cuts: 14 scenes, 1.2 to 3.2 s each (hook 3.2 s has an internal cut at 1.96 s; payoff 2.3 s has cash rain and boom zoom).
+- 17.86 s: side-by-side "YOU PUT IN $87,600" vs "YOU'D HAVE $437,201". 19.98 s: big WORTH IT / NOT WORTH IT buttons, then (21.5 s) latte hand + bubble "WHAT DOES YOUR COFFEE COST? COMMENT". 24.06 s: storyteller taps +FOLLOW.
+- Numbers (7%, end-of-year deposits): 10 y $30,258; 40 y $437,201; put in $87,600; $6 x 365 = $2,190.
+- Captions: script.json text, digits, timed from words.json ($2,190, $30K, $437K, $87,600, 7%). captions.srt same text.
+- HUD: WHAT IF pill; footnote "ASSUMES 7%/YR · NOT INFLATION-ADJUSTED · NOT ADVICE" at y 1498.
+- Contact sheet (26 frames) reviewed; fixed: calculator title overlap, "7% / YEAR" overlap, "?" over counter, price chips overlap, caption vs hook text, COMMENT IT under bubble.
+- Minor known: NOT A PROMISE stamp overlaps the "/ YEAR" text on purpose; frame 0 is glitch-heavy for the first 0.4 s.
+- SFX: CC0 only (sfx/CREDITS.md): hit on every cut and stamp; upbeat_bed_2 bed. No CC0 pour sound exists: pop_1 + coin drops used.

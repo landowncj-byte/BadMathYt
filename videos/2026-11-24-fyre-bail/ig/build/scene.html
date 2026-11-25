@@ -1,0 +1,122 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bad Math: Fyre Festival (IG-FB Reels cut)</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../brand/storyteller.js"></script>
+<script src="words.js"></script>
+<script src="common.js"></script>
+<script>
+// Bad Math — IG/FB Reels cut. 18.18 s narration + 0.4 s tail. Key content y 250–1250, x < 940. Captions y ~1125.
+const DUR = 18.58, LOOP = 18.28;
+const CAPS = buildCaps(WORDS, t => t, 2);
+const CAPCFG = { x: 420, y: 1125, w: 680, size: 76, lh: 88 };
+function hud(c, t) {
+  c.save(); txt(c, 'BAD', 90, 266, '400 44px Anton', PAPER, 'left'); txt(c, 'MATH', 90 + c.measureText('BAD ').width, 266, '400 44px Anton', RED, 'left');
+  txt(c, 'PLEADED GUILTY 2018 · 6 YRS', 90, 1232, '700 22px JBM', 'rgba(245,243,238,.62)', 'left'); c.restore();
+}
+// ---- 0–2.3 HOOK: $12,000 FOR A CHEESE SANDWICH, sandwich slams in, boom
+function sHook(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.10)');
+  const gl = c.createRadialGradient(510, 620, 40, 510, 620, 560); gl.addColorStop(0, 'rgba(0,210,106,.28)'); gl.addColorStop(1, 'rgba(0,210,106,0)'); c.fillStyle = gl; c.fillRect(0, 300, W, 800);
+  const fl = t < .5 ? (Math.sin(t * 60) > .2 ? 1 : .6) : 1, s0 = 1 + .12 * Math.max(0, 1 - t / .3);
+  c.save(); c.globalAlpha = fl; c.translate(540, 400); c.scale(s0, s0); c.translate(-540, -400); big(c, '$12,000', 540, 400, 230, GREEN, 1, -.03, 60, 860); c.restore();
+  big(c, 'FOR A', 540, 548, 80, PAPER, 1, 0, 0, 500); big(c, 'CHEESE SANDWICH', 540, 645, 120, RED, 1, .015, 30, 880);
+  const slam = 1 + 1.4 * Math.max(0, 1 - t / .22), bob = t > .22 ? Math.exp(-(t - .22) * 6) * Math.sin((t - .22) * 30) * .04 : 0;
+  c.save(); c.translate(540, 920); c.rotate(bob); c.scale(1.0 * slam, 1.0 * slam); mealBox(c, t, 1, 0, true); c.restore();
+  if (t < .3) { const k = lin(t, 0, .3); c.save(); c.strokeStyle = `rgba(255,214,10,${1 - k})`; c.lineWidth = 8; c.lineCap = 'round'; for (let i = 0; i < 12; i++) { const a = i / 12 * 6.28; c.beginPath(); c.moveTo(540 + Math.cos(a) * (200 + 280 * k), 905 + Math.sin(a) * (140 + 200 * k)); c.lineTo(540 + Math.cos(a) * (260 + 340 * k), 905 + Math.sin(a) * (180 + 240 * k)); c.stroke(); } c.restore(); }
+}
+// ---- 2.3–3.7 THIS DUDE: founder card
+function sDude(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const k = back(lin(t, 2.3, 2.6)); c.save(); c.translate(540 + (1 - k) * -800, 770); c.rotate(-.04 + (1 - k) * -.2); founderCard(c, 1.0); c.restore();
+  big(c, 'THIS DUDE', 540, 410, 150, PAPER, lin(t, 2.74, 2.86), .02, 30, 860);
+  const q = back(lin(t, 3.0, 3.25)); if (q > 0) { c.save(); c.translate(800, 600); c.rotate(.2); c.scale(q, q); big(c, '?', 0, 0, 220, HL, 1, 0, 30); c.restore(); }
+}
+// ---- 3.7–5.2 the $90M pitch
+function sPitch(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.10)');
+  const v = Math.round(90000000 * eo(lin(t, 3.76, 4.6))), lk = t > 4.62 ? 1 + .12 * Math.max(0, 1 - (t - 4.62) / .25) : 1;
+  for (let i = 0; i < 12; i++) { const p = lin(t, 4.6 + i * .03, 5.3 + i * .02); if (p > 0 && p < 1) bill(c, 100 + hash(i * 3.3) * 800, 360 + p * 780, 130, (hash(i) - .5) * 2 + p * 4, .6 * (1 - lin(p, .7, 1))); }
+  big(c, 'THE PITCH', 540, 420, 130, PAPER, lin(t, 3.7, 3.82), -.02, 0, 860);
+  big(c, '$' + fmt(v), 540, 700, 190 * lk, GREEN, 1, -.02, 60, 880);
+  const m = back(lin(t, 4.62, 4.9)); if (m > 0) { c.save(); c.translate(540, 900); c.rotate(-.03); c.scale(m, m); rr(c, -330, -50, 660, 100, 14); c.fillStyle = HL; c.fill(); txt(c, 'COMPANY. ALLEGEDLY.', 0, 4, '400 62px Anton', INK); c.restore(); }
+}
+// ---- 5.2–7.7 $90M PITCH vs $60K REAL (MEME #1 boom zoom at 6.0)
+function sVs(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const a = eo(lin(t, 5.2, 5.5)), b = back(lin(t, 5.98, 6.3));
+  c.save(); c.translate(-(1 - a) * 1000, 0); big(c, '$90M', 540, 410, 220, GREEN, 1, -.04, 50, 760); big(c, 'PITCH', 540, 530, 90, PAPER, 1, -.04, 0, 600); c.restore();
+  const vs = back(lin(t, 5.7, 5.95)); if (vs > 0) { c.save(); c.translate(540, 640); c.scale(vs, vs); c.beginPath(); c.arc(0, 0, 44, 0, 7); c.fillStyle = HL; c.fill(); txt(c, 'VS', 0, 3, '400 46px Anton', INK); c.restore(); }
+  if (b > 0) { const sh = t < 6.4 ? Math.sin(t * 90) * 8 * (1 - lin(t, 6.0, 6.4)) : 0; c.save(); c.translate(0, 0); big(c, '$60K', 540 + sh, 800, 220, RED, 1, .03, 50, 760); big(c, 'REAL', 540, 910, 90, PAPER, lin(t, 6.2, 6.35), .03, 0, 600); c.save(); c.beginPath(); c.rect(90, 660, 860, 330); c.clip(); crack(c, 540, 800, 7, 420, lin(t, 6.05, 6.5), 4); c.restore(); c.restore(); }
+  stamp(c, '1,500× SMALLER', 540, 1030, 68, HL, -.04, lin(t, 6.9, 7.02));
+}
+// ---- 7.7–9.4 got caught, pleaded guilty: cuffs
+function sCuffs(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.09)');
+  const gap = lerp(.7, 0, eo(lin(t, 7.82, 8.0))); cuffs(c, 510, 640, gap, t);
+  if (t > 7.86 && t < 8.2) { const k = lin(t, 7.86, 8.2); c.save(); c.strokeStyle = `rgba(255,214,10,${1 - k})`; c.lineWidth = 6; c.lineCap = 'round'; for (let i = 0; i < 10; i++) { const a = i / 10 * 6.28; c.beginPath(); c.moveTo(510 + Math.cos(a) * (60 + 200 * k), 640 + Math.sin(a) * (40 + 120 * k)); c.lineTo(510 + Math.cos(a) * (100 + 260 * k), 640 + Math.sin(a) * (70 + 160 * k)); c.stroke(); } c.restore(); }
+  big(c, 'GOT CAUGHT', 540, 400, 130, PAPER, lin(t, 7.7, 7.85), -.02, 0, 860);
+  stamp(c, 'GUILTY', 540, 930, 150, RED, -.08, lin(t, 8.5, 8.62));
+}
+// ---- 9.4–11.0 scammed people again: fake tickets
+function sFake(c, t) {
+  bgGrid(c, t, 'rgba(196,59,216,.07)');
+  const evs = [['COACHELLA', 9.72, '#ff9a3c', .10, 570], ['BURNING MAN', 10.1, '#ff5a36', -.07, 790], ['MET GALA', 10.46, '#c43bd8', .05, 1000]];
+  big(c, 'SCAMMED', 540, 395, 150, RED, lin(t, 9.4, 9.55), -.02, 40, 860);
+  evs.forEach(([nm, fk, col, rot, yy], i) => { const p = eo(lin(t, 9.4 + i * .16, 9.7 + i * .16)); if (p <= 0) return; const xx = 500 + (1 - p) * 900;
+    const bg = c.createLinearGradient(xx - 300, yy, xx + 300, yy); bg.addColorStop(0, col); bg.addColorStop(1, '#2a323d'); ticket(c, xx, yy, 700, 180, rot, 1, bg, 'rgba(245,243,238,.5)', INK);
+    c.save(); c.translate(xx, yy); c.rotate(rot); txt(c, nm, -60, -12, '400 74px Anton', PAPER); txt(c, 'ADMIT ONE · VIP', -60, 50, '800 22px JBM', 'rgba(245,243,238,.8)'); c.restore();
+    stamp(c, 'FAKE', xx + 230, yy + 6, 70, RED, -.2 + i * .12, lin(t, fk, fk + .12)); });
+}
+// ---- 11.0–12.3 DID IT AGAIN ON BAIL
+function sBail(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.06)');
+  const k = back(lin(t, 11.0, 11.3)); ankle(c, t, 360, 760, .95 * k);
+  stamp(c, 'DID IT AGAIN', 600, 470, 108, RED, -.07, lin(t, 11.0, 11.14)); stamp(c, 'ON BAIL', 640, 955, 130, HL, .06, lin(t, 11.52, 11.64));
+}
+// ---- 12.3–13.6 ABSOLUTE CLOWN (MEME #17 rimshot)
+function sClown(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const k = back(lin(t, 12.3, 12.6)); c.save(); c.translate(510, 730); c.rotate(Math.sin(t * 5) * .02); c.scale(k, k); founderCard(c, 1.0, 'BILLY McFARLAND');
+  // clown wig + nose drawn on top of the silhouette
+  const cols = ['#ff3b30', '#ffd60a', '#00d26a', '#5ac8fa', '#c43bd8']; for (let i = 0; i < 5; i++) { for (const s of [-1, 1]) { c.fillStyle = cols[i]; c.beginPath(); c.arc(s * (70 + i * 26), -90 + i * 14, 34, 0, 7); c.fill(); c.strokeStyle = INK; c.lineWidth = 4; c.stroke(); } }
+  c.fillStyle = RED; c.beginPath(); c.arc(0, -60, 26 + (t > 12.74 ? 8 * Math.max(0, 1 - (t - 12.74) / .3) : 0), 0, 7); c.fill(); c.strokeStyle = INK; c.lineWidth = 5; c.stroke();
+  c.restore();
+  stamp(c, 'ABSOLUTE CLOWN', 540, 960, 96, RED, -.07, lin(t, 12.74, 12.86));
+  big(c, 'WHAT A…', 540, 400, 120, PAPER, lin(t, 12.32, 12.45), 0, 0, 860);
+}
+// ---- 13.6–15.3 6 YEARS: bars drop on "Six years"
+function sBars(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const bt = 13.68, drop = eo(lin(t, bt, bt + .26));
+  c.save(); c.translate(540, 700); c.scale(1.1, 1.1); c.translate(-540, -700); c.globalAlpha = .9; silhouette(c, 540, 700, 360, '#2a323d'); c.restore();
+  jailBars(c, drop, 300, 1100, 110, 970);
+  if (t >= bt && t < bt + .18) { c.fillStyle = `rgba(255,255,255,${.4 * (1 - (t - bt) / .18)})`; c.fillRect(0, 0, W, H); }
+  stamp(c, '6 YEARS', 540, 640, 190, RED, -.05, lin(t, 13.95, 14.07)); stamp(c, 'IN PRISON', 540, 880, 110, HL, .05, lin(t, 14.52, 14.64));
+}
+// ---- 15.3–16.9 SEND: paper plane flick
+function sSend(c, t) {
+  bgGrid(c, t, 'rgba(0,150,255,.07)');
+  big(c, 'SEND THIS', 540, 420, 190, PAPER, lin(t, 15.4, 15.55), -.02, 0, 860);
+  const p = lin(t, 15.42, 16.5); if (p > 0 && p < 1) paperPlane(c, p, [220, 1100], [780, 750], [880, 560], 1.8);
+  const e = eo(lin(t, 15.8, 16.1)); c.save(); c.globalAlpha = e; c.translate(540, 760 + (1 - e) * 60); rr(c, -300, -80, 600, 160, 34); c.fillStyle = '#10151c'; c.fill(); c.strokeStyle = '#3a434f'; c.lineWidth = 4; c.stroke(); silhouette(c, -220, 10, 54, '#3b4656'); txt(c, 'THAT FRIEND', -150, -16, '800 34px Inter', PAPER, 'left'); txt(c, 'DM', 270, -16, '800 24px JBM', 'rgba(245,243,238,.5)', 'right'); txt(c, '…', -150, 30, '800 40px Inter', 'rgba(245,243,238,.6)', 'left'); c.restore();
+}
+// ---- 16.9–18.28 final: full end text + Fyre 2 ticket
+function sEnd(c, t) {
+  bgGrid(c, t, 'rgba(242,183,5,.07)');
+  big(c, 'SEND THIS TO', 540, 400, 100, PAPER, lin(t, 16.92, 17.0), 0, 0, 860); big(c, 'THE FRIEND', 540, 520, 130, HL, lin(t, 16.96, 17.06), -.02, 30, 860); big(c, "WHO'D STILL GO", 540, 650, 130, RED, lin(t, 17.0, 17.12), .02, 30, 860);
+  const k = back(lin(t, 17.1, 17.4)); fyre2Ticket(c, t, 510, 880, .78 * k, -.05 + Math.sin(t * 3) * .015);
+  const sent = back(lin(t, 17.6, 17.85)); if (sent > 0) { c.save(); c.translate(540, 1030); c.scale(sent, sent); rr(c, -250, -46, 500, 92, 30); c.fillStyle = GREEN; c.fill(); txt(c, 'THIS VIDEO  ✓ SENT', 0, 3, '800 36px Inter', INK); c.restore(); }
+}
+function fyre2Ticket(c, t, x, y, s, rot) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s); ticket(c, 0, 0, 800, 360, 0, 1, goldG(c, -400, -180, 400, 180), 'rgba(11,15,20,.55)', INK); txt(c, 'FYRE FESTIVAL 2', -70, -40, '400 92px Anton', INK); txt(c, '· 2025 ·', -70, 56, '400 80px Anton', '#7a1c16'); barcode(c, 260, -120, 100, 140, 'rgba(11,15,20,.8)'); txt(c, 'ADMIT 1', 312, 60, '800 24px JBM', 'rgba(11,15,20,.8)'); c.restore(); }
+
+const SCENES = [[0, 2.3, sHook], [2.3, 3.7, sDude], [3.7, 5.2, sPitch], [5.2, 7.7, sVs], [7.7, 9.4, sCuffs], [9.4, 11.0, sFake], [11.0, 12.3, sBail], [12.3, 13.6, sClown], [13.6, 15.3, sBars], [15.3, 16.9, sSend], [16.9, LOOP, sEnd], [LOOP, 99, (c, t) => sHook(c, .3 + (t - LOOP))]];
+const ST = { pos: { x: 850, y: 1330, s: .88 }, enterAt: -.5, timeline: [[0, 'shock'], [2.3, 'point'], [3.7, 'chin'], [5.2, 'shock'], [7.7, 'point'], [9.4, 'shock'], [11.0, 'point'], [12.3, 'shrug'], [13.6, 'shock'], [15.3, 'you'], [16.9, 'you'], [LOOP, 'shock']] };
+const CFG = { hud, st: ST, caps: CAPS, cap: CAPCFG,
+  shake: [[.02, .5, 38], [2.74, .2, 12], [4.62, .3, 20], [6.0, .5, 32], [7.86, .3, 22], [8.5, .3, 18], [9.72, .2, 12], [10.1, .2, 12], [10.46, .2, 12], [11.0, .3, 20], [11.52, .3, 20], [12.74, .35, 24], [13.68, .45, 30], [13.95, .3, 20], [14.52, .3, 20]],
+  punch: [[4.62, .25, .07], [6.0, .2, .05], [8.5, .25, .07], [12.74, .25, .08], [13.95, .25, .08]], boom: 6.0,
+  glitch: [[0, .45, 1], [5.2, 5.4, .5], [7.7, 7.9, .5], [11.0, 11.2, .6], [LOOP, DUR, 1]] };
+window.render = t => compose(t, SCENES, CFG);
+window.DUR = DUR;
+window.ready = loadFonts(0);
+</script></body></html>

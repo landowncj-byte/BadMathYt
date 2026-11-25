@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bad Math: Theranos Revenue (IG-FB Reels cut)</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../brand/storyteller.js"></script>
+<script src="words.js"></script>
+<script src="common.js"></script>
+<script src="assets.js"></script>
+<script>
+// Bad Math — IG/FB Reels cut. 17.37 s narration + 0.4 s tail. Content kept in y 250–1250 (scene art ends ~1060; captions y 1125).
+const DUR = 17.77, NEWS_HL = .3;
+// SHOW text from script.json (profanity censored on screen); Whisper only supplies timing.
+function fixIG(toks) {
+  const o = [];
+  for (let i = 0; i < toks.length; i++) {
+    const k = { ...toks[i] }, n = toks[i + 1], p = s => (s.match(/[,.?!]+$/) || [''])[0], lo = k.w.toLowerCase().replace(/[,.?!]+$/, '');
+    if (k.w === '$700' && n && /^million/i.test(n.w)) { k.w = '$700,000,000' + p(n.w); k.e = n.e; i++; }
+    else if (k.w === '$100' && n && /^million/i.test(n.w)) { k.w = '$100,000,000' + p(n.w); k.e = n.e; i++; }
+    else if (k.w === '$100' && n && /^,000/.test(n.w)) { k.w = '$100,000' + p(n.w); k.e = n.e; i++; }
+    else if (k.w === '$9' && n && /^billion/i.test(n.w)) { k.w = '$9B' + p(n.w); k.e = n.e; i++; }
+    else if (k.w === '11' && n && /^years/i.test(n.w)) { k.w = '11 YRS'; k.e = n.e; i++; }
+    else if (lo === 'bullshitted') k.w = 'BULLSH*TTED' + p(k.w); else if (lo === 'bullshit') k.w = 'BULLSH*T' + p(k.w);
+    o.push(k);
+  }
+  return o;
+}
+GRN.splice(0, GRN.length, '$9b'); REDW.splice(0, REDW.length, '$100,000', 'bullsh*tted', 'bullsh*t', '11 yrs', 'prison', 'woman'); YEL.splice(0, YEL.length, 'send', 'friend', 'startup', 'claimed', 'revenue', 'valuation');
+const CAPS = buildCaps(WORDS, fixIG, 2);
+const CAPCFG = { x: 430, y: 1125, w: 680, size: 74, lh: 88 };
+function hud(c, t) {
+  c.save(); txt(c, 'BAD', 90, 266, '400 44px Anton', PAPER, 'left'); txt(c, 'MATH', 90 + c.measureText('BAD ').width, 266, '400 44px Anton', RED, 'left');
+  txt(c, 'CONVICTED 2022 · 11 YRS 3 MOS', 90, 1232, '700 22px JBM', 'rgba(245,243,238,.62)', 'left'); c.restore();
+}
+const B = (c, s, y, size, col, k, rot, glow) => bigT(c, s, 540, y, size, col, k, rot, glow);
+// 0–2.4 frame 0: SHE BULLSH*TTED INVESTORS + $700,000,000 slam
+function sHook(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.14)'); silhouette(c, 540, 760, 760, 'rgba(74,85,101,.22)');
+  const s0 = lerp(1.1, 1, eo(lin(t, 0, .16))), j = t < .45 ? Math.sin(t * 90) * 8 : 0;
+  c.save(); c.translate(540 + j, 0); c.scale(s0, s0); txt(c, 'SHE', 0, 330, '400 170px Anton', PAPER); glowTxt(c, 'BULLSH*TTED', 0, 520, '400 176px Anton', RED, 50 + 20 * Math.sin(t * 12)); txt(c, 'INVESTORS', 0, 710, '400 176px Anton', PAPER); c.restore();
+  const k = back(lin(t, -.2, .25)); if (k > 0) { c.save(); c.translate(540, 910); const sc = lerp(2.2, 1, clamp(k)); c.scale(sc, sc); c.rotate(-.04); glowTxt(c, '$700,000,000', 0, 0, '800 104px JBM', GREEN, 40 + 15 * Math.sin(t * 9)); c.restore(); }
+}
+// 2.4–4.3 the money pours in
+function sMoney(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.07)'); B(c, 'RAISED', 340, 130, PAPER, lin(t, 2.4, 2.55));
+  const cnt = lerp(0, 700e6, eo(lin(t, 2.45, 3.9))), done = t > 3.9, pk = done ? 1 + .1 * Math.sin(lin(t, 3.9, 4.25) * Math.PI) : 1;
+  c.save(); c.translate(540, 510); c.scale(pk, pk); glowTxt(c, '$' + fmt(cnt) + (done ? '+' : ''), 0, 0, '800 84px JBM', GREEN, 30); c.restore();
+  edison(c, 300, 640, 480, 330, t, { screen: '$$$ IN', scol: GREEN }); stacksFly(c, t, 2.4, 10, 540, 700, 770);
+  if (done && t < 4.3) { const f = (t - 3.9) / .4; for (let i = 0; i < 5; i++) { c.globalAlpha = 1 - f; txt(c, '$', 330 + i * 100, 620 - f * 70 - hash(i) * 40, '800 40px JBM', GREEN); } c.globalAlpha = 1; }
+}
+// 4.3–6.9 claimed $100M revenue
+function sClaim(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.08)'); B(c, 'SHE CLAIMED', 365, 120, PAPER, lin(t, 4.4, 4.55));
+  const am = back(lin(t, 4.9, 5.2)); c.save(); c.translate(540, 510); c.scale(.9 + .1 * am, .9 + .1 * am); glowTxt(c, '$100,000,000', 0, 0, '800 100px JBM', GREEN, 36 + 14 * Math.sin(t * 9)); c.restore();
+  txt(c, 'IN REVENUE', 540, 598, '700 36px JBM', 'rgba(245,243,238,.85)');
+  const gh = 400 * eo(lin(t, 4.5, 5.6)), base = 1040; c.save(); c.shadowColor = GREEN; c.shadowBlur = 40; const g = c.createLinearGradient(0, base - gh, 0, base); g.addColorStop(0, '#7ef0b0'); g.addColorStop(1, '#0f8f4d'); c.fillStyle = g; rr(c, 390, base - gh, 300, gh, 10); c.fill(); c.restore();
+  c.strokeStyle = 'rgba(245,243,238,.25)'; c.lineWidth = 4; c.beginPath(); c.moveTo(150, base); c.lineTo(930, base); c.stroke();
+  stamp(c, 'YEAH RIGHT', 560, 800, 100, HL, -.07, lin(t, 6.3, 6.42));
+}
+// 6.9–8.5 it was $100,000: MEME #1 boom zoom on "hundred thousand" (7.2)
+function sReal(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.12)'); B(c, 'IT WAS', 335, 90, PAPER, lin(t, 6.95, 7.1));
+  const k = back(lin(t, 7.2, 7.42)); if (k > 0) { c.save(); c.translate(540, 480); const sc = lerp(1.8, 1, clamp(k)); c.scale(sc, sc); glowTxt(c, '$100,000', 0, 0, '800 140px JBM', RED, 40); c.restore(); }
+  revBars(c, t, { cx: 540, base: 1030, h: 330, k: lin(t, 7.2, 7.5), ls: 36 });
+  stamp(c, '1,000× LIE', 540, 800, 128, HL, -.05, lin(t, 8.0, 8.12));
+}
+// 8.5–10.1 $9B valuation
+function sVal(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.07)'); B(c, 'VALUATION', 335, 100, PAPER, lin(t, 8.5, 8.65));
+  const vv = eo(Math.pow(lin(t, 8.54, 9.5), 1.5)), big = t >= 9.5;
+  c.save(); c.translate(400, 600); const s = big ? 1 + .08 * Math.sin(lin(t, 9.5, 9.9) * Math.PI) : 1; c.scale(s, s); glowTxt(c, '$9B', 0, 0, '400 330px Anton', big ? HL : GREEN, 40); c.restore();
+  txt(c, '$' + fmt(vv * 9e9), 400, 850, '800 48px JBM', big ? HL : GREEN); meter(c, t, vv, 800, 400, 1040);
+}
+// 10.1–12.1 magazine + stamp $9B VALUATION · BUILT ON BULLSH*T
+function sMag(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.06)'); magCard(c, t - 10.1, 540, 700, .9); badge9B(c, t - 10.3, 880, 400);
+  mstamp(c, ['$9B VALUATION ·', 'BUILT ON BULLSH*T'], 540, 760, 84, RED, -.08, lin(t, 11.16, 11.3));
+  if (t > 11.16 && t < 11.46) { c.fillStyle = `rgba(255,255,255,${.35 * (1 - (t - 11.16) / .3)})`; c.fillRect(0, 0, W, H); }
+}
+// 12.1–13.8 bars drop on "Eleven years"
+function sBars(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)'); const drop = eo(lin(t, 12.16, 12.4)); cellBars(c, drop, 270, 1130);
+  if (t >= 12.16 && t < 12.32) { c.fillStyle = `rgba(255,255,255,${.4 * (1 - (t - 12.16) / .16)})`; c.fillRect(0, 0, W, H); }
+  stamp(c, '11 YRS', 540, 600, 250, RED, -.04, lin(t, 12.3, 12.42)); stamp(c, 'IN PRISON', 540, 860, 120, HL, .04, lin(t, 12.9, 13.02));
+}
+// 13.8–17.37 SEND THIS TO YOUR STARTUP FRIEND (paper plane DM)
+function sSend(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.06)'); B(c, 'SEND THIS TO', 330, 100, PAPER, lin(t, 13.86, 14.0)); B(c, 'YOUR STARTUP', 450, 120, HL, lin(t, 14.4, 14.55)); B(c, 'FRIEND', 600, 190, RED, lin(t, 14.6, 14.75), -.02, 30);
+  const ck = eo(lin(t, 13.9, 14.2)); c.save(); c.globalAlpha = ck; rr(c, 120, 720, 700, 320, 30); c.fillStyle = '#10151c'; c.fill(); c.strokeStyle = '#3a434f'; c.lineWidth = 4; c.stroke();
+  silhouette(c, 190, 800, 60, '#3b4656'); txt(c, 'STARTUP FRIEND', 250, 795, '800 30px Inter', PAPER, 'left'); txt(c, 'DM', 780, 795, '800 24px JBM', 'rgba(245,243,238,.5)', 'right'); c.restore();
+  if (t > 15.9) { const k = back(lin(t, 15.9, 16.15)); c.save(); c.translate(560, 920); c.scale(k, k); rr(c, -230, -50, 460, 100, 30); c.fillStyle = GREEN; c.fill(); txt(c, 'THIS VIDEO  ✓ SENT', 0, 3, '800 36px Inter', INK); c.restore(); }
+  if (t > 16.7) { const k = back(lin(t, 16.7, 16.95)); c.save(); c.translate(330, 1000); c.scale(k, k); rr(c, -200, -42, 400, 84, 30); c.fillStyle = '#2a323d'; c.fill(); txt(c, 'OH NO. THAT\'S ME.', 0, 3, '800 32px Inter', PAPER); c.restore(); }
+  const p = lin(t, 14.9, 15.9); if (p > 0 && p < 1) { const e = eo(p), sx = 745, sy = 1235, ex = 560, ey = 920; c.strokeStyle = 'rgba(245,243,238,.5)'; c.setLineDash([12, 14]); c.lineWidth = 4; c.beginPath(); for (let q = 0; q <= 1; q += .04) { const ee = eo(q * p); c.lineTo(lerp(sx, ex, ee), lerp(sy, ey, ee) - Math.sin(ee * Math.PI) * 260); } c.stroke(); c.setLineDash([]); plane(c, lerp(sx, ex, e), lerp(sy, ey, e) - Math.sin(e * Math.PI) * 260, -2.3 + p * 1.6, 1.1 - .5 * p); }
+}
+const SCENES = [[0, 2.4, sHook], [2.4, 4.3, sMoney], [4.3, 6.9, sClaim], [6.9, 8.5, sReal], [8.5, 10.1, sVal], [10.1, 12.1, sMag], [12.1, 13.8, sBars], [13.8, 17.37, sSend], [17.37, 99, (c, t) => sHook(c, .3 + (t - 17.37))]];
+const ST = { pos: { x: 850, y: 1330, s: .88 }, enterAt: -.5, timeline: [[0, 'shock'], [2.4, 'point'], [4.3, 'chin'], [6.9, 'shock'], [8.5, 'point'], [10.1, 'shrug'], [12.1, 'shock'], [13.8, 'you'], [17.37, 'shock']] };
+const CFG = { hud, st: ST, caps: CAPS, cap: CAPCFG,
+  shake: [[.1, .5, 38], [2.45, .2, 12], [3.9, .25, 16], [6.3, .25, 16], [7.2, .5, 34], [8.0, .3, 22], [9.5, .2, 12], [11.16, .4, 30], [12.16, .4, 30], [12.3, .3, 22], [12.9, .3, 20]],
+  punch: [[6.3, .2, .06], [8.0, .2, .07], [11.16, .25, .08], [12.3, .2, .07], [12.9, .2, .06]], boom: 7.2,
+  glitch: [[0, .45, 1], [7.2, .3, .8], [11.16, .3, .7], [17.37, 17.77, 1]] };
+window.render = t => compose(t, SCENES, CFG);
+window.DUR = DUR;
+window.ready = loadFonts(0);
+</script></body></html>

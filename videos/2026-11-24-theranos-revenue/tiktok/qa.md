@@ -1,0 +1,14 @@
+# QA — Theranos revenue, TikTok cut
+- video.mp4: 1080x1920, 30 fps, 871 frames, H.264 + AAC 192k, faststart, 29.03 s (narration 28.64 s + 0.4 s loop tail). build/video_noaudio.mp4 kept.
+- Loudness (final file, ebur128): -14.0 LUFS integrated, true peak -1.9 dBTP (<= -1). Voice stem normalized to -16 LUFS before the sum; two-pass loudnorm master + limiter. Freeze check: none.
+- Frame 0: "IMAGINE LYING BY 1,000×" over the $100,000,000 vs $100,000 bars, glitch + boom, storyteller pose "you". Last 0.4 s glitches back into frame 0.
+- Hard cuts at 1.9, 3.9, 5.8, 7.4, 9.3, 11.0, 13.0, 14.8, 16.6, 18.7, 20.2, 21.7, 24.0, 26.4 (1.5-2.4 s each).
+- 21.7 s "Real question": split screen REFUND THEM vs THEIR PROBLEM (top/bottom), then at 24.0 a left/right poll version with the storyteller bubble "SHOULD THEY GET IT BACK? / COMMENT" and a COMMENT pill on "Comment".
+- 26.54 s "Follow": storyteller taps +FOLLOW, ticks to FOLLOWING at 27.44 s.
+- HUD: small red DECODED pill; footnote "CONVICTED 2022 · 11 YRS 3 MOS".
+- Memes: #1 boom zoom on "$100,000" (4.32 s), #3 red circle + arrow on the ERR screen (13.9-14.5 s).
+- Captions from script.json show text, Whisper used for timing only: $100,000,000, $100,000, $9B, 11 YRS, THERANOS. captions.srt = script.json text with sentence times.
+- Edit differs from the YouTube cut: hook shows the 1,000× bars first, quick-list order (claim, real, Holmes, promise, finger, valuation, reporters, news, voided, gavel, bars), poll + follow ending. Reused drawn assets: bars/LIE number, Edison box, Holmes card, valuation meter, newspaper, report pile, gavel, cell bars.
+- Contact sheet reviewed (contact_sheet.png). Fixes: 1,000× comma vs bar label, comment bubble vs caption and panels.
+- Deviations: none beyond the above; scenes are 1.5-2.4 s.
+- SFX: CC0 only (sfx/CREDITS.md), a hit on every cut and stamp; tense_bed_1 ducked under the voice.

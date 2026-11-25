@@ -1,0 +1,154 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bad Math: Theranos Revenue (TikTok cut)</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../brand/storyteller.js"></script>
+<script src="words.js"></script>
+<script src="common.js"></script>
+<script src="assets.js"></script>
+<script>
+// Bad Math — TikTok cut. 28.64 s narration + 0.4 s tail. Every frame is a pure function of t. Content kept in y 250–1250.
+const DUR = 29.04, NEWS_HL = .3;
+// SHOW text comes from script.json; Whisper tokens are only used for timing:
+// "$100 million" -> $100,000,000, "$100 ,000" -> $100,000, "$9 billion" -> $9B, "11 years" -> 11 YRS
+function fixTT(toks) {
+  const o = [];
+  for (let i = 0; i < toks.length; i++) {
+    const k = { ...toks[i] }, n = toks[i + 1], p = (s => (s.match(/[,.?!]+$/) || [''])[0]);
+    if (k.w === '$100' && n && /^million/i.test(n.w)) { k.w = '$100,000,000' + p(n.w); k.e = n.e; i++; }
+    else if (k.w === '$100' && n && /^,000/.test(n.w)) { k.w = '$100,000' + p(n.w); k.e = n.e; i++; }
+    else if (k.w === '$9' && n && /^billion/i.test(n.w)) { k.w = '$9B' + p(n.w); k.e = n.e; i++; }
+    else if (k.w === '11' && n && /^years/i.test(n.w)) { k.w = '11 YRS' + p(n.w); k.e = n.e; i++; }
+    o.push(k);
+  }
+  return o;
+}
+GRN.splice(0, GRN.length, 'money', '$9b', 'refund'); REDW.splice(0, REDW.length, '$100,000', 'inaccurate', 'voided', 'guilty', 'counts', 'worse', '11 yrs', 'never', 'results,'); YEL.splice(0, YEL.length, 'theranos', 'holmes', 'follow', 'comment', 'real', 'question', 'finger', 'prick', 'imagine', 'valuation');
+const CAPS = buildCaps(WORDS, fixTT, 2);
+const CAPCFG = { x: 420, y: 1325, w: 700, size: 72, lh: 82 };
+function hud(c, t) {
+  c.save(); rr(c, 90, 250, 196, 52, 8); c.fillStyle = RED; c.fill(); txt(c, 'DECODED', 188, 277, '800 30px Inter', PAPER);
+  txt(c, 'CONVICTED 2022 · 11 YRS 3 MOS', 90, 1478, '700 22px JBM', 'rgba(245,243,238,.62)', 'left'); c.restore();
+}
+const T0 = (c, s, _x, y, size, col, k, rot, glow) => bigT(c, s, 540, y, size, col, k, rot, glow);
+
+// 0–1.9 frame 0: IMAGINE LYING BY 1,000× over the $100,000,000 vs $100,000 bars
+function sHook(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.10)'); const k = .55 + .45 * back(lin(t, 0, .25)), s0 = lerp(1.15, 1, eo(lin(t, 0, .18))), j = t < .45 ? Math.sin(t * 90) * 7 : 0;
+  c.save(); c.translate(540 + j, 0); c.scale(s0, s0);
+  txt(c, 'IMAGINE LYING BY', 0, 372, '400 100px Anton', PAPER); glowTxt(c, '1,000×', 0, 545, '400 250px Anton', RED, 50 + 20 * Math.sin(t * 12)); c.restore();
+  revBars(c, t, { cx: 440, base: 1175, h: 335, k: lin(t, -.5, .3) * .9 + .1, ls: 40 });
+}
+// 1.9–3.9 claimed: $100,000,000 billboard + investors cheering
+function sClaim(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.08)'); const u = t - 1.9, gl = c.createRadialGradient(540, 600, 40, 540, 600, 560); gl.addColorStop(0, 'rgba(0,210,106,.3)'); gl.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = gl; c.fillRect(0, 300, W, 600);
+  T0(c, 'CLAIMED REVENUE', 0, 400, 80, PAPER, lin(t, 1.9, 2.05));
+  const am = back(lin(t, 1.92, 2.2)); c.save(); c.translate(540, 560); c.scale(.9 + .1 * am, .9 + .1 * am); glowTxt(c, '$100,000,000', 0, 0, '800 112px JBM', GREEN, 40 + 15 * Math.sin(t * 9)); c.restore();
+  for (let i = 0; i < 3; i++) { const q = back(lin(t, 2.2 + i * .2, 2.5 + i * .2)); if (q > 0) { silhouette(c, 250 + i * 290, 930 - (1 - q) * 100 + Math.sin(t * 6 + i) * 6, 150 * q, '#3a4452'); const f = ((t - 2.7 - i * .15) % 1) / 1; if (t > 2.7) { c.globalAlpha = 1 - f; txt(c, '$', 250 + i * 290, 780 - f * 120, '800 56px JBM', GREEN); c.globalAlpha = 1; } } }
+  stamp(c, 'WOW', 780, 760, 90, HL, .1, lin(t, 2.9, 3.02));
+}
+// 3.9–5.8 real: magnifier over the sliver
+function sReal(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.10)'); T0(c, 'REAL REVENUE', 0, 400, 80, PAPER, lin(t, 3.9, 4.05));
+  const k = back(lin(t, 4.3, 4.6)), mx = lerp(250, 540, eo(lin(t, 4.3, 4.9))) + Math.sin(t * 5) * 6, my = 720 + Math.sin(t * 4) * 5, r = 185 * k;
+  if (k > 0) { c.save(); c.beginPath(); c.arc(mx, my, r, 0, 7); c.clip(); c.fillStyle = '#10151c'; c.fillRect(mx - r, my - r, r * 2, r * 2); txt(c, 'REAL', mx, my - 66, '700 30px JBM', PAPER); glowTxt(c, '$100,000', mx, my, '800 58px JBM', RED, 22); txt(c, '÷ 1,000', mx, my + 62, '700 30px JBM', HL); c.restore(); magnifier(c, mx, my, r); }
+  if (t > 4.95) { const q = back(lin(t, 4.95, 5.25)); c.save(); c.translate(540, 1050); c.scale(q, q); txt(c, '1,000× SMALLER', 0, 0, '800 54px JBM', HL); c.restore(); hlabel(c, '$100,000,000 ÷ $100,000 = 1,000', 540, 1130, 'rgba(245,243,238,.8)', 26); }
+}
+// 5.8–7.4 Elizabeth Holmes did.
+function sHolmes(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.06)'); const k = back(lin(t, 5.8, 6.1)); holmesCard(c, 540, 700, 1.55 * k, -.03);
+  stamp(c, 'SHE DID', 540, 1060, 140, RED, -.06, lin(t, 6.46, 6.58));
+  if (t > 6.46 && t < 6.8) { c.fillStyle = `rgba(255,255,255,${.3 * (1 - (t - 6.46) / .34)})`; c.fillRect(0, 0, W, H); }
+}
+// 7.4–9.3 THERANOS promised blood tests
+function sPromise(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.06)'); wordmark(c, 540, 400, 150, lin(t, 7.48, 7.7)); c.save(); c.globalAlpha = lin(t, 7.7, 7.9); c.fillStyle = RED; c.fillRect(250, 500, 580 * eo(lin(t, 7.7, 8.2)), 7); c.restore();
+  const mk = back(lin(t, 7.6, 8.0)); if (mk > 0) edison(c, 280, 650 + (1 - mk) * 500, 520, 400, t, { screen: 'READY', scol: GREEN });
+  stamp(c, 'BLOOD TESTS', 540, 1160, 110, HL, .04, lin(t, 8.2, 8.34));
+}
+// 9.3–11.0 one finger prick
+function sPrick(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)'); const q = back(lin(t, 9.78, 10.05)); c.save(); c.translate(540, 390); c.scale(q, q); txt(c, '"ONE FINGER PRICK"', 0, 0, '400 84px Anton', HL); c.restore();
+  const hit = t > 10.62, by = 840; edison(c, 330, by, 420, 340, t, { screen: hit ? 'RUNNING…' : 'READY', scol: hit ? HL : GREEN });
+  const fk = eo(lin(t, 9.35, 9.8)); if (fk > 0) { c.save(); c.translate(540 + (1 - fk) * 520, 590); c.fillStyle = '#e1ad8c'; rr(c, -42, -90, 84, 220, 42); c.fill(); c.strokeStyle = '#b98568'; c.lineWidth = 3; c.beginPath(); c.moveTo(-20, 80); c.lineTo(20, 80); c.stroke(); c.restore(); }
+  const swell = lin(t, 9.9, 10.35), fall = ei(lin(t, 10.35, 10.62));
+  if (t >= 9.9 && t < 10.62) { const dy = lerp(722, by - 8, fall), r = (7 + 14 * swell) * (1 - fall * .15); c.save(); c.fillStyle = '#d4121f'; c.shadowColor = RED; c.shadowBlur = 16; c.beginPath(); c.arc(540, dy, r, 0, 7); c.moveTo(540, dy - r * 2.2 * (1 - fall * .5)); c.lineTo(540 - r * .9, dy - r * .3); c.lineTo(540 + r * .9, dy - r * .3); c.fill(); c.restore(); }
+  const hk = lin(t, 10.62, 11.2); if (hk > 0 && hk < 1) { c.strokeStyle = `rgba(255,59,48,${1 - hk})`; c.lineWidth = 5; c.beginPath(); c.ellipse(540, by + 2, 24 + hk * 120, 7 + hk * 20, 0, 0, 7); c.stroke(); }
+}
+// 11.0–13.0 valuation rockets to $9B
+function sVal(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.07)'); txt(c, 'VALUATION', 450, 420, '400 80px Anton', PAPER);
+  const vv = eo(Math.pow(lin(t, 11.1, 12.04), 1.5)), val = vv * 9e9, big = t >= 12.04;
+  c.save(); c.translate(450, 540); const s = big ? 1 + .08 * Math.sin(lin(t, 12.04, 12.4) * Math.PI) : 1; c.scale(s, s); glowTxt(c, '$' + fmt(big ? 9e9 : val), 0, 0, '800 60px JBM', big ? HL : GREEN, big ? 40 : 15); c.restore();
+  meter(c, t, vv, 810, 380, 1180);
+  if (big) { const q = back(lin(t, 12.04, 12.3)); c.save(); c.translate(430, 880); c.rotate(-.05); c.scale(q, q); glowTxt(c, '$9B', 0, 0, '400 330px Anton', HL, 50); c.restore(); }
+}
+// 13.0–14.8 reporters vs the machine: red circle + arrow (MEME #3)
+function sReport(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)'); T0(c, 'REPORTERS CHECKED', 0, 400, 74, PAPER, lin(t, 13.2, 13.35));
+  edison(c, 250, 600, 580, 460, t, { screen: t > 13.7 ? 'ERR' : 'READY', scol: t > 13.7 ? RED : GREEN });
+  const mx = lerp(180, 600, eo(lin(t, 13.1, 13.8))), my = 760 + Math.sin(t * 5) * 8; if (t < 13.9) magnifier(c, mx, my, 110);
+  const ck = eo(lin(t, 13.9, 14.4)); if (ck > 0) { c.save(); c.strokeStyle = RED; c.lineWidth = 10; c.lineCap = 'round'; c.shadowColor = RED; c.shadowBlur = 16; c.beginPath(); c.ellipse(500, 800, 235 + 5 * Math.sin(t * 9), 140, -.04, -1.9, -1.9 + ck * 6.5); c.stroke(); c.restore(); }
+  const ak = back(lin(t, 14.3, 14.55)); if (ak > 0) { c.save(); c.translate(860, 1090); c.scale(ak, ak); c.rotate(-2.2); c.strokeStyle = RED; c.fillStyle = RED; c.lineWidth = 14; c.lineCap = 'round'; c.beginPath(); c.moveTo(0, 0); c.lineTo(190, 0); c.stroke(); c.beginPath(); c.moveTo(-14, 0); c.lineTo(46, -34); c.lineTo(46, 34); c.closePath(); c.fill(); c.restore(); }
+}
+// 14.8–16.6 the newspaper
+function sNews(c, t) { bgGrid(c, t, 'rgba(255,59,48,.08)'); newsCard(c, t - 14.8, 540, 720, 1.0); stamp(c, 'THE PROBLEM?', 540, 330, 66, RED, -.04, lin(t, 14.85, 14.98)); }
+// 16.6–18.7 two years of results voided
+function sVoid(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.08)'); txt(c, 'EDISON RESULTS · 2 YEARS', 540, 390, '700 34px JBM', 'rgba(245,243,238,.8)');
+  for (let i = 0; i < 9; i++) { const t0 = 16.7 + i * .12, k = lin(t, t0, t0 + .35); if (k <= 0) continue; const e = eo(k); report(c, lerp(i % 2 ? -300 : 1380, 540 + (hash(i) - .5) * 360, e), lerp(300, 780 + (hash(i + 3) - .5) * 240, e), (hash(i + 7) - .5) * .7 + (1 - e) * 1.2, i, t, k); }
+  mstamp(c, ['2 YEARS OF', 'VOIDED'], 540, 800, 150, RED, -.09, lin(t, 17.82, 17.98));
+  if (t > 17.82 && t < 18.15) { c.fillStyle = `rgba(255,255,255,${.35 * (1 - (t - 17.82) / .33)})`; c.fillRect(0, 0, W, H); }
+}
+// 18.7–20.2 gavel: guilty, 4 counts
+function sGavel(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)'); gavel(c, t - 18.64, 540, 700, 1.0);
+  if (t >= 18.94 && t < 19.14) { c.fillStyle = `rgba(255,255,255,${.4 * (1 - (t - 18.94) / .2)})`; c.fillRect(0, 0, W, H); }
+  stamp(c, 'GUILTY', 540, 880, 170, RED, -.04, lin(t, 18.94, 19.06)); stamp(c, '4 COUNTS', 540, 1070, 120, HL, .04, lin(t, 19.34, 19.46));
+}
+// 20.2–21.7 bars drop: 11 YRS 3 MOS
+function sBars(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)'); const drop = eo(lin(t, 20.3, 20.55)); cellBars(c, drop, 270, 1130);
+  if (t >= 20.3 && t < 20.46) { c.fillStyle = `rgba(255,255,255,${.35 * (1 - (t - 20.3) / .16)})`; c.fillRect(0, 0, W, H); }
+  stamp(c, '11 YRS', 540, 620, 230, RED, -.04, lin(t, 20.4, 20.52)); stamp(c, '3 MOS', 540, 860, 130, HL, .04, lin(t, 20.9, 21.02));
+}
+// 21.7–24.0 split screen A: REFUND THEM vs THEIR PROBLEM (top/bottom)
+function panel(c, x, y, w, h, col, k) { c.save(); c.globalAlpha = clamp(k * 2); rr(c, x, y, w, h, 24); c.fillStyle = col === GREEN ? 'rgba(0,210,106,.12)' : 'rgba(255,59,48,.12)'; c.fill(); c.strokeStyle = col; c.lineWidth = 5; c.stroke(); c.restore(); }
+function sSplitA(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.06)'); T0(c, 'REAL QUESTION', 0, 345, 70, HL, lin(t, 21.72, 21.86));
+  const a = eo(lin(t, 21.8, 22.1)), b = eo(lin(t, 22.2, 22.5)), hiA = t > 24.9 ? 1 : 0;
+  c.save(); c.translate((1 - a) * -900, 0); panel(c, 100, 400, 880, 360, GREEN, 1); T0(c, 'REFUND THEM', 0, 500, 100, GREEN, 1);
+  for (let i = 0; i < 4; i++) { const p = ((t * .8 + i / 4) % 1); bill(c, 300 + p * 480, 640 - Math.sin(p * Math.PI) * 60, 80, p * 3, 1); } txt(c, '↩ $', 190, 640, '800 70px JBM', GREEN, 'center'); c.restore();
+  c.save(); c.translate((1 - b) * 900, 0); panel(c, 100, 860, 880, 360, RED, 1); T0(c, 'THEIR PROBLEM', 0, 960, 100, RED, 1); silhouette(c, 540, 1130, 100, '#4a5565'); txt(c, '¯\\_(ツ)_/¯', 760, 1130, '800 60px JBM', 'rgba(245,243,238,.75)'); c.restore();
+  const v = back(lin(t, 22.5, 22.75)); c.save(); c.translate(540, 810); c.scale(v, v); c.fillStyle = INK; c.beginPath(); c.arc(0, 0, 54, 0, 7); c.fill(); c.strokeStyle = HL; c.lineWidth = 6; c.stroke(); txt(c, 'VS', 0, 2, '400 56px Anton', HL); c.restore();
+}
+// 24.0–26.4 split screen B: left | right poll with fake tally, comment bubble from the storyteller
+function sSplitB(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.06)'); const u = t - 24.0, flick = .5 + .35 * Math.sin(u * 5.5), win = t > 25.96;
+  const k = eo(lin(t, 24.0, 24.25));
+  c.save(); c.globalAlpha = k; rr(c, 70, 340, 450, 740, 26); c.fillStyle = 'rgba(0,210,106,.14)'; c.fill(); c.strokeStyle = GREEN; c.lineWidth = 5; c.stroke();
+  rr(c, 560, 340, 450, 740, 26); c.fillStyle = 'rgba(255,59,48,.14)'; c.fill(); c.strokeStyle = RED; c.lineWidth = 5; c.stroke(); c.restore();
+  txt(c, 'REFUND', 295, 450, '400 96px Anton', GREEN); txt(c, 'THEM', 295, 550, '400 96px Anton', GREEN); txt(c, 'THEIR', 785, 450, '400 96px Anton', RED); txt(c, 'PROBLEM', 785, 550, '400 78px Anton', RED);
+  const g = clamp(flick, .15, .85) * (win ? 1 : 1); txt(c, Math.round(g * 100) + '%', 295, 780, '800 120px JBM', GREEN); txt(c, Math.round((1 - g) * 100) + '%', 785, 780, '800 120px JBM', RED);
+  rr(c, 100, 900, 390, 40, 20); c.fillStyle = '#1b2430'; c.fill(); c.fillStyle = GREEN; rr(c, 100, 900, 390 * g, 40, 20); c.fill(); rr(c, 590, 900, 390, 40, 20); c.fillStyle = '#1b2430'; c.fill(); c.fillStyle = RED; rr(c, 590, 900, 390 * (1 - g), 40, 20); c.fill();
+  const v = back(lin(t, 24.25, 24.5)); c.save(); c.translate(540, 745); c.scale(v, v); c.fillStyle = INK; c.beginPath(); c.arc(0, 0, 50, 0, 7); c.fill(); c.strokeStyle = HL; c.lineWidth = 6; c.stroke(); txt(c, 'VS', 0, 2, '400 52px Anton', HL); c.restore();
+  const cm = back(lin(t, 25.96, 26.2)); if (cm > 0) { c.save(); c.translate(540, 1010); c.scale(cm, cm); rr(c, -230, -44, 460, 88, 44); c.fillStyle = HL; c.fill(); txt(c, 'COMMENT ↓', 0, 3, '800 44px Inter', INK); c.restore(); }
+}
+// 26.4–29.04 follow: next one is worse
+function sNext(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.10)'); T0(c, 'THE NEXT ONE', 0, 420, 120, PAPER, lin(t, 27.06, 27.2)); T0(c, 'IS WORSE', 0, 600, 190, RED, lin(t, 27.6, 27.74), -.02, 40);
+  const fk = back(lin(t, 26.45, 26.75)); c.save(); c.translate(540, 880); c.scale(fk, fk); rr(c, -340, -90, 680, 200, 18); c.fillStyle = '#e9e3d2'; c.fill(); for (let i = 0; i < 4; i++) { rr(c, -300, -60 + i * 40, 180 + hash(i + 3) * 380, 26, 5); c.fillStyle = '#14181e'; c.fill(); } c.restore();
+  stamp(c, 'CLASSIFIED', 560, 890, 96, RED, -.07, lin(t, 27.3, 27.42));
+}
+const SCENES = [[0, 1.9, sHook], [1.9, 3.9, sClaim], [3.9, 5.8, sReal], [5.8, 7.4, sHolmes], [7.4, 9.3, sPromise], [9.3, 11.0, sPrick], [11.0, 13.0, sVal], [13.0, 14.8, sReport], [14.8, 16.6, sNews], [16.6, 18.7, sVoid], [18.7, 20.2, sGavel], [20.2, 21.7, sBars],
+  [21.7, 24.0, sSplitA], [24.0, 26.4, sSplitB], [26.4, 28.64, sNext], [28.64, 99, (c, t) => sHook(c, .3 + (t - 28.64))]];
+const ST = { pos: { x: 850, y: 1470, s: 1.02 }, enterAt: -.5, timeline: [[0, 'you'], [1.9, 'point'], [3.9, 'shock'], [5.8, 'point'], [7.4, 'idle'], [9.3, 'point'], [11.0, 'shock'], [13.0, 'chin'], [14.8, 'point'], [16.6, 'shrug'], [18.7, 'shock'], [20.2, 'point'], [21.7, 'chin'], [24.0, 'shrug'], [26.4, 'follow'], [28.64, 'you']],
+  bubbles: [[24.0, 26.4, 'SHOULD THEY GET IT BACK?', 'COMMENT', [520, 1172]]], follow: [26.54, 28.64], followAt: [600, 1150], followScale: 1.15 };
+const CFG = { hud, st: ST, caps: CAPS, cap: CAPCFG,
+  shake: [[.1, .5, 34], [1.95, .25, 14], [4.32, .5, 34], [6.46, .3, 20], [8.2, .2, 10], [10.62, .25, 14], [12.04, .3, 20], [14.05, .2, 10], [15.0, .2, 12], [17.82, .4, 28], [18.94, .4, 28], [19.34, .3, 20], [20.3, .4, 28], [21.72, .2, 12], [27.6, .25, 16]],
+  punch: [[1.95, .2, .06], [6.46, .2, .07], [12.04, .2, .06], [19.34, .2, .06], [20.4, .25, .08]], boom: 4.32,
+  glitch: [[0, .45, 1], [4.32, .3, .8], [17.82, .3, .6], [20.3, .3, .5], [28.64, 29.04, 1]] };
+window.render = t => compose(t, SCENES, CFG);
+window.DUR = DUR;
+window.ready = loadFonts(0);
+</script></body></html>

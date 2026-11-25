@@ -1,0 +1,192 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bad Math: Fyre Festival (TikTok cut)</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../brand/storyteller.js"></script>
+<script src="words.js"></script>
+<script src="common.js"></script>
+<script>
+// Bad Math — TikTok cut. Narration 30.62 s + 0.4 s tail. Hard cuts every 1.5-2.5 s. Key content x < 940, y 250-1250; captions y 1325.
+const DUR = 31.02, LOOP = 30.72;
+const CAPS = buildCaps(WORDS, t => t, 2);
+const CAPCFG = { x: 410, y: 1325, w: 660, size: 72, lh: 82 };
+function hud(c, t) {
+  c.save(); rr(c, 90, 250, 196, 52, 8); c.fillStyle = RED; c.fill(); txt(c, 'DECODED', 188, 277, '800 30px Inter', PAPER);
+  txt(c, 'PLEADED GUILTY 2018 · 6 YRS', 90, 1478, '700 22px JBM', 'rgba(245,243,238,.62)', 'left'); c.restore();
+}
+// ---- 0–2.0 HOOK: "$12,000 -> sandwich" + VIP ticket, IMAGINE PAYING THIS
+function sHook(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.10)');
+  const g = c.createRadialGradient(510, 640, 40, 510, 640, 560); g.addColorStop(0, 'rgba(255,214,10,.22)'); g.addColorStop(1, 'rgba(255,214,10,0)'); c.fillStyle = g; c.fillRect(0, 300, W, 800);
+  const fl = t < .5 ? (Math.sin(t * 60) > .2 ? 1 : .6) : 1, slam = 1 + .1 * Math.max(0, 1 - t / .3);
+  c.save(); c.globalAlpha = fl; c.translate(540, 420); c.scale(slam, slam); c.font = '400 98px Anton'; const a = c.measureText('IMAGINE PAYING ').width, b = c.measureText('THIS').width, x0 = -(a + b) / 2;
+  c.lineJoin = 'round'; c.lineWidth = 14; c.strokeStyle = 'rgba(0,0,0,.85)'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.strokeText('IMAGINE PAYING ', x0, 0); c.strokeText('THIS', x0 + a, 0);
+  c.fillStyle = PAPER; c.fillText('IMAGINE PAYING ', x0, 0); c.fillStyle = RED; c.fillText('THIS', x0 + a, 0); c.restore();
+  // "$12,000 ->  sandwich" row, built from our own drawn sandwich (no emoji font)
+  const pop = 1 + .16 * Math.max(0, 1 - t / .35), py = 640;
+  c.save(); c.translate(0, py); c.scale(pop, pop); c.translate(0, -py);
+  big(c, '$12,000', 285, py, 135, GREEN, 1, -.03, 40, 400);
+  c.save(); c.translate(560, py); c.scale(.8, .8); const ar = 1 + .1 * Math.sin(t * 9); c.scale(ar, ar); c.fillStyle = HL; c.beginPath(); c.moveTo(-60, -26); c.lineTo(10, -26); c.lineTo(10, -62); c.lineTo(78, 0); c.lineTo(10, 62); c.lineTo(10, 26); c.lineTo(-60, 26); c.closePath(); c.strokeStyle = 'rgba(0,0,0,.85)'; c.lineWidth = 8; c.stroke(); c.fill(); c.restore();
+  c.save(); c.translate(760, py + 8); c.rotate(.06); c.scale(.8, .8); sandwich(c, t, 1, 0); c.restore(); c.restore();
+  // VIP ticket beside it
+  const tk = 1 + .06 * Math.max(0, 1 - t / .3); vipTicket(c, t, 510, 1010, .86 * tk, -.045 + Math.sin(t * 2.1) * .01);
+  const sk = back(lin(t, .5, .75)); if (sk > 0) { c.save(); c.translate(240, 1215); c.rotate(-.06); c.scale(sk, sk); rr(c, -150, -34, 300, 68, 12); c.fillStyle = RED; c.fill(); txt(c, 'LUXURY*', 0, 3, '400 44px Anton', PAPER); c.restore(); }
+}
+// ---- 2.0–3.6 "luxury festival": glossy promo card
+function sLux(c, t) {
+  bgGrid(c, t, 'rgba(0,200,220,.07)');
+  const k = back(lin(t, 2.0, 2.35)); c.save(); c.translate(540, 760); c.scale(k, k); c.rotate((1 - k) * -.15 + Math.sin(t * 1.6) * .008); c.translate(-540, -760);
+  c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 30; rr(c, 90, 460, 840, 600, 28); c.fillStyle = '#fff'; c.fill(); c.restore();
+  c.save(); c.translate(540, 760); c.scale(k, k); c.rotate((1 - k) * -.15 + Math.sin(t * 1.6) * .008); c.translate(-540, -760); rr(c, 90, 460, 840, 600, 28); c.clip(); c.translate(90, 460); drawPromo(c, t - 2.0, 840, 600); c.restore();
+  big(c, 'LUXURY FESTIVAL', 540, 385, 90, PAPER, lin(t, 2.38, 2.55), 0, 0, 860);
+  const bk = eo(lin(t, 3.0, 3.2)); if (bk > 0) { c.save(); c.translate(540 + (1 - bk) * 900, 1160); c.rotate(-.03); c.fillStyle = HL; c.fillRect(-380, -48, 760, 96); txt(c, 'ALLEGEDLY: A LOT OF SAND', 0, 4, '400 54px Anton', INK); c.restore(); }
+}
+// ---- 3.6–5.1 the cheese sandwich: price tag + box slam
+function sSand(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.06)');
+  const by = eo(lin(t, 3.6, 3.95)), k = back(lin(t, 3.75, 4.15));
+  big(c, 'ONE CHEESE', 540, 390, 118, PAPER, lin(t, 3.62, 3.75), -.02, 0, 880); big(c, 'SANDWICH', 540, 525, 150, HL, lin(t, 4.14, 4.3), .02, 40, 880);
+  c.save(); c.translate(540, 900 + (1 - by) * -600); c.scale(1.2, 1.2); mealBox(c, t, k, 0); c.restore();
+  for (let i = 0; i < 7; i++) { const p = lin(t, 4.3 + i * .07, 5.1 + i * .02); if (p > 0 && p < 1) bill(c, 140 + hash(i * 2.7) * 760, 1000 + p * 220, 110, (hash(i) - .5) * 3 + p * 3, 1 - lin(p, .5, 1)); }
+  const sk = lin(t, 4.4, 4.52); stamp(c, '$12,000', 540, 1185, 110, GREEN, -.05, sk);
+}
+// ---- 5.1–7.0 title: FYRE FESTIVAL 2017
+function sTitle(c, t) {
+  bgGrid(c, t, 'rgba(255,90,54,.07)');
+  c.save(); const g = c.createLinearGradient(0, 330, 0, 1050); g.addColorStop(0, '#ff5a36'); g.addColorStop(.6, '#ffb05a'); g.addColorStop(1, '#ffe9a0'); rr(c, 90, 330, 840, 720, 30); c.clip(); c.fillStyle = g; c.fillRect(90, 330, 840, 720);
+  const sg = c.createRadialGradient(510, 760, 20, 510, 760, 280); sg.addColorStop(0, 'rgba(255,255,230,1)'); sg.addColorStop(1, 'rgba(255,230,150,0)'); c.fillStyle = sg; c.fillRect(90, 330, 840, 720);
+  c.fillStyle = '#0fb1c4'; c.fillRect(90, 920, 840, 130); c.strokeStyle = 'rgba(255,255,255,.4)'; c.lineWidth = 3; for (let r = 0; r < 4; r++) { c.beginPath(); for (let x = 90; x <= 930; x += 12) { const y = 940 + r * 26 + Math.sin(x * .04 + t * 2.4 + r) * 4; x > 90 ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke(); }
+  palm(c, 190, 930, 360, -40, t, 0); palm(c, 840, 930, 400, 50, t, 2); palm(c, 700, 930, 240, -20, t, 4); c.restore();
+  big(c, 'FYRE', 510, 520, 270, HL, lin(t, 5.04, 5.3), -.03, 50, 800); big(c, 'FESTIVAL', 510, 700, 150, PAPER, lin(t, 5.84, 6.06), .02, 0, 800);
+  const o = clamp(lin(t, 6.3, 6.9)); const yr = 2017; big(c, String(yr), 510, 870, 170, RED, lin(t, 6.32, 6.5), -.04, 30);
+}
+// ---- 7.0–8.9 founder
+function sFounder(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const k = back(lin(t, 7.0, 7.3)); c.save(); c.translate(510, 745); c.scale(1 + (t - 7) * .03, 1 + (t - 7) * .03); c.rotate(-.025 + (1 - k) * .2); founderCard(c, k * 1.18); c.restore();
+  big(c, 'THE FOUNDER', 510, 390, 88, PAPER, lin(t, 7.05, 7.2), 0, 0, 860);
+}
+// ---- 8.9–10.5 pitch deck slide
+function sDeckA(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.06)');
+  const sl = back(lin(t, 8.9, 9.25)), X0 = 90, Y0 = 380;
+  c.save(); c.translate(510, 680); c.scale(sl, sl); c.rotate((1 - sl) * -.1); c.translate(-510, -680);
+  c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 30; rr(c, X0, Y0, 840, 600, 26); c.fillStyle = '#10243d'; c.fill(); c.shadowBlur = 0; c.strokeStyle = '#2f4a6b'; c.lineWidth = 5; c.stroke();
+  rr(c, X0, Y0, 840, 62, [26, 26, 0, 0]); c.fillStyle = '#17345a'; c.fill(); txt(c, 'FYRE · INVESTOR PITCH DECK', X0 + 36, Y0 + 32, '700 24px JBM', 'rgba(245,243,238,.75)', 'left'); txt(c, 'SLIDE 7', X0 + 800, Y0 + 32, '700 22px JBM', 'rgba(245,243,238,.5)', 'right');
+  c.beginPath(); for (let i = 0; i < 8; i++) { const hh = 40 + i * 44, k = eo(lin(t, 9.1 + i * .06, 9.5 + i * .06)); c.fillStyle = 'rgba(0,210,106,.4)'; c.fillRect(X0 + 70 + i * 92, Y0 + 560 - hh * k, 64, hh * k); }
+  txt(c, 'WE ARE GOING TO THE MOON', X0 + 420, Y0 + 130, '400 52px Anton', PAPER); const bl = Math.sin(t * 10) > 0; txt(c, 'VALUATION: ' + (bl ? '???' : ''), X0 + 40, Y0 + 220, '400 60px Anton', HL, 'left'); c.restore();
+  big(c, 'PITCHED INVESTORS', 540, 1140, 84, PAPER, lin(t, 9.0, 9.15), 0, 0, 860);
+}
+// ---- 10.5–12.0 $90,000,000
+function sNum90(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.10)');
+  const gl = c.createRadialGradient(510, 700, 40, 510, 700, 520); gl.addColorStop(0, 'rgba(0,210,106,.30)'); gl.addColorStop(1, 'rgba(0,210,106,0)'); c.fillStyle = gl; c.fillRect(0, 300, W, 800);
+  const v = Math.round(90000000 * eo(lin(t, 10.5, 11.2))), lk = t > 11.2 ? 1 + .1 * Math.max(0, 1 - (t - 11.2) / .25) : 1;
+  c.save(); c.translate(510, 700); c.scale(lk, lk); c.font = '400 150px Anton'; const w = c.measureText('$90,000,000').width; const fs = Math.min(150, 150 * 860 / w); c.restore();
+  for (let i = 0; i < 12; i++) { const p = lin(t, 11.2 + i * .03, 12 + i * .02); if (p > 0 && p < 1) bill(c, 100 + hash(i * 3.3) * 800, 360 + p * 780, 130, (hash(i) - .5) * 2 + p * 4, .6 * (1 - lin(p, .7, 1))); }
+  big(c, '$' + fmt(v), 510, 700, fs * lk, GREEN, 1, -.02, 50);
+  big(c, 'VALUATION', 510, 480, 90, PAPER, lin(t, 10.5, 10.62), 0, 0, 700);
+  const m = back(lin(t, 11.2, 11.45)); if (m > 0) { c.save(); c.translate(510, 940); c.scale(m, m); txt(c, 'FOR A FESTIVAL THAT DIDN\'T EXIST', 0, 0, '800 34px JBM', HL); c.restore(); }
+}
+// ---- 12.0–14.5 stacked expectation vs reality
+function sSplit(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.06)');
+  const L = eo(lin(t, 12.0, 12.3)), R = eo(lin(t, 12.04, 12.34));
+  c.save(); c.translate(-(1 - L) * 1100, 0); rr(c, 90, 320, 840, 380, 24); const g = c.createLinearGradient(90, 320, 930, 700); g.addColorStop(0, '#ffe9a8'); g.addColorStop(.5, '#38d6b9'); g.addColorStop(1, '#0b7fa8'); c.fillStyle = g; c.fill();
+  c.save(); rr(c, 90, 320, 840, 380, 24); c.clip(); const sh = ((t * 400) % 1200) - 200; c.fillStyle = 'rgba(255,255,255,.3)'; c.save(); c.translate(90 + sh, 320); c.rotate(.5); c.fillRect(0, -200, 70, 900); c.restore(); palm(c, 880, 700, 140, -20, t, 1); c.restore();
+  txt(c, 'THE PITCH', 130, 370, '800 30px JBM', INK, 'left'); txt(c, '$90,000,000', 400, 520, '400 112px Anton', '#0a6b3a'); c.restore();
+  c.save(); c.translate((1 - R) * 1100, 0); rr(c, 90, 740, 840, 380, 24); c.fillStyle = '#2b323b'; c.fill(); txt(c, 'THE REAL BUSINESS', 130, 790, '800 30px JBM', RED, 'left');
+  const sh2 = t > 13.02 ? Math.sin(t * 60) * 5 * (1 - lin(t, 13.02, 13.4)) : 0; txt(c, '$60,000', 510 + sh2, 940, '400 170px Anton', RED);
+  c.save(); rr(c, 90, 740, 840, 380, 24); c.clip(); crack(c, 510, 930, 7, 380, lin(t, 13.1, 13.5), 4); c.restore(); c.restore();
+  const vs = back(lin(t, 12.2, 12.45)); c.save(); c.translate(510, 720); c.scale(vs, vs); c.beginPath(); c.arc(0, 0, 50, 0, 7); c.fillStyle = HL; c.fill(); txt(c, 'VS', 0, 3, '400 50px Anton', INK); c.restore();
+  stamp(c, '1,500× SMALLER', 540, 1190, 78, HL, -.04, lin(t, 14.0, 14.12));
+}
+// ---- 14.5–16.4 villa -> tents flip
+function sTents(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.05)');
+  const f1 = 1 - lin(t, 15.45, 15.6), f2 = lin(t, 15.6, 15.78), sx = t < 15.6 ? f1 : f2, k = back(lin(t, 14.5, 14.85));
+  big(c, 'GUESTS GOT...', 540, 390, 96, PAPER, lin(t, 14.55, 14.7), 0, 0, 860);
+  if (sx > .01) { c.save(); c.translate(540, 790); c.scale(sx * k, k); c.translate(-420, -300); rr(c, 0, 0, 840, 600, 26); c.save(); c.clip(); (t < 15.6 ? drawVilla : drawTents)(c, t); c.restore(); rr(c, 0, 0, 840, 600, 26); c.strokeStyle = '#fff'; c.lineWidth = 8; c.stroke(); c.restore(); }
+  stamp(c, 'TENTS.', 540, 1170, 128, RED, -.06, lin(t, 15.7, 15.82));
+}
+// ---- 16.4–18.0 and this sandwich: drooping, served cold
+function sSand2(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.05)');
+  const by = eo(lin(t, 16.4, 16.75)), dr = lin(t, 16.6, 17.4), k = back(lin(t, 16.45, 16.8));
+  big(c, 'AND THIS', 540, 390, 110, PAPER, lin(t, 16.42, 16.55), .01, 0, 860);
+  c.save(); c.translate(540 + (1 - by) * 800, 790); c.rotate(Math.sin(t * 3) * .02); c.scale(1.3, 1.3); mealBox(c, t, k, dr, true); c.restore();
+  stamp(c, 'SERVED COLD', 540, 1090, 96, RED, -.07, lin(t, 16.56, 16.68));
+  const q = t > 17.1; if (q) big(c, 'FOR $12,000', 540, 1210, 88, GREEN, lin(t, 17.1, 17.25), .02, 30, 860);
+}
+// ---- 18.0–19.9 guilty / wire fraud
+function sGuilty(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  docCard(c, t, 18.0, 'CHARGE: WIRE FRAUD', 'PLEADED GUILTY · 2018');
+  stamp(c, 'GUILTY', 540, 600, 130, RED, -.1, lin(t, 18.05, 18.17)); stamp(c, 'WIRE FRAUD', 540, 820, 92, HL, .05, lin(t, 18.9, 19.02));
+}
+// ---- 19.9–21.6 out on bail: ankle monitor
+function sBail(c, t) {
+  bgGrid(c, t, 'rgba(255,214,10,.05)');
+  const k = back(lin(t, 19.9, 20.2)); ankle(c, t, 440, 820, 1.15 * k);
+  stamp(c, 'OUT ON BAIL', 540, 1060, 108, HL, -.05, lin(t, 20.3, 20.42));
+  big(c, 'THEN...', 540, 390, 100, PAPER, lin(t, 19.92, 20.05), 0, 0, 860);
+}
+// ---- 21.6–23.3 fake tickets
+function sFake(c, t) {
+  bgGrid(c, t, 'rgba(196,59,216,.06)');
+  const evs = [['COACHELLA', 21.74, '#ff9a3c', .08, 560], ['BURNING MAN', 22.1, '#ff5a36', -.06, 790], ['GRAMMYS', 22.5, '#7a5af8', .04, 1020]];
+  big(c, 'SOLD TICKETS', 540, 390, 96, PAPER, lin(t, 21.62, 21.75), 0, 0, 860);
+  evs.forEach(([nm, fk, col, rot, yy], i) => { const p = eo(lin(t, 21.6 + i * .18, 21.95 + i * .18)); if (p <= 0) return; const xx = 540 - (1 - p) * 900;
+    const bg = c.createLinearGradient(xx - 300, yy, xx + 300, yy); bg.addColorStop(0, col); bg.addColorStop(1, '#2a323d'); ticket(c, xx, yy, 700, 180, rot, 1, bg, 'rgba(245,243,238,.5)', INK);
+    c.save(); c.translate(xx, yy); c.rotate(rot); txt(c, nm, -60, -12, '400 74px Anton', PAPER); txt(c, 'ADMIT ONE · VIP', -60, 50, '800 22px JBM', 'rgba(245,243,238,.8)'); c.restore();
+    stamp(c, 'FAKE', xx + 230, yy + 6, 70, RED, -.2 + i * .12, lin(t, fk, fk + .12)); });
+}
+// ---- 23.3–25.2 Met Gala fake, then bars drop on SIX YEARS
+function sMet(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.07)');
+  const p = back(lin(t, 23.3, 23.6)); c.save(); c.translate(540 + (1 - p) * 700, 640); c.rotate(-.05 + (1 - p) * .2);
+  const bg = c.createLinearGradient(-340, 0, 340, 0); bg.addColorStop(0, '#c43bd8'); bg.addColorStop(1, '#2a323d'); ticket(c, 0, 0, 740, 340, 0, 1, bg, 'rgba(245,243,238,.5)', INK);
+  txt(c, 'MET GALA', -60, -30, '400 120px Anton', PAPER); txt(c, 'ADMIT ONE · VIP', -60, 70, '800 26px JBM', 'rgba(245,243,238,.8)'); c.restore();
+  stamp(c, 'FAKE', 600, 700, 130, RED, -.16, lin(t, 23.68, 23.8));
+  const bt = 24.02, drop = eo(lin(t, bt, bt + .26)); jailBars(c, drop, 300, 1130, 110, 970);
+  if (t >= bt && t < bt + .18) { c.fillStyle = `rgba(255,255,255,${.38 * (1 - (t - bt) / .18)})`; c.fillRect(0, 0, W, H); }
+  stamp(c, '6 YEARS', 540, 790, 170, RED, -.05, lin(t, 24.3, 24.42));
+}
+// ---- 25.2–27.3 vote A: ticket + YES / NO buttons
+function btn(c, x, y, w, h, label, col, k, txtCol = INK, pulse = 0) { if (k <= 0) return; c.save(); c.translate(x, y); const s = k * (1 + pulse * .08); c.scale(s, s); c.shadowColor = col; c.shadowBlur = 24 + pulse * 40; rr(c, -w / 2, -h / 2, w, h, 38); c.fillStyle = col; c.fill(); c.shadowBlur = 0; c.lineWidth = 8; c.strokeStyle = 'rgba(0,0,0,.35)'; c.stroke(); txt(c, label, 0, 6, `400 ${Math.round(h * .62)}px Anton`, txtCol); c.restore(); }
+function fyre2Ticket(c, t, x, y, s, rot) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s); ticket(c, 0, 0, 800, 360, 0, 1, goldG(c, -400, -180, 400, 180), 'rgba(11,15,20,.55)', INK); txt(c, 'FYRE FESTIVAL 2', -70, -40, '400 92px Anton', INK); txt(c, '· 2025 ·', -70, 56, '400 80px Anton', '#7a1c16'); barcode(c, 260, -120, 100, 140, 'rgba(11,15,20,.8)'); txt(c, 'ADMIT 1', 312, 60, '800 24px JBM', 'rgba(11,15,20,.8)'); c.restore(); }
+function sVoteA(c, t) {
+  bgGrid(c, t, 'rgba(242,183,5,.07)');
+  big(c, 'WOULD YOU GO?', 510, 390, 120, PAPER, lin(t, 25.2, 25.4), -.02, 0, 880);
+  const tk = back(lin(t, 25.3, 25.65)); fyre2Ticket(c, t, 510, 640, .86 * tk, -.04 + Math.sin(t * 2) * .01);
+  const bk = back(lin(t, 26.0, 26.3)), bk2 = back(lin(t, 26.12, 26.42)); btn(c, 300, 1000, 400, 230, 'YES', GREEN, bk, INK, t > 26.3 ? Math.max(0, Math.sin((t - 26.3) * 8)) * .5 : 0); btn(c, 740, 1000, 400, 230, 'NO', RED, bk2, PAPER, t > 26.42 ? Math.max(0, Math.sin((t - 26.42) * 8 + 1.6)) * .5 : 0);
+}
+// ---- 27.3–29.2 vote B: recut, YES/NO flash on the words, comment prompt
+function sVoteB(c, t) {
+  bgGrid(c, t, 'rgba(0,210,106,.06)');
+  fyre2Ticket(c, t, 510, 470, .62 + .02 * Math.sin(t * 4), .05);
+  const yes = t >= 27.5 && t < 28.04, no = t >= 28.04, k = back(lin(t, 27.3, 27.6));
+  btn(c, 510, 800, 760, 220, 'YES', yes ? '#34ff8f' : GREEN, k, INK, yes ? 1 : 0); btn(c, 510, 1060, 760, 220, 'NO', no ? '#ff6a5f' : RED, back(lin(t, 27.4, 27.7)), PAPER, no ? 1 : 0);
+}
+// ---- 29.2–30.72 follow: next case loading
+function sNext(c, t) {
+  bgGrid(c, t, 'rgba(255,59,48,.06)');
+  big(c, 'NEXT CASE', 510, 440, 120, PAPER, lin(t, 29.2, 29.35), -.02, 0, 860); big(c, 'LOADING…', 510, 560, 120, RED, lin(t, 29.3, 29.45), .02, 30, 860);
+  rr(c, 130, 700, 760, 60, 30); c.fillStyle = '#10151c'; c.fill(); c.strokeStyle = '#3a434f'; c.lineWidth = 5; c.stroke();
+  c.save(); rr(c, 130, 700, 760, 60, 30); c.clip(); c.fillStyle = RED; c.fillRect(130, 700, 760 * eo(lin(t, 29.25, 30.6)), 60); c.restore();
+  const cx = 510, cy = 930, R = 90, ph = t * 3; c.save(); c.strokeStyle = HL; c.lineWidth = 20; c.lineCap = 'round'; for (let i = 0; i < 2; i++) { const a0 = ph + i * Math.PI; c.beginPath(); c.arc(cx, cy, R, a0, a0 + Math.PI * .72); c.stroke(); } c.restore();
+  c.save(); c.translate(cx, cy); c.scale(.3, .3); sandwich(c, t, 1, 0); c.restore();
+}
+
+const SCENES = [[0, 2.0, sHook], [2.0, 3.6, sLux], [3.6, 5.1, sSand], [5.1, 7.0, sTitle], [7.0, 8.9, sFounder], [8.9, 10.5, sDeckA], [10.5, 12.0, sNum90], [12.0, 14.5, sSplit], [14.5, 16.4, sTents], [16.4, 18.0, sSand2],
+  [18.0, 19.9, sGuilty], [19.9, 21.6, sBail], [21.6, 23.3, sFake], [23.3, 25.2, sMet], [25.2, 27.3, sVoteA], [27.3, 29.2, sVoteB], [29.2, LOOP, sNext], [LOOP, 99, (c, t) => sHook(c, .3 + (t - LOOP))]];
+const ST = { pos: { x: 850, y: 1470, s: 1.02 }, enterAt: -.5, timeline: [[0, 'shock'], [2.0, 'point'], [3.6, 'shock'], [5.1, 'point'], [7.0, 'idle'], [8.9, 'chin'], [10.5, 'shock'], [12.0, 'point'], [14.5, 'shrug'], [16.4, 'shock'], [18.0, 'point'], [19.9, 'chin'], [21.6, 'shock'], [23.3, 'point'], [25.2, 'you'], [27.3, 'shrug'], [29.2, 'follow'], [LOOP, 'shock']],
+  bubbles: [[25.2, 29.2, 'WOULD YOU GO?', 'COMMENT', [620, 1215]]], follow: [29.26, LOOP], followAt: [620, 1135], followScale: 1.15 };
+const CFG = { hud, st: ST, caps: CAPS, cap: CAPCFG,
+  shake: [[.1, .5, 34], [3.75, .3, 18], [4.14, .25, 20], [5.1, .2, 12], [7.0, .2, 12], [11.0, .3, 20], [13.02, .3, 22], [14.0, .25, 14], [15.62, .3, 18], [16.56, .25, 14], [18.05, .3, 22], [20.3, .25, 16], [21.74, .2, 12], [22.1, .2, 12], [22.5, .2, 12], [23.68, .25, 16], [24.02, .45, 30], [24.3, .3, 20], [26.0, .25, 14]],
+  punch: [[3.75, .25, .07], [4.14, .2, .06], [11.0, .25, .07], [13.02, .25, .07], [18.05, .25, .07], [24.02, .25, .08]], boom: 0,
+  glitch: [[0, .45, 1], [12.0, 12.25, .5], [14.5, 14.7, .4], [18.0, 18.2, .5], [23.3, 23.5, .5], [LOOP, DUR, 1]] };
+window.render = t => compose(t, SCENES, CFG);
+window.DUR = DUR;
+window.ready = loadFonts(0);
+</script></body></html>

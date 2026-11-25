@@ -1,0 +1,21 @@
+import subprocess, json, re, sys
+DUR = 29.04
+P = [['glitch_1', 0, 0.8, None], ['deep_boom_1', 0, 0.9, 2.5], ['swoosh_2', 1.88, 0.45, None], ['pop_2', 1.95, 0.6, None], ['pop_2', 2.2, 0.4, None], ['pop_2', 2.9, 0.5, None], ['swipe_1', 3.88, 0.5, None], ['money_counter_1', 3.9, 0.3, 0.8], ['deep_boom_1', 4.32, 1.0, 2.5], ['glitch_1', 4.32, 0.7, None], ['sub_drop_1', 4.32, 0.7, 1.5], ['pop_2', 4.95, 0.5, None], ['whoosh_2', 5.78, 0.5, None], ['paper_slam_2', 5.85, 0.8, None], ['rubber_stamp_2', 6.46, 0.9, None], ['deep_boom_2', 6.46, 0.6, None], ['swoosh_2', 7.38, 0.45, None], ['cinematic_hit_1', 7.5, 0.5, 2.0], ['rubber_stamp_1', 8.2, 0.7, None], ['swipe_1', 9.28, 0.5, None], ['pop_2', 9.78, 0.5, None], ['pop_2', 10.55, 0.7, 0.25], ['thud_1', 10.62, 0.45, None], ['whoosh_2', 10.98, 0.5, None], ['money_counter_1', 11.1, 0.4, 1.0], ['riser_1', 11.0, 0.5, 1.4], ['success_chime_1', 12.04, 0.6, None], ['cash_register_1', 12.04, 0.7, None], ['rubber_stamp_2', 12.3, 0.6, None], ['swoosh_2', 12.98, 0.45, None], ['pop_1', 13.9, 0.5, None], ['pop_1', 14.3, 0.5, None], ['thud_1', 14.4, 0.4, None], ['swipe_1', 14.78, 0.5, None], ['paper_slam_1', 14.85, 0.8, None], ['rubber_stamp_2', 14.88, 0.5, None], ['fail_buzzer_1', 16.4, 0.3, 0.9], ['swoosh_2', 16.58, 0.45, None], ['paper_slam_2', 16.72, 0.5, None], ['paper_slam_2', 17.2, 0.5, None], ['rubber_stamp_1', 17.82, 1.0, None], ['deep_boom_2', 17.82, 0.8, None], ['glitch_1', 17.82, 0.5, None], ['whoosh_2', 18.68, 0.5, None], ['gavel_2', 18.94, 1.0, 2.0], ['deep_boom_2', 18.94, 0.6, None], ['rubber_stamp_2', 18.97, 0.8, None], ['rubber_stamp_1', 19.34, 0.9, None], ['swipe_1', 20.18, 0.5, None], ['cell_door_2', 20.3, 0.9, 2.5], ['deep_boom_1', 20.3, 0.6, 1.5], ['rubber_stamp_2', 20.4, 0.9, None], ['rubber_stamp_1', 20.9, 0.8, None], ['swoosh_2', 21.68, 0.5, None], ['pop_2', 21.8, 0.5, None], ['pop_2', 22.2, 0.5, None], ['pop_2', 22.5, 0.5, None], ['swipe_1', 23.98, 0.5, None], ['pop_1', 24.25, 0.5, None], ['click_1', 24.9, 0.3, 0.3], ['click_1', 25.4, 0.3, 0.3], ['ding_1', 25.96, 0.6, None], ['notification_chime_2', 25.96, 0.4, None], ['swoosh_2', 26.38, 0.45, None], ['click_1', 27.28, 0.5, 0.3], ['ding_1', 27.44, 0.6, None], ['notification_chime_2', 27.44, 0.4, None], ['rubber_stamp_2', 27.3, 0.8, None], ['paper_slam_1', 27.6, 0.7, None], ['glitch_1', 28.64, 0.6, None]]
+BED = "tense_bed_1"
+ins = ["-i","voice/narration.wav"] + sum([["-i",f"sfx/{f}.mp3"] for f,_,_,_ in P],[]) + ["-i","sfx/"+BED+".mp3"]
+fc = "[0:a]aresample=48000,pan=stereo|c0=c0|c1=c0,apad=whole_dur=%.2f,loudnorm=I=-16:TP=-2:LRA=11,aresample=48000,asplit[v][vk];" % DUR
+for i,(f,t,g,d) in enumerate(P, start=1):
+    trim = f"atrim=0:{d},afade=t=out:st={max(0,d-.2)}:d=0.2," if d else ""
+    fc += f"[{i}:a]aresample=48000,aformat=channel_layouts=stereo,{trim}volume={g},adelay={int(t*1000)}|{int(t*1000)}[s{i}];"
+fc += "".join(f"[s{i}]" for i in range(1,len(P)+1)) + f"amix=inputs={len(P)}:normalize=0:duration=longest,apad=whole_dur={DUR},atrim=0:{DUR},volume=0.55[fx];"
+k = len(P)+1
+fc += f"[{k}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{DUR},loudnorm=I=-24:TP=-4:LRA=11,aresample=48000[m];[m][vk]sidechaincompress=threshold=0.04:ratio=5:attack=15:release=350[md];"
+fc += f"[v][fx][md]amix=inputs=3:normalize=0:duration=first,highpass=f=60,acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200,afade=t=out:st={DUR-.6}:d=0.6,aresample=48000[pre]"
+def run(extra):
+    return subprocess.run(["ffmpeg","-hide_banner","-y",*ins,"-filter_complex",fc+extra,"-map","[out]","-t",str(DUR),"-c:a","pcm_s16le","build/mix.wav"],capture_output=True,text=True)
+# pass 1: measure
+r = subprocess.run(["ffmpeg","-hide_banner","-y",*ins,"-filter_complex",fc+";[pre]loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json[o]","-map","[o]","-f","null","-"],capture_output=True,text=True)
+open("build/err.txt","w").write(r.stderr);j = json.loads(re.search(r"\{[^{}]*\"input_i\"[^{}]*\}", r.stderr, re.S).group(0))
+ln = f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true"
+r = run(f";[pre]{ln},aresample=48000,alimiter=limit=0.76:level=false:attack=1:release=60[out]")
+print(r.stderr[-300:] if r.returncode else "ok", j['input_i'], j['input_tp'])

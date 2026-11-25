@@ -1,0 +1,13 @@
+# QA: coffee-invested, IG/FB Reels cut
+- video.mp4: 1080x1920, 30 fps, 540 frames, 18.00 s, H.264 + AAC 192k, faststart. build/video_noaudio.mp4 kept. Narration untouched (17.56 s).
+- Loudness (final file, ebur128): -14.0 LUFS integrated, true peak -1.4 dBTP. Two-pass loudnorm; voice -16 LUFS before the sum; upbeat_bed_1 ducked.
+- Freeze check (freezedetect d=0.8 s): none.
+- Frame 0: giant "YOUR $6 COFFEE = A $400,000 F*CK UP", cup slam, boom (deep_boom_1) + stamp. Last 0.3 s glitches back to frame 0.
+- "$437,201 IN 40 YRS" at 8.58 s: MEME #1 boom zoom + shake + cash rain; "IN 40 YRS" slams at 10.54 s.
+- Deadpan "FOR COFFEE. THAT YOU DRINK IN 4 MINUTES." in Special Elite with a 4:00 timer ticking down (red under 1:00, clock_ticking_1).
+- End: bookmark pops at 14.48 s ("Save"), paper plane into a "SENT" DM at 15.48 s ("send"); text "SAVE THIS · SEND TO YOUR LATTE FRIEND".
+- Profanity censored on screen ("F*CK UP", captions and srt); voice uncensored as supplied.
+- HUD: small BAD MATH wordmark; footnote "ASSUMES 7%/YR · NOT ADVICE" at y 1232. Key content in y 250-1250 and x < 940; captions at y ~1125; storyteller feet y 1330.
+- Captions from script.json text with digits ($400,000, 7%, $437K, 40 YEARS, 4 MINUTES); captions.srt same text.
+- Contact sheet reviewed; fixed: hook lines overlapping, stamp vs caption, "IT GROWS" vs caption, latte hand vs caption. Minor: cup is small and partly behind the caption at frame 0.
+- SFX: CC0 only (sfx/CREDITS.md).
