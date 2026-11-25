@@ -36,3 +36,11 @@ APP SCREEN "+1.00% EVERY DAY" = generic illustration (labelled). SEC returns car
 - TT/IG show PLEADED GUILTY though narration says only "38 months" (DOJ-sourced).
 - Day 1,389 value rounded to $1,000,000,000 (true ~ $1.006B).
 - Primary DOJ/SEC pages could not be re-opened (research.md access note).
+
+## PHOTO PASS 2026-11-25 (script, voice, timing, CTA beats untouched; re-rendered with --force, re-mixed, -14 LUFS, contact sheets regenerated at 1 fps)
+| Image | Where | File | Page URL | License | Author |
+|---|---|---|---|---|---|
+| Gold bitcoin coin close-up (stock, generic Bitcoin symbol, no brand) | YT + TT, right of the SEC returns card, seen on the pull-back / like beat | brand/photos/stock/physical-bitcoin-coin/5.jpg | https://commons.wikimedia.org/wiki/File:Physical_bitcoin_statistic_coin.JPG | CC BY-SA 3.0 | AntanaCoins |
+| Edward J. Schwartz U.S. Courthouse, San Diego (tag "FEDERAL COURT · SAN DIEGO") | YT + TT + IG, right of the case card on the payoff pull-back | brand/photos/stock/edward-j-schwartz-united-states-courthouse/1.jpg | https://commons.wikimedia.org/wiki/File:US_Dist_S_Cal.jpg | Public domain | Federal Judiciary |
+Promoter: not in VERIFIED.md, case card kept. Not used: mining rig and stock-crash candidates (not clean or not a fit; a mining rig would misrepresent the "trading bot"). Footnotes carry the PHOTOS credit line. IG has the courthouse only (no ticker station).
+Gate note: script_gate.py currently reports FAIL on all three cuts for script wording (CHOPPY / NO BEAT lines); scripts and voice are unchanged by this pass, so these are pre-existing.
