@@ -19,9 +19,7 @@ MODEL SPLIT (user rule):
 3. BUILD — MINIMUM 8 posts per platform per day. Each topic gets THREE separate scripts, voices and edits, each built on the story loop (STYLE §18) and humanized (STYLE §21).
    - Write like telling a friend, not reading a fact sheet: contractions, small reactions like "Yeah." / "Wait.", talk to the viewer, spoken rhythm, and everyday words real people use (like, literally, honestly, bucks, grand, no way, bro, it gets worse). Use heavier slang on TikTok/IG.
    - Add human touches: one self-correction ("she— she had…") and [breath]/[sigh]/[gasp]/[smack] tags. NO um/uh fillers and NO laugh/[chuckle] (user rule 2026-11-25). Captions come from the script minus the tags.
-   - YouTube Shorts: ad-safe edgy hook, 40–55 s.
-   - TikTok @color.me.saved: spicy, 25–40 s, comment bait.
-   - Instagram badmath.tv + Facebook BadMath.tv: the most vulgar and disrespectful cut, 15–25 s, built for sends and saves.
+   - LONGER SHORTS WITH CONTEXT (user rule 2026-11-25, RULES 102): YouTube Shorts 60–90 s (ad-safe edgy hook) · TikTok 50–75 s (spicy, comment bait) · Instagram/Facebook 35–55 s (most vulgar, sends and saves). Explain almost at kindergarten level: set up who/what/why, every term in plain words, one idea per line, walk the "how it worked" step by step, an everyday comparison for every big number. Never rush details. Long-forms unchanged.
    - Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
    - VISUALS (STYLE §20): build every NEW video with engine v2 (brand/engine-v2, READY) + brand/VISUAL-V2.md: camera push-ins on spoken numbers, the storyteller moving in front of and behind graphics, satisfying springs, no neon. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only. Set the scene's duration to the narration length + ~0.4 s. LONG-FORMS use the same engine v2 style in 16:9 landscape mode (user rule: no more neon long-forms).
 

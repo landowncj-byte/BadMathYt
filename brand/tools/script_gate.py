@@ -25,7 +25,7 @@ import json, os, re, sys
 RATE = 3.3           # words/s inside a line (measured on the 2026-11-25 Liam cuts: 3.1–3.5)
 TAG_S = 0.45         # seconds one [breath]/[sigh]/... adds
 PLATFORM = {         # cut folder -> (name, min_s, max_s, max_words)
-    "": ("YouTube", 40, 55, 135), "tiktok": ("TikTok", 25, 40, 90), "ig": ("IG/FB", 15, 25, 60)}
+    "": ("YouTube", 60, 90, 225), "tiktok": ("TikTok", 50, 75, 190), "ig": ("IG/FB", 35, 55, 140)}  # owner 2026-11-25: Shorts longer, more context
 WIN = {"like": (0.20, 0.40), "share": (0.45, 0.65), "follow": (0.70, 0.90)}
 MAX_GAP = 6.0        # s between the END of one number/question/turn sentence and the START of the next (pacing proxy)
 MAX_LINE_S = 7.0     # one voiced line longer than this = a dead stretch on screen
