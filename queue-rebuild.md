@@ -9,7 +9,7 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 | 2 | Fake wine | 2026-11-26-fake-wine | YT/TT/IG | BUILDING (Sonnet) | 47a76198 ad700081 f3a73160 fc608a0a |
 | 3 | Three briefcases | 2026-11-26-three-briefcases | YT/TT/IG | SCRIPTS DONE (63–66 s, PASS) → build | 2751cbc5 45421b23 571e0493 f988b64a |
 | 4 | Lottery rig | 2026-11-26-lottery-rig | YT/TT/IG | SCRIPTS DONE (83–86 s; IG "missed the jackpot" fixed) → build | 0d774d4d 2266d545 47151aa9 9a492028 |
-| 5 | Fake prince | 2026-11-26-fake-prince | YT/TT/IG | SCRIPTS DONE (~88–89 s; pork-causation softened, re-voicing) → build | 36948ee3 ae6a2407 d9fb0a6e fe767f3f |
+| 5 | Fake prince | 2026-11-26-fake-prince | YT/TT/IG | SCRIPTS DONE (~88–89 s, pork lines softened, re-voiced, PASS) → build | 36948ee3 ae6a2407 d9fb0a6e fe767f3f |
 | 6 | Penny doubled | 2026-11-26-penny-doubled | YT/TT/IG | SCRIPTS DONE (65–66 s, PASS) → build | 675107e4 9ee165e0 be13bba7 fff3cd16 |
 | 7 | Lottery part 2 | 2026-11-26-lottery-part2 | YT/TT/IG | todo | 02332cc2 59b1dbd7 5ff43156 924e355a |
 | 8 | Credit-card minimum | 2026-11-25-card-minimum | YT/TT/IG | todo | 307166c4 a2b05382 eddcfce6 f4f3495c |
@@ -22,3 +22,6 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 | — | BitConnect — DROPPED (too niche, RULES 101) | 2026-11-25-bitconnect | — | delete held posts | 2c5b4252 969645a8 dda62340 4d7d21b6 |
 Full post ids: PostFast list_posts (approvalStatus NEEDS_WORK).
 - 2026-11-25 ~17:45 UTC: owner asked to study Robert McKeaveney (IG) for hooks + marketing — Fable agent → research/creators/robertmckeaveney/PLAYBOOK.md; apply to remaining rebuilds.
+- 2026-11-25 ~19:20 UTC (owner): ALSO STUDY (1) reel https://www.instagram.com/reel/Dczr8MGgHeo/ ("great video"); (2) ad reel https://www.instagram.com/reel/DgKyckoxQfg/ ("an ad but good info"); (3) Notion "Claude Motion Tips" https://withian.notion.site/Claude-Motion-Tips-3ef057be92ba807db689d2571b6b7adf — read ALL sub-pages + every link on the page, and USE them in our videos (→ research/claude-motion-tips/, apply to brand/BUILD-BRIEF.md / VISUAL-V2.md).
+- 2026-11-25 ~19:05 UTC: 5-hour usage limit hit; weight + wine builds and the creator study paused; resumed after the 19:20 UTC reset.
+- Fake prince re-voiced after softening the pork-causation lines; gate PASS (IG 89.3 s).

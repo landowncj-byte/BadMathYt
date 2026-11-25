@@ -292,4 +292,106 @@
       g.restore();
     },
   });
+
+  // =================== v3 (REBUILD-LONGER) recipes ===================
+  // ---------- gavel: wooden mallet + block; strikes at `at` ----------
+  B.register('gavel', {
+    defaults: { at: 99999 }, ownEnter: true, size: () => [420, 300],
+    draw(g, p, env) {
+      const { t, lt, theme } = env, sp = spring(Math.max(0, lt), 'snappy'), ga = p.at;
+      const ang = t < ga - 0.35 ? 0.9 : t < ga ? lerp(0.9, 0, ease.in(lin(t, ga - 0.35, ga))) : -0.12 * hit(t - ga, 9) * Math.max(0, Math.sin((t - ga) * 18));
+      g.save(); g.scale(0.7 + 0.3 * sp, 0.7 + 0.3 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.3);
+      clay(g, -190, 70, 300, 52, 14, theme.manila, { shadowK: 0.5 }); clay(g, -150, 44, 220, 36, 10, '#B9955A', { shadowK: 0.3 });
+      g.save(); g.translate(150, 0); g.rotate(ang); clay(g, -200, -11, 210, 22, 9, theme.manila, { shadowK: 0.3 }); clay(g, -250, -72, 84, 144, 14, '#B9955A', { shadowK: 0.3 }); g.restore();
+      g.restore(); if (ga < 90) burst(g, -50, 70, 210, theme.paper, t - ga - 0.02, 14, 0.4);
+    },
+  });
+
+  // ---------- auction: generic auction scene (ILLUSTRATION): a lot bottle, paddles popping up, bids climbing ----------
+  B.register('auction', {
+    defaults: { w: 900, h: 780, bids: [99999, 99999, 99999], head: 'AUCTION' }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 65, p.w, 130], bottle: [0, -50, 300, 300], bars: [0, 220, p.w * 0.8, 230], pads: [0, -40, p.w * 0.95, 300] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 130); g.restore();
+      txt(g, p.head, x0 + 40, y0 + 66, F.hero(76), theme.paper, 'left'); txt(g, 'ILLUSTRATION', x0 + w - 28, y0 + 28, F.mono(15), 'rgba(245,243,238,.7)', 'right');
+      g.save(); g.translate(0, -52); g.scale(0.38, 0.38); bottleBody(g, { dust: true }, theme, 0.1, () => labelDraw(g, { year: 'LOT' }, theme)); g.restore();
+      const pad = (x, y, s, at, rot) => { if (t < at - 0.01) return; const k = spring(Math.max(0, t - at), 'bouncy'); g.save(); g.translate(x, y + (1 - k) * 260 * s); g.rotate(rot); g.scale(s, s);
+        clay(g, -26, 20, 52, 250, 16, '#B9955A', { shadowK: 0.5 }); B.shadowed(g, () => { g.beginPath(); g.arc(0, -90, 125, 0, 7); }, theme.paper, 0.1); g.strokeStyle = theme.ink; g.lineWidth = 8; g.beginPath(); g.arc(0, -90, 108, 0, 7); g.stroke(); txt(g, 'BID', 0, -86, F.hero(96), theme.ink); g.restore(); };
+      pad(-300, 10, 0.5, p.bids[0], -0.12); pad(300, -20, 0.5, p.bids[1], 0.1); pad(-170, 70, 0.42, p.bids[2], 0.05);
+      const by = y0 + h - 140; g.strokeStyle = theme.rule; g.lineWidth = 4; g.beginPath(); g.moveTo(-250, by); g.lineTo(250, by); g.stroke();
+      [[-150, 56, p.bids[0]], [0, 100, p.bids[1]], [150, 146, p.bids[2]]].forEach(([x, hh, at], i) => { const k = spring(Math.max(0, t - at), 'snappy'); if (t < at) return; clay(g, x - 45, by - hh * k, 90, hh * k, 10, i === 2 ? theme.good : theme.gold, { shadowK: 0.4 }); });
+      txt(g, 'HIGHEST BID WINS THE BOTTLE', 0, by + 44, F.cap(30), theme.ink); txt(g, 'EXAMPLE BIDS · NO REAL PRICES', 0, by + 78, F.mono(15), theme.inkSoft);
+      g.restore();
+    },
+  });
+
+  // ---------- calendar: chips of $1,000 fill the days, the years counter rolls to 95 ----------
+  B.register('calendar', {
+    defaults: { w: 780, h: 900, at: 99999, dur: 1.7, yrsAt: 99999, yrsDur: 0.9, to: 95 }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 70, p.w, 140], grid: [0, -90, p.w * 0.92, 420], years: [0, p.h / 2 - 210, p.w * 0.9, 220] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4); g.rotate(0.012);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.bad; g.fillRect(x0, y0, w, 130); g.restore();
+      for (const x of [-190, 190]) { clay(g, x - 12, y0 - 26, 24, 60, 10, theme.ink, { shadowK: 0.3 }); }
+      txt(g, '$1,000 A DAY', 0, y0 + 80, F.hero(78), theme.paper); txt(g, 'ILLUSTRATION', x0 + w - 28, y0 + 24, F.mono(14), 'rgba(245,243,238,.75)', 'right');
+      const cols = 7, rows = 6, cw = 92, ch = 66, gx = x0 + (w - cols * cw) / 2, gy = y0 + 160, N = cols * rows, n = clamp(lin(t, p.at, p.at + p.dur)) * N;
+      for (let i = 0; i < N; i++) { const cx = gx + (i % cols) * cw + cw / 2, cy = gy + Math.floor(i / cols) * ch + ch / 2; g.fillStyle = theme.paperShade; rr(g, cx - 40, cy - 28, 80, 56, 9); g.fill();
+        if (i < n) { const k = spring(Math.max(0, n - i) / 6, 'bouncy'); g.save(); g.translate(cx, cy); g.scale(0.4 + 0.6 * Math.min(1, k), 0.4 + 0.6 * Math.min(1, k)); g.fillStyle = theme.gold; g.beginPath(); g.arc(0, 0, 25, 0, 7); g.fill(); g.strokeStyle = theme.ink; g.lineWidth = 3; g.beginPath(); g.arc(0, 0, 19, 0, 7); g.stroke(); txt(g, '$1K', 0, 5, F.mono(15), theme.ink); g.restore(); } }
+      const mt = t - p.yrsAt; if (mt > -0.01) { const o = { font: F.hero(150), size: 150, color: theme.ink, speed: mt < p.yrsDur ? p.to / p.yrsDur * 0.5 : 0 }, v = countAt(Math.max(0, mt), p.yrsDur, 0, p.to), land = mt - p.yrsDur, nw = B.rollWidth(g, p.to, o).w, sw = mw(' YEARS', F.hero(150)), tot = nw + sw, s = 1 + (land > 0 ? 0.14 * hit(land, 6) : 0);
+        g.save(); g.translate(0, y0 + h - 170); g.scale(s, s); roll(g, v, -tot / 2, 0, { ...o, align: 'left' }); txt(g, ' YEARS', -tot / 2 + nw, 0, F.hero(150), theme.badInk, 'left'); if (land > 0) marker(g, -tot / 2, 18, tot, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + h - 170, 300, theme.bad, land, 18, 0.55); }
+      txt(g, 'OUR MATH: ≈$35M ÷ $1,000 A DAY ≈ 95 YEARS', 0, y0 + h - 34, F.mono(18), theme.inkSoft);
+      g.restore();
+    },
+  });
+
+  // ---------- factory: the 3-step "wine factory" diagram (PROSECUTORS SAID). rows light up at s1 / s2 / s3 ----------
+  B.register('factory', {
+    defaults: { w: 920, h: 920, s1: 99999, s2: 99999, s3: 99999, head: 'THE “WINE FACTORY”', sub: 'PROSECUTORS SAID · ILLUSTRATION', t1: 'MIX', d1: 'OLDER WINE + NEWER WINE', t2: 'REBOTTLE', d2: 'OLD BOTTLES · NEW CORKS + WAX', t3: 'LABEL', d3: 'THOUSANDS OF LABELS' }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 70, p.w, 140], r1: [0, -p.h / 2 + 270, p.w * 0.94, 210], r2: [0, -p.h / 2 + 500, p.w * 0.94, 210], r3: [0, -p.h / 2 + 730, p.w * 0.94, 210] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, p.head, 0, y0 + 74, F.hero(70), theme.paper); txt(g, p.sub, 0, y0 + 120, F.mono(19), 'rgba(245,243,238,.8)');
+      const rows = [[p.s1, p.t1, p.d1], [p.s2, p.t2, p.d2], [p.s3, p.t3, p.d3]];
+      rows.forEach(([at, tt, dd], i) => { const cy = y0 + 270 + i * 230, on = t - at, k = spring(Math.max(0, on), 'snappy'), act = on > -0.01;
+        g.fillStyle = theme.paperShade; rr(g, x0 + 36, cy - 90, w - 72, 180, 18); g.fill(); if (!act) { g.fillStyle = theme.rule; for (let j = 0; j < 2; j++) { rr(g, x0 + 200, cy - 20 + j * 40, (w - 440) * (j ? 0.6 : 0.9), 18, 8); g.fill(); } return; }
+        g.save(); g.translate(0, (1 - k) * 22); g.globalAlpha *= clamp(on / 0.1 + 0.2);
+        marker(g, x0 + 36, cy - 90, w - 72, 180, theme.gold, clamp(on / 0.35), 0.2);
+        g.save(); g.translate(x0 + 110, cy); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.fillStyle = theme.badInk; g.beginPath(); g.arc(0, 0, 56, 0, 7); g.fill(); txt(g, String(i + 1), 0, 24, F.hero(76), theme.paper); g.restore();
+        txt(g, tt, x0 + 190, cy - 18, F.hero(66), theme.ink, 'left'); txt(g, dd, x0 + 190, cy + 40, F.mono(22), theme.inkSoft, 'left');
+        const ix = x0 + w - 170;
+        if (i === 0) { const pk = clamp(on / 0.8); for (const [dx, col] of [[-52, '#8A5A2B'], [52, '#6A1E3A']]) { g.save(); g.translate(ix + dx, cy - 30); g.rotate(-Math.sign(dx) * 0.8 * Math.min(1, pk * 2)); clay(g, -26, -34, 52, 68, 12, col, { shadowK: 0.4 }); g.restore(); }
+          g.fillStyle = '#5a1e34'; g.beginPath(); g.moveTo(ix - 40, cy + 6); g.lineTo(ix + 40, cy + 6); g.lineTo(ix + 26, cy + 60); g.lineTo(ix - 26, cy + 60); g.closePath(); g.fill();
+          g.strokeStyle = '#6A1E3A'; g.lineWidth = 8; g.setLineDash([10, 8]); g.lineDashOffset = -on * 80; g.beginPath(); g.moveTo(ix + 24, cy - 8); g.lineTo(ix + 6, cy + 10); g.stroke(); g.beginPath(); g.moveTo(ix - 24, cy - 8); g.lineTo(ix - 6, cy + 10); g.stroke(); g.setLineDash([]); }
+        else if (i === 1) { g.save(); g.translate(ix, cy + 6); g.scale(0.17, 0.17); B.shadowed(g, () => bpath(g), GLASS, 0.1); const ck = ease.out(clamp(on / 0.3)); clay(g, -26, lerp(-480, -340, ck), 52, 80, 12, '#B9955A', { shadowK: 0.3 }); if (on > 0.35) { g.fillStyle = RED; g.beginPath(); g.ellipse(0, -330, 56, 30, 0, 0, 7); g.fill(); } g.restore(); }
+        else { for (let j = 0; j < 5; j++) { g.save(); g.translate(ix - 60 + j * 30, cy + 8); g.rotate((j - 2) * 0.22 * ease.out(clamp(on / 0.4))); paper(g, -28, -42, 56, 84, 5, { lift: 0.05 }); g.fillStyle = theme.ink; g.fillRect(-18, -26, 36, 5); g.fillRect(-18, -12, 26, 5); g.fillRect(-18, 2, 30, 5); g.restore(); } }
+        g.restore(); });
+      for (const yy of [y0 + 380 + 0, y0 + 610]) { g.fillStyle = theme.inkSoft; g.beginPath(); g.moveTo(-18, yy); g.lineTo(18, yy); g.lineTo(0, yy + 16); g.closePath(); g.fill(); }
+      g.restore();
+    },
+  });
+
+  // ---------- bgrid: $2.1 MILLION ÷ 219 BOTTLES = about $9,600 each (our math) ----------
+  B.register('bgrid', {
+    defaults: { w: 880, h: 920, at: 99999, dur: 1.5, valAt: 99999, valDur: 0.9 }, ownEnter: true, size: p => [p.w, p.h],
+    anchors: p => ({ head: [0, -p.h / 2 + 70, p.w, 140], grid: [0, -40, p.w * 0.92, 420], each: [0, p.h / 2 - 200, p.w * 0.9, 220] }),
+    draw(g, p, env) {
+      const { t, lt, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sp = spring(Math.max(0, lt), 'snappy');
+      g.save(); g.scale(0.92 + 0.08 * sp, 0.92 + 0.08 * sp); g.globalAlpha *= clamp(lt / 0.08 + 0.4); g.rotate(-0.01);
+      paper(g, x0, y0, w, h, 26, { lift }); g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 130); g.restore();
+      txt(g, '$2.1M ÷ 219 BOTTLES', 0, y0 + 80, F.hero(70), theme.paper); txt(g, 'ILLUSTRATION', x0 + w - 28, y0 + 24, F.mono(14), 'rgba(245,243,238,.75)', 'right');
+      const cols = 20, rows = 11, cw = 39, ch = 39, gx = x0 + (w - cols * cw) / 2, gy = y0 + 160, N = 219, n = clamp(lin(t, p.at, p.at + p.dur)) * N;
+      for (let i = 0; i < N; i++) { if (i >= n) { g.fillStyle = theme.paperShade; g.fillRect(gx + (i % cols) * cw + 13, gy + Math.floor(i / cols) * ch + 6, 12, 28); continue; }
+        const cx = gx + (i % cols) * cw + cw / 2, cy = gy + Math.floor(i / cols) * ch + ch / 2, k = clamp((n - i) / 8); g.save(); g.translate(cx, cy); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.fillStyle = i === N - 1 ? theme.badInk : GLASS; rr(g, -9, -4, 18, 24, 5); g.fill(); g.fillRect(-4, -18, 8, 16); g.fillStyle = RED; g.fillRect(-5, -20, 10, 5); g.restore(); }
+      const mt = t - p.valAt; txt(g, 'EACH ≈', 0, y0 + h - 270, F.cap(34), theme.inkSoft);
+      if (mt > -0.01) { const o = { font: F.hero(140), size: 140, color: theme.ink, prefix: '$', speed: mt < p.valDur ? 9600 / p.valDur * 0.4 : 0 }, v = countAt(Math.max(0, mt), p.valDur, 0, 9600), land = mt - p.valDur, nw = B.rollWidth(g, 9600, o).w, s = 1 + (land > 0 ? 0.14 * hit(land, 6) : 0);
+        g.save(); g.translate(0, y0 + h - 150); g.scale(s, s); roll(g, v, -nw / 2, 0, { ...o, align: 'left', color: theme.badInk }); if (land > 0) marker(g, -nw / 2, 18, nw, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + h - 150, 300, theme.bad, land, 18, 0.55); }
+      txt(g, 'OUR MATH: $2.1 MILLION ÷ 219 ≈ $9,600', 0, y0 + h - 34, F.mono(18), theme.inkSoft);
+      g.restore();
+    },
+  });
 })();
