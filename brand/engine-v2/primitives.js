@@ -2,7 +2,17 @@
 // Everything is a pure function of its arguments (deterministic). Loaded first; creates window.BM2.
 (function () {
   const BM2 = (window.BM2 = window.BM2 || {});
-  const W = 1080, H = 1920;
+  // format: portrait Shorts by default; set window.BM2_FORMAT = '16:9' (before this file loads) for 1920x1080 landscape.
+  const LAND = window.BM2_FORMAT === '16:9';
+  const W = LAND ? 1920 : 1080, H = LAND ? 1080 : 1920;
+  // layout tokens: every position that used to be a literal 1080x1920 number lives here (portrait values are unchanged).
+  const L = LAND ? {
+    land: true, stage: { sx: 960, sy: 470 }, maxH: 760, pill: [64, 40, 46, 28, 24], pillTitleY: 23, cap: { y: 945, size: 58, maxChars: 26, maxWords: 5, width: 1300, lh: 70 },
+    foot: { x: 64, y: 1036, dy: 22, size: 16 }, light: [620, 260], bgR: 2100, vig: [W / 2, H * 0.5, 760, W / 2, H * 0.5, 1260],
+    dotX: 1.0, farX: 2300, farY: 1500, fgX: 1300, fgY: 800, stFirst: { x: 1740, y: 1062, s: 0.9 }, peek: { top: 96, xmin: 150, xmax: W - 150 }, bubble: [1500, 520], follow: [1500, 700] } : {
+    land: false, stage: { sx: 540, sy: 740 }, maxH: 980, pill: [90, 238, 52, 30, 26], pillTitleY: 27, cap: { y: 1432, size: 66, maxChars: 15, maxWords: 3, width: 800, lh: 80 },
+    foot: { x: 90, y: 1500, dy: 25, size: 17 }, light: null, bgR: 1750, vig: [W / 2, H * 0.44, 520, W / 2, H * 0.5, 1280],
+    dotX: 900, farX: 1400, farY: 2000, fgX: 700, fgY: 1100, stFirst: { x: 842, y: 1345, s: 1.12 }, peek: { top: 250, xmin: 150, xmax: 880 }, bubble: [560, 650], follow: [650, 1120] };
   const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
   const lerp = (a, b, x) => a + (b - a) * x;
   const lin = (t, a, b) => (b === a ? (t >= b ? 1 : 0) : clamp((t - a) / (b - a)));
@@ -135,5 +145,5 @@
     g.putImageData(im, 0, 0); return cv;
   }
 
-  Object.assign(BM2, { W, H, clamp, lerp, lin, hash, bez, ease, spring, SPRINGS, stagger, hit, wobble, hex, rgba, mix, shade, rr, txt, F, shadowed, paper, clay, marker, burst, fmtNum, roll, rollWidth, countAt, makeGrain, zoomNow: 1 });
+  Object.assign(BM2, { W, H, L, LAND, clamp, lerp, lin, hash, bez, ease, spring, SPRINGS, stagger, hit, wobble, hex, rgba, mix, shade, rr, txt, F, shadowed, paper, clay, marker, burst, fmtNum, roll, rollWidth, countAt, makeGrain, zoomNow: 1 });
 })();

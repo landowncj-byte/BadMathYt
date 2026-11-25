@@ -1,0 +1,24 @@
+{
+ "duration": 30,
+ "sfx": [
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 3.76,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 8.537,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 12.46,
+   "name": "swipe_2"
+  }
+ ],
+ "bed": null
+}

@@ -37,6 +37,14 @@ for ch in range(5):
             if all(difflib.SequenceMatcher(None, a, b).ratio() >= 0.75 for a, b in zip([x for _, x in flat[k:k + len(key)]], key)): hit = k; break
         if hit is None: raise SystemExit(f"no match for {paras[b]['id']} key={key}")
         wi = flat[hit][0]; pos = hit + 1
+        # step back over leading words dropped from the key (And / One / Three / numbers)
+        raw = [re.sub(r"[^a-z0-9']", '', w.lower()) for w in re.split(r'[\s-]+', paras[b]['text'])]
+        lead = 0
+        for x in raw:
+            if x and (x in NUM or x.isdigit()): lead += 1
+            else: break
+        while lead > 0 and wi > 0 and not toks(ws[wi - 1]['w']):
+            wi -= 1; lead -= 1
         cuts.append(((ws[wi - 1]['e'] + ws[wi]['s']) / 2, 0, wi))
     bounds = [0.0] + [c[0] for c in cuts] + [dur]
     for j, p in enumerate(paras):

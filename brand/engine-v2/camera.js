@@ -7,7 +7,7 @@
 // there is never a dead frame. Depth layers use parallax p: bg 0.3, mid 1, fg 1.4.
 (function () {
   const B = window.BM2, { clamp, lerp, ease } = B;
-  const STAGE = { sx: 540, sy: 740 };
+  const STAGE = { sx: B.L.stage.sx, sy: B.L.stage.sy };
   function make(keys, o = {}) {
     keys = keys.slice().sort((a, b) => a.t - b.t);
     const first = { x: 0, y: 0, z: 1, r: 0, ...STAGE, ...(keys[0] ? keys[0].to : {}) };
@@ -38,7 +38,7 @@
   function toScreen(s, wx, wy) { const dx = (wx - s.x) * s.z, dy = (wy - s.y) * s.z, c = Math.cos(s.r), n = Math.sin(s.r); return [s.sx + dx * c - dy * n, s.sy + dx * n + dy * c]; }
   // Frame a world box {x, y, w, h} (centre + size): returns a camera target. fill = share of the 1080 width the box takes.
   function frame(box, fill = 0.8, o = {}) {
-    const maxH = o.maxH || 980; let z = (fill * B.W) / Math.max(1, box.w); if (box.h * z > maxH) z = maxH / box.h;
+    const maxH = o.maxH || B.L.maxH; let z = (fill * B.W) / Math.max(1, box.w); if (box.h * z > maxH) z = maxH / box.h;
     return { x: box.x, y: box.y, z: z * (o.zoom || 1), r: o.rot || 0, sx: o.sx ?? STAGE.sx, sy: o.sy ?? STAGE.sy };
   }
   B.Camera = { make, apply, toScreen, frame, STAGE };

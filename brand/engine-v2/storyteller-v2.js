@@ -36,7 +36,7 @@
   // Movement track. keys: [{t, dur, to:{x, y, s, layer, blur, dim}, hop}]  (x, y = feet on screen, s = scale)
   function track(keys) {
     keys = keys.slice().sort((a, b) => a.t - b.t);
-    const first = { x: 842, y: 1345, s: 1.12, layer: 'front', blur: 0, dim: 0, ...(keys[0] ? keys[0].to : {}) }, starts = [];
+    const first = { ...B.L.stFirst, layer: 'front', blur: 0, dim: 0, ...(keys[0] ? keys[0].to : {}) }, starts = [];
     function ev(i, t) {
       const k = keys[i], from = i === 0 ? first : starts[i], to = { ...from, ...k.to }, u = k.dur > 0 ? clamp((t - k.t) / k.dur) : 1, p = ease.glide(u);
       const dist = Math.hypot(to.x - from.x, to.y - from.y), n = k.hop === 0 ? 0 : clamp(Math.round(dist / 300), 1, 3), sc = Math.exp(lerp(Math.log(from.s), Math.log(to.s), p));
