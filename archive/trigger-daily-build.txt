@@ -23,7 +23,7 @@ MODEL SPLIT (user rule):
    - Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
    - VISUALS (STYLE §20): if brand/engine-v2/READY exists, build every NEW video with engine v2 + brand/VISUAL-V2.md (camera push-ins on spoken numbers, storyteller moving in front of and behind graphics, satisfying springs, no neon). If it isn't ready yet, use v1 and check again for the next video. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only.
 
-4. VOICE: Shorts use the FREE Kokoro voice in ENERGY MODE (user rule): say_energy(k, line, voice=default_voice(k)) from brand/voice/pronounce.py (Michael+Puck blend, varied speed/pitch per line, tight gaps — use the returned gap). Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
+4. VOICE: Shorts use the FREE Kokoro voice am_liam (user pick), plain read: say(k, line) from brand/voice/pronounce.py (speed 1.12, normal pauses). No energy mode. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
 
 5. QUEUE:
    - Upload to uguu.se: curl -F "files[]=@video.mp4" https://uguu.se/upload

@@ -51,7 +51,7 @@ def phonemes(k, text):
                 print(f"[pronounce] WARN could not place fix for {w!r} (default {wrong!r}) in: {ph}")
     return ph
 
-def say(k, text, voice="am_michael", speed=1.12):
+def say(k, text, voice="am_liam", speed=1.12):   # DEFAULT SHORTS VOICE: am_liam, plain (user pick 2026-11-25)
     return k.create(phonemes(k, text), voice=voice, speed=speed, lang="en-us", is_phonemes=True)
 
 COMMON = set("""the a an and or but of to in on at for with by from is was were are be been it its this that these those he she they his her their you your
@@ -108,6 +108,6 @@ def say_energy(k, text, voice='am_michael', base=1.24, spread=0.14, pitch_lo=0.6
     gap = 0.06 + _rnd(text, 'g') * 0.14                       # 0.06 .. 0.20 s
     return a, sr, gap
 
-# DEFAULT SHORTS VOICE (2026-11-25): option 5 = 50/50 blend of am_michael + am_puck, read with say_energy().
+# DEFAULT SHORTS VOICE (user pick 2026-11-25): am_liam, read PLAIN with say(). Energy mode is optional, not default.
 def default_voice(k):
-    return 0.5 * k.get_voice_style('am_michael') + 0.5 * k.get_voice_style('am_puck')
+    return 'am_liam'
