@@ -1,39 +1,71 @@
 1
-00:00:00,000 --> 00:00:03,947
-A million bucks, two briefcases left. Stay or switch? 'Cause your gut's wrong.
+00:00:00,000 --> 00:00:03,313
+Fifty-fifty is the wrong answer to this million-dollar question.
 
 2
-00:00:04,247 --> 00:00:06,691
-Three cases, one has the cash, and you picked one.
+00:00:04,513 --> 00:00:07,475
+Three briefcases. One's got a million bucks, two are empty.
 
 3
-00:00:06,941 --> 00:00:10,123
-The host knows where the cash is, and always opens an empty one.
+00:00:08,075 --> 00:00:10,742
+That's a hundred bucks a day. For twenty-seven years.
 
 4
-00:00:10,373 --> 00:00:12,494
-Tap the heart if you're thinking fifty-fifty.
+00:00:12,042 --> 00:00:16,182
+You pick a case. Then the host, who knows where the cash is, always opens an empty one.
 
 5
-00:00:13,344 --> 00:00:15,599
-Nah, your pick was one in three, and still is.
+00:00:16,582 --> 00:00:19,927
+Now he asks: wanna switch? Tap the heart if you're thinking coin flip.
 
 6
-00:00:15,849 --> 00:00:17,795
-Send this to the friend who'll argue.
+00:00:20,327 --> 00:00:22,217
+Nah, bro. Try a hundred cases.
 
 7
-00:00:18,045 --> 00:00:20,737
-The other— the case he skipped? That one's two in three.
+00:00:22,817 --> 00:00:25,256
+You pick one, and he opens ninety-eight empties.
 
 8
-00:00:21,437 --> 00:00:23,990
-Don't buy it? Follow, this page settles arguments.
+00:00:25,856 --> 00:00:29,368
+He skipped just— just one case. Your pick was a one in a hundred guess.
 
 9
-00:00:24,990 --> 00:00:28,484
-The real game-show host tried it himself, and guess what won? Switching.
+00:00:29,868 --> 00:00:32,675
+So the money's in his case ninety-nine percent of the time.
 
 10
-00:00:29,084 --> 00:00:30,536
-So… stay or switch?
+00:00:33,475 --> 00:00:35,790
+Send this to the friend who'd still keep their case.
+
+11
+00:00:36,190 --> 00:00:39,795
+Three cases works the same. Pick the money first, and switching loses.
+
+12
+00:00:40,195 --> 00:00:44,521
+Pick the first empty case, and he has to open the other empty one, so switching wins.
+
+13
+00:00:45,521 --> 00:00:47,630
+And the second empty case? Same deal.
+
+14
+00:00:48,030 --> 00:00:50,037
+Follow, this page settles arguments.
+
+15
+00:00:51,037 --> 00:00:53,026
+Switching wins two times out of three.
+
+16
+00:00:54,426 --> 00:00:56,875
+A columnist printed that in nineteen ninety.
+
+17
+00:00:57,275 --> 00:01:00,980
+By her count, nearly a thousand PhDs wrote in to say she was wrong.
+
+18
+00:01:01,680 --> 00:01:03,429
+So who's wrong? Stay, or switch?

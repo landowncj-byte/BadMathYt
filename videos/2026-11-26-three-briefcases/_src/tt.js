@@ -1,7 +1,7 @@
 // TikTok cut — v3 re-edit (64 s). Stations (world x): 0 table3 (+ giant 50/50 hook) · 1750 calendar · 3500 100 cases · 5250 the three starts · 7000 column · 8750 letters
 const F0 = { x: 0, y: 40, w: 900, h: 1340 };      // frame 0 and the loop frame share this framing
-const ST = { sx: 560, sy: 1010, maxH: 1230 };
-const ST0 = { x: 540, y: 1340, s: 1.3, layer: 'front' };   // storyteller stands between the two closed cases
+const ST = { sx: 560, sy: 930, maxH: 1000 };
+const ST0 = { x: 170, y: 1340, s: 1.15, layer: 'front' };   // storyteller stands between the two closed cases
 const H1 = { lines: [[['THE ', 'paper'], ['$1,000,000', 'good']], [['QUESTION', 'paper']]], size: 110 };
 const LOOP = '@So#3-0.45';
 const P = 'brand/photos/stock/briefcase-cash/7.jpg';
@@ -9,9 +9,9 @@ BM2.scene({
   series: 'whatif', title: 'THREE BRIEFCASES', duration: 64.23,
   footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW', 'PHOTO: SEMTRIO · CC BY 2.0 · VIA FLICKR'],
   elements: [
-    { id: 'hook1', type: 'text', at: [0, -500], in: -1, out: '@Three-0.15', props: H1 },
+    { id: 'hook1', type: 'text', at: [0, -440], in: -1, out: '@Three-0.15', props: H1 },
     { id: 'ws', type: 'stamp', at: [0, 20], rot: -0.08, in: '@wrong', out: '@Three-0.15', props: { text: 'WRONG', tone: 'bad', size: 140 } },
-    { id: 'endt', type: 'text', at: [0, -500], in: LOOP, props: H1 },
+    { id: 'endt', type: 'text', at: [0, -440], in: LOOP, props: H1 },
     { id: 'tbl', type: 'table3', at: [0, 330], in: -1, props: { reAt: LOOP, slam: [-0.36, -0.29, -0.22], alt: true, relAt: '@Three', opens: [[2, -5, '@Three'], [2, '@opens', 99999]], tagIn: -1, tagIdx: 1, tagAway: '@pick', numAt: '@Three+0.45', pickAt: '@pick', pickIdx: 0,
       handAt: '@host', handIdx: 2, xrayAt: '@two', flipAt: '@opens', fiftyAt: -0.1, crackAt: '@wrong+0.1', pullAt: '@Now', swapAt: '@switch', btnAt: '@switch+0.15' } },
     { id: 'cash', type: 'photo', at: [0, 70], in: '@million#2-0.3', out: '@two+0.6', props: { src: P, name: 'CASH', role: 'STOCK PHOTO', credit: 'PHOTO: SEMTRIO · CC BY 2.0', w: 230, aspect: 0.8, tilt: -0.05, fx: 0.5, fy: 0.5 } },
@@ -32,9 +32,8 @@ BM2.scene({
   ],
   beats: [
     { at: 0, beat: 'side-by-side', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, st: ST0, pose: 'shock', keep: ['hook1', 'ws', 'tbl', 'endt'] },
-    { at: 0.35, beat: 'zoom-on-number', focus: 'tbl.fifty', fill: 0.84, sy: 790, rot: 0.008, st: ST0, pose: 'point', keep: ['hook1', 'ws', 'tbl'] },
-    { at: '@wrong', beat: 'zoom-on-number', focus: 'ws', fill: 0.8, sy: 790, rot: -0.01, st: ST0, pose: 'shock', keep: ['hook1', 'ws', 'tbl'] },
-    { at: '@million', beat: 'zoom-on-number', focus: 'hook1', fill: 0.84, sy: 760, rot: 0.01, st: ST0, pose: 'point', keep: ['hook1', 'ws', 'tbl'] },
+    { at: '@wrong', beat: 'zoom-on-number', focus: { x: 0, y: -190, w: 900, h: 700 }, fill: 0.8, maxH: 800, sy: 820, rot: -0.01, st: ST0, pose: 'shock', keep: ['hook1', 'ws', 'tbl'] },
+    { at: '@million', beat: 'zoom-on-number', focus: 'hook1', fill: 0.8, sy: 760, rot: 0.01, st: ST0, pose: 'point', keep: ['hook1', 'ws', 'tbl'] },
     { at: '@question', beat: 'pull-back', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, st: ST0, pose: 'talk', keep: ['hook1', 'ws', 'tbl'] },
     { at: '@Three', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 860, st: 'corner-left', pose: 'idle', keep: ['cash'] },
     { at: '@million#2', beat: 'zoom-on-number', focus: 'tbl.tag', fill: 0.8, sy: 950, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['cash'] },
@@ -50,7 +49,7 @@ BM2.scene({
     { at: '@opens', beat: 'zoom-on-number', focus: 'tbl.c2', fill: 0.76, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
     { at: '@Now', beat: 'graphic-hero', focus: 'tbl.pulled', fill: 0.72, sy: 860, st: 'corner-left', pose: 'idle' },
     { at: '@heart-0.2', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'left', pose: 'chin' },
-    { at: '@coin', beat: 'zoom-on-number', focus: 'coin', fill: 0.8, sy: 820, rot: 0.01, st: 'corner-left', pose: 'shrug' },
+    { at: '@coin', beat: 'zoom-on-number', focus: 'coin', fill: 0.8, sy: 700, rot: 0.01, st: 'corner-left', pose: 'shrug' },
     { at: '@Nah-0.1', beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shrug' },
     { at: '@pick#2', beat: 'zoom-on-number', focus: 'fan.pick', fill: 0.5, sy: 860, rot: 0.01, st: 'corner-left', pose: 'point' },
     { at: '@98', beat: 'zoom-on-number', focus: 'fan.count', fill: 0.8, sy: 560, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
@@ -68,10 +67,12 @@ BM2.scene({
     { at: '@pick#5-0.2', beat: 'graphic-hero', focus: 'brd.row1', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
     { at: '@open', beat: 'zoom-on-number', focus: 'brd.row1', fill: 1.0, sy: 800, rot: -0.01, st: 'corner-left', pose: 'chin' },
     { at: '@wins', beat: 'zoom-on-number', focus: 'brd.v1', fill: 0.42, maxH: 520, sy: 840, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@And', beat: 'graphic-hero', focus: 'brd.row2', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
-    { at: '@same', beat: 'zoom-on-number', focus: 'brd.v2', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@And#4', beat: 'graphic-hero', focus: 'brd.row2', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
+    { at: '@same#2', beat: 'zoom-on-number', focus: 'brd.v2', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
     { at: '@Follow-0.1', beat: 'graphic-hero', focus: 'brd.rows', fill: 0.98, maxH: 720, sy: 850, st: 'left', pose: 'follow' },
     { at: '@Switching#3', beat: 'zoom-on-number', focus: 'brd.sum', fill: 0.92, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@times', beat: 'pull-back', focus: 'brd.rows', fill: 0.98, maxH: 720, sy: 850, st: 'left', pose: 'shock' },
+    { at: '@three#3', beat: 'presenter-front', focus: 'brd.rows', sy: 850, pose: 'you' },
     { at: '@columnist-0.1', beat: 'peek', focus: 'col', move: 'whip', sy: 930, maxH: 800, pose: 'idle' },
     { at: '@1990', beat: 'zoom-on-number', focus: 'col.stamp', fill: 0.42, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point' },
     { at: '@By', beat: 'graphic-hero', focus: 'mail', move: 'whip', fill: 0.9, maxH: 800, sy: 930, st: 'corner-left', pose: 'shock' },
@@ -82,7 +83,7 @@ BM2.scene({
   ],
   poses: [['@Follow', 'follow', { target: [650, 1120] }], ['@Send', 'you'], ['@stay', 'chin']],
   shakes: [[0.3, 10], ['@wrong', 12], ['@loses', 8], ['@years', 10], ['@98', 10], ['@99', 26], ['@Switching#3', 12], ['@So#3-0.3', 10]],
-  captions: { gap: 16, emph: { '50': 'accent', '-50': 'accent', wrong: 'bad', 'question.': 'good', million: 'good', 'bucks,': 'good', '27': 'accent', 'empties.': 'accent', '99': 'good', 'loses.': 'bad', 'wins.': 'good', 'deal.': 'good', 'two': 'good', 'wrong.': 'bad', 'switch?': 'accent' }, fix: [] },
+  captions: { gap: 16, emph: { '50': 'accent', '-50': 'accent', wrong: 'bad', 'question.': 'good', million: 'good', 'bucks,': 'good', '27': 'accent', 'empties.': 'accent', '99': 'good', 'loses.': 'bad', 'wins.': 'good', 'deal.': 'good', 'two': 'good', 'wrong.': 'bad', 'switch?': 'accent' }, fix: [['of your', 'if you\'re']] },
   bed: { name: 'lofi_bed_1', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.16, name: 'thud_1', gain: -8, dur: 0.4 }, { at: 0.3, name: 'thud_2', gain: -8, dur: 0.4 }, { at: 0.44, name: 'paper_slam_1', gain: -7, dur: 0.5 },

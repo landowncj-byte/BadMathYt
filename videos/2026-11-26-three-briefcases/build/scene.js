@@ -437,7 +437,7 @@
 })();
 // YouTube cut — v3 re-edit (66 s). Stations (world x): 0 table3 · 1750 calendar · 3500 column · 5250 letters · 7000 the three starts · 8750 100 cases
 const F0 = { x: 0, y: 10, w: 900, h: 1360 };      // frame 0 and the loop frame share this framing
-const ST = { sx: 560, sy: 1010, maxH: 1230 };
+const ST = { sx: 560, sy: 930, maxH: 1000 };
 const HOOK = { lines: [[['≈1,000 PhDs', 'paper']], [['GOT THIS ', 'paper'], ['WRONG', 'bad']]], size: 120 };
 const LOOP = '@So#4-0.4';   // whip back to the frame-0 composition just before the final question
 const P = 'brand/photos/stock/briefcase-cash/7.jpg';

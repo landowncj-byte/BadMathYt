@@ -428,7 +428,7 @@ BM2.scene({
     { id: 'folder', type: 'folder', at: [3600, 5400], in: '@follow-0.4', out: '@convicted-0.02', props: { q: 'THE BILL' } },
     { id: 'verdict', type: 'wverdict', at: [3600, 5400], in: '@convicted-0.1', props: { convAt: '@convicted', yearsAt: '@10#2', payAt: '@$28' } },
     // screen
-    { id: 'sec', type: 'text', layer: 'screen', at: [540, 365], in: '@so#1', out: '@a#2', props: { lines: [[['SO WHO DOES THAT?', 'paper']]], size: 70 } },
+    { id: 'sec', type: 'text', layer: 'screen', at: [540, 365], in: '@so#1', out: '@named', props: { lines: [[['SO WHO DOES THAT?', 'paper']]], size: 70 } },
     { id: 'club', type: 'text', layer: 'screen', at: [540, 400], in: '@double+0.1', out: '@double+1.9', props: { lines: [[['BOX WINE CLUB', 'gold']]], size: 70 } },
     { id: 'sb', type: 'bottle', layer: 'screen', at: [790, 1090], scale: 0.46, in: '@double', out: '@double+1.7', props: { sticker: '$6', screw: true, dust: false } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 830], in: '@double-0.05', out: '@double+1.15', props: { s: 1 } },
@@ -488,7 +488,7 @@ BM2.scene({
     { at: '@$2', beat: ZN, focus: 'chq.amount', fill: 0.86, maxH: 520, sy: 800, st: 'corner', pose: 'shock', dur: 0.45 },
     { at: '@fake', beat: GH, focus: ['chq', 'fk'], sy: 850, fill: 0.9, maxH: 1200, st: 'corner-left', dur: 0.7 },
     { at: "@that's#2", beat: SB, focus: 'bg', move: 'whip', sx: 540, sy: 880, fill: 0.8, maxH: 900, st: 'left', pose: 'point' },
-    { at: '@almost', beat: ZN, focus: 'bg.each', fill: 0.85, maxH: 420, sy: 880, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@almost', beat: ZN, focus: 'bg.each', fill: 0.7, maxH: 420, sy: 1000, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@bottle#2+0.3', beat: GH, focus: 'bg', sy: 880, fill: 0.8, maxH: 900, st: 'corner-left', dur: 0.8 },
     { at: '@follow', beat: SB, focus: 'folder', move: 'whip', sx: 540, sy: 790, fill: 0.7, maxH: 960, st: 'left', pose: 'point' },
     { at: '@bill', beat: GH, focus: 'folder', sy: 790, fill: 0.7, maxH: 960, st: 'corner-left', dur: 0.8 },

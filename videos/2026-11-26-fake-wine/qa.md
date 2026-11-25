@@ -1,60 +1,60 @@
-# QA — Rudy Kurniawan fake wine (Decoded, fact-strict)
-Engine v2, series decoded, pill title CASE: KURNIAWAN · 2013. Sources `_src/` (shared.js + yt.js / tt.js / ig.js). Footnote on every cut: CONVICTED 2013 · 10 YEARS · SOURCES: DOJ SDNY · TRIAL REPORTS + ILLUSTRATIONS line + PHOTOS line. Art is generic (no winery logos/labels, no real names on bottles, no likeness of the winemaker). Real photos only of Kurniawan (ICE 2021) and the government's kitchen exhibit (see Photos). RE-TIMED 2026-11-25 to the re-voiced smoothed scripts (all refs are @word, final loop whip = @last word + offset).
+# QA — Rudy Kurniawan fake wine (Decoded, fact-strict) — REBUILT 2026-11-25 to the long scripts (REBUILD-LONGER Stage 2)
+Engine v2, series decoded, pill title CASE: KURNIAWAN · 2013. Full re-edit (not a re-time) against the new voice/words.json + sentences.json and each cut's voice/beats-v3.md. Sources `_src/` (shared.js + yt.js / tt.js / ig.js; v1 recipes kept, new recipes added: gavel, auction, calendar, factory (3-step wine factory), bgrid ($2.1M ÷ 219)). Footnote on every cut: CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS + ILLUSTRATIONS line + PHOTOS line. Voice/ files untouched.
 
-| Cut | Narration | Video | Size | File |
-|---|---|---|---|---|
-| YouTube | 51.53 s | 51.93 s | 39.1 MB | video.mp4 |
-| TikTok | 32.79 s | 33.20 s | 21.3 MB | tiktok/video.mp4 |
-| IG/FB | 23.31 s | 23.70 s | 15.5 MB | ig/video.mp4 |
-Mix: mix.py defaults, master -14 LUFS (YT -14.0 / peak -1.38, TT -14.1 / -1.39, IG -14.1 / -1.32 dBFS). Sound: brand/sfx-library CC0 only, tense_bed_2; hit on each reveal at the same @word. Captions: captions.srt per cut from voice/sentences.json (tags removed). script_gate.py --all: DURATION FAIL x3 only (YT 51.5 s vs new window 60-90, TT 32.8 s vs 50-75, IG 23.3 s vs 35-55; the owner's 2026-11-25 longer-script windows). Everything else passes. This is script length (scripts/voice are out of scope here), not a build issue; TT warn: 93 words.
+| Cut | Order | Narration | Video | Size | LUFS / peak | File |
+|---|---|---|---|---|---|---|
+| YouTube | chronological | 92.84 s | 93.23 s | 34.1 MB | -14.0 / -1.4 dBFS | video.mp4 |
+| TikTok | mystery-first | 89.29 s | 89.70 s | 33.2 MB | -14.0 / -1.4 dBFS | tiktok/video.mp4 |
+| IG/FB | impossible date first | 93.39 s | 93.80 s | 35.0 MB | -14.0 / -1.3 dBFS | ig/video.mp4 |
+All three are > 60 s (ffprobe). Rendered with `--crf 24` to stay < 40 MB. Mix: mix.py defaults, master -14 LUFS, CC0 brand/sfx-library only, tense_bed_2, one hit per reveal on the same @word. captions.srt per cut rebuilt from voice/sentences.json (tags removed). On-screen captions from words.json with captions.fix ($1,000, $12, Rudy Kurniawan, part's next, Double-tap, wine-snob). Contact sheets: contact_sheet.png per cut, one frame every 2 s with timestamps (10 columns), each viewed, plus per-beat stills checked before every render (motion-tips keyframe check); a 1 s test of the hardest effect (calendar + auction) was covered by the still pass, not a separate clip.
+script_gate.py --all: PASS x3 (YT 249 words 92.8 s, TT 247 words 89.3 s, IG 248 words 93.4 s; TT warn: word count vs the skill's ~30 s target, expected for the 90 s series).
+
+## Visual plan (per line, every line has its own visual)
+auction paddle/auction card with BID paddles and rising bars (what an auction is) · gavel + counter ≈$35 MILLION · calendar of $1,000 chips rolling to 95 YEARS · WORLD RECORD stamp + gavel · catalogue page with 1945 ringed · label vs timeline FIRST MADE 1982 with 37-year bracket · door card ARRESTED AT HOME 2012 · real kitchen exhibit photo above the bench · 3-step "WINE FACTORY" diagram (mix / rebottle / label, rows light up on the spoken step) · cheque $2.1 MILLION (IG adds 219-bottle grid ≈ $9,600 EACH) · folder then verdict card CONVICTED / 10 YEARS / $28.4M · comment bubble then whip back to the frame-0 composition (last frame echoes first, checked on real last frames). Camera push-ins on every spoken number, storyteller front/behind (peek) and left/right/corner, shot changes about every 1.5-2.5 s, the camera and counters hold through the pauses after big numbers.
 
 ## VIDEO GATE (YT / TT / IG)
 | # | Result | Note |
 |---|---|---|
-| V1 | FAIL / FAIL / FAIL | script_gate on real sentences.json: only the DURATION window fails (scripts shorter than new 60-90 / 50-75 / 35-55 s windows); needs longer scripts, not touched |
-| V2 | YES x3 | 1-fps timestamped sheets (contact_sheet.png per cut), each viewed; not listened to by me |
-| V3 | YES x3 | Frame 0: YT bottle slam label 1945 + timeline card FIRST MADE: 1982 stamp + "LABEL: 1945"; TT/IG cheque slam + red FAKE stamp + $2.1 MILLION; boom + stamp hit at 0 s |
-| V4 | YES x3 | beat or reveal every 1.5-3 s; longest hold is a zoomed card ~2 s |
-| V5 | YES x3 | zoom-on-number on every spoken number (YT: 1945, 1982, 35, 12, 1945, 1982, 37-year bracket, 2012, 10, 28, 37; TT: two, 10, 10 years, 1945, 1982, bracket; IG: $2, 1945, 1982, bracket, 10); storyteller left/right/front/behind, whips between stations |
-| V6 | YES x3 | heart (like), plane out of wine glass (send), mag taps +FOLLOW -> FOLLOWING (YT, TT), comment bubble after payoff; each <= 1.5 s; IG has no follow line in the script |
-| V7 | YES x3 | YT payoff CONVICTED/10 YEARS/$28.4M at 38.8 s (80%), then 37-years-off peel + question, whip to frame 0; TT payoff 1945 vs 1982 at 21-25 s; IG at 13.8-17 s with verdict last |
-| V8 | YES x3 | Ink/paper/clay, no glow |
-| V9 | YES x3 | see facts table; ILLUSTRATION on bottle/bench/catalogue/winemaker/cheque/crate/timeline; real photos credited on card + footnote |
-| V10 | YES x3 | captions from words.json with captions.fix (Rudy Kurniawan, cellar, $35, $12, $28, what'd it, $10, fake-ass, Double-tap, wine-snob), gap 16 |
+| V1 | YES x3 | script_gate --all PASS on real sentences.json |
+| V2 | YES x3 | 2-s timestamped sheets + per-beat stills viewed; not listened to by me |
+| V3 | YES x3 | frame 0 shows the full hook (YT 3-line hook + paddles + bench + FRAUD stamp; TT 3-line hook + cheque + FAKE? stamp; IG LABEL: 1945 + bottle + FIRST MADE: 1982); hit sound at 0 |
+| V4 | YES x3 | beat/animation about every 1.5-2.5 s; longest holds are the pauses after big numbers (counter/stamp still animating) |
+| V5 | YES x3 | push-in on each spoken number (2006, $35, 1,000, 95, $12, 1945, 1982, 37, 2012, $2, 10, $28; TT/IG same set; IG also $9,600); storyteller peeks behind graphics and moves spots |
+| V6 | YES x3 | like heart (YT $12 club, TT screw cap, IG box wine), plane out of a glass (send), mag taps +FOLLOW -> FOLLOWING, comment bubble on the last line; each <= 1.5 s |
+| V7 | PARTIAL | the verdict hits land at 83-89% because the voiced scripts put conviction at 78-88 s; after the last number there is ~3 s to the question, then the loop whip. Script timing, not changeable here |
+| V8 | YES x3 | ink/paper/clay, no glow |
+| V9 | YES x3 | see table; "PER DOJ / PROSECUTORS SAID / HE TOLD THE JURY / OUR MATH" attributions; ILLUSTRATION labels |
+| V10 | YES x3 | captions from words.json + captions.fix, no tags |
 | V11 | NOT CHECKED | voice not re-listened (out of scope) |
-| V12 | YES | CC0 library, -14 LUFS, peak <= -1 dBFS; boom on payoff |
+| V12 | YES x3 | CC0 library, -14 LUFS, peak <= -1.3 dBFS |
 | V13 | n/a | not posting |
 
-## On-screen facts (source: research/2026-11-26/kurniawan-fake-wine/research.md)
+## On-screen facts
 | On screen | Cut | Source / grade |
 |---|---|---|
-| Generic bottle label 1945 (ILLUSTRATION, "GENERIC LABEL") | all | trial testimony, bottles labelled 1945-1971 (April 2008 NY lots), ✔2 |
-| Timeline card FIRST MADE: 1982, axis 1945 vs 1982, bracket 37 YEARS, "PER TRIAL TESTIMONY" | all | Ponsot testimony via Decanter/Drinks Business/NY Post, ✔2; 1982-1945 = 37 arithmetic |
-| "HIS FAMILY STARTED IN 1982" | YT | same |
-| Name tag RUDY KURNIAWAN, WINE DEALER · 2006; stamp CONVICTED 2013 | YT, TT | research story + DOJ, ✔2 |
-| Auction paddle (generic) + counter ≈$35 MILLION, HIS CELLAR · 2 AUCTIONS · 2006 | YT | $10.6M + $24.7M = $35.3M, ✔2 (Decanter) |
-| $12 CLUB / $10 WINE GANG / CHEAP WINE CLUB stickers | YT/TT/IG | CTA props, not facts |
-| Catalogue page NEW YORK · APRIL 2008, LOT ONE FRENCH WINE, SOME BOTTLES DATED 1945 (ILLUSTRATION; no house, no wine name, no count) | YT | ✔2 |
-| WITHDRAWN stamp; winemaker silhouette THE WINEMAKER, ILLUSTRATION · NO LIKENESS | YT | ✔2 (lots pulled after winemaker objected) |
-| ARRESTED AT HOME 2012, PER DOJ | YT | arrest 8 Mar 2012 at home, ✔2 |
-| Kitchen bench ILLUSTRATION: OLD WINE + NEWER WINE jugs, funnel, cork, label, label printer spitting labels; tag PROSECUTORS: "WINE FACTORY" (YT, IG) / PROSECUTORS SAID (TT) | all but none in none | prosecutors' description, mixed older + newer wine, rebottled, thousands of labels, ✔2, attributed |
-| Cheque $2.1 MILLION, HE TOLD THE JURY, FAKE stamp (cheque/crate ILLUSTRATION; no name) | TT, IG | collector testimony $2.1M for 219 bottles he says were fake, ✔2; "billionaire" per script |
-| Taste-test scorecard with red X, NOT A TASTE TEST | TT | script line (no score claims) |
-| Verdict: CONVICTED 2013 (JURY, MANHATTAN FEDERAL COURT), 10 YEARS | YT, IG | DOJ SDNY, ✔2 |
-| PAY BACK $28.4 MILLION, RESTITUTION · PER DOJ | YT | $28,405,502.50, ✔2 |
-| Prison bars over verdict | IG | illustration |
-| 37 YEARS OFF stamp on peeling label; bubble WOULD YOU HAVE CHECKED? / COULD YOU TASTE IT? | YT / TT, IG | script + brand |
-
-Not shown on purpose: Ponsot/Acker/Koch names, any lot count, 19,000 labels, $550M/$130M, $20M forfeiture, deportation, "biggest fraud", exact recipe, that the 2006 wine was fake.
+| Real photo Rudy Kurniawan (ICE), tag WINE COLLECTOR · 2006 (TT: THE SELLER) + WINE COLLECTOR CALIFORNIA | all | research ✔2; photo public domain |
+| Auction card (generic, EXAMPLE BIDS · NO REAL PRICES) | all | explains the term, no numbers |
+| ≈$35 MILLION, 2006 · 2 AUCTIONS | all | $10.6M + $24.7M = $35.3M ✔2 |
+| $1,000 A DAY ... 95 YEARS, OUR MATH: ≈$35M ÷ $1,000 A DAY ≈ 95 YEARS | all | 35,000,000 / 1,000 = 35,000 days = 95.8 years (our arithmetic) |
+| WORLD RECORD stamp | all | single-owner sale record ✔2 |
+| Catalogue NEW YORK · APRIL 2008, ONE FRENCH WINE, 1945 ringed; WITHDRAWN; winemaker silhouette ILLUSTRATION · NO LIKENESS | all | ✔2 |
+| LABEL 1945 vs FIRST MADE: 1982, 37 YEARS, PER TRIAL TESTIMONY | all | 1982 - 1945 = 37 |
+| ARRESTED AT HOME 2012 PER DOJ | all (TT: ARRESTED 2012 · CONVICTED OF FRAUD) | ✔2 |
+| Real kitchen exhibit photo + PROSECUTORS: "WINE FACTORY" | all | public domain; prosecutors' description ✔2 |
+| 3-step factory: MIX older + newer wine / REBOTTLE old bottles, new (TT: fresh) corks + wax / LABEL thousands of labels, "PROSECUTORS SAID" | all | ✔2, attributed |
+| Cheque $2.1 MILLION PAID BY A BILLIONAIRE, HE TOLD THE JURY ("FAKES" quote) | all | testimony: $2.1M for 219 bottles he says were fake ✔2 |
+| $2.1M ÷ 219 BOTTLES, EACH ≈ $9,600 (OUR MATH) | IG | 2,100,000 / 219 = 9,589 |
+| Scorecard NOT A TASTE TEST | TT | script line |
+| Verdict CONVICTED / 10 YEARS / PAY BACK $28.4 MILLION (RESTITUTION · PER DOJ) | all | DOJ SDNY ✔2 |
+Not shown on purpose: Ponsot/Acker/Koch names, lot counts, 19,000 labels, $550M/$130M, deportation, "biggest fraud". The 2006 wine is never called fake; the 1945 lots were withdrawn, never "sold".
 
 ## Doubts
-- Research was read from search extracts only (DOJ pages never opened): human recheck of the DOJ release advised before posting.
-- "FAKE" on the cheque is the buyer's claim (hook is "says"); card carries HE TOLD THE JURY.
-- IG on-screen "FAKE-ASS WINE" mirrors the vulgar voiced hook (rule 17).
-- Whips land on blurred frames at 1-fps samples; intended.
-- Loop: final whip returns to the frame-0 composition at rest (not the slam-scaled frame 0); the slam replays at t=0.
-- YT 35.8 MB (under 40 MB).
-- TikTok re-rendered: CAUGHT HOW? moved up between name tag and stamps and exits at Send-0.3; no world text sits in the caption band (y>1340) in any cut.
+- "One of his sales set a world record" (script) is a record for a single-owner sale; the beats-v3 note about "so buyers trusted him" is not on screen.
+- On-screen "FAKES" on the cheque is the buyer's claim, shown with HE TOLD THE JURY.
+- IG profanity (damn, dumbass) appears only in voiced captions, aimed at the convicted forger.
+- Minor cosmetics: during a few fast whips/zooms (YT ~14 s auction, ~72 s FAKES text, ~86 s verdict top; TT ~48 s stamp, ~52 s CAUGHT HOW? over NOT A TASTE TEST for ~0.5 s) a card top slides under the DECODED pill for a few frames. Not fixed.
+- Rendered with `--crf 24`; frames are slightly softer than the old CRF 20 renders.
+- Loop: final whip returns to the frame-0 composition at rest (checked on real last frames).
 
 ## Photos (real, licensed; brand/photos/VERIFIED.md)
 | File | Cut / where | Page URL | License | Author |
@@ -63,8 +63,4 @@ Not shown on purpose: Ponsot/Acker/Koch names, any lot count, 19,000 labels, $55
 | brand/photos/rudy-kurniawan/3.jpg (his kitchen photographed by investigators; "GOVERNMENT EXHIBIT" sticker visible; credit U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN) | YT: above the illustrated bench (at "prosecutors"); TT: above the bench (at "prosecutors" +0.25); IG: above the bench (at "prosecutors" -0.1) | https://commons.wikimedia.org/wiki/File:Rudy_Kurniawan%27s_kitchen.jpg | Public domain | U.S. Government |
 Footnote line on every cut: "PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS". No stock added (nothing obviously good and logo-free). The YT winemaker silhouette stays (it is the winery's winemaker, not Kurniawan; no photo). The ICE photo is from 2021 (his deportation), shown with the 2006/2013 case labels; the card credit does not say 2021 (credit text as specified).
 
-## Photo-pass notes
-- Photo cards sit above the bench, clear of numbers/captions/hook; the bench beats were reframed (`maxH 880`, `sy 905`) so the stack ends above the caption band and below the title pill.
-- TT: the kitchen photo's top edge tucks behind the title pill during the 8-10 s presenter beats (pill is on top; cosmetic). TT 11.0 s is an empty beat (the pause after "prison" before "He got convicted": by design, hold).
-- "THE SELLER?" screen text exits before the photos' zoom frames so it never sits on a photo.
-- Scenes re-keyed to the new wording (Whisper heard 'Wade'/'Kerniawin'; fixed with captions.fix; captions.srt rebuilt from sentences.json).
+Footnote line on every cut: "PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS". Only these two Kurniawan-related photos are used (never any other "Rudy Kurniawan" image). Photo cards: YT at @wait (name tag RUDY KURNIAWAN), TT at "So who sold it", IG at "So who does that"; kitchen exhibit above the bench at "prosecutors". No stock added. The YT winemaker silhouette stays (no photo). The ICE photo is from 2021, shown under 2006/2013 case labels; the card credit does not say 2021.

@@ -6,10 +6,10 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 | # | Topic | Folder | Cuts | Stage | Old held post ids |
 |---|---|---|---|---|---|
 | 1 | Weight vs height | 2026-11-26-weight-vs-height | YT/TT/IG | ✅ QUEUED Thu 11/26 08:00 ET all 4 (new posts e2a344f7 9293dad0 1786f767 3eb82dcb; old held deleted) | 0a50e94d 1ecd4500 b5b54e16 e7f2c3e7 |
-| 2 | Fake wine | 2026-11-26-fake-wine | YT/TT/IG | BUILDING (Sonnet) | 47a76198 ad700081 f3a73160 fc608a0a |
+| 2 | Fake wine | 2026-11-26-fake-wine | YT/TT/IG | ✅ QUEUED Thu 11/26 10:00 ET all 4 (a4f34bc6 f234b0a5 3b7a665f ef2f076e; old held deleted) | 47a76198 ad700081 f3a73160 fc608a0a |
 | 3 | Three briefcases | 2026-11-26-three-briefcases | YT/TT/IG | BUILDING (Sonnet, with motion tips + playbook) | 2751cbc5 45421b23 571e0493 f988b64a |
 | 4 | Lottery rig | 2026-11-26-lottery-rig | YT/TT/IG | BUILDING (Sonnet) | 0d774d4d 2266d545 47151aa9 9a492028 |
-| 5 | Fake prince | 2026-11-26-fake-prince | YT/TT/IG | SCRIPTS DONE (~88–89 s, pork lines softened, re-voiced, PASS) → build | 36948ee3 ae6a2407 d9fb0a6e fe767f3f |
+| 5 | Fake prince | 2026-11-26-fake-prince | YT/TT/IG | BUILDING (Sonnet) | 36948ee3 ae6a2407 d9fb0a6e fe767f3f |
 | 6 | Penny doubled | 2026-11-26-penny-doubled | YT/TT/IG | SCRIPTS DONE (65–66 s, PASS) → build | 675107e4 9ee165e0 be13bba7 fff3cd16 |
 | 7 | Lottery part 2 | 2026-11-26-lottery-part2 | YT/TT/IG | todo | 02332cc2 59b1dbd7 5ff43156 924e355a |
 | 8 | Credit-card minimum | 2026-11-25-card-minimum | YT/TT/IG | todo | 307166c4 a2b05382 eddcfce6 f4f3495c |

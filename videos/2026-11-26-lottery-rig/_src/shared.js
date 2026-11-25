@@ -54,9 +54,10 @@
     txt(g, 'INFORMATION', 0, y0 + 392, F.cap(38), theme.ink); txt(g, 'SECURITY DIRECTOR', 0, y0 + 440, F.cap(38), theme.badInk);
     { const k = clamp((t - p.nameAt) / 0.3); if (k > 0) { marker(g, x0 + 50, y0 + 478, w - 100, 56, theme.bad, k, 0.22); g.save(); g.globalAlpha = clamp(k * 3); txt(g, p.name, 0, y0 + 508, F.hero(46), theme.ink); g.restore(); } }
     txt(g, 'ILLUSTRATION', x0 + 26, y0 + h - 30, F.mono(18), theme.inkSoft, 'left');
+    { const lt = t - (p.lockAt ?? 99999); if (lt > 0) { const k = spring(lt, 'bouncy'); g.save(); g.translate(x0 + w - 70, y0 + h - 80); g.scale(1.5 * k, 1.5 * k); g.rotate(-0.12); g.strokeStyle = '#59606B'; g.lineWidth = 14; g.lineCap = 'round'; g.beginPath(); g.moveTo(-26, -22); g.lineTo(-26, -50); g.arc(0, -50, 26, Math.PI, 0); g.lineTo(26, -22); g.stroke(); clay(g, -44, -26, 88, 74, 14, theme.gold, { shadowK: 0.5 }); g.fillStyle = theme.ink; g.beginPath(); g.arc(0, 4, 9, 0, 7); g.fill(); g.fillRect(-3.5, 8, 7, 20); g.restore(); } }
     g.restore(); if (sl) burst(g, 0, 0, 380 * 1, theme.bad, st - 0.16, 16, 0.5);
   };
-  B.register('badge', { defaults: { nameAt: 99999, name: 'EDDIE TIPTON' }, size: () => [500, 640], anchors: () => ({ name: [0, 188, 400, 60], title: [0, 100, 460, 110] }), draw(g, p, env) { drawBadge(g, p, env, false); } });
+  B.register('badge', { defaults: { nameAt: 99999, lockAt: 99999, name: 'EDDIE TIPTON' }, size: () => [500, 640], anchors: () => ({ name: [0, 188, 400, 60], title: [0, 100, 460, 110] }), draw(g, p, env) { drawBadge(g, p, env, false); } });
   B.register('sbadge', { defaults: { nameAt: 99999, name: 'EDDIE TIPTON', endAt: 99999 }, ownEnter: true, size: () => [500, 640], draw(g, p, env) { drawBadge(g, p, env, true); } });
 
   // ---------- states: five-state marker row (generic pins, no state names). Pins drop in from `at`; label rolls to 5 ----------
@@ -128,10 +129,12 @@
     anchors: () => ({ head: [0, -330, 760, 90], total: [0, -150, 760, 190], paid: [0, 150, 700, 260], stamp: [0, 330, 700, 110] }),
     draw(g, p, env) {
       const { t, theme, lift } = env, w = 820, h = 820, x0 = -w / 2, y0 = -h / 2, dEnd = p.drainAt + p.drainDur, landed = t >= dEnd;
+      const bb = p.style === 'billboard';
+      if (bb) { for (const sx of [-240, 190]) clay(g, sx, y0 + h - 20, 50, 110, 8, '#59606B', { shadowK: 0.3 }); }
       paper(g, x0, y0, w, h, 30, { lift });
       g.save(); rr(g, x0, y0, w, h, 30); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 100); g.restore();
       txt(g, p.head, 0, y0 + 52, F.cap(36), theme.paper);
-      for (let i = 0; i < 8; i++) { g.fillStyle = rgba('#0B0F14', 0.16); g.beginPath(); g.arc(x0 + 30, y0 + 140 + i * 74, 9, 0, 7); g.arc(x0 + w - 30, y0 + 140 + i * 74, 9, 0, 7); g.fill(); }
+      for (let i = 0; i < (bb ? 0 : 8); i++) { g.fillStyle = rgba('#0B0F14', 0.16); g.beginPath(); g.arc(x0 + 30, y0 + 140 + i * 74, 9, 0, 7); g.arc(x0 + w - 30, y0 + 140 + i * 74, 9, 0, 7); g.fill(); }
       // big number: rolls up to 16.5 (million), then drains to 0
       let v = 0; { const lt = t - p.at; v = lt < 0 ? 0 : countAt(lt, p.dur, 0, 16.5); if (t >= p.drainAt) v = 16.5 * (1 - ease.inOut(clamp((t - p.drainAt) / p.drainDur))); }
       const draining = t >= p.drainAt && !landed, land0 = t - p.at - p.dur;
@@ -146,13 +149,13 @@
         g.save(); g.fillStyle = rgba(theme.ink, 0.1); rr(g, x0 + 20, y0 + 110, w - 40, 280, 14); g.fill(); g.restore();
         txt(g, p.payLabel, -170, y0 + 450, F.cap(54), theme.inkSoft); g.save(); g.globalAlpha = clamp(lt / 0.06); g.translate(0, y0 + 590); g.scale(sc, sc); g.rotate(-0.03); marker(g, -170, -108, 340, 190, theme.badInk, clamp((lt - 0.1) / 0.3), 0.16); txt(g, '$0', 0, 0, F.hero(250), theme.badInk); g.restore(); burst(g, 0, y0 + 590, 280, theme.bad, lt - 0.12, 20, 0.55);
         const sk = clamp((lt - 0.35) / 0.2); if (sk > 0) { g.save(); g.globalAlpha = clamp(sk * 3); g.translate(-45, y0 + 730); g.rotate(-0.045); g.scale(1 + 0.35 * (1 - ease.out(sk)), 1 + 0.35 * (1 - ease.out(sk))); g.strokeStyle = theme.badInk; g.lineWidth = 7; const bw = mw(p.stamp, F.hero(p.stampSize)) + 50; rr(g, -bw / 2, -46, bw, 92, 10); g.stroke(); txt(g, p.stamp, 0, 4, F.hero(p.stampSize), theme.badInk); g.restore(); } }
-      txt(g, 'ILLUSTRATION · GENERIC TICKET', x0 + 28, y0 + h - 18, F.mono(16), theme.inkSoft, 'left');
+      txt(g, bb ? 'ILLUSTRATION · GENERIC BILLBOARD' : 'ILLUSTRATION · GENERIC TICKET', x0 + 28, y0 + h - 18, F.mono(16), theme.inkSoft, 'left');
     },
   });
 
   // ---------- verdict: case-file card. Gavel, stamp PLEADED GUILTY, "2017", UP TO 25 YEARS; optional footer chips ----------
   B.register('plea', {
-    defaults: { guiltyAt: 99999, yearAt: 99999, yearsAt: 99999, chips: false, chipAt: 99999, endAt: 99999 }, size: p => [800, p.chips ? 800 : 700],
+    defaults: { guiltyAt: 99999, yearAt: 99999, yearsAt: 99999, chips: false, chipAt: 99999, endAt: 99999, barsAt: 99999, chipList: null }, size: p => [800, p.chips ? 800 : 700],
     anchors: p => { const y0 = -(p.chips ? 400 : 350); return { head: [0, y0 + 65, 760, 130], guilty: [0, y0 + 250, 700, 190], year: [0, y0 + 345, 340, 80], years: [0, y0 + 590, 720, 230], chips: [0, y0 + 725, 740, 80] }; },
     draw(g, p, env) {
       const { t, theme, lift } = env, w = 800, h = p.chips ? 800 : 700, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 26, { lift });
@@ -165,7 +168,8 @@
       { const yt = t - p.yearsAt; if (yt > -0.01) { const v = countAt(Math.max(0, yt), 0.6, 0, 25), land = yt - 0.6, s = 1 + (land > 0 ? 0.16 * hit(land, 6) : 0) + (env.hot === 'years' ? 0.03 * env.hotK : 0), o = { font: F.hero(200), size: 200, color: theme.ink, speed: yt < 0.6 ? 25 / 0.45 : 0 };
         const nw = B.rollWidth(g, 25, o).w, sw = mw(' YEARS', F.hero(120)), tot = nw + sw; g.save(); g.globalAlpha = clamp((yt + 0.01) / 0.1); txt(g, 'UP TO', 0, y0 + 452, F.cap(40), theme.inkSoft); g.translate(0, y0 + 590); g.scale(s, s); roll(g, v, -tot / 2, 0, { ...o, align: 'left' }); txt(g, ' YEARS', -tot / 2 + nw, 30, F.hero(120), theme.badInk, 'left'); if (land > 0) marker(g, -tot / 2, 112, tot, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, y0 + 590, 330, theme.bad, land, 18, 0.55); } }
       if (p.chips) { const ct = t - p.chipAt; if (ct > 0) { const ks = [spring(ct, 'snappy'), spring(Math.max(0, ct - 0.18), 'snappy')]; g.save(); g.globalAlpha = clamp(ct / 0.1);
-        [['RESTITUTION: MORE THAN $2M', -190, 0, 350], ['PAROLED 2022', 240, 1, 260]].forEach(([s, x, i, bw]) => { g.save(); g.translate(x, y0 + 730 + (1 - ks[i]) * 24); g.globalAlpha = clamp((ct - i * 0.18) / 0.1); clay(g, -bw / 2, -34, bw, 68, 20, theme.navy, { shadowK: 0.4 }); txt(g, s, 0, 2, F.cap(i ? 28 : 25), theme.paper); g.restore(); }); g.restore(); } }
+        (p.chipList || [['RESTITUTION: MORE THAN $2M', -190, 0, 350], ['PAROLED 2022', 240, 1, 260]]).forEach(([s, x, i, bw]) => { g.save(); g.translate(x, y0 + 730 + (1 - ks[i]) * 24); g.globalAlpha = clamp((ct - i * 0.18) / 0.1); clay(g, -bw / 2, -34, bw, 68, 20, theme.navy, { shadowK: 0.4 }); txt(g, s, 0, 2, F.cap(i ? 28 : 25), theme.paper); g.restore(); }); g.restore(); } }
+      { const bt = t - p.barsAt; if (bt > 0) { g.save(); rr(g, x0, y0, w, h, 26); g.clip(); for (let i = 0; i < 9; i++) { const k = ease.out(clamp((bt - i * 0.035) / 0.3)); if (k <= 0) continue; const bx = x0 + 44 + i * ((w - 88) / 8); clay(g, bx - 10, y0 + 130 - (1 - k) * h, 20, (h - 130) * k, 8, '#3a4350', { shadowK: 0.5 }); } g.restore(); } }
     },
   });
 
