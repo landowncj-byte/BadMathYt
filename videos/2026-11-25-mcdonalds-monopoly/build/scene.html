@@ -143,17 +143,17 @@ function sConv(c, t) {
 // 55.6–58.0 37 months, bars drop
 function sMonths(c, t) {
   bgGrid(c, t, 'rgba(255,59,48,.07)');
-  c.save(); c.translate(510, 720); c.scale(1.0, 1.0); idCard(c, .95, 'JEROME JACOBSON', 'SECURITY', 'PLEADED GUILTY', { ns: 52, ss: 34 }); c.restore();
+  c.save(); c.translate(510, 650); idCard(c, .9, 'JEROME JACOBSON', 'SECURITY', 'PLEADED GUILTY', { ns: 52, ss: 34 }); c.restore();
   const drop = eo(lin(t, 56.46, 56.74)); jailBars(c, drop, 330, 1110, 110, 970);
   if (t >= 56.46 && t < 56.62) { c.fillStyle = `rgba(255,255,255,${.4 * (1 - (t - 56.46) / .16)})`; c.fillRect(0, 0, W, H); }
-  stamp(c, '37 MONTHS', 510, 720, 150, RED, -.05, lin(t, 56.5, 56.62));
+  stamp(c, '37 MONTHS', 510, 900, 150, RED, -.05, lin(t, 56.5, 56.62));
 }
 // 58.0–end: back to the peeled piece, "YOU NEVER HAD A SHOT", then re-covers into frame 0
 function sEnd(c, t) {
   bgGrid(c, t, 'rgba(255,59,48,.09)'); bgGlow(c, 540, 720, 560, 'rgba(255,59,48,.28)');
-  const w = 880, h = 560; const p = 1 - eo(lin(t, LOOP, DUR));
-  peelPiece(c, 520, 720, w, h, -.035, Math.min(.999, p * 1), GRAND(w, h), NOT_YOU(w, h), {});
-  if (t < LOOP + .2) { const a = 1 - lin(t, LOOP, LOOP + .2); big(c, 'YOU NEVER', 510, 1010, 120, PAPER, lin(t, 58.18, 58.4) * a, -.03, 0, 880); big(c, 'HAD A SHOT', 510, 1130, 120, RED, lin(t, 58.58, 58.8) * a, .02, 0, 880); }
+  const w = 880, h = 560; const u = eo(lin(t, LOOP, DUR)), p = 1 - u; const sc = lerpC(.78, 1, u), cy = lerpC(600, 720, u);
+  peelPiece(c, 520, cy, w, h, -.035, Math.min(.999, p), GRAND(w, h), NOT_YOU(w, h), { scale: sc });
+  if (t < LOOP + .12) { const a = 1 - lin(t, LOOP, LOOP + .12); big(c, 'YOU NEVER', 510, 960, 120, PAPER, lin(t, 58.18, 58.4) * a, -.03, 0, 880); big(c, 'HAD A SHOT', 510, 1075, 120, RED, lin(t, 58.58, 58.8) * a, .02, 0, 880); }
 }
 const SCENES = [[0, 2.9, sHook], [2.9, 5.6, sNot], [5.6, 8.1, sGuard], [8.1, 13.4, sJac], [13.4, 16.8, sCase], [16.8, 20.2, sSeal], [20.2, 25.4, sEnv], [25.4, 30.3, sNet], [30.3, 35.3, sFbi], [35.3, 38.4, sBig], [38.4, 41.8, sSend], [41.8, 44.9, sArrest], [44.9, 47.6, sTime], [47.6, 53.1, sCal], [53.1, 55.6, sConv], [55.6, 58.0, sMonths], [58.0, 99, sEnd]];
 const ST = { enterAt: -.5, timeline: [[0, 'shock'], [2.9, 'point'], [5.6, 'shock'], [8.1, 'point'], [13.4, 'chin'], [16.8, 'point'], [20.2, 'you'], [25.4, 'point'], [30.3, 'shock'], [36.9, 'shock'], [38.4, 'you'], [41.8, 'shrug'], [44.9, 'follow'], [47.6, 'idle'], [53.1, 'shock'], [55.6, 'shrug'], [58.0, 'you']],

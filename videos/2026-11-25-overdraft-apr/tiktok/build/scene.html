@@ -1,0 +1,406 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>What If: Overdraft APR (TikTok)</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../../brand/storyteller.js"></script>
+<script>
+const MOUTH = [0.14, 0.382, 0.532, 0.52, 0.577, 0.614, 0.716, 0.828, 0.875, 0.287, 0.373, 0.761, 0.581, 0.401, 0.391, 0.199, 0.021, 0.176, 0.292, 0.391, 0.381, 0.392, 0.444, 0.439, 0.417, 0.436, 0.238, 0.042, 0.037, 0.036, 0.048, 0.804, 0.915, 0.777, 0.515, 0.321, 0.358, 0.244, 0.13, 0.118, 0.109, 0.056, 0.443, 0.4, 0.41, 0.378, 0.307, 0.174, 0.114, 0.342, 0.569, 0.617, 0.593, 0.627, 0.466, 0.243, 0.081, 0.072, 0.035, 0.024, 0.022, 0.082, 0.06, 0.007, 0.011, 0.009, 0.005, 0.007, 0.059, 0.337, 0.384, 0.19, 0.164, 0.784, 0.641, 0.635, 0.586, 0.559, 0.546, 0.503, 0.435, 0.41, 0.225, 0.06, 0.005, 0.001, 0.322, 0.094, 0.026, 0.439, 0.527, 0.42, 0.505, 0.342, 0.113, 0.114, 0.091, 0.161, 0.423, 0.443, 0.315, 0.268, 0.156, 0.097, 0.504, 0.577, 0.548, 0.641, 0.702, 0.718, 0.342, 0.198, 0.171, 0.159, 0.125, 0.391, 0.406, 0.123, 0.069, 0.159, 0.232, 0.075, 0.065, 0.083, 0.033, 0.215, 0.246, 0.245, 0.244, 0.132, 0.26, 0.552, 0.497, 0.343, 0.131, 0.052, 0.012, 0.009, 0.006, 0.03, 0.158, 0.191, 0.036, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.047, 0.652, 1.0, 0.656, 0.07, 0.696, 0.154, 0.115, 0.39, 1.0, 0.836, 0.715, 0.641, 0.485, 0.302, 0.059, 0.592, 1.0, 1.0, 0.617, 0.227, 0.44, 0.422, 0.218, 0.254, 0.545, 0.546, 0.572, 0.596, 0.367, 0.095, 0.037, 0.071, 0.085, 0.077, 0.056, 0.267, 0.466, 0.355, 0.331, 0.364, 0.352, 0.323, 0.234, 0.122, 0.057, 0.054, 0.025, 0.038, 0.159, 0.166, 0.03, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.038, 0.296, 0.188, 0.17, 1.0, 1.0, 1.0, 0.182, 0.576, 0.627, 0.522, 0.509, 0.5, 0.457, 0.227, 0.351, 0.303, 0.039, 0.003, 0.578, 0.694, 0.745, 0.631, 0.489, 0.474, 0.423, 0.28, 0.109, 0.079, 0.37, 0.398, 0.229, 0.406, 0.4, 0.375, 0.263, 0.395, 0.362, 0.318, 0.402, 0.381, 0.378, 0.212, 0.116, 0.13, 0.226, 0.345, 0.453, 0.429, 0.405, 0.379, 0.374, 0.308, 0.286, 0.235, 0.124, 0.078, 0.325, 0.406, 0.142, 0.09, 0.233, 0.352, 0.327, 0.317, 0.423, 0.465, 0.591, 0.508, 0.223, 0.063, 0.034, 0.022, 0.022, 0.035, 0.023, 0.005, 0.001, 0.002, 0.002, 0.003, 0.003, 0.005, 0.007, 0.008, 0.011, 0.015, 0.007, 0.296, 0.59, 0.246, 1.0, 0.968, 0.726, 0.264, 0.07, 0.44, 0.53, 0.418, 0.346, 1.0, 1.0, 0.206, 0.34, 0.555, 0.395, 0.126, 0.254, 0.285, 0.422, 0.435, 0.368, 0.191, 0.047, 0.052, 0.073, 0.622, 0.41, 0.348, 0.354, 0.355, 0.404, 0.323, 0.275, 0.291, 0.375, 0.318, 0.123, 0.104, 0.125, 0.328, 0.314, 0.516, 0.433, 0.348, 0.34, 0.567, 0.549, 0.452, 0.207, 0.057, 0.009, 0.003, 0.036, 0.383, 0.36, 0.349, 0.228, 0.017, 0.1, 0.093, 0.059, 0.198, 0.244, 0.281, 0.36, 0.419, 0.48, 0.503, 0.373, 0.168, 0.092, 0.027, 0.02, 0.015, 0.011, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.021, 0.307, 0.067, 0.047, 0.153, 0.985, 1.0, 1.0, 0.745, 0.679, 0.119, 0.014, 0.002, 0.213, 0.244, 0.605, 0.883, 0.885, 0.862, 0.69, 0.463, 0.34, 0.117, 0.054, 0.009, 0.037, 0.208, 0.335, 0.124, 0.044, 0.471, 0.649, 0.273, 0.337, 0.506, 0.493, 0.606, 0.692, 0.698, 0.675, 0.245, 0.162, 0.187, 0.178, 0.284, 0.343, 0.334, 0.361, 0.321, 0.175, 0.279, 0.481, 0.469, 0.402, 0.241, 0.029, 0.045, 0.064, 0.06, 0.267, 0.484, 0.58, 0.44, 0.295, 0.394, 0.419, 0.311, 0.255, 0.559, 0.58, 0.467, 0.396, 0.155, 0.205, 0.286, 0.073, 0.052, 0.199, 0.237, 0.131, 0.303, 0.258, 0.303, 0.254, 0.237, 0.37, 0.395, 0.425, 0.431, 0.421, 0.334, 0.156, 0.035, 0.047, 0.246, 0.434, 0.248, 0.112, 0.055, 0.025, 0.024, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.005, 0.038, 0.139, 0.82, 0.817, 0.796, 0.769, 0.566, 0.447, 0.421, 0.46, 0.337, 0.251, 0.992, 0.948, 0.774, 0.443, 0.221, 0.071, 0.093, 0.218, 0.08, 0.005, 0.005, 0.006, 0.005, 0.004, 0.003, 0.004, 0.085, 0.161, 0.617, 1.0, 1.0, 0.395, 0.469, 0.301, 0.383, 0.318, 0.294, 0.072, 0.011, 0.012, 0.43, 0.93, 0.771, 0.713, 0.461, 0.397, 0.358, 0.299, 0.126, 0.083, 0.059, 0.359, 0.358, 0.399, 0.393, 0.365, 0.248, 0.196, 0.384, 0.622, 0.718, 0.7, 0.666, 0.525, 0.248, 0.103, 0.072, 0.037, 0.026, 0.019, 0.036, 0.083, 0.039, 0.002, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.027, 0.448, 0.54, 0.588, 0.444, 0.512, 0.503, 0.21, 0.141, 1.0, 0.76, 0.732, 0.712, 0.526, 0.104, 0.141, 0.072, 0.484, 0.573, 0.611, 0.164, 0.348, 0.455, 0.298, 0.194, 0.362, 0.557, 0.259, 0.048, 0.113, 0.255, 0.367, 0.265, 0.309, 0.37, 0.147, 0.096, 0.016, 0.264, 0.322, 0.195, 0.111, 0.107, 0.073, 0.007, 0.007, 0.008, 0.008, 0.008, 0.008, 0.007, 0.058, 0.182, 0.727, 0.858, 0.9, 0.634, 0.584, 0.59, 0.911, 0.902, 0.718, 0.391, 0.067, 0.067, 0.573, 0.645, 0.449, 0.185, 0.025, 0.002, 0.001, 0.001, 0.05, 0.166, 0.245, 0.59, 0.808, 0.861, 0.896, 0.495, 0.336, 0.261, 0.161, 0.09, 0.038, 0.022, 0.003, 0.012, 0.004, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.007, 0.046, 0.569, 1.0, 0.993, 0.97, 0.594, 0.6, 0.768, 0.783, 0.38, 0.162, 0.166, 0.123, 0.505, 0.334, 0.434, 0.413, 0.455, 0.485, 0.467, 0.404, 0.402, 0.42, 0.381, 0.478, 0.506, 0.615, 0.61, 0.638, 0.446, 0.131, 0.075, 0.066, 0.035, 0.21, 0.354, 0.209, 0.133, 0.439, 0.473, 0.47, 0.51, 0.378, 0.145, 0.089, 0.047, 0.149, 0.553, 0.381, 0.149, 0.064, 0.024, 0.014, 0.001, 0.178, 0.469, 0.351, 0.07, 0.003, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+const CAPS = [[0, 1.62, [["IMAGINE", "p"], ["PAYING", "p"], ["$34", "r"]]], [1.62, 3.46, [["TO", "p"], ["BORROW", "p"], ["$24", "g"]]], [3.46, 4.28, [["FOR", "p"], ["3", "p"]]], [4.28, 5.1, [["DAYS", "p"]]], [5.1, 5.6, [["THAT'S", "p"], ["WHAT", "p"], ["AN", "p"]]], [5.6, 7.26, [["OVERDRAFT", "p"], ["FEE", "p"], ["IS", "p"]]], [7.28, 8.1, [["THE", "p"], ["GOVERNMENT'S", "p"], ["OWN", "p"]]], [8.1, 9.24, [["CONSUMER", "p"], ["BUREAU", "y"], ["DID", "p"]]], [9.24, 10.2, [["THE", "p"], ["MATH", "p"]]], [10.28, 13.0, [["ABOUT", "p"], ["17,000%", "r"], ["APR", "r"]]], [13.0, 13.76, [["A", "p"], ["CREDIT", "p"], ["CARD", "p"]]], [13.76, 14.6, [["WOULD", "p"], ["CHARGE", "p"], ["YOU", "p"]]], [14.6, 15.66, [["ABOUT", "p"], ["4\u00a2", "g"], ["FOR", "p"]]], [15.66, 16.76, [["THE", "p"], ["SAME", "p"], ["THING", "p"]]], [16.76, 17.5, [["4\u00a2", "g"]]], [17.72, 19.56, [["VERSUS", "p"], ["$34", "r"]]], [19.56, 20.18, [["HAS", "p"], ["YOUR", "p"], ["BANK", "p"]]], [20.18, 20.78, [["EVER", "p"], ["HIT", "p"], ["YOU", "p"]]], [20.78, 21.42, [["WITH", "p"], ["ONE?", "p"]]], [21.42, 22.3, [["HOW", "p"], ["MUCH?", "p"]]], [22.3, 23.02, [["COMMENT", "y"]]], [23.12, 23.72, [["FOLLOW", "y"], ["FOR", "p"], ["MORE", "p"]]], [23.72, 24.48, [["MATH", "p"], ["YOUR", "p"], ["BANK", "p"]]], [24.48, 25.28, [["HATES", "r"]]]];
+// Bad Math What If engine: overdraft-apr. Shared by the YouTube, TikTok and IG/FB cuts. Pure functions of t.
+const W = 1080, H = 1920;
+const C = document.getElementById('c'), X = C.getContext('2d');
+const OFF = document.createElement('canvas'); OFF.width = W; OFF.height = H; const O = OFF.getContext('2d');
+const TMP = document.createElement('canvas'); TMP.width = W; TMP.height = H; const T = TMP.getContext('2d');
+const INK = '#0B0F14', RED = '#FF3B30', GREEN = '#00D26A', PAPER = '#F5F3EE', HL = '#FFD60A', GOLD = '#F2B705';
+const NAVY = '#14305C', BLUE = '#2F6BFF', SCR = '#F1F4F9';
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - clamp(x), 3);
+const eio = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const back = x => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const hash = n => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+const fmt = n => Math.round(n).toLocaleString('en-US');
+function rr(c, x, y, w, h, r) { c.beginPath(); c.roundRect(x, y, w, h, r); }
+function txt(c, s, x, y, font, color, align = 'center', base = 'middle') { c.font = font; c.fillStyle = color; c.textAlign = align; c.textBaseline = base; c.fillText(s, x, y); }
+function stamp(c, s, x, y, size, color, rot, k, fill) {
+  if (k <= 0) return; const sc = lerp(2.6, 1, back(k)); c.save(); c.translate(x, y); c.rotate(rot); c.scale(sc, sc); c.globalAlpha = clamp(k * 3);
+  c.font = `400 ${size}px Anton`; const w = c.measureText(s).width + size * .6, h = size * 1.25;
+  if (fill) { rr(c, -w / 2, -h / 2, w, h, size * .12); c.fillStyle = fill; c.fill(); }
+  c.strokeStyle = color; c.lineWidth = size * .09; rr(c, -w / 2, -h / 2, w, h, size * .12); c.stroke();
+  c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(s, 0, size * .04); c.restore();
+}
+// multi-line stamp: lines = [[text,size],...]
+function stampN(c, lines, x, y, color, rot, k, fill, maxW = 900) {
+  if (k <= 0) return; const sc = lerp(2.4, 1, back(k)); c.save(); c.translate(x, y); c.rotate(rot); c.scale(sc, sc); c.globalAlpha = clamp(k * 3);
+  let w = 0, h = 0; for (const [s, sz] of lines) { c.font = `400 ${sz}px Anton`; w = Math.max(w, c.measureText(s).width); h += sz * 1.12; } w += 70; h += 40;
+  if (w > maxW) { const f = maxW / w; c.scale(f, f); }
+  if (fill) { rr(c, -w / 2, -h / 2, w, h, 18); c.fillStyle = fill; c.fill(); } c.strokeStyle = color; c.lineWidth = 12; rr(c, -w / 2, -h / 2, w, h, 18); c.stroke();
+  let yy = -h / 2 + 20; for (const [s, sz] of lines) { txt(c, s, 0, yy + sz * .56, `400 ${sz}px Anton`, color); yy += sz * 1.12; } c.restore();
+}
+function bg(c, t, glow = 'rgba(255,214,10,.13)') {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H);
+  const g = c.createRadialGradient(540, 760, 50, 540, 760, 950); g.addColorStop(0, glow); g.addColorStop(1, 'rgba(255,214,10,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.strokeStyle = 'rgba(245,243,238,.045)'; c.lineWidth = 2; const o = (t * 18) % 80;
+  for (let x = -80 + o; x < W + 80; x += 80) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, H); c.stroke(); }
+  for (let y = -80 + o; y < H + 80; y += 80) { c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); }
+}
+function rays(c, t, col = '255,59,48') { const g = c.createRadialGradient(540, 760, 40, 540, 760, 950); g.addColorStop(0, `rgba(${col},.42)`); g.addColorStop(1, `rgba(${col},0)`); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.save(); c.translate(540, 780); c.globalAlpha = .1; c.fillStyle = `rgb(${col})`; for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2 + t * .25; c.beginPath(); c.moveTo(0, 0); c.arc(0, 0, 1500, a, a + .15); c.closePath(); c.fill(); } c.restore(); }
+function shadowBox(c, x, y, w, h, r, fill, stroke) { c.save(); c.shadowColor = 'rgba(0,0,0,.5)'; c.shadowBlur = 24; c.shadowOffsetY = 10; rr(c, x, y, w, h, r); c.fillStyle = fill; c.fill(); c.restore(); if (stroke) { rr(c, x, y, w, h, r); c.strokeStyle = stroke; c.lineWidth = 4; c.stroke(); } }
+// big outlined hero text; shrinks to maxW
+const hero = (c, s, x, y, size, col, maxW = 940, fam = 'Anton', wt = 400, rot = 0, lw = .09) => { c.save(); c.font = `${wt} ${size}px ${fam}`; const w = c.measureText(s).width; if (w > maxW) size *= maxW / w; c.translate(x, y); c.rotate(rot);
+  c.font = `${wt} ${size}px ${fam}`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round'; c.lineWidth = size * lw; c.strokeStyle = 'rgba(0,0,0,.88)'; c.strokeText(s, 0, 0); c.fillStyle = col; c.fillText(s, 0, 0); c.restore(); };
+const slam = (c, k, x, y, f) => { if (k <= 0) return; const s = lerp(1.25, 1, eo(k)); c.save(); c.translate(x, y); c.scale(s, s); c.globalAlpha = clamp(k * 4 + .2); f(); c.restore(); };
+const HC = ['#FFD60A', '#00D26A', '#FF6B3D', '#4DA3FF', '#C77DFF'];
+function heart(c, x, y, s, col) { c.save(); c.translate(x, y); c.scale(s, s); c.fillStyle = col; c.beginPath(); c.moveTo(0, 30); c.bezierCurveTo(-60, -10, -40, -55, 0, -22); c.bezierCurveTo(40, -55, 60, -10, 0, 30); c.fill(); c.restore(); }
+function plane(c, x, y, rot, s, col = PAPER) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s); c.fillStyle = col; c.strokeStyle = 'rgba(11,15,20,.35)'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(60, 0); c.lineTo(-50, -34); c.lineTo(-26, 0); c.lineTo(-50, 34); c.closePath(); c.fill(); c.stroke();
+  c.beginPath(); c.moveTo(60, 0); c.lineTo(-26, 0); c.lineTo(-34, 14); c.closePath(); c.fillStyle = '#c9c4b6'; c.fill(); c.restore(); }
+function bookmark(c, x, y, s, col, k) { c.save(); c.translate(x, y); c.scale(s * k, s * k); c.shadowColor = 'rgba(0,0,0,.5)'; c.shadowBlur = 24; c.beginPath(); c.moveTo(-90, -150); c.lineTo(90, -150); c.lineTo(90, 150); c.lineTo(0, 80); c.lineTo(-90, 150); c.closePath(); c.fillStyle = col; c.fill(); c.shadowBlur = 0; c.lineWidth = 8; c.strokeStyle = 'rgba(11,15,20,.85)'; c.lineJoin = 'round'; c.stroke(); c.restore(); }
+function coin(c, x, y, r, rot = 0, sq = 1, label = '$') { c.save(); c.translate(x, y); c.rotate(rot); c.scale(1, sq); c.fillStyle = '#F2B705'; c.beginPath(); c.arc(0, 0, r, 0, 7); c.fill(); c.strokeStyle = '#a87a00'; c.lineWidth = r * .14; c.stroke();
+  c.strokeStyle = '#ffe27a'; c.lineWidth = r * .1; c.beginPath(); c.arc(0, 0, r * .68, 0, 7); c.stroke(); txt(c, label, 0, r * .05, `800 ${r * (label.length > 1 ? .8 : 1.0)}px JBM`, '#a87a00'); c.restore(); }
+function bill(c, x, y, rot, s, sq = 1) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s * sq); c.fillStyle = '#2fbf71'; rr(c, -52, -26, 104, 52, 6); c.fill(); c.strokeStyle = '#0a7a40'; c.lineWidth = 4; c.stroke();
+  c.strokeStyle = 'rgba(255,255,255,.55)'; c.lineWidth = 2.5; rr(c, -44, -19, 88, 38, 4); c.stroke(); c.fillStyle = '#d9ffe8'; c.beginPath(); c.arc(0, 0, 14, 0, 7); c.fill(); txt(c, '$', 0, 1, '800 20px JBM', '#0a7a40'); c.restore(); }
+function rain(c, t, t0, n = 60) { for (let i = 0; i < n; i++) { const ts = t0 + hash(i) * 1.2, d = t - ts; if (d < 0) continue; const y = -60 + d * (700 + hash(i + 3) * 500); if (y > 2000) continue; const x = hash(i + 1) * 1100 - 10 + Math.sin(d * 3 + i) * 40;
+  if (i % 4 === 0) coin(c, x, y, 20, d * 6, Math.abs(Math.cos(d * 8 + i))); else bill(c, x, y, Math.sin(d * 2.5 + i) * .9, .9, Math.abs(Math.cos(d * 5 + i)) * .85 + .15); } }
+function finger(c, x, y, rot = -.38, press = 0) { // (x,y) = fingertip
+  c.save(); c.translate(x, y + press * 10); c.rotate(rot); c.lineJoin = 'round'; c.lineWidth = 6; c.strokeStyle = 'rgba(11,15,20,.9)';
+  c.fillStyle = '#3a4a6b'; rr(c, -78, 330, 156, 260, 14); c.fill(); c.stroke();
+  c.fillStyle = '#EDB98F'; rr(c, -70, 180, 140, 190, 46); c.fill(); c.stroke();
+  rr(c, -26, 0, 52, 260, 26); c.fill(); c.stroke(); c.fillStyle = 'rgba(255,255,255,.25)'; rr(c, -14, 12, 14, 70, 7); c.fill();
+  c.strokeStyle = 'rgba(11,15,20,.45)'; c.lineWidth = 4; for (const dx of [-40, -14]) { c.beginPath(); c.moveTo(dx + 22, 190); c.lineTo(dx + 22, 232); c.stroke(); } c.restore(); }
+function ripple(c, x, y, k, col = 'rgba(255,255,255,') { if (k <= 0 || k >= 1) return; c.save(); c.strokeStyle = `${col}${1 - k})`; c.lineWidth = 8; c.beginPath(); c.arc(x, y, 20 + 90 * k, 0, 7); c.stroke(); c.restore(); }
+function toggle(c, x, y, k, w = 150, h = 78) { // x,y = center; k 0..1 (on)
+  c.save(); c.translate(x, y); rr(c, -w / 2, -h / 2, w, h, h / 2); c.fillStyle = k > .5 ? GREEN : '#9aa5b5'; c.fill();
+  c.fillStyle = '#fff'; c.shadowColor = 'rgba(0,0,0,.35)'; c.shadowBlur = 8; c.beginPath(); c.arc(lerp(-w / 2 + h / 2, w / 2 - h / 2, eo(k)), 0, h / 2 - 7, 0, 7); c.fill(); c.restore(); }
+// phone: draws body then calls fn(c, sw, sh) in screen coordinates
+function phone(c, cx, cy, w, h, fn, rot = 0, sc = 1) {
+  c.save(); c.translate(cx, cy); c.rotate(rot); c.scale(sc, sc); c.translate(-w / 2, -h / 2);
+  c.save(); c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 40; c.shadowOffsetY = 18; rr(c, 0, 0, w, h, 64); c.fillStyle = '#222b38'; c.fill(); c.restore();
+  rr(c, 0, 0, w, h, 64); c.strokeStyle = '#5b6b82'; c.lineWidth = 6; c.stroke();
+  c.save(); c.translate(14, 14); const sw = w - 28, sh = h - 28; rr(c, 0, 0, sw, sh, 52); c.clip(); c.fillStyle = SCR; c.fillRect(0, 0, sw, sh); fn(c, sw, sh); c.restore();
+  c.fillStyle = '#0b0f14'; rr(c, w / 2 - 60, 22, 120, 30, 15); c.fill(); c.restore(); }
+// generic bank app screen. o: {toggle (0..1), bal, balCol, label, hi}
+function bankScreen(c, t, sw, sh, o = {}) {
+  c.fillStyle = NAVY; c.fillRect(0, 0, sw, 150);
+  c.fillStyle = '#fff'; c.beginPath(); c.arc(54, 98, 22, 0, 7); c.fill(); c.strokeStyle = NAVY; c.lineWidth = 5; c.beginPath(); c.arc(54, 98, 12, 0, 7); c.stroke(); for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2 + Math.PI / 4; c.beginPath(); c.moveTo(54 + Math.cos(a) * 12, 98 + Math.sin(a) * 12); c.lineTo(54 + Math.cos(a) * 19, 98 + Math.sin(a) * 19); c.stroke(); }
+  txt(c, 'BANK', 92, 99, '800 38px Inter', '#fff', 'left');
+  txt(c, 'AVAILABLE BALANCE', 36, 200, '800 21px JBM', '#6b7a90', 'left'); txt(c, o.bal || '$1,240.18', 36, 252, '800 62px JBM', o.balCol || INK, 'left');
+  for (let i = 0; i < 2; i++) { c.fillStyle = '#dfe5ee'; rr(c, 36, 316 + i * 62, sw * .55 - i * 40, 22, 11); c.fill(); c.fillStyle = '#e9edf4'; rr(c, 36, 346 + i * 62, sw * .3, 16, 8); c.fill(); }
+  const ry = 470, hi = o.hi || 0; shadowBox(c, 22, ry, sw - 44, 170, 24, '#fff', hi > 0 ? `rgba(255,59,48,${hi})` : '#dbe2ec');
+  txt(c, o.label || 'OVERDRAFT PROTECTION:', 44, ry + 46, '800 22px JBM', NAVY, 'left');
+  const on = o.toggle ?? 1; txt(c, on > .5 ? 'ON' : 'OFF', 44, ry + 112, '800 56px Inter', on > .5 ? GREEN : '#8793a6', 'left'); toggle(c, sw - 110, ry + 100, on, 130, 68);
+  for (let i = 0; i < 2; i++) { c.fillStyle = '#e4e9f1'; rr(c, 36, 680 + i * 56, sw * .7 - i * 90, 20, 10); c.fill(); }
+}
+// receipt: paper hangs from a slot at (x,y). lines: [left,right,at,style] style: 'h' header, 'r' red fee, 'n' normal, 'd' dashes
+function receipt(c, t, x, y, w, lines, rot = 0) {
+  c.save(); c.translate(x, y); c.rotate(rot);
+  let hh = 24, shown = [];
+  for (const L of lines) { const k = lin(t, L[2], L[2] + .18); if (k <= 0) break; const lh = L[3] === 'r' ? 92 : L[3] === 'h' ? 74 : L[3] === 'd' ? 34 : 64; shown.push([L, k, hh, lh]); hh += lh; }
+  const ph = hh + 36;
+  c.save(); c.shadowColor = 'rgba(0,0,0,.55)'; c.shadowBlur = 26; c.shadowOffsetY = 12; c.fillStyle = '#F7F4EA'; c.beginPath(); c.moveTo(-w / 2, 0); c.lineTo(w / 2, 0); c.lineTo(w / 2, ph);
+  const n = 18; for (let i = n; i >= 0; i--) c.lineTo(-w / 2 + w * i / n, ph + (i % 2 ? 0 : 16)); c.closePath(); c.fill(); c.restore();
+  c.save(); c.beginPath(); c.rect(-w / 2, 0, w, ph + 20); c.clip();
+  for (const [L, k, ly, lh] of shown) { const st = L[3]; const cy = ly + lh / 2;
+    if (st === 'r') { c.fillStyle = 'rgba(255,59,48,.14)'; c.fillRect(-w / 2 + 14, ly + 4, w - 28, lh - 8); c.save(); txt(c, L[0], -w / 2 + 30, cy, '800 28px JBM', RED, 'left'); const kk = 1 + .25 * Math.exp(-(t - L[2]) * 8); c.translate(w / 2 - 28, cy); c.scale(kk, kk); txt(c, L[1], 0, 0, '800 54px JBM', RED, 'right'); c.restore(); }
+    else if (st === 'h') txt(c, L[0], 0, cy, '800 34px JBM', INK);
+    else if (st === 'd') { c.strokeStyle = 'rgba(11,15,20,.45)'; c.lineWidth = 3; c.setLineDash([10, 8]); c.beginPath(); c.moveTo(-w / 2 + 24, cy); c.lineTo(w / 2 - 24, cy); c.stroke(); c.setLineDash([]); }
+    else { txt(c, L[0], -w / 2 + 30, cy, '700 30px JBM', INK, 'left'); txt(c, L[1], w / 2 - 28, cy, '800 34px JBM', INK, 'right'); } }
+  c.restore(); c.fillStyle = '#1a222d'; rr(c, -w / 2 - 30, -26, w + 60, 38, 12); c.fill(); c.restore(); return ph; }
+function shield(c, t, x, y, s, crack, split, face = 1) { // sarcastic shield. crack 0..1, split 0..1
+  const path = () => { c.beginPath(); c.moveTo(-150, -190); c.quadraticCurveTo(0, -250, 150, -190); c.lineTo(150, -20); c.quadraticCurveTo(140, 130, 0, 230); c.quadraticCurveTo(-140, 130, -150, -20); c.closePath(); };
+  const ZG = [[0, -230], [26, -150], [-22, -80], [30, -10], [-26, 60], [24, 130], [0, 230]];
+  const body = () => { path(); const g = c.createLinearGradient(-150, -200, 150, 230); g.addColorStop(0, '#5C8BFF'); g.addColorStop(1, '#1a3f9a'); c.fillStyle = g; c.fill(); c.lineWidth = 12; c.strokeStyle = 'rgba(11,15,20,.9)'; c.lineJoin = 'round'; c.stroke();
+    c.save(); c.scale(.8, .8); c.translate(0, -5); path(); c.strokeStyle = 'rgba(255,255,255,.55)'; c.lineWidth = 8; c.stroke(); c.restore();
+    if (face) { for (const sx of [-1, 1]) { c.fillStyle = '#fff'; c.beginPath(); c.ellipse(sx * 52, -45, 26, 22, 0, 0, 7); c.fill(); c.fillStyle = INK; c.beginPath(); c.arc(sx * 52 + 12, -40, 11, 0, 7); c.fill();
+      c.fillStyle = '#2a58c9'; c.fillRect(sx * 52 - 28, -70, 56, 28);
+      c.strokeStyle = INK; c.lineWidth = 8; c.lineCap = 'round'; c.beginPath(); c.moveTo(sx * 52 - 26, -42); c.lineTo(sx * 52 + 26, -42); c.stroke(); }
+      c.strokeStyle = INK; c.lineWidth = 8; c.beginPath(); c.moveTo(-86, -92); c.lineTo(-22, -84); c.stroke(); c.beginPath(); c.moveTo(22, -108); c.quadraticCurveTo(52, -128, 84, -100); c.stroke();
+      c.lineWidth = 9; c.beginPath(); c.moveTo(-50, 52); c.quadraticCurveTo(10, 78, 62, 38); c.stroke(); c.beginPath(); c.moveTo(62, 38); c.lineTo(72, 28); c.stroke(); } };
+  c.save(); c.translate(x, y); c.scale(s, s);
+  if (split > 0) { const gl = c.createRadialGradient(0, 0, 10, 0, 0, 300); gl.addColorStop(0, `rgba(255,214,10,${.8 * split})`); gl.addColorStop(1, 'rgba(255,214,10,0)'); c.fillStyle = gl; c.fillRect(-400, -400, 800, 800);
+    for (const sg of [-1, 1]) { c.save(); c.translate(sg * split * 70, split * 40); c.rotate(sg * split * .3); c.beginPath(); c.moveTo(sg * 400, -400); for (const [zx, zy] of ZG) c.lineTo(zx, zy); c.lineTo(sg * 400, 400); c.closePath(); c.clip(); body(); c.restore(); } }
+  else { body(); if (crack > 0) { c.strokeStyle = '#000'; c.lineWidth = 9; c.lineCap = 'round'; c.lineJoin = 'round'; c.shadowColor = HL; c.shadowBlur = 22; c.beginPath(); const n = Math.floor(crack * (ZG.length - 1)); c.moveTo(ZG[0][0], ZG[0][1]); for (let i = 1; i <= n; i++) c.lineTo(ZG[i][0], ZG[i][1]);
+    if (n < ZG.length - 1) { const f = crack * (ZG.length - 1) - n; c.lineTo(lerp(ZG[n][0], ZG[n + 1][0], f), lerp(ZG[n][1], ZG[n + 1][1], f)); } c.stroke(); } }
+  c.restore(); }
+function errorDialog(c, k, x, y, msg) { if (k <= 0) return; c.save(); c.translate(x, y); const s = back(k); c.scale(s, s); const w = 700, h = 270;
+  shadowBox(c, -w / 2, -h / 2, w, h, 24, '#fff'); c.fillStyle = RED; rr(c, -w / 2, -h / 2, w, 70, [24, 24, 0, 0]); c.fill(); txt(c, 'ERROR', -w / 2 + 28, -h / 2 + 36, '800 34px JBM', '#fff', 'left'); txt(c, 'X', w / 2 - 40, -h / 2 + 36, '800 34px JBM', '#fff');
+  const sz = Math.min(62, 640 / (c.measureText(msg).width / 62 + .01)); txt(c, msg, 0, 10, `400 ${Math.min(62, 620 / (msg.length * .5))}px Anton`, INK, 'center'); c.fillStyle = INK; rr(c, -70, 66, 140, 52, 12); c.fill(); txt(c, 'OK', 0, 93, '800 30px Inter', '#fff'); c.restore(); }
+// red hand-drawn circle (MEME #3)
+function redCircle(c, x, y, rx, ry, k) { if (k <= 0) return; c.save(); c.strokeStyle = RED; c.lineWidth = 12; c.lineCap = 'round'; c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 8; c.beginPath(); const n = 60 * k;
+  for (let i = 0; i <= n; i++) { const a = -2.2 + i / 60 * Math.PI * 2.15, r = 1 + .05 * Math.sin(i * .3) + i / 60 * .06; const px = x + Math.cos(a) * rx * r, py = y + Math.sin(a) * ry * r; i ? c.lineTo(px, py) : c.moveTo(px, py); } c.stroke(); c.restore(); }
+function arrowTo(c, x0, y0, x1, y1, k, col = RED) { if (k <= 0) return; const x = lerp(x0, x1, k), y = lerp(y0, y1, k); c.save(); c.strokeStyle = col; c.fillStyle = col; c.lineWidth = 12; c.lineCap = 'round'; c.beginPath(); c.moveTo(x0, y0); c.lineTo(x, y); c.stroke();
+  const a = Math.atan2(y1 - y0, x1 - x0); c.beginPath(); c.moveTo(x, y); c.lineTo(x - Math.cos(a - .5) * 44, y - Math.sin(a - .5) * 44); c.lineTo(x - Math.cos(a + .5) * 44, y - Math.sin(a + .5) * 44); c.closePath(); c.fill(); c.restore(); }
+// ---------- shared HUD pieces ----------
+function footnote(c, y, size = 17, a = .7) {
+  const l1 = 'CFPB EXAMPLE: $24 OVERDRAFT · 3 DAYS · $34 MEDIAN FEE (2014) ·', l2 = 'FEES VARY BY BANK';
+  txt(c, l1, 90, y, `700 ${size}px JBM`, `rgba(245,243,238,${a})`, 'left'); txt(c, l2, 90, y + size + 8, `700 ${size}px JBM`, `rgba(245,243,238,${a * .8})`, 'left'); }
+function whatIf(c, title) { rr(c, 90, 238, 170, 52, 8); c.fillStyle = HL; c.fill(); txt(c, 'WHAT IF', 175, 265, '800 30px Inter', INK); if (title) txt(c, title, 280, 265, '700 26px JBM', 'rgba(245,243,238,.9)', 'left'); }
+function progress(c, t) { c.fillStyle = 'rgba(245,243,238,.15)'; c.fillRect(90, 306, 900, 6); c.fillStyle = HL; c.fillRect(90, 306, 900 * t / CFG.DUR, 6); }
+function wordmark(c) { c.save(); txt(c, 'BAD', 90, 266, '400 44px Anton', PAPER, 'left'); c.font = '400 44px Anton'; txt(c, 'MATH', 90 + c.measureText('BAD ').width, 266, '400 44px Anton', RED, 'left'); c.restore(); }
+function caption(c, t) {
+  const K = CFG.cap; let it = null; for (const cp of CAPS) if (t >= cp[0] && t < cp[1]) it = cp; if (!it) return;
+  const k = eo(lin(t, it[0], it[0] + .1)); const parts = it[2].map(([w, col]) => [w, col === 'g' ? GREEN : col === 'r' ? RED : col === 'y' ? HL : PAPER]);
+  c.save(); c.font = `800 ${K.size}px Inter`; const sp = c.measureText(' ').width; const lines = [[]]; let lw = 0;
+  for (const p of parts) { const w = c.measureText(p[0]).width; if (lw + w > K.w && lines[lines.length - 1].length) { lines.push([]); lw = 0; } lines[lines.length - 1].push([...p, w]); lw += w + sp; }
+  c.translate(K.x, K.y - (lines.length - 1) * K.lh / 2); c.scale(.82 + .18 * k, .82 + .18 * k); c.globalAlpha = k;
+  lines.forEach((ln, li) => { const tw = ln.reduce((a, p) => a + p[2], 0) + sp * (ln.length - 1); let px = -tw / 2;
+    for (const [w, col, ww] of ln) { c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineWidth = 14; c.strokeStyle = 'rgba(0,0,0,.9)'; c.lineJoin = 'round'; c.strokeText(w, px, li * K.lh); c.fillStyle = col; c.fillText(w, px, li * K.lh); px += ww + sp; } });
+  c.restore();
+}
+function storyteller(c, t) { Storyteller.draw(c, t, { ...CFG.st, mouth: MOUTH[Math.min(MOUTH.length - 1, Math.floor(t * 30))] || 0 }); }
+// ---------- render pipeline ----------
+window.render = function (t) {
+  const sc = CFG.SCENES.find(s => t >= s[0] && t < s[1]) || CFG.SCENES[CFG.SCENES.length - 1];
+  O.save(); sc[2](O, t); O.restore(); if (CFG.overlays) CFG.overlays(O, t); CFG.hud(O, t); storyteller(O, t); caption(O, t);
+  const g = O.createRadialGradient(540, 900, 450, 540, 900, 1300); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.5)'); O.fillStyle = g; O.fillRect(0, 0, W, H);
+  let wx = 0; const into = t - sc[0]; if (sc[0] > 0 && into < .12) wx = (1 - eo(into / .12)) * 130;
+  let sx = 0, sy = 0; for (const [s0, d, amp] of CFG.SHAKE) if (t >= s0 && t < s0 + d) { const k = 1 - (t - s0) / d; sx += Math.sin(t * 97) * amp * k; sy += Math.cos(t * 83) * amp * k; }
+  let pz = 1; for (const [s0, amp] of CFG.PZ) { const k = t - s0; if (k >= 0 && k < 1) pz += amp * clamp(k / .067) * (1 - eo(clamp((k - .067) / .4))); }
+  X.fillStyle = INK; X.fillRect(0, 0, W, H); X.save(); X.translate(540 + sx + wx, 960 + sy); X.scale(pz, pz); X.translate(-540, -960); X.drawImage(OFF, 0, 0); X.restore();
+  for (const [g0, g1, amt, mode] of CFG.GLITCH) if (t >= g0 && t < g1) {
+    const u = lin(t, g0, g1), k = mode === 'd' ? amt * (1 - u * .8) : mode === 'r' ? amt * u : amt * Math.sin(u * Math.PI), f = Math.floor(t * 30);
+    X.save(); X.globalCompositeOperation = 'screen'; X.globalAlpha = .55 * k;
+    for (const [col, dx] of [['#ff0000', 26], ['#00ffff', -26]]) { T.clearRect(0, 0, W, H); T.drawImage(OFF, 0, 0); T.globalCompositeOperation = 'multiply'; T.fillStyle = col; T.fillRect(0, 0, W, H); T.globalCompositeOperation = 'source-over'; X.drawImage(TMP, dx * k, 0); }
+    X.restore(); for (let i = 0; i < 10; i++) { const y = hash(f * 13 + i) * H, h = 20 + hash(f * 7 + i) * 130, dx = (hash(f * 3 + i) - .5) * 280 * k; X.drawImage(OFF, 0, y, W, h, dx, y, W, h); }
+  }
+};
+const FONTS = [['Anton', 'node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2', '400'], ['Inter', 'node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2', '800'],
+  ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-800-normal.woff2', '800'], ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2', '700']];
+window.ready = Promise.all(FONTS.map(([f, u, w]) => new FontFace(f, `url(${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))).then(() => { window.render(0); return true; });
+// ---------- extra shared drawings ----------
+function cashStack(c, x, y, n, k, band = '$34') { // origin = bottom center
+  c.save(); c.translate(x, y); for (let i = 0; i < n; i++) { const kk = back(lin(k, i / n * .7, i / n * .7 + .3)); if (kk <= 0) continue; const col = i % 2; c.save(); c.translate(0, -i * 26 - (1 - kk) * 260); c.rotate((hash(i + 40) - .5) * .08);
+    c.fillStyle = col ? '#35c97a' : '#2fbf71'; rr(c, -130, -34, 260, 70, 8); c.fill(); c.strokeStyle = '#0a7a40'; c.lineWidth = 5; c.stroke(); c.strokeStyle = 'rgba(255,255,255,.5)'; c.lineWidth = 3; rr(c, -112, -22, 224, 46, 6); c.stroke(); c.fillStyle = '#d9ffe8'; c.beginPath(); c.arc(0, 1, 18, 0, 7); c.fill(); c.restore(); }
+  if (k > .5) { c.translate(0, -n * 13); c.rotate(-.03); c.fillStyle = PAPER; rr(c, -70, -34, 140, 68, 8); c.fill(); c.strokeStyle = INK; c.lineWidth = 5; c.stroke(); txt(c, band, 0, 3, '400 52px Anton', RED); } c.restore(); }
+function creditCard(c, x, y, s, rot = 0, pct = '22%') { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s); shadowBox(c, -170, -105, 340, 210, 22, '#3a4a6b', 'rgba(255,255,255,.35)'); c.fillStyle = '#e7b94c'; rr(c, -140, -50, 60, 44, 8); c.fill();
+  txt(c, 'CREDIT CARD', 140, -66, '800 22px JBM', '#cfd8e8', 'right'); txt(c, pct + ' APR', -140, 56, '800 40px JBM', '#fff', 'left'); c.restore(); }
+function docCard(c, x, y, w, h, rot, k) { c.save(); c.translate(x, y); c.rotate(rot); const s = lerp(.8, 1, back(k)); c.scale(s, s); c.globalAlpha = clamp(k * 4); shadowBox(c, -w / 2, -h / 2, w, h, 20, '#F7F4EA'); c.fillStyle = NAVY; rr(c, -w / 2, -h / 2, w, 110, [20, 20, 0, 0]); c.fill();
+  txt(c, 'CFPB STUDY', -w / 2 + 36, -h / 2 + 46, '400 64px Anton', '#fff', 'left'); txt(c, 'DEBIT CARD OVERDRAFTS · 2014', -w / 2 + 36, -h / 2 + 90, '700 22px JBM', '#b9c8e6', 'left'); c.restore(); }
+
+// YouTube Short cut: "Overdraft, decoded". Times from sentences/silence-checked words.
+const phoneBank = (c, t, o = {}, inner) => phone(c, o.x ?? 540, o.y ?? 800, o.w ?? 500, o.h ?? 800, (c2, sw, sh) => { bankScreen(c2, t, sw, sh, o.bank || {}); if (inner) inner(c2, sw, sh); });
+
+// ---- S0 0-4.66 frame 0: phone, toggle ON, 17,000% slam
+function sHook(c, t) {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t);
+  const pulse = 1 + .1 * Math.exp(-Math.max(0, t - 2.8) * 7) * (t > 2.8 ? 1 : 0);
+  const hi = .55 + .45 * Math.sin(t * 7);
+  phoneBank(c, t, { y: 800, bank: { toggle: 1, hi, bal: '$1,240.18' } });
+  slam(c, lin(t, -.1, .12), 540, 520, () => { c.save(); c.scale(pulse, pulse); c.rotate(-.04); c.shadowColor = RED; c.shadowBlur = 40; hero(c, '17,000%', 0, 0, 250, RED, 960); c.restore(); });
+  slam(c, lin(t, .04, .2), 540, 690, () => hero(c, 'APR', 0, 0, 150, HL, 600, 'Anton', 400, .03));
+  // arrow to the toggle
+  const ak = back(lin(t, .5, .85)); if (ak > 0) { c.save(); c.translate(790, 1010); c.scale(ak, ak); c.rotate(Math.sin(t * 8) * .06); txt(c, '← YOU', 0, 0, '400 60px Anton', HL); c.restore(); }
+}
+// ---- S1 4.66-6.7 "you said yes": opt-in popup, finger taps YES
+function sYes(c, t) {
+  bg(c, t, 'rgba(47,107,255,.14)');
+  const k = back(lin(t, 4.7, 5.0)), tap = 5.55, tapped = t >= tap, closing = eo(lin(t, 5.95, 6.25));
+  const pop = (c2, sw, sh) => {
+    c2.fillStyle = `rgba(11,15,20,${.55 * clamp(k * 2) * (1 - closing)})`; c2.fillRect(0, 0, sw, sh);
+    if (closing >= 1) return; c2.save(); c2.translate(sw / 2, lerp(900, 470, k) + closing * 500); c2.globalAlpha = 1 - closing;
+    shadowBox(c2, -210, -170, 420, 340, 28, '#fff'); txt(c2, 'OVERDRAFT COVERAGE', 0, -128, '800 25px JBM', NAVY);
+    txt(c2, 'Let debit purchases go through', 0, -76, '700 21px Inter', '#44536b'); txt(c2, 'when you are out of money?', 0, -46, '700 21px Inter', '#44536b'); txt(c2, 'Fees apply.', 0, -16, '700 21px Inter', '#44536b');
+    const press = tapped ? 1 - .06 * Math.exp(-(t - tap) * 14) : 1;
+    c2.fillStyle = '#e3e8f0'; rr(c2, -190, 42, 170, 80, 18); c2.fill(); txt(c2, 'NO THANKS', -105, 83, '800 22px JBM', '#6b7a90');
+    c2.save(); c2.translate(105, 82); c2.scale(press, press); c2.fillStyle = tapped ? GREEN : BLUE; rr(c2, -95, -40, 190, 80, 18); c2.fill(); txt(c2, tapped ? 'YES ✓' : 'YES', 0, 2, '800 40px Inter', '#fff'); c2.restore(); c2.restore(); };
+  phoneBank(c, t, { y: 800, bank: { toggle: tapped && t > 6.0 ? 1 : 1, hi: 0 } }, pop);
+  // finger: from lower right to YES button (canvas approx 645, 1000)
+  const fx = lerp(900, 646, eo(lin(t, 4.95, 5.5))), fy = lerp(1480, 1010, eo(lin(t, 4.95, 5.5))); const out = eo(lin(t, 5.8, 6.2));
+  if (t >= 4.95) { c.save(); c.globalAlpha = 1 - out; finger(c, fx + out * 200, fy + out * 400, -.38, tapped ? Math.exp(-(t - tap) * 10) : 0); c.restore(); ripple(c, 646, 1010, lin(t, tap, tap + .45), 'rgba(0,210,106,'); }
+  if (t > 6.0) { const kk = back(lin(t, 6.0, 6.3)); c.save(); c.translate(540, 400); c.scale(kk, kk); c.rotate(-.04); hero(c, 'YOU OPTED IN', 0, 0, 100, GREEN, 900); c.restore(); }
+}
+// ---- S2 6.7-13.9 CFPB study doc card
+function sStudy(c, t) {
+  bg(c, t, 'rgba(47,107,255,.14)');
+  const k = back(lin(t, 6.72, 7.1)); const W2 = 800, H2 = 760;
+  docCard(c, 540, 790, W2, H2, -.025, k);
+  c.save(); c.translate(540, 790); c.rotate(-.025); const s = lerp(.8, 1, k); c.scale(s, s); c.globalAlpha = clamp(k * 4);
+  // skeleton rows scanned by a bar
+  for (let i = 0; i < 5; i++) { c.fillStyle = '#dde2ea'; rr(c, -W2 / 2 + 36, -H2 / 2 + 150 + i * 36, W2 * (.8 - i * .08), 18, 9); c.fill(); }
+  const sc = lin(t, 7.0, 10.3); if (sc > 0 && sc < 1) { c.fillStyle = 'rgba(47,107,255,.25)'; c.fillRect(-W2 / 2 + 20, -H2 / 2 + 140 + ((t * 1.3) % 1) * 190, W2 - 40, 26); }
+  // stat 1
+  const k1 = back(lin(t, 10.47, 10.75)), k2 = back(lin(t, 11.99, 12.3));
+  if (k1 > 0) { c.save(); c.translate(0, 40); c.scale(k1, k1); txt(c, 'TYPICAL OVERDRAFT', -W2 / 2 + 40, -52, '800 26px JBM', '#44536b', 'left'); txt(c, '$24 OR LESS', -W2 / 2 + 40, 20, '400 130px Anton', NAVY, 'left'); c.restore(); }
+  if (k2 > 0) { c.save(); c.translate(0, 235); c.scale(k2, k2); txt(c, 'PAID BACK IN', -W2 / 2 + 40, -52, '800 26px JBM', '#44536b', 'left'); txt(c, '3 DAYS', -W2 / 2 + 40, 20, '400 130px Anton', RED, 'left'); c.restore(); }
+  c.restore();
+  if (t > 10.5) { const kk = back(lin(t, 10.5, 10.8)); c.save(); c.globalAlpha = kk; check(c, 905, 748, .7, GREEN, lin(t, 10.6, 11.0)); c.restore(); }
+  if (t > 12.3) { check(c, 905, 953, .7, GREEN, lin(t, 12.3, 12.7)); }
+}
+function check(c, x, y, s, col, k) { c.save(); c.translate(x, y); c.scale(s, s); c.strokeStyle = col; c.lineWidth = 16; c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); c.moveTo(-34, 2); c.lineTo(-10, 28); c.lineTo(36, -26); c.setLineDash([140]); c.lineDashOffset = 140 * (1 - k); c.stroke(); c.restore(); }
+// ---- S3 13.9-18.7 receipt + like heart
+function sReceipt(c, t) {
+  bg(c, t, 'rgba(255,59,48,.10)');
+  const sl = 1.28; c.save(); c.translate(500, 360); c.scale(sl, sl);
+  const slide = t < 14.0 ? 0 : 1; // paper prints out of the slot line by line
+  receipt(c, t, 0, 0, 600, [['BANK · DEBIT CARD', '', 14.0, 'h'], ['', '', 14.25, 'd'], ['COFFEE', '$4.50', 14.45, 'n'], ['OVERDRAFT FEE', '$34.00', 14.92, 'r'], ['', '', 15.45, 'd'], ['TOTAL', '$38.50', 15.62, 'n']], .0);
+  c.restore();
+  // MEME #3 red circle + arrow at the fee line
+  const ck = lin(t, 15.4, 15.85); redCircle(c, 500, 360 + (24 + 74 + 34 + 64 + 46) * sl, 395, 82, ck);
+  if (t > 15.7) { arrowTo(c, 760, 990, 850, 740, eo(lin(t, 15.7, 16.1))); const kk = back(lin(t, 15.9, 16.2)); c.save(); c.translate(560, 1040); c.scale(kk, kk); c.rotate(-.04); txt(c, 'THE MEDIAN FEE', 0, 0, '400 64px Anton', RED); c.restore(); }
+  // LIKE: heart pulse
+  if (t >= 16.82) { const u = t - 16.82, out = 1 - lin(t, 18.3, 18.6); const s = 1 + .22 * Math.exp(-u * 8); c.save(); c.globalAlpha = out; heart(c, 220, 1100, 2.0 * s, RED);
+    for (let i = 0; i < 4; i++) { const v = (u * .9 + i * .25) % 1; c.globalAlpha = out * (1 - v); heart(c, 220 + (i - 1.5) * 70 + Math.sin(v * 6 + i) * 14, 1000 - v * 200, .6, '#ff7a72'); } c.restore(); }
+}
+// ---- S4 18.7-25.8 formula
+function sFormula(c, t) {
+  bg(c, t, 'rgba(255,214,10,.12)');
+  const hk = back(lin(t, 18.9, 19.15)); if (hk > 0) { c.save(); c.translate(540, 430); c.scale(hk, hk); hero(c, 'FEE = INTEREST', 0, 0, 130, HL, 920); c.restore(); }
+  const chips = [['LOAN', '$24', GREEN, 19.45], ['TIME', '3 DAYS', PAPER, 19.85], ['FEE', '$34', RED, 20.25]]; const fade = 1 - lin(t, 21.0, 21.35);
+  chips.forEach(([a, b, col, at], i) => { const k = back(lin(t, at, at + .25)); if (k <= 0 || fade <= 0) return; c.save(); c.globalAlpha = fade; c.translate(540, 640 + i * 140); c.scale(k, k); shadowBox(c, -330, -55, 660, 110, 22, '#141b24', 'rgba(245,243,238,.25)'); txt(c, a, -290, 0, '800 34px JBM', 'rgba(245,243,238,.7)', 'left'); txt(c, b, 290, 4, '400 84px Anton', col, 'right'); c.restore(); });
+  const toks = [['$34', 21.10, RED, 'FEE'], ['÷ $24', 21.72, GREEN, 'LOAN'], ['× 365', 23.0, PAPER, 'DAYS / YEAR'], ['÷ 3', 24.24, HL, 'DAYS']];
+  c.font = '400 120px Anton'; const gap = 36; const ws = toks.map(tk => c.measureText(tk[0]).width); const tot = ws.reduce((a, b) => a + b, 0) + gap * 3; let sc = Math.min(1, 940 / tot); let x0 = 540 - tot * sc / 2;
+  c.save(); c.translate(x0, 640); c.scale(sc, sc); let px = 0;
+  toks.forEach(([s, at, col, lab], i) => { const k = back(lin(t, at, at + .18)); if (k > 0) { c.save(); c.translate(px + ws[i] / 2, 0); c.scale(k, k); hero(c, s, 0, 0, 120, col, 999); txt(c, lab, 0, 100, '800 26px JBM', 'rgba(245,243,238,.75)'); c.restore(); } px += ws[i] + gap; });
+  c.restore();
+  if (t > 21.1) { const ek = back(lin(t, 25.0, 25.3)); const v = Math.round(17236 * eo(lin(t, 25.0, 25.7))); c.save(); c.translate(540, 960); c.scale(ek, ek); if (ek > 0) { hero(c, '= ' + fmt(v) + '%', 0, 0, 170, RED, 900); } c.restore();
+    txt(c, 'SIMPLE ANNUALIZED · NO COMPOUNDING', 540, 1090, '700 24px JBM', 'rgba(245,243,238,.6)'); }
+}
+// ---- S5 25.8-30.7 17,000% APR boom
+function sBoom(c, t) {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t);
+  slam(c, lin(t, 25.83, 26.0), 540, 420, () => hero(c, 'ABOUT', 0, 0, 100, PAPER));
+  const k = lin(t, 26.4, 26.52); slam(c, k, 540, 640, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '17,000%', 0, 0, 270, RED, 980, 'Anton', 400, -.03); });
+  slam(c, lin(t, 27.5, 27.65), 540, 850, () => hero(c, 'APR', 0, 0, 200, HL, 700, 'Anton', 400, .02));
+  stampN(c, [["THE CFPB'S", 100], ['OWN NUMBER', 100]], 540, 1070, GREEN, -.07, lin(t, 29.02, 29.14), 'rgba(11,15,20,.85)', 760);
+  if (t > 26.4) for (let i = 0; i < 10; i++) { const u = ((t - 26.4) * 1.1 + i * .1) % 1; c.save(); c.globalAlpha = (1 - u) * .8; txt(c, '%', 540 + (hash(i) - .5) * 900, 640 - u * 260 + (hash(i + 3) - .5) * 200, '400 90px Anton', RED); c.restore(); }
+}
+// ---- S6 30.7-34.3 share: plane + friend balance $2.00
+function sShare(c, t) {
+  bg(c, t, 'rgba(47,107,255,.14)');
+  const bal = t >= 33.28 ? '$2.00' : '$ · · ·'; const pk = back(lin(t, 30.75, 31.05));
+  phone(c, 640, 790, 440, 700, (c2, sw, sh) => bankScreen(c2, t, sw, sh, { bal, balCol: t >= 33.28 ? RED : '#9aa5b5', toggle: 1, label: 'OVERDRAFT PROTECTION:' }), Math.sin(t * 40) * .004 * (t > 32.1 && t < 32.4 ? 1 : 0));
+  if (t >= 30.75) { const press = t > 30.92 && t < 31.1 ? .92 : 1; c.save(); c.translate(230, 1060); c.scale(pk * press, pk * press); shadowBox(c, -150, -50, 300, 100, 50, BLUE); txt(c, 'SEND', 28, 4, '800 44px Inter', '#fff'); plane(c, -85, 0, -.3, .38, '#fff'); c.restore(); ripple(c, 230, 1060, lin(t, 30.92, 31.35)); }
+  if (t > 31.0 && t < 32.4) { const u = eo(lin(t, 31.05, 32.2)); const P = (a, b, cc) => (1 - u) * (1 - u) * a + 2 * u * (1 - u) * b + u * u * cc; const px = P(230, 330, 620), py = P(1060, 560, 760), tx = 2 * (1 - u) * (330 - 230) + 2 * u * (620 - 330), ty = 2 * (1 - u) * (560 - 1060) + 2 * u * (760 - 560);
+    c.save(); c.globalAlpha = 1 - lin(t, 32.1, 32.4); c.strokeStyle = 'rgba(245,243,238,.5)'; c.lineWidth = 4; c.setLineDash([12, 14]); c.beginPath(); for (let k = 0; k <= u; k += .04) { const x = (1 - k) * (1 - k) * 230 + 2 * k * (1 - k) * 330 + k * k * 620, y = (1 - k) * (1 - k) * 1060 + 2 * k * (1 - k) * 560 + k * k * 760; k ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke(); c.setLineDash([]);
+    plane(c, px, py, Math.atan2(ty, tx), .8 * (1 - .4 * u)); c.restore(); }
+  const lk = back(lin(t, 32.5, 32.8)); if (lk > 0) { c.save(); c.translate(540, 410); c.scale(lk, lk); hero(c, 'THEIR BALANCE', 0, 0, 100, PAPER, 900); c.restore(); }
+  if (t >= 33.28) { const kk = back(lin(t, 33.28, 33.45)); c.save(); c.translate(660, 600); c.rotate(-.05); c.scale(kk, kk); c.shadowColor = RED; c.shadowBlur = 30; hero(c, '$2.00', 0, 0, 170, RED, 500); c.restore(); }
+}
+// ---- S7 34.3-40.9 scale swap bar chart
+function sScale(c, t) {
+  bg(c, t);
+  const BASE = 1150, CX = 210, OX = 440; const th = lin(t, 38.4, 39.4); const z = t < 38.4 ? 1 : Math.exp(Math.log(.045) * eio(th));
+  if (t < 35.3) slam(c, lin(t, 34.4, 34.55), 540, 520, () => hero(c, 'FOR SCALE', 0, 0, 190, PAPER, 900));
+  const vCard = 22 * eo(lin(t, 35.2, 36.3)), vOD = 17000 * Math.pow(lin(t, 38.06, 38.5), 2.2);
+  const hC = vCard * .9 * z, hO = vOD * .9 * z;
+  // ticks (visible once the camera pulls out)
+  const ta = lin(z, .6, .2); if (ta > 0) for (const v of [5000, 10000, 15000]) { const y = BASE - v * .9 * z; c.strokeStyle = `rgba(245,243,238,${.25 * ta})`; c.lineWidth = 2; c.setLineDash([14, 10]); c.beginPath(); c.moveTo(90, y); c.lineTo(990, y); c.stroke(); c.setLineDash([]); txt(c, fmt(v) + '%', 990, y - 18, '700 24px JBM', `rgba(245,243,238,${.7 * ta})`, 'right'); }
+  c.strokeStyle = 'rgba(245,243,238,.6)'; c.lineWidth = 4; c.beginPath(); c.moveTo(90, BASE); c.lineTo(990, BASE); c.stroke();
+  // bars
+  if (t >= 35.2) { c.fillStyle = GREEN; c.fillRect(CX - 65, BASE - Math.max(hC, 1.5), 130, Math.max(hC, 1.5)); }
+  if (t < 38.06) { c.save(); c.strokeStyle = 'rgba(255,59,48,.6)'; c.lineWidth = 4; c.setLineDash([16, 12]); c.strokeRect(OX - 65, BASE - 300, 130, 300); c.restore(); txt(c, '?', OX, BASE - 150, '400 120px Anton', 'rgba(255,59,48,.6)'); }
+  else { const g = c.createLinearGradient(0, BASE - hO, 0, BASE); g.addColorStop(0, '#ff7a72'); g.addColorStop(1, RED); c.fillStyle = g; c.fillRect(OX - 65, BASE - hO, 130, hO); }
+  txt(c, 'CREDIT CARD', CX, BASE + 36, '800 24px JBM', PAPER); txt(c, 'OVERDRAFT', OX, BASE + 36, '800 24px JBM', PAPER);
+  const lk = back(lin(t, 36.73, 36.95)); if (lk > 0) { c.save(); c.translate(CX, BASE + 100); c.scale(lk, lk); hero(c, '22%', 0, 0, 90, GREEN, 260); c.restore(); if (t < 38.4) { c.save(); c.globalAlpha = lk; arrowTo(c, CX + 120, BASE - 90, CX + 80, BASE - 30, 1, GREEN); txt(c, 'THIS IS 22%', CX + 190, BASE - 120, '800 26px JBM', GREEN, 'left'); c.restore(); } }
+  if (t > 39.2) { const kk = back(lin(t, 39.2, 39.5)); const ty = Math.max(BASE - hO, 410); c.save(); c.translate(530, ty + 40); c.scale(kk, kk); txt(c, 'OVERDRAFT', 0, -50, '800 30px JBM', HL, 'left'); hero(c, '17,000%', 0, 20, 130, RED, 460); c.restore(); }
+  // MEME #18 glitch error dialog
+  if (t > 38.95 && t < 40.7) errorDialog(c, lin(t, 38.95, 39.15) * (1 - lin(t, 40.5, 40.7)), 470, 700, 'ERROR: BAR TOO TALL');
+  if (t > 38.1 && t < 38.5) { c.fillStyle = `rgba(255,255,255,${.35 * (1 - lin(t, 38.1, 38.5))})`; c.fillRect(0, 0, W, H); }
+}
+// ---- S8 40.9-46.99 same loan at credit card rates
+function sCard(c, t) {
+  bg(c, t, 'rgba(0,210,106,.12)');
+  const k = back(lin(t, 40.92, 41.2)); c.save(); c.translate(540, 470); c.scale(k, k); shadowBox(c, -400, -90, 800, 180, 24, '#141b24', 'rgba(245,243,238,.25)');
+  txt(c, 'THE SAME LOAN', -360, -45, '800 28px JBM', 'rgba(245,243,238,.7)', 'left');
+  const a = lin(t, 41.3, 41.5), b = lin(t, 42.5, 42.7); c.globalAlpha = a; txt(c, '$24', -360, 30, '400 100px Anton', GREEN, 'left'); c.globalAlpha = b; txt(c, '3 DAYS', 360, 30, '400 100px Anton', PAPER, 'right'); c.restore();
+  const ck = back(lin(t, 43.66, 43.95)); if (ck > 0) { creditCard(c, 540, 800, ck * 1.05, -.04, '22%'); }
+  const fk = back(lin(t, 44.3, 44.6)); if (fk > 0) { c.save(); c.translate(540, 1010); c.scale(fk, fk); txt(c, '$24 × 22% × 3 ÷ 365', 0, 0, '800 44px JBM', PAPER); c.restore(); }
+  const rk = back(lin(t, 45.2, 45.5)); if (rk > 0) { c.save(); c.translate(280, 1130); c.scale(rk, rk); hero(c, '= $0.04', 0, 0, 120, GREEN, 520); c.restore(); }
+  // two coins drop onto the tray at "cents"
+  for (let i = 0; i < 2; i++) { const d = t - 45.85 - i * .18; if (d < 0) continue; const y = Math.min(1150, -100 + d * d * 6000 + 0), bounceK = d > .22 ? Math.abs(Math.sin((d - .22) * 12)) * 26 * Math.exp(-(d - .22) * 4) : 0; coin(c, 640 + i * 90, Math.min(1150, y) - bounceK, 46, 0, 1, '¢'); }
+  if (t > 46.1) { const kk = back(lin(t, 46.1, 46.35)); c.save(); c.translate(690, 1060); c.scale(kk, kk); c.rotate(-.06); stamp(c, '4¢', 0, 0, 90, GREEN, 0, 1, 'rgba(11,15,20,.85)'); c.restore(); }
+}
+// ---- S9 46.99-49.7 "4¢ vs $34" giant
+function sVs(c, t) {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t, '0,210,106'); rays(c, t, '255,59,48');
+  slam(c, lin(t, 46.99, 47.12), 540, 520, () => { c.shadowColor = GREEN; c.shadowBlur = 40; hero(c, '4¢', 0, 0, 330, GREEN, 700, 'Anton', 400, -.03); });
+  slam(c, lin(t, 47.94, 48.06), 540, 735, () => hero(c, 'VS', 0, 0, 110, PAPER, 300));
+  slam(c, lin(t, 48.35, 48.5), 540, 960, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '$34', 0, 0, 380, RED, 760, 'Anton', 400, .03); });
+  const ck = lin(t, 47.3, 47.8); for (let i = 0; i < 2; i++) if (t > 47.3) coin(c, 170 + i * 80, 1180, 36, 0, 1, '¢');
+  if (t > 48.4) cashStack(c, 880, 1230, 7, lin(t, 48.4, 48.9), '$34');
+}
+// ---- S10 49.7-51.83 "and they call it protection"
+function sEnd(c, t) {
+  bg(c, t, 'rgba(255,59,48,.12)');
+  const k1 = lin(t, 49.95, 50.1), k2 = lin(t, 50.35, 50.5); slam(c, k1, 540, 440, () => hero(c, 'AND THEY CALL IT', 0, 0, 100, PAPER, 940));
+  slam(c, k2, 540, 600, () => hero(c, '“PROTECTION”', 0, 0, 175, RED, 960, 'Anton', 400, -.02));
+  const crack = lin(t, 50.55, 50.8), split = back(lin(t, 50.8, 51.15));
+  shield(c, t, 330, 960, .98, split > 0 ? 0 : crack, split > 0 ? split : 0);
+}
+
+// TikTok cut. depends on yt.js helpers (phoneBank, check, docCard in lib)
+function t_hook(c, t) {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t);
+  slam(c, lin(t, -.1, .12), 540, 440, () => hero(c, '$34 TO BORROW', 0, 0, 150, PAPER, 960, 'Anton', 400, -.02));
+  slam(c, lin(t, -.05, .18), 540, 590, () => { c.shadowColor = GREEN; c.shadowBlur = 40; hero(c, '$24?', 0, 0, 250, GREEN, 700, 'Anton', 400, .03); });
+  receipt(c, t, 540, 740, 580, [['BANK · OVERDRAFT', '', .15, 'h'], ['LOAN', '$24.00', .35, 'n'], ['TERM', '3 DAYS', .6, 'n'], ['FEE', '$34.00', .95, 'r']], .02);
+}
+function t_days(c, t) {
+  bg(c, t, 'rgba(0,210,106,.12)');
+  const a = back(lin(t, 2.62, 2.9)), b = back(lin(t, 3.9, 4.2)), f = lin(t, 4.62, 4.74);
+  c.save(); c.translate(300, 560); c.scale(a, a); shadowBox(c, -220, -140, 440, 280, 28, '#141b24', GREEN); txt(c, 'BORROW', 0, -85, '800 30px JBM', 'rgba(245,243,238,.7)'); hero(c, '$24', 0, 30, 190, GREEN, 380); c.restore();
+  c.save(); c.translate(780, 560); c.scale(b, b); shadowBox(c, -220, -140, 440, 280, 28, '#141b24', PAPER); txt(c, 'FOR', 0, -85, '800 30px JBM', 'rgba(245,243,238,.7)'); hero(c, '3 DAYS', 0, 30, 150, PAPER, 380); c.restore();
+  for (let i = 0; i < 3; i++) if (t > 4.2) { const k = lin(t, 4.2 + i * .12, 4.5 + i * .12); c.fillStyle = HL; c.globalAlpha = k; c.beginPath(); c.arc(640 + i * 70, 800, 14, 0, 7); c.fill(); c.globalAlpha = 1; }
+  stampN(c, [['FEE: $34', 170]], 540, 940, RED, -.06, f, 'rgba(11,15,20,.85)', 900);
+}
+function t_phone(c, t) {
+  bg(c, t, 'rgba(47,107,255,.14)'); phoneBank(c, t, { y: 800, bank: { toggle: 1, hi: .6 + .4 * Math.sin(t * 8), bal: t > 5.7 ? '-$34.00' : '$1,240.18', balCol: t > 5.7 ? RED : INK } });
+  const k = back(lin(t, 5.55, 5.85)); if (k > 0) { c.save(); c.translate(540, 520); c.scale(k, k); shadowBox(c, -400, -70, 800, 140, 26, '#fff', RED); txt(c, 'BANK · OVERDRAFT FEE', -360, -28, '800 26px JBM', '#44536b', 'left'); txt(c, '-$34.00', 360, 18, '800 66px JBM', RED, 'right'); c.restore(); }
+  slam(c, lin(t, 6.42, 6.55), 540, 360 + 0, () => 0);
+}
+function t_doc(c, t) {
+  bg(c, t, 'rgba(47,107,255,.14)'); const k = back(lin(t, 7.3, 7.6)); docCard(c, 540, 760, 800, 640, -.025, k);
+  c.save(); c.translate(540, 760); c.rotate(-.025); c.scale(lerp(.8, 1, k), lerp(.8, 1, k));
+  for (let i = 0; i < 4; i++) { c.fillStyle = '#dde2ea'; rr(c, -364, -200 + i * 36, 700 * (.85 - i * .1), 18, 9); c.fill(); }
+  const f = back(lin(t, 8.6, 8.9)); if (f > 0) { c.save(); c.translate(0, 90); c.scale(f, f); txt(c, '$34 ÷ $24 × 365 ÷ 3', 0, 0, '400 86px Anton', NAVY); c.restore(); }
+  if (t > 9.5) { const g = back(lin(t, 9.5, 9.8)); c.save(); c.translate(0, 210); c.scale(g, g); txt(c, '= THE MATH', 0, 0, '400 80px Anton', RED); c.restore(); }
+  c.restore();
+}
+function t_boom(c, t) {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t);
+  slam(c, lin(t, 10.28, 10.4), 540, 430, () => hero(c, 'ABOUT', 0, 0, 100, PAPER));
+  slam(c, lin(t, 10.45, 10.57), 540, 650, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '17,000%', 0, 0, 270, RED, 980, 'Anton', 400, -.03); });
+  slam(c, lin(t, 12.07, 12.2), 540, 860, () => hero(c, 'APR', 0, 0, 200, HL, 700, 'Anton', 400, .02));
+  stampN(c, [["THE CFPB'S", 90], ['OWN NUMBER', 90]], 540, 1070, GREEN, -.07, lin(t, 12.3, 12.42), 'rgba(11,15,20,.85)', 760);
+}
+function t_card(c, t) {
+  bg(c, t, 'rgba(0,210,106,.12)');
+  const ck = back(lin(t, 13.1, 13.4)); if (ck > 0) creditCard(c, 540, 560, ck * 1.15, -.04, '22%');
+  const fk = back(lin(t, 13.9, 14.2)); if (fk > 0) { c.save(); c.translate(540, 840); c.scale(fk, fk); txt(c, '$24 × 22% × 3 ÷ 365', 0, 0, '800 44px JBM', PAPER); c.restore(); }
+  const rk = back(lin(t, 14.6, 14.9)); if (rk > 0) { c.save(); c.translate(300, 1000); c.scale(rk, rk); hero(c, '= $0.04', 0, 0, 130, GREEN, 520); c.restore(); }
+  for (let i = 0; i < 2; i++) { const d = t - 15.14 - i * .15; if (d < 0) continue; const y = Math.min(1060, -100 + d * d * 6000); coin(c, 640 + i * 90, y, 46, 0, 1, '¢'); }
+  if (t > 15.5) { const kk = back(lin(t, 15.5, 15.75)); c.save(); c.translate(700, 940); c.scale(kk, kk); c.rotate(-.06); stamp(c, '4¢', 0, 0, 100, GREEN, 0, 1, 'rgba(11,15,20,.85)'); c.restore(); }
+}
+function t_vs(c, t) {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H); rays(c, t, '0,210,106'); rays(c, t, '255,59,48');
+  slam(c, lin(t, 16.775, 16.9), 540, 520, () => { c.shadowColor = GREEN; c.shadowBlur = 40; hero(c, '4¢', 0, 0, 330, GREEN, 700, 'Anton', 400, -.03); });
+  slam(c, lin(t, 17.72, 17.85), 540, 735, () => hero(c, 'VS', 0, 0, 110, PAPER, 300));
+  slam(c, lin(t, 18.2, 18.35), 540, 960, () => { c.shadowColor = RED; c.shadowBlur = 50; hero(c, '$34', 0, 0, 380, RED, 760, 'Anton', 400, .03); });
+  if (t > 17.0) for (let i = 0; i < 2; i++) coin(c, 170 + i * 80, 1180, 36, 0, 1, '¢'); if (t > 18.3) cashStack(c, 880, 1230, 7, lin(t, 18.3, 18.8), '$34');
+}
+function t_comment(c, t) {
+  bg(c, t, 'rgba(255,214,10,.12)');
+  const k = back(lin(t, 19.72, 20.05)); c.save(); c.translate(540, 560); c.scale(k, k); c.rotate(-.025); shadowBox(c, -410, -190, 820, 380, 50, PAPER);
+  c.fillStyle = PAPER; c.beginPath(); c.moveTo(-250, 180); c.lineTo(-300, 300); c.lineTo(-120, 185); c.fill();
+  txt(c, 'HOW MUCH?', 0, -60, '400 190px Anton', INK, 'center'); txt(c, 'COMMENT', 0, 90, '400 130px Anton', RED, 'center'); c.restore();
+  // fee counter
+  const n = Math.min(10, Math.max(0, Math.floor((t - 20.6) / .22) + 1)); if (t > 20.6) { c.save(); c.translate(540, 1000); shadowBox(c, -400, -120, 800, 240, 28, '#141b24', RED); txt(c, 'FEES ADD UP · ' + n + ' × $34', 0, -68, '800 30px JBM', 'rgba(245,243,238,.8)'); const kk = 1 + .12 * Math.exp(-((t - 20.6) % .22) * 14); c.scale(kk, kk); hero(c, '$' + fmt(n * 34), 0, 22, 150, RED, 700); c.restore(); }
+}
+function t_follow(c, t) {
+  bg(c, t, 'rgba(255,59,48,.12)');
+  slam(c, lin(t, 23.02, 23.15), 540, 470, () => hero(c, 'MORE MATH', 0, 0, 170, PAPER, 940));
+  slam(c, lin(t, 24.0, 24.12), 540, 650, () => hero(c, 'YOUR BANK HATES', 0, 0, 120, RED, 940, 'Anton', 400, -.02));
+  phoneBank(c, t, { y: 1000, w: 340, h: 520, bank: { toggle: t > 24.5 ? 0 : 1, bal: '$1,240.18' } });
+}
+const CFG = { DUR: 25.51,
+  SCENES: [[0, 2.6, t_hook], [2.6, 5.1, t_days], [5.1, 7.27, t_phone], [7.27, 10.2, t_doc], [10.2, 13.0, t_boom], [13.0, 16.75, t_card], [16.75, 19.7, t_vs], [19.7, 23.0, t_comment], [23.0, 99, t_follow]],
+  st: { timeline: [[0, 'shock'], [2.7, 'point'], [5.1, 'shock'], [7.3, 'chin'], [10.3, 'shock'], [13.1, 'point'], [16.75, 'shock'], [19.7, 'you'], [23.02, 'follow']], bubbles: [], follow: [23.1, 25.5], enterAt: -1 },
+  cap: { x: 420, y: 1345, w: 600, size: 68, lh: 76 },
+  GLITCH: [[0, .4, 1, 'd'], [4.62, 4.75, .5], [10.45, 10.75, .7], [18.2, 18.35, .5], [25.2, 25.51, 1, 'r']],
+  SHAKE: [[0, .4, 26], [4.62, .3, 18], [5.6, .2, 10], [10.45, .5, 34], [12.3, .25, 16], [16.775, .25, 16], [18.2, .4, 26]],
+  PZ: [[0, .07], [4.62, .06], [10.45, .25], [16.775, .05], [18.2, .09]],
+  hud: (c, t) => { whatIf(c); progress(c, t); footnote(c, 1488, 17); } };
+
+</script></body></html>
