@@ -173,7 +173,7 @@
       g.save(); g.translate(shake, -190); const pk = bt > 0 ? 1 + 0.2 * Math.exp(-bt * 5) : 1; g.scale(pk, pk);
       roll(g, v, 0, 0, { font: F.hero(v >= 1e6 ? 132 : 120), size: 130, color: big ? th.goodInk : th.ink, prefix: '$', decimals: 2, speed: rate > 0.05 ? v * Math.LN2 * rate : 0 }); g.restore();
       txt(g, big ? 'THE PENNY IS ' + (v / 1e6).toFixed(2) + '× THE MILLION' : 'DOUBLING AGAIN…', 0, -90, F.monoX(26), big ? th.goodInk : th.inkSoft);
-      if (bt > 0.35) { const sk = spring(bt - 0.35, 'bouncy'); g.save(); g.translate(250, 20); g.rotate(-0.07); g.scale(clamp(sk, 0.3, 1.1), clamp(sk, 0.3, 1.1)); clay(g, -210, -44, 420, 88, 22, th.accent, { shadowK: 0.7 }); txt(g, 'DAY 30', 0, 4, F.hero(70), th.ink); g.restore(); burst(g, 250, 20, 260, th.accent, bt - 0.4, 14, 0.45); }
+      if (bt > 0.35) { const sk = spring(bt - 0.35, 'bouncy'); g.save(); g.translate(170, 20); g.rotate(-0.07); g.scale(clamp(sk, 0.3, 1.1), clamp(sk, 0.3, 1.1)); clay(g, -210, -44, 420, 88, 22, th.accent, { shadowK: 0.7 }); txt(g, 'DAY 30', 0, 4, F.hero(70), th.ink); g.restore(); burst(g, 170, 20, 260, th.accent, bt - 0.4, 14, 0.45); }
       // heap
       if (bt > 0.5) {
         const grow = ease.out(clamp((bt - 0.5) / 2.2)), top = base - 40 - 360 * grow, items = HEAP.map(h => ({ ...h, y: top + (base + 20 - top) * (1 - h.u * h.u) })); items.sort((a, b) => a.y - b.y);
@@ -242,7 +242,7 @@
       { id: 'asm', type: 'assumes', layer: 'screen', at: [540, 416], in: Q.taxes, props: { text: 'NO TAXES · DOUBLES EVERY DAY · 30 DAYS', size: 18 } },
       { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: Q.like, props: { s: 1, dur: 0.9 } },
       { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: Q.send + '-0.05', out: Q.send + '+1.0', props: { from: [470, 1000], to: [1150, 520], dur: 0.85, s: 0.62 } },
-      { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: Q.follow + '+0.05', out: Q.follow + '+1.45', props: { press: 0.55 } },
+      ...(Q.follow ? [{ id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: Q.follow + '+0.05', out: Q.follow + '+1.45', props: { press: 0.55 } }] : []),
       { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: Q.ask, out: Q.loop, props: c.bubble },
       ...(c.extra || []),
     ];
@@ -276,7 +276,7 @@
     return {
       series: 'whatif', title: 'PENNY × 30 DAYS', duration: c.dur,
       footnote: ['ASSUMES: 1¢ ON DAY 1 · WHAT YOU HOLD DOUBLES EVERY DAY · 30 DAYS', 'NO TAXES, NO INTEREST · HYPOTHETICAL · OUR MATH · NOT FINANCIAL ADVICE'],
-      elements: els, beats, poses: [[Q.follow, 'follow', { target: [650, 1120] }], ...(c.poses || [])], shakes: c.shakes, captions: c.captions, bed: c.bed || { name: 'upbeat_bed_2', gain: -1 }, sfx: c.sfx,
+      elements: els, beats, poses: [...(Q.follow ? [[Q.follow, 'follow', { target: [650, 1120] }]] : []), ...(c.poses || [])], shakes: c.shakes, captions: c.captions, bed: c.bed || { name: 'upbeat_bed_2', gain: -1 }, sfx: c.sfx,
     };
   };
 })();

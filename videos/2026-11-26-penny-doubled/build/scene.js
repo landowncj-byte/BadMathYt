@@ -479,8 +479,8 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       { id: 'asm', type: 'assumes', layer: 'screen', at: [540, 416], in: Q.taxes, props: { text: 'NO TAXES · DOUBLES EVERY DAY · 30 DAYS', size: 18 } },
       { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: Q.like, props: { s: 1, dur: 0.9 } },
       { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: Q.send + '-0.05', out: Q.send + '+1.0', props: { from: [470, 1000], to: [1150, 520], dur: 0.85, s: 0.62 } },
-      { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: Q.follow + '+0.05', out: Q.follow + '+1.45', props: { press: 0.55 } },
-      { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: Q.ask, out: c.dur - 0.1, props: c.bubble },
+      ...(Q.follow ? [{ id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: Q.follow + '+0.05', out: Q.follow + '+1.45', props: { press: 0.55 } }] : []),
+      { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: Q.ask, out: Q.loop, props: c.bubble },
       ...(c.extra || []),
     ];
     const SB = { st: ST };
@@ -513,7 +513,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     return {
       series: 'whatif', title: 'PENNY × 30 DAYS', duration: c.dur,
       footnote: ['ASSUMES: 1¢ ON DAY 1 · WHAT YOU HOLD DOUBLES EVERY DAY · 30 DAYS', 'NO TAXES, NO INTEREST · HYPOTHETICAL · OUR MATH · NOT FINANCIAL ADVICE'],
-      elements: els, beats, poses: [[Q.follow, 'follow', { target: [650, 1120] }], ...(c.poses || [])], shakes: c.shakes, captions: c.captions, bed: c.bed || { name: 'upbeat_bed_2', gain: -1 }, sfx: c.sfx,
+      elements: els, beats, poses: [...(Q.follow ? [[Q.follow, 'follow', { target: [650, 1120] }]] : []), ...(c.poses || [])], shakes: c.shakes, captions: c.captions, bed: c.bed || { name: 'upbeat_bed_2', gain: -1 }, sfx: c.sfx,
     };
   };
 })();
@@ -569,8 +569,8 @@ const S = PDS.make({
     bd('@And#3', 'graphic-hero', 'boom', { move: 'whip', fill: 0.92, maxH: 860, sy: 900, pose: 'chin' }),
     bd('@$5#3-0.1', 'zoom-on-number', 'boom.num', { fill: 0.96, sy: 760, rot: 0.012, pose: 'shock', dur: 0.4 }),
     bd('@$5#3+1.6', 'graphic-hero', 'boom', { fill: 0.92, maxH: 860, sy: 900, pose: 'shock', dur: 0.9 }),
-    bd('@Almost-0.1', 'graphic-hero', 'pie', { move: 'whip', st: { x: 955, y: 1330, s: 0.9, layer: 'front' }, fill: 0.78, sy: 780, pose: 'point', blur: 9, dim: 0.6 }),
-    bd('@last', 'zoom-on-number', 'pie.center', { fill: 0.6, sy: 760, rot: 0.01, pose: 'shock', dur: 0.5, blur: 9, dim: 0.6 }),
+    bd('@Almost-0.1', 'graphic-hero', ['pie', 'pieT'], { move: 'whip', st: { x: 955, y: 1330, s: 0.8, layer: 'front' }, fill: 0.7, maxH: 800, sy: 850, pose: 'point', blur: 9, dim: 0.6, keep: ['pieT'] }),
+    bd('@last', 'zoom-on-number', 'pie.center', { fill: 0.5, sy: 800, rot: 0.01, pose: 'shock', dur: 0.5, blur: 9, dim: 0.6, keep: ['pieT'] }),
     bd('@So#2', 'graphic-hero', 'board', { move: 'whip', fill: 0.9, maxH: 1010, sy: 860, pose: 'chin' }),
     bd('@holding', 'presenter-front', 'board', { sy: 860, pose: 'you' }),
   ],

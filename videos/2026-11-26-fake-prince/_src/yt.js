@@ -72,7 +72,7 @@ BM2.scene({
     { at: '@dinner', beat: ZN, focus: 'cloche', fill: 0.62, maxH: 600, sy: 800, st: { x: 130, y: 1350, s: 1.1 }, pose: 'shock', dur: 0.4 },
     // who
     { at: '@So', beat: SB, focus: 'mug', move: 'whip', sx: 540, sy: 900, fill: 0.62, maxH: 860, st: { x: 930, y: 1390, s: 0.85 }, pose: 'shrug' },
-    { at: '@Anthony', beat: ZN, focus: 'mug.name', fill: 0.8, maxH: 300, sy: 800, st: { x: 930, y: 1390, s: 0.85 }, pose: 'point', dur: 0.45 },
+    { at: '@Anthony', beat: ZN, focus: 'mug.name', fill: 0.5, maxH: 300, sy: 1010, st: { x: 930, y: 1390, s: 0.85 }, pose: 'point', dur: 0.45 },
     { at: '@zero', beat: SB, focus: ['mug', 'zero'], sx: 540, sy: 800, fill: 0.95, maxH: 1000, st: 'corner-left', pose: 'shock', dur: 0.8 },
     // con man
     { at: '@Actually', beat: SB, focus: 'con', move: 'whip', sx: 540, sy: 880, fill: 0.74, maxH: 880, st: 'left', pose: 'point' },

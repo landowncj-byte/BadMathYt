@@ -12,9 +12,9 @@ BM2.scene({
     // ---- S0 frame 0 (loop target) ----
     { id: 'hook', type: 'hook', at: [0, -430], in: 0, out: '@lie+0.05', props: HOOK },
     { id: 'hook2', type: 'hook', at: [0, -430], in: '@times#3-0.2', props: HOOK },
-    { id: 'tally0', type: 'tally', at: [-250, 190], scale: 0.62, in: 0, props: { at: -5, dur: 1.0 } },
+    { id: 'tally0', type: 'tally', at: [-250, 190], scale: 0.62, in: -0.12, props: { at: -5, dur: 1.0 } },
     { id: 'tally3', type: 'tally', at: [-250, 190], scale: 0.62, in: '@times#3-0.2', props: { at: -5, dur: 1.0 } },
-    { id: 'mug0', type: 'photo', at: [300, 210], scale: 0.8, in: 0, props: MUGP },
+    { id: 'mug0', type: 'photo', at: [300, 210], scale: 0.8, in: -0.12, props: MUGP },
     { id: 'mug3', type: 'photo', at: [300, 210], scale: 0.8, in: '@times#3-0.15', props: MUGP },
     // ---- S1 who ----
     { id: 'mug2', type: 'photo', at: [1700, 30], in: '@Okay-0.35', props: { ...MUGP, name: 'ANTHONY GIGNAC', role: 'FLORIDA CON MAN', w: 450, aspect: 1.02, tilt: -0.03 } },
@@ -73,7 +73,7 @@ BM2.scene({
     { at: '@same', beat: SB, focus: ['hook', 'tally0', 'mug0'], ...F0, pose: 'shock', dur: 0.6 },
     // rewind: who
     { at: '@Okay', beat: SB, focus: ['mug2', 'rw'], move: 'whip', sx: 540, sy: 850, fill: 0.9, maxH: 1000, st: 'corner-left', pose: 'shrug' },
-    { at: '@Anthony', beat: ZN, focus: 'mug2.name', fill: 0.8, maxH: 300, sy: 800, st: 'corner-left', pose: 'point', dur: 0.45 },
+    { at: '@Anthony', beat: ZN, focus: 'mug2.name', fill: 0.5, maxH: 300, sy: 1010, st: 'corner-left', pose: 'point', dur: 0.45 },
     // con man
     { at: '@Now', beat: SB, focus: 'con', move: 'whip', sx: 540, sy: 880, fill: 0.74, maxH: 880, st: 'left', pose: 'point' },
     { at: '@con#2', beat: ZN, focus: 'con.term', fill: 0.8, maxH: 300, sy: 680, st: 'corner-left', pose: 'point', dur: 0.45 },
