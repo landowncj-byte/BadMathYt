@@ -1,9 +1,9 @@
 const F0 = { x: 0, y: 10, w: 900, h: 1360 };      // frame 0 and the loop frame share this framing
 const HOOK = { lines: [[['≈1,000 PhDs', 'paper']], [['GOT THIS ', 'paper'], ['WRONG', 'bad']]], size: 112 };
-const LOOP = 44.9;
+const LOOP = '@So#3-0.4';   // whip back to the frame-0 composition just before the final question
 BM2.scene({
-  series: 'whatif', title: 'THREE BRIEFCASES', duration: 47.53,
-  footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW'],
+  series: 'whatif', title: 'THREE BRIEFCASES', duration: 48.84,
+  footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW', 'PHOTO: SEMTRIO · CC BY 2.0 · VIA FLICKR'],
   elements: [
     // --- station 1: the three cases (frame 0 + loop frame) ---
     { id: 'hook', type: 'text', at: [0, -470], in: -1, out: '@Your-0.1', props: HOOK },
@@ -13,14 +13,15 @@ BM2.scene({
     { id: 'tbl', type: 'table3', at: [0, 330], in: -1, props: { reAt: LOOP, slam: [-0.36, -0.29, -0.22], tagIn: -1, tagIdx: 1, tagAway: '@You', numAt: '@Three', pickAt: '@pick', pickIdx: 0,
       handAt: '@host', handIdx: 2, xrayAt: '@where', flipAt: '@opens', opens: [[2, '@opens', 99999]],
       pullAt: '@offers', swapAt: '@swap', btnAt: '@swap+0.15', fiftyAt: '@50', crackAt: '@Nope', pullOut: '@Nope+0.55',
-      lockAt: '@one#4', slideAt: '@So', tag2At: '@So+0.45', winAt: '@two',
-      diploma: [[0.2, '@wrong', '@Three-0.3', -150]] } },
+      lockAt: '@one#4', slideAt: '@So#2', tag2At: '@So#2+0.45', winAt: '@two',
+      diploma: [[0.2, '@wrong', '@three-0.3', -150]] } },
+    { id: 'cash', type: 'photo', at: [0, 70], in: '@million-0.3', out: '@pick+0.3', props: { src: 'brand/photos/stock/briefcase-cash/7.jpg', name: 'CASH', role: 'STOCK PHOTO', credit: 'PHOTO: SEMTRIO · CC BY 2.0', w: 230, aspect: 0.8, tilt: -0.05, fx: 0.5, fy: 0.5 } },
     // --- station 2: our math, a bar race of simulated rounds ---
-    { id: 'tally', type: 'tally', at: [1750, 330], in: 21.7, out: 26.6, props: { variant: 'race', t0: 22.0, t1: 24.7, doneAt: 24.8 } },
+    { id: 'tally', type: 'tally', at: [1750, 330], in: '@Send-0.9', out: '@way+0.6', props: { variant: 'race', t0: '@Send-0.2', t1: '@way-0.1', doneAt: '@way' } },
     // --- station 3: the letters ---
-    { id: 'mail', type: 'mail', at: [3500, 330], in: 26.0, out: 35.6, props: { t0: 26.7, t1: 28.9, n: 64, countAt: '@By', stampAt: '@PhDs#2' } },
+    { id: 'mail', type: 'mail', at: [3500, 330], in: '@way+0.4', out: '@Make-0.4', props: { t0: '@columnist-0.2', t1: '@By-0.1', n: 64, countAt: '@By', stampAt: '@PhDs#2' } },
     // --- station 4: 100 cases (payoff) ---
-    { id: 'fan', type: 'fan100', at: [5250, 330], in: 35.9, out: LOOP + 0.9, props: { dealAt: '@Make', pickAt: '@pick#3', waveAt: '@98', stampAt: '@99%', awayAt: LOOP - 0.5, pickIdx: 23, keepIdx: 67 } },
+    { id: 'fan', type: 'fan100', at: [5250, 330], in: '@Make-0.5', out: '@So#3+0.5', props: { dealAt: '@Make', pickAt: '@pick#3', waveAt: '@98', stampAt: '@99%', awayAt: '@So#3-0.9', pickIdx: 23, keepIdx: 67 } },
     // --- screen-fixed micro-moments and chips ---
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Three', props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'asm', type: 'assumes', layer: 'screen', at: [450, 338], in: '@host+0.3', props: { text: 'HOST KNOWS · ALWAYS OPENS AN EMPTY CASE', size: 21 } },
@@ -28,7 +29,7 @@ BM2.scene({
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
     { id: 'noway', type: 'bubble', layer: 'screen', at: [640, 1030], in: '@typing', out: '@way+0.9', props: { l1: 'NO WAY', size: 54, tail: 'left' } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@follow+0.05', out: '@follow+1.45', props: { press: 0.55 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@stay', out: 47.5, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@stay', out: 48.8, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
   ],
   beats: [
     { at: 0, beat: 'side-by-side', focus: F0, fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
@@ -38,8 +39,8 @@ BM2.scene({
     { at: '@Your', beat: 'presenter-front', focus: 'tbl', sy: 820, pose: 'you', keep: ['turn'] },
     // stakes
     { at: '@Three', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 800, st: 'corner-left', pose: 'idle' },
-    { at: '@million', beat: 'zoom-on-number', focus: 'tbl.tag', fill: 0.8, sy: 780, rot: 0.01, st: 'corner-left', pose: 'point' },
-    { at: '@You', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 800, st: 'left', pose: 'point', point: 'tbl.c0' },
+    { at: '@million', beat: 'zoom-on-number', focus: 'tbl.tag', fill: 0.8, sy: 950, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['cash'] },
+    { at: '@You', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 800, st: 'left', pose: 'point', point: 'tbl.c0', keep: ['cash'] },
     // host rule
     { at: '@The', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
     { at: '@where', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 820, rot: 0.008, st: 'corner-left', pose: 'chin' },
@@ -50,15 +51,15 @@ BM2.scene({
     { at: '@Nope', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'shrug' },
     { at: '@one#4', beat: 'zoom-on-number', focus: 'tbl.bar0', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point' },
     { at: '@Opening', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'shrug' },
-    { at: '@So', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.bar1' },
+    { at: '@So#2', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.bar1' },
     { at: '@two', beat: 'zoom-on-number', focus: 'tbl.bar1', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'shock' },
     // our math
-    { at: 21.8, beat: 'graphic-hero', focus: 'tally', move: 'whip', fill: 0.9, maxH: 900, sy: 820, st: 'corner-left', pose: 'idle' },
+    { at: '@Send-0.8', beat: 'graphic-hero', focus: 'tally', move: 'whip', fill: 0.9, maxH: 900, sy: 820, st: 'corner-left', pose: 'idle' },
     { at: '@Send', beat: 'presenter-front', focus: 'tally', sy: 820, pose: 'you' },
-    { at: 24.1, beat: 'zoom-on-number', focus: 'tally.bars', fill: 0.9, sy: 800, rot: 0.008, st: 'corner-left', pose: 'point' },
-    { at: 24.75, beat: 'zoom-on-number', focus: 'tally.done', fill: 0.9, sy: 780, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@already', beat: 'zoom-on-number', focus: 'tally.bars', fill: 0.9, sy: 800, rot: 0.008, st: 'corner-left', pose: 'point' },
+    { at: '@way', beat: 'zoom-on-number', focus: 'tally.done', fill: 0.9, sy: 780, rot: -0.01, st: 'corner-left', pose: 'shock' },
     // letters
-    { at: 26.2, beat: 'peek', focus: 'mail', move: 'whip', sy: 930, maxH: 880, pose: 'idle' },
+    { at: '@way+0.5', beat: 'peek', focus: 'mail', move: 'whip', sy: 930, maxH: 880, pose: 'idle' },
     { at: '@1990', beat: 'zoom-on-number', focus: 'mail.head', fill: 0.92, sy: 700, rot: 0.01, st: 'corner-left', pose: 'point' },
     { at: '@By', beat: 'graphic-hero', focus: 'mail', fill: 0.9, maxH: 880, sy: 930, st: 'corner-left', pose: 'shock' },
     { at: '@thousand#2', beat: 'zoom-on-number', focus: 'mail.count', fill: 0.92, sy: 720, rot: -0.01, st: 'corner-left', pose: 'point' },
@@ -67,7 +68,7 @@ BM2.scene({
     { at: '@Don\'t', beat: 'presenter-front', focus: 'mail', sy: 820, pose: 'you' },
     { at: '@this#3', beat: 'graphic-hero', focus: 'mail', fill: 0.9, maxH: 880, sy: 930, st: 'corner-left', pose: 'point' },
     // 100 cases
-    { at: 35.9, beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'idle' },
+    { at: '@Make-0.3', beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'idle' },
     { at: '@pick#3', beat: 'zoom-on-number', focus: 'fan.pick', fill: 0.5, sy: 800, rot: 0.01, st: 'corner-left', pose: 'point' },
     { at: '@98', beat: 'zoom-on-number', focus: 'fan.count', fill: 0.8, sy: 560, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@98+0.9', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'shock' },
@@ -76,7 +77,7 @@ BM2.scene({
     { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
   ],
   poses: [['@follow', 'follow', { target: [650, 1120] }], ['@Send', 'you'], ['@stay', 'chin']],
-  shakes: [[0.3, 10], ['@wrong', 10], ['@50', 10], ['@Nope', 12], ['@two', 10], [24.8, 12], ['@99%', 26], [LOOP + 0.1, 10]],
+  shakes: [[0.3, 10], ['@wrong', 10], ['@50', 10], ['@Nope', 12], ['@two', 10], ['@way', 12], ['@99%', 26], ['@So#3-0.3', 10]],
   captions: { gap: 16, emph: { thousand: 'bad', 'wrong.': 'bad', million: 'good', 'bucks.': 'good', '50': 'accent', 'two': 'good', 'three.': 'accent', '99%,': 'good', 'empty': 'accent' }, fix: [['it,', 'it?'], ['follow,', 'Follow,'], ['switch,', 'switch?'], ['99%,', '99%.'], ['same', 'Same'], ['Nope,', 'Nope.']] },
   bed: { name: 'lofi_bed_1', gain: -1 },
   sfx: [
@@ -90,15 +91,15 @@ BM2.scene({
     { at: '@like', name: 'pop_2', gain: -9, dur: 0.3 },
     { at: '@Nope', name: 'glass_shatter_2', gain: -12, dur: 0.7 }, { at: '@Nope', name: 'sub_drop_1', gain: -10, dur: 0.8 },
     { at: '@one#4', name: 'click_1', gain: -7, dur: 0.3 }, { at: '@one#4+0.3', name: 'click_2', gain: -7, dur: 0.3 },
-    { at: '@So', name: 'swoosh_2', gain: -9, dur: 0.6 }, { at: '@So+0.5', name: 'success_chime_1', gain: -12, dur: 1.0 }, { at: '@So+0.5', name: 'pop_1', gain: -8, dur: 0.4 },
-    { at: 22.0, name: 'money_counter_2', gain: -13, dur: 2.7 }, { at: '@Send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 }, { at: 24.8, name: 'ding_2', gain: -8, dur: 0.6 }, { at: 24.8, name: 'cinematic_hit_2', gain: -9, dur: 1.0 },
+    { at: '@So#2', name: 'swoosh_2', gain: -9, dur: 0.6 }, { at: '@So#2+0.5', name: 'success_chime_1', gain: -12, dur: 1.0 }, { at: '@So#2+0.5', name: 'pop_1', gain: -8, dur: 0.4 },
+    { at: '@Send-0.2', name: 'money_counter_2', gain: -13, dur: 2.7 }, { at: '@Send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 }, { at: '@way', name: 'ding_2', gain: -8, dur: 0.6 }, { at: '@way', name: 'cinematic_hit_2', gain: -9, dur: 1.0 },
     { at: '@typing', name: 'keyboard_typing_1', gain: -12, dur: 0.9 }, { at: '@typing', name: 'pop_1', gain: -10, dur: 0.4 },
-    { at: 26.5, name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: 26.7, name: 'thud_1', gain: -12, dur: 0.5 }, { at: 27.5, name: 'thud_2', gain: -12, dur: 0.5 }, { at: 28.2, name: 'thud_1', gain: -12, dur: 0.5 },
+    { at: '@way+0.5', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@columnist-0.2', name: 'thud_1', gain: -12, dur: 0.5 }, { at: '@columnist+0.6', name: 'thud_2', gain: -12, dur: 0.5 }, { at: '@columnist+1.3', name: 'thud_1', gain: -12, dur: 0.5 },
     { at: '@By', name: 'money_counter_1', gain: -13, dur: 1.4 }, { at: '@PhDs#2', name: 'rubber_stamp_1', gain: -5, dur: 0.5 },
     { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.6', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.7', name: 'success_chime_1', gain: -12, dur: 1.2 },
     { at: '@Make', name: 'whoosh_1', gain: -10, dur: 0.7 }, { at: '@Make+0.4', name: 'pop_1', gain: -12, dur: 0.4 }, { at: '@Make+0.8', name: 'pop_2', gain: -12, dur: 0.4 }, { at: '@pick#3', name: 'click_1', gain: -9, dur: 0.3 },
     { at: '@98', name: 'pop_2', gain: -11, dur: 0.3 }, { at: '@98+0.2', name: 'pop_1', gain: -11, dur: 0.3 }, { at: '@98+0.4', name: 'pop_2', gain: -11, dur: 0.3 }, { at: '@98+0.6', name: 'pop_1', gain: -11, dur: 0.3 }, { at: '@98+0.8', name: 'pop_2', gain: -11, dur: 0.3 },
     { at: '@99%', name: 'rubber_stamp_2', gain: -3, dur: 0.5 }, { at: '@99%', name: 'deep_boom_1', gain: -2, dur: 1.6 }, { at: '@99%', name: 'cinematic_hit_1', gain: -6, dur: 1.2 },
-    { at: LOOP - 0.5, name: 'whoosh_1', gain: -8, dur: 0.8 }, { at: LOOP, name: 'deep_boom_2', gain: -6, dur: 0.36 }, { at: '@stay-0.05', name: 'pop_1', gain: -9, dur: 0.5 },
+    { at: '@So#3-0.9', name: 'whoosh_1', gain: -8, dur: 0.8 }, { at: LOOP, name: 'deep_boom_2', gain: -6, dur: 0.36 }, { at: '@stay-0.05', name: 'pop_1', gain: -9, dur: 0.5 },
   ],
 });

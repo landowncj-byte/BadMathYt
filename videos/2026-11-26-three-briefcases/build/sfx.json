@@ -1,5 +1,5 @@
 {
- "duration": 47.53,
+ "duration": 48.84,
  "sfx": [
   {
    "gain": -4,
@@ -74,12 +74,6 @@
    "name": "coin_single_1"
   },
   {
-   "gain": -9,
-   "dur": 0.6,
-   "at": 6.78,
-   "name": "swoosh_2"
-  },
-  {
    "gain": -7,
    "dur": 0.5,
    "at": 7.14,
@@ -90,18 +84,6 @@
    "dur": 0.3,
    "at": 7.16,
    "name": "click_1"
-  },
-  {
-   "gain": -12,
-   "dur": 1,
-   "at": 7.28,
-   "name": "success_chime_1"
-  },
-  {
-   "gain": -8,
-   "dur": 0.4,
-   "at": 7.28,
-   "name": "pop_1"
   },
   {
    "gain": -10,
@@ -206,6 +188,24 @@
    "name": "click_2"
   },
   {
+   "gain": -9,
+   "dur": 0.6,
+   "at": 20.52,
+   "name": "swoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 1,
+   "at": 21.02,
+   "name": "success_chime_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 21.02,
+   "name": "pop_1"
+  },
+  {
    "gain": -13,
    "dur": 0.45,
    "at": 21.1,
@@ -214,13 +214,13 @@
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 21.5,
+   "at": 22.44,
    "name": "whoosh_2"
   },
   {
    "gain": -13,
    "dur": 2.7,
-   "at": 22,
+   "at": 23.34,
    "name": "money_counter_2"
   },
   {
@@ -232,26 +232,8 @@
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 23.9,
+   "at": 24.7,
    "name": "swipe_2"
-  },
-  {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 24.55,
-   "name": "swipe_2"
-  },
-  {
-   "gain": -8,
-   "dur": 0.6,
-   "at": 24.8,
-   "name": "ding_2"
-  },
-  {
-   "gain": -9,
-   "dur": 1,
-   "at": 24.8,
-   "name": "cinematic_hit_2"
   },
   {
    "gain": -12,
@@ -266,27 +248,45 @@
    "name": "pop_1"
   },
   {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 25.86,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 26.06,
+   "name": "ding_2"
+  },
+  {
+   "gain": -9,
+   "dur": 1,
+   "at": 26.06,
+   "name": "cinematic_hit_2"
+  },
+  {
    "gain": -10,
    "dur": 0.7,
-   "at": 25.9,
+   "at": 26.26,
    "name": "whoosh_2"
   },
   {
    "gain": -10,
    "dur": 0.6,
-   "at": 26.5,
+   "at": 26.56,
    "name": "whoosh_2"
   },
   {
    "gain": -12,
    "dur": 0.5,
-   "at": 26.7,
+   "at": 26.72,
    "name": "thud_1"
   },
   {
    "gain": -12,
    "dur": 0.5,
-   "at": 27.5,
+   "at": 27.52,
    "name": "thud_2"
   },
   {
@@ -298,7 +298,7 @@
   {
    "gain": -12,
    "dur": 0.5,
-   "at": 28.2,
+   "at": 28.22,
    "name": "thud_1"
   },
   {
@@ -346,7 +346,7 @@
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 35.6,
+   "at": 36.44,
    "name": "whoosh_2"
   },
   {
@@ -442,19 +442,19 @@
   {
    "gain": -8,
    "dur": 0.8,
-   "at": 44.4,
+   "at": 45.3,
    "name": "whoosh_1"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 44.6,
+   "at": 45.5,
    "name": "whoosh_2"
   },
   {
    "gain": -6,
    "dur": 0.36,
-   "at": 44.9,
+   "at": 45.8,
    "name": "deep_boom_2"
   },
   {

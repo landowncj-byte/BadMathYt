@@ -194,7 +194,7 @@ const HOOK = { lines: [[['AVG MAN LOSES', 'paper']], [['−$202,980', 'bad']]], 
 const KEEP = ['hook', 'endt', 'scale', 'tower'];
 BM2.scene({
   series: 'whatif', title: 'WEIGHT VS HEIGHT', duration: 48.67,
-  footnote: ['HYPOTHETICAL · NOBODY IS OFFERING THIS · NOT FINANCIAL ADVICE', 'ASSUMES ≈1 G & 0.0043 IN PER BILL · CRISP, FLAT, WHOLE NOTES', 'AVG US MAN = CDC 199.0 LB · 68.9 IN (AUG 2021–AUG 2023)'],
+  footnote: ['HYPOTHETICAL · NOBODY IS OFFERING THIS · NOT FINANCIAL ADVICE', 'ASSUMES ≈1 G & 0.0043 IN PER BILL · CRISP, FLAT, WHOLE NOTES', 'AVG US MAN = CDC 199.0 LB · 68.9 IN (AUG 2021–AUG 2023)', 'PHOTOS: D.L. (CC BY-SA 2.0) · THE.COMEDIAN (CC BY 2.0) · VIA FLICKR'],
   elements: [
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: '@Two-0.1', props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: '@word+0.25', props: HOOK },
@@ -206,6 +206,8 @@ BM2.scene({
     { id: 'five', type: 'fivex', at: [0, 20], in: '@hundreds#3-0.1', out: '@Hit-0.1', props: { xAt: '@five' } },
     { id: 'doll', type: 'doll', at: [0, 40], in: '@For', out: '@Send-0.1', props: { lbAt: '@199-0.3', hAt: '@five#2-0.1' } },
     { id: 'gap', type: 'gap', at: [0, 580], in: '@the#8+0.15', out: '@word+0.2', props: { to: 202980, flipAt: '@grand#2+0.35' } },
+    { id: 'ph1', type: 'photo', layer: 'screen', at: [200, 1130], in: '@weight', out: '@height', props: { src: 'brand/photos/stock/bathroom-scale/3.jpg', name: 'SCALE', credit: 'D.L. · CC BY-SA 2.0', w: 250, tilt: -0.07, treatment: 'polaroid', aspect: 1.0 } },
+    { id: 'ph2', type: 'photo', layer: 'screen', at: [880, 1130], in: '@height', out: '@flat+0.3', props: { src: 'brand/photos/stock/stack-of-hundred-dollar-bills/2.jpg', name: '$100 STACK', credit: 'THE.COMEDIAN · CC BY 2.0', w: 250, tilt: 0.07, treatment: 'polaroid', aspect: 1.0 } },
     // screen-fixed
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Two', props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'easy', type: 'text', layer: 'screen', at: [540, 345], in: '@easy', out: '@Hit-0.05', props: { lines: [[['EASY?', 'accent']]], size: 96 } },
