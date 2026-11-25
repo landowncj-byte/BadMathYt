@@ -295,7 +295,7 @@
 })();
 // YouTube cut — Stations: hook (0,0) · case board (1800,0) · catalogue+winemaker+timeline (3600..5000,0) · arrest card (4600,1800) · bench (3500,1800) · folder/verdict (1800,1800) · peel payoff (0,1800)
 BM2.scene({
-  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 48.68,
+  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 51.93,
   footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: BOTTLE, LABELS, BENCH, CATALOGUE, WINEMAKER (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S1 frame 0: label says 1945 next to the winery timeline card FIRST MADE: 1982 ----

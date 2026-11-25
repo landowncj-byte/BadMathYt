@@ -295,7 +295,7 @@
 })();
 // TikTok cut — Stations: cheque+crate (0,0) · bench (1750,0) · case stamps (3500,0) · taste scorecard (1750,1700) · payoff bottle+timeline (0,1700)
 BM2.scene({
-  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 28.69,
+  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 33.19,
   footnote: ['CONVICTED 2013 · 10 YEARS · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: CHEQUE, CRATE, BENCH, BOTTLE, LABELS (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'cheque', type: 'cheque', at: [0, 20], in: -1, props: { amount: '$2.1 MILLION', top: 'PAID BY A BILLIONAIRE', note: 'HE TOLD THE JURY' } },
