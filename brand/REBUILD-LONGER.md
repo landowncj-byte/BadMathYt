@@ -52,3 +52,26 @@ The new narration is much longer, so this is a RE-EDIT, not a re-time.
 - SIMULATE THE REAL THING where a What If allows it: actual doubling, actual counted stacks, actual simulated games with a live tally. Don't use a drawing of it.
 - LOOP: the final frame echoes the first frame.
 - Once the engine adds `sketch` (Rough.js hand-drawn diagrams), `physics` (Matter.js falling and stacking) and `marker` (highlight strokes), use them for the step-by-step explanations and the money piles.
+
+## PLAYBOOK add-on (owner-requested creator study, 2026-11-25; research/creators/robertmckeaveney/PLAYBOOK.md)
+Copy their patterns only, never their topics, lines, footage or audio.
+
+Stage 1 (scripts):
+- HOOK LADDER: build the hook by layering (plain value → bold claim → number → proof → contrast/story question). Write the ladder in beats-v3.md and pick the top rung. Strong formulas:
+  - the proof number first ("I ran Monty Hall 1,000 times…");
+  - a huge number, then "but…";
+  - most people vs the few;
+  - shrink the time ("thirty days of doubling in sixty seconds");
+  - "the reason your gut picks wrong is…";
+  - humiliation of the obvious choice.
+- DECODED OPENING: "the pitch, then the truth". Open on the con's own claim, framed as his claim ("He said he was a Saudi prince."), then the reality. Never state a false thing as our own fact.
+- NAME THE TRICK: give each scheme a 2–3-word kid-level name ("the label trick", "the backdoor code") and ONE everyday analogy per hard idea.
+- COMMENT QUESTION = a one-word answer ("Switch or stay?"), and the same question becomes the post's firstComment.
+- FOLLOW ASK (~80%) is part of the story and about belonging ("people who check the math follow…"), never a plea.
+
+Stage 2 (build):
+- A LIVE REAL NUMBER on screen from frame 0 (dollars, days, odds; never a fake view counter). It changes/jumps about every 3 s. The first visual change lands by 1.0 s.
+- PICTURE = THE EXACT SPOKEN WORD: the visual change lands on its trigger word (the bar drains on "losing", the stamp hits on "fake").
+- BEAT LABEL: a small pinned label that changes per section (THE PITCH · THE TRICK · THE CATCH · THE MATH · THE SENTENCE / THE BET · THE TWIST · THE ANSWER).
+- LAYOUT FLIP every 8–10 s (full scene ↔ split / board ↔ close-up), on top of the 2–3 s micro-changes.
+- Steps are numbered boxes that open one at a time.
