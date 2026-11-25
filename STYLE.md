@@ -244,3 +244,14 @@ Before → after (from real scripts):
 - Example: research/humanize-demo/mock-short.mp4 (Javice TikTok, humanized — NOTE: made before the no-um / no-laugh rule; don't copy its fillers or chuckle).
 
 **Long-forms use visual v2 too (user rule 2026-11-25: the old long-form was "trash neon slop").** Build every long-form with engine v2 in 16:9 landscape mode (same world/camera/storyteller grammar, same brand lock, no neon). Never reuse the old neon canvas engine (videos/2026-11-25-impossible-number/build/engine.js) for new work.
+
+## 22. Script craft — use the script-writing skills on EVERY script (user rule 2026-11-25: "bad script writing… grab a script writing skill")
+Before writing any script, read `brand/skills/short-form-video-script/` (WATCH framework + references) and `brand/skills/hook-writer/` (mechanisms + scoring). Then:
+1. **Beats, not prose:** write `[time · VISUAL · ON-SCREEN TEXT · SPOKEN]` beats; write the muted version first (text + visuals must carry the story alone).
+2. **Hooks:** 5–10 candidates across different mechanisms, scored with the rubric (Gap, Specificity, Truth, Fit, Voice, Pull; Truth and Pull are pass/fail). Keep the winner; save the candidates in `voice/beats.md`.
+3. **Cut-test every line:** it must grab, advance, or set up a payoff. Otherwise delete it. No throat-clearing, no setup paragraphs, no number dumps.
+4. **Pacing:** a visual change every 2–4 s; never more than ~8 s on one shot; open a loop early and close it at the payoff.
+5. **Cash the promise:** the payoff delivers exactly what the hook sold.
+6. **Loop + CTAs:** the last line flows back to frame 1. CTAs are woven per §13 (like ~30%, send ~55%, follow ~80%, comment question after the payoff) — never a CTA block at the end.
+7. Run `brand/tools/script_gate.py` on the cut; a FAIL means rewrite, not voice.
+Owner rules (RULES.md) win over skill defaults (e.g. no AI disclosure, our CTA placement).
