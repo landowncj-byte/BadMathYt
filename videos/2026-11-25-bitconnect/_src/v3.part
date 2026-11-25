@@ -18,11 +18,11 @@
 
   // ---------- phone: generic "crypto app" phone. cracks on crackAt, coins pour in on coinsAt, SHUT DOWN shutter on shutAt, clean again at resetAt ----------
   B.register('phone', {
-    defaults: { w: 640, h: 1060, crackAt: 99999, shutAt: 99999, resetAt: 99999, coinsAt: 99999, coinN: 9 },
+    defaults: { w: 640, h: 1060, crackAt: 99999, shutAt: 99999, shutOutAt: 99999, coinsAt: 99999, coinN: 9 },
     size: p => [p.w, p.h],
     anchors(p) { const y0 = -p.h / 2; return { screen: [0, 0, p.w - 60, p.h - 120], rate: [0, y0 + 360, p.w - 100, 280], top: [0, y0 + 40, p.w, 120] }; },
     draw(g, p, env) {
-      const { t, theme } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sx = x0 + 26, sy = y0 + 26, sw = w - 52, sh = h - 52, live = t < p.resetAt;
+      const { t, theme } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sx = x0 + 26, sy = y0 + 26, sw = w - 52, sh = h - 52;
       // coins fall into the slot at the top edge (clipped above it)
       if (t >= p.coinsAt && t < p.coinsAt + p.coinN * 0.13 + 0.9) { g.save(); g.beginPath(); g.rect(-w, y0 - 900, w * 2, 900 + 34); g.clip();
         for (let i = 0; i < p.coinN; i++) { const l = t - p.coinsAt - i * 0.13; if (l < 0 || l > 0.55) continue; const u = clamp(l / 0.4); coin(g, (hash(i * 3.1) - 0.5) * 150, lerp(y0 - 520, y0 + 70, u * u), 40, 1); } g.restore(); }
@@ -34,13 +34,13 @@
       txt(g, '+1.00%', 0, sy + 320, F.hero(196), theme.good); txt(g, 'EVERY. SINGLE. DAY.', 0, sy + 440, F.monoX(30), rgba(theme.paper, 0.75));
       const n = 11, bw = (sw - 90) / n; for (let i = 0; i < n; i++) { const bh = 70 + i * 36 + (i % 3) * 10; clay(g, sx + 45 + i * bw + 4, sy + sh - 120 - bh, bw - 8, bh, 8, theme.good, { shadowK: 0.3 }); }
       txt(g, 'ILLUSTRATION', 0, sy + sh - 52, F.mono(20), rgba(theme.paper, 0.45));
-      if (t >= p.crackAt && live) { const r = ease.out(clamp((t - p.crackAt) / 0.16)), cx = 70, cy = -90; g.lineCap = 'round'; g.lineJoin = 'round';
+      if (t >= p.crackAt) { const r = ease.out(clamp((t - p.crackAt) / 0.16)), cx = 70, cy = -90; g.lineCap = 'round'; g.lineJoin = 'round';
         const rays = []; for (let i = 0; i < 10; i++) { const a0 = i * 0.628 + hash(i * 1.7) * 0.5, pts = [[cx, cy]]; let x = cx, y = cy, a = a0; for (let s = 0; s < 6; s++) { a += (hash(i * 9.1 + s) - 0.5) * 0.7; const L = 70 + hash(i * 4.3 + s * 2.1) * 120; x += Math.cos(a) * L; y += Math.sin(a) * L; pts.push([x, y]); } rays.push(pts); }
         for (const pass of [0, 1]) { g.strokeStyle = pass ? 'rgba(255,255,255,.92)' : 'rgba(0,0,0,.55)'; g.lineWidth = pass ? 4 : 8; rays.forEach(pts => { const m = Math.max(1, Math.round(r * (pts.length - 1))); path(g, pts.slice(0, m + 1)); g.stroke(); }); }
         g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; for (const rr0 of [150, 290]) { if (r < 0.7) break; g.beginPath(); for (let i = 0; i <= 10; i++) { const a = i * 0.628, d = rr0 * (0.85 + hash(i * 2.3 + rr0) * 0.3); i ? g.lineTo(cx + Math.cos(a) * d, cy + Math.sin(a) * d) : g.moveTo(cx + Math.cos(a) * d, cy + Math.sin(a) * d); } g.stroke(); }
         const fl = hit(t - p.crackAt, 16); if (fl > 0.02) { g.fillStyle = `rgba(255,255,255,${0.55 * fl})`; g.fillRect(sx, sy, sw, sh); } }
       // SHUT DOWN shutter
-      { const lt = t - p.shutAt; if (lt > 0 && live) { const u = ease.in(clamp(lt / 0.2)), bounce = lt > 0.2 ? 0.035 * sh * Math.exp(-(lt - 0.2) * 9) * Math.sin((lt - 0.2) * 34) : 0, bh = sh * u + bounce;
+      { const lt = t - p.shutAt; if (lt > 0 && t < p.shutOutAt + 0.35) { const u = ease.in(clamp(lt / 0.2)) * (1 - ease.inOut(clamp((t - p.shutOutAt) / 0.3))), bounce = lt > 0.2 ? 0.035 * sh * Math.exp(-(lt - 0.2) * 9) * Math.sin((lt - 0.2) * 34) : 0, bh = sh * u + bounce;
           g.fillStyle = theme.navy; g.fillRect(sx, sy, sw, bh); g.fillStyle = 'rgba(0,0,0,.22)'; for (let y = sy + 30; y < sy + bh; y += 34) g.fillRect(sx, y, sw, 4);
           g.fillStyle = theme.gold; g.fillRect(sx, sy + bh - 22, sw, 22); if (u > 0.55) { txt(g, 'SHUT', 0, -70, F.hero(180), theme.paper); txt(g, 'DOWN', 0, 90, F.hero(180), theme.bad); txt(g, 'JAN 2018', 0, 230, F.cap(54), theme.paper); } burst(g, 0, sy + bh, sw * 0.5, theme.gold, lt - 0.2, 14, 0.4); } }
       g.restore();
