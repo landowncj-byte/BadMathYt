@@ -122,3 +122,4 @@ decisions:
 - 2026-11-25: User asked to redo the long-form title AND thumbnail ("redo both" = thumbnail + title; video is fine). New title "One Number Exposed 3 of History's Biggest Frauds", thumbnail thumbs/thumb-v2-c.png ("3 FRAUDS · 1 MATH TRICK"). Post 8da112c3 (replaces c0419604), Wed 17:00 ET.
 - 2026-11-25: User: "find real pictures of everyone you use in the videos and use stock images where you see fit; Canva is connected" → RULES.md real-photo rule; brand/tools/photos.py (Wikimedia Commons, licensed only); environment hosts commons.wikimedia.org + upload.wikimedia.org added; engine v2 gets a `photo` element. First use: today's long-form (Madoff, Ponzi, De Angelis, Markopolos — all public domain).
 - 2026-11-25: Owner: Short covers = first or last frame, "I'll set it myself" → no cover.png for Shorts. Long-form thumbnails keep real photos.
+- 2026-11-25: Owner: stock only where a clean free photo exists, no watermarks ever; no Canva AI stock.
