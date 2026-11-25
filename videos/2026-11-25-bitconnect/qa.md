@@ -1,40 +1,38 @@
-# QA — BitConnect "1% a day" (Decoded, engine v2)
-Sources: `_src/shared.js parts (head/mid/plane.part) + yt.js / tt.js / ig.js`, built by `_src/build.sh`. Research: research/2026-11-25/bitconnect-one-percent/research.md.
+# QA — BitConnect "1% a day" (Decoded, engine v2) — REBUILD 2026-11-25 (beats.v2.md)
+Sources: `_src/head.part + mid.part + plane.part + v3.part` (shared recipes) + `yt.js / tt.js / ig.js`, built by `_src/build.sh`. Research: research/2026-11-25/bitconnect-one-percent/research.md. Engine tweak: optional `captions.gap` (extra word spacing; default 0, other videos unchanged) fixes joined words such as "PROSECUTORS SAY".
 
 ## Cuts
-| Cut | Narration | Scene duration | Output |
-|---|---|---|---|
-| YouTube | 52.95 s | 53.35 s | video.mp4 |
-| TikTok | 33.96 s | 34.36 s | tiktok/video.mp4 |
-| IG/FB | 20.66 s | 21.06 s | ig/video.mp4 |
+| Cut | Narration | Video | Size | Output |
+|---|---|---|---|---|
+| YouTube | 47.22 s | 47.63 s | 39.3 MB | video.mp4 (contact_sheet.png) |
+| TikTok | 33.83 s | 34.23 s | 28.4 MB | tiktok/video.mp4 |
+| IG/FB | 20.53 s | 20.93 s | 16.2 MB | ig/video.mp4 |
+Mix: -14.0 LUFS, true peak <= -1.3 dBFS (mix.py). Sound: CC0 sfx-library + tense_bed_2 only. captions.srt per cut rewritten from voice/sentences.json (no tags).
 
-Captions fixed to the script: "1389" -> "1,389", "54," -> "54—" (YT), "bod" -> "bot" (TikTok). IG caption shows the spoken profanity; on-screen graphics do not. captions.srt per cut is built from sentences.json (tags removed).
+## VIDEO GATE (YT / TT / IG)
+| # | Question | YT | TT | IG | Note |
+|---|---|---|---|---|---|
+| V1 | script_gate.py PASS with real sentences.json | YES | YES | YES | warnings only: TT 90 words; loop key-word on TT/IG |
+| V2 | Watched via 1-fps timestamped sheet | YES | YES | YES | contact_sheet.png in each cut |
+| V3 | Frame 0 pattern break, hook words on screen | YES | YES | YES | slam "1% A DAY" + crack / flag / strings, hit sound, no fade |
+| V4 | Meaningful change every 2-3 s, no layout > ~4 s | YES | YES | YES | longest holds ~3 s (YT shutter 34-38 s with follow tap + camera moves; IG counter 8-10 s with push-ins) |
+| V5 | Push-in on every spoken number; storyteller travels | YES | YES | YES | 1%, 1,000, 37 grand, 1.4M, 1,389, billionaire, 38 months |
+| V6 | CTA micro-moments on voiced word, small, <= 1.5 s | YES | YES | YES | heart (like), plane (send), +FOLLOW tap (YT/TT), comment bubble (YT/TT). IG script has no follow or comment line, so none shown |
+| V7 | Biggest hit at payoff, loop into frame 0 | PARTLY | PARTLY | PARTLY | payoff lands ~86% (voice timing), not 75-80%; ends 5.8 / 4.4 / 2.7 s later; ends on the frame-0 composition |
+| V8 | Brand lock, no neon | YES | YES | YES | drop shadows only; storyteller unchanged |
+| V9 | On-screen facts match research.md | YES | YES | YES | OUR MATH tag on counter; PROSECUTORS SAY / PER DOJ; SOURCE: SEC COMPLAINT · ALLEGED; PLEADED GUILTY · 38 MONTHS; ILLUSTRATION label on app screen; founder not shown |
+| V10 | Captions from sentences wording, no tags, safe zone | YES | YES | YES | token fixes: 1,389; handed it; bought in?; heart; spacing gap added |
+| V11 | Voice / names | not re-listened | not re-listened | not re-listened | voice not changed by this task |
+| V12 | CC0 sound, -14 LUFS, hit on payoff | YES | YES | YES | silence before payoff is only partial (bed runs) |
+| V13 | Post settings | n/a | n/a | n/a | not posted |
 
 ## On-screen facts
-| On screen | Source / grade |
-|---|---|
-| "ABOUT 1% A DAY", "$1,000 @ 1% A DAY" (posted returns) | SEC complaint/release 2021-172, research.md number spine (~1%/day posted), ✔1; shown as "posted returns", not "guaranteed" |
-| DAY 365 $37,783 · DAY 730 $1,427,588 · DAY 1,095 $53,939,174 · DAY 1,389 $1,000,000,000, tag OUR MATH | arithmetic 1000 x 1.01^days (research.md); card labelled OUR MATH + formula footer |
-| Generic TRADING BOT box (header "BITCONNECT" in plain brand font, no logo); coin pipe NEW WALLETS -> OLD WALLETS, tag PROSECUTORS SAY | DOJ/SEC allegation (research beats 4; plea supports), attributed |
-| $2,400,000,000 MONEY TAKEN IN, PER DOJ | DOJ ✔2 |
-| Coin chart (BITCONNECT COIN, ILLUSTRATION · NOT REAL PRICES), SHUT DOWN JAN 2018, COLLAPSED stamp, no % | Wikipedia ✔1 / research (Jan 2018 shutdown); curve is generic |
-| CASE FILE: TOP US PROMOTER · PLEADED GUILTY (conspiracy to commit wire fraud) · 38 MONTHS · SENTENCED 2022 | DOJ S.D. Cal. ✔2 (plea 2021-09-01, sentence 2022-09-16) |
-| Footnote: PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC | as above |
-
-Not shown on purpose: founder (no conviction implied), promoter name, restitution, 92% figure, meme/Carlos Matos, any real logo.
-
-## Push-ins on spoken numbers
-YT: "1%" head (1.96) · "1,000" (13.70) · 37 (16.72) · 1.4 (19.40) · 53 (22.48) · 1389 (24.38) · billionaire value+row (25.56) · $2.4 (35.26) · collapsed chart (40.06) · guilty (42.56) · 38 months (43.50); bot window at "hand over" (8.60).
-TikTok: 1% (6.24) · 1,000 (8.80) · 37 (11.86) · 1.4 (13.68) · day 1389 (14.90) · billionaire (15.78) · $2.4 (23.04) · 38 (26.74).
-IG: 1% (0.80) · billion (6.28) · 2.4 (11.68) · 38 (15.82).
-Front/back: presenter-front several times per cut (hook, "No bot does that", comment question), storyteller goes BEHIND the counter/case card on every push-in (layer back), whips between stations; each cut ends wide (YT/TT/IG) then whips back to the hook with the counter reset to day 0 (clean loop).
-
-## Sound
-CC0 sfx from brand/sfx-library, one hit per reveal on the same @word as the picture; bed tense_bed_2; mix.py defaults.
+APP SCREEN "+1.00% EVERY DAY" = generic illustration (labelled). SEC returns card: +1% rows, "ABOUT 1% A DAY", source chip "SEC COMPLAINT · ALLEGED". Counter "$1,000 @ 1% A DAY" rows DAY 365 $37,783 / DAY 730 $1,427,588 / DAY 1,389 $1,000,000,000 = OUR MATH (1000 x 1.01^days). YT only: $2,400,000,000 MONEY TAKEN IN, PER DOJ. TRADING BOT curtain -> NEW WALLETS -> OLD WALLETS pipe tagged PROSECUTORS SAY. SHUT DOWN JAN 2018 (YT). Case card: TOP US PROMOTER, PLEADED GUILTY, 38 MONTHS, SENTENCED 2022. Footnote PROMOTER CONVICTED 2021 · 38 MONTHS · SOURCES: DOJ, SEC. No logos, no memes, founder not shown.
 
 ## Doubts
-- Day 1,389 row/main counter is rounded to exactly $1,000,000,000 (true value on day 1,389 is ~$1.006B; day 1,388 is below $1B), so "passes $1B on day 1,389" holds.
-- Ticker idles slowly (days 0-22) before the spoken "one year" so frame 0 is alive; it is not claimed as data.
-- TikTok/IG show the PLEADED GUILTY stamp although narration only says "38 months" (fact is DOJ ✔2).
-- Caption/graphic "SENTENCED 2022" vs footnote "CONVICTED 2021": plea 2021, sentencing 2022.
-- Primary DOJ/SEC pages could not be re-opened (research.md access note); grades unchanged.
+- Payoff at ~86%, set by the re-voiced timing.
+- Bed music cannot drop out on the follow line with current mixer.
+- Bot "empty" beat shown as closed curtain then pipe, to avoid asserting emptiness.
+- TT/IG show PLEADED GUILTY though narration says only "38 months" (DOJ-sourced).
+- Day 1,389 value rounded to $1,000,000,000 (true ~ $1.006B).
+- Primary DOJ/SEC pages could not be re-opened (research.md access note).
