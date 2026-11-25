@@ -4,10 +4,11 @@ Every day: **at least 8 unique Shorts topics — 8 posts per platform per day mi
 
 Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` (meme beats: 2–3 per Short, ~1 per 30–45 s long-form), `brand/sfx-library/manifest.json` (reusable CC0 sounds), `ideas.md`, and the newest long-form `videos/2026-11-25-impossible-number/DIRECTION.md` (template for long-form direction).
 
-## Roles (cost rule from the user)
-- **Opus (director, this session):** picks ideas, does the research and fact-checking, writes every script, storyboard and thumbnail concept, reviews every still, approves or sends fixes. Never writes the animation code itself.
-- **Sonnet agents:** animation engines, scenes/chapters, thumbnails (Agent tool, model "sonnet", run in background, parallel where independent).
-- **Haiku agents:** narration + timelines, sound sourcing + mix, captions, upload packages, uploads (model "haiku").
+## Roles (user rule 2026-11-25 — model split)
+- **Fable (researcher — Agent tool, model "fable"):** all research. Finds and ranks topic ideas (outliers in the niche, court-proven cases, verifiable hypotheticals), checks ideas.md for repeats, pulls primary/secondary sources (DOJ/SEC/court records, Wikipedia, reputable press), builds the **number spine** (every figure with its source + date), flags anything unverifiable or still "alleged", and writes `research.md` in the video folder (facts, quotes allowed on screen, sources, risks). One Fable agent can research a whole day's batch in parallel.
+- **Opus (creator + director, this session):** picks from Fable's ranked list, writes every hook (STYLE §14 gate) and the three platform scripts (§15), pronunciation pass (§16), direction/storyboards, thumbnail concepts, reviews every contact sheet and final, sends fixes, approves publishing. Opus does not do the research legwork and does not write animation code.
+- **Sonnet agents (model "sonnet"):** animation engines, scenes, cuts, renders, mixes, thumbnails.
+- **Haiku agents (model "haiku"):** narration + timings, sound sourcing, captions, upload packages, PostFast queueing chores.
 
 ## Uniqueness rules (non-negotiable — YouTube demonetizes repetitive/mass-produced content)
 - Never reuse a topic, case, hypothetical, script, hook line or thumbnail layout already in `ideas.md` (check before choosing).
@@ -18,8 +19,8 @@ Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` 
 - Log every chosen idea in `ideas.md` (date, series, format, title, one-line angle, sources) at the moment it's picked.
 
 ## Daily pipeline
-1. **Ideas (Opus):** pick 8 Short ideas + 1 long-form idea using research (Wikipedia + WebSearch; outliers in the niche). Hard-to-decide dilemmas and impossible-number frauds perform; vary them.
-2. **Fact pass (Opus):** fetch sources (en.wikipedia.org is allowed), build the number spine, cut anything unverifiable. No invented quotes, records or case captions.
+1. **Ideas (Fable):** pick 8 Short ideas + 1 long-form idea using research (Wikipedia + WebSearch; outliers in the niche). Hard-to-decide dilemmas and impossible-number frauds perform; vary them.
+2. **Fact pass (Fable):** fetch sources (en.wikipedia.org is allowed), build the number spine, cut anything unverifiable. No invented quotes, records or case captions.
 3. **Hook gate (Opus) — rule #1, before anything else:** follow STYLE.md §14. Write 10 outrageous hook variants ("This guy was so dumb…", "You're probably an idiot if…"), keep the strongest true one, design a frame-0 pattern break, and open a loop paid off at 75–80%. Mild edge only (no f-words/slurs in voice, title, thumbnail); never call an unconvicted person a fraud. A script that fails the gate is rewritten, not built.
 4. **Scripts (Opus) — THREE per topic (STYLE.md §15):** a YouTube Shorts script, a TikTok script and an Instagram/Facebook Reels script, each with its own hook, length and CTA style (IG/FB = most vulgar/disrespectful, 15–25 s, built for sends + saves). Same facts, different cut. Voice each separately; build each edit separately (shared topic assets OK).
    Then, for the YouTube script:  weave like / share / follow into the story per STYLE.md §13 (spread out, one clause each, never a pitch). Shorts 70–115 words (28–45 s); long-form 1,350–1,600 words (≥ 8:30 so mid-rolls work later). Pattern-break hook in the first 2 s; re-hooks; payoff at 75–80%; loop line for Shorts. Write `paragraphs.json` per video.

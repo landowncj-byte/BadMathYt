@@ -95,3 +95,4 @@ decisions:
 - 2026-11-24: Minimum 8 posts per platform per day (not 'up to 8'). Today caught up with extra evening slots.
 - 2026-11-24: Long-form voice = ElevenLabs **Owen – Calm, Trustworthy Narrator** (voice_id 83MXTnoLsr3jX4Sl4gL4), user's pick. The old Bad Math Narrator (tEcWY4Gir18XAcYuihhc) is retired for new videos. Shorts stay on free Kokoro.
 - 2026-11-24: Pronunciation layer (STYLE §16, brand/voice/pronounce.py): voice reads corrected phonemes/respellings, captions show normal spelling. Tonight's FTX (all cuts) + Theranos re-voiced; FTX posts replaced before 8 PM.
+- 2026-11-25: Model split: Fable = research (ideas, fact-check, number spine, sources → research.md); Opus = creation + directing (hooks, scripts, direction, reviews); Sonnet/Haiku = coding, rendering, voice, sound, packaging.
