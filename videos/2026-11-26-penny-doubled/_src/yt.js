@@ -11,7 +11,7 @@ const K = [[0, 1], ['@two-0.25', 1], ['@two+0.05', 2], ['@four-0.25', 2], ['@fou
   ['@So#2-0.05', 30], ['@So#2+0.45', 20], ['@penny#6+0.1', 20], ['@penny#6+0.6', 1]];
 const HOOK = { lines: [[['1¢ BEATS ', 'paper'], ['$1,000,000', 'good']], [['BUT FIRST IT TORTURES YOU', 'accent']]], size: 80 };
 const S = PDS.make({
-  dur: 66.35, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150 },
+  dur: 62.12, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150 },
   stamps: [{ id: 'stamp', type: 'stamp', at: [-60, 230], rot: -0.08, in: '@tortures', out: Q.hookEnd, props: { text: '27 DAYS BEHIND', tone: 'bad', size: 70 } }],
   hookBeats: [
     { at: 0.45, beat: 'zoom-on-number', focus: 'hook', fill: 0.82, sy: 570, rot: 0.008, pose: 'point', keep: ['hook', 'art', 'endt'] },

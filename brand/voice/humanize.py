@@ -42,8 +42,8 @@ def _trim(a, sr):
 # OWNER RULE 2026-11-25 ~20:30 UTC: "get rid of the breathing too, all of the pauses are weird".
 # -> NO breath/sigh/gasp/sniff/smack/throat noises (tags are stripped), NO auto inhales,
 #    and pauses are normalised to natural conversational gaps (NATURAL_GAP / LAND_GAP).
-NATURAL_GAP = 0.22   # normal gap between lines (s)
-LAND_GAP = 0.38      # a slightly longer gap where the script asked for a landing (>= 0.45 s or [beat])
+NATURAL_GAP = 0.30   # normal gap between lines (s) — natural conversational gap
+LAND_GAP = 0.50      # where a big number or verdict lands (script pause >= 0.45 s or [beat])
 def natural_pause(p):
     return LAND_GAP if p >= 0.45 else NATURAL_GAP
 def build(k, lines, voice='am_liam', auto_breath=False):

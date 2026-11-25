@@ -410,7 +410,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       g.save(); g.translate(shake, -190); const pk = bt > 0 ? 1 + 0.2 * Math.exp(-bt * 5) : 1; g.scale(pk, pk);
       roll(g, v, 0, 0, { font: F.hero(v >= 1e6 ? 132 : 120), size: 130, color: big ? th.goodInk : th.ink, prefix: '$', decimals: 2, speed: rate > 0.05 ? v * Math.LN2 * rate : 0 }); g.restore();
       txt(g, big ? 'THE PENNY IS ' + (v / 1e6).toFixed(2) + '× THE MILLION' : 'DOUBLING AGAIN…', 0, -90, F.monoX(26), big ? th.goodInk : th.inkSoft);
-      if (bt > 0.35) { const sk = spring(bt - 0.35, 'bouncy'); g.save(); g.translate(250, 20); g.rotate(-0.07); g.scale(clamp(sk, 0.3, 1.1), clamp(sk, 0.3, 1.1)); clay(g, -210, -44, 420, 88, 22, th.accent, { shadowK: 0.7 }); txt(g, 'DAY 30', 0, 4, F.hero(70), th.ink); g.restore(); burst(g, 250, 20, 260, th.accent, bt - 0.4, 14, 0.45); }
+      if (bt > 0.35) { const sk = spring(bt - 0.35, 'bouncy'); g.save(); g.translate(170, 20); g.rotate(-0.07); g.scale(clamp(sk, 0.3, 1.1), clamp(sk, 0.3, 1.1)); clay(g, -210, -44, 420, 88, 22, th.accent, { shadowK: 0.7 }); txt(g, 'DAY 30', 0, 4, F.hero(70), th.ink); g.restore(); burst(g, 170, 20, 260, th.accent, bt - 0.4, 14, 0.45); }
       // heap
       if (bt > 0.5) {
         const grow = ease.out(clamp((bt - 0.5) / 2.2)), top = base - 40 - 360 * grow, items = HEAP.map(h => ({ ...h, y: top + (base + 20 - top) * (1 - h.u * h.u) })); items.sort((a, b) => a.y - b.y);
@@ -530,7 +530,7 @@ const K = [[0, 1], ['@two-0.25', 1], ['@two+0.05', 2], ['@four-0.25', 2], ['@fou
   ['@So#2-0.05', 30], ['@So#2+0.45', 20], ['@penny#6+0.1', 20], ['@penny#6+0.6', 1]];
 const HOOK = { lines: [[['1¢ BEATS ', 'paper'], ['$1,000,000', 'good']], [['BUT FIRST IT TORTURES YOU', 'accent']]], size: 80 };
 const S = PDS.make({
-  dur: 66.35, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150 },
+  dur: 62.12, K, q: Q, hook: { variant: 'brick', text: HOOK, y: -330, ay: 150 },
   stamps: [{ id: 'stamp', type: 'stamp', at: [-60, 230], rot: -0.08, in: '@tortures', out: Q.hookEnd, props: { text: '27 DAYS BEHIND', tone: 'bad', size: 70 } }],
   hookBeats: [
     { at: 0.45, beat: 'zoom-on-number', focus: 'hook', fill: 0.82, sy: 570, rot: 0.008, pose: 'point', keep: ['hook', 'art', 'endt'] },

@@ -12,7 +12,7 @@ const K = [[0, 1], ['@20-0.25', 1], ['@20+0.15', 20], ['@Wait-0.05', 20], ['@Wai
   ['@So#3-0.05', 30], ['@So#3+0.45', 20], ['@word+0.2', 20], ['@word+0.7', 1]];
 const HOOK = { lines: [[['YOU PICKED', 'paper']], [['THE PENNY', 'accent']]], size: 120 };
 const S = PDS.make({
-  dur: 66.02, K, q: Q, hook: { variant: 'slap', text: HOOK, y: -300, ay: 170 },
+  dur: 60.30, K, q: Q, hook: { variant: 'slap', text: HOOK, y: -300, ay: 170 },
   stamps: [{ id: 'stamp', type: 'stamp', at: [0, 140], rot: -0.07, in: '@20', out: Q.hookEnd, props: { text: 'DAY 20 = $5,242.88', tone: 'ink', size: 62 } }],
   hookBeats: [
     { at: 0.45, beat: 'zoom-on-number', focus: 'art.penny', fill: 0.62, sy: 900, rot: 0.008, pose: 'point', keep: ['hook', 'art', 'endt'] },
@@ -63,7 +63,7 @@ const S = PDS.make({
   shakes: [[0.1, 8], ['@20', 8], ['@5', 26], ['@pass', 12], ['@27', 8], ['@64', 6]],
   poses: [['@hard', 'you'], ['@Send', 'you']],
   captions: { gap: 16, emph: { '64': 'good', 'cents.': 'good', million: 'good', '190': 'bad', '27,': 'bad', 'losing': 'bad', '28,': 'good', '30,': 'good', 'seven': 'accent', 'eighths': 'accent', 'penny': 'accent', 'stupid.': 'bad', 'grand.': 'accent' },
-    fix: [['hard', 'heart'], ['caused the ending stupid.', "'cause the ending's stupid."], ['$5 .37', '$5.37'], ['5 .37', '$5.37'], ['671', '$671']] },
+    fix: [['hard', 'heart'], ['cause the', "'cause the"], ['$5 .37', '$5.37'], ['5 .37', '$5.37'], ['671', '$671']] },
   sfx: [
     { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.06, name: 'paper_slam_1', gain: -7, dur: 0.5 },
     { at: '@20', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@Wait-0.05', name: 'rewind_1', gain: -13, dur: 0.9 },
