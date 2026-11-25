@@ -26,3 +26,6 @@ First Bad Math posts go out tonight (YouTube FTX 20:00 ET, lottery 22:00 ET; Tik
 - 2 unread conversations. TikTok McDonald's: only our own first comment, nothing to do.
 - IG "$1M today vs $1K/week" — @r0hanko follow-up: "in the 10-20 years it takes you to make your mil you'll have the ability to pull 4% per year and make more than the 52k. This is so basic". NOT replied (one reply per person per thread; no arguing twice; it's an investing-advice debate). FLAGGED to owner. Note: 4% of $1M = $40K/yr < $52K/yr, but a $1M left invested for 10–20 years could grow enough that 4% beats $52K — the comment has a point depending on assumptions.
 - Replies sent: 0. Removals: 0. Topic requests: 0.
+
+### Comment sweep 2026-11-25 23:38 UTC
+- No unread conversations. Nothing to reply to or flag.

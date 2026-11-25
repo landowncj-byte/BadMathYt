@@ -38,3 +38,9 @@
   P.define('doorframe', { w: 200, h: 420, draw(g, o, t, s) { g.beginPath(); g.rect(-100, -420, 40, 420); g.rect(60, -420, 40, 420); g.rect(-100, -420, 200, 40); g.fillStyle = o.color || '#2A3647'; g.fill(); } });
   P.define('plank', { w: 120, h: 60, draw(g, o, t, s) { g.beginPath(); g.rect(-60, -60, 120, 60); fs(g, o.color || '#9a6a3f', s.ink, s.ol); } });
 })();
+(function () {
+  const B = window.BM2, P = B.Props, fs = (g, fill, ink, lw) => { g.fillStyle = fill; g.fill(); g.lineWidth = lw; g.strokeStyle = ink; g.lineJoin = 'round'; g.lineCap = 'round'; g.stroke(); };
+  P.define('spoon', { w: 40, h: 120, grip: [0, -20], draw(g, o, t, s) { g.beginPath(); g.rect(-4, -100, 8, 100); fs(g, '#C9C9CE', s.ink, s.ol * 0.8); g.beginPath(); g.ellipse(0, -112, 14, 20, 0, 0, Math.PI * 2); fs(g, '#C9C9CE', s.ink, s.ol * 0.8); } });
+  P.define('tag', { w: 150, h: 70, grip: [0, -35], draw(g, o, t, s) { g.beginPath(); g.moveTo(-75, -35); g.lineTo(-55, -70); g.lineTo(75, -70); g.lineTo(75, 0); g.lineTo(-55, 0); g.closePath(); fs(g, o.color || '#C9A66B', s.ink, s.ol * 0.8); g.fillStyle = s.ink; g.font = '28px JBM, monospace'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(o.text || 'EXHIBIT', 10, -35); } });
+  P.define('crook', { w: 90, h: 360, grip: [0, -120], draw(g, o, t, s) { g.beginPath(); g.moveTo(0, 0); g.lineTo(0, -330); g.quadraticCurveTo(0, -370, 40, -350); g.quadraticCurveTo(66, -330, 46, -300); g.lineWidth = 12; g.strokeStyle = s.ink; g.lineCap = 'round'; g.stroke(); g.lineWidth = 6; g.strokeStyle = '#8a6446'; g.stroke(); } });
+})();

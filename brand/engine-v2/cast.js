@@ -186,6 +186,10 @@
   C.gesture('clutch', (lt, o) => ({ near: { hx: 30, hy: -86, bend: 1, prop: o.prop, propScale: o.propScale }, far: { hx: 24, hy: -82, bend: 1 }, lean: 0.03 }));
   C.gesture('raise-paddle', (lt, o) => ({ [o.arm || 'near']: { th: 2.75, e: 0.1, prop: o.prop || 'paddle', propRot: 0 }, lean: -0.03 }));
   C.gesture('stand', () => ({}));
+  C.gesture('stir', (lt, o) => { const a = lt * 9; return { [o.arm || 'near']: { hx: 46 + Math.cos(a) * 12, hy: -62 + Math.sin(a) * 8, bend: 1, prop: o.prop, propRot: -0.3 + Math.cos(a) * 0.1 }, lean: 0.06, head: { dy: 4 } }; });
+  C.gesture('tap', (lt, o) => { const k = Math.floor(lt * 6) % 2; return { [o.arm || 'near']: { hx: 56, hy: -70 + k * 10, bend: 1, finger: 1 }, lean: 0.04, head: { dy: 3 } }; });
+  C.gesture('push-stack', (lt, o) => { const k = Math.sin(lt * 5) * 0.5 + 0.5; return { near: { hx: 52 + k * 24, hy: -78, bend: 1 }, far: { hx: 46 + k * 24, hy: -86, bend: 1 }, lean: 0.12 + k * 0.08, head: { dy: 5 } }; });
+  C.gesture('unfold', (lt, o) => { const k = eout(lt / 0.5); return { near: { hx: 36 + k * 22, hy: -92, bend: 1, prop: o.prop }, far: { hx: 26 - k * 20, hy: -92, bend: -1 }, lean: 0.03 }; });
   C.gesture('peek', () => ({ head: { tilt: 0.12 }, lean: 0.1 }));
   const LOCKS = { armsUp: () => ({ near: { th: 2.9, e: -0.25 }, far: { th: 2.9, e: -0.25 } }), steeple: () => ({ near: { hx: 14, hy: -132, bend: 1 }, far: { hx: 18, hy: -128, bend: -1 } }), chin: () => ({ near: { hx: 22, hy: -140, bend: 1 } }), collar: () => ({ near: { hx: 16, hy: -122, bend: 1 } }), cheek: () => ({ near: { hx: 40, hy: -150, bend: 1 } }) };
 

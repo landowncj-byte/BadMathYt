@@ -16,7 +16,7 @@ Demo: `brand/engine-v2/demo-characters/` (15.3 s, 1080 x 1920). `scene.js` there
 | Sequence | `story.js` | compiler for the scene format, shot / camera system, devices, transitions, captions, `board` |
 | 2D fallback | `sets.js` | the earlier 4-layer parallax sets, used when three.js is not loaded or `stage: '2d'` |
 
-**Characters are 2D, the world is 3D.** Each character is drawn by the rig onto a canvas every frame (body on twos = 15 poses/s; faces at 30 fps so snaps land on the frame) and shown as a card that always faces the lens, standing on the 3D floor at `(x, 0, lane * 64)`. Cards occlude and are occluded by 3D props and set pieces, and cast a hard floor shadow of their silhouette through an invisible proxy card that faces the lamp. The WebGL canvas is copied into the 2D frame, so captions, name plates, impact frames, freeze frames, the security-cam filter, motion blur and transitions are ordinary 2D code on top.
+**Characters are 2D, the world is 3D.** Each character is drawn by the rig onto a canvas every frame (body on twos = 15 poses/s; faces at 30 fps so snaps land on the frame) and shown as a card that always faces the lens, standing on the 3D floor at `(x, 0, lane * 64)`. Cards occlude and are occluded by 3D props and set pieces, cast a hard floor shadow of their silhouette through an invisible proxy card that faces the lamp, and **receive the set's shadows** (blinds, bars, frames) through a gobo-mask pass: the set's casters are rendered once from the lamp into a depth texture that the card shader samples. A depth-of-field / rack-focus pass blurs by distance from a focus point. The WebGL canvas is copied into the 2D frame, so captions, name plates, impact frames, freeze frames, the security-cam filter, motion blur and transitions are ordinary 2D code on top.
 
 Units: 1 world unit = 1 px of the rig. A figure is ~400 units tall (bible "scale 1" = 520 px = 1.3 x this; gait strides are already converted). x right, y up, z toward the camera; `lane` l -> z = 64 l (use -4 for "far back", +2 for "close to the lens").
 
@@ -138,7 +138,9 @@ BM2.Sets3D.define('bank', { marks: { A: -300, B: 300 }, build(c) {      // c: { 
   c.text(900, 300, 1, (g, w, h) => { /* paint a canvas */ }, 0, 640, -490);   // a lit sign / tote board
   return { update(t) { /* lights, crowd bob */ } }; } });
 ```
-Camera marks (`A`, `B`, `door`...) are named x positions used by `cast.at` and `mark`. Props: every `BM2.Props.define(kind, {w, h, grip, draw})` is automatically a **paper standee** in the 3D set (the 2D art on a card with a shadow) and a held prop. Hero props can have a real 3D model: `BM2.Sets3D.defineProp('barrel', (c, o) => THREE.Group)` (table, barrel, crate, podium are done). Set props in a scene: `props: [{id, kind, x, lane, scale, yaw, color, text, in, out, anim: 'bob'|'sway'}]`.
+**Gobo shadows**: `c.gobo('blinds'|'bars'|'cross', [x,y,z] target, distance, w, h)` adds invisible casters between the lamp and the target; their stripes fall on floor, walls and the character cards (the kitchen at night uses it). Any visible set mesh also shadows the cards.
+
+Camera marks (`A`, `B`, `door`...) are named x positions used by `cast.at` and `mark`. Props: every `BM2.Props.define(kind, {w, h, grip, draw})` is automatically a **paper standee** in the 3D set (the 2D art on a card with a shadow) and a held prop. Hero props can have a real 3D model (done: `bottle` lathe with label and cork, `jug`, `barrel`, `table`, `crate`, `podium`, `bars` (cell bars), `coinstack {n, cols}` (gold coin tower), `yearrack {cols, rows, hl}` (38-slot year rack), `torch {sweep, spread, tilt}` (flat paper beam wedge)): `BM2.Sets3D.defineProp('barrel', (c, o) => THREE.Group)` (table, barrel, crate, podium are done). Set props in a scene: `props: [{id, kind, x, lane, scale, yaw, color, text, in, out, anim: 'bob'|'sway'}]`.
 
 2D fallback: with `stage: '2d'` (or no three.js) the same story renders on `sets.js` parallax layers (cellar, office, street, studio).
 
@@ -159,6 +161,8 @@ A shot is a framing of a target, then optional moves. All values are data in `BM
 
 Camera moves (`cam: ['push-in', 'crash', 'pull-back', 'truck', 'orbit', 'dutch', 'crane', 'creep']` or raw `{push, zoomMoves, pan, orbit, az, el, r, punch, hand}`): creep = slow push (default 4.5 %), push-in 0.55 s +25 %, crash zoom 0.2 s +60 % with overshoot, truck (pan with true parallax), orbit (azimuth sweep, real 3D), crane (elevation sweep). Characters are followed with a trailing average (pure function of time); `lock: true` freezes the framing at the cut. A whip-pan is `move: 'whip'` (+ `dir`): the previous shot sweeps away in 0.14 s, the new one sweeps in over 0.2 s with sub-frame motion blur (up to 10 samples) and a 14 deg azimuth swing. Whip *transitions* between sets: `transition: {type: 'whip'|'slide'|'wipe'|'iris'|'fade'|'dip'|'flash', dur, dir}`.
 
+**3D camera extras** (all data on a shot): `dof: {blur, sharp, falloff} | false` (default on for CU / ECU / reaction / OTS / INS: blur in px at 1080 wide, focus on the target), `focus: <id>` (focus elsewhere), `rack: {from, to, at, dur}` (rack focus between two targets, e.g. bottle -> con in 0.3 s), `path: [{at, pos:[x,y,z], look:[x,y,z], fov}]` (explicit 3D camera keys, eased; use it to **travel through a doorway**: start outside the door frame, end inside), `lamp: [dx,dy,dz] | {from, to}` (aim / sweep the lamp for this shot: long shadows, 9.1-style), `match: '<shot id>'` + `matchZoom` (start from the exact camera of another shot's last frame: camera-position matching across a cut), `fov`, `orbitMax: true` (allow azimuth beyond 30 deg), `az` / `el` `[from, to]`. Azimuth is clamped to +/-30 deg unless `orbitMax`, because paper standees and cards are thin; a prop with a real 3D model (bottle, jug, barrel, table, crate, podium, bars, coin stack, year rack, torch) can be orbited to 45 deg or more with `orbitMax: true`.
+
 Observer shots: `observer: 'peek'` (`peek: {prop, side, blur, dark, creep}`: a dark blurred foreground object covers a third of the frame), `overcrowd` (backs of heads along the bottom), `ots`, `pov`, `security` (low-fps world, grain, scanlines, glitch band, `CAM 2 · ILLUSTRATION` tag, rounded frame; no fake timestamp), `courtsketch` (pencil-on-tan filter), `window` (we look through a lit window frame). Devices: `freeze: {label, role}` (desaturated to 30 %, Paper border, Anton name plate + mono role tag, shutter flash), `card: {title, sub, tag}`, `fx: [{type:'impact', on, accent}]` (bible impact frame: 2 frames, A = Paper + Ink silhouette + torn wedges, B = accent + Paper silhouette; auto `deep_boom`), `shake`, `punch`, `flash`, `speedlines`, `tension`, `vignette`, `split: {panels:[{shot,on},...], dir:'v'|'h', badges:true}` (2-3 panels).
 
 ## 9. Storyboard mapping and the board review
@@ -171,10 +175,25 @@ See the numbers in the delivery notes: a plain frame is one shadow-mapped three.
 
 ## 11. Known limits
 
-* Character cards face the lens, so a camera orbit never shows a character's side or back (it is paper); orbits stay readable because shadows and the set rotate. Orbits beyond ~30 deg start to show the card thickness of standee props.
-* Characters do not receive lamp shadows from the set (gobo stripes land on walls and floor, not on cards); floor shadows are one-light, one-direction.
-* No per-pixel depth of field yet: DOF is faked with blurred dark foreground occluders (peek / over-crowd / OTS) and the set is sharp. A depth-based bokeh pass is the next step.
-* Props are paper standees unless a 3D model is registered; tote-board flip tiles and the P1 number props are not built (a `text` plane exists in `sets3d.js`).
-* Mimed talk, face snaps and gestures are procedural: complex object interaction (pouring, pulling a cork) is staged with held props and cuts.
-* The bible's per-part 2-frame hair lag and ±0.6 px outline wobble are not implemented; the paper-edge highlight on set shapes is replaced by flat colour + the lamp's hard shadows.
-* Landscape 16:9 for the story path is untested (sizes use `W`/`H`, so it should adapt).
+* Character cards face the lens, so an orbit never shows a character's side or back (it is paper). Cards and 2D standees stay within +/-30 deg of azimuth; real-3D props can orbit further with `orbitMax`.
+* DOF is a single-layer gather blur (22 taps, depth-weighted): near-field bleeding over sharp subjects is approximate; the blur radius is capped by `blur` (px). Split-screen panels do not get DOF.
+* Card shadows come from the set's casters only (one lamp, one mask); characters do not shadow each other's faces (floor shadows only).
+* Floor shadows are one-light, one-direction (per shot you may re-aim the lamp). The shadow proxy is a low-res (150 x 160) silhouette.
+* No tote-board flip tiles or the other P1 number props; kitchen dressing beyond counter / sink / fridge / island / window and the map pop-up sets are not built.
+* The bible's per-part 2-frame hair lag and the +/-0.6 px outline wobble are not implemented; the paper-edge highlight on set shapes is replaced by flat colour and the lamp's hard shadows.
+* Landscape 16:9 for the story path is untested (sizes use `W`/`H`).
+
+## 12. Pilot v2 assets: what is built
+
+| Asset (storyboard v2 list) | Status |
+|---|---|
+| 38-slot year rack | built: `yearrack {cols:19, rows:2, hl}` (3D) |
+| gold coin tower | built: `coinstack {n, cols}` (3D) |
+| cell bars | built: `bars {n, pitch, h}` (3D, casts bar stripes) + gobo `'bars'` |
+| torch (beam wedge) | built: `torch {sweep, spread, tilt}` (3D, flat paper beam; no second light) |
+| jugs | built: `jug` (3D lathe) |
+| spoon, evidence tag, stick / shepherd's crook | built as paper standees: `spoon`, `tag {text}`, `crook` |
+| hero bottle (orbit) | built: `bottle` (3D lathe, label band, cork); held bottles stay 2D |
+| poses stir / tap / push-stack / unfold | built (gestures: `stir`, `tap`, `push-stack`, `unfold`) |
+| kitchen dressing, map pop-ups | NOT built (map set is a flat paper map with a dotted route only) |
+| tote-board flip tiles, calendar pages, cheque / receipt / verdict stamp props | NOT built (P1 #9) |

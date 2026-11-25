@@ -48,14 +48,14 @@ function writeVoice(sceneDir, voiceDir) {
     const out = rest[1] && !rest[1].startsWith('--') ? rest[1] : path.join(a1, 'stills'); fs.mkdirSync(out, { recursive: true }); const { b, p } = await page(a1);
     for (const t of rest[0].split(',').map(Number)) { await p.evaluate(t => window.render(t), t); await p.screenshot({ path: path.join(out, `s_${t.toFixed(2).padStart(6, '0')}.png`) }); } await b.close(); console.log('stills ->', out);
   } else if (cmd === 'part') { // internal: render frames n0..n1 to one mp4
-    const [out, fps, n0, n1, crf] = [rest[0], +rest[1], +rest[2], +rest[3], rest[4] || '20']; const { b, p } = await page(a1);
-    const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', crf, '-g', '60', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    const [out, fps, n0, n1, crf, preset] = [rest[0], +rest[1], +rest[2], +rest[3], rest[4] || '20', rest[5] || 'medium']; const { b, p } = await page(a1);
+    const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', preset, '-crf', crf, '-g', '60', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
     for (let n = n0; n < n1; n++) { await p.evaluate(t => window.render(t), n / fps); const buf = await p.screenshot({ type: 'jpeg', quality: 95 }); if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r)); }
     ff.stdin.end(); await new Promise(r => ff.on('close', r)); await b.close();
   } else if (cmd === 'render') {
     // Long timelines: frames are split into chunks (default 45 s) rendered by up to --jobs parallel browser processes (default 4; --parts N is the old alias).
     // Each chunk is its own ffmpeg-encoded mp4 in <sceneDir>/parts, so memory stays flat and a crash resumes (finished chunks are skipped; --force re-renders). --crf sets quality (default 20).
-    const fps = +opt('fps', 30), jobs = +opt('jobs', opt('parts', 4)), chunkS = +opt('chunk', 45), crf = opt('crf', '20'); const { b, p, errs } = await page(a1); const info = await p.evaluate(() => window.BM2_SFX); await b.close();
+    const fps = +opt('fps', 30), jobs = +opt('jobs', opt('parts', 4)), chunkS = +opt('chunk', 45), crf = opt('crf', '20'), preset = opt('preset', 'medium'); const { b, p, errs } = await page(a1); const info = await p.evaluate(() => window.BM2_SFX); await b.close();
     if (errs.length || !info) { console.log('scene has errors; run `bm2.cjs check` first'); process.exit(1); }
     fs.writeFileSync(path.join(a1, 'sfx.json'), JSON.stringify(info, null, 1));
     const f0 = Math.round(+opt('from', 0) * fps), f1 = Math.round(+opt('to', info.duration) * fps), pd = path.join(a1, 'parts'); fs.mkdirSync(pd, { recursive: true });
@@ -63,7 +63,7 @@ function writeVoice(sceneDir, voiceDir) {
     const force = rest.includes('--force'); let next = 0, done = 0;
     await Promise.all([...Array(Math.min(jobs, tasks.length))].map(async () => { while (next < tasks.length) { const k = tasks[next++], out = path.join(pd, k.n);
       if (!force && fs.existsSync(out) && fs.existsSync(out + '.ok') && fs.readFileSync(out + '.ok', 'utf8') === `${k.a}-${k.z}-${crf}`) { done++; continue; }
-      await new Promise((res, rej) => { const c = spawn(process.execPath, [__filename, 'part', a1, out + '.tmp.mp4', fps, k.a, k.z, crf], { stdio: 'inherit' }); c.on('close', code => (code ? rej(new Error('chunk failed ' + k.n)) : res())); });
+      await new Promise((res, rej) => { const c = spawn(process.execPath, [__filename, 'part', a1, out + '.tmp.mp4', fps, k.a, k.z, crf, preset], { stdio: 'inherit' }); c.on('close', code => (code ? rej(new Error('chunk failed ' + k.n)) : res())); });
       fs.renameSync(out + '.tmp.mp4', out); fs.writeFileSync(out + '.ok', `${k.a}-${k.z}-${crf}`); console.log(`chunk ${++done}/${tasks.length} ${k.n} frames ${k.a}-${k.z}`); } }));
     fs.writeFileSync(path.join(pd, 'list.txt'), tasks.map(k => `file '${k.n}'`).join('\n'));
     spawnSync('ffmpeg', ['-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', path.join(pd, 'list.txt'), '-c', 'copy', path.join(a1, 'video_noaudio.mp4')], { stdio: 'inherit' });

@@ -20,18 +20,6 @@
    "name": "deep_boom_1"
   },
   {
-   "gain": -4,
-   "dur": 1.2,
-   "at": 7.9,
-   "name": "deep_boom_1"
-  },
-  {
-   "gain": -6,
-   "dur": 0.5,
-   "at": 8.8,
-   "name": "camera_shutter_1"
-  },
-  {
    "gain": -6,
    "dur": 0.5,
    "at": 9.2,

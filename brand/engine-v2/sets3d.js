@@ -12,7 +12,7 @@
     day: { bg: '#FFF4DC', A: '#7FCDEB', B: '#F58A2E', C: '#9BE3C0', D: '#5A3FA0', E: '#FFF4DC', F: '#3D2A73', G: '#F5F3EE', lamp: '#FFF4DC', accent: '#FFD60A', amb: 1.15, key: 1.7, elev: 1.0, soft: 3 },
   };
   const matCache = {}; const mat = (c, o = {}) => { const k = c + JSON.stringify(o); return matCache[k] || (matCache[k] = new T.MeshLambertMaterial(Object.assign({ color: c }, o))); };
-  function ctxFor(group, theme, palette) {
+  function ctxFor(group, theme, palette, lamp) {
     const K = Object.assign({}, S.themes[theme] || S.themes.night, palette || {});
     const slab = (w, h, d, x, y, z, col, o = {}) => { const m = new T.Mesh(new T.BoxGeometry(w, h, d), o.mat || mat(col)); m.position.set(x, y + h / 2, z); m.castShadow = o.cast !== false; m.receiveShadow = o.recv !== false; if (o.ry) m.rotation.y = o.ry; group.add(m); return m; };
     const cyl = (r, h, x, y, z, col, o = {}) => { const m = new T.Mesh(new T.CylinderGeometry(o.r2 == null ? r : o.r2, r, h, o.seg || 28), mat(col)); m.position.set(x, y + h / 2, z); m.castShadow = o.cast !== false; m.receiveShadow = true; group.add(m); return m; };
@@ -20,7 +20,11 @@
     const floor = (col, w = 7000, d = 5000, z = 0) => { const m = new T.Mesh(new T.PlaneGeometry(w, d), mat(col)); m.rotation.x = -Math.PI / 2; m.position.set(0, 0, z); m.receiveShadow = true; group.add(m); return m; };
     const text = (w, h, px, paint, x, y, z, o = {}) => { const cv = document.createElement('canvas'); cv.width = Math.round(w * px); cv.height = Math.round(h * px); const g = cv.getContext('2d'); g.scale(px, px); paint(g, w, h); const tex = new T.CanvasTexture(cv); tex.colorSpace = T.SRGBColorSpace; tex.anisotropy = 4; const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ map: tex })); m.position.set(x, y, z); if (o.ry) m.rotation.y = o.ry; group.add(m); m.userData = { tex, cv, g, px, w, h }; return m; };
     const token = (x, y, z, col, s = 1, o = {}) => { const gp = new T.Group(); const body = new T.Mesh(new T.CylinderGeometry(22 * s, 34 * s, 80 * s, 14), mat(col)), head = new T.Mesh(new T.SphereGeometry(26 * s, 14, 10), mat(o.head || B.shade ? '#F5F3EE' : '#F5F3EE')); body.position.y = 40 * s; head.position.y = 104 * s; body.castShadow = head.castShadow = true; gp.add(body, head); gp.position.set(x, y, z); group.add(gp); return gp; };
-    return { T, g: group, K, theme, slab, cyl, disc, floor, text, token, mat };
+    // gobo: INVISIBLE shadow casters (blinds / bars / window cross) placed between the lamp and `at`, so their stripes fall on the floor, walls AND character cards.
+    const gobo = (kind, at, dist = 800, w = 700, h = 700, o = {}) => { const dn = new T.Vector3(...(lamp || [-0.75, K.elev, 0.55])).normalize(), g = new T.Group(), im = new T.MeshBasicMaterial({ colorWrite: false, depthWrite: false }), add = (bw, bh) => { const m = new T.Mesh(new T.BoxGeometry(bw, bh, 8), im); m.castShadow = true; m.userData.noVis = true; return m; };
+      if (kind === 'blinds') for (let y = -h / 2; y <= h / 2; y += o.pitch || 46) { const m = add(w, o.slat || 20); m.position.y = y; g.add(m); } else if (kind === 'bars') for (let x = -w / 2; x <= w / 2; x += o.pitch || 60) { const m = add(o.slat || 20, h); m.position.x = x; g.add(m); } else if (kind === 'cross') { const a = add(w, 26), b = add(26, h); g.add(a, b); const fr = [add(w, 30), add(w, 30), add(30, h), add(30, h)]; fr[0].position.y = h / 2; fr[1].position.y = -h / 2; fr[2].position.x = -w / 2; fr[3].position.x = w / 2; fr.forEach(m => g.add(m)); }
+      g.position.set(at[0], at[1], at[2]).add(dn.clone().multiplyScalar(dist)); group.add(g); g.lookAt(g.position.clone().add(dn)); g.traverse(m => { if (m.isMesh) m.layers.enable(2); }); return g; };
+    return { T, g: group, K, theme, slab, cyl, disc, floor, text, token, mat, gobo, lamp: lamp || [-0.75, K.elev, 0.55] };
   }
   S.ctxFor = ctxFor;
   const R = (a, b, n) => { const o = []; for (let i = 0; i < n; i++) o.push(a + ((b - a) * i) / Math.max(1, n - 1)); return o; };
@@ -55,6 +59,7 @@
     slab(1250, 95, 150, -300, 0, -430, K.D); slab(1250, 14, 160, -300, 95, -430, K.C); slab(150, 340, 130, -1100, 0, -430, K.G); // counter + fridge
     slab(150, 22, 90, -300, 100, -430, K.F); cyl(8, 60, -300, 100, -470, K.F); // sink + tap
     slab(420, 20, 170, 330, 92, -80, K.C); for (const x of [150, 510]) slab(24, 92, 150, x, 0, -80, K.D); // island / table
+    if (c.theme === 'night') c.gobo('blinds', [160, 260, -120], 900, 1500, 900, { pitch: 52, slat: 24 }); // lamp through venetian blinds: stripes on the floor, walls and the cards
     return { bg: K.bg, update() {} }; } });
 
   // ---- court: bench, seal, witness stand, jury box, defence table, public rail
@@ -84,4 +89,18 @@
   S.defineProp('barrel', (c, o) => { const g = new T.Group(), col = o.color || '#9a6335', b = new T.Mesh(new T.CylinderGeometry(62, 62, 168, 24), mat(col)); b.position.y = 84; b.castShadow = b.receiveShadow = true; g.add(b); for (const y of [40, 130]) { const r = new T.Mesh(new T.CylinderGeometry(65, 65, 12, 24), mat('#3d3a3a')); r.position.y = y; g.add(r); } return g; });
   S.defineProp('crate', (c, o) => { const g = new T.Group(), b = new T.Mesh(new T.BoxGeometry(130, 110, 120), mat(o.color || '#c79559')); b.position.y = 55; b.castShadow = b.receiveShadow = true; g.add(b); return g; });
   S.defineProp('podium', (c, o) => { const g = new T.Group(), b = new T.Mesh(new T.BoxGeometry(150, 190, 110), mat(o.color || '#6c4a33')), t2 = new T.Mesh(new T.BoxGeometry(190, 18, 140), mat('#8a6446')); b.position.y = 95; t2.position.y = 199; b.castShadow = t2.castShadow = true; g.add(b, t2); return g; });
+
+  // ---- hero props with real 3D models (orbit-safe)
+  S.defineProp('bottle', (c, o) => { const g = new T.Group(), s = o.size || 1, col = o.color || '#2f6a3b', pts = [[0, 0], [19, 0], [19, 92], [16, 102], [9, 114], [8, 146], [10, 150], [0, 150]].map(([r, y]) => new T.Vector2(r * s, y * s));
+    const body = new T.Mesh(new T.LatheGeometry(pts, 28), new T.MeshLambertMaterial({ color: col })); g.add(body);
+    const label = new T.Mesh(new T.CylinderGeometry(19.6 * s, 19.6 * s, 40 * s, 28, 1, true), new T.MeshLambertMaterial({ color: o.label || '#F4ECD6', side: T.DoubleSide })); label.position.y = 58 * s; g.add(label);
+    const band = new T.Mesh(new T.CylinderGeometry(19.8 * s, 19.8 * s, 5 * s, 28, 1, true), new T.MeshLambertMaterial({ color: o.ink2 || '#A43B2F', side: T.DoubleSide })); band.position.y = 52 * s; g.add(band);
+    const cork = new T.Mesh(new T.CylinderGeometry(8 * s, 8 * s, 9 * s, 14), new T.MeshLambertMaterial({ color: o.cork || '#C9A15A' })); cork.position.y = 152 * s; g.add(cork); return g; });
+  S.defineProp('jug', (c, o) => { const g = new T.Group(), col = o.color || '#B88A4A', pts = [[0, 0], [38, 0], [46, 40], [46, 90], [26, 120], [16, 132], [18, 150], [0, 150]].map(([r, y]) => new T.Vector2(r, y)); g.add(new T.Mesh(new T.LatheGeometry(pts, 24), new T.MeshLambertMaterial({ color: col }))); const h = new T.Mesh(new T.TorusGeometry(22, 5, 8, 16, Math.PI), new T.MeshLambertMaterial({ color: col })); h.position.set(48, 85, 0); h.rotation.z = -Math.PI / 2; g.add(h); return g; });
+  S.defineProp('bars', (c, o) => { const g = new T.Group(), n = o.n || 7, pitch = o.pitch || 40, h = o.h || 380, m = new T.MeshLambertMaterial({ color: o.color || '#2A3647' }); for (let i = 0; i < n; i++) { const b = new T.Mesh(new T.CylinderGeometry(7, 7, h, 10), m); b.position.set((i - (n - 1) / 2) * pitch, h / 2, 0); g.add(b); } for (const y of [10, h - 10]) { const r = new T.Mesh(new T.BoxGeometry(pitch * n, 16, 22), m); r.position.y = y; g.add(r); } return g; });
+  S.defineProp('coinstack', (c, o) => { const g = new T.Group(), n = o.n || 24, cols = o.cols || 1, m = [new T.MeshLambertMaterial({ color: '#F2B705' }), new T.MeshLambertMaterial({ color: '#E8A800' })]; for (let k = 0; k < cols; k++) for (let i = 0; i < n; i++) { const ci = new T.Mesh(new T.CylinderGeometry(34, 34, 8, 24), m[i % 2]); ci.position.set((k - (cols - 1) / 2) * 84 + (hash(i * 3.1 + k) - 0.5) * 3, 4 + i * 8.4, (hash(i + k * 5) - 0.5) * 3); g.add(ci); } return g; });
+  S.defineProp('yearrack', (c, o) => { const g = new T.Group(), cols = o.cols || 19, rows = o.rows || 2, w = cols * 52 + 20, h = rows * 58 + 20, wood = new T.Mesh(new T.BoxGeometry(w, h, 60), new T.MeshLambertMaterial({ color: '#8c5a35' })); wood.position.y = h / 2; g.add(wood); let k = 0; for (let r = 0; r < rows; r++) for (let i = 0; i < cols; i++, k++) { const d = new T.Mesh(new T.CylinderGeometry(20, 20, 8, 16), new T.MeshLambertMaterial({ color: k === (o.hl ?? -1) ? '#FF3B30' : (k % 3 ? '#2e1f2c' : '#7d2b3a') })); d.rotation.x = Math.PI / 2; d.position.set(-w / 2 + 36 + i * 52, 40 + r * 58, 32); g.add(d); } return g; });
+  S.defineProp('torch', (c, o) => { const g = new T.Group(), h = new T.Mesh(new T.CylinderGeometry(7, 9, 70, 12), new T.MeshLambertMaterial({ color: '#2A3647' })); h.position.y = 35; g.add(h); const head = new T.Mesh(new T.CylinderGeometry(16, 10, 30, 14), new T.MeshLambertMaterial({ color: '#59606B' })); head.position.y = 84; g.add(head);
+    const beam = new T.Mesh(new T.CylinderGeometry(14, o.spread || 130, o.len || 620, 24, 1, true), new T.MeshBasicMaterial({ color: c.theme === 'night' ? '#F4D9A0' : '#FFF4DC', transparent: true, opacity: 0.2, depthWrite: false, side: T.DoubleSide })); beam.userData.noCast = true; const pivot = new T.Group(); pivot.position.y = 90; beam.position.y = (o.len || 620) / 2; pivot.add(beam); g.add(pivot); pivot.rotation.z = -(o.tilt ?? 1.2);
+    g.userData.update = t => { pivot.rotation.y = o.sweep ? Math.sin(t * (o.sweepSpeed || 1.2)) * o.sweep : 0; }; g.rotation.y = 0; return g; });
 })();
