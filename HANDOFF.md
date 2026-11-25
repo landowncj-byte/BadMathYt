@@ -32,6 +32,7 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 - **Model split:** **Fable** = all research (facts + competitor/viral content research). **Opus** = creation + directing (picks topics, hooks, 3 scripts, pronunciation pass, direction, reviews every contact sheet, approves). **Sonnet** = coding/rendering/mixing. **Haiku** = voice timings, sound, captions, packaging.
 - **Voice:** Shorts = free Kokoro `am_michael` (speed 1.12) via `brand/voice/pronounce.py` (correct pronunciation; captions show normal spelling). Long-forms = paid ElevenLabs **Owen – Calm, Trustworthy Narrator**, voice_id `83MXTnoLsr3jX4Sl4gL4` (Creator plan, ~121k credits/month ≈ 3 long-forms/week). Never spend ElevenLabs on Shorts/SFX.
 - **Sound/music:** free CC0 only (`brand/sfx-library`, Openverse/Freesound). No synthesized "slop" beeps.
+- **Brand lock:** v2 visuals evolve the look but never change the avatar design, profile pictures, pills, fonts, wordmark or series colors (STYLE §20).
 - **No** "link in bio", no financial advice, no picks, AI labels OFF on all platforms (2026-11-25; we never imitate real people — if a video ever does, label that one), no real logos/brands in art, never copy competitors' topics/scripts/footage (copy patterns only). Memes: only user-supplied Vlipsy clips under MEMES.md guardrails; never scrape Vlipsy.
 - **Budget:** ~$150/mo (Claude Max + ElevenLabs Creator).
 

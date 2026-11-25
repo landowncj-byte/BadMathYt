@@ -21,7 +21,7 @@ MODEL SPLIT (user rule):
    - Instagram badmath.tv + Facebook BadMath.tv: the most vulgar and disrespectful, 15–25 s, built for sends and saves.
    - Voice everything through brand/voice/pronounce.py (say vs show).
    - Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
-   - VISUALS (STYLE §20): if brand/engine-v2/READY exists, build every NEW video with engine v2 + brand/VISUAL-V2.md (camera push-ins on spoken numbers, storyteller moving in front of/behind graphics, satisfying springs, no neon). If not ready yet, use v1 and check again for the next video. Don't rebuild already-built or scheduled videos.
+   - VISUALS (STYLE §20): if brand/engine-v2/READY exists, build every NEW video with engine v2 + brand/VISUAL-V2.md (camera push-ins on spoken numbers, storyteller moving in front of/behind graphics, satisfying springs, no neon). If not ready yet, use v1 and check again for the next video. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md — Fable stays on research only.
 
 4. VOICE: Shorts use the FREE Kokoro am_michael voice. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
 
