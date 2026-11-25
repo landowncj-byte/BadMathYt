@@ -169,7 +169,7 @@
         g.save(); g.translate(40 - 20 * slide, lerp(ty, rest - 300, up)); g.rotate(-0.12 + 0.08 * Math.sin(t * 20) * Math.exp(-Math.max(0, t - ti) * 6)); tag(g, theme, 400, 230, '1%', 168); g.restore();
         g.restore(); if (t > ti && rk === 0) burst(g, 40, base - n * bh - 20, 300, theme.bad, t - ti - 0.02, 16, 0.5);
       } else if (p.variant === 'mouth') {
-        const te = t >= p.reAt ? t - p.reAt : t, open = te < 2.7 ? 36 + 34 * Math.abs(Math.sin(te * 8.2)) : 6 + 26 * Math.exp(-(te - 2.7) * 3), tw = 470, th2 = 250, cy = 20;
+        const te = t >= p.reAt ? t - p.reAt : t, open = te < 2.7 ? 56 + 50 * Math.abs(Math.sin(te * 8.2)) : 6 + 40 * Math.exp(-(te - 2.7) * 3), tw = 470, th2 = 250, cy = 20;
         for (let i = 0; i < 9; i++) { const u0 = ((te * 1.25 + i / 9) % 1); if (te >= 2.9) continue; const u = ease.in(u0), x = lerp(-340, -10, u), y = lerp(230 + (hash(i * 2.3) - 0.5) * 100, cy + 10, u), s = lerp(1, 0.35, u);
           g.save(); g.globalAlpha *= (te < 2.7 ? 1 : clamp(1 - (te - 2.7) / 0.2)); g.translate(x, y); g.rotate(-0.7 * u + (hash(i) - 0.5) * 0.4); g.scale(s, s); bill(g, -90, -26, 180, 52); g.restore(); }
         g.save(); g.translate(40, cy); g.save(); g.translate(0, -open / 2); g.beginPath(); g.moveTo(-tw / 2, 0); g.lineTo(-tw / 2, -th2 / 2 + 30); g.quadraticCurveTo(-tw / 2, -th2 / 2, -tw / 2 + 40, -th2 / 2); g.lineTo(tw / 2 - 40, -th2 / 2); g.quadraticCurveTo(tw / 2, -th2 / 2, tw / 2, -th2 / 2 + 30); g.lineTo(tw / 2, 0); g.closePath();
@@ -213,7 +213,7 @@ BM2.scene({
     // --- station 1: frame-0 slam + loop frame ---
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: 3.85, props: { lines: [[['JUST ', 'paper'], ['1%', 'bad']]], size: 150 } },
     { id: 'ate', type: 'text', at: [0, -420], in: '@ate', out: 3.85, props: { lines: [[['ATE', 'paper']], [['$316,661', 'bad']]], size: 130, per: 0.12 } },
-    { id: 'art', type: 'slam', at: [0, 250], scale: 1.3, in: -1, props: { variant: 'mouth', reAt: 34.3 } },
+    { id: 'art', type: 'slam', at: [0, 330], scale: 1.6, in: -1, props: { variant: 'mouth', reAt: 34.3 } },
     { id: 'endt', type: 'text', at: [0, -690], in: 34.3, props: { lines: [[['JUST ', 'paper'], ['1%', 'bad']]], size: 150 } },
     // --- station 2: twin ---
     { id: 'twin', type: 'twin', at: [1750, 0], in: 3.9, props: { bpAt: 4.3, bpOut: 10.2, feeTagAt: '@charges+0.3', ripAt: 26.75,
@@ -234,7 +234,7 @@ BM2.scene({
     { at: 0, beat: 'side-by-side', focus: F0, ...FR, pose: 'shock', keep: ['hook', 'art', 'endt', 'ate'] },
     { at: 0.5, beat: 'zoom-on-number', focus: 'hook', fill: 0.94, sy: 760, rot: 0.008, pose: 'point', keep: ['hook', 'art'] },
     { at: '@it', beat: 'pull-back', focus: F0, ...FR, pose: 'talk', keep: ['hook', 'art', 'ate'] },
-    { at: '@ate', beat: 'zoom-on-number', focus: 'ate', fill: 0.92, sy: 700, rot: -0.01, pose: 'shock', keep: ['hook', 'art', 'ate'] },
+    { at: '@ate', beat: 'zoom-on-number', focus: 'ate', fill: 0.8, sy: 760, rot: -0.01, pose: 'shock', keep: ['hook', 'art', 'ate'] },
     { at: 2.7, beat: 'pull-back', focus: F0, ...FR, pose: 'talk', keep: ['hook', 'art', 'ate'] },
     // twin
     { at: '@Same', beat: 'graphic-hero', focus: 'twin', move: 'whip', fill: 0.9, maxH: 900, sy: 840, st: 'corner-left', pose: 'idle' },

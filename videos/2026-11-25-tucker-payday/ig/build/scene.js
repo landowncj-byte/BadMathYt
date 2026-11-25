@@ -202,7 +202,7 @@
       const line = (segs, y) => { const w = segW(segs, p.size); let x = -w / 2; g.save(); g.shadowColor = 'rgba(0,0,0,.5)'; g.shadowBlur = 18 * B.zoomNow; g.shadowOffsetY = 8 * B.zoomNow; for (const [s0, tn] of segs) { txt(g, s0, x, y, F.hero(p.size), B.tone(tn, false), 'left'); x += mw(s0, F.hero(p.size)); } g.restore(); };
       line(p.l1, -370); line(p.l2, -235);
       // red source stamp thumps in
-      { const k = clamp(lt / 0.2), sc = 1 + 0.45 * (1 - ease.out(k)); g.save(); g.translate(230, -488); g.rotate(0.04); g.scale(sc, sc); paper(g, -250, -38, 500, 76, 10, { fill: theme.paper }); g.strokeStyle = theme.badInk; g.lineWidth = 5; rr(g, -242, -31, 484, 62, 6); g.stroke(); txt(g, 'PER DOJ · ONE BORROWER', 0, 3, F.cap(30), theme.badInk); g.restore(); }
+      { const k = clamp(lt / 0.2), sc = 1 + 0.45 * (1 - ease.out(k)); g.save(); g.translate(340, -490); g.rotate(0.04); g.scale(sc, sc); paper(g, -250, -38, 500, 76, 10, { fill: theme.paper }); g.strokeStyle = theme.badInk; g.lineWidth = 5; rr(g, -242, -31, 484, 62, 6); g.stroke(); txt(g, 'PER DOJ · ONE BORROWER', 0, 3, F.cap(30), theme.badInk); g.restore(); }
       g.restore(); burst(g, 0, -100, 560, theme.bad, lt + 0.1, 20, 0.6);
     },
   });

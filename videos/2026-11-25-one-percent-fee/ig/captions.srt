@@ -1,20 +1,19 @@
 1
-00:00:00,000 --> 00:00:03,994
-A one percent fee sounds like nothing.
-It's a slow-ass robbery, and it's
-legal.
+00:00:00,000 --> 00:00:03,687
+One percent sounds like nothing. It's a slow-ass robbery, and it's legal.
 
 2
-00:00:04,844 --> 00:00:10,175
-Five hundred a month for forty years
-at seven percent. The one percent fee
-eats three hundred sixteen grand.
+00:00:04,537 --> 00:00:06,971
+Ever checked your fees? Double-tap if that's a no.
 
 3
-00:00:10,425 --> 00:00:13,226
-That's more than you ever put in.
+00:00:07,221 --> 00:00:12,820
+Five hundred a month for forty years, at an assumed seven percent. That fee eats three hundred sixteen grand.
 
 4
-00:00:14,126 --> 00:00:16,596
-Send this to the friend who's never
-checked their fees.
+00:00:13,120 --> 00:00:15,285
+Send this to the friend who hasn't checked either.
+
+5
+00:00:16,235 --> 00:00:20,970
+You only put in two forty. Still think one percent's nothing?
