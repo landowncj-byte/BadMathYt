@@ -159,7 +159,7 @@ BM2.scene({
   ],
   beats: [
     { at: 0, beat: 'graphic-hero', focus: { x: 0, y: -190, w: 900, h: 700 }, keep: ['hook1', 'hook2'], fill: 0.95, sy: 740, st: { x: 905, y: 1400, s: 0.8 }, pose: 'talk' },
-    { at: '@congrats', beat: 'zoom-on-number', focus: 'hook2', fill: 0.96, sy: 740, pose: 'shrug' },                                    // push 1
+    { at: '@congrats', beat: 'zoom-on-number', focus: 'hook2', fill: 0.8, sy: 740, pose: 'shrug' },                                    // push 1
     { at: '@5', beat: 'peek', focus: 'stmt', move: 'whip', fill: 0.8, sy: 880, maxH: 800 },
     { at: '@22%', beat: 'zoom-on-number', focus: 'stmt.apr', fill: 0.8, sy: 740, rot: -0.008, dur: 0.5, st: 'corner-left' },           // push 2
     { at: '@minimum#2', beat: 'zoom-on-number', focus: 'stmt.due', fill: 0.84, sy: 790, st: 'corner-left' },                            // push 3
