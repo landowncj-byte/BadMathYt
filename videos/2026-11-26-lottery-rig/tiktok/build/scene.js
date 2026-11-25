@@ -381,10 +381,10 @@
 })();
 // TikTok cut v3 (~85 s) — Decoded, spicy. Stations: A hook=billboard (0,0) · Y years (1700,0) · O office (3400,0) · R robot+badge (5100,0)
 //   · S steps (5100,1900) · M map (3400,1900) · B2 billboard (1700,1900) · P plea (0,1900)
-const END = 83.92;
+const END = 86.67;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 84.22,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 86.97,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     // ---- A: frame 0 = the jackpot nobody collected ----
@@ -495,7 +495,7 @@ BM2.scene({
     { at: '@pleaded', beat: 'graphic-hero', focus: 'plea', fill: 0.84, maxH: 940, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.6 },
     { at: '@guilty', beat: 'zoom-on-number', focus: 'plea.guilty', fill: 0.9, maxH: 560, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 },
     { at: '@meaning', beat: 'side-by-side', focus: ['plea', 'pt'], sx: 540, sy: 830, fill: 0.9, maxH: 960, st: 'corner', pose: 'point', point: 'pt', dur: 0.7 },
-    { at: '@admitted', beat: 'zoom-on-number', focus: 'pt', fill: 0.8, maxH: 320, sy: 900, st: 'corner', pose: 'point', point: 'pt', dur: 0.5 },
+    { at: '@admitted', beat: 'graphic-hero', focus: ['plea', 'pt'], fill: 1.0, maxH: 900, sy: 850, st: 'corner', pose: 'point', point: 'pt', dur: 0.6 },
     { at: '@court#2+0.9', beat: 'side-by-side', focus: 'plea', sx: 690, sy: 830, fill: 0.74, maxH: 940, st: 'left', pose: 'shock', dur: 0.7 },
     { at: '@sentenced', beat: 'graphic-hero', focus: 'plea', fill: 0.84, maxH: 940, sy: 830, st: 'corner-left', pose: 'idle', dur: 0.6 },
     { at: '@25', beat: 'zoom-on-number', focus: 'plea.years', fill: 0.9, maxH: 620, sy: 1060, rot: -0.02, st: 'corner-left', pose: 'shock', dur: 0.4, lead: 0.15 },

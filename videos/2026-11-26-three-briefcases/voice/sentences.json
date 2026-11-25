@@ -2,96 +2,96 @@
  {
   "text": "Nearly a thousand PhDs got this puzzle wrong. Your turn.",
   "start": 0.0,
-  "end": 3.96
+  "end": 3.9
  },
  {
   "text": "Picture three briefcases. One holds a million dollars, and two are empty.",
-  "start": 4.82,
-  "end": 9.42
+  "start": 4.64,
+  "end": 9.06
  },
  {
   "text": "That's a hundred bucks a day. For twenty-seven years.",
-  "start": 9.88,
-  "end": 12.94
+  "start": 9.54,
+  "end": 12.54
  },
  {
   "text": "You pick a case. But the host knows where the money is.",
-  "start": 13.56,
-  "end": 16.74
+  "start": 13.14,
+  "end": 16.08
  },
  {
   "text": "And he always opens an empty case you didn't pick.",
-  "start": 16.74,
-  "end": 19.88
+  "start": 16.08,
+  "end": 19.16
  },
  {
   "text": "Then he asks: stay with yours, or switch? Hit like if it feels fifty-fifty.",
-  "start": 20.42,
-  "end": 24.52
+  "start": 19.68,
+  "end": 23.58
  },
  {
   "text": "A columnist printed the answer in nineteen ninety: switch.",
-  "start": 25.7,
-  "end": 29.14
+  "start": 24.7,
+  "end": 27.88
  },
  {
   "text": "By her count, nearly a thousand PhDs wrote in to say she was wrong.",
-  "start": 29.6,
-  "end": 34.04
+  "start": 28.3,
+  "end": 32.48
  },
  {
   "text": "Let's check every\u2014 every possible start.",
-  "start": 34.46,
-  "end": 37.38
+  "start": 32.98,
+  "end": 35.74
  },
  {
   "text": "One: you picked the money. The other case is empty, so switching loses.",
-  "start": 38.06,
-  "end": 42.12
+  "start": 36.36,
+  "end": 40.2
  },
  {
   "text": "Send this to the friend who'd stop listening now.",
-  "start": 42.82,
-  "end": 45.02
+  "start": 40.76,
+  "end": 42.94
  },
  {
   "text": "Two: you picked an empty case. So he has to open the other empty one, and switching wins.",
-  "start": 45.56,
-  "end": 50.72
+  "start": 43.42,
+  "end": 48.54
  },
  {
   "text": "Three: you picked the other empty case, so switching wins again.",
-  "start": 51.36,
-  "end": 55.22
+  "start": 49.18,
+  "end": 52.72
  },
  {
   "text": "That's two wins out of three.",
-  "start": 55.7,
-  "end": 57.16
+  "start": 53.14,
+  "end": 54.6
  },
  {
   "text": "So switching literally doubles your chances. Wild, right?",
-  "start": 57.16,
-  "end": 60.94
+  "start": 54.92,
+  "end": 58.5
  },
  {
   "text": "Follow, this page settles arguments.",
-  "start": 61.56,
-  "end": 63.64
+  "start": 59.04,
+  "end": 60.86
  },
  {
   "text": "Make it a hundred cases. You pick one, and he opens ninety-eight empties.",
-  "start": 64.34,
-  "end": 68.78
+  "start": 61.52,
+  "end": 65.6
  },
  {
   "text": "Now switching wins ninety-nine percent of the time.",
-  "start": 69.26,
-  "end": 71.56
+  "start": 66.06,
+  "end": 68.38
  },
  {
   "text": "So\u2026 stay or switch? Your turn.",
-  "start": 71.86,
-  "end": 74.84
+  "start": 68.72,
+  "end": 71.62
  }
 ]

@@ -1,9 +1,9 @@
 // TikTok cut v3 (~85 s) — Decoded, spicy. Stations: A hook=billboard (0,0) · Y years (1700,0) · O office (3400,0) · R robot+badge (5100,0)
 //   · S steps (5100,1900) · M map (3400,1900) · B2 billboard (1700,1900) · P plea (0,1900)
-const END = 83.92;
+const END = 86.67;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 84.22,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 86.97,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     // ---- A: frame 0 = the jackpot nobody collected ----

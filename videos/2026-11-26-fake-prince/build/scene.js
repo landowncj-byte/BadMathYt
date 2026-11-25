@@ -494,7 +494,7 @@
 const SB = 'side-by-side', GH = 'graphic-hero', ZN = 'zoom-on-number', PF = 'presenter-front', PK = 'peek', PB = 'pull-back';
 const MUG = 'brand/photos/anthony-gignac/1.jpg';
 BM2.scene({
-  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 88.12,
+  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 86.99,
   footnote: ['PLEADED GUILTY 2018 · SENTENCED MAY 31, 2019 · SOURCES: DOJ S.D. FLORIDA, AP', 'ABOUT 30 YEARS = 1988 TO THE 2017 ARREST · ILLUSTRATIONS / PROPS (GENERIC)', 'PHOTO: MIAMI-DADE COUNTY BOOKING PHOTO · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S0 frame 0 (loop target) ----
