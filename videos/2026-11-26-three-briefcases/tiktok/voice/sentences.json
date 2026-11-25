@@ -1,52 +1,92 @@
 [
  {
-  "text": "A million bucks, two briefcases left. Stay or switch? 'Cause your gut's wrong.",
+  "text": "Fifty-fifty is the wrong answer to this million-dollar question.",
   "start": 0.0,
-  "end": 3.947
+  "end": 3.313
  },
  {
-  "text": "Three cases, one has the cash, and you picked one.",
-  "start": 4.247,
-  "end": 6.691
+  "text": "Three briefcases. One's got a million bucks, two are empty.",
+  "start": 4.513,
+  "end": 7.475
  },
  {
-  "text": "The host knows where the cash is, and always opens an empty one.",
-  "start": 6.941,
-  "end": 10.123
+  "text": "That's a hundred bucks a day. For twenty-seven years.",
+  "start": 8.075,
+  "end": 10.742
  },
  {
-  "text": "Tap the heart if you're thinking fifty-fifty.",
-  "start": 10.373,
-  "end": 12.494
+  "text": "You pick a case. Then the host, who knows where the cash is, always opens an empty one.",
+  "start": 12.042,
+  "end": 16.182
  },
  {
-  "text": "Nah, your pick was one in three, and still is.",
-  "start": 13.344,
-  "end": 15.599
+  "text": "Now he asks: wanna switch? Tap the heart if you're thinking coin flip.",
+  "start": 16.582,
+  "end": 19.927
  },
  {
-  "text": "Send this to the friend who'll argue.",
-  "start": 15.849,
-  "end": 17.795
+  "text": "Nah, bro. Try a hundred cases.",
+  "start": 20.327,
+  "end": 22.217
  },
  {
-  "text": "The other\u2014 the case he skipped? That one's two in three.",
-  "start": 18.045,
-  "end": 20.737
+  "text": "You pick one, and he opens ninety-eight empties.",
+  "start": 22.817,
+  "end": 25.256
  },
  {
-  "text": "Don't buy it? Follow, this page settles arguments.",
-  "start": 21.437,
-  "end": 23.99
+  "text": "He skipped just\u2014 just one case. Your pick was a one in a hundred guess.",
+  "start": 25.856,
+  "end": 29.368
  },
  {
-  "text": "The real game-show host tried it himself, and guess what won? Switching.",
-  "start": 24.99,
-  "end": 28.484
+  "text": "So the money's in his case ninety-nine percent of the time.",
+  "start": 29.868,
+  "end": 32.675
  },
  {
-  "text": "So\u2026 stay or switch?",
-  "start": 29.084,
-  "end": 30.536
+  "text": "Send this to the friend who'd still keep their case.",
+  "start": 33.475,
+  "end": 35.79
+ },
+ {
+  "text": "Three cases works the same. Pick the money first, and switching loses.",
+  "start": 36.19,
+  "end": 39.795
+ },
+ {
+  "text": "Pick the first empty case, and he has to open the other empty one, so switching wins.",
+  "start": 40.195,
+  "end": 44.521
+ },
+ {
+  "text": "And the second empty case? Same deal.",
+  "start": 45.521,
+  "end": 47.63
+ },
+ {
+  "text": "Follow, this page settles arguments.",
+  "start": 48.03,
+  "end": 50.037
+ },
+ {
+  "text": "Switching wins two times out of three.",
+  "start": 51.037,
+  "end": 53.026
+ },
+ {
+  "text": "A columnist printed that in nineteen ninety.",
+  "start": 54.426,
+  "end": 56.875
+ },
+ {
+  "text": "By her count, nearly a thousand PhDs wrote in to say she was wrong.",
+  "start": 57.275,
+  "end": 60.98
+ },
+ {
+  "text": "So who's wrong? Stay, or switch?",
+  "start": 61.68,
+  "end": 63.429
  }
 ]

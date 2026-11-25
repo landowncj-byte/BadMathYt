@@ -1,11 +1,18 @@
 [
- ["You took the doubling penny over a million bucks. Day twenty, you've got about five grand.", 0.6],
- ["[breath] Regret it yet? The deal's one penny that doubles daily for thirty days, no taxes.", 0.25],
- ["Tap the heart if you'd be sweating, 'cause day ten was five bucks.", 0.25],
- ["Day twenty-seven, you're at six hundred seventy-one grand, and still— still losing to the million.", 0.6],
- ["Send this to the friend who'd quit right here.", 0.25],
- ["Day twenty-eight, you finally pass it.", 0.25],
- ["Follow, 'cause the last day's stupid.", 0.4],
- ["Day thirty, you've got [gasp] five point three seven million.", 0.8],
- ["So, penny or million? One word.", 0.45]
+ ["You picked a penny over a million bucks. By day twenty, you've got about five grand.", 0.6],
+ ["[breath] Wait, back up. Somebody offers you a million bucks, right now.", 0.5],
+ ["Or one single penny, but it doubles every day for thirty days, no taxes.", 0.5],
+ ["Doubling means whatever you've got, you get that much again. So one penny, then two, then four.", 0.4],
+ ["Tap the heart if you'd take the penny.", 0.4],
+ ["So you take the penny, and after a whole week, you're holding sixty-four cents.", 0.6],
+ ["Day ten, you've got five bucks, which buys you a sad little sandwich.", 0.5],
+ ["Day twenty, it's about five grand. And the million's still about a hundred ninety times bigger.", 0.7],
+ ["Send this to the friend who'd rage quit right here.", 0.4],
+ ["Day twenty-seven, you're at six hundred seventy-one grand.", 0.6],
+ ["Three days left, and you're still— still losing to the million.", 0.5],
+ ["Follow, 'cause the ending's stupid.", 0.5],
+ ["Day twenty-eight, you finally pass a million. Day twenty-nine, it doubles again.", 0.5],
+ ["[gasp] And day thirty, you're holding five point three seven million bucks.", 0.8],
+ ["Almost all of it, seven eighths, came in the last three days.", 0.6],
+ ["So, penny or million? One word.", 0.4]
 ]

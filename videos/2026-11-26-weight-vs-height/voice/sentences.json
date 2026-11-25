@@ -1,67 +1,97 @@
 [
  {
-  "text": "Grab the hundreds here, and the average guy loses two hundred grand.",
+  "text": "Choosing hundred dollar bills here costs the average guy two hundred grand.",
   "start": 0.0,
-  "end": 3.4
+  "end": 3.586
  },
  {
-  "text": "Two piles of cash: your weight in twenties, or your height in hundreds, stacked flat?",
-  "start": 4.6,
-  "end": 8.419
+  "text": "A stranger offers you two piles of cash. Keep one.",
+  "start": 4.986,
+  "end": 8.016
  },
  {
-  "text": "Hundreds are worth five times more. Easy, right?",
-  "start": 8.669,
-  "end": 11.294
+  "text": "Pile one is your weight in twenty dollar bills.",
+  "start": 9.116,
+  "end": 11.609
  },
  {
-  "text": "Hit like if you picked the stack.",
-  "start": 11.544,
-  "end": 13.073
+  "text": "Pile two is hundred dollar bills, stacked flat, as tall as you.",
+  "start": 12.209,
+  "end": 15.43
  },
  {
-  "text": "But say a bill weighs about a gram, so one pound is four hundred fifty-four bills.",
-  "start": 13.973,
-  "end": 17.852
+  "text": "A hundred is five twenties, so hundreds win easy, right?",
+  "start": 16.13,
+  "end": 19.102
  },
  {
-  "text": "And one inch of stack is two hundred thirty-three.",
-  "start": 18.352,
-  "end": 20.702
+  "text": "Hit like if that's your pile.",
+  "start": 19.602,
+  "end": 21.153
  },
  {
-  "text": "Per the CDC, the average American man is one ninety-nine pounds, about five nine.",
-  "start": 21.802,
-  "end": 26.688
+  "text": "But wait. Every bill weighs the same, about one gram.",
+  "start": 22.353,
+  "end": 25.127
+ },
+ {
+  "text": "So a pound of twenties is about nine thousand dollars.",
+  "start": 26.427,
+  "end": 29.289
+ },
+ {
+  "text": "And one inch of hundreds is about twenty-three thousand.",
+  "start": 30.689,
+  "end": 33.403
  },
  {
   "text": "Send this to the friend who'd grab hundreds without\u2014 without blinking.",
-  "start": 26.938,
-  "end": 30.061
+  "start": 34.203,
+  "end": 37.326
  },
  {
-  "text": "His height in hundreds is one point six million, and it weighs thirty-five pounds.",
-  "start": 30.361,
-  "end": 34.551
+  "text": "But here's the catch: you've got way more pounds than inches.",
+  "start": 37.926,
+  "end": 40.729
  },
  {
-  "text": "His weight's next. Follow, this page does the math you didn't.",
-  "start": 35.051,
-  "end": 37.808
+  "text": "Per the CDC, the average American man weighs one ninety-nine pounds.",
+  "start": 42.029,
+  "end": 45.976
  },
  {
-  "text": "His weight in twenties is one point eight million.",
-  "start": 38.258,
-  "end": 40.801
+  "text": "But he's only sixty-nine inches tall.",
+  "start": 46.675,
+  "end": 48.819
  },
  {
-  "text": "The small bills win, by two hundred grand.",
-  "start": 42.751,
-  "end": 44.994
+  "text": "So his height in hundreds is about one point six million.",
+  "start": 49.519,
+  "end": 52.408
  },
  {
-  "text": "So\u2026 twenties or hundreds? One word.",
-  "start": 45.694,
-  "end": 47.871
+  "text": "His weight's next, and it's worth a follow.",
+  "start": 53.908,
+  "end": 55.93
+ },
+ {
+  "text": "His weight in twenties is about one point eight million.",
+  "start": 56.53,
+  "end": 59.323
+ },
+ {
+  "text": "The small bills win by two hundred grand.",
+  "start": 61.573,
+  "end": 63.766
+ },
+ {
+  "text": "That's a hundred bucks a day for over five years.",
+  "start": 65.166,
+  "end": 67.651
+ },
+ {
+  "text": "Still choosing the hundred dollar bills?",
+  "start": 68.451,
+  "end": 70.392
  }
 ]

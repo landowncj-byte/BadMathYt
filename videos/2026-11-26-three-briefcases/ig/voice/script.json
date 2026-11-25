@@ -1,26 +1,66 @@
 [
  [
-  "This puzzle beat nearly a thousand PhDs. Think your ass is smarter?",
-  0.25
+  "A million bucks, two cases left, and your gut's full of shit.",
+  0.6
  ],
  [
-  "Three briefcases, one has a million. Double-tap once you've picked.",
-  0.25
+  "[breath] Rewind. Three briefcases, and one has a million bucks.",
+  0.6
  ],
  [
-  "The host knows where the money is and always opens an empty one. Fifty-fifty? Bullshit.",
-  0.25
+  "That's a hundred bucks a day. For twenty-seven damn years.",
+  0.7
  ],
  [
-  "Send this to someone who'd swear it's fifty-fifty.",
-  0.25
+  "You pick a case. Then the host, who knows where the money is, opens an empty one.",
+  0.4
  ],
  [
-  "Staying wins one in three, but switching wins two. [beat]",
+  "He always does that. Then he asks: stay, or switch?",
+  0.4
+ ],
+ [
+  "Double-tap if your gut says fifty-fifty.",
+  0.4
+ ],
+ [
+  "Bullshit. Now check every— every possible start.",
   0.3
  ],
  [
-  "So, stay or switch? Don't join the PhDs.",
-  0.25
+  "Okay, say you picked the money. Switch, and you're screwed.",
+  0.4
+ ],
+ [
+  "Say you picked the first empty case. He has to open the other empty one, so switching wins.",
+  0.4
+ ],
+ [
+  "Send this to the friend who'd argue with a calculator.",
+  0.4
+ ],
+ [
+  "Now say you picked the second empty case. Same deal, switching wins again.",
+  0.4
+ ],
+ [
+  "That's two wins out of three.",
+  0.8
+ ],
+ [
+  "A columnist printed that, and by her count, nearly a thousand PhDs wrote in to say she's wrong.",
+  0.7
+ ],
+ [
+  "[smack] Still doubt it? Make it a hundred cases, and he opens ninety-eight empties.",
+  0.6
+ ],
+ [
+  "Your case is a one in a hundred guess. The case he skipped is ninety-nine percent.",
+  0.9
+ ],
+ [
+  "So with a million bucks on it: stay, or switch?",
+  0.4
  ]
 ]

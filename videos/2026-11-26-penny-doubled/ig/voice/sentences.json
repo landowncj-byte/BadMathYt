@@ -1,27 +1,77 @@
 [
  {
-  "text": "A million bucks now, or a penny that doubles for thirty days? Pick.",
+  "text": "Taking the million bucks costs your dumb ass over four million dollars.",
   "start": 0.0,
-  "end": 3.523
+  "end": 3.516
  },
  {
-  "text": "Double-tap if you said penny, but on day twenty, your ass has about five grand.",
-  "start": 3.773,
-  "end": 7.69
+  "text": "Here's the game. Option one, you get a million bucks, right now.",
+  "start": 4.38,
+  "end": 7.426
  },
  {
-  "text": "Day twenty-seven, you're still losing. Send this to the friend who'd bail.",
-  "start": 8.89,
-  "end": 12.342
+  "text": "Option two, one penny that doubles every day for thirty days, no taxes.",
+  "start": 7.926,
+  "end": 11.762
  },
  {
-  "text": "And day thirty? That's five point three seven fucking million.",
-  "start": 12.642,
-  "end": 16.405
+  "text": "Doubling's easy. Whatever you have, you get that much again, so one penny becomes two, then four.",
+  "start": 12.262,
+  "end": 17.008
  },
  {
-  "text": "Seven eighths of it shows up in the last three days. So, penny or million?",
-  "start": 17.205,
-  "end": 20.954
+  "text": "Double-tap if you'd still take the penny.",
+  "start": 18.008,
+  "end": 20.084
+ },
+ {
+  "text": "'Cause yeah, it starts like shit. A week in, you've got a whole sixty-four cents.",
+  "start": 20.484,
+  "end": 24.514
+ },
+ {
+  "text": "Day ten, you're holding five bucks like an idiot. Day twenty, it's about five grand.",
+  "start": 25.114,
+  "end": 29.294
+ },
+ {
+  "text": "And the million's still about a hundred ninety times bigger.",
+  "start": 29.894,
+  "end": 32.609
+ },
+ {
+  "text": "Send this to the friend who'd bail right here.",
+  "start": 33.309,
+  "end": 35.486
+ },
+ {
+  "text": "Day twenty-seven, you've got six hundred seventy-one grand, and you're still fucking losing.",
+  "start": 36.486,
+  "end": 40.859
+ },
+ {
+  "text": "Three days left, and here's where it goes nuts.",
+  "start": 42.059,
+  "end": 44.318
+ },
+ {
+  "text": "Day twenty-eight, it doubles past a million. Day twenty-nine, it doubles again.",
+  "start": 44.818,
+  "end": 48.772
+ },
+ {
+  "text": "And day thirty, the last day? Five point three seven fucking million.",
+  "start": 49.579,
+  "end": 53.078
+ },
+ {
+  "text": "Almost all of it, seven eighths, showed up in the last three days.",
+  "start": 54.478,
+  "end": 57.559
+ },
+ {
+  "text": "So that's over four million extra, just for not quitting. Penny or million?",
+  "start": 58.759,
+  "end": 62.576
  }
 ]

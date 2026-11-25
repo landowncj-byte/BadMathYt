@@ -1,32 +1,82 @@
 [
  {
-  "text": "This puzzle beat nearly a thousand PhDs. Think your ass is smarter?",
+  "text": "A million bucks, two cases left, and your gut's full of shit.",
   "start": 0.0,
-  "end": 3.912
+  "end": 2.871
  },
  {
-  "text": "Three briefcases, one has a million. Double-tap once you've picked.",
-  "start": 4.162,
-  "end": 7.537
+  "text": "Rewind. Three briefcases, and one has a million bucks.",
+  "start": 4.071,
+  "end": 6.897
  },
  {
-  "text": "The host knows where the money is and always opens an empty one. Fifty-fifty? Bullshit.",
-  "start": 8.387,
-  "end": 13.062
+  "text": "That's a hundred bucks a day. For twenty-seven damn years.",
+  "start": 8.097,
+  "end": 11.086
  },
  {
-  "text": "Send this to someone who'd swear it's fifty-fifty.",
-  "start": 13.912,
-  "end": 16.373
+  "text": "You pick a case. Then the host, who knows where the money is, opens an empty one.",
+  "start": 12.386,
+  "end": 16.115
  },
  {
-  "text": "Staying wins one in three, but switching wins two.",
-  "start": 17.223,
-  "end": 20.482
+  "text": "He always does that. Then he asks: stay, or switch?",
+  "start": 17.115,
+  "end": 19.733
  },
  {
-  "text": "So, stay or switch? Don't join the PhDs.",
-  "start": 20.782,
-  "end": 23.602
+  "text": "Double-tap if your gut says fifty-fifty.",
+  "start": 20.133,
+  "end": 22.32
+ },
+ {
+  "text": "Bullshit. Now check every\u2014 every possible start.",
+  "start": 22.72,
+  "end": 25.35
+ },
+ {
+  "text": "Okay, say you picked the money. Switch, and you're screwed.",
+  "start": 26.25,
+  "end": 28.943
+ },
+ {
+  "text": "Say you picked the first empty case. He has to open the other empty one, so switching wins.",
+  "start": 29.343,
+  "end": 33.944
+ },
+ {
+  "text": "Send this to the friend who'd argue with a calculator.",
+  "start": 34.344,
+  "end": 36.938
+ },
+ {
+  "text": "Now say you picked the second empty case. Same deal, switching wins again.",
+  "start": 37.938,
+  "end": 41.715
+ },
+ {
+  "text": "That's two wins out of three.",
+  "start": 42.115,
+  "end": 43.666
+ },
+ {
+  "text": "A columnist printed that, and by her count, nearly a thousand PhDs wrote in to say she's wrong.",
+  "start": 45.066,
+  "end": 50.259
+ },
+ {
+  "text": "Still doubt it? Make it a hundred cases, and he opens ninety-eight empties.",
+  "start": 51.022,
+  "end": 54.653
+ },
+ {
+  "text": "Your case is a one in a hundred guess. The case he skipped is ninety-nine percent.",
+  "start": 55.253,
+  "end": 59.532
+ },
+ {
+  "text": "So with a million bucks on it: stay, or switch?",
+  "start": 60.432,
+  "end": 62.803
  }
 ]

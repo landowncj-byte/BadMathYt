@@ -1,38 +1,94 @@
 [
  [
-  "A billionaire says he paid over two million for fake wine.",
+  "A billionaire told a jury he paid two million for fake wine.",
+  0.8
+ ],
+ [
+  "[gasp] So who sold it? A guy named Rudy Kurniawan, a wine collector in California.",
+  0.5
+ ],
+ [
+  "Now, fancy old wine gets sold at auctions, where rich people bid and the highest price wins.",
   0.6
  ],
  [
-  "[gasp] And the seller? Prosecutors said he mixed old wine with newer wine and rebottled it.",
-  0.25
+  "In two thousand six, Rudy's collection sold for about thirty-five million dollars.",
+  0.8
  ],
  [
-  "Tap the heart if your wine cost ten bucks.",
-  0.25
+  "That's a thousand bucks a day for ninety-five years.",
+  0.8
  ],
  [
-  "He got convicted and sentenced to ten years in prison. [beat] But how'd he get caught?",
-  0.25
+  "Tap the heart if your wine has a screw cap.",
+  0.6
  ],
  [
-  "[smack] Send this to the friend who\u2014 who swirls the glass.",
-  0.25
+  "One of his sales even set a world record.",
+  0.6
  ],
  [
-  "And nope, it wasn't a taste test.",
-  0.3
+  "But here's what prosecutors said was going on at his house.",
+  0.5
  ],
  [
-  "The dumb part's next, so follow.",
-  0.4
+  "Step one, he mixed old wine with newer wine.",
+  0.5
  ],
  [
-  "His bottles said nineteen forty-five, but the winery first made that wine in nineteen eighty-two.",
+  "Step two, he poured it into old bottles, with fresh corks and wax.",
+  0.5
+ ],
+ [
+  "Step three, he added a label, and that house held thousands of labels.",
   0.7
  ],
  [
-  "Could you taste fake wine?",
-  0.45
+  "Yeah, prosecutors literally called it a wine factory.",
+  0.6
+ ],
+ [
+  "Send this to the friend who\u2014 who swirls the glass.",
+  0.6
+ ],
+ [
+  "So how'd he get caught? Nope, not a taste test.",
+  0.5
+ ],
+ [
+  "A New York auction listed his bottles of one French wine.",
+  0.5
+ ],
+ [
+  "Some of those labels were dated nineteen forty-five.",
+  0.8
+ ],
+ [
+  "The dumbest part's next, so follow.",
+  0.6
+ ],
+ [
+  "The actual winemaker objected, because his family first made that wine in nineteen eighty-two.",
+  0.9
+ ],
+ [
+  "So the label was thirty-seven years older than the wine.",
+  0.8
+ ],
+ [
+  "The FBI arrested Rudy in twenty twelve, and a jury convicted him of fraud.",
+  0.7
+ ],
+ [
+  "He was sentenced to ten years in prison.",
+  0.8
+ ],
+ [
+  "And he had to pay back over twenty-eight million dollars.",
+  0.9
+ ],
+ [
+  "So be real, could you taste a fake wine?",
+  0.5
  ]
 ]

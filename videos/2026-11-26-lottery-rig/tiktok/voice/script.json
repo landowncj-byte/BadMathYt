@@ -1,42 +1,86 @@
 [
  [
-  "This guy guarded the lottery computers. Then he rigged it, in five states.",
+  "A lottery jackpot advertised at sixteen point five million was never collected.",
+  0.7
+ ],
+ [
+  "[breath] Say you make fifty grand a year. You'd need three hundred thirty years to earn that.",
+  0.7
+ ],
+ [
+  "So who walks away from that kinda money? Okay, rewind.",
+  0.3
+ ],
+ [
+  "Meet Eddie Tipton. He worked at the Multi-State Lottery Association.",
+  0.3
+ ],
+ [
+  "That's one office running the computers that draw the numbers, for lotteries in many states.",
   0.4
  ],
  [
-  "[gasp] Yeah, he told a court he wrote code to predict the numbers.",
-  0.25
- ],
- [
-  "Tap the heart if you always knew.",
-  0.25
- ],
- [
-  "Then he gave people the numbers, he said, and they won and shared it with him. [beat]",
-  0.25
- ],
- [
-  "The biggest jackpot was advertised at sixteen point five million.",
-  0.8
- ],
- [
-  "[smack] Send this to the friend who plays every\u2014 every week.",
+  "A lottery computer's whole job is picking numbers nobody can guess, like a robot rolling dice.",
   0.4
  ],
  [
-  "So who actually got paid? Follow, it's perfect.",
+  "Tap the heart if that sounds impossible to cheat.",
   0.4
  ],
  [
-  "Nobody, not one dollar.",
+  "Here's the wild part. Eddie's title was information security director.",
+  0.5
+ ],
+ [
+  "So the guy keeping it safe is the guy who broke it? Yeah. Here's how, step by step.",
+  0.3
+ ],
+ [
+  "Step one: he later told a court he wrote code that let him predict the winning numbers.",
+  0.5
+ ],
+ [
+  "He knew the dice roll before anybody threw.",
+  0.4
+ ],
+ [
+  "Step two: he said he passed those numbers to other people.",
+  0.3
+ ],
+ [
+  "Send this to the friend who plays every— every week.",
+  0.4
+ ],
+ [
+  "Step three: those people won, and shared the winnings with him.",
+  0.4
+ ],
+ [
+  "And this went down in five states.",
+  0.6
+ ],
+ [
+  "Now, back to that jackpot. In twenty ten, a ticket tied to his scheme hit it.",
+  0.4
+ ],
+ [
+  "So guess how much of that sixteen point five million got paid. Follow, it's so good.",
+  0.6
+ ],
+ [
+  "Nobody got a dollar. Not one.",
+  0.9
+ ],
+ [
+  "In twenty seventeen, he pleaded guilty, meaning he admitted it in court.",
   0.6
  ],
  [
   "[sigh] He was sentenced to up to twenty-five years in prison.",
-  0.6
+  0.8
  ],
  [
-  "Still trust the lottery?",
-  0.45
+  "So be real: is that enough for rigging the lottery?",
+  0.4
  ]
 ]

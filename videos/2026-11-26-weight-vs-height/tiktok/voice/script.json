@@ -1,66 +1,66 @@
 [
  [
   "Twenty dollar bills beat hundreds here, and your bathroom scale decides it.",
-  0.8
+  0.95
  ],
  [
   "[breath] So you get one of two piles of free cash.",
-  0.5
+  0.65
  ],
  [
-  "Pile A is your weight in twenty dollar bills.",
-  0.6
+  "The first pile is your weight in twenty dollar bills.",
+  0.75
  ],
  [
-  "Pile B is hundred dollar bills, stacked flat, as tall as you.",
-  0.7
+  "The second pile is hundred dollar bills, stacked flat, as tall as you.",
+  0.85
  ],
  [
   "You said hundreds, right? Tap the heart if you did. No judgment— okay, a little.",
-  0.6
+  0.75
  ],
  [
   "Now run it on the average American guy, with CDC numbers.",
-  0.5
+  0.65
  ],
  [
   "He weighs one ninety-nine pounds. And every bill weighs about one gram.",
-  0.7
+  0.85
  ],
  [
   "So his weight in twenties is about one point eight million.",
-  0.9
+  1.05
  ],
  [
   "His height in hundreds is only about one point six million.",
-  0.9
+  1.05
  ],
  [
   "Send this to the friend who'd grab hundreds instantly.",
-  0.6
+  0.75
  ],
  [
   "Wait, why? A pound of twenties is about nine grand.",
-  0.7
+  0.85
  ],
  [
   "An inch of hundreds is about twenty-three grand, but you've got way more pounds than inches.",
-  0.7
+  0.85
  ],
  [
   "Now here's your cheat code, and it's worth a follow.",
-  0.6
+  0.75
  ],
  [
   "Take your height in inches, and multiply by two point five six.",
-  0.9
+  1.05
  ],
  [
-  "If you weigh more than that number, you take the twenties.",
-  0.8
+  "If you weigh more than that number in pounds, take the twenties.",
+  0.95
  ],
  [
   "So what's your bathroom scale saying, twenties or hundreds?",
-  0.5
+  0.65
  ]
 ]

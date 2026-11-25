@@ -5,8 +5,8 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 
 | # | Topic | Folder | Cuts | Stage | Old held post ids |
 |---|---|---|---|---|---|
-| 1 | Weight vs height | 2026-11-26-weight-vs-height | YT/TT/IG | scripts (Fable A) | 0a50e94d 1ecd4500 b5b54e16 e7f2c3e7 |
-| 2 | Fake wine | 2026-11-26-fake-wine | YT/TT/IG | scripts (Fable A) | 47a76198 ad700081 f3a73160 fc608a0a |
+| 1 | Weight vs height | 2026-11-26-weight-vs-height | YT/TT/IG | SCRIPTS DONE (70.9/65.6/65.7 s, gate PASS) → build next | 0a50e94d 1ecd4500 b5b54e16 e7f2c3e7 |
+| 2 | Fake wine | 2026-11-26-fake-wine | YT/TT/IG | SCRIPTS DONE (~91–94 s; "trusted him" inference cut, re-voiced) → build next | 47a76198 ad700081 f3a73160 fc608a0a |
 | 3 | Three briefcases | 2026-11-26-three-briefcases | YT/TT/IG | scripts (Fable B) | 2751cbc5 45421b23 571e0493 f988b64a |
 | 4 | Lottery rig | 2026-11-26-lottery-rig | YT/TT/IG | scripts (Fable B) | 0d774d4d 2266d545 47151aa9 9a492028 |
 | 5 | Fake prince | 2026-11-26-fake-prince | YT/TT/IG | scripts (Fable C) | 36948ee3 ae6a2407 d9fb0a6e fe767f3f |
@@ -21,3 +21,4 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 | — | OneCoin — DROPPED (too niche, RULES 101) | 2026-11-26-onecoin | — | delete held posts | 04020e47 3817b205 3a48ae03 8c61a1df |
 | — | BitConnect — DROPPED (too niche, RULES 101) | 2026-11-25-bitconnect | — | delete held posts | 2c5b4252 969645a8 dda62340 4d7d21b6 |
 Full post ids: PostFast list_posts (approvalStatus NEEDS_WORK).
+- 2026-11-25 ~17:45 UTC: owner asked to study Robert McKeaveney (IG) for hooks + marketing — Fable agent → research/creators/robertmckeaveney/PLAYBOOK.md; apply to remaining rebuilds.

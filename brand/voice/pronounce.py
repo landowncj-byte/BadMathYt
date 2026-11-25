@@ -33,6 +33,8 @@ FIX = {
     "Ponzi":          "pˈɑːnzi",
     "Holmes":         "hˈoʊmz",
     "Jacobson":       "dʒˈeɪkəbsən",       # JAY-kub-sun
+    "Rudy":           "ɹˈuːdi",            # ROO-dee (default says "ruddy")
+    "Kurniawan":      "kɚniˈɑːwɑːn",       # kur-nee-AH-wahn
 }
 _WORD = re.compile(r"[A-Za-z][A-Za-z'\-]*")
 

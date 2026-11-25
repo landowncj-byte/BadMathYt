@@ -1,7 +1,17 @@
 [
- ["A million bucks now, or a penny that doubles for thirty days? Pick.", 0.25],
- ["Double-tap if you said penny, but on day twenty, your ass has about five grand.", 0.6],
- ["Day twenty-seven, you're still losing. Send this to the friend who'd bail.", 0.3],
- ["And day thirty? [gasp] That's five point three seven fucking million.", 0.8],
- ["Seven eighths of it shows up in the last three days. So, penny or million?", 0.45]
+ ["Taking the million bucks costs your dumb ass over four million dollars.", 0.6],
+ ["[smack] Here's the game. Option one, you get a million bucks, right now.", 0.5],
+ ["Option two, one penny that doubles every day for thirty days, no taxes.", 0.5],
+ ["Doubling's easy. Whatever you have, you get that much again, so one penny becomes two, then four.", 0.4],
+ ["Double-tap if you'd still take the penny.", 0.4],
+ ["'Cause yeah, it starts like shit. A week in, you've got a whole sixty-four cents.", 0.6],
+ ["Day ten, you're holding five bucks like an idiot. Day twenty, it's about five grand.", 0.6],
+ ["And the million's still about a hundred ninety times bigger.", 0.7],
+ ["Send this to the friend who'd bail right here.", 0.4],
+ ["Day twenty-seven, you've got six hundred seventy-one grand, and you're still fucking losing.", 0.6],
+ ["Three days left, and here's where it goes nuts.", 0.5],
+ ["Day twenty-eight, it doubles past a million. Day twenty-nine, it doubles again.", 0.5],
+ ["[gasp] And day thirty, the last day? Five point three seven fucking million.", 0.8],
+ ["Almost all of it, seven eighths, showed up in the last three days.", 0.6],
+ ["So that's over four million extra, just for not quitting. Penny or million?", 0.4]
 ]

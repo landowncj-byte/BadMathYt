@@ -1,0 +1,74 @@
+# beats v3 — fake-prince · Instagram + Facebook Reels · DECODED (~90 s, most vulgar)
+Script: `script.json` (same folder) · 250 words · 88.7 s VOICED (Liam; times below are the real `sentences.json` times). Previous version: `script.v2.json` / `beats-v2.md`.
+Rebuilt per `brand/REBUILD-LONGER.md` Stage 1 (owner 2026-11-25: "scripts are being rushed… break it down almost to kindergartner level"), RULES 101–102, STYLE §14/§18/§21–24, and the skills in `brand/skills/` (short-form-video-script WATCH: muted version first, three-track beats, cut-test, loop · hook-writer: candidates across mechanisms + rubric · storytelling BEATS · tiktok-script · viral-hooks). Owner rules win over the skills: CTAs woven at ~30/55/80%, no end CTA block, no AI disclosure.
+
+**LOOP: 'faked being a Saudi prince, then ordered pork' (why is that a problem, and what did it cost him?) -> the WHY is paid at 7%, the full consequence is PAID at 78–88% (a victim watched him order it -> the act fell apart -> more than 18 years). Last line 'pork took his ass down. Would you have noticed?' -> frame 0 'THEN ORDERED PORK'.**
+
+STAKES: a guy who looks 'legit as hell', investors' money, and one order that blew up the story.  
+QUESTION: why is pork a problem? Then: how the hell did anybody believe him? Then: how did it end?  
+TWIST: the IG cut starts with the slip and plays the story backwards from it: thirty years, a Ferrari, badges, eight million dollars, eleven busts… and a dinner order is what a victim caught.  
+REHOOKS: 'But here's the problem' (5 s) / 'But back up' (12 s) / 'about thirty years' (22 s) / 'So how the hell did anybody believe him?' (29 s) / 'Now he looked legit' (42 s) / 'But the plates were fake' (58 s) / 'It gets dumber' (62 s) / 'Then came that dinner' (69 s) / 'here's how it ended' (76 s) / payoff 80 s
+
+**Facts used (all ✔2 / primary in `research/2026-11-26/gignac-fake-prince/research.md`; nothing new added):** a Florida con man (first name only in the voice: the surname's pronunciation is unconfirmed, so it stays on screen as 'ANTHONY GIGNAC · PLEADED GUILTY') · posed as a Saudi prince for about thirty years (1988 -> 2017) · Miami · a Ferrari with fake diplomatic plates · bodyguards with fake Diplomatic Security Service badges · investors lost more than $8 million (DOJ) · prosecutors said he had been arrested or convicted eleven times for prince-related schemes (always attributed) · pleaded guilty · sentenced to more than 18 years in prison (DOJ) · a victim grew suspicious after he ordered pork at a dinner and the ruse began to fall apart (AP). Why pork matters, said once, plainly and respectfully: Saudi royals are Muslim and Islam forbids pork. The joke is always on HIM (he forgot his own character), never on the religion, Saudis or the victims.
+**NOT used:** the surname in the voice, the hotel / developer names, the dish, the town, $440M, gift totals, exact months, the origin story, 'nobody checked the plates', 'bought' props, any invented quote.
+
+## Everyday comparisons (computed here, rule 7)
+- **$8,000,000 -> 'a thousand bucks a day for about twenty-two years':** 8,000,000 ÷ 1,000 = 8,000 days; 8,000 ÷ 365.25 = 21.9 years -> 'about twenty-two years'. (The loss was 'more than' $8M, so 'about 22 years' is the floor.) On screen: `$1,000 / DAY × ~22 YEARS = $8,000,000 · OUR MATH`.
+- **18+ years -> 'a newborn growing up and finishing high school':** a comparison of LENGTH only (0 -> 18 years old ≈ the usual age at high-school graduation). It is not a claim about his release date. On screen: `18 YEARS = BABY -> GRADUATION · ILLUSTRATION`.
+- **~30 years -> 'longer than a lot of you have been alive'** (TikTok) / **'you can't keep a lie going thirty minutes'** (IG): rhetorical, addressed to an 18–28 audience; no figure claimed.
+
+## Kindergarten-clarity map (S10b)
+- WHO / WHAT / WHY before the first money number: a Florida man, no royal blood -> a con man -> his lie (Saudi prince) -> why people believed it (the props) -> only then the $8 million.
+- Terms explained in plain words the first time: **con man** ('a guy who lies to take people's money') · **diplomatic plates** ('the special plates foreign officials get') · **diplomatic security badges** ('like real government agents') · **investors** ('people who hand over money hoping it grows') · **why pork is the slip-up** ('Saudi royals are Muslim, and Islam forbids pork — so his character would never order it').
+- The trick is walked in steps: first the car -> then the bodyguards -> so now he looks rich -> investors hand over money -> it was all fake.
+- One number per sentence; every big number has its comparison (see above); the key number ('thirty years' / 'eleven times') is recapped right before the payoff.
+
+## Hook candidates (rubric 0–2 each: Gap · Specific · Truth · Fit · Voice · Pull; Truth and Pull are pass/fail)
+| # | Hook | Mechanism | G | S | T | F | V | P | Total | Verdict |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | This dumbass faked being a Saudi prince, then ordered pork at dinner. | mistake / negativity + specificity | 2 | 2 | 2 | 2 | 2 | 2 | 12/12 | KEEP - most disrespectful hook of the three (rule 17), aimed at the convicted man's on-the-record act; 12 words; the next line explains the problem in plain words so nobody is lost |
+| 2 | This dumbass got busted eleven times playing a fake prince, prosecutors said. | mistake / negativity | 2 | 2 | 2 | 2 | 2 | 2 | 12/12 | the v2 IG hook and now too close to the TikTok hook (S17) |
+| 3 | Thirty years as a fake prince, and a pork order took his ass down. | curiosity gap | 2 | 2 | 1 | 2 | 2 | 2 | 11/12 | 14 words; 'took down' before any context compresses AP's wording - kept for the LAST line instead |
+| 4 | You can't fake royalty for shit if you forget your own character. | identity / roast | 1 | 1 | 2 | 2 | 2 | 1 | 9/12 | funny but abstract, no number, no scene |
+| 5 | Fake plates, fake badges, fake prince, and eight million real dollars. | pattern / list | 1 | 2 | 2 | 2 | 2 | 1 | 10/12 | gives away the middle; number before context |
+| 6 | Would you hand eight million bucks to a guy in a Ferrari? | question | 1 | 2 | 2 | 2 | 1 | 1 | 9/12 | puts the viewer in the victims' seat as the fool |
+| 7 | These rich idiots believed a licence plate. | contrarian | 1 | 0 | 0 | 2 | 1 | 1 | 5/12 | DISQUALIFIED: roasts the victims (rule 23) |
+
+## Three-track beats (read the ON-SCREEN TEXT column alone first: it must tell the story muted)
+Engine v2 (`brand/engine-v2`, `brand/VISUAL-V2.md`): paper/clay objects, soft light, real shadows, NO neon. Camera pushes in on every spoken number as it is said. The storyteller travels (in front of the graphic to talk, behind/beside it when it comes forward). Every line below is its own visual beat; `->` = a second change inside the beat so nothing is static for more than ~2.5 s. Hold the shot through the pause after a big number. CTA micro-moments are small, ≤ 1.5 s, never a banner. Nothing in the caption band (y > ~1340). Explanations get step cards and everyday-comparison visuals.
+| # | time (s) | % | VISUAL (engine v2) | ON-SCREEN TEXT | SPOKEN | pause | job |
+|---|---|---|---|---|---|---|---|
+| 1 | 0.0–3.4 | 0% | FRAME 0 SLAM: a paper crown and an order ticket 'PORK' slam onto a dinner table side by side, plates jump; hit sound. Push-in on the ticket. DECODED pill. | FAKE SAUDI PRINCE (white) / THEN ORDERED PORK (red) | This dumbass faked being a Saudi prince, then ordered pork at dinner. | 0.5 | GRAB (hook) |
+| 2 | 4.1–8.3 | 5% | Calm, neutral fact card slides in beside the ticket (no joke art); storyteller taps it. | THE PROBLEM: SAUDI ROYALS ARE MUSLIM · ISLAM FORBIDS PORK | [smack] But here's the problem. Saudi royals are Muslim, and Islam forbids pork. | 0.5 | explain the hook in plain words (turn: 'But') |
+| 3 | 8.8–12.0 | 10% | The 'PRINCE' name card on the table cracks down the middle, red OUT-OF-CHARACTER stamp. -> whip-rewind of the whole set. | ONE ORDER BLEW UP HIS STORY -> BACK UP… | So that one order blew up his whole damn story. But back up. | 0.4 | rehook ('But back up') |
+| 4 | 12.4–15.5 | 14% | Case board, pin 1: plain ID card 'ANTHONY · FLORIDA'; a tiny crown icon gets a red X. | ANTHONY · FLORIDA · ROYAL BLOOD: ZERO | He's a Florida guy named Anthony, zero royal blood. | 0.4 | who |
+| 5 | 15.9–19.6 | 18% | Definition card: a hand lifting a wallet behind a smiling mask (generic icons). | CON MAN = LIES TO PEOPLE TO TAKE THEIR MONEY | He's actually a con man, meaning he lies to people to take their money. | 0.4 | explain the term |
+| 6 | 20.0–22.6 | 23% | A long paper timeline unrolls with a crown riding it; push-in on '30'; HOLD through the pause. | PRINCE ACT: ~30 YEARS | And he kept the prince act going for about thirty years. | 0.7 | the duration (beat after) |
+| 7 | 23.9–26.6 | 27% | A stopwatch card pops next to the timeline, tiny vs huge; small heart pulses by the storyteller (0.8 s). | YOU: 30 MINUTES · HIM: 30 YEARS | Double-tap if you can't keep a lie going thirty minutes. | 0.4 | CTA like @28% + playful comparison for 30 years |
+| 8 | 27.0–30.1 | 30% | Big paper question mark; -> a prop trolley rolls in under a dust sheet. | HOW THE HELL DID ANYBODY BELIEVE HIM? -> THE PROPS | So how the hell did anybody believe him? Look at the props. | 0.4 | rehook (question) |
+| 9 | 30.5–35.6 | 34% | PROP 1 badge. Sheet whips off a paper sports car, push-in on the plate. -> a tag unfolds with the plain-words meaning. | PROP 1 · DIPLOMATIC PLATES -> SPECIAL PLATES ONLY FOREIGN OFFICIALS GET | First, his Ferrari had diplomatic plates. Now, those are special plates only foreign officials get. | 0.4 | step 1 + explain the term |
+| 10 | 36.0–40.6 | 41% | PROP 2 badge. Two clay bodyguards flip badges open in sync, glint; push-in. | PROP 2 · DIPLOMATIC SECURITY BADGES (LIKE REAL GOVERNMENT AGENTS) | Then his bodyguards carried diplomatic security badges, like real government agents. | 0.4 | step 2 + explain the term |
+| 11 | 41.0–44.3 | 46% | A 'LEGIT' meter slams to full; faceless figures hand envelopes toward the crown. | LOOKED LEGIT AS HELL -> INVESTORS TRUSTED HIM WITH MONEY | Now he looked legit as hell, so investors trusted him with money. | 0.4 | step 3 ('Now… so…') |
+| 12 | 45.3–48.1 | 51% | Paper plane flicks from the storyteller's hand (0.7 s) past the car. | (small) SEND -> | Send this to the friend who trusts anybody in a Ferrari. | 0.4 | CTA send @51% |
+| 13 | 49.1–51.2 | 55% | Cash bricks slide to the crown, counter rolls with ticks, hard push-in; HOLD through the pause. | MORE THAN $8,000,000 LOST | And they lost more than eight million bucks. | 0.7 | stakes number (beat after) |
+| 14 | 52.5–56.3 | 59% | Comparison card: a $1,000 bill leaves a calendar page per tick -> calendars stack into a 22-year tower. | $1,000 A DAY -> ~22 YEARS · OUR MATH | Spend a grand every single day. That shit lasts about twenty-two years. | 0.7 | everyday comparison for $8M |
+| 15 | 57.0–59.4 | 64% | Plate corner peels, FAKE stamp. -> badge flips, second FAKE stamp. | PLATES: FAKE -> BADGES: FAKE | But the plates were fake, and so were the badges. | 0.5 | twist |
+| 16 | 59.9–65.0 | 68% | Tally counter flips 1…11 with ticks; push-in on '11'. Storyteller facepalm. | PROSECUTORS SAID: ARRESTED OR CONVICTED 11× FOR PLAYING ROYALTY | It gets dumber. Prosecutors said he'd been arrested or convicted eleven times for playing royalty. | 0.6 | rehook (it gets dumber) |
+| 17 | 65.6–69.7 | 74% | Back at the frame-0 dinner table: a faceless diner across from the crown; the 'PORK' ticket slides in; the diner's question mark pops. | THEN CAME THAT DINNER -> A VICTIM WATCHED HIM ORDER PORK · PER AP | Then came that dinner. A victim watched the prince order pork and got suspicious. | 0.5 | return to the hook (re-opens the loop) |
+| 18 | 70.8–72.7 | 80% | Storyteller taps +FOLLOW (-> ✓ FOLLOWING). Music drops out. | HOW IT ENDED… | Follow, 'cause here's how it ended. | 0.5 | CTA follow @80% (promise) + silence |
+| 19 | 74.4–77.0 | 84% | The crown slides off the silhouette and clatters; 'PLEADED GUILTY' stamp. Case card 'ANTHONY GIGNAC'. | THE ACT FELL APART -> PLEADED GUILTY | [sigh] The act started falling apart, and he pleaded guilty. | 0.4 | consequence |
+| 20 | 78.0–80.6 | 88% | PAYOFF, biggest move: paper gavel slams, '18+ YEARS' stamps toward camera, hardest push-in + boom; HOLD through the 0.8 s pause. | MORE THAN 18 YEARS IN PRISON | He was sentenced to more than eighteen years in prison. | 0.8 | PAYOFF @88% (verdict as a full sentence) |
+| 21 | 81.4–84.1 | 92% | Comparison card: a paper rattle slides along an 18-notch ruler into a graduation cap. | 18 YEARS = NEWBORN -> HIGH SCHOOL GRADUATE · ILLUSTRATION | That's a newborn growing up and graduating high school. | 0.6 | everyday comparison for 18 years |
+| 22 | 84.7–88.3 | 96% | Comment bubble pops; the crown and the 'PORK' ticket slam back side by side = frame 0. | 30 YEARS A PRINCE · PORK TOOK HIM DOWN · bubble: WOULD YOU HAVE NOTICED? | Thirty years as a prince, and pork took his ass down. Would you have noticed? | 0.4 | comment question + LOOP to frame 0 |
+
+## Cut-test
+Every line grabs, advances, explains a term, or sets up the payoff (see `job`). The extra length vs v2 is context only (who he is, what each prop means, why pork matters, comparisons) — no new facts. Cut while drafting: the 'Sultan' door sign, dates of the arrest and plea, the hotel pitch.
+
+## Gate notes for the director (judgement lines)
+- S16: Decoded standard. On screen the eleven is always 'ARRESTED OR CONVICTED 11× · PROSECUTORS SAID'; the sentence is 'MORE THAN 18 YEARS'; the loss is 'MORE THAN $8,000,000'. Plate, badge and diner art are generic and carry a small ILLUSTRATION label; diners are faceless. Comparison cards carry OUR MATH / ILLUSTRATION.
+- The pork line is a plain fact card ('ISLAM FORBIDS PORK'), neutral type, no joke art, no caricature. The red FAIL/stamp lands on HIS crown/name card, never on the religion card.
+- S13: one self-correction, outside every fact. 'dumb' / 'dumbass' point only at the convicted man's on-the-record acts, never at the investors (the like/send lines side with them).
+- S18: run `pronounce.py audit` on: Saudi, diplomatic, Ferrari, royalty, bodyguards, prosecutors, Muslim, Islam, dumbass (FIX has it). Whisper heard 'dumbass' as 'dumbest' in words.json: captions come from sentences.json, never Whisper.
+- 10-year-old read done: every term is explained where it first appears; no line needs outside knowledge.
+- IG order differs from the other two (S17): the slip is the hook, explained at once, then the story is told from 'back up'. Profanity (dumbass, damn, hell, shit, ass) is aimed at him and his act only; none of it sits inside the attributed 'prosecutors said' sentence or next to the religion line.
+- IG asks: double-tap @28%, send @51%, follow @80%; the last line is the punchline + a question, not an ask.

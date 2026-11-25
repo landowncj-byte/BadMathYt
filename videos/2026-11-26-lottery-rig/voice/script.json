@@ -1,13 +1,90 @@
 [
- ["The lottery's own security director rigged the lottery in five states.", 0.5],
- ["[breath] Eddie Tipton's whole job? Protecting the computers that pick the numbers.", 0.25],
- ["Instead, he later told a court, he wrote code to predict the winning numbers.", 0.25],
- ["Hit like if you've always said it's rigged. Yeah.", 0.3],
- ["Here's the payout plan: he said he gave the numbers to other people, who won and shared it with him.", 0.25],
- ["[smack] Send this to your— to whoever in your family still plays every week.", 0.3],
- ["Then comes the big one: a ticket hits a jackpot advertised at sixteen point five million.", 0.7],
- ["How much got paid out? Follow, this page reads the court files.", 0.45],
- ["Zero. Nobody ever collected it.", 0.7],
- ["In twenty seventeen he pleaded guilty, and he was sentenced to up to twenty-five years in prison.", 0.7],
- ["So… still trust the lottery? Yes or no.", 0.4]
+ [
+  "The lottery's information security director rigged the lottery in five states.",
+  0.6
+ ],
+ [
+  "[breath] His name is Eddie Tipton. So where did he work?",
+  0.3
+ ],
+ [
+  "At the Multi-State Lottery Association.",
+  0.4
+ ],
+ [
+  "That's one office running the computers that draw the numbers, for lotteries in many states.",
+  0.4
+ ],
+ [
+  "See, a lottery computer has one job. It picks numbers nobody can guess, like a robot rolling dice.",
+  0.4
+ ],
+ [
+  "Now, Eddie was the information security director, so keeping it safe was his job.",
+  0.5
+ ],
+ [
+  "Hit like if you see where this is going.",
+  0.4
+ ],
+ [
+  "Here's the trick, step by step.",
+  0.3
+ ],
+ [
+  "Step one: he later told a court he wrote code into the software.",
+  0.3
+ ],
+ [
+  "That code let him predict the winning numbers.",
+  0.5
+ ],
+ [
+  "So now it's like knowing the dice roll before anybody throws.",
+  0.4
+ ],
+ [
+  "Step two: he said he gave those numbers to other people.",
+  0.3
+ ],
+ [
+  "Step three: those people won, and shared the winnings with him.",
+  0.5
+ ],
+ [
+  "[smack] Send this to your— to whoever in your family still plays every week.",
+  0.4
+ ],
+ [
+  "Then came the big one. In twenty ten, a ticket tied to the scheme hit a jackpot.",
+  0.3
+ ],
+ [
+  "The prize was advertised at sixteen point five million dollars.",
+  0.8
+ ],
+ [
+  "Say you make fifty grand a year. You'd work three hundred thirty years to earn that.",
+  0.7
+ ],
+ [
+  "So how much of that jackpot got paid out? Follow, this page decodes the wild ones.",
+  0.5
+ ],
+ [
+  "Zero. Nobody ever collected it.",
+  0.9
+ ],
+ [
+  "In twenty seventeen, he pleaded guilty, meaning he admitted it in court.",
+  0.5
+ ],
+ [
+  "[sigh] He was sentenced to up to twenty-five years in prison.",
+  0.8
+ ],
+ [
+  "So… still trust the lottery? Yes or no.",
+  0.4
+ ]
 ]

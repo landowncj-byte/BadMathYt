@@ -1,15 +1,74 @@
 [
- ["Nearly a thousand PhDs got this puzzle wrong. Your turn.", 0.4],
- ["[breath] One of three briefcases has a million bucks. So you pick one.", 0.25],
- ["The host knows where the money is, and always opens an empty one.", 0.25],
- ["Then he offers a swap, and it's fifty-fifty, right?", 0.25],
- ["Hit like if you said fifty-fifty.", 0.3],
- ["Nope. Your first pick was a one in three guess, and opening a case changed nothing.", 0.25],
- ["So switching wins two out of three.", 0.7],
- ["Send this to the friend who's— who's already typing 'no way'.", 0.3],
- ["A columnist printed that in nineteen ninety, and by her count, nearly a thousand PhDs wrote in saying she's wrong.", 0.6],
- ["Still don't buy it? Follow, this page ends the argument.", 0.45],
- ["[smack] Make it a hundred cases: you pick one, and he opens ninety-eight empties.", 0.5],
- ["Now switching wins ninety-nine percent. Same game.", 0.7],
- ["So… stay or switch? Your turn.", 0.4]
+ [
+  "Nearly a thousand PhDs got this puzzle wrong. Your turn.",
+  0.5
+ ],
+ [
+  "[breath] Picture three briefcases. One holds a million dollars, and two are empty.",
+  0.6
+ ],
+ [
+  "That's a hundred bucks a day. For twenty-seven years.",
+  0.7
+ ],
+ [
+  "You pick a case. But the host knows where the money is.",
+  0.3
+ ],
+ [
+  "And he always opens an empty case you didn't pick.",
+  0.4
+ ],
+ [
+  "Then he asks: stay with yours, or switch? Hit like if it feels fifty-fifty.",
+  0.4
+ ],
+ [
+  "A columnist printed the answer in nineteen ninety: switch.",
+  0.5
+ ],
+ [
+  "By her count, nearly a thousand PhDs wrote in to say she was wrong.",
+  0.7
+ ],
+ [
+  "Let's check every— every possible start.",
+  0.3
+ ],
+ [
+  "One: you picked the money. The other case is empty, so switching loses.",
+  0.4
+ ],
+ [
+  "Send this to the friend who'd stop listening now.",
+  0.4
+ ],
+ [
+  "Two: you picked an empty case. So he has to open the other empty one, and switching wins.",
+  0.4
+ ],
+ [
+  "Three: you picked the other empty case, so switching wins again.",
+  0.4
+ ],
+ [
+  "That's two wins out of three.",
+  0.8
+ ],
+ [
+  "Follow, this page settles arguments.",
+  0.4
+ ],
+ [
+  "[smack] Make it a hundred cases. You pick one, and he opens ninety-eight empties.",
+  0.6
+ ],
+ [
+  "Now switching wins ninety-nine percent of the time.",
+  0.9
+ ],
+ [
+  "So… stay or switch? Your turn.",
+  0.4
+ ]
 ]

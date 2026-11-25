@@ -1,42 +1,82 @@
 [
  {
-  "text": "Your weight in twenties, or your height in hundreds? Pick wrong and you lose two hundred grand.",
+  "text": "Twenty dollar bills beat hundreds here, and your bathroom scale decides it.",
   "start": 0.0,
-  "end": 4.323
+  "end": 3.586
  },
  {
-  "text": "Hundreds, right? Tap the heart if so. No judgment\u2014 okay, some.",
-  "start": 5.523,
-  "end": 8.595
+  "text": "So you get one of two piles of free cash.",
+  "start": 5.136,
+  "end": 7.342
  },
  {
-  "text": "Average American guy, about a gram a bill: his height in hundreds is one point six mil.",
-  "start": 9.445,
-  "end": 14.034
+  "text": "The first pile is your weight in twenty dollar bills.",
+  "start": 7.992,
+  "end": 10.564
  },
  {
-  "text": "Send this to the friend who'd grab hundreds.",
-  "start": 15.034,
-  "end": 17.278
+  "text": "The second pile is hundred dollar bills, stacked flat, as tall as you.",
+  "start": 11.314,
+  "end": 14.775
  },
  {
-  "text": "But his weight in twenties is one point eight, so two hundred grand more.",
-  "start": 18.128,
-  "end": 21.682
+  "text": "You said hundreds, right? Tap the heart if you did. No judgment\u2014 okay, a little.",
+  "start": 16.225,
+  "end": 19.909
  },
  {
-  "text": "Your cheat code's next, and it's worth a follow.",
-  "start": 22.382,
-  "end": 24.625
+  "text": "Now run it on the average American guy, with CDC numbers.",
+  "start": 21.259,
+  "end": 24.786
  },
  {
-  "text": "Height in inches times two point five six: if you weigh more, take the twenties.",
-  "start": 25.025,
-  "end": 28.92
+  "text": "He weighs one ninety-nine pounds. And every bill weighs about one gram.",
+  "start": 25.436,
+  "end": 29.186
  },
  {
-  "text": "So, weight or height?",
-  "start": 29.22,
-  "end": 30.555
+  "text": "So his weight in twenties is about one point eight million.",
+  "start": 30.036,
+  "end": 32.977
+ },
+ {
+  "text": "His height in hundreds is only about one point six million.",
+  "start": 34.627,
+  "end": 37.731
+ },
+ {
+  "text": "Send this to the friend who'd grab hundreds instantly.",
+  "start": 38.781,
+  "end": 41.446
+ },
+ {
+  "text": "Wait, why? A pound of twenties is about nine grand.",
+  "start": 42.196,
+  "end": 44.851
+ },
+ {
+  "text": "An inch of hundreds is about twenty-three grand, but you've got way more pounds than inches.",
+  "start": 45.701,
+  "end": 50.075
+ },
+ {
+  "text": "Now here's your cheat code, and it's worth a follow.",
+  "start": 50.925,
+  "end": 53.27
+ },
+ {
+  "text": "Take your height in inches, and multiply by two point five six.",
+  "start": 54.02,
+  "end": 57.471
+ },
+ {
+  "text": "If you weigh more than that number in pounds, take the twenties.",
+  "start": 58.521,
+  "end": 61.221
+ },
+ {
+  "text": "So what's your bathroom scale saying, twenties or hundreds?",
+  "start": 62.171,
+  "end": 64.986
  }
 ]
