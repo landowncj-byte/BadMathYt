@@ -50,9 +50,9 @@ bt('@P15:27', 'zoom-on-number', 'bars15.real_base', { fill: 0.6, maxH: 420, sy: 
 sf('@P15:160-0.3', 'money_counter_1', -11, 1.2); sf('@P15:160+0.9', 'deep_boom_1', -5, 1.6); sf('@P15:27-0.1', 'pop_2', -8, 0.3); sf('@P15:27+0.5', 'ding_2', -9, 0.7);
 // S6: one coupon in 6,000
 el('dots', 'dotgrid', R1(6), 20, '@P16', { at: '@P16+0.1', per: 0.7, hiAt: '@P16:one', hiCol: 72, hiRow: 22 }, { out: '@P17-0.2' });
-el('lab16', 'text', R1(6), 590, '@P16:6-0.2', { lines: [[['1 ', 'good'], ['COUPON FOR EVERY ~6,000 NEEDED', 'paper']]], size: 56 }, { out: '@P17-0.2' });
+el('lab16', 'text', R1(6), -560, '@P16:6-0.2', { lines: [[['1 ', 'good'], ['COUPON FOR EVERY ~6,000 NEEDED', 'paper']]], size: 56 }, { out: '@P17-0.2' });
 bt('@P16', 'graphic-hero', 'dots', { move: 'whip', fill: 0.7, maxH: 800, sy: 470, pose: 'point' }); bt('@P16:one', 'zoom-on-number', 'dots.hi', { fill: 0.12, maxH: 150, sy: 470, dur: 0.9, pose: 'shock' }); sf('@P16:one', 'pop_1', -6, 0.4); sf('@P16:one+0.05', 'ding_2', -8, 0.7);
-bt('@P16:6', 'graphic-hero', ['dots', 'lab16'], { fill: 0.7, maxH: 880, sy: 510, dur: 1.2, pose: 'idle' }); sf('@P16+0.1', 'money_counter_2', -16, 1.4);
+bt('@P16:6', 'graphic-hero', ['dots', 'lab16'], { fill: 0.8, maxH: 760, sy: 480, dur: 1.2, pose: 'idle' }); sf('@P16+0.1', 'money_counter_2', -16, 1.4);
 // S7: the pyramid (new money pays old)
 el('pyr', 'pyramid', R1(7), 40, '@P17-0.3', { at: '@P17+0.1', flowAt: '@P17:old', label: 'NEW MONEY PAYS OLD' }, { out: '@P18-0.2' });
 bt('@P17', 'graphic-hero', 'pyr', { move: 'whip', fill: 0.4, maxH: 760, sy: 470, pose: 'point' }); bt('@P17:next', 'zoom-on-number', 'pyr.base', { fill: 0.5, maxH: 420, sy: 600 });
