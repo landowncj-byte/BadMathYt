@@ -4,91 +4,75 @@
   0.8
  ],
  [
-  "[breath] Okay, picture it. A stranger offers you two piles of cash, and you get to keep one.",
+  "[breath] Picture it. A stranger offers you two piles of cash, and you keep one.",
   0.5
  ],
  [
-  "Pile one: you step on a scale, and he pays you your weight in twenty dollar bills.",
+  "Pile one is your weight in twenty dollar bills, measured on a scale.",
   0.6
  ],
  [
-  "Pile two: he stacks hundred dollar bills flat, like a deck of cards, until the stack's as tall as you.",
-  0.6
+  "Pile two is hundred dollar bills, stacked flat until they're as tall as you.",
+  0.7
  ],
  [
-  "Now, one hundred is worth five twenties, so the hundreds should win easy, right?",
+  "A hundred is five twenties, so the hundreds win easy, right?",
   0.5
  ],
  [
-  "Hit like if that's the pile you'd grab.",
+  "Hit like if that's your pile.",
   0.6
  ],
  [
-  "But wait. Money doesn't just have a value, it also has a weight and a thickness.",
-  0.5
+  "But wait. Every bill weighs the same, about one gram.",
+  0.7
  ],
  [
-  "Every bill weighs about one gram, and it doesn't matter what number's printed on it.",
-  0.6
- ],
- [
-  "So one pound of twenties is a thick brick of bills, worth about nine thousand dollars.",
+  "So a pound of twenties is about nine thousand dollars.",
   0.8
  ],
  [
-  "Bills are also super thin, so it takes a whole lot of them to stack up one inch.",
-  0.5
- ],
- [
-  "One inch of hundreds is worth about twenty-three thousand dollars.",
+  "And one inch of stacked hundreds is about twenty-three thousand dollars.",
   0.8
  ],
  [
-  "So one inch of hundreds equals about two and a half pounds of twenties.",
-  0.7
- ],
- [
-  "Send this to the friend who'd grab the hundreds without— without even blinking.",
-  0.5
- ],
- [
-  "Here's the catch, though: your body has way more pounds than inches.",
+  "Send this to the friend who'd grab hundreds without— without blinking.",
   0.6
  ],
  [
-  "Per the CDC, the average American man weighs one hundred ninety-nine pounds.",
+  "Here's the catch: you've got way more pounds than inches.",
   0.7
  ],
  [
-  "And he's about five foot nine, which is only sixty-nine inches tall.",
+  "Per the CDC, the average American man weighs one ninety-nine pounds.",
   0.7
  ],
  [
-  "That's almost three pounds for every single inch of him.",
+  "But he's only sixty-nine inches tall.",
   0.7
  ],
  [
-  "So let's count it. His height in hundreds comes to about one point six million dollars.",
-  0.8
- ],
- [
-  "His weight's next, and yeah, follow, because this page does the math you skipped.",
-  0.6
- ],
- [
-  "His weight in twenties comes to about one point eight million dollars.",
+  "So his height in hundreds comes to about one point six million dollars.",
   0.9
  ],
  [
-  "[sigh] The small bills beat the big ones by two hundred grand.",
+  "His weight's next, so follow, this page does the math you skipped.",
+  0.6
+ ],
+ [
+  "His weight in twenties comes to about one point eight million.",
+  1.0
+ ],
+ [
+  "[sigh] The small bills win by two hundred grand.",
   0.8
  ],
  [
-  "That's like getting a hundred bucks a day for over five years.",
-  0.7
+  "That's a hundred bucks a day for over five years.",
+  0.8
  ],
  [
-  "So, are you still choosing the hundred dollar bills?",
+  "Still choosing the hundred dollar bills?",
   0.5
  ]
 ]

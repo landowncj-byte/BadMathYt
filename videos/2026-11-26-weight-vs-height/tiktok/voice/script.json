@@ -4,83 +4,59 @@
   0.8
  ],
  [
-  "[breath] Okay so, somebody offers you two piles of free cash, and you only get one.",
+  "[breath] Okay so, you're offered two piles of free cash, and you only get one.",
   0.5
  ],
  [
-  "Pile A is your body weight in twenty dollar bills, so you literally stand on a scale.",
+  "Pile A is your body weight in twenty dollar bills.",
   0.6
  ],
  [
-  "Pile B is hundred dollar bills stacked flat, until the stack is as tall as you are.",
+  "Pile B is hundred dollar bills, stacked flat, as tall as you.",
+  0.7
+ ],
+ [
+  "You said hundreds, right? Tap the heart if you did. No judgment— okay, a little.",
   0.6
  ],
  [
-  "You said hundreds, right? Because a hundred is five twenties, so it feels obvious.",
+  "Now run it on the average American guy, with CDC numbers.",
   0.5
  ],
  [
-  "Tap the heart if you did. No judgment— okay, a little judgment.",
-  0.6
+  "He weighs one ninety-nine, and every bill weighs about a gram.",
+  0.7
  ],
  [
-  "Now let's run it on the average American guy, using CDC numbers.",
-  0.5
- ],
- [
-  "He weighs one hundred ninety-nine pounds.",
-  0.6
- ],
- [
-  "And every single bill weighs about one gram, twenties and hundreds the same.",
-  0.6
- ],
- [
-  "So his weight in twenties comes out to about one point eight million dollars.",
+  "So his weight in twenties is about one point eight million dollars.",
   0.9
  ],
  [
-  "Then we stack hundreds up to the top of his head, about five foot nine.",
-  0.6
- ],
- [
-  "That stack comes out to about one point six million dollars.",
+  "His height in hundreds is only about one point six million.",
   0.9
- ],
- [
-  "So the bigger bill would've cost him two hundred grand.",
-  0.8
  ],
  [
   "Send this to the friend who'd grab the hundreds instantly.",
-  0.5
- ],
- [
-  "Wait, how do the small bills win? Well, a pound of twenties is about nine grand.",
-  0.7
- ],
- [
-  "And an inch of hundreds is about twenty-three grand.",
-  0.7
- ],
- [
-  "An inch is worth more, sure, but you've got way more pounds than inches.",
   0.6
  ],
  [
-  "Now here's your personal cheat code, and it's honestly worth a follow.",
+  "Wait, why? A pound of twenties is about nine grand.",
+  0.7
+ ],
+ [
+  "An inch of hundreds is about twenty-three grand, but you've got way more pounds than inches.",
+  0.7
+ ],
+ [
+  "Now here's your cheat code, and it's honestly worth a follow.",
   0.6
  ],
  [
   "Take your height in inches, and multiply it by two point five six.",
-  0.8
+  0.9
  ],
  [
-  "For a five foot nine guy, that number is about one seventy-seven.",
-  0.8
- ],
- [
-  "If you weigh more than your number, you take the twenties. Weigh less, and you take the hundreds.",
+  "If you weigh more than that number, you take the twenties.",
   0.8
  ],
  [

@@ -26,7 +26,7 @@ RATE = 3.3           # words/s inside a line (measured on the 2026-11-25 Liam cu
 TAG_S = 0.45         # seconds one [breath]/[sigh]/... adds
 PLATFORM = {"": "YouTube", "tiktok": "TikTok", "ig": "IG/FB"}
 # owner 2026-11-25: "90 seconds is the target timing" (Decoded) + "65 seconds for the what ifs" — same on every platform
-SERIES_LEN = {"decoded": (80, 100, 250), "whatif": (58, 72, 180)}   # (min_s, max_s, max_words)
+SERIES_LEN = {"decoded": (80, 100, 250), "whatif": (62, 75, 185)}   # (min_s, max_s, max_words) — HARD FLOOR: every cut > 60 s (TikTok monetization)
 
 def series_of(cut_dir):
     """Series from voice/series.txt, else the scene file's series: 'whatif'|'decoded', else the slug; default decoded."""

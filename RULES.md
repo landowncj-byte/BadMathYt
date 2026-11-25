@@ -21,7 +21,7 @@ Run `python3 brand/tools/script_gate.py videos/<slug> --all` (un-voiced drafts: 
 | S7 | Comment question right AFTER the payoff (debatable, one line)? | gate |
 | S8 | **No end CTA block:** fewer than 2 asks in the last 15%, last line is NOT like/share/follow, no "follow for more / for the next one"? Video ends on the payoff / twist / loop line? | gate |
 | S9 | IG/FB cut: send/share mid-video + at least one more ask, spread (never both at the end)? | gate |
-| S10 | Duration in the window — DECODED 80–100 s, target 90 (≤ 250 words) · WHAT IF 58–72 s, target 65 (≤ 180 words)? (owner 2026-11-25) | gate |
+| S10 | Duration in the window — DECODED 80–100 s, target 90 (≤ 250 words) · WHAT IF 62–75 s, never under 60 s, target 65 (≤ 180 words)? (owner 2026-11-25) | gate |
 | S10b | KINDERGARTEN CLARITY: who / what / why set up before the numbers; every term explained in plain words (no "APR", "restitution", "principal" without a 5-word explanation); ONE new idea per line; every big number gets an everyday comparison; the "how did it work" step is walked slowly, step by step; nothing a viewer must already know. Read it as a 10-year-old: any moment you'd be lost → rewrite. | director |
 | S11 | Pacing: no stretch > 6 s without a number, a question or a turn; no voiced line > 7 s; no 3 bare numbers in a row; no sentence with 4+ figures; first turn/question before ~20%? | gate |
 | S12 | Payoff lands at ~75–80% with a beat of silence before it; nothing after it except the comment question and a loop line? | director |
@@ -69,7 +69,7 @@ Run `python3 brand/tools/script_gate.py videos/<slug> --all` (un-voiced drafts: 
 ### Platforms & cuts
 12. Accounts: YouTube BadMath · TikTok @color.me.saved (it IS the Bad Math TikTok until renamed) · Instagram badmath.tv · Facebook BadMath.tv. — 2026-11-24 "just under the wrong username"
 13. Every topic = **three different scripts and edits**, not one video cross-posted. — 2026-11-24 "make the whole script… completely different"
-14. YouTube Shorts: Decoded ~90 s (80–100), What If ~65 s (58–72) (was 40–55; owner 2026-11-25 "scripts are being rushed… missing too much context"), full story arc, ad-safe edgy, loops, searchable title. — STYLE §15, 2026-11-24
+14. YouTube Shorts: Decoded ~90 s (80–100), What If ~65 s (62–75, never under 60) (was 40–55; owner 2026-11-25 "scripts are being rushed… missing too much context"), full story arc, ad-safe edgy, loops, searchable title. — STYLE §15, 2026-11-24
 15. TikTok: Decoded ~90 s, What If ~65 s (was 25–40), start mid-action but explain every step, spicy, direct "you", comment bait. — STYLE §15, 2026-11-24
 16. Instagram + Facebook Reels: Decoded ~90 s, What If ~65 s (was 15–25), simple setup then the punchline, built for sends and saves. — STYLE §15, 2026-11-24
 17. The Instagram hook is the most disrespectful and vulgar one. — 2026-11-24 "more disrespectful and actually more vulgar"
@@ -179,7 +179,8 @@ Run `python3 brand/tools/script_gate.py videos/<slug> --all` (un-voiced drafts: 
 99. This is a long-term project; keep the system files current after every work block. — 2026-11-25 "this is a long-term plan for me"
 100. A rule in a file is not enough — every script and video is CHECKED against the gates above before voice / queue. — 2026-11-25 (root cause of the 1% fee failure: STYLE §13 existed and was not checked)
 101. BROAD TOPICS: money is the topic, the audience is EVERYONE. Every topic must pass the "grandma / 16-year-old" test — the subject (brand, person, game, product, event, everyday cost) is recognizable in 2 seconds with zero finance knowledge. No niche finance topics (obscure fraudsters, crypto tokens, fund mechanics, fee structures) unless framed through something everyone knows. — 2026-11-25 "the topic is money, but the audience is everyone"
-102. SHORTS NEED CONTEXT, NOT SPEED: Shorts are longer (DECODED ~90 s (80–100 s) · WHAT IF ~65 s (58–72 s), same on every platform) and explained almost at kindergarten level — set up who/what/why, explain every term in plain words, one idea per line, walk the "how it worked" step by step, give every big number an everyday comparison, never rush details. Still a gripping story. Long-forms unchanged. — 2026-11-25 "the scripts are being rushed… I'm losing everything… break it down almost to kindergartner level"
+102. SHORTS NEED CONTEXT, NOT SPEED: Shorts are longer (DECODED ~90 s (80–100 s) · WHAT IF ~65 s (62–75 s, never under 60 s), same on every platform) and explained almost at kindergarten level — set up who/what/why, explain every term in plain words, one idea per line, walk the "how it worked" step by step, give every big number an everyday comparison, never rush details. Still a gripping story. Long-forms unchanged. — 2026-11-25 "the scripts are being rushed… I'm losing everything… break it down almost to kindergartner level"
+103. EVERY Short is OVER 60 SECONDS on every platform — no exceptions (TikTok pays only on videos longer than 1 minute). Gate floor: 62 s. — 2026-11-25 "They always have to be above 60 seconds… I can't get monetized at least on TikTok"
 
 ---
 
