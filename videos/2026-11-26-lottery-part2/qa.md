@@ -1,5 +1,5 @@
 # QA — Lottery Part 2 (series: WHAT IF, factual follow-up; nobody is called a criminal, no GUILTY stamp, no people)
-Cuts: YouTube `video.mp4` 48.97 s / 36.5 MB · TikTok `tiktok/video.mp4` 35.50 s / 24.6 MB · IG/FB `ig/video.mp4` 23.77 s / 17.1 MB. Sources of truth: `_src/{shared,yt,tt,ig}.js` (`_src/build.sh`). Contact sheets (1 fps, timestamped): `contact_sheet.png`, `tiktok/contact_sheet.png`, `ig/contact_sheet.png`. script_gate `--all`: PASS x3 (TikTok warns 92 words vs 90 target; voiced script is final).
+Cuts: YouTube `video.mp4` 48.97 s / 36.3 MB · TikTok `tiktok/video.mp4` 35.50 s / 24.7 MB · IG/FB `ig/video.mp4` 23.77 s / 17.0 MB. Sources of truth: `_src/{shared,yt,tt,ig}.js` (`_src/build.sh`). Contact sheets (1 fps, timestamped): `contact_sheet.png`, `tiktok/contact_sheet.png`, `ig/contact_sheet.png`. script_gate `--all`: PASS x3 (TikTok warns 92 words vs 90 target; voiced script is final).
 
 ## VIDEO GATE (YT / TT / IG)
 | # | Result | Note |
@@ -8,7 +8,7 @@ Cuts: YouTube `video.mp4` 48.97 s / 36.5 MB · TikTok `tiktok/video.mp4` 35.50 s
 | V2 | YES x3 | watched via 1-fps timestamped sheets + beat stills (not a 24-frame sheet) |
 | V3 | YES x3 | frame 0 = PART 2 stamp slam + full hook text, deep boom + stamp + paper slam at 0 s; no fade/title card |
 | V4 | YES (borderline) | change every 2-3 s; longest holds ~4 s (YT calendar 34-39 s with follow tap + camera moves; TT calendar 19-22 s with plane; IG cheque fan 9-13 s) |
-| V5 | YES | push-in on 5,000,000 / 27 / 1.3 / 31 / 2023 / 95 / "shutting"; storyteller moves left/right/front/behind per beat |
+| V5 | YES (re-fixed) | push-in on 5,000,000 / 27 / 1.3 / 31 / 2023 / 95 / "shutting"; storyteller moves left/right/front/behind per beat |
 | V6 | YES | heart (YT "like", TT "heart", IG "double tap"), plane (send, all three), storyteller +FOLLOW tap (YT, TT; IG has no follow line in script), comment bubble on final question; all < 1.5 s, no banner |
 | V7 | YES | biggest hit = Texas mountain + $95,000,000 (YT @95 40.6 s of 49 = 83%; TT sign drop 29.7 s = 84%; IG @95 19.9 s = 84%); whips back to frame-0 composition (hook re-slams) |
 | V8 | YES | brand lock intact; no glow; WHAT IF pill + stage |
@@ -17,6 +17,8 @@ Cuts: YouTube `video.mp4` 48.97 s / 36.5 MB · TikTok `tiktok/video.mp4` 35.50 s
 | V11 | not re-listened (voice unchanged from supplied files) | |
 | V12 | YES | CC0 library sfx only; master -14.0/-14.1/-14.0 LUFS, peak <= -1.3 dBTP; hits on the stamp/payoff words |
 | V13 | n/a (not posted) | |
+
+V5 fix (storyteller vs numbers): in every beat where the $27,000,000 cheque, the $1.3M fan card or the $95,000,000 card is on screen he is parked small (x0.85) at lower-left/right (y 1410) on the pile or below the card, and the focus is lifted ~100 px so the number sits clear above his head; the TikTok $95M counter moved up (frame 0 and loop) so he no longer touches its first digit; the TikTok heart sits below-right of the cheque, not on the digits; the DID THE STATE PAY? / GUESS: NO? screen text sits at y 332 (no overlap with the PAY stamp); the YT/IG $1.3M card no longer sits under the WHAT IF pill. Verified on stills every 0.5-0.8 s across the cheque, fan and jackpot beats in all three cuts and on real frames of the final TikTok mp4 (every 0.5 s, 9-15 s).
 
 Lessons-from-review checks: (1) frame 0 shows the full hook, storyteller sits bottom-left below the text; (2) on-screen text/buttons kept above the caption band (screen text at y 360-440, CTA micro-moments at y <= 1190), SEND label moved off the number; (3) temporary text uses `out` (fades+drops), hook text exits at the question, no leftovers behind captions (TT "25.8M" line removed before the presenter beat).
 

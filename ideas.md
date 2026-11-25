@@ -19,3 +19,14 @@
 | 2026-11-25 | Decoded | Spot the Tell | She Had a Professor Invent 4 Million Customers | Frank/Javice: 4.25M claimed vs <300K real (SEC), JPMorgan paid $175M, guilty 4/4, 85 months, $287.5M restitution | DOJ, SEC (2-source), Fable research |
 | 2026-11-25 | What If | Counter | You're an Idiot If You Only Pay the Minimum | $5K at 22.36%, 1%+interest min → 198 months, $12,811 total; fixed $250 → 26 months | Fed G.19 via LendingTree; arithmetic |
 Used hooks/formats to avoid repeating verbatim: "$1 every second", "two buttons A/B", "this tank is full of…", "50% in 45 days", "123 vs 20", "this guy was so dumb he committed an $8B fraud", "you're an idiot for buying one lottery ticket", "so shameless she said $100M", "fraud while out on bail", "idiot if you buy coffee every day". PROMISED: lottery Part 2 (what happened after the 1992 win) — make it.
+| 2026-11-25 | Decoded | Pitch vs Math | A $500 Loan That Cost $1,925 | Scott Tucker payday loans; $650 disclosed vs $1,925; 14 counts, 200 months | DOJ SDNY |
+| 2026-11-25 | Decoded | Counter | 1% a Day Is the Dumbest Number in Crypto | BitConnect; $1,000 → $1B by day 1,389; $2.4B; promoter 38 months | DOJ; SEC |
+| 2026-11-25 | What If | Dilemma | A 1% Fee Cost More Than You Put In | $500/mo, 40 yrs, 7% vs 6% → $316,661 | arithmetic |
+| 2026-11-26 | What If | Dilemma | Your Weight in $20s or Your Height in $100s? | avg man $1,805,280 vs $1,602,300; flip 2.56 lb/in | CDC; arithmetic |
+| 2026-11-26 | Decoded | Spot the Tell | His Wine Said 1945. The Winery Started in 1982. | Kurniawan; $35M 2006 sales; 10 yrs; $28.4M restitution | DOJ SDNY; trial press |
+| 2026-11-26 | What If | Dilemma | Nearly 1,000 PhDs Got This Puzzle Wrong | Monty Hall with 3 briefcases, $1M; switch 2/3 | arithmetic; NYT 1991 |
+| 2026-11-26 | Decoded | Case File | The Lottery's Security Director Rigged the Lottery | Tipton; code to predict numbers; $16.5M advertised unclaimed; up to 25 yrs | CNN; TIME; CBS |
+| 2026-11-26 | Decoded | Spot the Tell | The Fake Prince Who Ordered Pork | Gignac; $8M+; 11 prior arrests/convictions; 18+ yrs | DOJ SD Fla; AP |
+| 2026-11-26 | What If | Dilemma | $1M Today or a Penny Doubled for 30 Days | $5,242.88 day 20; $5,368,709.12 day 30 | arithmetic |
+| 2026-11-26 | What If | Follow-up | Lottery Part 2: Did the State Pay? | Virginia paid $27M; emergency rules; Texas 2023 $95M; commission abolished | UPI; WaPo; KUT |
+| 2026-11-26 | Decoded | Case File | $4 Billion for a Coin With No True Public Blockchain | OneCoin; 3.5M people; "fake coins"; Greenwood 20 yrs | DOJ SDNY |
