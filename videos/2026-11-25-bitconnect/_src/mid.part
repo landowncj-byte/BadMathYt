@@ -38,9 +38,9 @@
 
   // ---------- bot: generic TRADING BOT box with a curtain; opens to show coins piped from new wallets to old wallets ----------
   B.register('bot', {
-    defaults: { w: 820, h: 1140, curtainAt: 99999, tagAt: 99999, coinInAt: 99999, payAt: 99999, takenAt: 99999, takenDur: 1.6, to: 2400000000 },
+    defaults: { w: 820, h: 1140, noTaken: false, curtainAt: 99999, tagAt: 99999, coinInAt: 99999, payAt: 99999, takenAt: 99999, takenDur: 1.6, to: 2400000000 },
     size: p => [p.w, p.h],
-    anchors(p) { const y0 = -p.h / 2; return { head: [0, y0 + 75, p.w, 150], window: [0, y0 + 440, p.w - 100, 500], taken: [0, y0 + 915, p.w * 0.94, 170] }; },
+    anchors(p) { const y0 = -p.h / 2; return { head: [0, y0 + 75, p.w, 150], pipe: [0, y0 + 440, p.w - 100, 500], window: [0, y0 + 440, p.w - 100, 500], taken: [0, y0 + 915, p.w * 0.94, 170] }; },
     draw(g, p, env) {
       const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, ww = w - 100, wh = 500, wx = x0 + 50, wy = y0 + 190, cy = wy + wh / 2;
       paper(g, x0, y0, w, h, 26, { lift });
@@ -77,12 +77,14 @@
       // PROSECUTORS SAY tag
       { const lt = t - p.tagAt; if (lt > 0) { const k = spring(lt, 'snappy'); g.save(); g.translate(x0 + 60 + 215, wy - 8); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.globalAlpha = clamp(lt / 0.08); clay(g, -215, -33, 430, 66, 16, theme.bad, { shadowK: 0.6 }); txt(g, 'PROSECUTORS SAY', 0, 3, F.cap(36), theme.paper); g.restore(); } }
       // taken in
+      if (!p.noTaken) {
       g.strokeStyle = theme.rule; g.lineWidth = 3; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(x0 + 40, y0 + 748); g.lineTo(x0 + w - 40, y0 + 748); g.stroke(); g.setLineDash([]);
       txt(g, 'MONEY TAKEN IN', 0, y0 + 790, F.cap(38), theme.inkSoft);
       { const lt = t - p.takenAt, yA = y0 + 915; if (lt < 0) { g.fillStyle = theme.rule; rr(g, -300, yA - 40, 600, 80, 40); g.fill(); } else {
           const v = countAt(lt, p.takenDur, 0, p.to), land = lt - p.takenDur, speed = lt < p.takenDur ? Math.abs(countAt(lt + 0.02, p.takenDur, 0, p.to) - v) / 0.02 : 0, o = { font: F.hero(124), size: 124, color: theme.badInk, prefix: '$', speed }, k = fitW(g, p.to, o, w - 120);
           let s = 1 + (land > 0 ? 0.1 * hit(land, 6) : 0) + (env.hot === 'taken' ? 0.03 * env.hotK : 0); g.save(); g.translate(0, yA); g.scale(s * k, s * k); const rw = B.rollWidth(g, p.to, o).w; roll(g, v, 0, 0, o); if (land > 0) marker(g, -rw / 2, 78, rw, 9, theme.badInk, clamp(land / 0.3), 0.9); g.restore(); burst(g, 0, yA, w * 0.38, theme.bad, land, 18, 0.55);
           const on = lt - 0.2; if (on > 0) { const kk = spring(on, 'snappy'); g.save(); g.translate(0, y0 + 1040); g.scale(0.6 + 0.4 * kk, 0.6 + 0.4 * kk); g.globalAlpha = clamp(on / 0.08); clay(g, -135, -34, 270, 68, 16, theme.navy, { shadowK: 0.5 }); txt(g, 'PER DOJ', 0, 3, F.cap(38), theme.paper); g.restore(); } } }
+      }
       // paid-out coin
       { const lt = t - p.payAt; if (lt > 0 && lt < 1.1) { const a = clamp((1.1 - lt) / 0.3); coin(g, 60 + lt * 230, wy + wh - 6 - 520 * lt + 1100 * lt * lt, 30, a); } }
     },

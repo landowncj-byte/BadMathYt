@@ -1,0 +1,117 @@
+
+  // ===== v3 recipes (rebuild 2026-11-25): slam text, phone, ticker, heart, flag, puppet =====
+  const segs3 = l => (typeof l === 'string' ? [[l, null]] : l.map(x => (typeof x === 'string' ? [x, null] : x)));
+  const path = (g, pts) => { g.beginPath(); pts.forEach((p, i) => (i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1]))); };
+
+  // ---------- slamtext: hook text that SLAMS in (huge -> 1) with an ink outline; no glow ----------
+  B.register('slamtext', {
+    defaults: { lines: [[['TEXT', 'paper']]], size: 120, lh: 1.04, slam: true, dur: 0.26, at0: 0 }, ownEnter: true,
+    size: p => [Math.max(...p.lines.map(l => mw(segs3(l).map(s => s[0]).join(''), F.hero(p.size)))), p.lines.length * p.size * p.lh],
+    draw(g, p, { lt }) {
+      const font = F.hero(p.size), n = p.lines.length, u = clamp((lt - p.at0) / p.dur), k = p.slam ? 1 + 0.9 * (1 - ease.expo(u)) - 0.05 * B.wobble(lt - p.at0 - p.dur, 5, 9) : 1, a = p.slam ? 1 : clamp(lt / 0.12);
+      g.save(); g.scale(k, k); g.globalAlpha *= a; g.textBaseline = 'middle'; g.textAlign = 'left'; g.font = font; g.lineJoin = 'round';
+      p.lines.forEach((line, li) => { const ss = segs3(line), tw = mw(ss.map(s => s[0]).join(''), font); let x = -tw / 2; const y = (li - (n - 1) / 2) * p.size * p.lh;
+        for (const [s, tn] of ss) { g.save(); g.shadowColor = 'rgba(2,4,9,.55)'; g.shadowBlur = 14; g.shadowOffsetY = 8; g.strokeStyle = '#0B0F14'; g.lineWidth = p.size * 0.1; g.strokeText(s, x, y); g.restore(); g.fillStyle = tone(tn || 'paper', false); g.fillText(s, x, y); x += mw(s, font); } });
+      g.restore();
+    },
+  });
+
+  // ---------- phone: generic "crypto app" phone. cracks on crackAt, coins pour in on coinsAt, SHUT DOWN shutter on shutAt, clean again at resetAt ----------
+  B.register('phone', {
+    defaults: { w: 640, h: 1060, crackAt: 99999, shutAt: 99999, resetAt: 99999, coinsAt: 99999, coinN: 9 },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2; return { screen: [0, 0, p.w - 60, p.h - 120], rate: [0, y0 + 360, p.w - 100, 280], top: [0, y0 + 40, p.w, 120] }; },
+    draw(g, p, env) {
+      const { t, theme } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2, sx = x0 + 26, sy = y0 + 26, sw = w - 52, sh = h - 52, live = t < p.resetAt;
+      // coins fall into the slot at the top edge (clipped above it)
+      if (t >= p.coinsAt && t < p.coinsAt + p.coinN * 0.13 + 0.9) { g.save(); g.beginPath(); g.rect(-w, y0 - 900, w * 2, 900 + 34); g.clip();
+        for (let i = 0; i < p.coinN; i++) { const l = t - p.coinsAt - i * 0.13; if (l < 0 || l > 0.55) continue; const u = clamp(l / 0.4); coin(g, (hash(i * 3.1) - 0.5) * 150, lerp(y0 - 520, y0 + 70, u * u), 40, 1); } g.restore(); }
+      clay(g, x0, y0, w, h, 64, '#1b2233', { shadowK: 0.7 });
+      g.save(); rr(g, sx, sy, sw, sh, 44); g.clip();
+      const bg = g.createLinearGradient(0, sy, 0, sy + sh); bg.addColorStop(0, '#1d2a40'); bg.addColorStop(1, '#0f1521'); g.fillStyle = bg; g.fillRect(sx, sy, sw, sh);
+      clay(g, -70, sy + 14, 140, 30, 15, '#05080d', { shadowK: 0.1 });
+      txt(g, 'YOUR CRYPTO APP', 0, sy + 96, F.monoX(26), rgba(theme.paper, 0.7)); txt(g, 'EARNINGS TODAY', 0, sy + 180, F.cap(34), rgba(theme.paper, 0.9));
+      txt(g, '+1.00%', 0, sy + 320, F.hero(196), theme.good); txt(g, 'EVERY. SINGLE. DAY.', 0, sy + 440, F.monoX(30), rgba(theme.paper, 0.75));
+      const n = 11, bw = (sw - 90) / n; for (let i = 0; i < n; i++) { const bh = 70 + i * 36 + (i % 3) * 10; clay(g, sx + 45 + i * bw + 4, sy + sh - 120 - bh, bw - 8, bh, 8, theme.good, { shadowK: 0.3 }); }
+      txt(g, 'ILLUSTRATION', 0, sy + sh - 52, F.mono(20), rgba(theme.paper, 0.45));
+      if (t >= p.crackAt && live) { const r = ease.out(clamp((t - p.crackAt) / 0.16)), cx = 70, cy = -90; g.lineCap = 'round'; g.lineJoin = 'round';
+        const rays = []; for (let i = 0; i < 10; i++) { const a0 = i * 0.628 + hash(i * 1.7) * 0.5, pts = [[cx, cy]]; let x = cx, y = cy, a = a0; for (let s = 0; s < 6; s++) { a += (hash(i * 9.1 + s) - 0.5) * 0.7; const L = 70 + hash(i * 4.3 + s * 2.1) * 120; x += Math.cos(a) * L; y += Math.sin(a) * L; pts.push([x, y]); } rays.push(pts); }
+        for (const pass of [0, 1]) { g.strokeStyle = pass ? 'rgba(255,255,255,.92)' : 'rgba(0,0,0,.55)'; g.lineWidth = pass ? 4 : 8; rays.forEach(pts => { const m = Math.max(1, Math.round(r * (pts.length - 1))); path(g, pts.slice(0, m + 1)); g.stroke(); }); }
+        g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; for (const rr0 of [150, 290]) { if (r < 0.7) break; g.beginPath(); for (let i = 0; i <= 10; i++) { const a = i * 0.628, d = rr0 * (0.85 + hash(i * 2.3 + rr0) * 0.3); i ? g.lineTo(cx + Math.cos(a) * d, cy + Math.sin(a) * d) : g.moveTo(cx + Math.cos(a) * d, cy + Math.sin(a) * d); } g.stroke(); }
+        const fl = hit(t - p.crackAt, 16); if (fl > 0.02) { g.fillStyle = `rgba(255,255,255,${0.55 * fl})`; g.fillRect(sx, sy, sw, sh); } }
+      // SHUT DOWN shutter
+      { const lt = t - p.shutAt; if (lt > 0 && live) { const u = ease.in(clamp(lt / 0.2)), bounce = lt > 0.2 ? 0.035 * sh * Math.exp(-(lt - 0.2) * 9) * Math.sin((lt - 0.2) * 34) : 0, bh = sh * u + bounce;
+          g.fillStyle = theme.navy; g.fillRect(sx, sy, sw, bh); g.fillStyle = 'rgba(0,0,0,.22)'; for (let y = sy + 30; y < sy + bh; y += 34) g.fillRect(sx, y, sw, 4);
+          g.fillStyle = theme.gold; g.fillRect(sx, sy + bh - 22, sw, 22); if (u > 0.55) { txt(g, 'SHUT', 0, -70, F.hero(180), theme.paper); txt(g, 'DOWN', 0, 90, F.hero(180), theme.bad); txt(g, 'JAN 2018', 0, 230, F.cap(54), theme.paper); } burst(g, 0, sy + bh, sw * 0.5, theme.gold, lt - 0.2, 14, 0.4); } }
+      g.restore();
+    },
+  });
+
+  // ---------- ticker: BitConnect "posted returns" card. +1% rows print one by one; source chip (alleged) ----------
+  B.register('ticker', {
+    defaults: { w: 820, h: 920, rowAt: [], srcAt: 99999, srcText: 'SOURCE: SEC COMPLAINT · ALLEGED' },
+    size: p => [p.w, p.h],
+    anchors(p) { const y0 = -p.h / 2, a = { head: [0, y0 + 70, p.w, 140], src: [0, y0 + p.h - 110, p.w * 0.92, 90] }; for (let i = 0; i < 4; i++) a['r' + i] = [0, y0 + 250 + i * 128, p.w * 0.9, 116]; return a; },
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2;
+      paper(g, x0, y0, w, h, 26, { lift });
+      g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 140); const hg = g.createLinearGradient(0, y0, 0, y0 + 140); hg.addColorStop(0, 'rgba(255,255,255,.12)'); hg.addColorStop(1, 'rgba(0,0,0,.14)'); g.fillStyle = hg; g.fillRect(x0, y0, w, 140); g.restore();
+      txt(g, 'BITCONNECT', x0 + 36, y0 + 58, F.hero(76), theme.paper, 'left'); txt(g, 'POSTED RETURNS · ABOUT 1% A DAY', x0 + 38, y0 + 110, F.mono(22), rgba(theme.paper, 0.78), 'left');
+      const labs = ['DAY 1', 'DAY 2', 'DAY 3', 'AND SO ON'];
+      for (let i = 0; i < 4; i++) { const ry = y0 + 250 + i * 128, lt = t - (p.rowAt[i] ?? 99999);
+        if (lt < 0) { g.save(); g.strokeStyle = rgba(theme.rule, 0.9); g.lineWidth = 3; g.setLineDash([9, 9]); rr(g, x0 + 36, ry - 52, w - 72, 104, 18); g.stroke(); g.restore(); continue; }
+        const k = spring(lt, 'snappy'), sc = 1.25 - 0.25 * k; g.save(); g.globalAlpha = clamp(lt / 0.06); g.translate(0, ry); g.scale(sc, sc);
+        g.fillStyle = theme.paperShade; rr(g, x0 + 36, -52, w - 72, 104, 18); g.fill(); g.fillStyle = theme.goodInk; rr(g, x0 + 36, -52, 14, 104, 7); g.fill();
+        txt(g, labs[i], x0 + 76, 4, F.monoX(40), theme.ink, 'left'); txt(g, '+1%', x0 + w - 62, 6, F.hero(84), theme.goodInk, 'right'); marker(g, x0 + 60, 36, w - 120, 7, theme.goodInk, clamp((lt - 0.05) / 0.3), 0.5); g.restore(); burst(g, 0, ry, w * 0.34, theme.good, lt, 12, 0.4); }
+      { const lt = t - p.srcAt; if (lt > 0) { const k = spring(lt, 'snappy'); g.save(); g.translate(0, y0 + h - 110 + (1 - k) * 30); g.globalAlpha = clamp(lt / 0.08); clay(g, -w * 0.43, -38, w * 0.86, 76, 18, theme.navy, { shadowK: 0.5 }); txt(g, p.srcText, 0, 3, F.monoX(27), theme.paper); g.restore(); } else { g.strokeStyle = rgba(theme.rule, 0.9); g.lineWidth = 3; g.setLineDash([9, 9]); rr(g, -w * 0.43, y0 + h - 148, w * 0.86, 76, 18); g.stroke(); g.setLineDash([]); } }
+    },
+  });
+
+  // ---------- heart: small like-pulse (screen layer, <= 1.5 s) ----------
+  B.register('heart', {
+    defaults: { s: 1 }, size: () => [10, 10],
+    draw(g, p, env) {
+      const lt = env.lt, k = 0.35 + 0.65 * spring(lt, 'snappy'), pul = 1 + 0.22 * hit(lt - 0.5, 9) * (lt > 0.5 ? 1 : 0), s = p.s * k * pul * 1.5;
+      g.save(); g.scale(s, s);
+      const r = lin(lt, 0.0, 0.55); if (r > 0 && r < 1) { g.strokeStyle = rgba(env.theme.paper, 0.7 * (1 - r)); g.lineWidth = 5; g.beginPath(); g.arc(0, -4, 60 + 70 * ease.out(r), 0, 7); g.stroke(); }
+      const r2 = lin(lt, 0.5, 1.05); if (r2 > 0 && r2 < 1) { g.strokeStyle = rgba(env.theme.paper, 0.7 * (1 - r2)); g.lineWidth = 5; g.beginPath(); g.arc(0, -4, 60 + 70 * ease.out(r2), 0, 7); g.stroke(); }
+      g.shadowColor = 'rgba(2,4,9,.45)'; g.shadowBlur = 18; g.shadowOffsetY = 10;
+      const hp = () => { g.beginPath(); g.moveTo(0, 42); g.bezierCurveTo(-112, -28, -52, -104, 0, -42); g.bezierCurveTo(52, -104, 112, -28, 0, 42); g.closePath(); };
+      hp(); const gr = g.createLinearGradient(-60, -80, 60, 50); gr.addColorStop(0, '#ff6b60'); gr.addColorStop(1, '#E0281E'); g.fillStyle = gr; g.fill(); g.shadowColor = 'transparent';
+      g.save(); hp(); g.clip(); g.fillStyle = 'rgba(255,255,255,.28)'; g.beginPath(); g.ellipse(-34, -52, 30, 16, -0.6, 0, 7); g.fill(); g.restore();
+      g.restore();
+    },
+  });
+
+  // ---------- flag: tiny "1% A DAY" chip; a huge red flag unfurls out of it (TikTok hook). furls back on backAt ----------
+  B.register('flag', {
+    defaults: { furlAt: -0.12, backAt: 99999, label: 'RED FLAG', chip: '1% A DAY' }, size: () => [900, 1000],
+    draw(g, p, env) {
+      const { t, theme } = env, ku = clamp((t - p.furlAt) / 0.42), k0 = ku <= 0 ? 0 : (1 - Math.pow(1 - ku, 3)) * (1 + 0.1 * Math.sin(ku * Math.PI)), kb = ease.inOut(clamp((t - p.backAt) / 0.5)), k = Math.max(0, k0 * (1 - kb)), top = -330, FW = 700, FH = 360;
+      // pole
+      g.fillStyle = '#8e98a8'; rr(g, -9, top - 24, 18, 700, 9); g.fill(); g.fillStyle = theme.gold; g.beginPath(); g.arc(0, top - 26, 20, 0, 7); g.fill();
+      // cloth
+      if (k > 0.01) { const w = FW * k, N = 22, up = [], dn = []; for (let i = 0; i <= N; i++) { const u = i / N, x = 9 + u * w, ph = t * 7 - u * 5, wave = Math.sin(ph) * (10 + 16 * u) * Math.min(1, k * 1.2); up.push([x, top + 4 + wave]); dn.push([x, top + FH - 4 + wave * 1.1 + u * 24]); }
+        g.save(); g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 24; g.shadowOffsetY = 14; g.beginPath(); up.forEach((q, i) => (i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1]))); for (let i = N; i >= 0; i--) g.lineTo(dn[i][0], dn[i][1]); g.closePath(); const fg = g.createLinearGradient(0, top, 0, top + FH); fg.addColorStop(0, '#ff5a50'); fg.addColorStop(1, '#c9241a'); g.fillStyle = fg; g.fill(); g.shadowColor = 'transparent'; g.clip();
+        for (let i = 0; i < N; i += 2) { g.fillStyle = 'rgba(0,0,0,.13)'; g.beginPath(); g.moveTo(up[i][0], up[i][1]); g.lineTo(up[i + 1][0], up[i + 1][1]); g.lineTo(dn[i + 1][0], dn[i + 1][1]); g.lineTo(dn[i][0], dn[i][1]); g.fill(); }
+        const ta = clamp((k - 0.7) / 0.3); if (ta > 0) { g.globalAlpha *= ta; txt(g, 'RED', 9 + w * 0.5, top + FH * 0.3 + Math.sin(t * 7 - 2.5) * 14, F.hero(122), theme.paper); txt(g, 'FLAG', 9 + w * 0.5, top + FH * 0.72 + Math.sin(t * 7 - 2.5) * 14, F.hero(122), theme.paper); } g.restore(); }
+      // chip
+      { const pk = 1 + 0.08 * hit(t - p.furlAt - 0.1, 9) * (t > p.furlAt ? 1 : 0); g.save(); g.translate(0, 372); g.scale(pk, pk); clay(g, -190, -52, 380, 104, 52, theme.paper, { shadowK: 0.6 }); txt(g, p.chip, 0, 5, F.hero(62), theme.badInk); g.restore(); }
+    },
+  });
+
+  // ---------- puppet: wallet on strings from a control bar; strings drop at dropAt, yank at yankAt / yankAt2 ----------
+  B.register('puppet', {
+    defaults: { dropAt: -0.1, yankAt: 99999, yankAt2: 99999 }, size: () => [760, 1100],
+    anchors: () => ({ wallet: [0, 170, 520, 400], bar: [0, -440, 600, 80] }),
+    draw(g, p, env) {
+      const { t, theme } = env, yk = at => { const l = t - at; return l < 0 ? 0 : 170 * Math.abs(Math.sin(l * 14)) * Math.exp(-l * 3.6); }, off = yk(p.yankAt) + yk(p.yankAt2), dk = ease.out(clamp((t - p.dropAt) / 0.38)), tilt = off * 0.0007;
+      const wy = 170 - off, barY = -440 + (1 - dk) * -700 - off * 0.5;
+      const anchors = [[-250, -60], [-90, -96], [90, -96], [250, -60]], tops = [[-260, 0], [-90, 0], [90, 0], [260, 0]];
+      g.save(); g.translate(0, barY); g.rotate(tilt); clay(g, -310, -22, 620, 44, 16, theme.manila, { shadowK: 0.5 }); clay(g, -26, -70, 52, 56, 12, '#8e98a8', { shadowK: 0.3 }); g.restore();
+      g.strokeStyle = rgba(theme.paper, 0.9); g.lineWidth = 4; g.lineCap = 'round';
+      anchors.forEach((a, i) => { const bx = tops[i][0] * Math.cos(tilt) + 0, by = barY + tops[i][0] * Math.sin(tilt); g.beginPath(); g.moveTo(bx, by); g.lineTo(a[0], wy + a[1]); g.stroke(); });
+      g.save(); g.translate(0, wy); g.rotate(-tilt * 2); wallet(g, 0, 0, 340, 250, theme.gold, 1.5, 1); g.restore();
+      g.save(); g.translate(-60, wy - 20); g.rotate(-0.08); clay(g, -190, -52, 380, 104, 52, theme.paper, { shadowK: 0.6 }); txt(g, '1% A DAY', 0, 5, F.hero(62), theme.badInk); g.restore();
+    },
+  });

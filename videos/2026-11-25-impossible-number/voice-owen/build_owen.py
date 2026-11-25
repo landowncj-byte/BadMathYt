@@ -21,7 +21,8 @@ def whisper(a):
 out, timed, t = [], [], 0.0
 report = []
 for ch in range(5):
-    paras = [p for p in P if p['chapter'] == ch]
+    allp = [p for p in P if p['chapter'] == ch]
+    paras = [p for p in allp if 'file' not in p]
     a = load(f'ch{ch}.mp3'); dur = len(a) / SR
     ws = whisper(a)
     import re
@@ -47,14 +48,18 @@ for ch in range(5):
             wi -= 1; lead -= 1
         cuts.append(((ws[wi - 1]['e'] + ws[wi]['s']) / 2, 0, wi))
     bounds = [0.0] + [c[0] for c in cuts] + [dur]
+    segs = {}
     for j, p in enumerate(paras):
-        seg = a[int(bounds[j] * SR): int(bounds[j + 1] * SR)]
+        segs[p['id']] = (a[int(bounds[j] * SR): int(bounds[j + 1] * SR)], [w['w'] for w in ws if bounds[j] <= w['s'] < bounds[j + 1]][:4])
+    for p in allp:
+        if 'file' in p: seg, first = load(p['file']), ['(insert)']
+        else: seg, first = segs[p['id']]
         nz = np.where(np.abs(seg) > 0.004)[0]
         seg = seg[max(0, nz[0] - int(0.03 * SR)): nz[-1] + int(0.08 * SR)] if len(nz) else seg
+        if 'file' in p: seg = seg / max(1e-6, np.abs(seg).max()) * float(np.percentile(np.abs(a), 99.9))
         start = t; end = t + len(seg) / SR
         timed.append({'id': p['id'], 'chapter': ch, 'start': round(start, 3), 'end': round(end, 3), 'pause': p['pause'], 'text': p['text']})
         out += [seg, np.zeros(int(round(p['pause'] * SR)), 'float32')]; t = end + p['pause']
-        first = [w['w'] for w in ws if bounds[j] <= w['s'] < bounds[j + 1]][:4]
         report.append(f"{p['id']} {start:7.2f}-{end:7.2f} | heard: {' '.join(first)} | script: {' '.join(p['text'].split()[:4])}")
 y = np.concatenate(out)
 # loudness-normalise roughly like Kokoro narration (peak 0.9)

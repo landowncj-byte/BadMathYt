@@ -78,6 +78,13 @@
   "pause": 0.5
  },
  {
+  "id": "P13b",
+  "text": "Hit like if you'd have bought in too. Most of Boston did.",
+  "file": "cta_like.mp3",
+  "pause": 0.5,
+  "chapter": 1
+ },
+ {
   "id": "P14",
   "chapter": 1,
   "text": "But nobody did the math. Until a financial journalist named Clarence Barron did.",
@@ -172,6 +179,13 @@
   "chapter": 2,
   "text": "On paper, nine hundred thousand tons. Actually there, about fifty-five thousand. Over ninety percent of it never existed.",
   "pause": 0.5
+ },
+ {
+  "id": "P29b",
+  "text": "Send this to the friend who trusts anything that comes with a receipt.",
+  "file": "cta_send.mp3",
+  "pause": 0.5,
+  "chapter": 2
  },
  {
   "id": "P30",
@@ -280,6 +294,13 @@
   "chapter": 3,
   "text": "Madoff's bank account, which had held over five billion dollars earlier that year, was down to about two hundred and thirty-four million.",
   "pause": 0.4
+ },
+ {
+  "id": "P47b",
+  "text": "Subscribe now, because this next part is where it all comes apart.",
+  "file": "cta_sub.mp3",
+  "pause": 0.5,
+  "chapter": 3
  },
  {
   "id": "P48",
