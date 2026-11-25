@@ -1,0 +1,49 @@
+# beats — onecoin · YouTube Shorts · DECODED
+Script: `script.json` (same folder) · 133 words · ~47 s estimated (not voiced yet: re-time to `@word` refs after voicing and run `brand/tools/script_gate.py` again on the real timings).
+Written per `brand/skills/short-form-video-script` (WATCH: muted version first, three-track beats, cut-test, loop) and `brand/skills/hook-writer` (candidates across mechanisms, rubric). Owner rules win over the skills: CTAs woven at ~30/55/80%, no end CTA block, no AI disclosure.
+
+**LOOP: 'no true public blockchain' (so what were people buying?) -> PAID at ~84% ('fake coins', the company's own term, prosecutors said). Last line 'Ever checked a coin's blockchain yourself?' -> frame 0 hollow coin.**
+
+STAKES: at least 3.5 million people and more than $4 billion, in a coin your group chat could have pitched you.  
+QUESTION: what were they actually buying?  
+TWIST: the ledger was private, the company set the price itself, and some coins were not even in that ledger. Inside, they had a name for those.  
+REHOOKS: 'So what were… people actually buying?' (5 s) / 'trust them, basically' (19 s) / 'And the price?' (21 s) / 'It gets worse' (28 s) / 'And the co-founder?' (34 s) / 'what'd they call those coins?' (38 s) / payoff 42 s
+
+**Facts used (all ✔2 / primary in research/2026-11-26/onecoin-no-blockchain/research.md, attributed):** more than $4 billion taken in · at least 3.5 million victims · prosecutors said OneCoin lacked 'a true blockchain, that is, a public and verifiable blockchain' and claimed a private one · the value was set by the company itself, not by a market · prosecutors said that by about March 2015 members were allocated coins that did not exist even in the purported private blockchain, called 'fake coins' internally · co-founder Karl Sebastian Greenwood made about €20 million a month, pleaded guilty (December 2022) and got 20 years (September 12, 2023) · DOJ calls it a fraud / pyramid scheme. Wording lock: always 'no TRUE PUBLIC blockchain, prosecutors said' (voice and screen), never 'no blockchain at all'. NOT used: Ruja Ignatova in any cut (charged only; left out rather than 'alleged'), 'Ponzi', 'biggest crypto scam in history', the spreadsheet / SQL-database line, the 'take the money and run' email, $4.4B / $15B variants, Greenwood's arrest details, the other defendants, the 'Bitcoin killer' slogan and the members' website dashboard (story beats without a grade). The 3.5 million buyers are never the joke.
+
+## Hook candidates (rubric 0–2 each: Gap · Specific · Truth · Fit · Voice · Pull; Truth and Pull are pass/fail)
+| # | Hook | Mechanism | G | S | T | F | V | P | Total | Verdict |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | This crypto coin took in over four billion dollars. No true public blockchain, prosecutors said. | contrarian + specificity | 2 | 2 | 2 | 2 | 2 | 2 | 12/12 | KEEP - impossible-sounding and exactly the sourced wording, attributed inside the hook, 9-word first sentence |
+| 2 | Four billion dollars went into a crypto coin nobody could check. | stakes | 2 | 2 | 1 | 2 | 2 | 2 | 11/12 | 'nobody could check' goes further than 'no public, verifiable blockchain' - Truth 1 |
+| 3 | How do you tell a real crypto coin from a fake one? | question | 1 | 0 | 2 | 2 | 1 | 1 | 7/12 | soft, and it promises advice |
+| 4 | A crypto company had an internal name for its coins: fake coins. | curiosity + specificity | 2 | 2 | 1 | 2 | 2 | 2 | 11/12 | 'its coins' should be 'some coins'; fixed and used on TikTok |
+| 5 | This guy made twenty million euros a month from a coin with no real chain. | stakes | 2 | 2 | 2 | 1 | 2 | 1 | 10/12 | 15 words |
+| 6 | OneCoin was the stupidest crypto ever sold, and millions bought it. | negativity | 2 | 1 | 0 | 2 | 1 | 1 | 7/12 | DISQUALIFIED: superlative we can't source, and it leans on the buyers |
+| 7 | The price of this coin only went up, because the sellers typed it in. | curiosity | 2 | 1 | 1 | 2 | 2 | 1 | 9/12 | 'typed it in' and 'only went up' are colour, not the sourced wording |
+
+## Three-track beats (read the ON-SCREEN TEXT column alone first: it must tell the story muted)
+Engine v2 (`brand/engine-v2`, `brand/VISUAL-V2.md`): paper/clay objects on a warm ink set, soft key light and real shadows, NO neon glow. Camera pushes in on every spoken number as it is said. The storyteller (coin head, navy suit, red bowtie) travels: in front of the graphic to talk, behind/beside it when it comes forward. Captions (Inter 800, 1–4 words, from word one, emphasis word in Anton + series colour) run under every beat in addition to the designed text below. A beat longer than ~3 s contains two visual changes (the `->` steps). CTA micro-moments are small, ≤ 1.5 s, never a banner, never stacked.
+| # | time | VISUAL (engine v2) | ON-SCREEN TEXT | SPOKEN | job |
+|---|---|---|---|---|---|
+| 1 | 0.0–4.5 | FRAME 0 SLAM: a big clay coin slams onto the table and cracks open: hollow; hit sound. Counter rolls to the number, push-in. -> a paper chain that should run out of the coin ends after one loose link; red stamp. Storyteller front-left, peering inside. DECODED pill. | MORE THAN $4,000,000,000 (white) / NO TRUE PUBLIC BLOCKCHAIN — PROSECUTORS SAID (red) | This crypto coin took in over four billion dollars. No true public blockchain, prosecutors said. | GRAB (hook) |
+| 2 | 5.0–8.8 | Case board swings in (recurring device), pin 1: a crowd of tiny paper figures counts up, push-in on '3.5 MILLION'. -> whip to a big paper question mark; storyteller walks in front of it. | AT LEAST 3.5 MILLION PEOPLE -> BUYING WHAT? | [breath] So what were three and a half million people actually buying? | rehook (states the big question) |
+| 3 | 9.2–11.3 | A paper name tag 'ONECOIN' pins to the board; paper figures stack themselves into a pyramid, each layer snapping in wider than the last. | ONECOIN · PYRAMID-STYLE SALES NETWORK | OneCoin. Sold through a pyramid-style sales network. | advance |
+| 4 | 11.7–16.2 | A chain of open paper blocks stretches toward camera, each one flips open as the camera flies down it. -> storyteller steps in front, sheepish shrug; one small heart pulses (0.8 s). | REAL COIN = PUBLIC LEDGER ANYONE CAN CHECK | Real coins have a public ledger anyone can check. Hit like if you never have. | advance (the test) + CTA like @ |
+| 5 | 16.7–19.7 | A filing-cabinet drawer slams shut and a padlock clicks; push-in on the lock. -> label flips onto the drawer; storyteller knocks on it, no answer. ILLUSTRATION label. | ONECOIN: “IT'S PRIVATE” -> drawer label: TRUST US (ILLUSTRATION) | OneCoin said its blockchain was private. So— trust them, basically. | twist 1 |
+| 6 | 20.2–23.2 | A paper price chart climbs. -> camera pulls back: the line is being drawn by a clay hand with a pencil; push-in on the pencil tip. | THE PRICE? -> SET BY THE COMPANY — PROSECUTORS SAID | And the price? The company just set it, prosecutors said. | rehook (twist 2) |
+| 7 | 23.7–26.7 | Paper plane flicks out of the storyteller's hand and exits right (0.7 s); the chart curls up behind him. | (small) SEND -> | Send this to the friend who's still pitching you coins. | CTA share @51% + relatable |
+| 8 | 27.1–32.0 | The drawer finally opens toward camera: a short private ledger strip. -> clay coins are dealt out past the end of the strip onto bare table, each landing with a dull thud; push-in on the gap. | IT GETS WORSE -> COINS THAT WEREN'T EVEN IN THEIR OWN LEDGER — PROSECUTORS SAID | It gets worse. Prosecutors said they handed out coins that weren't even in their own ledger. | rehook (it gets worse) |
+| 9 | 32.4–35.5 | Board pin: a faceless clay bust with a name card. -> gavel drops, '20 YEARS' stamps, push-in. | KARL SEBASTIAN GREENWOOD · PLEADED GUILTY -> 20 YEARS | And the co-founder? Karl Sebastian Greenwood pleaded guilty. Twenty years. | advance (verdict) |
+| 10 | 35.9–39.8 | Camera returns to the loose coins on the bare table, a blank paper label hovers over them. -> storyteller hops to +FOLLOW and taps it (-> ✓ FOLLOWING). Music drops out for the pause. | THEIR NAME FOR THOSE COINS… | So what'd they call those coins? Follow, this page reads the fine print. | CTA follow @81% (promise) + sets up payoff |
+| 11 | 40.4–43.0 | PAYOFF, biggest move of the video: the label slams down on the coins and they all crack open hollow at once; hardest push-in + boom. Storyteller knocked back a step. | “FAKE COINS” — THEIR OWN TERM, PROSECUTORS SAID | [gasp] Fake coins. Their own term, prosecutors said. | PAYOFF @87% (answers 'buying what?') |
+| 12 | 43.4–46.2 | Comment bubble pops from the storyteller. -> camera pulls back, the hollow halves close into one shiny coin that lifts, ready to slam = frame 0. | bubble: EVER CHECKED ONE? YES / NO | Ever checked a coin's blockchain yourself? Yes or no. | comment question + LOOP to frame 0 |
+
+## Cut-test
+Every line above grabs, advances, or sets up the payoff (see `job`). Cut while drafting: Sofia 2014 launch scene, €20 million a month (TikTok owns it), the $300 million forfeiture, the missing co-founder (charged only).
+
+## Gate notes for the director (judgement lines)
+- S16: Decoded standard. On screen: 'MORE THAN $4,000,000,000', 'AT LEAST 3.5 MILLION PEOPLE', 'NO TRUE PUBLIC BLOCKCHAIN — PROSECUTORS SAID', '“FAKE COINS” — INTERNAL TERM, PROSECUTORS SAID', 'KARL SEBASTIAN GREENWOOD · PLEADED GUILTY · 20 YEARS'. Open the DOJ page before putting the long blockchain sentence in quote marks; the two-word 'fake coins' is cleared with attribution.
+- Generic clay coin (not OneCoin's logo), no exchange or crypto logos; the 'TRUST US' drawer label is an ILLUSTRATION and is labelled as one.
+- Third crypto story of the week (BitConnect 11-25, Terra-Luna long-form Friday): schedule away from both.
+- S18: `pronounce.py audit` on: OneCoin (say 'one coin'), blockchain, Greenwood, Sebastian, euros, prosecutors, ledger.

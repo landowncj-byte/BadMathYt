@@ -1,8 +1,8 @@
 [
  ["Part two, as promised. They bought over five million lottery tickets and won. Did Virginia pay?", 0.3],
  ["[breath] Nineteen ninety-two. Twenty-seven million bucks, a state record, won by an Australian fund.", 0.25],
- ["But Virginia investigates first. The snag? Tickets had to be bought at a licensed store.", 0.3],
- ["Was this one? Hit like if you'd have double-checked too.", 0.3],
+ ["But Virginia investigates. The snag? Tickets had to be bought at a licensed store.", 0.3],
+ ["Was this one? Hit like if you'd have double-checked.", 0.3],
  ["About three weeks later: nobody could prove a rule was broken.", 0.3],
  ["So they paid. About one point three million a year, for twenty years.", 0.3],
  ["Send this to the friend who swears the house always wins.", 0.3],
@@ -10,5 +10,5 @@
  ["Thirty-one years later? Follow, this page finishes the story.", 0.45],
  ["[gasp] Somebody did it again. Texas, twenty twenty-three, ninety-five million.", 0.3],
  ["It ended with Texas shutting down its lottery commission.", 0.3],
- ["Should a state have to pay for that? Yes or no.", 0.4]
+ ["Should a state have to pay? Yes or no.", 0.4]
 ]
