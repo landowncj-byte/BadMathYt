@@ -1,0 +1,63 @@
+{
+ "duration": 14,
+ "sfx": [
+  {
+   "gain": -5,
+   "dur": 0.36,
+   "at": 0,
+   "name": "deep_boom_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 0.8,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -11,
+   "dur": 1.4,
+   "at": 1,
+   "name": "money_counter_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.7,
+   "at": 2.4,
+   "name": "ding_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 4.6,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 7.2,
+   "name": "swipe_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.7,
+   "at": 7.4,
+   "name": "riser_1"
+  },
+  {
+   "gain": -4,
+   "dur": 1.6,
+   "at": 8.1,
+   "name": "deep_boom_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 13.25,
+   "name": "click_1"
+  }
+ ],
+ "bed": {
+  "name": "upbeat_bed_2",
+  "gain": -1
+ }
+}
