@@ -2,9 +2,9 @@
 Scripts/voice untouched. Sources: _src/recipes.js (scale, tower, doll, fivex, gap, slider, chip, heart, plane) + yt.js / tt.js / ig.js (build.sh <cut> <yt|tt|ig>, sheet.py). No engine files changed.
 | Cut | File | Narration | Video | Size |
 |---|---|---|---|---|
-| YouTube | video.mp4 | 46.10 s | 46.50 s | 28.0 MB |
-| TikTok | tiktok/video.mp4 | 28.67 s | 29.07 s | 20.9 MB |
-| IG/FB | ig/video.mp4 | 22.25 s | 22.67 s | 14.7 MB |
+| YouTube | video.mp4 | 46.10 s | 46.50 s | 28.1 MB |
+| TikTok | tiktok/video.mp4 | 28.67 s | 29.07 s | 20.8 MB |
+| IG/FB | ig/video.mp4 | 22.25 s | 22.67 s | 14.6 MB |
 Mix: -14.0 LUFS, true peak -1.36 / -1.42 / -1.31 dBFS. 1-fps timestamped contact_sheet.png in each cut. captions.srt from sentences.json (3 files).
 ## On-screen facts (all from research.md)
 | Shown | Value | research.md |
@@ -38,7 +38,7 @@ Starting pile/tower on frame 0 (4,500 bills, 36 in) are staging values, not clai
 | V13 post settings | n/a (not posting) | | |
 ## Doubts
 - Payoff-to-end gap is long on YT and IG because the fixed scripts put lines after the payoff.
-- Sparse middle on IG 17-20 s; "THE SCALE PAYS" text sits over the (enlarged) pile and counters.
+- Sparse middle on IG 17-20 s. Overlay texts now sit at y 345 (under the pill), clear of counters/captions; "THE SCALE PAYS" and "HUNDREDS, RIGHT?" still touch the A/B buttons for ~1 s. The assumed-1-g note is a dark chip so it stays legible over the doll card.
 - Rolling counters smear digits mid-spin (engine odometer); settles on exact values.
 - Hook shows -$202,980 exact while the voice says "two hundred grand" (beats.md said -$200,000).
 - IG caption censors the profanity (F*CK-UP) while the voice says it.
