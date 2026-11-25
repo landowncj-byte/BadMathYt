@@ -1,5 +1,12 @@
 # HANDOFF — Bad Math (read this first in any new session)
 
+> **READ FIRST, EVERY SESSION AND EVERY NIGHTLY BUILD (user rule 2026-11-25: "remember every correction and rule"):**
+> 1. `RULES.md` — every owner rule/correction + the SCRIPT GATE and VIDEO GATE. A new correction goes into RULES.md in the same turn it is given.
+> 2. Scripts are written with the skills in `brand/skills/` (STYLE §22): beats muted-first, 5–10 scored hooks, cut-test every line, CTAs woven at ~30/55/80% (never an end block), loop ending.
+> 3. Run `python3 brand/tools/script_gate.py <cut>` before voicing; FAIL = rewrite. Check the VIDEO GATE before queuing.
+> 4. Never send scripts/drafts to the owner for review; only report finished, queued videos.
+> 5. Long-forms use engine v2 (16:9), never the old neon engine. No AI labels anywhere. No um/uh, no laugh.
+
 This file is the long-term memory of the Bad Math project. A new Claude session that reads this + the files it points to must be able to continue the work with no other context. **Keep it current** (see "Keeping this file alive" at the bottom).
 
 Last updated: 2026-11-25 ~02:35 UTC (Tue Nov 24, ~9:35 PM ET). Session that wrote it: https://claude.ai/code/session_01JmfP7BKYW7KW1MupN5jo5m

@@ -1,5 +1,7 @@
 # Daily production runbook — Bad Math
 
+> **Gate (mandatory):** read `RULES.md` first. Write every script with `brand/skills/` per STYLE §22, run `brand/tools/script_gate.py` before voice (FAIL = rewrite), and check the VIDEO GATE in RULES.md before queuing. Do not send scripts to the owner.
+
 Every day: **at least 8 unique Shorts topics — 8 posts per platform per day minimum** (user rule 2026-11-24; each topic = YouTube + TikTok + IG/FB cuts), plus **1 unique long-form on Monday, Wednesday and Friday** (US Eastern), built **one at a time**, and each one is **published automatically as soon as it passes QA** (standing user authorization, 2026-11-24: "don't ask for approval"). Order: Shorts 1–4 → (Mon/Wed/Fri) long-form → Shorts 5–8. Build ahead the night before so the 08:00–14:00 slots are already filled when the day starts. If a day is short of 8, add extra evening slots (e.g. 21:00, 23:00, 23:30) to catch up the same day — each queued and approved the moment it passes QA, so finished videos go out even if the day's usage runs out. The user can revoke this anytime ("stop auto-posting") — then go back to asking per post.
 
 Re-read first: `CHANNEL.md`, `STYLE.md`, `brand/CHARACTER.md`, `brand/MEMES.md` (meme beats: 2–3 per Short, ~1 per 30–45 s long-form), `brand/sfx-library/manifest.json` (reusable CC0 sounds), `ideas.md`, and the newest long-form `videos/2026-11-25-impossible-number/DIRECTION.md` (template for long-form direction).
