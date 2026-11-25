@@ -27,3 +27,7 @@ Account now: Pro, 712,816 credits this cycle (21,530 used; resets 2026-12-25). P
 - Shorts, every day: **11:00 · 15:00 · 19:00** on YouTube, TikTok, Instagram and Facebook. Alternate Decoded / What If.
 - Long-forms: **Tuesday + Friday 17:00**, YouTube (engine v2 16:9, Owen, about 8–12 min).
 - This first cycle has ~190k credits of slack. Spend it on the 7 remaining rebuilds (~22k) and optional 4th "bonus" Shorts on strong topics; never make them routine.
+
+## Owner decision (2026-11-25)
+"3 topics a day and 2 long forms a week. That's the plan." If credits get tight: cut ONE Short topic per day (3 → 2). NEVER cut the long-forms.
+Check: if credits used ÷ days elapsed in the cycle × days in the cycle > the plan limit (minus a ~20k cushion), switch to 2 Shorts/day until the reset.

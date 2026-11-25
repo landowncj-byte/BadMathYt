@@ -1,36 +1,67 @@
 1
-00:00:00,000 --> 00:00:04,161
-You took the doubling penny over a million bucks. Day twenty: about five grand.
+00:00:00,000 --> 00:00:04,920
+You picked a penny over a million bucks. By day twenty, you've got about five grand.
 
 2
-00:00:05,011 --> 00:00:08,946
-Regret it yet? The deal: one penny, doubles daily, thirty days, no taxes.
+00:00:05,400 --> 00:00:09,240
+Wait, back up. Somebody offers you a million bucks, right now.
 
 3
-00:00:09,196 --> 00:00:13,058
-Tap the heart if you'd be sweating, 'cause day ten was five bucks. Five.
+00:00:09,580 --> 00:00:14,320
+Or one single penny, but it doubles every day for thirty days, no taxes.
 
 4
-00:00:13,908 --> 00:00:18,283
-Day twenty-seven? Six hundred seventy-one grand. Still— still losing to the million.
+00:00:14,940 --> 00:00:20,340
+Doubling means whatever you've got, you get that much again. So one penny, then two, then four.
 
 5
-00:00:18,533 --> 00:00:20,671
-Send this to the friend who'd quit right here.
+00:00:20,820 --> 00:00:25,980
+Day three, four cents. Wait, that's it? Yeah. Day four, eight cents.
 
 6
-00:00:21,521 --> 00:00:23,513
-Day twenty-eight, you finally pass it.
+00:00:26,580 --> 00:00:27,820
+Tap the heart if you'd take the penny.
 
 7
-00:00:24,363 --> 00:00:26,369
-Follow, 'cause the last day's stupid.
+00:00:27,820 --> 00:00:31,960
+So you take the penny, and after a whole week, you're holding sixty-four cents.
 
 8
-00:00:27,369 --> 00:00:30,423
-Day thirty: five point three seven million.
+00:00:32,660 --> 00:00:36,240
+Day ten, you've got five bucks, which buys you a sad little sandwich.
 
 9
-00:00:31,323 --> 00:00:33,272
-So: penny or million? One word.
+00:00:36,860 --> 00:00:41,520
+Day twenty, it's about five grand. And the million's still about a hundred ninety times bigger.
 
+10
+00:00:42,020 --> 00:00:44,280
+Send this to the friend who'd rage quit right here.
+
+11
+00:00:44,640 --> 00:00:47,420
+Day twenty-seven, you're at six hundred seventy-one grand.
+
+12
+00:00:47,840 --> 00:00:51,160
+Three days left, and you're still— still losing to the million.
+
+13
+00:00:51,620 --> 00:00:53,160
+Follow, 'cause the ending's stupid.
+
+14
+00:00:53,680 --> 00:00:57,980
+Day twenty-eight, you finally pass a million. Day twenty-nine, it doubles again.
+
+15
+00:00:58,460 --> 00:01:02,080
+And day thirty, you're holding five point three seven million bucks.
+
+16
+00:01:02,560 --> 00:01:05,680
+Almost all of it, seven eighths, came in the last three days.
+
+17
+00:01:06,260 --> 00:01:08,300
+So, penny or million? One word.
