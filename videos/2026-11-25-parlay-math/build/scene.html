@@ -1,0 +1,296 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>What If: Your Parlay, Decoded</title>
+<style>html,body{margin:0;background:#0B0F14;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../../../brand/storyteller.js"></script>
+<script>
+const W = 1080, H = 1920, DUR = 57.86;
+const MOUTH = [0.111, 0.601, 0.761, 0.162, 0.006, 0.179, 0.144, 1.0, 1.0, 1.0, 1.0, 0.304, 0.783, 0.273, 0.141, 0.261, 0.496, 0.46, 0.447, 0.498, 0.507, 0.396, 0.082, 0.005, 0.138, 0.717, 1.0, 0.465, 0.397, 0.423, 0.415, 0.458, 0.433, 0.2, 0.026, 0.004, 0.002, 0.258, 0.209, 0.19, 0.087, 0.285, 0.28, 0.177, 0.498, 0.695, 0.593, 0.179, 0.01, 0.004, 0.157, 0.18, 0.514, 0.614, 0.603, 0.674, 0.508, 0.346, 0.304, 0.247, 0.114, 0.062, 0.028, 0.017, 0.019, 0.097, 0.313, 0.341, 0.093, 0.004, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.011, 0.277, 0.484, 0.652, 0.664, 0.437, 0.481, 0.125, 0.136, 0.814, 0.406, 0.431, 0.407, 0.492, 0.79, 0.815, 0.905, 0.809, 0.672, 0.344, 0.084, 0.097, 0.063, 0.027, 0.071, 0.3, 0.588, 0.661, 0.216, 0.002, 0.048, 0.505, 0.719, 0.949, 0.565, 0.116, 0.2, 0.333, 0.007, 0.071, 0.446, 0.183, 0.051, 0.005, 0.106, 0.623, 0.578, 0.374, 0.357, 0.446, 0.336, 0.127, 0.01, 0.128, 0.084, 0.7, 0.628, 0.305, 0.472, 0.472, 0.397, 0.351, 0.34, 0.334, 0.301, 0.35, 0.411, 0.512, 0.503, 0.359, 0.142, 0.069, 0.041, 0.024, 0.023, 0.014, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052, 0.26, 0.802, 1.0, 0.944, 0.751, 0.676, 0.594, 0.549, 0.654, 0.694, 0.761, 0.7, 0.482, 0.479, 0.545, 0.535, 0.348, 0.213, 0.152, 0.151, 0.803, 0.835, 1.0, 0.738, 0.369, 0.06, 0.029, 0.263, 0.449, 0.368, 0.113, 0.16, 0.293, 0.419, 0.496, 0.4, 0.438, 0.453, 0.448, 0.424, 0.449, 0.403, 0.62, 0.316, 0.024, 0.168, 0.345, 0.433, 0.385, 0.385, 0.388, 0.28, 0.104, 0.364, 0.118, 0.392, 0.362, 0.207, 0.107, 0.048, 0.035, 0.019, 0.016, 0.003, 0.001, 0.001, 0.001, 0.002, 0.002, 0.003, 0.005, 0.007, 0.008, 0.008, 0.003, 0.004, 0.217, 0.991, 1.0, 0.763, 0.996, 0.496, 0.009, 0.496, 0.656, 0.329, 0.195, 0.168, 0.568, 0.705, 0.689, 0.625, 0.303, 0.217, 0.532, 0.509, 0.186, 0.081, 0.011, 0.182, 0.384, 0.109, 0.327, 0.629, 0.611, 0.589, 0.505, 0.408, 0.383, 0.262, 0.293, 0.233, 0.315, 0.222, 0.252, 0.331, 0.323, 0.337, 0.385, 0.285, 0.141, 0.229, 0.51, 0.554, 0.491, 0.487, 0.271, 0.14, 0.167, 0.185, 0.112, 0.028, 0.025, 0.017, 0.007, 0.002, 0.002, 0.003, 0.003, 0.004, 0.007, 0.01, 0.012, 0.016, 0.026, 0.011, 0.159, 0.587, 0.712, 0.743, 0.486, 0.184, 0.148, 0.139, 1.0, 1.0, 0.144, 0.125, 0.005, 0.095, 0.362, 0.21, 0.121, 0.114, 0.1, 0.619, 0.727, 0.169, 0.133, 0.04, 0.006, 0.193, 0.303, 0.181, 0.113, 0.132, 0.416, 0.45, 0.413, 0.356, 0.291, 0.246, 0.216, 0.197, 0.154, 0.054, 0.005, 0.002, 0.002, 0.002, 0.078, 0.504, 0.29, 0.208, 0.121, 0.636, 1.0, 1.0, 0.051, 0.002, 0.001, 0.085, 0.098, 0.123, 0.356, 0.285, 0.094, 0.153, 0.405, 0.356, 0.398, 0.184, 0.515, 0.434, 0.437, 0.326, 0.049, 0.072, 0.103, 0.096, 0.079, 0.115, 0.691, 0.633, 0.69, 0.774, 0.575, 0.39, 0.376, 0.324, 0.394, 0.373, 0.324, 0.203, 0.274, 0.427, 0.448, 0.439, 0.155, 0.072, 0.002, 0.101, 0.221, 0.285, 0.378, 0.549, 0.475, 0.318, 0.421, 0.329, 0.126, 0.048, 0.017, 0.004, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.019, 0.286, 0.545, 0.73, 0.717, 0.599, 0.379, 0.777, 0.594, 0.134, 0.094, 1.0, 0.737, 0.522, 0.303, 0.014, 0.007, 0.001, 0.29, 0.194, 0.56, 0.751, 0.575, 0.562, 0.51, 0.187, 0.185, 0.476, 0.445, 0.371, 0.321, 0.322, 0.279, 0.343, 0.24, 0.293, 0.239, 0.384, 0.237, 0.228, 0.4, 0.536, 0.439, 0.422, 0.413, 0.321, 0.094, 0.16, 0.175, 0.254, 0.579, 0.673, 0.702, 0.59, 0.453, 0.236, 0.181, 0.16, 0.128, 0.073, 0.031, 0.02, 0.015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.013, 0.229, 1.0, 0.911, 0.137, 0.318, 0.718, 0.697, 0.746, 0.337, 0.013, 0.135, 0.546, 0.145, 0.131, 0.07, 0.236, 0.345, 0.211, 0.168, 0.126, 0.004, 0.53, 0.64, 0.602, 0.174, 0.469, 0.533, 0.254, 0.291, 0.335, 0.65, 0.819, 0.87, 0.741, 0.515, 0.284, 0.323, 0.65, 0.415, 0.011, 0.063, 0.014, 0.008, 0.299, 0.438, 0.47, 0.384, 0.433, 0.364, 0.317, 0.36, 0.445, 0.463, 0.511, 0.548, 0.489, 0.289, 0.553, 0.294, 0.016, 0.149, 0.331, 0.493, 0.53, 0.395, 0.154, 0.055, 0.031, 0.02, 0.011, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.035, 0.267, 0.443, 0.618, 0.475, 0.513, 0.476, 0.33, 0.068, 0.133, 0.254, 0.151, 0.52, 0.79, 0.802, 0.541, 0.486, 0.46, 0.387, 0.135, 0.138, 0.146, 0.08, 0.367, 0.607, 0.304, 0.051, 0.015, 0.002, 0.076, 0.307, 0.507, 0.398, 0.115, 0.004, 0.002, 0.002, 0.003, 0.003, 0.004, 0.006, 0.007, 0.006, 0.004, 0.003, 0.105, 0.503, 0.953, 0.644, 0.3, 0.203, 0.223, 0.441, 0.551, 0.562, 0.576, 1.0, 0.76, 0.614, 0.092, 0.084, 0.53, 0.856, 0.598, 0.375, 0.484, 0.446, 0.504, 0.582, 0.484, 0.139, 0.4, 0.342, 0.332, 0.129, 0.087, 0.047, 0.204, 0.52, 0.611, 0.23, 0.415, 0.432, 0.401, 0.285, 0.1, 0.006, 0.41, 0.526, 0.584, 0.502, 0.376, 0.074, 0.004, 0.342, 0.397, 0.138, 0.558, 0.615, 0.558, 0.517, 0.212, 0.077, 0.045, 0.036, 0.032, 0.006, 0.003, 0.006, 0.008, 0.009, 0.01, 0.011, 0.012, 0.01, 0.005, 0.122, 0.29, 0.709, 1.0, 1.0, 0.926, 0.638, 0.498, 0.264, 0.109, 0.267, 0.425, 0.482, 0.435, 0.355, 0.349, 0.551, 0.536, 0.555, 0.505, 0.486, 0.172, 0.047, 0.064, 0.095, 0.687, 0.423, 0.407, 0.356, 0.418, 0.3, 0.37, 0.301, 0.373, 0.293, 0.145, 0.256, 0.028, 0.292, 0.321, 0.276, 0.333, 0.252, 0.107, 0.104, 0.098, 0.111, 0.541, 0.469, 0.423, 0.272, 0.114, 0.045, 0.018, 0.017, 0.004, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.002, 0.003, 0.005, 0.007, 0.009, 0.005, 0.059, 1.0, 0.265, 0.262, 0.178, 0.148, 0.998, 0.898, 0.715, 0.791, 0.838, 0.661, 0.022, 0.002, 0.188, 0.178, 0.284, 0.564, 0.683, 0.598, 0.459, 0.497, 0.496, 0.455, 0.492, 0.34, 0.306, 0.094, 0.022, 0.065, 0.234, 0.307, 0.166, 0.093, 0.15, 0.365, 0.316, 0.328, 0.288, 0.218, 0.257, 0.464, 0.456, 0.492, 0.464, 0.402, 0.096, 0.044, 0.064, 0.572, 0.407, 0.365, 0.359, 0.381, 0.273, 0.363, 0.295, 0.357, 0.334, 0.086, 0.298, 0.042, 0.246, 0.359, 0.264, 0.299, 0.261, 0.149, 0.103, 0.094, 0.066, 0.332, 0.388, 0.32, 0.372, 0.338, 0.288, 0.097, 0.004, 0.369, 0.218, 0.2, 0.261, 0.353, 0.392, 0.441, 0.442, 0.438, 0.424, 0.282, 0.25, 0.182, 0.308, 0.378, 0.335, 0.378, 0.443, 0.481, 0.418, 0.303, 0.121, 0.067, 0.042, 0.022, 0.012, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.135, 0.341, 0.262, 0.497, 1.0, 1.0, 0.079, 0.014, 0.002, 0.147, 0.205, 0.526, 0.74, 0.618, 0.567, 0.565, 0.489, 0.311, 0.349, 0.623, 0.319, 0.22, 0.639, 0.696, 0.687, 0.549, 0.232, 0.037, 0.151, 0.407, 0.421, 0.357, 0.356, 0.765, 0.263, 0.057, 0.334, 0.399, 0.226, 0.605, 0.505, 0.407, 0.231, 0.269, 0.41, 0.374, 0.206, 0.126, 0.071, 0.079, 0.066, 0.541, 0.675, 0.619, 0.409, 0.319, 0.388, 0.346, 0.147, 0.076, 0.095, 0.045, 0.153, 0.31, 0.294, 0.133, 0.065, 0.021, 0.02, 0.011, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.042, 0.236, 0.467, 0.697, 0.676, 0.539, 0.536, 0.395, 0.211, 0.7, 0.622, 0.687, 0.533, 0.046, 0.18, 0.206, 0.133, 0.347, 0.139, 0.154, 0.15, 0.086, 0.737, 0.766, 0.678, 0.612, 0.479, 0.24, 0.129, 0.081, 0.087, 0.059, 0.011, 0.003, 0.006, 0.007, 0.007, 0.006, 0.005, 0.003, 0.003, 0.024, 0.433, 0.371, 0.397, 0.502, 0.208, 0.005, 1.0, 1.0, 1.0, 1.0, 0.724, 0.254, 0.539, 0.508, 0.427, 0.318, 0.43, 0.155, 0.191, 0.279, 0.442, 0.587, 0.508, 0.416, 0.384, 0.389, 0.377, 0.437, 0.448, 0.438, 0.315, 0.129, 0.219, 0.396, 0.377, 0.257, 0.367, 0.444, 0.563, 0.457, 0.224, 0.083, 0.036, 0.027, 0.019, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.057, 0.634, 0.714, 0.321, 0.119, 0.132, 0.196, 1.0, 0.798, 0.776, 0.717, 0.321, 0.009, 0.083, 0.444, 0.365, 0.355, 0.246, 0.092, 0.184, 0.345, 0.072, 0.004, 0.151, 0.166, 0.638, 1.0, 0.586, 0.104, 0.024, 0.009, 0.004, 0.003, 0.001, 0.001, 0.001, 0.001, 0.001, 0.002, 0.004, 0.006, 0.008, 0.01, 0.018, 0.014, 0.037, 0.432, 0.636, 0.731, 0.643, 0.229, 0.09, 0.577, 0.326, 0.916, 0.982, 0.779, 0.762, 0.648, 0.546, 0.733, 0.596, 0.555, 0.225, 0.127, 0.014, 0.118, 0.182, 0.343, 0.745, 0.783, 0.751, 0.806, 0.539, 0.376, 0.321, 0.337, 0.25, 0.213, 0.185, 0.191, 0.168, 0.135, 0.088, 0.105, 0.373, 0.258, 0.191, 0.192, 1.0, 1.0, 0.227, 0.008, 0.001, 0.065, 0.072, 0.071, 0.349, 0.326, 0.217, 0.04, 0.248, 0.494, 0.384, 0.406, 0.189, 0.401, 0.44, 0.52, 0.457, 0.444, 0.152, 0.021, 0.041, 0.075, 0.076, 0.072, 0.119, 0.898, 0.696, 0.702, 0.57, 0.324, 0.325, 0.335, 0.308, 0.501, 0.414, 0.245, 0.582, 0.456, 0.289, 0.214, 0.428, 0.39, 0.303, 0.096, 0.113, 0.277, 0.252, 0.431, 0.468, 0.406, 0.245, 0.322, 0.171, 0.082, 0.027, 0.022, 0.004, 0.008, 0.003, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.008, 0.051, 0.523, 0.988, 0.828, 0.776, 0.496, 0.567, 0.701, 0.648, 0.602, 0.535, 0.424, 0.356, 0.418, 0.811, 0.987, 0.905, 0.792, 0.3, 0.09, 0.041, 0.034, 0.021, 0.003, 0.002, 0.004, 0.004, 0.005, 0.006, 0.006, 0.006, 0.006, 0.002, 0.301, 0.363, 0.068, 0.226, 0.791, 0.871, 0.492, 0.427, 0.52, 0.104, 0.002, 0.063, 0.277, 0.13, 0.73, 0.806, 0.713, 0.738, 0.558, 0.229, 0.674, 0.753, 0.621, 0.556, 0.571, 0.37, 0.325, 0.338, 0.267, 0.328, 0.349, 0.213, 0.133, 0.421, 0.411, 0.367, 0.37, 0.269, 0.123, 0.129, 0.117, 0.139, 0.257, 0.322, 0.33, 0.323, 0.25, 0.194, 0.161, 0.225, 0.346, 0.392, 0.422, 0.407, 0.339, 0.168, 0.006, 0.255, 0.206, 0.34, 0.349, 0.297, 0.261, 0.239, 0.122, 0.017, 0.312, 0.226, 0.062, 0.1, 0.374, 0.352, 0.299, 0.237, 0.271, 0.522, 0.62, 0.301, 0.002, 0.302, 0.511, 0.464, 0.423, 0.264, 0.102, 0.065, 0.051, 0.035, 0.022, 0.011, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.242, 0.615, 0.658, 0.431, 0.436, 0.546, 0.474, 0.64, 0.765, 0.707, 0.583, 0.457, 0.928, 0.64, 0.221, 0.19, 0.616, 0.939, 0.945, 0.728, 0.452, 0.152, 0.054, 0.189, 0.369, 0.273, 0.085, 0.018, 0.159, 0.305, 0.446, 0.251, 0.575, 0.3, 0.068, 0.401, 0.564, 0.074, 0.003, 0.713, 0.798, 0.413, 0.046, 0.006, 0.001, 0.198, 0.335, 0.333, 0.271, 0.234, 0.364, 0.478, 0.455, 0.384, 0.332, 0.329, 0.266, 0.332, 0.509, 0.24, 0.296, 0.463, 0.371, 0.411, 0.303, 0.392, 0.266, 0.102, 0.085, 0.097, 0.33, 0.518, 0.505, 0.469, 0.315, 0.167, 0.351, 0.448, 0.247, 0.102, 0.156, 0.338, 0.337, 0.244, 0.469, 0.077, 0.103, 0.282, 0.012, 0.057, 0.293, 0.26, 0.291, 0.298, 0.269, 0.364, 0.117, 0.057, 0.299, 0.196, 0.006, 0.118, 0.539, 0.497, 0.59, 0.705, 0.761, 0.745, 0.36, 0.122, 0.085, 0.043, 0.026, 0.024, 0.017, 0.116, 0.153, 0.018, 0.004, 0.005, 0.006, 0.005, 0.006, 0.008, 0.009, 0.01, 0.013, 0.02, 0.006, 0.174, 0.641, 0.776, 0.705, 0.332, 0.059, 0.384, 0.183, 0.506, 0.935, 0.828, 0.763, 0.68, 0.586, 0.577, 0.599, 0.51, 0.425, 0.202, 0.089, 0.008, 0.154, 0.163, 0.208, 0.653, 0.784, 0.811, 0.763, 0.654, 0.377, 0.284, 0.245, 0.152, 0.08, 0.057, 0.037, 0.038, 0.027, 0.112, 0.126, 0.019, 0.001, 0.001, 0.001, 0.001, 0.001, 0.002, 0.003, 0.004, 0.008, 0.007, 0.005, 0.448, 0.565, 0.344, 1.0, 1.0, 0.85, 0.622, 0.075, 0.035, 0.05, 0.068, 0.149, 1.0, 1.0, 0.709, 0.248, 0.216, 0.401, 0.482, 0.508, 0.463, 0.392, 0.428, 0.511, 0.383, 0.274, 0.205, 0.403, 0.307, 0.165, 0.089, 0.094, 0.098, 0.08, 0.743, 0.494, 0.13, 0.105, 0.01, 0.062, 0.225, 0.283, 0.316, 0.43, 0.354, 0.21, 0.098, 0.029, 0.017, 0.005, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.041, 0.262, 0.404, 0.808, 0.744, 0.55, 0.523, 0.489, 0.446, 0.429, 0.53, 0.885, 1.0, 0.986, 0.494, 0.522, 0.314, 0.112, 0.069, 0.035, 0.007, 0.003, 0.002, 0.002, 0.001, 0.017, 1.0, 0.944, 0.65, 0.215, 0.036, 0.003, 0.352, 0.395, 0.434, 0.504, 0.489, 0.515, 0.504, 0.446, 0.268, 0.169, 0.064, 0.316, 0.404, 0.265, 0.336, 0.593, 0.693, 0.567, 0.269, 0.104, 0.053, 0.031, 0.12, 0.237, 0.25, 0.142, 0.014, 0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001, 0.075, 0.462, 0.171, 0.149, 0.871, 1.0, 0.682, 0.311, 0.195, 0.168, 0.141, 0.8, 0.639, 0.487, 0.094, 0.083, 0.086, 0.241, 0.478, 0.475, 0.382, 0.265, 0.268, 0.406, 0.875, 0.881, 0.716, 0.516, 0.47, 0.447, 0.417, 0.559, 0.519, 0.424, 0.199, 0.135, 0.406, 0.427, 0.332, 0.296, 0.507, 0.513, 0.497, 0.209, 0.079, 0.045, 0.017, 0.023, 0.006, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+const CAPS = [[0, 0.47, [["YOU'RE", "p"], ["PROBABLY", "p"]]], [0.47, 1.07, [["AN", "p"], ["IDIOT", "r"]]], [1.07, 2.2, [["IF", "p"], ["YOU", "p"], ["BET", "p"], ["PARLAYS", "y"]]], [2.2, 3.37, [["HERE'S", "p"], ["THE", "p"], ["MATH", "y"]]], [3.37, 4.03, [["THE", "p"], ["SPORTSBOOK", "p"]]], [4.03, 5.37, [["DOESN'T", "p"], ["PUT", "p"], ["ON", "p"], ["THE", "p"], ["AD", "p"]]], [5.53, 6.33, [["ONE", "p"], ["NORMAL", "p"], ["BET", "p"]]], [6.33, 7.97, [["AT", "p"], ["\u2212110", "g"]]], [8.07, 9.07, [["RISK", "p"], ["$110", "g"]]], [9.07, 10.37, [["TO", "p"], ["WIN", "p"], ["$100", "g"]]], [10.4, 11.63, [["ON", "p"], ["A", "p"], ["50/50", "g"], ["GAME", "p"]]], [11.63, 12.3, [["THE", "p"], ["BOOK", "p"]]], [12.3, 14.3, [["KEEPS", "p"], ["ABOUT", "p"], ["4.5%", "g"]]], [14.3, 15.27, [["NOW", "p"], ["STACK", "p"], ["10", "g"], ["OF", "p"], ["THEM", "p"]]], [15.27, 16.7, [["INTO", "p"], ["ONE", "p"], ["PARLAY", "y"]]], [16.73, 17.23, [["HIT", "p"], ["LIKE", "y"], ["IF", "p"]]], [17.23, 17.97, [["YOU'VE", "p"], ["EVER", "p"], ["LOST", "p"]]], [17.97, 19.37, [["ON", "p"], ["THE", "p"], ["LAST", "p"], ["LEG", "p"]]], [19.37, 20.37, [["10", "g"], ["COIN", "p"], ["FLIPS", "p"]]], [20.37, 21.63, [["YOUR", "p"], ["REAL", "p"], ["CHANCE", "p"]]], [21.63, 23.2, [["OF", "p"], ["HITTING", "p"], ["ALL", "p"], ["10", "g"]]], [23.2, 25.4, [["1", "g"], ["IN", "p"], ["1,024", "p"]]], [25.5, 26.73, [["A", "p"], ["FAIR", "p"], ["PAYOUT", "p"], ["WOULD", "p"], ["BE", "p"]]], [26.73, 28.33, [["1,024\u00d7", "g"]]], [28.33, 29.3, [["YOUR", "p"], ["MONEY", "p"]]], [29.33, 29.63, [["THE", "p"], ["BOOK", "p"]]], [29.63, 30.27, [["PAYS", "p"], ["ABOUT", "p"]]], [30.27, 32.0, [["643\u00d7", "g"]]], [32.1, 32.43, [["SEND", "y"], ["THIS", "p"]]], [32.43, 33.0, [["TO", "p"], ["THE", "p"], ["FRIEND", "p"]]], [33.0, 33.93, [["WHO'S", "p"], ["ALWAYS", "p"]]], [33.93, 35.3, [["ONE", "p"], ["LEG", "p"], ["AWAY", "p"]]], [35.3, 36.7, [["THAT", "p"], ["GAP", "p"], ["IS", "p"], ["THE", "p"], ["CUT", "y"]]], [36.8, 37.87, [["ON", "p"], ["A", "p"], ["10-LEG", "g"], ["PARLAY", "p"]]], [37.87, 38.5, [["THE", "p"], ["BOOK", "p"]]], [38.5, 40.63, [["KEEPS", "p"], ["ABOUT", "p"], ["37%", "g"]]], [40.8, 41.87, [["FOLLOW", "y"], ["ALONG", "p"]]], [41.87, 42.1, [["BECAUSE", "p"]]], [42.1, 43.07, [["$10", "g"], ["A", "p"], ["DAY", "p"]]], [43.07, 43.63, [["FOR", "p"], ["A", "p"], ["YEAR", "p"]]], [43.63, 45.17, [["TELLS", "p"], ["THE", "p"], ["WHOLE", "p"], ["STORY", "p"]]], [45.2, 45.97, [["ON", "p"], ["SINGLE", "p"], ["BETS", "p"]]], [45.97, 47.03, [["YOU'D", "p"], ["EXPECT", "p"], ["TO", "p"], ["LOSE", "p"]]], [47.03, 49.07, [["ABOUT", "p"], ["$166", "g"]]], [49.07, 50.8, [["ON", "p"], ["10-LEG", "g"], ["PARLAYS", "p"]]], [50.8, 53.27, [["ABOUT", "p"], ["$1,358", "g"]]], [53.27, 54.1, [["SAME", "p"], ["MONEY", "p"]]], [54.1, 55.1, [["8\u00d7", "g"], ["THE", "p"], ["LOSS", "p"]]], [55.1, 56.4, [["STILL", "p"], ["THINK", "p"], ["YOU'RE", "p"]]], [56.4, 57.57, [["ONE", "p"], ["LEG", "p"], ["AWAY?", "p"]]]];
+const C = document.getElementById('c'), X = C.getContext('2d');
+const OFF = document.createElement('canvas'); OFF.width = W; OFF.height = H; const O = OFF.getContext('2d');
+const TMP = document.createElement('canvas'); TMP.width = W; TMP.height = H; const T = TMP.getContext('2d');
+const INK = '#0B0F14', RED = '#FF3B30', GREEN = '#00D26A', PAPER = '#F5F3EE', HL = '#FFD60A', GOLD = '#F2B705';
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - clamp(x), 3);
+const eio = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const back = x => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const bounce = x => { x = clamp(x); const n = 7.5625, d = 2.75; if (x < 1 / d) return n * x * x; if (x < 2 / d) return n * (x -= 1.5 / d) * x + .75; if (x < 2.5 / d) return n * (x -= 2.25 / d) * x + .9375; return n * (x -= 2.625 / d) * x + .984375; };
+const lerp = (a, b, x) => a + (b - a) * x;
+const hash = n => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+const fmt = n => Math.round(n).toLocaleString('en-US');
+function rr(c, x, y, w, h, r) { c.beginPath(); c.roundRect(x, y, w, h, r); }
+function txt(c, s, x, y, font, color, align = 'center', base = 'middle') { c.font = font; c.fillStyle = color; c.textAlign = align; c.textBaseline = base; c.fillText(s, x, y); }
+function stamp(c, s, x, y, size, color, rot, k, fill) {
+  if (k <= 0) return; const sc = lerp(2.6, 1, back(k)); c.save(); c.translate(x, y); c.rotate(rot); c.scale(sc, sc); c.globalAlpha = clamp(k * 3);
+  c.font = `400 ${size}px Anton`; const w = c.measureText(s).width + size * .6, h = size * 1.25;
+  if (fill) { rr(c, -w / 2, -h / 2, w, h, size * .12); c.fillStyle = fill; c.fill(); }
+  c.strokeStyle = color; c.lineWidth = size * .09; rr(c, -w / 2, -h / 2, w, h, size * .12); c.stroke();
+  c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(s, 0, size * .04); c.restore();
+}
+function bg(c, t, glow = 'rgba(255,214,10,.13)') {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H);
+  const g = c.createRadialGradient(540, 760, 50, 540, 760, 950); g.addColorStop(0, glow); g.addColorStop(1, 'rgba(255,214,10,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.strokeStyle = 'rgba(245,243,238,.045)'; c.lineWidth = 2; const o = (t * 18) % 80;
+  for (let x = -80 + o; x < W + 80; x += 80) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, H); c.stroke(); }
+  for (let y = -80 + o; y < H + 80; y += 80) { c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); }
+}
+function shadowBox(c, x, y, w, h, r, fill, stroke) { c.save(); c.shadowColor = 'rgba(0,0,0,.5)'; c.shadowBlur = 24; c.shadowOffsetY = 10; rr(c, x, y, w, h, r); c.fillStyle = fill; c.fill(); c.restore(); if (stroke) { rr(c, x, y, w, h, r); c.strokeStyle = stroke; c.lineWidth = 4; c.stroke(); } }
+const HC = ['#FFD60A', '#00D26A', '#FF6B3D', '#4DA3FF', '#C77DFF'];
+function heart(c, x, y, s, col) { c.save(); c.translate(x, y); c.scale(s, s); c.fillStyle = col; c.beginPath(); c.moveTo(0, 30); c.bezierCurveTo(-60, -10, -40, -55, 0, -22); c.bezierCurveTo(40, -55, 60, -10, 0, 30); c.fill(); c.restore(); }
+function plane(c, x, y, rot, s, col = PAPER) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s); c.fillStyle = col; c.strokeStyle = 'rgba(11,15,20,.35)'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(60, 0); c.lineTo(-50, -34); c.lineTo(-26, 0); c.lineTo(-50, 34); c.closePath(); c.fill(); c.stroke();
+  c.beginPath(); c.moveTo(60, 0); c.lineTo(-26, 0); c.lineTo(-34, 14); c.closePath(); c.fillStyle = '#c9c4b6'; c.fill(); c.restore(); }
+function rolling(v) { return fmt(v); }
+function check(c, x, y, s, col, k) { c.save(); c.translate(x, y); c.scale(s, s); c.strokeStyle = col; c.lineWidth = 16; c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); c.moveTo(-34, 2); c.lineTo(-10, 28); c.lineTo(36, -26); c.setLineDash([140]); c.lineDashOffset = 140 * (1 - k); c.stroke(); c.restore(); }
+
+function coin(c, x, y, r, rot = 0, sq = 1) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(1, sq); c.fillStyle = '#F2B705'; c.beginPath(); c.arc(0, 0, r, 0, 7); c.fill(); c.strokeStyle = '#a87a00'; c.lineWidth = r * .14; c.stroke();
+  c.strokeStyle = '#ffe27a'; c.lineWidth = r * .1; c.beginPath(); c.arc(0, 0, r * .68, 0, 7); c.stroke(); txt(c, '$', 0, r * .05, `800 ${r * 1.0}px JBM`, '#a87a00'); c.restore(); }
+function bill(c, x, y, rot, s, sq = 1) { c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s * sq); c.fillStyle = '#2fbf71'; rr(c, -52, -26, 104, 52, 6); c.fill(); c.strokeStyle = '#0a7a40'; c.lineWidth = 4; c.stroke();
+  c.strokeStyle = 'rgba(255,255,255,.55)'; c.lineWidth = 2.5; rr(c, -44, -19, 88, 38, 4); c.stroke(); c.fillStyle = '#d9ffe8'; c.beginPath(); c.arc(0, 0, 14, 0, 7); c.fill(); txt(c, '$', 0, 1, '800 20px JBM', '#0a7a40'); c.restore(); }
+// glass jar: origin = bottom center. level 0..1
+// ---------- parlay drawing library (shared by the three cuts) ----------
+const MINUS = '−';
+const LEGS = ['TEAM A ' + MINUS + '3.5', 'OVER 214.5', 'TEAM B +6', 'UNDER 44.5', 'TEAM C ' + MINUS + '1.5', 'OVER 8.5', 'TEAM D +2.5', 'UNDER 5.5', 'TEAM E ' + MINUS + '7', 'OVER 52.5'];
+const SW = 640, RH = 56, SHD = 84, SFT = 96;
+const slipH = rows => SHD + rows * RH + SFT;
+function xmark(c, x, y, s, col, k = 1) { c.save(); c.translate(x, y); c.scale(s, s); c.strokeStyle = col; c.lineWidth = 14; c.lineCap = 'round'; c.setLineDash([60]); c.lineDashOffset = 60 * (1 - k);
+  c.beginPath(); c.moveTo(-24, -24); c.lineTo(24, 24); c.stroke(); c.lineDashOffset = 60 * (1 - clamp(k * 2 - 1)); c.beginPath(); c.moveTo(24, -24); c.lineTo(-24, 24); c.stroke(); c.restore(); }
+function tick(c, x, y, s, col, k = 1) { c.save(); c.translate(x, y); c.scale(s * .8, s * .8); c.strokeStyle = col; c.lineWidth = 14; c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); c.moveTo(-26, 2); c.lineTo(-8, 22); c.lineTo(28, -22); c.setLineDash([110]); c.lineDashOffset = 110 * (1 - k); c.stroke(); c.restore(); }
+// generic betting slip. o: cx, top, s, rot, n (rows shown, fractional), rows, res(fn i->{k,v}), foot, hdr, flip 0..1, flash
+function slip(c, o) {
+  const { cx = 540, top = 350, s = 1, rot = 0, n = 10, rows = 10, res = null, foot = 'RISK $10 · PAYS $6,431', hdr = null, flip = 0, tm = 0, back: backTxt = null, offs = 0 } = o;
+  const h = slipH(rows), sx = Math.max(.03, Math.abs(Math.cos(flip * Math.PI)));
+  c.save(); c.translate(cx, top + h * s / 2); c.rotate(rot); c.scale(s * sx, s); c.translate(-SW / 2, -h / 2);
+  c.save(); c.shadowColor = 'rgba(0,0,0,.55)'; c.shadowBlur = 36; c.shadowOffsetY = 16; c.fillStyle = PAPER; c.beginPath(); c.moveTo(0, 0); c.lineTo(SW, 0); c.lineTo(SW, h - 16);
+  for (let x = SW, i = 0; x >= 0; x -= 20, i++) c.lineTo(x, h - (i % 2 ? 0 : 16)); c.closePath(); c.fill(); c.restore();
+  c.save(); c.beginPath(); c.moveTo(0, 0); c.lineTo(SW, 0); c.lineTo(SW, h - 16); for (let x = SW, i = 0; x >= 0; x -= 20, i++) c.lineTo(x, h - (i % 2 ? 0 : 16)); c.closePath(); c.clip();
+  c.fillStyle = INK; c.fillRect(0, 0, SW, SHD);
+  if (flip < .5) {
+    c.save(); c.letterSpacing = '6px'; txt(c, 'SPORTSBOOK', 30, 44, '400 40px Anton', PAPER, 'left'); c.restore();
+    const nn = Math.min(rows, Math.max(1, Math.round(n)));
+    txt(c, hdr || ('PARLAY · ' + nn + ' LEGS'), SW - 28, 44, '800 24px JBM', HL, 'right');
+    for (let i = 0; i < rows; i++) {
+      const k = clamp(n - i), y = SHD + i * RH;
+      if (k <= 0) { c.strokeStyle = 'rgba(11,15,20,.14)'; c.lineWidth = 3; c.setLineDash([10, 10]); c.beginPath(); c.moveTo(24, y + RH / 2); c.lineTo(SW - 24, y + RH / 2); c.stroke(); c.setLineDash([]); continue; }
+      const dx = (1 - eo(k)) * (i % 2 ? 460 : -460), r = res ? res(i) : null;
+      c.save(); c.translate(dx, 0); c.globalAlpha = clamp(k * 3);
+      c.fillStyle = r && r.v < 0 ? 'rgba(255,59,48,.18)' : (i % 2 ? 'rgba(11,15,20,.06)' : 'rgba(11,15,20,0)'); c.fillRect(0, y, SW, RH);
+      if (k < 1) { c.fillStyle = `rgba(255,214,10,${.7 * (1 - k)})`; c.fillRect(0, y, SW, RH); }
+      c.fillStyle = INK; c.beginPath(); c.arc(40, y + RH / 2, 17, 0, 7); c.fill(); txt(c, String(i + 1), 40, y + RH / 2 + 1, '800 20px JBM', PAPER);
+      txt(c, LEGS[i], 76, y + RH / 2 + 1, '800 28px Inter', INK, 'left'); txt(c, MINUS + '110', SW - 100, y + RH / 2 + 1, '800 26px JBM', 'rgba(11,15,20,.7)', 'right');
+      if (r && r.v > 0) tick(c, SW - 50, y + RH / 2, .8, '#0aa850', r.k); else if (r && r.v < 0) xmark(c, SW - 50, y + RH / 2, .62, RED, r.k);
+      c.restore();
+    }
+    const fy = SHD + rows * RH; c.strokeStyle = INK; c.lineWidth = 3; c.setLineDash([12, 10]); c.beginPath(); c.moveTo(24, fy + 6); c.lineTo(SW - 24, fy + 6); c.stroke(); c.setLineDash([]);
+    txt(c, foot, SW / 2, fy + 52, '400 44px Anton', INK);
+  } else {
+    c.save(); c.letterSpacing = '6px'; txt(c, 'FINE PRINT', 30, 44, '400 40px Anton', HL, 'left'); c.restore(); txt(c, 'SPORTSBOOK', SW - 28, 44, '800 22px JBM', 'rgba(245,243,238,.6)', 'right');
+    const L = [['EACH LEG PAYS 1.91× AT ' + MINUS + '110', 0], ['EACH LEG IS A COIN FLIP: 1 IN 2', 0], ['10 LEGS PAY', 1], ['10 LEGS REALLY HIT', 1], ['BOOK’S CUT ON 10 LEGS', 2]];
+    let y = SHD + 62; L.forEach(([s0, kind], i) => { txt(c, '•', 34, y, '800 26px JBM', INK, 'left'); txt(c, s0, 62, y, '800 25px JBM', 'rgba(11,15,20,.8)', 'left');
+      if (kind) { const w = c.measureText(s0).width; c.fillStyle = kind === 2 ? RED : INK; c.fillRect(62 + w + 16, y - 16, 150, 32); if (kind === 2) txt(c, '??%', 62 + w + 91, y + 1, '400 32px Anton', PAPER); }
+      for (let q = 0; q < 2; q++) { c.fillStyle = 'rgba(11,15,20,.14)'; c.fillRect(62, y + 26 + q * 14, 300 + hash(i * 5 + q) * 230, 6); } y += 106; });
+    txt(c, 'THE MATH THEY LEFT OFF THE AD', SW / 2, SHD + rows * RH + 52, '400 38px Anton', 'rgba(11,15,20,.8)');
+  }
+  c.restore(); c.restore();
+}
+function coinFace(c, x, y, r, sq, win, ring) { c.save(); c.translate(x, y); c.scale(1, Math.max(.04, sq));
+  c.fillStyle = '#F2B705'; c.beginPath(); c.arc(0, 0, r, 0, 7); c.fill(); c.strokeStyle = '#a87a00'; c.lineWidth = r * .1; c.stroke();
+  c.strokeStyle = '#ffe27a'; c.lineWidth = r * .08; c.beginPath(); c.arc(0, 0, r * .72, 0, 7); c.stroke();
+  txt(c, win ? 'W' : 'L', 0, r * .04, `400 ${r * 1.05}px Anton`, win ? '#0a7a40' : '#9b1c14');
+  if (ring) { c.strokeStyle = GREEN; c.lineWidth = 8; c.globalAlpha = ring; c.beginPath(); c.arc(0, 0, r + 12, 0, 7); c.stroke(); } c.restore(); }
+// coin in flight: u 0..1 over a flight, returns drawn state
+function coinFlip(c, x, y, r, u, lift, turns, landWin = true, ring = 0) {
+  const arc = Math.sin(clamp(u) * Math.PI) * lift, ph = clamp(u) * turns, sq = Math.abs(Math.cos(ph * Math.PI)), win = (Math.floor(ph + .5) % 2 === 0) === landWin;
+  c.save(); c.fillStyle = 'rgba(0,0,0,.35)'; c.beginPath(); c.ellipse(x, y + r * .95, r * (1 - .3 * Math.sin(clamp(u) * Math.PI)), r * .22, 0, 0, 7); c.fill(); c.restore();
+  coinFace(c, x, y - arc, r, sq, win, ring); }
+function pie(c, x, y, r, frac, pull, labelCol) {
+  c.save(); c.translate(x, y); c.shadowColor = 'rgba(0,0,0,.5)'; c.shadowBlur = 30; c.shadowOffsetY = 14; c.fillStyle = '#2fbf71'; c.beginPath(); c.arc(0, 0, r, 0, 7); c.fill(); c.restore();
+  c.save(); c.translate(x, y); const a0 = -Math.PI / 2, a1 = a0 + frac * Math.PI * 2, am = (a0 + a1) / 2; c.translate(Math.cos(am) * pull, Math.sin(am) * pull);
+  c.fillStyle = RED; c.beginPath(); c.moveTo(0, 0); c.arc(0, 0, r, a0, a1); c.closePath(); c.fill(); c.strokeStyle = INK; c.lineWidth = 6; c.stroke(); c.restore();
+  c.save(); c.translate(x, y); c.strokeStyle = INK; c.lineWidth = 6; c.beginPath(); c.arc(0, 0, r, 0, 7); c.stroke(); c.restore(); }
+function house(c, x, y, s, col = RED, k = 1) { c.save(); c.translate(x, y); c.scale(s * k, s * k); c.fillStyle = col; c.strokeStyle = INK; c.lineWidth = 7; c.lineJoin = 'round';
+  c.beginPath(); c.moveTo(-90, -30); c.lineTo(0, -120); c.lineTo(90, -30); c.closePath(); c.fill(); c.stroke(); c.fillRect(-66, -30, 132, 100); c.strokeRect(-66, -30, 132, 100);
+  c.fillStyle = INK; c.fillRect(-18, 10, 36, 60); c.fillStyle = HL; c.fillRect(-52, -12, 26, 26); c.fillRect(26, -12, 26, 26); c.restore(); }
+function vault(c, x, y, s, open, shake = 0) { c.save(); c.translate(x + shake, y); c.scale(s, s);
+  c.save(); c.shadowColor = 'rgba(0,0,0,.55)'; c.shadowBlur = 30; c.shadowOffsetY = 16; rr(c, -230, -230, 460, 440, 36); c.fillStyle = '#5b6672'; c.fill(); c.restore();
+  rr(c, -230, -230, 460, 440, 36); c.strokeStyle = INK; c.lineWidth = 8; c.stroke(); rr(c, -200, -200, 400, 380, 24); c.fillStyle = '#2b333c'; c.fill();
+  c.fillStyle = '#11161c'; rr(c, -160, -160, 320, 300, 18); c.fill();
+  const dw = Math.cos(open * Math.PI * .5); c.save(); c.translate(-160, 0); c.scale(Math.max(.05, dw), 1); c.translate(160, 0);
+  c.fillStyle = '#8a95a3'; rr(c, -160, -160, 320, 300, 18); c.fill(); c.strokeStyle = INK; c.lineWidth = 6; c.stroke();
+  c.strokeStyle = '#5b6672'; c.lineWidth = 8; c.beginPath(); c.arc(0, -10, 96, 0, 7); c.stroke(); c.fillStyle = '#c4ccd6'; c.beginPath(); c.arc(0, -10, 34, 0, 7); c.fill(); c.strokeStyle = INK; c.lineWidth = 5; c.stroke();
+  for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2 + open * 3; c.beginPath(); c.moveTo(Math.cos(a) * 34, -10 + Math.sin(a) * 34); c.lineTo(Math.cos(a) * 80, -10 + Math.sin(a) * 80); c.stroke(); } c.restore();
+  rr(c, -130, 150, 260, 54, 10); c.fillStyle = HL; c.fill(); c.strokeStyle = INK; c.lineWidth = 5; c.stroke(); txt(c, 'THE BOOK', 0, 179, '400 40px Anton', INK); c.restore(); }
+function donationBox(c, x, y, s, shake = 0) { c.save(); c.translate(x + shake, y); c.scale(s, s);
+  c.save(); c.shadowColor = 'rgba(0,0,0,.5)'; c.shadowBlur = 26; c.shadowOffsetY = 14; rr(c, -210, -150, 420, 330, 16); c.fillStyle = '#e8e4d8'; c.fill(); c.restore();
+  rr(c, -210, -150, 420, 330, 16); c.strokeStyle = INK; c.lineWidth = 8; c.stroke(); rr(c, -210, -150, 420, 70, 16); c.fillStyle = RED; c.fill(); c.stroke();
+  c.fillStyle = INK; rr(c, -130, -126, 260, 22, 11); c.fill(); txt(c, 'DONATIONS', 0, 50, '400 84px Anton', INK); heart(c, 0, 128, .55, RED); c.restore(); }
+function hbar(c, x, y, w, h, frac, col, back = 'rgba(245,243,238,.12)') { rr(c, x, y, w, h, h / 2); c.fillStyle = back; c.fill(); if (frac > 0) { c.save(); rr(c, x, y, w, h, h / 2); c.clip(); c.fillStyle = col; c.fillRect(x, y, Math.max(h, w * frac), h); c.restore(); } }
+function chip(c, s, x, y, font, fg, bg, padX = 22, h = 52) { c.font = font; const w = c.measureText(s).width + padX * 2; rr(c, x - w / 2, y - h / 2, w, h, h / 2); c.fillStyle = bg; c.fill(); txt(c, s, x, y + 1, font, fg); return w; }
+function money(c, x, y, rot, s) { bill(c, x, y, rot, s); }
+function arrowR(c, x, y, len, col, w = 6) { c.save(); c.strokeStyle = col; c.fillStyle = col; c.lineWidth = w; c.lineCap = 'round'; c.beginPath(); c.moveTo(x, y); c.lineTo(x + len - 6, y); c.stroke(); c.beginPath(); c.moveTo(x + len, y); c.lineTo(x + len - 18, y - 13); c.lineTo(x + len - 18, y + 13); c.closePath(); c.fill(); c.restore(); }
+// YouTube cut: "YOUR PARLAY, DECODED" (57.86 s)
+const ST_POS = {}; const ST_OFF = null; const HARD = false;
+const ST_CFG = { timeline: [[0, 'you'], [2.2, 'point'], [5.5, 'chin'], [10.3, 'point'], [14.3, 'you'], [16.7, 'shock'], [19.3, 'point'], [25.5, 'point'], [29.3, 'chin'], [31.23, 'shock'], [32.1, 'you'], [35.3, 'point'], [38.97, 'shock'], [40.6, 'follow'], [44.0, 'point'], [54.1, 'shock'], [55.5, 'you']],
+  bubbles: [[55.7, 57.7, 'MOST LEGS YOU\u2019VE HIT?', 'COMMENT', [700, 1110]]], follow: [40.8, 43.9], followAt: [640, 1105], enterAt: -1 };
+const CAP = { x: 420, y: 1345, size: 68, maxw: 600, lh: 76 };
+const roll = v => fmt(v);
+function hookBg(c, t) {
+  c.fillStyle = INK; c.fillRect(0, 0, W, H);
+  const g = c.createRadialGradient(540, 760, 40, 540, 760, 950); g.addColorStop(0, 'rgba(255,59,48,.38)'); g.addColorStop(1, 'rgba(255,59,48,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.save(); c.translate(540, 760); c.globalAlpha = .1; c.fillStyle = RED; for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2 + t * .25; c.beginPath(); c.moveTo(0, 0); c.arc(0, 0, 1500, a, a + .15); c.closePath(); c.fill(); } c.restore();
+}
+function sHook(c, t) {
+  hookBg(c, t); const s = 1 + .28 * (1 - back(clamp(t / .14)));
+  slip(c, { cx: 540, top: 350 - (s - 1) * 300, s, rot: -.03 + Math.sin(t * 2.2) * .012, n: 10, foot: 'RISK $10 \u00b7 PAYS $6,431' });
+  stamp(c, 'IDIOT TAX', 520, 790, 150, RED, -.2, lin(t, .8, .9), 'rgba(11,15,20,.65)');
+}
+function sFine(c, t) {
+  bg(c, t, 'rgba(255,214,10,.1)'); const f = eio(lin(t, 3.35, 4.05)); const pop = 1 + .06 * Math.sin(f * Math.PI);
+  slip(c, { cx: 540, top: 350, s: pop, rot: -.02 * (1 - f) + .015 * f, n: 10, flip: f });
+  if (t > 4.15) { const k = back(lin(t, 4.15, 4.4)); c.save(); c.translate(790, 330); c.rotate(.12); c.scale(k, k); chip(c, 'READ THIS PART', 0, 0, '800 26px JBM', INK, HL); c.restore(); }
+}
+function sSingle(c, t) {
+  bg(c, t); const k = back(lin(t, 5.5, 5.75)), n = lin(t, 5.55, 5.8);
+  slip(c, { cx: 540, top: 340 - (1 - k) * 60, s: .9 + .1 * k, n, rows: 1, hdr: 'SINGLE BET \u00b7 1 LEG', foot: 'PAYS 1.91\u00d7', rot: -.02 });
+  const ck = lin(t, 6.57, 7.25); if (ck > 0) { c.save(); c.strokeStyle = RED; c.lineWidth = 7; c.lineCap = 'round'; c.beginPath(); c.ellipse(728, 449, 72, 32, -.05, -Math.PI / 2, -Math.PI / 2 + ck * Math.PI * 2.15); c.stroke(); c.restore(); }
+  const tag2 = (x, label, val, col, k0, vtxt) => { const k = back(lin(t, k0, k0 + .22)); if (k <= 0) return; c.save(); c.translate(x, 800); c.scale(k, k); shadowBox(c, -170, -110, 340, 220, 26, 'rgba(11,15,20,.8)', col); txt(c, label, 0, -66, '800 32px JBM', col); txt(c, vtxt, 0, 20, '400 126px Anton', PAPER); c.restore(); };
+  tag2(270, 'RISK', 110, RED, 8.07, '$' + roll(110 * eo(lin(t, 8.1, 9.0))));
+  tag2(710, 'TO WIN', 100, GREEN, 9.30, '$' + roll(100 * eo(lin(t, 9.32, 9.85))));
+  const ak = lin(t, 8.9, 9.2); if (ak > 0) arrowR(c, 456, 800, 90 * eo(ak), PAPER, 10);
+  const k2 = back(lin(t, 9.6, 9.85)); if (k2 > 0) { c.save(); c.translate(540, 1000); c.scale(k2, k2); chip(c, 'ONE LEG \u00b7 PAYS 1.91\u00d7', 0, 0, '800 30px JBM', INK, HL, 26, 62); c.restore(); }
+}
+function sCoin(c, t) {
+  bg(c, t, 'rgba(255,214,10,.16)'); const u = lin(t, 10.3, 11.55);
+  const k = back(lin(t, 10.3, 10.5)); c.save(); c.translate(540, 520); c.scale(k, k); txt(c, '50 / 50', 0, 0, '400 230px Anton', HL); c.restore();
+  coinFlip(c, 540, 880, 165, u, 130, 8, true);
+  const k2 = back(lin(t, 10.9, 11.15)); if (k2 > 0) { c.save(); c.translate(540, 1050); c.scale(k2, k2); chip(c, 'TRUE ODDS: 1 IN 2', 0, 0, '800 34px JBM', INK, PAPER, 28, 66); c.restore(); }
+}
+function sPie(c, t) {
+  bg(c, t); const fr = .045 * eio(lin(t, 12.3, 13.6)), pull = 34 * eio(lin(t, 12.3, 12.9)), s = .85 + .15 * back(lin(t, 11.97, 12.2));
+  c.save(); c.translate(440, 790); c.scale(s, s); c.translate(-440, -790); pie(c, 440, 790, 230, fr, pull); txt(c, 'YOUR SHARE', 440, 810, '400 54px Anton', INK); c.restore();
+  const k = lin(t, 12.5, 12.9); if (k > 0) { c.save(); c.globalAlpha = k; c.strokeStyle = RED; c.lineWidth = 6; c.beginPath(); c.moveTo(480, 548); c.lineTo(560, 470); c.lineTo(640, 470); c.stroke(); c.restore();
+    txt(c, 'BOOK KEEPS', 650, 420, '800 30px JBM', 'rgba(245,243,238,.9)', 'left'); txt(c, roll2(4.5 * eo(lin(t, 12.7, 13.6))) + '%', 650, 505, '400 125px Anton', RED, 'left'); }
+}
+const roll2 = v => v.toFixed(1);
+function sStack(c, t) {
+  bg(c, t); const n = clamp((t - 14.43) / .17, 0, 10), nn = Math.floor(n + .001);
+  slip(c, { cx: 380, top: 340, n, foot: n >= 10 ? 'RISK $10 \u00b7 PAYS $6,431' : 'RISK $10 \u00b7 PAYS . . .' });
+  const hk = back(lin(t, 14.3, 14.55)); house(c, 835, 590, .5 + .075 * n, RED, hk);
+  txt(c, 'THE HOUSE', 835, 730, '800 26px JBM', 'rgba(245,243,238,.8)'); txt(c, 'LEGS', 835, 800, '800 28px JBM', HL); txt(c, String(Math.max(1, nn + (n % 1 > .1 ? 1 : 0))), 835, 900, '400 170px Anton', PAPER);
+}
+function sLike(c, t) {
+  bg(c, t); const hits = i => ({ v: i < 9 ? 1 : (t >= 17.6 ? -1 : 0), k: i < 9 ? lin(t, 16.8 + i * .08, 17.05 + i * .08) : lin(t, 17.6, 17.95) });
+  slip(c, { cx: 380, top: 340, n: 10, res: hits }); let h = 0; for (let i = 0; i < 9; i++) if (t >= 16.8 + i * .08 + .1) h++;
+  txt(c, h + '/10', 835, 560, '400 140px Anton', t >= 17.6 ? RED : GREEN);
+  if (t >= 17.6) { const k = back(lin(t, 17.6, 17.85)); c.save(); c.translate(835, 760); c.rotate(-.12); c.scale(k, k); stamp(c, 'LOST', 0, 0, 100, RED, 0, 1, 'rgba(11,15,20,.6)'); c.restore(); }
+}
+const LAND = i => 19.9 + (23.2 - 19.9) / 9 * i;
+function sCoins(c, t) {
+  bg(c, t, 'rgba(255,214,10,.12)'); let landed = 0;
+  for (let i = 0; i < 10; i++) { const x = 240 + (i % 5) * 150, y = 470 + Math.floor(i / 5) * 160, L = LAND(i), u = (t - (L - .55)) / .55;
+    if (u < 0) { c.strokeStyle = 'rgba(245,243,238,.3)'; c.lineWidth = 6; c.setLineDash([10, 10]); c.beginPath(); c.arc(x, y, 58, 0, 7); c.stroke(); c.setLineDash([]); }
+    else if (u < 1) coinFlip(c, x, y, 58, u, 90, 4, true); else { landed++; coinFace(c, x, y, 58, 1, true, clamp(1 - (t - L) / .5)); } }
+  txt(c, 'YOUR REAL CHANCE OF ALL 10', 540, 790, '800 32px JBM', 'rgba(245,243,238,.85)');
+  const since = t - (landed ? LAND(landed - 1) : 0), pu = 1 + .12 * Math.exp(-since * 9), fin = t >= 23.2;
+  c.save(); c.translate(540, 930); c.scale(pu * (fin ? 1 + .08 * Math.exp(-(t - 23.2) * 8) : 1), pu); txt(c, '1 IN ' + roll(Math.pow(2, landed)), 0, 0, '400 175px Anton', fin ? RED : PAPER); c.restore();
+}
+const BX = 120, BW = 780, FR = 643 / 1024;
+function sBars(c, t) {
+  bg(c, t); const fill = eo(lin(t, 25.57, 28.0)), drop = eio(lin(t, 30.27, 31.23)); const fr = fill * (1 - drop * (1 - FR));
+  const val = fill * 1024 - drop * (1024 - 643) * fill; const dropped = t >= 30.27;
+  const l1 = t < 29.63 ? 'FAIR PAYOUT' : 'WHAT THE BOOK PAYS'; txt(c, l1, 540, 375, '800 36px JBM', HL);
+  const nk = t >= 31.23 ? 1 + .12 * Math.exp(-(t - 31.23) * 9) : 1; c.save(); c.translate(540, 520); c.scale(nk, nk); txt(c, roll(val) + '\u00d7', 0, 0, '400 185px Anton', dropped ? PAPER : GREEN); c.restore();
+  // ghost of the fair bar
+  hbar(c, BX, 620, BW, 120, 0, GREEN); if (dropped) { c.save(); c.strokeStyle = 'rgba(245,243,238,.7)'; c.lineWidth = 4; c.setLineDash([14, 12]); rr(c, BX + BW * FR, 620, BW * (1 - FR), 120, 60); c.stroke(); c.restore(); }
+  hbar(c, BX, 620, BW, 120, fr, dropped ? '#cfd6df' : GREEN, 'rgba(245,243,238,.1)');
+  // gap fill
+  const gk = t >= 36.03 ? lin(t, 36.03, 36.3) : 0, yk = t >= 35.43 && t < 36.03 ? .55 + .3 * Math.sin((t - 35.43) * 22) : 0;
+  if (gk > 0 || yk > 0) { c.save(); rr(c, BX, 620, BW, 120, 60); c.clip(); c.fillStyle = gk > 0 ? `rgba(255,59,48,${gk})` : `rgba(255,214,10,${yk})`; c.fillRect(BX + BW * FR, 620, BW * (1 - FR), 120); c.restore(); }
+  c.strokeStyle = INK; c.lineWidth = 6; rr(c, BX, 620, BW, 120, 60); c.stroke();
+  for (const [v, l] of [[0, '0'], [512, '512'], [1024, '1,024\u00d7']]) txt(c, l, BX + BW * v / 1024, 782, '700 22px JBM', 'rgba(245,243,238,.55)', v === 1024 ? 'right' : v ? 'center' : 'left');
+  if (t >= 35.43 && t < 38.9) { const gx = BX + BW * (FR + 1) / 2; const k = back(lin(t, 35.43, 35.7)); c.save(); c.translate(gx, 830); c.scale(k, k); const cut = t >= 36.03; c.fillStyle = cut ? RED : HL; c.beginPath(); c.moveTo(0, -48); c.lineTo(-18, -22); c.lineTo(18, -22); c.closePath(); c.fill(); chip(c, cut ? 'THE CUT' : 'THE GAP', 0, 0, '400 44px Anton', cut ? PAPER : INK, cut ? RED : HL, 26, 62); c.restore(); }
+  if (t >= 38.97) { const k = back(lin(t, 38.97, 39.2)); c.save(); c.translate(540, 920); c.scale(k, k); txt(c, 'THE CUT: ' + Math.round(37 * eo(lin(t, 38.97, 39.8))) + '%', 0, 0, '400 150px Anton', RED); c.restore(); txt(c, 'OF THE FAIR PAYOUT', 540, 1000, '800 30px JBM', 'rgba(245,243,238,.8)'); }
+  if (t >= 31.23 && t < 32.3) { const k = back(lin(t, 31.23, 31.4)) * (1 - lin(t, 32.1, 32.3)); c.save(); c.globalAlpha = clamp(k); xmark(c, BX + BW * (FR + 1) / 2, 680, 2.3 * k, RED, lin(t, 31.23, 31.4)); c.restore(); }
+}
+function sFriend(c, t) {
+  bg(c, t); c.save(); c.translate(250, 600); c.fillStyle = '#8aa0c8'; c.beginPath(); c.arc(0, -40, 58, 0, 7); c.fill(); c.beginPath(); c.moveTo(-100, 120); c.quadraticCurveTo(-100, 40, 0, 40); c.quadraticCurveTo(100, 40, 100, 120); c.closePath(); c.fill(); c.restore();
+  txt(c, 'THE FRIEND', 250, 740, '800 24px JBM', 'rgba(245,243,238,.7)');
+  const k = back(lin(t, 32.9, 33.15)); if (k > 0) { c.save(); c.translate(600, 560); c.scale(k, k); shadowBox(c, -290, -100, 580, 200, 40, PAPER); c.fillStyle = PAPER; c.beginPath(); c.moveTo(-250, 90); c.lineTo(-300, 140); c.lineTo(-190, 98); c.fill();
+    txt(c, 'I\u2019M ONE LEG AWAY', 0, -22, '400 70px Anton', INK); txt(c, '9 OF 10 HIT', 0, 40, '800 32px JBM', '#0aa850'); c.restore(); }
+  slip(c, { cx: 540, top: 800, s: .46, n: 10, res: i => ({ v: i < 9 ? 1 : 0, k: 1 }), foot: 'RISK $10 \u00b7 PAYS $6,431' });
+}
+function sDay(c, t) {
+  bg(c, t); const A = t < 44.9;
+  if (A) { const k = back(lin(t, 41.95, 42.2)); c.save(); c.translate(540, 435); c.scale(k, k); txt(c, '$10 / DAY', 0, 0, '400 150px Anton', HL); c.restore();
+    const cnt = Math.floor(365 * lin(t, 42.1, 44.0)); for (let i = 0; i < 390; i++) { const x = 164 + (i % 26) * 28, y = 565 + Math.floor(i / 26) * 28; c.fillStyle = i < cnt ? GREEN : 'rgba(245,243,238,.1)'; c.beginPath(); c.arc(x, y, 10, 0, 7); c.fill(); }
+    txt(c, 'DAY ' + Math.min(365, cnt) + (t > 44.0 ? ' \u00b7 $3,650 STAKED' : ''), 540, 1000, '400 66px Anton', t > 44.0 ? GREEN : PAPER); }
+  else { const k = lin(t, 44.9, 45.1); c.save(); c.globalAlpha = k;
+    chip(c, '$10/DAY \u00d7 365 = $3,650 STAKED', 540, 400, '800 30px JBM', INK, PAPER, 26, 60);
+    const row = (y, label, val, vmax, col, t0, t1) => { const v = val * eo(lin(t, t0, t1)); txt(c, label, 90, y, '800 30px JBM', 'rgba(245,243,238,.9)', 'left'); txt(c, MINUS + '$' + roll(v), 900, y + 6, '400 100px Anton', col, 'right'); hbar(c, 90, y + 50, 810, 70, v / vmax, col); };
+    row(560, 'SINGLE BETS', 166, 1358, '#ff8a80', 45.33, 48.87); row(780, '10-LEG PARLAYS', 1358, 1358, RED, 49.63, 52.77);
+    c.restore(); if (t > 45.2) { const ek = back(lin(t, 45.2, 45.45)); c.save(); c.translate(540, 1000); c.scale(ek, ek); chip(c, 'EXPECTED VALUE \u00b7 NOT A PREDICTION', 0, 0, '800 28px JBM', INK, HL, 26, 60); c.restore(); }
+    if (t >= 54.1) stamp(c, '8\u00d7', 540, 800, 380, RED, -.12, lin(t, 54.1, 54.2), 'rgba(11,15,20,.78)'); }
+}
+function sOutro(c, t) {
+  hookBg(c, t); const k = back(lin(t, 55.4, 55.6));
+  slip(c, { cx: 420, top: 330, s: .92 * (.9 + .1 * k), rot: -.02, n: 10, res: i => ({ v: i < 9 ? 1 : 0, k: 1 }), foot: 'RISK $10 \u00b7 ONE LEG TO GO' });
+  stamp(c, 'ONE LEG AWAY?', 430, 700, 104, HL, -.14, lin(t, 56.0, 56.1), 'rgba(11,15,20,.8)');
+}
+const SCENES = [[0, 2.2, sHook], [2.2, 5.4, sFine], [5.4, 10.3, sSingle], [10.3, 11.97, sCoin], [11.97, 14.2, sPie], [14.2, 16.55, sStack], [16.55, 19.2, sLike], [19.2, 25.4, sCoins], [25.4, 32.3, sBars], [32.3, 35.1, sFriend], [35.1, 41.9, sBars], [41.9, 55.4, sDay], [55.4, 99, sOutro]];
+function overlays(c, t) {
+  if (t >= 16.73 && t < 19.1) { const ph = ((t - 16.9) * 2.4) % 1, ph0 = t < 16.9 ? 0 : ph; const s = (t < 16.9 ? back(lin(t, 16.73, 16.9)) : 1) * (1 + .3 * Math.exp(-ph0 * 6)); const out = 1 - eo(lin(t, 18.9, 19.1));
+    c.save(); c.globalAlpha = out; heart(c, 790, 1145, 1.15 * s, RED); for (let i = 0; i < 3; i++) { const u = ((t - 16.9) * .9 + i * .33) % 1; if (t > 16.9) { c.globalAlpha = out * (1 - u); heart(c, 790 + (i - 1) * 50 + Math.sin(u * 6 + i) * 10, 1100 - u * 130, .4, '#ff7a72'); } } c.restore(); }
+  if (t >= 32.1 && t < 33.1) { const u = eo(lin(t, 32.1, 32.95)); const P = (a, b, cc) => (1 - u) * (1 - u) * a + 2 * u * (1 - u) * b + u * u * cc;
+    const px = P(790, 760, 360), py = P(1330, 650, 600), tx = 2 * (1 - u) * (760 - 790) + 2 * u * (360 - 760), ty = 2 * (1 - u) * (650 - 1330) + 2 * u * (600 - 650);
+    c.save(); c.globalAlpha = 1 - lin(t, 32.9, 33.1); c.strokeStyle = 'rgba(245,243,238,.5)'; c.lineWidth = 4; c.setLineDash([12, 14]); c.beginPath(); for (let k = 0; k <= u; k += .04) { const x = (1 - k) * (1 - k) * 790 + 2 * k * (1 - k) * 760 + k * k * 360, y = (1 - k) * (1 - k) * 1330 + 2 * k * (1 - k) * 650 + k * k * 600; k ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke(); c.setLineDash([]);
+    plane(c, px, py, Math.atan2(ty, tx), .55 * (1 - .4 * u)); c.restore(); }
+}
+function hud(c, t) {
+  rr(c, 90, 238, 170, 52, 8); c.fillStyle = HL; c.fill(); txt(c, 'WHAT IF', 175, 265, '800 30px Inter', INK);
+  txt(c, 'YOUR PARLAY, DECODED', 280, 265, '700 26px JBM', 'rgba(245,243,238,.9)', 'left');
+  c.fillStyle = 'rgba(245,243,238,.15)'; c.fillRect(90, 306, 900, 6); c.fillStyle = HL; c.fillRect(90, 306, 900 * t / DUR, 6);
+  txt(c, 'ASSUMES 50/50 LEGS AT ' + MINUS + '110 \u00b7 EXPECTED VALUE \u00b7 NOT ADVICE', 90, 1492, '700 19px JBM', 'rgba(245,243,238,.75)', 'left');
+  txt(c, '10 LEGS: 1.91^10 = 643\u00d7 PAID vs 2^10 = 1,024\u00d7 FAIR', 90, 1518, '700 17px JBM', 'rgba(245,243,238,.5)', 'left');
+}
+const GLITCH = [[0, .4, 1, 'd'], [.8, .95, .5], [3.35, 3.5, .35], [23.2, 23.32, .4], [31.23, 31.4, .5], [38.97, 39.2, .7], [54.1, 54.22, .4], [57.3, 57.86, 1, 'r']];
+const SHAKE = [[0, .4, 26], [.8, .3, 30], [23.2, .25, 14], [31.23, .3, 16], [38.97, .5, 34], [54.1, .3, 24]];
+const PZ = [[.8, .07], [23.2, .06], [31.23, .06], [38.97, .25], [54.1, .08]];
+// ---------- shared engine tail: caption, storyteller, render ----------
+// body.js must define: ST_CFG, ST_POS, CAP{x,y,size,maxw,lh,minus}, SCENES, overlays(c,t), hud(c,t), GLITCH, SHAKE, PZ, HARD, ZOOMS(optional fn t->extra zoom)
+function caption(c, t) {
+  let it = null; for (const cp of CAPS) if (t >= cp[0] && t < cp[1]) it = cp; if (!it) return;
+  const k = eo(lin(t, it[0], it[0] + .12)); const parts = it[2].map(([w, col]) => [w, col === 'g' ? GREEN : col === 'r' ? RED : col === 'y' ? HL : PAPER]);
+  c.save(); c.font = `800 ${CAP.size}px Inter`; const sp = c.measureText(' ').width; const lines = [[]]; let lw = 0;
+  for (const p of parts) { const w = c.measureText(p[0]).width; if (lw + w > CAP.maxw && lines[lines.length - 1].length) { lines.push([]); lw = 0; } lines[lines.length - 1].push([...p, w]); lw += w + sp; }
+  c.translate(CAP.x, CAP.y - (lines.length - 1) * CAP.lh / 2); c.scale(.82 + .18 * k, .82 + .18 * k); c.globalAlpha = k;
+  lines.forEach((ln, li) => { const tw = ln.reduce((a, p) => a + p[2], 0) + sp * (ln.length - 1); let px = -tw / 2;
+    for (const [w, col, ww] of ln) { c.textAlign = 'left'; c.textBaseline = 'middle'; c.lineWidth = CAP.size * .2; c.strokeStyle = 'rgba(0,0,0,.9)'; c.lineJoin = 'round'; c.strokeText(w, px, li * CAP.lh); c.fillStyle = col; c.fillText(w, px, li * CAP.lh); px += ww + sp; } });
+  c.restore();
+}
+function storyteller(c, t) { if (ST_OFF && ST_OFF(t)) return; Storyteller.draw(c, t, { ...ST_CFG, pos: ST_POS, mouth: MOUTH[Math.min(MOUTH.length - 1, Math.floor(t * 30))] || 0 }); }
+window.render = function (t) {
+  const sc = SCENES.find(s => t >= s[0] && t < s[1]) || SCENES[SCENES.length - 1];
+  O.save(); sc[2](O, t, t - sc[0]); O.restore(); overlays(O, t); hud(O, t); storyteller(O, t); caption(O, t); if (typeof TOP === 'function') TOP(O, t);
+  const g = O.createRadialGradient(540, 900, 450, 540, 900, 1300); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.5)'); O.fillStyle = g; O.fillRect(0, 0, W, H);
+  let wx = 0; const into = t - sc[0];
+  if (!HARD && sc[0] > 0 && into < .16) wx = (1 - eo(into / .16)) * 160;
+  if (HARD && sc[0] > 0 && into < .08) { O.fillStyle = `rgba(245,243,238,${.4 * (1 - into / .08)})`; O.fillRect(0, 0, W, H); }
+  let sx = 0, sy = 0; for (const [s0, d, amp] of SHAKE) if (t >= s0 && t < s0 + d) { const k = 1 - (t - s0) / d; sx += Math.sin(t * 97) * amp * k; sy += Math.cos(t * 83) * amp * k; }
+  let pz = 1; for (const [s0, amp] of PZ) { const k = t - s0; if (k >= 0 && k < 1) pz += amp * clamp(k / .067) * (1 - eo(clamp((k - .067) / .4))); }
+  if (typeof ZOOMS === 'function') pz += ZOOMS(t);
+  X.fillStyle = INK; X.fillRect(0, 0, W, H); X.save(); X.translate(540 + sx + wx, 960 + sy); X.scale(pz, pz); X.translate(-540, -960); X.drawImage(OFF, 0, 0); X.restore();
+  for (const [g0, g1, amt, mode] of GLITCH) if (t >= g0 && t < g1) {
+    const u = lin(t, g0, g1), k = mode === 'd' ? amt * (1 - u * .8) : mode === 'r' ? amt * u : amt * Math.sin(u * Math.PI), f = Math.floor(t * 30);
+    X.save(); X.globalCompositeOperation = 'screen'; X.globalAlpha = .55 * k;
+    for (const [col, dx] of [['#ff0000', 26], ['#00ffff', -26]]) { T.clearRect(0, 0, W, H); T.drawImage(OFF, 0, 0); T.globalCompositeOperation = 'multiply'; T.fillStyle = col; T.fillRect(0, 0, W, H); T.globalCompositeOperation = 'source-over'; X.drawImage(TMP, dx * k, 0); }
+    X.restore(); for (let i = 0; i < 10; i++) { const y = hash(f * 13 + i) * H, h = 20 + hash(f * 7 + i) * 130, dx = (hash(f * 3 + i) - .5) * 280 * k; X.drawImage(OFF, 0, y, W, h, dx, y, W, h); }
+  }
+};
+window.DUR = DUR;
+const FONTS = [['Anton', 'node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2', '400'], ['Inter', 'node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2', '800'],
+  ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-800-normal.woff2', '800'], ['JBM', 'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2', '700'],
+  ['Special Elite', 'node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2', '400']];
+window.ready = Promise.all(FONTS.map(([f, u, w]) => new FontFace(f, `url(${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))).then(() => { window.render(0); return true; });
+</script></body></html>

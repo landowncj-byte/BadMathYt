@@ -1,0 +1,52 @@
+1
+00:00:00,000 --> 00:00:02,349
+You're probably an idiot if you bet parlays.
+
+2
+00:00:02,549 --> 00:00:05,058
+Here's the math the sportsbook doesn't put on the ad.
+
+3
+00:00:05,508 --> 00:00:13,979
+One normal bet at −110. Risk $110 to win $100. On a 50/50 game, the book keeps about 4.5%.
+
+4
+00:00:14,279 --> 00:00:16,363
+Now stack 10 of them into one parlay.
+
+5
+00:00:16,713 --> 00:00:19,041
+Hit like if you've ever lost on the last leg.
+
+6
+00:00:19,341 --> 00:00:28,979
+10 coin flips. Your real chance of hitting all 10: 1 IN 1,024. A fair payout would be 1,024× your money.
+
+7
+00:00:29,329 --> 00:00:31,666
+The book pays about 643×.
+
+8
+00:00:32,066 --> 00:00:34,967
+Send this to the friend who's always one leg away.
+
+9
+00:00:35,267 --> 00:00:40,352
+That gap is the cut. On a 10-leg parlay, the book keeps about 37%.
+
+10
+00:00:40,752 --> 00:00:44,890
+Follow along, because $10 a day for a year tells the whole story.
+
+11
+00:00:45,190 --> 00:00:52,879
+On single bets, you'd expect to lose about $166. On 10-leg parlays? About $1,358.
+
+12
+00:00:53,229 --> 00:00:55,229
+Same money. 8× the loss.
+
+13
+00:00:55,629 --> 00:00:57,264
+Still think you're one leg away?
+

@@ -1,6 +1,6 @@
 import json,re,os
 def make(chunks,dur,title,voice='../voice/',shared='../shared/',brand='../../../brand/storyteller.js',tail=.5,first0=True):
-    words=json.load(open(voice+'words.json')); mouth=json.load(open(voice+'mouth.json'))
+    words=json.load(open(voice+'words_snap.json')); mouth=json.load(open(voice+'mouth.json'))
     out=[]
     for k,(i0,i1,spec) in enumerate(chunks):
         parts=[]
