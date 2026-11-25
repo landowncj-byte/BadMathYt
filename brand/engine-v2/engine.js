@@ -97,7 +97,7 @@
       const beats = (spec.beats || []).map(b => ({ ...BEATS[b.beat || 'graphic-hero'], ...b, t: T(b.at), _ust: b.st })).sort((a, b) => a.t - b.t);
       if (!beats.length) throw new Error('scene needs at least one beat');
       // opt-in (spec.travel = {every: 12}): the storyteller changes side every `every` s and on every whip, steps out of the way of wide shots
-      if (spec.travel) { const every = spec.travel.every || 12, DEFST = { 'graphic-hero': 'corner', 'zoom-on-number': 'corner', 'pull-back': 'corner', wide: 'corner', 'side-by-side': 'left', 'presenter-front': 'front', peek: 'peek', 'over-shoulder': 'shoulder' }; let cur = 'corner', since = -99;
+      if (spec.travel) { const every = spec.travel.every || 12, DEFST = { 'graphic-hero': 'corner', 'zoom-on-number': 'corner', 'pull-back': 'corner', wide: 'corner', 'side-by-side': 'left', 'presenter-front': 'front', peek: 'peek', 'over-shoulder': 'shoulder' }; let cur = 'corner', since = 0;
         beats.forEach(b => { const name = b.beat || 'graphic-hero', eff = b._ust !== undefined ? b._ust : DEFST[name], ts = typeof eff === 'string' ? eff : 'custom';
           if (b._ust !== undefined || !['graphic-hero', 'zoom-on-number', 'pull-back', 'wide'].includes(name)) { if (ts !== cur) since = b.t; cur = ts; return; }
           const wide = (b.fill ?? 0.5) >= 0.7 || name === 'wide', move = b.move === 'whip', sxv = b.sx ?? 880;
@@ -240,7 +240,9 @@
       B.debug = { cam, stTrack, els, beats, chunks, T, boxOf };
     } catch (e) { err = e; console.error('BM2 scene error: ' + e.message); window.render = () => { X.fillStyle = '#300'; X.fillRect(0, 0, W, H); X.fillStyle = '#fff'; X.font = '28px monospace'; X.textBaseline = 'top'; let y = 300; for (const ln of ('BM2 SCENE ERROR\n' + e.message).match(/.{1,56}/g)) { X.fillText(ln, 60, y); y += 40; } }; } }
     const base = B.base || (document.currentScript ? document.currentScript.src.replace(/[^/]*$/, '') : ''), fonts = [['Anton', 'anton-latin-400-normal.woff2', '400'], ['Inter', 'inter-latin-600-normal.woff2', '600'], ['Inter', 'inter-latin-800-normal.woff2', '800'], ['JBM', 'jetbrains-mono-latin-700-normal.woff2', '700'], ['JBM', 'jetbrains-mono-latin-800-normal.woff2', '800']];
-    window.ready = Promise.all(fonts.map(([f, u, w]) => new FontFace(f, `url(${base}fonts/${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))).then(() => { build(); window.render(0); if (err) throw err; });
+    const imgSrcs = [...new Set((spec.elements || []).filter(x => x.type === 'photo' && x.props && x.props.src).map(x => x.props.src))]; B.images = B.images || {};
+    const loadImgs = () => Promise.all(imgSrcs.map(src => new Promise((res, rej) => { const im = new Image(), url = /^(brand|videos)\//.test(src) ? B.base + '../../' + src : src; im.onload = () => { B.images[src] = im; res(); }; im.onerror = () => rej(new Error('photo not found: ' + src + ' (' + url + ')')); im.src = url; })));
+    window.ready = Promise.all([loadImgs(), ...fonts.map(([f, u, w]) => new FontFace(f, `url(${base}fonts/${u})`, { weight: w }).load().then(ff => document.fonts.add(ff)))]).then(() => { build(); window.render(0); if (err) throw err; });
   };
   B.base = document.currentScript ? document.currentScript.src.replace(/[^/]*$/, '') : '';
 })();

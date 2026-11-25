@@ -4,7 +4,7 @@ Built with `brand/engine-v2` (landscape `format: 16:9`), Owen narration (`voice/
 
 | Check | Result | Status |
 |---|---|---|
-| Output | `video-v2.mp4`, H.264 1920×1080 30 fps + AAC 192k 48 kHz, 510.40 s (495.35 narration + 15.05 end card = 510.40 s), 15,312 frames, 203.5 MB (< 240 MB, CRF 21) | PASS |
+| Output | `video-v2.mp4`, H.264 1920×1080 30 fps + AAC 192k 48 kHz, 510.40 s (495.35 narration + 15.05 end card = 510.40 s), 15,312 frames, 206.0 MB (< 240 MB, CRF 21); `video-v2-post.mp4` = same video at CRF 26, 87.6 MB | PASS |
 | Loudness / true peak | ffmpeg ebur128 on the file: -14.0 LUFS integrated, true peak -1.2 dBTP (ebur128), LRA ~2.5 LU. Speech-only windows -14.2 / -13.6 / -14.7 LUFS, end card (music only) -16.2 LUFS | PASS |
 | Engine regression | Shorts unchanged: 4 stills of `2026-11-25-javice-fake-users/build` re-rendered with the new engine are byte-identical (`cmp`) to the pre-change render, checked again after the last engine edit | PASS |
 | Style (VISUAL-V2 §0) | No glow, no additive blending, no chromatic glitch (grep of engine + recipes: no `lighter`, no coloured `shadowBlur`); depth only from soft shadows, blur, parallax. Storyteller, DECODED pill, fonts (Anton / Inter 800 / JetBrains Mono), wordmark, brand colours unchanged. Stage palettes per room are dark tints (warm sepia ch.1, cool slate ch.3), still Ink-based | PASS |
@@ -17,6 +17,17 @@ Built with `brand/engine-v2` (landscape `format: 16:9`), Owen narration (`voice/
 | Sound | about 470 cues, each on the same `@P:word` as its picture (reveals, stamps, counters, whips, 17 click ticks for the 17 bars). CC0 only: `brand/sfx-library` (credits in its CREDITS.md) + `sfx/` beds (`sfx/CREDITS.md`): cold open drone, ch.1 honky-tonk piano + vinyl crackle, ch.2 drone, ch.3 beat, ch.4 uplift (continues under the end card, +7 dB, fade-out); beds -24 LUFS, a further -5.5 dB while the voice talks, 1.2 s crossfades at chapters, voice -16 LUFS | PASS (by measurement; not listened to) |
 | End card | 15 s: BAD MATH wordmark (Anton, Paper), dashed placeholders 800×450 at (120, 310) and r = 170 circle at (1400, 535) (labels WATCH NEXT / SUBSCRIBE), storyteller waving between them, no HUD / captions, music only | PASS |
 | upload.json | Chapters from the new paragraph starts: 0:00, 0:53 (P08), 2:41 (P21), 4:38 (P34), 7:14 (P51), 8:15 (end card). `containsSyntheticMedia: false`; "AI-narrated." removed from the description | DONE |
+
+## Third pass: real photos (RULES 2026-11-25)
+Engine: new reusable `photo` element (README): cover-cropped licensed photo in a lit paper frame (treatments paper / polaroid / mugshot), Anton name plate, tiny mono credit, tape, spring-in, anchors `face` / `name` / `photo`; images are preloaded before frame 0 and a missing file fails `check` / `stills` / `render`. Shorts unchanged (javice stills byte-identical after the change).
+Photos used (all public domain, files in `brand/photos/<slug>/` with `credits.json`):
+| Person | File | Where | Credit shown |
+|---|---|---|---|
+| Bernie Madoff | `bernie-madoff/2.jpg` (U.S. DOJ mugshot) | cold open beside the 1991 ticket (frame 0, 0-8 s) and his intro card in chapter 3 (P35) | PHOTO: U.S. DOJ · PUBLIC DOMAIN |
+| Charles Ponzi | `charles-ponzi/2.jpg` (full figure, clearer face than 1.jpg) | chapter 1, P09 intro card | PHOTO: PUBLIC DOMAIN (Commons file "Ponzi1920.jpg", uploader unknown) |
+| Tino De Angelis | `tino-de-angelis/1.jpg` (PNG data) | chapter 2, P22 intro card | PHOTO: PUBLIC DOMAIN (author unknown) |
+| Harry Markopolos | `harry-markopolos/1.jpg` (Loyola College in Maryland) | chapter 3, P40 intro card | PHOTO: LOYOLA COLLEGE · PUBLIC DOMAIN |
+Footnote line 2 on every frame except the end card: "PHOTOS: PUBLIC DOMAIN, VIA WIKIMEDIA COMMONS (U.S. DOJ; LOYOLA COLLEGE; PONZI, DE ANGELIS: UNKNOWN AUTHOR)". ILLUSTRATION labels removed from these four cards. Clarence Barron has no licensed photo in `brand/photos`, so his card stays a silhouette labelled ILLUSTRATION. The coordinator's line named "Boston Public Library" for Ponzi, but that credit belongs to `charles-ponzi/1.jpg`; the clearer `2.jpg` has an unknown author, so the footnote says so.
 
 ## Second pass (RULES.md: spread CTAs, travelling storyteller)
 - **Woven CTAs, voiced and shown on the same word, small, <= 1.5 s, never a banner:** P13b "Hit like..." = heart pulse beside him (100.7 s); P29b "Send this to the friend..." = paper-plane flick from his hand (236.6 s); P47b "Subscribe now..." = he taps a small red SUBSCRIBE button -> SUBSCRIBED (399 s). The scene behind keeps moving (3 new beats each, push-ins, shake). The pre-existing P57 subscribe + comment bubble is part of the script and was not changed.

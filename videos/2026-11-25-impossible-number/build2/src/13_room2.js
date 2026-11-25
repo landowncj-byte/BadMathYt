@@ -5,7 +5,7 @@ bt('@P21', 'graphic-hero', 'ch2', { move: 'whip', dur0: 0.7, fill: 0.62, sy: 470
 // S1: Bayonne tank farm + Tino De Angelis
 el('h22', 'text', R2(1) + 350, -330, '@P22', { lines: [[['NEW JERSEY · ', 'paper'], ['EARLY 1960s', 'accent']]], size: 72 }, { out: '@P23-0.2' });
 el('tanks22', 'tanks', R2(1) + 350, 120, '@P22+0.3', { n: 5, at: '@P22+0.3', pin: 'BAYONNE, N.J.', pinAt: '@P22:bayonne-0.3', w: 1500, h: 560 }, { out: '@P23-0.2' });
-el('sil22', 'silh', R2(1) - 850, 60, '@P22:tino-0.4', { name: 'TINO DE ANGELIS', role: 'ALLIED CRUDE', tone: 'navy' }, { rot: -0.03, out: '@P23-0.2' });
+el('sil22', 'photo', R2(1) - 850, 60, '@P22:tino-0.4', { src: 'brand/photos/tino-de-angelis/1.jpg', name: 'TINO DE ANGELIS', role: 'ALLIED CRUDE', credit: 'PHOTO: PUBLIC DOMAIN', fx: 0.5, fy: 0.22, tilt: -0.03 }, { out: '@P23-0.2' });
 bt('@P22', 'graphic-hero', ['h22', 'tanks22'], { move: 'whip', fill: 0.56, sx: 960, sy: 500, pose: 'point' }); sf('@P22+0.3', 'thud_1', -11, 0.5);
 bt('@P22:tino', 'side-by-side', 'sil22', { fill: 0.32, maxH: 660, sy: 540, st: 'corner', pose: 'point', sx: 880 }); sf('@P22:tino-0.35', 'camera_flash_1', -9, 0.6); bt('@P22:allied', 'zoom-on-number', 'sil22.name', { fill: 0.3, maxH: 300, sy: 520 });
 bt('@P22:out', 'graphic-hero', ['h22', 'tanks22'], { fill: 0.56, sx: 960, sy: 500, pose: 'idle' }); bt('@P22:bayonne', 'zoom-on-number', 'tanks22.pin', { fill: 0.32, maxH: 380, sy: 500 }); sf('@P22:bayonne-0.3', 'pop_2', -8, 0.3);

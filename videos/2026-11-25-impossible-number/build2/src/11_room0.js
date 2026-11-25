@@ -2,7 +2,8 @@
 // A: the 1991 ticket
 el('hook0', 'text', 0, -380, -1, { lines: [[['BERNIE MADOFF', 'paper']]], size: 76 }, { out: '@P02-0.2' });
 el('tk', 'ticket', 0, 70, -3, { at: -3, to: 123, pulse: '@P01:123', rowsAt: 0.3 }, { out: '@P02-0.2' });
-bt(0, 'graphic-hero', ['hook0', 'tk'], { pose: 'point', sy: 500 });
+el('ph0', 'photo', -720, 80, -3, { src: 'brand/photos/bernie-madoff/2.jpg', name: '', credit: 'PHOTO: U.S. DOJ · PUBLIC DOMAIN', treatment: 'mugshot', fx: 0.5, fy: 0.3, w: 400, tilt: -0.04 }, { out: '@P02-0.2' });
+bt(0, 'graphic-hero', ['hook0', 'tk', 'ph0'], { fill: 0.62, pose: 'point', sy: 500 });
 bt('@P01:123', 'zoom-on-number', 'tk.qty', { fill: 0.42, sy: 560 });
 sf(0, 'paper_slam_2', -9, 0.5); sf('@P01:123', 'deep_boom_2', -7, 0.4); sf('@P01:123+0.05', 'ding_2', -10, 0.7);
 bt('@P01:procter', 'graphic-hero', 'tk', { fill: 0.5, sy: 520 });

@@ -1,6 +1,6 @@
 BM2.scene({
   series: 'decoded', title: 'CASE FILE: THE IMPOSSIBLE NUMBER', duration: 510.4, fps: 30,
-  footnote: ['DOCUMENTED CASES · SOURCES IN DESCRIPTION · NOT FINANCIAL ADVICE'],
+  footnote: ['DOCUMENTED CASES · SOURCES IN DESCRIPTION · NOT FINANCIAL ADVICE', 'PHOTOS: PUBLIC DOMAIN, VIA WIKIMEDIA COMMONS (U.S. DOJ; LOYOLA COLLEGE; PONZI, DE ANGELIS: UNKNOWN AUTHOR)'],
   elements: E, beats: BT, poses: PO, shakes: SK, sfx: SF,
   stages: STAGES, hudOff: [['@P57>+0.3', 900]], travel: { every: 10 },
   captions: { fix: [], hide: [['@P57>+0.3', 900]], emph: {

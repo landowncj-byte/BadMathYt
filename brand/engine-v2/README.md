@@ -92,6 +92,7 @@ Words are matched lower-case with surrounding punctuation stripped (`"$34."` mat
 | `timeline` | `items: [{id, date, label, at, tone}]`, `w` (780), `step` (180) | each item `id` (or `i0`, `i1`…) |
 | `map` | `title`, `nodes: [{id, x, y, label, sub, at, tone, r}]` (x, y from 0 to 1), `links: [{from, to, at, tone, dur}]`, `w`, `h` | each node `id` |
 | `card` | `w`, `h`, `fill` (`paper`·`navy`…), `pad`, `lines: [{t, size, font, tone, at, mark, gap}]` | — |
+| `photo` | `src` (repo-relative `brand/photos/<slug>/n.jpg`, or relative to scene.html), `name`, `role`, `credit` (tiny mono line, e.g. `PHOTO: U.S. DOJ · PUBLIC DOMAIN`), `tag`, `w` (440), `tilt` (rad), `treatment` (`paper` · `polaroid` · `mugshot`), `fx`/`fy` (0..1 focal point of the face for the cover crop), `aspect` (1.12), `tape` (true). Real licensed photo of a real person in a lit paper frame: cover-cropped, soft shadow, Anton name plate, spring-in; images are preloaded before frame 0 and a missing file fails `check` / `stills` / `render`. No photo → use `silh` (ILLUSTRATION). | `face`, `name`, `photo` |
 | `bubble` | `l1`, `l2` (red), `size`, `tail` (`left`·`right`) — use `layer: 'screen'` | — |
 | `follow` | `press` (seconds after `in`), `labels` — use `layer: 'screen'` | — |
 

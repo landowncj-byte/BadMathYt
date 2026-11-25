@@ -3,7 +3,7 @@ const R3 = k => K(X3, k);
 el('ch3', 'headline', R3(0), 40, '@P34-0.3', { kicker: 'CHAPTER THREE', lines: ['THE FUND THAT', [['ALMOST ', 'paper'], ['NEVER LOST', 'good']]], size: 150, under: 'good', underAt: 1.0 });
 bt('@P34', 'graphic-hero', 'ch3', { move: 'whip', dur0: 0.7, fill: 0.66, sy: 470, pose: 'shrug', arc: 0.2 }); sf('@P34-0.6', 'tape_stop_1', -8, 1.0); sf('@P34-0.1', 'cinematic_hit_1', -9, 1.5); sf('@P34+0.9', 'paper_slam_2', -10, 0.5); sk('@P34+0.7', 8);
 // S1: Madoff wasn't a nobody
-el('sil35', 'silh', R3(1) - 900, 60, '@P35-0.3', { name: 'BERNIE MADOFF', role: 'WALL STREET', tone: 'navy' }, { rot: -0.03, out: '@P36-0.2' });
+el('sil35', 'photo', R3(1) - 900, 60, '@P35-0.3', { src: 'brand/photos/bernie-madoff/2.jpg', name: 'BERNIE MADOFF', role: 'WALL STREET', credit: 'PHOTO: U.S. DOJ · PUBLIC DOMAIN', treatment: 'mugshot', fx: 0.5, fy: 0.3, tilt: -0.03 }, { out: '@P36-0.2' });
 el('bld35', 'icon', R3(1) + 100, 40, '@P35:chairman-0.5', { kind: 'building', s: 440, col: 'paper' }, { out: '@P36-0.2' });
 el('nas', 'badge', R3(1) + 860, -110, '@P35:nasdaq-0.55', { text: 'FORMER NASDAQ CHAIRMAN', tone: 'navy', size: 40 }, { out: '@P36-0.2' });
 el('mm', 'badge', R3(1) + 860, 90, '@P35:market-0.25', { text: 'ONE OF THE BIGGEST MARKET MAKERS', tone: 'navy', size: 34 }, { out: '@P36-0.2' });
@@ -42,7 +42,7 @@ bt('@P39:perfect', 'zoom-on-number', { x: R3(5) - 360, y: 60, w: 760, h: 700 }, 
 bt('@P39:45', 'zoom-on-number', { x: R3(5) - 360, y: 220, w: 760, h: 420 }, { fill: 0.42, maxH: 520, sy: 520, pose: 'shock', dur: 0.6 }); sf('@P39:45-0.3', 'swipe_1', -12, 0.5); sf('@P39:45', 'ding_1', -8, 0.8);
 bt('@P39:degree', 'graphic-hero', ['key', 'tooperf'], { fill: 0.64, maxH: 760, sy: 490, pose: 'shock' }); sf('@P39:degree-0.1', 'rubber_stamp_2', -3, 0.5); sf('@P39:degree', 'deep_boom_1', -4, 1.6); sk('@P39:degree', 14);
 // S6: Markopolos: five minutes to doubt, four hours to prove
-el('sil40', 'silh', R3(6) - 800, 60, '@P40:harry-0.4', { name: 'HARRY MARKOPOLOS', role: 'FINANCIAL ANALYST', tone: 'navy' }, { rot: 0.03, out: '@P41-0.2' });
+el('sil40', 'photo', R3(6) - 800, 60, '@P40:harry-0.4', { src: 'brand/photos/harry-markopolos/1.jpg', name: 'HARRY MARKOPOLOS', role: 'FINANCIAL ANALYST', credit: 'PHOTO: LOYOLA COLLEGE · PUBLIC DOMAIN', fx: 0.5, fy: 0.3, tilt: 0.03 }, { out: '@P41-0.2' });
 el('sw', 'stopwatch', R3(6) + 380, 60, '@P40:knew-0.4', { aAt: '@P40:five-0.15', bAt: '@P40:four-0.15', a: ['KNEW IT DIDN\'T ADD UP', '5 MIN'], b: ['TOOK TO PROVE IT', '4 HOURS'] }, { out: '@P41-0.2' });
 bt('@P40', 'graphic-hero', 'sil40', { move: 'whip', fill: 0.3, maxH: 660, sy: 530, pose: 'point' }); sf('@P40+0.8', 'camera_flash_1', -9, 0.6); bt('@P40:harry', 'zoom-on-number', 'sil40.name', { fill: 0.3, maxH: 300, sy: 520 });
 bt('@P40:copy', 'side-by-side', 'sw', { fill: 0.6, sx: 900, sy: 500, st: 'corner', pose: 'point', dur: 1.0 }); bt('@P40:five', 'zoom-on-number', 'sw.a', { fill: 0.42, maxH: 300, sy: 480, pose: 'shock' }); sf('@P40:five-0.15', 'clock_ticking_1', -9, 1.6); sf('@P40:five+0.1', 'ding_2', -9, 0.7);

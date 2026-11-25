@@ -194,6 +194,31 @@
       p.lines.forEach((l, i) => { const size = l.size || 44, on = env.t - (l.at ?? -9); if (on > 0) { const k = spring(on, 'snappy'); g.save(); g.globalAlpha *= clamp(on / 0.1); g.translate(0, y + (1 - k) * 24); if (l.mark) { const tw = measure(l.t, F[l.font || 'cap'](size)); marker(g, -tw / 2 - 10, -size * 0.6, tw + 20, size * 1.2, tone(l.mark, true), clamp((on - 0.2) / 0.3), 0.22); } txt(g, l.t, 0, 0, F[l.font || 'cap'](size), tone(l.tone || 'ink', true)); g.restore(); } y += (l.gap || size * 1.45); }); },
   });
 
+
+  // ---------- photo: a REAL licensed photo in a lit paper frame (RULES: real people get real photos). Images are preloaded by the engine
+  // (BM2.images[src]) before the first frame; a missing file fails check/stills/render. treatment: 'paper' | 'polaroid' | 'mugshot'.
+  // props: src (repo-relative 'brand/photos/..' or relative to scene.html), name, role, credit, tag, w, tilt (rad), treatment, fx/fy (focal point 0..1 of the face), tape.
+  B.register('photo', {
+    defaults: { src: '', name: '', role: '', credit: '', tag: '', w: 440, tilt: 0.03, treatment: 'paper', fx: 0.5, fy: 0.35, aspect: 1.12, tape: true }, ownEnter: true,
+    size: p => [p.w, 22 + (p.w - 44) * p.aspect + (p.name ? 130 : 60)],
+    anchors(p) { const [w, h] = this.size(p), ph = (p.w - 44) * p.aspect; return { face: [0, -h / 2 + 22 + ph * 0.42, p.w * 0.78, ph * 0.62], name: [0, h / 2 - 70, w, 130], photo: [0, -h / 2 + 22 + ph / 2, p.w - 44, ph] }; },
+    draw(g, p, env) {
+      const { lt, theme, lift } = env, img = B.images && B.images[p.src]; if (!img) throw new Error('photo: image not preloaded: ' + p.src);
+      const [w, h] = this.size(p), pw = p.w - 44, ph = pw * p.aspect, x0 = -w / 2, y0 = -h / 2, k = spring(lt, 'heavy'), mug = p.treatment === 'mugshot', pol = p.treatment === 'polaroid';
+      g.save(); g.translate(0, (1 - k) * 240); g.rotate(p.tilt + (1 - k) * -0.1); g.globalAlpha *= clamp(lt / 0.1);
+      paper(g, x0, y0, w, h, pol ? 10 : 16, { lift, fill: mug ? '#C9CED6' : theme.paper });
+      // photo, cover-cropped around the focal point
+      const sc = Math.max(pw / img.width, ph / img.height), dw = img.width * sc, dh = img.height * sc, ox = clamp(pw / 2 - p.fx * dw, pw - dw, 0), oy = clamp(ph / 2 - p.fy * dh, ph - dh, 0), px = x0 + 22, py = y0 + 22;
+      g.save(); rr(g, px, py, pw, ph, 6); g.clip(); g.drawImage(img, px + ox, py + oy, dw, dh);
+      const vg = g.createLinearGradient(px, py, px + pw, py + ph); vg.addColorStop(0, 'rgba(255,255,255,.10)'); vg.addColorStop(0.5, 'rgba(255,255,255,0)'); vg.addColorStop(1, 'rgba(0,0,0,.18)'); g.fillStyle = vg; g.fillRect(px, py, pw, ph);
+      if (mug) { g.strokeStyle = 'rgba(11,15,20,.55)'; g.lineWidth = 2; for (let i = 0; i < 14; i++) { const yy = py + ph - i * ph / 14; g.beginPath(); g.moveTo(px + pw - (i % 5 === 0 ? 46 : 24), yy); g.lineTo(px + pw, yy); g.stroke(); } }
+      g.restore(); g.strokeStyle = 'rgba(11,15,20,.28)'; g.lineWidth = 2; rr(g, px, py, pw, ph, 6); g.stroke();
+      if (p.name) { const ty = y0 + 22 + ph + 14, tw = w - 44; g.fillStyle = mug ? '#1B2430' : theme.navy; rr(g, px, ty, tw, 84, 10); g.fill(); txt(g, p.name, 0, ty + 30, F.hero(44), theme.paper); if (p.role) txt(g, p.role, 0, ty + 63, F.mono(21), rgba(theme.paper, 0.8)); }
+      const cl = [p.tag, p.credit].filter(Boolean).join(' · '); if (cl) txt(g, cl, 0, y0 + h - (p.name ? 15 : 30), F.mono(14), theme.inkSoft);
+      if (p.tape) { g.save(); g.translate(-w * 0.28, y0 + 2); g.rotate(-0.12); g.fillStyle = 'rgba(236,222,170,.82)'; g.fillRect(-52, -14, 104, 30); g.fillStyle = 'rgba(255,255,255,.25)'; g.fillRect(-52, -14, 104, 8); g.restore(); }
+      g.restore(); },
+  });
+
   // ---------- bubble + follow: the storyteller's comment prompt and follow button (same design as v1). Use layer:'screen'. ----------
   B.register('bubble', {
     defaults: { l1: 'COMMENT', l2: '', tail: 'right', size: 44 }, size: p => [Math.max(measure(p.l1, F.cap(p.size)), measure(p.l2 || '', F.cap(p.size))) + 80, p.l2 ? p.size * 3.5 : p.size * 2.2],

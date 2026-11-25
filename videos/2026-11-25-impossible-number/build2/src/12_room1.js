@@ -4,7 +4,7 @@ el('ch1', 'headline', R1(0), 40, '@P08-0.3', { kicker: 'CHAPTER ONE', lines: ['T
 bt('@P08', 'graphic-hero', 'ch1', { move: 'whip', dur0: 0.7, fill: 0.74, sy: 470, pose: 'shrug', arc: 0.2 }); sf('@P08-0.6', 'tape_stop_1', -8, 1.0); sf('@P08-0.1', 'cinematic_hit_1', -9, 1.5); sf('@P08+0.9', 'paper_slam_2', -10, 0.5); sk('@P08+0.7', 8);
 // S1: banks vs Ponzi
 el('h9', 'text', R1(1) + 340, -300, '@P09', { lines: [[['BOSTON, ', 'paper'], ['1920', 'accent']]], size: 86 }, { out: '@P09:5-0.3' });
-el('sil9', 'silh', R1(1) - 760, 40, '@P09:charles-0.35', { name: 'CHARLES PONZI', role: 'FORMER DISHWASHER', hat: 'bowler' }, { out: '@P10-0.2', rot: -0.03 });
+el('sil9', 'photo', R1(1) - 760, 40, '@P09:charles-0.35', { src: 'brand/photos/charles-ponzi/2.jpg', name: 'CHARLES PONZI', role: 'FORMER DISHWASHER', credit: 'PHOTO: PUBLIC DOMAIN', fx: 0.5, fy: 0.2, tilt: -0.03 }, { out: '@P10-0.2' });
 el('bars9', 'bars', R1(1) + 340, 70, '@P09+0.2', { h: 460, barW: 170, gap: 110, note: 'ON EVERY $100', items: [
   { id: 'bank', label: 'BANK', sub: '~5% A YEAR', value: 5, display: { prefix: '+$' }, tone: 'good', at: '@P09:5' },
   { id: 'ponzi', label: 'PONZI', sub: '50% IN 45 DAYS', value: 50, display: { prefix: '+$' }, tone: 'bad', at: '@P09:50' }] }, { out: '@P10-0.2' });

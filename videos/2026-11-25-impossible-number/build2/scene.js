@@ -448,7 +448,8 @@ const SEPIA = { stage: ['#4A3A24', '#2B1D10', '#120C06'], blobs: [['#7A5A2A', 0.
 // A: the 1991 ticket
 el('hook0', 'text', 0, -380, -1, { lines: [[['BERNIE MADOFF', 'paper']]], size: 76 }, { out: '@P02-0.2' });
 el('tk', 'ticket', 0, 70, -3, { at: -3, to: 123, pulse: '@P01:123', rowsAt: 0.3 }, { out: '@P02-0.2' });
-bt(0, 'graphic-hero', ['hook0', 'tk'], { pose: 'point', sy: 500 });
+el('ph0', 'photo', -720, 80, -3, { src: 'brand/photos/bernie-madoff/2.jpg', name: '', credit: 'PHOTO: U.S. DOJ · PUBLIC DOMAIN', treatment: 'mugshot', fx: 0.5, fy: 0.3, w: 400, tilt: -0.04 }, { out: '@P02-0.2' });
+bt(0, 'graphic-hero', ['hook0', 'tk', 'ph0'], { fill: 0.62, pose: 'point', sy: 500 });
 bt('@P01:123', 'zoom-on-number', 'tk.qty', { fill: 0.42, sy: 560 });
 sf(0, 'paper_slam_2', -9, 0.5); sf('@P01:123', 'deep_boom_2', -7, 0.4); sf('@P01:123+0.05', 'ding_2', -10, 0.7);
 bt('@P01:procter', 'graphic-hero', 'tk', { fill: 0.5, sy: 520 });
@@ -499,7 +500,7 @@ el('ch1', 'headline', R1(0), 40, '@P08-0.3', { kicker: 'CHAPTER ONE', lines: ['T
 bt('@P08', 'graphic-hero', 'ch1', { move: 'whip', dur0: 0.7, fill: 0.74, sy: 470, pose: 'shrug', arc: 0.2 }); sf('@P08-0.6', 'tape_stop_1', -8, 1.0); sf('@P08-0.1', 'cinematic_hit_1', -9, 1.5); sf('@P08+0.9', 'paper_slam_2', -10, 0.5); sk('@P08+0.7', 8);
 // S1: banks vs Ponzi
 el('h9', 'text', R1(1) + 340, -300, '@P09', { lines: [[['BOSTON, ', 'paper'], ['1920', 'accent']]], size: 86 }, { out: '@P09:5-0.3' });
-el('sil9', 'silh', R1(1) - 760, 40, '@P09:charles-0.35', { name: 'CHARLES PONZI', role: 'FORMER DISHWASHER', hat: 'bowler' }, { out: '@P10-0.2', rot: -0.03 });
+el('sil9', 'photo', R1(1) - 760, 40, '@P09:charles-0.35', { src: 'brand/photos/charles-ponzi/2.jpg', name: 'CHARLES PONZI', role: 'FORMER DISHWASHER', credit: 'PHOTO: PUBLIC DOMAIN', fx: 0.5, fy: 0.2, tilt: -0.03 }, { out: '@P10-0.2' });
 el('bars9', 'bars', R1(1) + 340, 70, '@P09+0.2', { h: 460, barW: 170, gap: 110, note: 'ON EVERY $100', items: [
   { id: 'bank', label: 'BANK', sub: '~5% A YEAR', value: 5, display: { prefix: '+$' }, tone: 'good', at: '@P09:5' },
   { id: 'ponzi', label: 'PONZI', sub: '50% IN 45 DAYS', value: 50, display: { prefix: '+$' }, tone: 'bad', at: '@P09:50' }] }, { out: '@P10-0.2' });
@@ -584,7 +585,7 @@ bt('@P21', 'graphic-hero', 'ch2', { move: 'whip', dur0: 0.7, fill: 0.62, sy: 470
 // S1: Bayonne tank farm + Tino De Angelis
 el('h22', 'text', R2(1) + 350, -330, '@P22', { lines: [[['NEW JERSEY · ', 'paper'], ['EARLY 1960s', 'accent']]], size: 72 }, { out: '@P23-0.2' });
 el('tanks22', 'tanks', R2(1) + 350, 120, '@P22+0.3', { n: 5, at: '@P22+0.3', pin: 'BAYONNE, N.J.', pinAt: '@P22:bayonne-0.3', w: 1500, h: 560 }, { out: '@P23-0.2' });
-el('sil22', 'silh', R2(1) - 850, 60, '@P22:tino-0.4', { name: 'TINO DE ANGELIS', role: 'ALLIED CRUDE', tone: 'navy' }, { rot: -0.03, out: '@P23-0.2' });
+el('sil22', 'photo', R2(1) - 850, 60, '@P22:tino-0.4', { src: 'brand/photos/tino-de-angelis/1.jpg', name: 'TINO DE ANGELIS', role: 'ALLIED CRUDE', credit: 'PHOTO: PUBLIC DOMAIN', fx: 0.5, fy: 0.22, tilt: -0.03 }, { out: '@P23-0.2' });
 bt('@P22', 'graphic-hero', ['h22', 'tanks22'], { move: 'whip', fill: 0.56, sx: 960, sy: 500, pose: 'point' }); sf('@P22+0.3', 'thud_1', -11, 0.5);
 bt('@P22:tino', 'side-by-side', 'sil22', { fill: 0.32, maxH: 660, sy: 540, st: 'corner', pose: 'point', sx: 880 }); sf('@P22:tino-0.35', 'camera_flash_1', -9, 0.6); bt('@P22:allied', 'zoom-on-number', 'sil22.name', { fill: 0.3, maxH: 300, sy: 520 });
 bt('@P22:out', 'graphic-hero', ['h22', 'tanks22'], { fill: 0.56, sx: 960, sy: 500, pose: 'idle' }); bt('@P22:bayonne', 'zoom-on-number', 'tanks22.pin', { fill: 0.32, maxH: 380, sy: 500 }); sf('@P22:bayonne-0.3', 'pop_2', -8, 0.3);
@@ -663,7 +664,7 @@ const R3 = k => K(X3, k);
 el('ch3', 'headline', R3(0), 40, '@P34-0.3', { kicker: 'CHAPTER THREE', lines: ['THE FUND THAT', [['ALMOST ', 'paper'], ['NEVER LOST', 'good']]], size: 150, under: 'good', underAt: 1.0 });
 bt('@P34', 'graphic-hero', 'ch3', { move: 'whip', dur0: 0.7, fill: 0.66, sy: 470, pose: 'shrug', arc: 0.2 }); sf('@P34-0.6', 'tape_stop_1', -8, 1.0); sf('@P34-0.1', 'cinematic_hit_1', -9, 1.5); sf('@P34+0.9', 'paper_slam_2', -10, 0.5); sk('@P34+0.7', 8);
 // S1: Madoff wasn't a nobody
-el('sil35', 'silh', R3(1) - 900, 60, '@P35-0.3', { name: 'BERNIE MADOFF', role: 'WALL STREET', tone: 'navy' }, { rot: -0.03, out: '@P36-0.2' });
+el('sil35', 'photo', R3(1) - 900, 60, '@P35-0.3', { src: 'brand/photos/bernie-madoff/2.jpg', name: 'BERNIE MADOFF', role: 'WALL STREET', credit: 'PHOTO: U.S. DOJ · PUBLIC DOMAIN', treatment: 'mugshot', fx: 0.5, fy: 0.3, tilt: -0.03 }, { out: '@P36-0.2' });
 el('bld35', 'icon', R3(1) + 100, 40, '@P35:chairman-0.5', { kind: 'building', s: 440, col: 'paper' }, { out: '@P36-0.2' });
 el('nas', 'badge', R3(1) + 860, -110, '@P35:nasdaq-0.55', { text: 'FORMER NASDAQ CHAIRMAN', tone: 'navy', size: 40 }, { out: '@P36-0.2' });
 el('mm', 'badge', R3(1) + 860, 90, '@P35:market-0.25', { text: 'ONE OF THE BIGGEST MARKET MAKERS', tone: 'navy', size: 34 }, { out: '@P36-0.2' });
@@ -702,7 +703,7 @@ bt('@P39:perfect', 'zoom-on-number', { x: R3(5) - 360, y: 60, w: 760, h: 700 }, 
 bt('@P39:45', 'zoom-on-number', { x: R3(5) - 360, y: 220, w: 760, h: 420 }, { fill: 0.42, maxH: 520, sy: 520, pose: 'shock', dur: 0.6 }); sf('@P39:45-0.3', 'swipe_1', -12, 0.5); sf('@P39:45', 'ding_1', -8, 0.8);
 bt('@P39:degree', 'graphic-hero', ['key', 'tooperf'], { fill: 0.64, maxH: 760, sy: 490, pose: 'shock' }); sf('@P39:degree-0.1', 'rubber_stamp_2', -3, 0.5); sf('@P39:degree', 'deep_boom_1', -4, 1.6); sk('@P39:degree', 14);
 // S6: Markopolos: five minutes to doubt, four hours to prove
-el('sil40', 'silh', R3(6) - 800, 60, '@P40:harry-0.4', { name: 'HARRY MARKOPOLOS', role: 'FINANCIAL ANALYST', tone: 'navy' }, { rot: 0.03, out: '@P41-0.2' });
+el('sil40', 'photo', R3(6) - 800, 60, '@P40:harry-0.4', { src: 'brand/photos/harry-markopolos/1.jpg', name: 'HARRY MARKOPOLOS', role: 'FINANCIAL ANALYST', credit: 'PHOTO: LOYOLA COLLEGE · PUBLIC DOMAIN', fx: 0.5, fy: 0.3, tilt: 0.03 }, { out: '@P41-0.2' });
 el('sw', 'stopwatch', R3(6) + 380, 60, '@P40:knew-0.4', { aAt: '@P40:five-0.15', bAt: '@P40:four-0.15', a: ['KNEW IT DIDN\'T ADD UP', '5 MIN'], b: ['TOOK TO PROVE IT', '4 HOURS'] }, { out: '@P41-0.2' });
 bt('@P40', 'graphic-hero', 'sil40', { move: 'whip', fill: 0.3, maxH: 660, sy: 530, pose: 'point' }); sf('@P40+0.8', 'camera_flash_1', -9, 0.6); bt('@P40:harry', 'zoom-on-number', 'sil40.name', { fill: 0.3, maxH: 300, sy: 520 });
 bt('@P40:copy', 'side-by-side', 'sw', { fill: 0.6, sx: 900, sy: 500, st: 'corner', pose: 'point', dur: 1.0 }); bt('@P40:five', 'zoom-on-number', 'sw.a', { fill: 0.42, maxH: 300, sy: 480, pose: 'shock' }); sf('@P40:five-0.15', 'clock_ticking_1', -9, 1.6); sf('@P40:five+0.1', 'ding_2', -9, 0.7);
@@ -867,7 +868,7 @@ STAGES.push({ at: '@P34-0.7', dur: 1.2, theme: { stage: ['#26354A', '#152030', '
 STAGES.push({ at: '@P51-0.7', dur: 1.2, theme: {} });
 BM2.scene({
   series: 'decoded', title: 'CASE FILE: THE IMPOSSIBLE NUMBER', duration: 510.4, fps: 30,
-  footnote: ['DOCUMENTED CASES · SOURCES IN DESCRIPTION · NOT FINANCIAL ADVICE'],
+  footnote: ['DOCUMENTED CASES · SOURCES IN DESCRIPTION · NOT FINANCIAL ADVICE', 'PHOTOS: PUBLIC DOMAIN, VIA WIKIMEDIA COMMONS (U.S. DOJ; LOYOLA COLLEGE; PONZI, DE ANGELIS: UNKNOWN AUTHOR)'],
   elements: E, beats: BT, poses: PO, shakes: SK, sfx: SF,
   stages: STAGES, hudOff: [['@P57>+0.3', 900]], travel: { every: 10 },
   captions: { fix: [], hide: [['@P57>+0.3', 900]], emph: {
