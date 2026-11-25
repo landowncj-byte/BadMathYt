@@ -16,4 +16,6 @@
 
 | 2026-11-25 | What If | Scale Swap | Your Overdraft Fee Is a 17,000% Loan | CFPB: $34 fee on $24 for 3 days = ~17,000% APR; same loan at card rates ≈ 4¢ | CFPB 2014 (verified primary) |
 | 2026-11-25 | Decoded | Timeline | The Guard Was the Thief: McDonald's Monopoly | Security employee swapped winning pieces; $13M+ (FBI 2001), $24M+ later; trial opened Sept 10, 2001; 37 months | DOJ 2001 #422 (verified primary); Wikipedia |
+| 2026-11-25 | Decoded | Spot the Tell | She Had a Professor Invent 4 Million Customers | Frank/Javice: 4.25M claimed vs <300K real (SEC), JPMorgan paid $175M, guilty 4/4, 85 months, $287.5M restitution | DOJ, SEC (2-source), Fable research |
+| 2026-11-25 | What If | Counter | You're an Idiot If You Only Pay the Minimum | $5K at 22.36%, 1%+interest min → 198 months, $12,811 total; fixed $250 → 26 months | Fed G.19 via LendingTree; arithmetic |
 Used hooks/formats to avoid repeating verbatim: "$1 every second", "two buttons A/B", "this tank is full of…", "50% in 45 days", "123 vs 20", "this guy was so dumb he committed an $8B fraud", "you're an idiot for buying one lottery ticket", "so shameless she said $100M", "fraud while out on bail", "idiot if you buy coffee every day". PROMISED: lottery Part 2 (what happened after the 1992 win) — make it.
