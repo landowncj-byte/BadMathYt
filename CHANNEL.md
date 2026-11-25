@@ -109,3 +109,4 @@ decisions:
 - 2026-11-25: Shorts voice = energy mode (say_energy + Michael/Puck blend, option 5) — user: 'more energy, more sporadic and crazy'. Samples in research/voice-energy/; user may pick another option.
 - 2026-11-25: Usage pacing — give time-based estimates before heavy jobs (meter not visible to Claude). Voice samples: research/voice-plain/ (21 plain voices); user to pick; energy mode stays default until then.
 - 2026-11-25: Shorts voice = am_liam, plain (user: 'liam is great'). Energy mode off.
+- 2026-11-25: All unposted Shorts (Wed parlay/overdraft/McDonald's) re-voiced to am_liam with brand/voice/revoice.py (same timings), re-mixed and re-scheduled. Every Short from Wed onward is Liam; long-forms stay Owen.
