@@ -92,12 +92,6 @@
    "name": "whoosh_2"
   },
   {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 14.76,
-   "name": "swipe_2"
-  },
-  {
    "gain": -9,
    "dur": 0.5,
    "at": 14.96,
@@ -108,12 +102,6 @@
    "dur": 1.4,
    "at": 15.62,
    "name": "money_counter_1"
-  },
-  {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 16,
-   "name": "swipe_2"
   },
   {
    "gain": -9,

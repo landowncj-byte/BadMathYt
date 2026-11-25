@@ -232,8 +232,8 @@ BM2.scene({
     { at: '@Hit', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'right', pose: 'point', keep: ['tower'] },
     // twist 1: scale
     { at: '@But', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.84, maxH: 900, sy: 850, st: 'corner', pose: 'idle' },
-    { at: '@gram', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.6, sy: 900, rot: -0.008, st: 'corner', pose: 'point' },
-    { at: '@454', beat: 'zoom-on-number', focus: 'scale.count', fill: 0.5, sy: 560, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@gram', beat: 'graphic-hero', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'point' },
+    { at: '@454', beat: 'graphic-hero', focus: 'scale', fill: 0.84, maxH: 950, sy: 850, st: 'corner', pose: 'shock', dur: 0.5 },
     // twist 2: tower inch
     { at: '@One#2', beat: 'graphic-hero', st: 'right', focus: 'tower', move: 'whip', sy: 850, maxH: 900, pose: 'idle' },
     { at: '@inch', beat: 'zoom-on-number', focus: 'tower.base', fill: 0.8, sy: 860, rot: -0.01, st: 'corner-left', pose: 'point' },

@@ -271,7 +271,7 @@ BM2.scene({
   beats: [
     { at: 0, beat: 'side-by-side', focus: ['hook', 'tmtn'], fill: 0.8, maxH: 930, sx: 540, sy: 820, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock' },
     { at: 1.3, beat: 'graphic-hero', focus: ['hook', 'jack', 'tmtn'], fill: 0.8, maxH: 930, sx: 540, sy: 820, st: { x: 940, y: 1360, s: 1.0 }, pose: 'point', dur: 0.7 },
-    { at: '@95', beat: 'zoom-on-number', focus: 'jack.value', fill: 0.92, maxH: 420, sy: 740, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock', dur: 0.45 },
+    { at: '@95', beat: 'zoom-on-number', focus: 'jack.value', fill: 0.82, maxH: 420, sy: 740, st: { x: 130, y: 1360, s: 1.0 }, pose: 'shock', dur: 0.45 },
     { at: '@But', beat: 'side-by-side', focus: ['vt', 'pay', 'chq', 'vmtn'], move: 'whip', fill: 0.8, maxH: 930, sx: 540, sy: 820, st: 'corner-left', pose: 'chin' },
     { at: '@27', beat: 'zoom-on-number', focus: 'chq.amount', fill: 0.92, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.5 },
     { at: '@Did', beat: 'side-by-side', focus: ['pay', 'chq'], fill: 0.8, maxH: 900, sy: 800, st: 'corner-left', pose: 'chin', dur: 0.7 },
