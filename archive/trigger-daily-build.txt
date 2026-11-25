@@ -31,3 +31,5 @@ MODEL SPLIT (user rule):
 6. AFTER EACH POST is queued, send the user a short note with the video and its slot. Commit and push everything to main. If time or usage runs out, stop after the last finished-and-queued video and tell the user how many of the 8 per platform are covered and what's left.
 
 Pending promise: the lottery TikTok promised a "Part 2" (what happened after the 1992 Virginia win). Fable is researching it in research/2026-11-25/lottery-part2/. Make it soon.
+
+7. MEMORY (user rule: never lose context): at the end, update HANDOFF.md §7 (current state), run python3 archive/export.py (add --raw if this session was compacted since the last export), update archive/LATEST.md, and commit + push. If this session has been context-compacted 3 or more times, or summaries are losing detail, start a successor session per HANDOFF.md §8/§10 and move both scheduled tasks to it (archive/triggers.md).
