@@ -26,7 +26,7 @@ RATE = 2.95          # words/s inside a line at Kokoro speed 1.0 (was 3.3 at 1.1
 TAG_S = 0.0          # noise tags add no time any more (owner 2026-11-25: no breathing)
 PLATFORM = {"": "YouTube", "tiktok": "TikTok", "ig": "IG/FB"}
 # owner 2026-11-25: "90 seconds is the target timing" (Decoded) + "65 seconds for the what ifs" — same on every platform
-SERIES_LEN = {"decoded": (80, 100, 270), "whatif": (62, 75, 200)}   # (min_s, max_s, max_words) — HARD FLOOR: every cut > 60 s (TikTok monetization)
+SERIES_LEN = {"decoded": (80, 100, 270), "whatif": (62, 80, 200)}   # (min_s, max_s, max_words) — HARD FLOOR: every cut > 60 s (TikTok monetization)
 
 def series_of(cut_dir):
     """Series from voice/series.txt, else the scene file's series: 'whatif'|'decoded', else the slug; default decoded."""

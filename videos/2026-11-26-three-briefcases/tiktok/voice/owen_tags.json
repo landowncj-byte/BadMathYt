@@ -1,0 +1,154 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "Fifty-fifty is the wrong answer to this million-dollar question.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Three briefcases. One's got a million bucks, two are empty.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's a hundred bucks a day. For twenty-seven years.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "You pick a case. Then the host, who knows where the cash is, always opens an empty one.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Now he asks: wanna switch? Tap the heart if you're thinking coin flip.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Nah, bro. Try a hundred cases.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "You pick one, and he opens ninety-eight empties.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He skipped just\u2014 just one case. Your pick was a one in a hundred guess.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "So the money's in his case ninety-nine percent of the time.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd still keep their case.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Three cases works the same. Pick the money first, and switching loses.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Pick the first empty case, and he has to open the other empty one, so switching wins.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And the second empty case? Same deal.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow, this page settles arguments.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Switching wins two times out of three.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Staying only wins one time in three, so switching doubles your chances.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "A columnist printed that in nineteen ninety.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "By her count, nearly a thousand PhDs wrote in to say she was wrong.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So who's wrong? Stay, or switch?",
+  "override": null
+ }
+]

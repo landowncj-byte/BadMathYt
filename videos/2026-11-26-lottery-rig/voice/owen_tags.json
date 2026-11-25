@@ -1,0 +1,178 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "The lottery's information security director rigged the lottery in five states.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "His name is Eddie Tipton. So where did he work?",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "At the Multi-State Lottery Association.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's one office running the computers that draw the numbers, for lotteries in many states.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "See, a lottery computer has one job. It picks numbers nobody can guess, like a robot rolling dice.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now, Eddie was the information security director, so keeping it safe was his job.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you see where this is going.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's the trick, step by step.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step one: he later told a court he wrote code into the software.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That code let him predict the winning numbers.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So now it's like knowing the dice roll before anybody throws.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step two: he said he gave those numbers to other people.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step three: those people won, and shared the winnings with him.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to your\u2014 to whoever in your family still plays every week.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then came the big one. In twenty ten, a ticket tied to the scheme hit a jackpot.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The prize was advertised at sixteen point five million dollars.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you make fifty grand a year. You'd work three hundred thirty years to earn that.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "So how much of that jackpot got paid out? Follow, this page decodes the wild ones.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "Zero. Nobody ever collected it.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "In twenty seventeen, he pleaded guilty, meaning he admitted it in court.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "He was sentenced to up to twenty-five years in prison.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So\u2026 still trust the lottery? Yes or no.",
+  "override": null
+ }
+]

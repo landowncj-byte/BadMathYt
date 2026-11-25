@@ -79,3 +79,5 @@ Stage 2 (build):
 > OWNER RULE 2026-11-25 (RULES 104): NO breathing/sigh/gasp/smack sounds, NO long pauses. Natural gaps only (~0.22 s, ~0.38 s on big numbers). Do not write noise tags into scripts.
 
 > OWNER RULE 2026-11-25 (RULES 105): EVERY video uses the ElevenLabs OWEN voice (voice_id 83MXTnoLsr3jX4Sl4gL4, eleven_v4, one take per cut, generations_count 1) via brand/voice/voice_owen.py. Kokoro/Liam only as a fallback when credits run out (tell the owner).
+
+> AUTO-TAG (owner 2026-11-25): before every Owen take run `python3 brand/voice/owen_tags.py <cut>` and send voice/owen_prompt.txt (eleven_v4 delivery tags, never noise tags) as the prompt.

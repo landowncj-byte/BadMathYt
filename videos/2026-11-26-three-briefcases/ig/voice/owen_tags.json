@@ -1,0 +1,138 @@
+[
+ {
+  "line": 1,
+  "tag": "sarcastic",
+  "why": "hook (IG roast cut)",
+  "short_pause_after": false,
+  "text": "A million bucks, two cases left, and your gut's full of shit.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Rewind. Three briefcases, and one has a million bucks.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "That's a hundred bucks a day. For twenty-seven damn years.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "You pick a case. Then the host, who knows where the money is, opens an empty one.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "He always does that. Then he asks: stay, or switch?",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Double-tap if your gut says fifty-fifty.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Bullshit. Now check every\u2014 every possible start.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Okay, say you picked the money. Switch, and you're screwed.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you picked the first empty case. He has to open the other empty one, so switching wins.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd argue with a calculator.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now say you picked the second empty case. Same deal, switching wins again.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "That's two wins out of three.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "So switching? It literally doubles your damn odds.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "A columnist printed that, and by her count, nearly a thousand PhDs wrote in to say she's wrong.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Still doubt it? Make it a hundred cases, and he opens ninety-eight empties.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": true,
+  "text": "Your case is a one in a hundred guess. The case he skipped is ninety-nine percent.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So with a million bucks on it: stay, or switch?",
+  "override": null
+ }
+]

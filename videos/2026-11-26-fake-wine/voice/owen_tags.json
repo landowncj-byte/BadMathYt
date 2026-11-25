@@ -1,0 +1,194 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "Collectors paid millions for wine this fraud bottled at home.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Wait, who is he? His name is Rudy Kurniawan, a wine collector in California.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Rare old wine gets sold at auctions, where rich people bid against each other for one bottle.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "In two thousand six, his collection sold for about thirty-five million dollars.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's a thousand bucks a day for ninety-five years.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if your fanciest bottle cost twelve bucks.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "One of his sales even set a world record.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then a New York auction listed more of his bottles.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Some were a French wine, with labels dated nineteen forty-five.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But the real winemaker objected.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "His family didn't start making that wine until nineteen eighty-two.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So the label was thirty-seven years older than the wine.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who\u2014 who sniffs the cork.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "In twenty twelve, the FBI arrested him at home.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Prosecutors called that house a wine factory, and here's how they said it worked.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "First, he mixed older wine with newer wine.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then he poured it into old bottles, with new corks and wax.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then came the label, and that house held thousands of labels.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "One billionaire told the jury he paid over two million dollars for fakes.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "So what did it cost him? Follow, this page reads the verdicts.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "In twenty thirteen, a jury convicted him of fraud.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "He was sentenced to ten years in prison.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": null,
+  "why": "",
+  "short_pause_after": true,
+  "text": "And he had to pay back over twenty-eight million dollars.",
+  "override": null
+ },
+ {
+  "line": 24,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "Would you have paid millions for that wine?",
+  "override": null
+ }
+]

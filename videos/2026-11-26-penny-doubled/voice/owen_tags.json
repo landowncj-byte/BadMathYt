@@ -1,0 +1,146 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "One penny beats a million dollars. But first, it tortures you.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's the deal. You can take a million dollars today.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Or you take one penny that doubles every day for thirty days, no taxes.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Doubling means you get the same amount again. So one penny turns into two, then four.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So day three, you've got four cents. Day four, it's eight cents.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you'd grab the penny.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Sounds tiny, right? After a week, you've got sixty-four cents.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Day ten, you're at five dollars and twelve cents. That's one coffee.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": true,
+  "text": "By day twenty, you've got about five thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": true,
+  "text": "And that million you skipped is still about a hundred ninety times bigger.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd quit right here.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": true,
+  "text": "Now it gets painful. Day twenty-seven, you're at six hundred seventy-one thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": true,
+  "text": "Three days left, and you're still\u2014 you're still losing to the million.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow, this page always finishes the math.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "Day twenty-eight, the penny finally passes the million.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "And day thirty? Five point three seven million dollars.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Almost all of it, seven eighths, showed up in those last three days.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So be honest. On day twenty, are you still holding that penny?",
+  "override": null
+ }
+]

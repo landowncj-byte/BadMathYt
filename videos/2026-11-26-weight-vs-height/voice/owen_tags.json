@@ -1,0 +1,162 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "Choosing hundred dollar bills here costs the average guy two hundred grand.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "A stranger offers you two piles of cash. Keep one.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Pile one is your weight in twenty dollar bills.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Pile two is hundred dollar bills, stacked flat, as tall as you.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "A hundred is five twenties, so hundreds win easy, right?",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if that's your pile.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But wait. Every bill weighs the same, about one gram.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So a pound of twenties is about nine thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And one inch of hundreds is about twenty-three thousand.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd grab hundreds without\u2014 without blinking.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But here's the catch: you've got way more pounds than inches.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Per the CDC, the average American man weighs one ninety-nine pounds.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But he's only sixty-nine inches tall.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So it's one ninety-nine pounds of twenties against sixty-nine inches of hundreds.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": true,
+  "text": "So his height in hundreds is about one point six million.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "His weight's next, and it's worth a follow.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": true,
+  "text": "His weight in twenties is about one point eight million.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "The small bills win by two hundred grand.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "That's a hundred bucks a day for over five years.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "Still choosing the hundred dollar bills?",
+  "override": null
+ }
+]

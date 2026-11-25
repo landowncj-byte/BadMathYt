@@ -57,3 +57,5 @@ Pending promise: the lottery TikTok promised a "Part 2" (what happened after the
 > OWNER RULE 2026-11-25 (RULES 105): EVERY video uses the ElevenLabs OWEN voice (voice_id 83MXTnoLsr3jX4Sl4gL4, eleven_v4, one take per cut, generations_count 1) via brand/voice/voice_owen.py. Kokoro/Liam only as a fallback when credits run out (tell the owner).
 
 > CADENCE (RULES 106, 2026-11-25, ElevenLabs Pro): 3 Short topics/day at 11:00 · 15:00 · 19:00 ET (each on YouTube + TikTok + Instagram + Facebook = 12 posts/day), ~50/50 Decoded / What If; long-forms Tue + Fri 17:00 ET. Math in PLAN-CADENCE.md. Replaces "8 per platform per day" and Mon/Wed/Fri long-forms.
+
+> AUTO-TAG (owner 2026-11-25): before every Owen take run `python3 brand/voice/owen_tags.py <cut>` and send voice/owen_prompt.txt (eleven_v4 delivery tags, never noise tags) as the prompt.

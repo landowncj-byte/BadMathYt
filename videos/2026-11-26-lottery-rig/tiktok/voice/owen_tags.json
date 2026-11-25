@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A lottery jackpot advertised at sixteen point five million was never collected.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you make fifty grand a year. You'd need three hundred thirty years to earn that.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So who walks away from that kinda money? Okay, rewind.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Meet Eddie Tipton. He worked at the Multi-State Lottery Association.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's one office running the computers that draw the numbers, for lotteries in many states.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "A lottery computer's whole job is picking numbers nobody can guess, like a robot rolling dice.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Tap the heart if that sounds impossible to cheat.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's the wild part. Eddie's title was information security director.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So the guy keeping it safe is the guy who broke it? Yeah. Here's how, step by step.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step one: he later told a court he wrote code that let him predict the winning numbers.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He knew the dice roll before anybody threw.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step two: he said he passed those numbers to other people.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who plays every\u2014 every week.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step three: those people won, and shared the winnings with him.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And this went down in five states.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now, back to that jackpot. In twenty ten, a ticket tied to his scheme hit it.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "So guess how much of that sixteen point five million got paid. Follow, it's so good.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Nobody got a dollar. Not one.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "In twenty seventeen, he pleaded guilty, meaning he admitted it in court.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "He was sentenced to up to twenty-five years in prison.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So be real: is that enough for rigging the lottery?",
+  "override": null
+ }
+]
