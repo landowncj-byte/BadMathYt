@@ -1,42 +1,42 @@
 [
  {
-  "text": "Your weight in twenties, or your height in hundreds? Pick wrong, lose two hundred grand.",
+  "text": "Your weight in twenties, or your height in hundreds? Pick wrong and you lose two hundred grand.",
   "start": 0.0,
-  "end": 4.076
+  "end": 4.323
  },
  {
-  "text": "Hundreds, right? Bigger bill, duh. Tap the heart if so. No judgment\u2014 okay, some.",
-  "start": 4.926,
-  "end": 8.833
+  "text": "Hundreds, right? Tap the heart if so. No judgment\u2014 okay, some.",
+  "start": 5.523,
+  "end": 8.595
  },
  {
-  "text": "Average American guy, about a gram a bill: height in hundreds, one point six mil.",
-  "start": 9.083,
-  "end": 13.295
+  "text": "Average American guy, about a gram a bill: his height in hundreds is one point six mil.",
+  "start": 9.445,
+  "end": 14.034
  },
  {
   "text": "Send this to the friend who'd grab hundreds.",
-  "start": 14.145,
-  "end": 16.389
+  "start": 15.034,
+  "end": 17.278
  },
  {
-  "text": "His weight in twenties? One point eight. Two hundred grand more.",
-  "start": 16.639,
-  "end": 19.883
+  "text": "But his weight in twenties is one point eight, so two hundred grand more.",
+  "start": 18.128,
+  "end": 21.682
  },
  {
-  "text": "Now you. Cheat code's next, worth a follow.",
-  "start": 20.183,
-  "end": 22.381
+  "text": "Your cheat code's next, and it's worth a follow.",
+  "start": 22.382,
+  "end": 24.625
  },
  {
-  "text": "Height in inches times two point five six. Weigh more? Take the twenties.",
-  "start": 22.781,
-  "end": 26.583
+  "text": "Height in inches times two point five six: if you weigh more, take the twenties.",
+  "start": 25.025,
+  "end": 28.92
  },
  {
   "text": "So, weight or height?",
-  "start": 26.883,
-  "end": 28.219
+  "start": 29.22,
+  "end": 30.555
  }
 ]

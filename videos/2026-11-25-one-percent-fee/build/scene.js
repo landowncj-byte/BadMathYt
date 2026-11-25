@@ -49,7 +49,7 @@
 
   // ---------- twin: two identical funds growing side by side, year ticker, gap tag, ghost block ----------
   B.register('twin', {
-    defaults: { w: 900, h: 1100, ticker: [[0, 0]], gaps: [], ghostAt: 99999, tagFinal: false, feeTagAt: -1, ripAt: 99999, depAt: -1, rateAt: -1, bpAt: -1, bpOut: 99999, coinAt: -1 },
+    defaults: { w: 900, h: 1100, ticker: [[0, 0]], gaps: [], ghostAt: 99999, tagFinal: false, feeTagAt: -1, ripAt: 99999, chips: null, depAt: -1, rateAt: -1, bpAt: -1, bpOut: 99999, coinAt: -1 },
     size: p => [p.w, p.h],
     anchors: p => ({ head: [0, -485, 900, 130], year: [270, -485, 340, 120], tag: [0, -300, 840, 110], btag: [185, 507, 340, 100], base: [0, 335, 780, 210], tops: [0, -150, 780, 230], ghost: [185, -92, 330, 190], cols: [0, 110, 780, 640], names: [0, 485, 780, 130] }),
     draw(g, p, env) {
@@ -94,7 +94,9 @@
       if (p.feeTagAt > -0.5 && t >= p.feeTagAt) { const ft = t - p.feeTagAt, k = spring(ft, 'bouncy'); g.save(); g.translate(bx, baseY + 107); g.rotate(-0.07 * (1 - k)); g.scale(0.3 + 0.7 * k, 0.3 + 0.7 * k); g.globalAlpha *= clamp(ft / 0.06); const f = F.monoX(30), tw = mw('+1% A YEAR', f) + 56; clay(g, -tw / 2, -27, tw, 54, 27, theme.bad, { shadowK: 0.6 }); g.fillStyle = theme.paper; g.beginPath(); g.arc(-tw / 2 + 24, 0, 7, 0, 7); g.fill(); txt(g, '+1% A YEAR', 10, 2, f, theme.paper); g.restore(); burst(g, bx, baseY + 107, 130, theme.bad, ft - 0.04, 12, 0.4); }
       // gap tag (fixed zone under the header): the latest callout
       let cur = null; for (const gp of p.gaps) if (t >= gp.at) cur = gp;
-      if (!cur) for (const [at, s1] of [[p.depAt, '$500 / MONTH × 40 YEARS'], [p.rateAt, 'ASSUMES 7% BEFORE FEES · NOT A FORECAST']]) { if (at > -0.5 && t >= at) { const ct = t - at, k = spring(ct, 'bouncy'), f = F.monoX(s1[0] === '$' ? 38 : 27), tw = mw(s1, f) + 60; if (s1[0] === '$' && p.rateAt > -0.5 && t >= p.rateAt) continue;
+      if (!cur && p.chips) { const f = F.monoX(30), its = p.chips.map(([at, s1]) => [at, s1, mw(s1, f) + 48]), tot = its.reduce((a, i) => a + i[2] + 16, -16); let x = -tot / 2;
+        for (const [at, s1, cw2] of its) { if (t >= at) { const ct = t - at, k = spring(ct, 'bouncy'); g.save(); g.translate(x + cw2 / 2, -300); g.scale(0.5 + 0.5 * k, 0.5 + 0.5 * k); g.globalAlpha *= clamp(ct / 0.08); clay(g, -cw2 / 2, -36, cw2, 72, 36, s1[0] === 'A' ? theme.navy : theme.ink, { shadowK: 0.6 }); txt(g, s1, 0, 2, f, s1[0] === 'A' ? theme.paper : theme.accent); g.restore(); burst(g, x + cw2 / 2, -300, 150, theme.accent, ct - 0.05, 10, 0.35); } x += cw2 + 16; } }
+      if (!cur && !p.chips) for (const [at, s1] of [[p.depAt, '$500 / MONTH × 40 YEARS'], [p.rateAt, 'ASSUMES 7% BEFORE FEES · NOT A FORECAST']]) { if (at > -0.5 && t >= at) { const ct = t - at, k = spring(ct, 'bouncy'), f = F.monoX(s1[0] === '$' ? 38 : 27), tw = mw(s1, f) + 60; if (s1[0] === '$' && p.rateAt > -0.5 && t >= p.rateAt) continue;
         g.save(); g.translate(0, -300); g.scale(0.55 + 0.45 * k, 0.55 + 0.45 * k); g.globalAlpha *= clamp(ct / 0.08); clay(g, -tw / 2, -44, tw, 88, 44, s1[0] === '$' ? theme.ink : theme.navy, { shadowK: 0.6 }); txt(g, s1, 0, 2, f, s1[0] === '$' ? theme.accent : theme.paper); g.restore(); burst(g, 0, -300, 260, theme.accent, ct - 0.05, 12, 0.35); } }
       if (cur) { const gt = t - cur.at, k = spring(gt, 'bouncy'), vs = cur.year >= 40; const gap = fv(0.07, cur.year) - fv(0.06, cur.year), a = vs ? 'A ' + fmt(fv(0.07, 40)) : null;
         g.save(); g.translate(0, -300); g.scale(0.55 + 0.45 * k, 0.55 + 0.45 * k); g.globalAlpha *= clamp(gt / 0.08);
@@ -167,10 +169,10 @@
         g.save(); g.translate(40 - 20 * slide, lerp(ty, rest - 300, up)); g.rotate(-0.12 + 0.08 * Math.sin(t * 20) * Math.exp(-Math.max(0, t - ti) * 6)); tag(g, theme, 400, 230, '1%', 168); g.restore();
         g.restore(); if (t > ti && rk === 0) burst(g, 40, base - n * bh - 20, 300, theme.bad, t - ti - 0.02, 16, 0.5);
       } else if (p.variant === 'mouth') {
-        const open = (t < 2.7 ? 36 + 34 * Math.abs(Math.sin(t * 8.2)) : 6 + 26 * Math.exp(-(t - 2.7) * 3)) * (1 - rk * 0.9), tw = 470, th2 = 250, cy = 20;
-        for (let i = 0; i < 9; i++) { const u0 = ((t * 1.25 + i / 9) % 1), active = t < 2.7 && rk === 0; if (!active && rk > 0) continue; const u = ease.in(u0), x = lerp(-380, -40, u), y = lerp(250 + (hash(i * 2.3) - 0.5) * 120, cy + 10, u), s = lerp(1, 0.35, u);
-          g.save(); g.globalAlpha *= (t < 2.7 ? 1 : clamp(1 - (t - 2.7) / 0.2)); g.translate(x, y); g.rotate(-0.7 * u + (hash(i) - 0.5) * 0.4); g.scale(s, s); bill(g, -90, -26, 180, 52); g.restore(); }
-        g.save(); g.translate(150, cy); g.save(); g.translate(0, -open / 2); g.beginPath(); g.moveTo(-tw / 2, 0); g.lineTo(-tw / 2, -th2 / 2 + 30); g.quadraticCurveTo(-tw / 2, -th2 / 2, -tw / 2 + 40, -th2 / 2); g.lineTo(tw / 2 - 40, -th2 / 2); g.quadraticCurveTo(tw / 2, -th2 / 2, tw / 2, -th2 / 2 + 30); g.lineTo(tw / 2, 0); g.closePath();
+        const te = t >= p.reAt ? t - p.reAt : t, open = te < 2.7 ? 56 + 50 * Math.abs(Math.sin(te * 8.2)) : 6 + 40 * Math.exp(-(te - 2.7) * 3), tw = 470, th2 = 250, cy = 20;
+        for (let i = 0; i < 9; i++) { const u0 = ((te * 1.25 + i / 9) % 1); if (te >= 2.9) continue; const u = ease.in(u0), x = lerp(-340, -10, u), y = lerp(230 + (hash(i * 2.3) - 0.5) * 100, cy + 10, u), s = lerp(1, 0.35, u);
+          g.save(); g.globalAlpha *= (te < 2.7 ? 1 : clamp(1 - (te - 2.7) / 0.2)); g.translate(x, y); g.rotate(-0.7 * u + (hash(i) - 0.5) * 0.4); g.scale(s, s); bill(g, -90, -26, 180, 52); g.restore(); }
+        g.save(); g.translate(40, cy); g.save(); g.translate(0, -open / 2); g.beginPath(); g.moveTo(-tw / 2, 0); g.lineTo(-tw / 2, -th2 / 2 + 30); g.quadraticCurveTo(-tw / 2, -th2 / 2, -tw / 2 + 40, -th2 / 2); g.lineTo(tw / 2 - 40, -th2 / 2); g.quadraticCurveTo(tw / 2, -th2 / 2, tw / 2, -th2 / 2 + 30); g.lineTo(tw / 2, 0); g.closePath();
         B.shadowed(g, () => { g.beginPath(); g.rect(-tw / 2, -th2 / 2, tw, th2 / 2); }, theme.bad, 0.4); g.fillStyle = theme.bad; g.fill(); g.fillStyle = theme.paper; for (let k = 0; k < 6; k++) { const x = -tw / 2 + 36 + k * (tw - 72) / 5; g.beginPath(); g.moveTo(x - 24, 0); g.lineTo(x + 24, 0); g.lineTo(x, 34 * (open > 12 ? 1 : 0.3)); g.fill(); }
         txt(g, '1%', 0, -th2 / 4 - 4, F.hero(130), theme.paper); g.restore();
         g.save(); g.translate(0, open / 2); g.beginPath(); g.moveTo(-tw / 2, 0); g.lineTo(-tw / 2, th2 / 2 - 30); g.quadraticCurveTo(-tw / 2, th2 / 2, -tw / 2 + 40, th2 / 2); g.lineTo(tw / 2 - 40, th2 / 2); g.quadraticCurveTo(tw / 2, th2 / 2, tw / 2, th2 / 2 - 30); g.lineTo(tw / 2, 0); g.closePath(); g.fillStyle = '#B3221A'; g.fill(); g.fillStyle = theme.paper; for (let k = 0; k < 5; k++) { const x = -tw / 2 + 60 + k * (tw - 120) / 4; g.beginPath(); g.moveTo(x - 24, 0); g.lineTo(x + 24, 0); g.lineTo(x, -30 * (open > 12 ? 1 : 0.3)); g.fill(); } g.restore(); g.restore();
@@ -206,7 +208,7 @@ const F0 = { x: 0, y: -10, w: 780, h: 1180 };   // frame 0 and the loop frame sh
 const HOOK = { lines: [[['1% FEE', 'paper']], [['TOOK MORE THAN', 'bad']], [['YOU PUT IN', 'bad']]], size: 118 };
 BM2.scene({
   series: 'whatif', title: 'THE 1% FEE', duration: 45.43,
-  footnote: ['HYPOTHETICAL · 7% IS AN ASSUMPTION, NOT A FORECAST', 'MONTHLY COMPOUNDING · NO TAXES · NOT FINANCIAL ADVICE'],
+  footnote: ['HYPOTHETICAL · 7% IS AN ASSUMPTION, NOT A FORECAST', 'MONTHLY COMPOUNDING · NO TAXES · NOT FINANCIAL ADVICE', 'PHOTOS: IMAGES_OF_MONEY (CC BY 2.0), FRAN.TRUDEAU (CC BY-SA 2.0), VIA FLICKR'],
   elements: [
     // --- station 1: frame-0 slam (also the loop frame) ---
     { id: 'hook', type: 'text', at: [0, -520], in: -1, out: 3.5, props: HOOK },
@@ -226,6 +228,8 @@ BM2.scene({
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@like', props: { s: 1, dur: 0.9 } },
     { id: 'nothing', type: 'text', layer: 'screen', at: [540, 400], in: '@sounds', out: '@500-0.2', props: { lines: [['SOUNDS LIKE'], [['NOTHING', 'accent']]], size: 96 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
+    { id: 'ph1', type: 'photo', layer: 'screen', at: [215, 1030], in: '@sounds', out: '@500-0.2', props: { src: 'brand/photos/stock/piggy-bank-coins/5.jpg', name: 'SAVINGS', role: '', credit: 'PHOTO: IMAGES_OF_MONEY · CC BY 2.0', w: 330, tilt: -0.07, treatment: 'paper', aspect: 1.0, tape: true } },
+    { id: 'ph2', type: 'photo', layer: 'screen', at: [830, 1030], in: '@Whatever', out: '@Send-0.1', props: { src: 'brand/photos/stock/stacked-coins/1.jpg', name: 'COINS', role: '', credit: 'PHOTO: FRAN.TRUDEAU · CC BY-SA 2.0', w: 260, tilt: 0.06, treatment: 'paper', aspect: 0.8, tape: true } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@follow+0.05', out: '@follow+1.45', props: { press: 0.55 } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@so#2', out: '@so#2+1.5', props: { l1: 'STILL "SMALL"?', l2: 'COMMENT', size: 52, tail: 'left' } },
   ],

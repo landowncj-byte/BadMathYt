@@ -40,4 +40,11 @@ videos/2026-11-25-impossible-number/build2/mixpre.wav
 videos/2026-11-25-impossible-number/build2/stills/
 videos/2026-11-25-impossible-number/build2/gal/
 videos/2026-11-25-impossible-number/video-v2-post.mp4
-brand/photos/stock/
+
+brand/photos/stock/*
+!brand/photos/stock/tucker-payday/
+!brand/photos/stock/physical-bitcoin-coin/
+!brand/photos/stock/edward-j-schwartz-united-states-courthouse/
+!brand/photos/stock/jpmorgan-chase-building-270-park-avenue/
+!brand/photos/stock/data-center-server-racks/
+!brand/photos/stock/daniel-patrick-moynihan-united-states-courthouse/

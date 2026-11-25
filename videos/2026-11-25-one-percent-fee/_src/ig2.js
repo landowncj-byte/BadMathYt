@@ -2,7 +2,7 @@ const F0 = { x: 0, y: -60, w: 780, h: 1260 };
 const FR = { fill: 0.84, maxH: 1230, sx: 570, sy: 1040 };
 BM2.scene({
   series: 'whatif', title: 'THE 1% FEE', duration: 21.82,
-  footnote: ['HYPOTHETICAL · 7% IS AN ASSUMPTION, NOT A FORECAST', 'MONTHLY COMPOUNDING · NO TAXES · NOT FINANCIAL ADVICE', 'FEES ARE LEGAL & DISCLOSED · NO REAL FUNDS NAMED'],
+  footnote: ['HYPOTHETICAL · 7% IS AN ASSUMPTION, NOT A FORECAST', 'MONTHLY COMPOUNDING · NO TAXES · NOT FINANCIAL ADVICE', 'FEES ARE LEGAL & DISCLOSED · NO REAL FUNDS NAMED', 'PHOTOS: IMAGES_OF_MONEY (CC BY 2.0), FRAN.TRUDEAU (CC BY-SA 2.0), VIA FLICKR'],
   elements: [
     // --- station 1: frame-0 slam (slow-motion pickpocket) + loop frame ---
     { id: 'hook', type: 'text', at: [0, -640], in: -1, out: 4.05, props: { lines: [[['1% =', 'bad']], [['SLOW-ASS', 'paper']], [['ROBBERY', 'bad']]], size: 118 } },
@@ -20,6 +20,8 @@ BM2.scene({
     { id: 'ever', type: 'text', layer: 'screen', at: [540, 400], in: '@Ever', out: 6.9, props: { lines: [['EVER CHECKED'], [['YOURS?', 'accent']]], size: 96 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@double', props: { s: 1, dur: 0.9 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
+    { id: 'ph1', type: 'photo', layer: 'screen', at: [215, 1030], in: '@double', out: 6.95, props: { src: 'brand/photos/stock/piggy-bank-coins/5.jpg', name: 'SAVINGS', role: '', credit: 'PHOTO: IMAGES_OF_MONEY · CC BY 2.0', w: 330, tilt: -0.07, treatment: 'paper', aspect: 1.0, tape: true } },
+    { id: 'ph2', type: 'photo', layer: 'screen', at: [830, 1030], in: 13.2, out: 15.1, props: { src: 'brand/photos/stock/stacked-coins/1.jpg', name: 'COINS', role: '', credit: 'PHOTO: FRAN.TRUDEAU · CC BY-SA 2.0', w: 270, tilt: 0.06, treatment: 'paper', aspect: 0.8, tape: true } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@Still', out: '@Still+1.5', props: { l1: 'STILL "NOTHING"?', l2: 'COMMENT', size: 50, tail: 'left' } },
   ],
   beats: [

@@ -2,7 +2,7 @@ const F0 = { x: 0, y: -10, w: 780, h: 1180 };   // frame 0 and the loop frame sh
 const HOOK = { lines: [[['1% FEE', 'paper']], [['TOOK MORE THAN', 'bad']], [['YOU PUT IN', 'bad']]], size: 118 };
 BM2.scene({
   series: 'whatif', title: 'THE 1% FEE', duration: 45.43,
-  footnote: ['HYPOTHETICAL · 7% IS AN ASSUMPTION, NOT A FORECAST', 'MONTHLY COMPOUNDING · NO TAXES · NOT FINANCIAL ADVICE'],
+  footnote: ['HYPOTHETICAL · 7% IS AN ASSUMPTION, NOT A FORECAST', 'MONTHLY COMPOUNDING · NO TAXES · NOT FINANCIAL ADVICE', 'PHOTOS: IMAGES_OF_MONEY (CC BY 2.0), FRAN.TRUDEAU (CC BY-SA 2.0), VIA FLICKR'],
   elements: [
     // --- station 1: frame-0 slam (also the loop frame) ---
     { id: 'hook', type: 'text', at: [0, -520], in: -1, out: 3.5, props: HOOK },
@@ -22,6 +22,8 @@ BM2.scene({
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@like', props: { s: 1, dur: 0.9 } },
     { id: 'nothing', type: 'text', layer: 'screen', at: [540, 400], in: '@sounds', out: '@500-0.2', props: { lines: [['SOUNDS LIKE'], [['NOTHING', 'accent']]], size: 96 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
+    { id: 'ph1', type: 'photo', layer: 'screen', at: [215, 1030], in: '@sounds', out: '@500-0.2', props: { src: 'brand/photos/stock/piggy-bank-coins/5.jpg', name: 'SAVINGS', role: '', credit: 'PHOTO: IMAGES_OF_MONEY · CC BY 2.0', w: 330, tilt: -0.07, treatment: 'paper', aspect: 1.0, tape: true } },
+    { id: 'ph2', type: 'photo', layer: 'screen', at: [830, 1030], in: '@Whatever', out: '@Send-0.1', props: { src: 'brand/photos/stock/stacked-coins/1.jpg', name: 'COINS', role: '', credit: 'PHOTO: FRAN.TRUDEAU · CC BY-SA 2.0', w: 260, tilt: 0.06, treatment: 'paper', aspect: 0.8, tape: true } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@follow+0.05', out: '@follow+1.45', props: { press: 0.55 } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@so#2', out: '@so#2+1.5', props: { l1: 'STILL "SMALL"?', l2: 'COMMENT', size: 52, tail: 'left' } },
   ],

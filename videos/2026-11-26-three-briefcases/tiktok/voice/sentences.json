@@ -1,52 +1,52 @@
 [
  {
-  "text": "A million bucks, two briefcases left. Stay or switch? Your gut's wrong.",
+  "text": "A million bucks, two briefcases left. Stay or switch? 'Cause your gut's wrong.",
   "start": 0.0,
-  "end": 3.623
+  "end": 3.947
  },
  {
-  "text": "Three cases, one has the cash. You picked one.",
-  "start": 3.873,
-  "end": 6.197
+  "text": "Three cases, one has the cash, and you picked one.",
+  "start": 4.247,
+  "end": 6.691
  },
  {
   "text": "The host knows where the cash is, and always opens an empty one.",
-  "start": 6.447,
-  "end": 9.629
+  "start": 6.941,
+  "end": 10.123
  },
  {
   "text": "Tap the heart if you're thinking fifty-fifty.",
-  "start": 9.879,
-  "end": 12.001
+  "start": 10.373,
+  "end": 12.494
  },
  {
-  "text": "Nah. Your pick was one in three. Still is.",
-  "start": 12.851,
-  "end": 14.976
+  "text": "Nah, your pick was one in three, and still is.",
+  "start": 13.344,
+  "end": 15.599
  },
  {
   "text": "Send this to the friend who'll argue.",
-  "start": 15.226,
-  "end": 17.172
+  "start": 15.849,
+  "end": 17.795
  },
  {
-  "text": "The other\u2014 the case he skipped? That one's two in three. Yeah.",
-  "start": 17.422,
-  "end": 20.269
+  "text": "The other\u2014 the case he skipped? That one's two in three.",
+  "start": 18.045,
+  "end": 20.737
  },
  {
-  "text": "Don't buy two in three? Follow, this page settles arguments.",
-  "start": 21.169,
-  "end": 24.319
+  "text": "Don't buy it? Follow, this page settles arguments.",
+  "start": 21.437,
+  "end": 23.99
  },
  {
-  "text": "The real game-show host tried it himself. Guess what won? Switching.",
-  "start": 24.719,
-  "end": 28.249
+  "text": "The real game-show host tried it himself, and guess what won? Switching.",
+  "start": 24.99,
+  "end": 28.484
  },
  {
-  "text": "So\u2026 stay or switch? One word.",
-  "start": 28.549,
-  "end": 30.501
+  "text": "So\u2026 stay or switch?",
+  "start": 29.084,
+  "end": 30.536
  }
 ]
