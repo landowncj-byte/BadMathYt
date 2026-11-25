@@ -497,15 +497,15 @@ const HOOK = { lines: [[['BUSTED ', 'paper'], ['11 TIMES', 'bad']], [['FOR THE S
 const MUGP = { src: MUG, name: '', credit: 'MIAMI-DADE COUNTY · PUBLIC DOMAIN', treatment: 'mugshot', w: 420, aspect: 1.0, fx: 0.74, fy: 0.4, tilt: 0.04 };
 const F0 = { sx: 540, sy: 930, fill: 0.98, maxH: 960, st: { x: 540, y: 1400, s: 0.8 } };
 BM2.scene({
-  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 87.27,
+  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 85.86,
   footnote: ['PLEADED GUILTY 2018 · SENTENCED MAY 31, 2019 · SOURCES: DOJ S.D. FLORIDA, AP', 'ABOUT 30 YEARS = 1988 TO THE 2017 ARREST · ILLUSTRATIONS / PROPS (GENERIC)', 'PHOTO: MIAMI-DADE COUNTY BOOKING PHOTO · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S0 frame 0 (loop target) ----
     { id: 'hook', type: 'hook', at: [0, -430], in: 0, out: '@lie+0.05', props: HOOK },
     { id: 'hook2', type: 'hook', at: [0, -430], in: '@times#3-0.2', props: HOOK },
-    { id: 'tally0', type: 'tally', at: [-250, 190], scale: 0.62, in: 0, props: { at: -5, dur: 1.0 } },
+    { id: 'tally0', type: 'tally', at: [-250, 190], scale: 0.62, in: -0.12, props: { at: -5, dur: 1.0 } },
     { id: 'tally3', type: 'tally', at: [-250, 190], scale: 0.62, in: '@times#3-0.2', props: { at: -5, dur: 1.0 } },
-    { id: 'mug0', type: 'photo', at: [300, 210], scale: 0.8, in: 0, props: MUGP },
+    { id: 'mug0', type: 'photo', at: [300, 210], scale: 0.8, in: -0.12, props: MUGP },
     { id: 'mug3', type: 'photo', at: [300, 210], scale: 0.8, in: '@times#3-0.15', props: MUGP },
     // ---- S1 who ----
     { id: 'mug2', type: 'photo', at: [1700, 30], in: '@Okay-0.35', props: { ...MUGP, name: 'ANTHONY GIGNAC', role: 'FLORIDA CON MAN', w: 450, aspect: 1.02, tilt: -0.03 } },
@@ -564,7 +564,7 @@ BM2.scene({
     { at: '@same', beat: SB, focus: ['hook', 'tally0', 'mug0'], ...F0, pose: 'shock', dur: 0.6 },
     // rewind: who
     { at: '@Okay', beat: SB, focus: ['mug2', 'rw'], move: 'whip', sx: 540, sy: 850, fill: 0.9, maxH: 1000, st: 'corner-left', pose: 'shrug' },
-    { at: '@Anthony', beat: ZN, focus: 'mug2.name', fill: 0.8, maxH: 300, sy: 800, st: 'corner-left', pose: 'point', dur: 0.45 },
+    { at: '@Anthony', beat: ZN, focus: 'mug2.name', fill: 0.5, maxH: 300, sy: 1010, st: 'corner-left', pose: 'point', dur: 0.45 },
     // con man
     { at: '@Now', beat: SB, focus: 'con', move: 'whip', sx: 540, sy: 880, fill: 0.74, maxH: 880, st: 'left', pose: 'point' },
     { at: '@con#2', beat: ZN, focus: 'con.term', fill: 0.8, maxH: 300, sy: 680, st: 'corner-left', pose: 'point', dur: 0.45 },
@@ -655,7 +655,7 @@ BM2.scene({
   shakes: [[0.05, 14], ['@8+1.3', 10], ['@fake', 8], ['@11#2', 14], ['@guilty', 14], ['@18', 12], ['@pork', 26], ['@suspicious', 10]],
   captions: {
     emph: { '8': 'bad', million: 'bad', fake: 'bad', '11': 'bad', '18': 'bad', pork: 'bad', '30': 'accent', '22': 'accent', royalty: 'accent', dumber: 'bad', dumb: 'bad', 'dumbest': 'bad' },
-    fix: [],
+    fix: [['than 8 million', 'than $8 million'], ["how'd he how this dumbest", "how'd he— how'd this dumbass"], ['Follow the', 'Follow, the'], ['answer so dumb.', "answer's so dumb."], ['dumber the pork', 'dumber, the pork']],
     gap: 16,
   },
   bed: { name: 'tense_bed_2', gain: -1 },

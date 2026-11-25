@@ -6,77 +6,82 @@
  },
  {
   "text": "So you get one of two piles of free cash.",
-  "start": 4.125,
-  "end": 6.487
+  "start": 4.245,
+  "end": 6.607
  },
  {
   "text": "The first pile is your weight in twenty dollar bills.",
-  "start": 6.867,
-  "end": 9.675
+  "start": 7.107,
+  "end": 9.915
  },
  {
   "text": "The second pile is hundred dollar bills, stacked flat, as tall as you.",
-  "start": 10.055,
-  "end": 13.883
+  "start": 10.415,
+  "end": 14.243
  },
  {
   "text": "You said hundreds, right? Tap the heart if you did. No judgment\u2014 okay, a little.",
-  "start": 14.263,
-  "end": 18.256
+  "start": 14.743,
+  "end": 18.736
  },
  {
   "text": "Now run it on the average American guy, with CDC numbers.",
-  "start": 18.636,
-  "end": 22.412
+  "start": 19.236,
+  "end": 23.012
  },
  {
   "text": "He weighs one ninety-nine pounds. And every bill weighs about one gram.",
-  "start": 22.792,
-  "end": 26.76
+  "start": 23.512,
+  "end": 27.48
+ },
+ {
+  "text": "And he's about sixty-nine inches tall, so that's how high his hundreds stack.",
+  "start": 27.98,
+  "end": 31.85
  },
  {
   "text": "So his weight in twenties is about one point eight million.",
-  "start": 27.14,
-  "end": 30.285
+  "start": 32.35,
+  "end": 35.495
  },
  {
   "text": "His height in hundreds is only about one point six million.",
-  "start": 30.665,
-  "end": 34.075
+  "start": 35.995,
+  "end": 39.405
  },
  {
   "text": "Send this to the friend who'd grab hundreds instantly.",
-  "start": 34.455,
-  "end": 37.335
+  "start": 39.905,
+  "end": 42.785
  },
  {
   "text": "Wait, why? A pound of twenties is about nine grand.",
-  "start": 37.715,
-  "end": 40.469
+  "start": 43.285,
+  "end": 46.039
  },
  {
   "text": "An inch of hundreds is about twenty-three grand, but you've got way more pounds than inches.",
-  "start": 40.849,
-  "end": 45.505
+  "start": 46.539,
+  "end": 51.195
  },
  {
   "text": "Now here's your cheat code, and it's worth a follow.",
-  "start": 45.885,
-  "end": 48.402
+  "start": 51.695,
+  "end": 54.212
  },
  {
   "text": "Take your height in inches, and multiply by two point five six.",
-  "start": 48.782,
-  "end": 52.424
+  "start": 54.712,
+  "end": 58.353
  },
  {
   "text": "If you weigh more than that number in pounds, take the twenties.",
-  "start": 52.804,
-  "end": 55.632
+  "start": 58.853,
+  "end": 61.682
  },
  {
   "text": "So what's your bathroom scale saying, twenties or hundreds?",
-  "start": 56.012,
-  "end": 58.967
+  "start": 62.182,
+  "end": 65.136
  }
 ]

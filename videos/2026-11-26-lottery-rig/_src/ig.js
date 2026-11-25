@@ -1,9 +1,9 @@
 // IG/FB cut v3 (~84 s) — Decoded, most vulgar. Stations (U-shape): A hook (0,0) · M map (1700,0) · O office+badge (3400,0) · R robot (5100,0)
 //   · S steps (5100,1900) · B billboard (3400,1900) · Y years (1700,1900) · P plea (0,1900)
-const END = 78.86;
+const END = 85.60;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 79.16,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 85.90,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     { id: 'hook', type: 'htext', at: [0, -470], in: 0, props: { l1: [['THIS DUMBASS RIGGED', 'paper']], l2: [['THE LOTTERY · 5 STATES', 'bad']], size: 88, endAt: END } },
@@ -23,6 +23,7 @@ BM2.scene({
     { id: 'pt', type: 'text', at: [0, 2430], in: '@which', out: '@sentenced', props: { lines: [[['PLEADED GUILTY', 'bad']], [['= HE ADMITTED IT IN COURT', 'paper']]], size: 50, per: 0.08 } },
     // ---- screen text pops ----
     { id: 'p0', type: 'text', layer: 'screen', at: [540, 345], in: '@never-0.1', out: '@never+1.5', props: { lines: [[['NEVER CASHED', 'bad']]], size: 78 } },
+    { id: 'p6', type: 'text', layer: 'screen', at: [540, 330], in: '@engine-0.1', out: '@engine+1.5', props: { lines: [[['THE ENGINE ROOM', 'gold']]], size: 62 } },
     { id: 'p1', type: 'text', layer: 'screen', at: [540, 345], in: '@job#2', out: '@job#2+1.5', props: { lines: [[['ONE JOB', 'gold']]], size: 76 } },
     { id: 'p2', type: 'text', layer: 'screen', at: [540, 345], in: '@guess-0.4', out: '@guess+1.0', props: { lines: [[['NOBODY CAN GUESS', 'paper']]], size: 64 } },
     { id: 'p3', type: 'text', layer: 'screen', at: [540, 345], in: '@rigs-0.1', out: '@rigs+1.3', props: { lines: [[['THE GUARD RIGS IT', 'bad']]], size: 62 } },
@@ -59,6 +60,9 @@ BM2.scene({
     { at: '@computers', beat: 'graphic-hero', focus: ['off.comp', 'ph1'], fill: 0.95, maxH: 700, sy: 860, st: 'corner-left', pose: 'point', point: 'off.comp', dur: 0.6 },
     { at: '@lotteries', beat: 'graphic-hero', focus: 'off.pins', fill: 0.8, maxH: 640, sy: 790, st: 'corner', pose: 'point', point: 'off.pins', dur: 0.6 },
     { at: '@many', beat: 'zoom-on-number', focus: 'off.many', fill: 0.6, maxH: 320, sy: 800, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@think', beat: 'side-by-side', focus: 'off', sx: 700, sy: 810, fill: 0.74, maxH: 900, st: 'left', pose: 'chin', dur: 0.8 },
+    { at: '@engine', beat: 'zoom-on-number', focus: 'off.bld', fill: 0.55, maxH: 620, sy: 800, st: 'corner', pose: 'point', point: 'off.bld', dur: 0.55 },
+    { at: '@drawings', beat: 'graphic-hero', focus: ['off.comp', 'off.pins'], fill: 0.9, maxH: 900, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.6 },
     { at: '@And#2', beat: 'side-by-side', focus: 'robot', move: 'whip', sx: 540, sy: 760, fill: 0.8, maxH: 900, st: 'corner', pose: 'point', point: 'robot.head' },
     { at: '@job#2', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.42, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
     { at: '@pick', beat: 'graphic-hero', focus: 'robot.balls', fill: 0.95, maxH: 420, sy: 700, st: 'corner', pose: 'point', point: 'robot.balls', dur: 0.55 },

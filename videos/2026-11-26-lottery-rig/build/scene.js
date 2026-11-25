@@ -381,10 +381,10 @@
 })();
 // YouTube cut v3 (~86 s) — Decoded. Stations (U-shape): A hook (0,0) · M map (1700,0) · O office (3400,0) · R robot+badge (5100,0)
 //   · S steps (5100,1900) · B billboard (3400,1900) · Y years (1700,1900) · P plea (0,1900)
-const END = 81.31;
+const END = 83.47;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 81.61,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 83.77,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     // ---- A: frame-0 slam ----
@@ -395,7 +395,7 @@ BM2.scene({
     // ---- M: five-state map ----
     { id: 'map', type: 'usmap', at: [1700, 0], in: '@five-0.5', props: { at: '@five+0.05', per: 0.16, endAt: END, label: '5 STATES', sub: 'PLEADED GUILTY' } },
     // ---- O: office ----
-    { id: 'off', type: 'office', at: [3400, 0], in: '@His-0.3', props: { nameAt: '@Eddie', buildAt: '@Multistate-0.05', compAt: '@computers', linkAt: '@lotteries', per: 0.12 } },
+    { id: 'off', type: 'office', at: [3400, 0], in: '@His-0.3', props: { nameAt: '@Eddie', buildAt: '@multi-0.05', compAt: '@computers', linkAt: '@lotteries', per: 0.12 } },
     { id: 'ph1', type: 'photo', at: [3770, 330], scale: 0.8, in: '@computers-0.1', out: '@lotteries-0.05', z: 50, props: { ...PH('brand/photos/stock/server-room/5.jpg', 'TORKILDR · CC BY-SA 2.0'), tilt: 0.05, fx: 0.6 } },
     // ---- R: robot + badge ----
     { id: 'robot', type: 'robot', at: [5100, 0], in: '@See-0.4', props: { shakeAt: '@robot-0.35', rollAt: '@rolling', picksAt: '@picks', peekAt: '@knowing', throwAt: '@throws' } },
@@ -404,7 +404,7 @@ BM2.scene({
     // ---- S: three steps ----
     { id: 'steps', type: 'steps', at: [5100, 1900], in: "@Here's-0.3", props: { open: ['@step#3', '@step#4', '@step#5'], codeAt: '@wrote', predAt: '@predict', passAt: '@gave', per: 0.34, winAt: '@won', shareAt: '@shared', heads: ['HE WROTE CODE', 'HE GAVE THE NUMBERS', 'THEY WON · THEY SHARED'] } },
     // ---- B: billboard ----
-    { id: 'tk', type: 'ticket', at: [3400, 1900], enter: 'drop', in: '@Then-0.3', props: { style: 'billboard', at: '@16', dur: 1.2, askAt: '@how', drainAt: '@Zero-0.95', drainDur: 0.9, head: '2010 · ADVERTISED JACKPOT', askLabel: 'PAID OUT', askQ: '$ ?', payLabel: 'PAID', stamp: 'NOBODY COLLECTED' } },
+    { id: 'tk', type: 'ticket', at: [3400, 1900], enter: 'drop', in: '@Then-0.3', props: { style: 'billboard', at: '@$16', dur: 1.2, askAt: '@how', drainAt: '@Zero-0.95', drainDur: 0.9, head: '2010 · ADVERTISED JACKPOT', askLabel: 'PAID OUT', askQ: '$ ?', payLabel: 'PAID', stamp: 'NOBODY COLLECTED' } },
     // ---- Y: salary years ----
     { id: 'yrs', type: 'years', at: [1700, 1900], in: '@Say-0.4', props: { payAt: '@Say', startAt: '@50', fullAt: '@330+0.35' } },
     // ---- P: verdict ----
@@ -440,7 +440,7 @@ BM2.scene({
     { at: '@states+0.35', beat: 'zoom-on-number', focus: 'map.label', fill: 0.8, maxH: 400, sy: 780, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@His', beat: 'side-by-side', focus: 'off', move: 'whip', sx: 540, sy: 820, fill: 0.92, maxH: 900, st: 'corner', pose: 'point', point: 'off.name' },
     { at: '@where', beat: 'zoom-on-number', focus: 'off.bld', fill: 0.55, maxH: 620, sy: 800, st: 'corner', pose: 'shrug', dur: 0.55 },
-    { at: '@Multistate', beat: 'graphic-hero', focus: 'off.sign', fill: 0.88, maxH: 330, sy: 760, st: 'corner', pose: 'point', point: 'off.sign', dur: 0.5 },
+    { at: '@multi', beat: 'graphic-hero', focus: 'off.sign', fill: 0.88, maxH: 330, sy: 760, st: 'corner', pose: 'point', point: 'off.sign', dur: 0.5 },
     { at: '@Association', beat: 'graphic-hero', focus: 'off', fill: 0.92, maxH: 900, sy: 810, st: 'corner', pose: 'idle', dur: 0.7 },
     { at: "@That's", beat: 'side-by-side', focus: 'off', sx: 700, sy: 810, fill: 0.74, maxH: 900, st: 'left', pose: 'point', point: 'off.bld', dur: 0.8 },
     { at: '@computers', beat: 'graphic-hero', focus: ['off.comp', 'ph1'], fill: 0.95, maxH: 700, sy: 800, st: 'corner-left', pose: 'point', point: 'off.comp', dur: 0.6 },
@@ -479,7 +479,7 @@ BM2.scene({
     { at: '@2010', beat: 'zoom-on-number', focus: 'tk.head', fill: 0.8, maxH: 400, sy: 700, st: 'corner', pose: 'shock', dur: 0.55 },
     { at: '@scheme', beat: 'graphic-hero', focus: 'tk', fill: 0.84, maxH: 1000, sy: 800, st: 'corner', pose: 'point', point: 'tk.head', dur: 0.7 },
     { at: '@advertised', beat: 'graphic-hero', focus: 'tk.total', fill: 0.84, maxH: 600, sy: 700, st: 'corner', pose: 'point', dur: 0.6 },
-    { at: '@16', beat: 'zoom-on-number', focus: 'tk.total', fill: 0.92, maxH: 560, sy: 680, st: 'corner', pose: 'shock', dur: 0.55 },
+    { at: '@$16', beat: 'zoom-on-number', focus: 'tk.total', fill: 0.92, maxH: 560, sy: 680, st: 'corner', pose: 'shock', dur: 0.55 },
     { at: '@Say', beat: 'side-by-side', focus: 'yrs', move: 'whip', sx: 540, sy: 740, fill: 0.8, maxH: 900, st: 'corner', pose: 'point', point: 'yrs.pay' },
     { at: '@50', beat: 'zoom-on-number', focus: 'yrs.pay', fill: 0.85, maxH: 300, sy: 760, st: 'corner', pose: 'point', point: 'yrs.pay', dur: 0.5 },
     { at: '@year', beat: 'graphic-hero', focus: ['yrs.grid', 'yrs.count'], fill: 0.9, maxH: 800, sy: 700, st: 'corner', pose: 'point', point: 'yrs.grid', dur: 0.6 },
@@ -504,13 +504,13 @@ BM2.scene({
   ],
   poses: [['@follow-0.1', 'follow', { target: [830, 1010] }], ['@follow+1.5', 'talk']],
   shakes: [[0.05, 14], ['@rigged', 8], ['@330', 10], ['@Zero-0.05', 26], ['@guilty', 14], ['@25', 22], ['@prison+0.1', 10]],
-  captions: { emph: { rigged: 'bad', five: 'bad', Zero: 'bad', nobody: 'bad', '25': 'bad', guilty: 'bad', '16': 'accent', '330': 'bad' }, gap: 16, fix: [['your, to', 'your— to'], ['16.5 million', '$16.5 million'], ['Zero nobody', 'Zero. Nobody'], ['the lottery, yes or no.', 'the lottery? Yes or no.'], ['Step one, he', 'Step one: he'], ['Step two, he', 'Step two: he'], ['Step three, those', 'Step three: those']] },
+  captions: { emph: { rigged: 'bad', five: 'bad', Zero: 'bad', nobody: 'bad', '25': 'bad', guilty: 'bad', '$16': 'accent', '16': 'accent', '330': 'bad' }, gap: 16, fix: [['your, to', 'your— to'], ['16.5 million', '$16.5 million'], ['Zero nobody', 'Zero. Nobody'], ['the lottery, yes or no.', 'the lottery? Yes or no.'], ['Step one, he', 'Step one: he'], ['Step two, he', 'Step two: he'], ['Step three, those', 'Step three: those']] },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.03, name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: 0.1, name: 'glass_shatter_1', gain: -10, dur: 0.6 },
     { at: '@rigged', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
     { at: '@five+0.05', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.21', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.37', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.53', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.69', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.85', name: 'ding_2', gain: -9, dur: 0.7 },
-    { at: '@Eddie', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@Multistate', name: 'rubber_stamp_2', gain: -9, dur: 0.5 }, { at: '@computers', name: 'click_1', gain: -9, dur: 0.3 }, { at: '@computers', name: 'pop_1', gain: -10, dur: 0.4 },
+    { at: '@Eddie', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@multi', name: 'rubber_stamp_2', gain: -9, dur: 0.5 }, { at: '@computers', name: 'click_1', gain: -9, dur: 0.3 }, { at: '@computers', name: 'pop_1', gain: -10, dur: 0.4 },
     { at: '@lotteries', name: 'swipe_2', gain: -11, dur: 0.5 }, { at: '@many+0.5', name: 'ding_2', gain: -10, dur: 0.7 },
     { at: '@picks', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.16', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.32', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.48', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.64', name: 'pop_2', gain: -9, dur: 0.3 },
     { at: '@nobody', name: 'paper_slam_2', gain: -11, dur: 0.5 }, { at: '@robot-0.3', name: 'typewriter_1', gain: -14, dur: 0.9 }, { at: '@rolling+0.5', name: 'click_2', gain: -9, dur: 0.3 },
@@ -521,7 +521,7 @@ BM2.scene({
     { at: '@step#4', name: 'pop_1', gain: -8, dur: 0.5 }, { at: '@gave', name: 'click_2', gain: -11, dur: 0.3 }, { at: '@gave+0.34', name: 'click_2', gain: -11, dur: 0.3 }, { at: '@gave+0.68', name: 'click_2', gain: -11, dur: 0.3 },
     { at: '@step#5', name: 'pop_1', gain: -8, dur: 0.5 }, { at: '@won', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@shared', name: 'coins_drop_1', gain: -12, dur: 1.0 },
     { at: '@Send', name: 'swoosh_2', gain: -9, dur: 1.0 },
-    { at: '@Then', name: 'paper_slam_2', gain: -8, dur: 0.5 }, { at: '@Then+0.1', name: 'thud_1', gain: -9, dur: 0.4 }, { at: '@16', name: 'money_counter_2', gain: -10, dur: 1.2 }, { at: '@16+1.2', name: 'cash_register_1', gain: -9, dur: 0.9 },
+    { at: '@Then', name: 'paper_slam_2', gain: -8, dur: 0.5 }, { at: '@Then+0.1', name: 'thud_1', gain: -9, dur: 0.4 }, { at: '@$16', name: 'money_counter_2', gain: -10, dur: 1.2 }, { at: '@$16+1.2', name: 'cash_register_1', gain: -9, dur: 0.9 },
     { at: '@Say', name: 'paper_slam_2', gain: -11, dur: 0.5 }, { at: '@50', name: 'money_counter_1', gain: -13, dur: 1.6 }, { at: '@330+0.35', name: 'cinematic_hit_1', gain: -8, dur: 0.9 },
     { at: '@how', name: 'clock_ticking_1', gain: -14, dur: 1.2 }, { at: '@follow+0.5', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.58', name: 'success_chime_1', gain: -12, dur: 1.0 },
     { at: '@Zero-0.95', name: 'sub_drop_2', gain: -9, dur: 0.9 }, { at: '@Zero-0.95', name: 'money_counter_1', gain: -13, dur: 0.9 },

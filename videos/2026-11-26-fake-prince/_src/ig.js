@@ -5,7 +5,7 @@ const MUG = 'brand/photos/anthony-gignac/1.jpg';
 const HOOK = { lines: [[['FAKE SAUDI PRINCE', 'paper']], [['THEN ORDERED PORK', 'bad']]], sizes: [96, 96] };
 const F0 = { sx: 540, sy: 930, fill: 0.98, maxH: 960, st: { x: 130, y: 1350, s: 1.1 } };
 BM2.scene({
-  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 89.74,
+  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 87.08,
   footnote: ['PLEADED GUILTY 2018 · SENTENCED MAY 31, 2019 · SOURCES: DOJ S.D. FLORIDA, AP', 'ABOUT 30 YEARS = 1988 TO THE 2017 ARREST · ILLUSTRATIONS / PROPS (GENERIC)', 'PHOTO: MIAMI-DADE COUNTY BOOKING PHOTO · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S0 frame 0 (loop target): crown + PORK ticket ----

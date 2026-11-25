@@ -6,7 +6,7 @@ const HOOK = { lines: [[['BUSTED ', 'paper'], ['11 TIMES', 'bad']], [['FOR THE S
 const MUGP = { src: MUG, name: '', credit: 'MIAMI-DADE COUNTY · PUBLIC DOMAIN', treatment: 'mugshot', w: 420, aspect: 1.0, fx: 0.74, fy: 0.4, tilt: 0.04 };
 const F0 = { sx: 540, sy: 930, fill: 0.98, maxH: 960, st: { x: 540, y: 1400, s: 0.8 } };
 BM2.scene({
-  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 87.27,
+  series: 'decoded', title: 'CASE: FAKE PRINCE · 2017', duration: 85.86,
   footnote: ['PLEADED GUILTY 2018 · SENTENCED MAY 31, 2019 · SOURCES: DOJ S.D. FLORIDA, AP', 'ABOUT 30 YEARS = 1988 TO THE 2017 ARREST · ILLUSTRATIONS / PROPS (GENERIC)', 'PHOTO: MIAMI-DADE COUNTY BOOKING PHOTO · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S0 frame 0 (loop target) ----

@@ -2,91 +2,96 @@
  {
   "text": "Fifty-fifty is the wrong answer to this million-dollar question.",
   "start": 0.0,
-  "end": 3.313
+  "end": 3.515
  },
  {
   "text": "Three briefcases. One's got a million bucks, two are empty.",
-  "start": 4.513,
-  "end": 7.475
+  "start": 4.015,
+  "end": 7.302
  },
  {
   "text": "That's a hundred bucks a day. For twenty-seven years.",
-  "start": 8.075,
-  "end": 10.742
+  "start": 7.802,
+  "end": 10.64
  },
  {
   "text": "You pick a case. Then the host, who knows where the cash is, always opens an empty one.",
-  "start": 12.042,
-  "end": 16.182
+  "start": 11.14,
+  "end": 15.507
  },
  {
   "text": "Now he asks: wanna switch? Tap the heart if you're thinking coin flip.",
-  "start": 16.582,
-  "end": 19.927
+  "start": 15.807,
+  "end": 19.411
  },
  {
   "text": "Nah, bro. Try a hundred cases.",
-  "start": 20.327,
-  "end": 22.217
+  "start": 19.711,
+  "end": 21.743
  },
  {
   "text": "You pick one, and he opens ninety-eight empties.",
-  "start": 22.817,
-  "end": 25.256
+  "start": 22.243,
+  "end": 24.89
  },
  {
   "text": "He skipped just\u2014 just one case. Your pick was a one in a hundred guess.",
-  "start": 25.856,
-  "end": 29.368
+  "start": 25.39,
+  "end": 29.183
  },
  {
   "text": "So the money's in his case ninety-nine percent of the time.",
-  "start": 29.868,
-  "end": 32.675
+  "start": 29.683,
+  "end": 32.735
  },
  {
   "text": "Send this to the friend who'd still keep their case.",
-  "start": 33.475,
-  "end": 35.79
+  "start": 33.235,
+  "end": 35.694
  },
  {
   "text": "Three cases works the same. Pick the money first, and switching loses.",
-  "start": 36.19,
-  "end": 39.795
+  "start": 35.994,
+  "end": 39.824
  },
  {
   "text": "Pick the first empty case, and he has to open the other empty one, so switching wins.",
-  "start": 40.195,
-  "end": 44.521
+  "start": 40.124,
+  "end": 44.652
  },
  {
   "text": "And the second empty case? Same deal.",
-  "start": 45.521,
-  "end": 47.63
+  "start": 44.952,
+  "end": 47.163
  },
  {
   "text": "Follow, this page settles arguments.",
-  "start": 48.03,
-  "end": 50.037
+  "start": 47.463,
+  "end": 49.66
  },
  {
   "text": "Switching wins two times out of three.",
-  "start": 51.037,
-  "end": 53.026
+  "start": 49.96,
+  "end": 52.054
+ },
+ {
+  "text": "Staying only wins one time in three, so switching doubles your chances.",
+  "start": 52.554,
+  "end": 56.63
  },
  {
   "text": "A columnist printed that in nineteen ninety.",
-  "start": 54.426,
-  "end": 56.875
+  "start": 57.13,
+  "end": 59.735
  },
  {
   "text": "By her count, nearly a thousand PhDs wrote in to say she was wrong.",
-  "start": 57.275,
-  "end": 60.98
+  "start": 60.035,
+  "end": 64.108
  },
  {
   "text": "So who's wrong? Stay, or switch?",
-  "start": 61.68,
-  "end": 63.429
+  "start": 64.608,
+  "end": 66.505
  }
 ]

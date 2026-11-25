@@ -2,81 +2,86 @@
  {
   "text": "A million bucks, two cases left, and your gut's full of shit.",
   "start": 0.0,
-  "end": 2.871
+  "end": 2.951
  },
  {
   "text": "Rewind. Three briefcases, and one has a million bucks.",
-  "start": 4.071,
-  "end": 6.897
+  "start": 3.451,
+  "end": 6.481
  },
  {
   "text": "That's a hundred bucks a day. For twenty-seven damn years.",
-  "start": 8.097,
-  "end": 11.086
+  "start": 6.981,
+  "end": 10.18
  },
  {
   "text": "You pick a case. Then the host, who knows where the money is, opens an empty one.",
-  "start": 12.386,
-  "end": 16.115
+  "start": 10.68,
+  "end": 14.619
  },
  {
   "text": "He always does that. Then he asks: stay, or switch?",
-  "start": 17.115,
-  "end": 19.733
+  "start": 14.919,
+  "end": 17.775
  },
  {
   "text": "Double-tap if your gut says fifty-fifty.",
-  "start": 20.133,
-  "end": 22.32
+  "start": 18.075,
+  "end": 20.402
  },
  {
   "text": "Bullshit. Now check every\u2014 every possible start.",
-  "start": 22.72,
-  "end": 25.35
+  "start": 20.702,
+  "end": 23.514
  },
  {
   "text": "Okay, say you picked the money. Switch, and you're screwed.",
-  "start": 26.25,
-  "end": 28.943
+  "start": 23.814,
+  "end": 26.679
  },
  {
   "text": "Say you picked the first empty case. He has to open the other empty one, so switching wins.",
-  "start": 29.343,
-  "end": 33.944
+  "start": 26.979,
+  "end": 31.798
  },
  {
   "text": "Send this to the friend who'd argue with a calculator.",
-  "start": 34.344,
-  "end": 36.938
+  "start": 32.098,
+  "end": 34.882
  },
  {
   "text": "Now say you picked the second empty case. Same deal, switching wins again.",
-  "start": 37.938,
-  "end": 41.715
+  "start": 35.182,
+  "end": 39.267
  },
  {
   "text": "That's two wins out of three.",
-  "start": 42.115,
-  "end": 43.666
+  "start": 39.567,
+  "end": 41.269
+ },
+ {
+  "text": "So switching? It literally doubles your damn odds.",
+  "start": 41.769,
+  "end": 44.46
  },
  {
   "text": "A columnist printed that, and by her count, nearly a thousand PhDs wrote in to say she's wrong.",
-  "start": 45.066,
-  "end": 50.259
+  "start": 44.96,
+  "end": 50.569
  },
  {
   "text": "Still doubt it? Make it a hundred cases, and he opens ninety-eight empties.",
-  "start": 51.022,
-  "end": 54.653
+  "start": 51.069,
+  "end": 54.875
  },
  {
   "text": "Your case is a one in a hundred guess. The case he skipped is ninety-nine percent.",
-  "start": 55.253,
-  "end": 59.532
+  "start": 55.375,
+  "end": 59.922
  },
  {
   "text": "So with a million bucks on it: stay, or switch?",
-  "start": 60.432,
-  "end": 62.803
+  "start": 60.422,
+  "end": 63.046
  }
 ]
