@@ -381,10 +381,10 @@
 })();
 // TikTok cut v3 (~85 s) — Decoded, spicy. Stations: A hook=billboard (0,0) · Y years (1700,0) · O office (3400,0) · R robot+badge (5100,0)
 //   · S steps (5100,1900) · M map (3400,1900) · B2 billboard (1700,1900) · P plea (0,1900)
-const END = 84.8;
+const END = 76.91;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 85.1,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 77.21,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     // ---- A: frame 0 = the jackpot nobody collected ----
@@ -451,7 +451,7 @@ BM2.scene({
     { at: '@lotteries', beat: 'graphic-hero', focus: 'off.pins', fill: 0.8, maxH: 640, sy: 790, st: 'corner', pose: 'point', point: 'off.pins', dur: 0.6 },
     { at: '@many', beat: 'zoom-on-number', focus: 'off.many', fill: 0.6, maxH: 320, sy: 800, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: "@computer's-0.3", beat: 'side-by-side', focus: 'robot', move: 'whip', sx: 540, sy: 760, fill: 0.8, maxH: 900, st: 'corner', pose: 'point', point: 'robot.head' },
-    { at: '@whole', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.6, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
+    { at: '@whole', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.42, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
     { at: '@picking', beat: 'graphic-hero', focus: 'robot.balls', fill: 0.95, maxH: 420, sy: 700, st: 'corner', pose: 'point', point: 'robot.balls', dur: 0.55 },
     { at: '@nobody', beat: 'graphic-hero', focus: ['robot', 'ph2'], fill: 0.9, maxH: 1000, sy: 780, st: 'corner-left', pose: 'shrug', dur: 0.7 },
     { at: '@robot', beat: 'zoom-on-number', focus: 'robot.play', fill: 0.6, maxH: 520, sy: 760, st: 'corner-left', pose: 'point', point: 'robot.cup', dur: 0.5 },

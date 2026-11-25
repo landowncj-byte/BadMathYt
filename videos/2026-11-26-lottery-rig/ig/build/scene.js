@@ -381,10 +381,10 @@
 })();
 // IG/FB cut v3 (~84 s) — Decoded, most vulgar. Stations (U-shape): A hook (0,0) · M map (1700,0) · O office+badge (3400,0) · R robot (5100,0)
 //   · S steps (5100,1900) · B billboard (3400,1900) · Y years (1700,1900) · P plea (0,1900)
-const END = 83.73;
+const END = 74.32;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 84.03,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 74.62,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     { id: 'hook', type: 'htext', at: [0, -470], in: 0, props: { l1: [['THIS DUMBASS RIGGED', 'paper']], l2: [['THE LOTTERY · 5 STATES', 'bad']], size: 88, endAt: END } },
@@ -441,7 +441,7 @@ BM2.scene({
     { at: '@lotteries', beat: 'graphic-hero', focus: 'off.pins', fill: 0.8, maxH: 640, sy: 790, st: 'corner', pose: 'point', point: 'off.pins', dur: 0.6 },
     { at: '@many', beat: 'zoom-on-number', focus: 'off.many', fill: 0.6, maxH: 320, sy: 800, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@And#2', beat: 'side-by-side', focus: 'robot', move: 'whip', sx: 540, sy: 760, fill: 0.8, maxH: 900, st: 'corner', pose: 'point', point: 'robot.head' },
-    { at: '@job#2', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.6, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
+    { at: '@job#2', beat: 'zoom-on-number', focus: 'robot.head', fill: 0.42, maxH: 460, sy: 760, st: 'corner', pose: 'chin', dur: 0.5 },
     { at: '@pick', beat: 'graphic-hero', focus: 'robot.balls', fill: 0.95, maxH: 420, sy: 700, st: 'corner', pose: 'point', point: 'robot.balls', dur: 0.55 },
     { at: '@nobody', beat: 'graphic-hero', focus: ['robot', 'ph2'], fill: 0.9, maxH: 1000, sy: 780, st: 'corner-left', pose: 'shrug', dur: 0.7 },
     { at: '@robot', beat: 'zoom-on-number', focus: 'robot.play', fill: 0.6, maxH: 520, sy: 760, st: 'corner-left', pose: 'point', point: 'robot.cup', dur: 0.5 },
@@ -467,6 +467,7 @@ BM2.scene({
     { at: '@Now', beat: 'side-by-side', focus: 'tk', move: 'whip', sx: 540, sy: 800, fill: 0.8, maxH: 1000, st: 'corner', pose: 'point', point: 'tk.head' },
     { at: '@2010', beat: 'zoom-on-number', focus: 'tk.head', fill: 0.8, maxH: 400, sy: 700, st: 'corner', pose: 'shock', dur: 0.55 },
     { at: '@scheme', beat: 'graphic-hero', focus: 'tk', fill: 0.84, maxH: 1000, sy: 800, st: 'corner', pose: 'point', point: 'tk.head', dur: 0.7 },
+    { at: '@billboard', beat: 'side-by-side', focus: 'tk', sx: 700, sy: 800, fill: 0.74, maxH: 1000, st: 'left', pose: 'point', point: 'tk.head', dur: 0.7 },
     { at: '@advertised', beat: 'graphic-hero', focus: 'tk.total', fill: 0.84, maxH: 600, sy: 700, st: 'corner', pose: 'point', dur: 0.6 },
     { at: '@$16', beat: 'zoom-on-number', focus: 'tk.total', fill: 0.92, maxH: 560, sy: 680, st: 'corner', pose: 'shock', dur: 0.55 },
     { at: '@Say', beat: 'side-by-side', focus: 'yrs', move: 'whip', sx: 540, sy: 740, fill: 0.8, maxH: 900, st: 'corner', pose: 'point', point: 'yrs.pay' },

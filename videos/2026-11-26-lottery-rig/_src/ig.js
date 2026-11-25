@@ -1,9 +1,9 @@
 // IG/FB cut v3 (~84 s) — Decoded, most vulgar. Stations (U-shape): A hook (0,0) · M map (1700,0) · O office+badge (3400,0) · R robot (5100,0)
 //   · S steps (5100,1900) · B billboard (3400,1900) · Y years (1700,1900) · P plea (0,1900)
-const END = 83.73;
+const END = 74.32;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 84.03,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 74.62,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     { id: 'hook', type: 'htext', at: [0, -470], in: 0, props: { l1: [['THIS DUMBASS RIGGED', 'paper']], l2: [['THE LOTTERY · 5 STATES', 'bad']], size: 88, endAt: END } },

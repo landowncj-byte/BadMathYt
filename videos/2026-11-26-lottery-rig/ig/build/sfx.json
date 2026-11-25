@@ -1,5 +1,5 @@
 {
- "duration": 84.03,
+ "duration": 74.62,
  "sfx": [
   {
    "gain": -3,
@@ -566,6 +566,24 @@
    "name": "swipe_2"
   },
   {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 73.64,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.9,
+   "at": 73.94,
+   "name": "rewind_2"
+  },
+  {
+   "gain": -6,
+   "dur": 0.4,
+   "at": 74.32,
+   "name": "deep_boom_2"
+  },
+  {
    "gain": -14,
    "dur": 0.6,
    "at": 77.08,
@@ -600,24 +618,6 @@
    "dur": 0.5,
    "at": 81.74,
    "name": "pop_1"
-  },
-  {
-   "gain": -10,
-   "dur": 0.7,
-   "at": 83.05,
-   "name": "whoosh_2"
-  },
-  {
-   "gain": -11,
-   "dur": 0.9,
-   "at": 83.35,
-   "name": "rewind_2"
-  },
-  {
-   "gain": -6,
-   "dur": 0.4,
-   "at": 83.73,
-   "name": "deep_boom_2"
   }
  ],
  "bed": {

@@ -1,9 +1,9 @@
 // YouTube cut v3 (~86 s) — Decoded. Stations (U-shape): A hook (0,0) · M map (1700,0) · O office (3400,0) · R robot+badge (5100,0)
 //   · S steps (5100,1900) · B billboard (3400,1900) · Y years (1700,1900) · P plea (0,1900)
-const END = 85.66;
+const END = 76.98;
 const PH = (src, credit) => ({ src, credit, tag: 'PHOTO', w: 400, aspect: 0.95, tape: true });
 BM2.scene({
-  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 85.96,
+  series: 'decoded', title: 'CASE: TIPTON · 2017', duration: 77.28,
   footnote: ['PLEADED GUILTY 2017 · UP TO 25 YEARS · SOURCES: CNN MONEY · TIME · CBS NEWS', 'ILLUSTRATIONS: BADGE · ROBOT · MAP · BILLBOARD · FIGURES (GENERIC) · MATH: OURS', 'PHOTOS: ELIZAIO (BINGO BALLS) · TORKILDR (SERVER ROOM), CC BY-SA, WIKIMEDIA / FLICKR'],
   elements: [
     // ---- A: frame-0 slam ----
@@ -14,7 +14,7 @@ BM2.scene({
     // ---- M: five-state map ----
     { id: 'map', type: 'usmap', at: [1700, 0], in: '@five-0.5', props: { at: '@five+0.05', per: 0.16, endAt: END, label: '5 STATES', sub: 'PLEADED GUILTY' } },
     // ---- O: office ----
-    { id: 'off', type: 'office', at: [3400, 0], in: '@His-0.3', props: { nameAt: '@Eddie', buildAt: '@Multi-0.05', compAt: '@computers', linkAt: '@lotteries', per: 0.12 } },
+    { id: 'off', type: 'office', at: [3400, 0], in: '@His-0.3', props: { nameAt: '@Eddie', buildAt: '@Multistate-0.05', compAt: '@computers', linkAt: '@lotteries', per: 0.12 } },
     { id: 'ph1', type: 'photo', at: [3770, 330], scale: 0.8, in: '@computers-0.1', out: '@lotteries-0.05', z: 50, props: { ...PH('brand/photos/stock/server-room/5.jpg', 'TORKILDR · CC BY-SA 2.0'), tilt: 0.05, fx: 0.6 } },
     // ---- R: robot + badge ----
     { id: 'robot', type: 'robot', at: [5100, 0], in: '@See-0.4', props: { shakeAt: '@robot-0.35', rollAt: '@rolling', picksAt: '@picks', peekAt: '@knowing', throwAt: '@throws' } },
@@ -58,7 +58,7 @@ BM2.scene({
     { at: '@states+0.35', beat: 'zoom-on-number', focus: 'map.label', fill: 0.8, maxH: 400, sy: 780, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@His', beat: 'side-by-side', focus: 'off', move: 'whip', sx: 540, sy: 820, fill: 0.92, maxH: 900, st: 'corner', pose: 'point', point: 'off.name' },
     { at: '@where', beat: 'zoom-on-number', focus: 'off.bld', fill: 0.55, maxH: 620, sy: 800, st: 'corner', pose: 'shrug', dur: 0.55 },
-    { at: '@Multi', beat: 'graphic-hero', focus: 'off.sign', fill: 0.88, maxH: 330, sy: 760, st: 'corner', pose: 'point', point: 'off.sign', dur: 0.5 },
+    { at: '@Multistate', beat: 'graphic-hero', focus: 'off.sign', fill: 0.88, maxH: 330, sy: 760, st: 'corner', pose: 'point', point: 'off.sign', dur: 0.5 },
     { at: '@Association', beat: 'graphic-hero', focus: 'off', fill: 0.92, maxH: 900, sy: 810, st: 'corner', pose: 'idle', dur: 0.7 },
     { at: "@That's", beat: 'side-by-side', focus: 'off', sx: 700, sy: 810, fill: 0.74, maxH: 900, st: 'left', pose: 'point', point: 'off.bld', dur: 0.8 },
     { at: '@computers', beat: 'graphic-hero', focus: ['off.comp', 'ph1'], fill: 0.95, maxH: 700, sy: 800, st: 'corner-left', pose: 'point', point: 'off.comp', dur: 0.6 },
@@ -128,7 +128,7 @@ BM2.scene({
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.03, name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: 0.1, name: 'glass_shatter_1', gain: -10, dur: 0.6 },
     { at: '@rigged', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
     { at: '@five+0.05', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.21', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.37', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.53', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.69', name: 'pop_2', gain: -10, dur: 0.3 }, { at: '@five+0.85', name: 'ding_2', gain: -9, dur: 0.7 },
-    { at: '@Eddie', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@Multi', name: 'rubber_stamp_2', gain: -9, dur: 0.5 }, { at: '@computers', name: 'click_1', gain: -9, dur: 0.3 }, { at: '@computers', name: 'pop_1', gain: -10, dur: 0.4 },
+    { at: '@Eddie', name: 'paper_slam_2', gain: -10, dur: 0.5 }, { at: '@Multistate', name: 'rubber_stamp_2', gain: -9, dur: 0.5 }, { at: '@computers', name: 'click_1', gain: -9, dur: 0.3 }, { at: '@computers', name: 'pop_1', gain: -10, dur: 0.4 },
     { at: '@lotteries', name: 'swipe_2', gain: -11, dur: 0.5 }, { at: '@many+0.5', name: 'ding_2', gain: -10, dur: 0.7 },
     { at: '@picks', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.16', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.32', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.48', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@picks+0.64', name: 'pop_2', gain: -9, dur: 0.3 },
     { at: '@nobody', name: 'paper_slam_2', gain: -11, dur: 0.5 }, { at: '@robot-0.3', name: 'typewriter_1', gain: -14, dur: 0.9 }, { at: '@rolling+0.5', name: 'click_2', gain: -9, dur: 0.3 },
