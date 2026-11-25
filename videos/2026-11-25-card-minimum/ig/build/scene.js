@@ -158,15 +158,15 @@ BM2.scene({
     { id: 'bk', type: 'bookmark', layer: 'screen', at: [830, 900], in: '@save', props: { press: 0.55 } },
   ],
   beats: [
-    { at: 0, beat: 'graphic-hero', focus: { x: 0, y: -190, w: 900, h: 700 }, keep: ['hook1', 'hook2'], fill: 0.95, sy: 740, st: 'corner', pose: 'talk' },
+    { at: 0, beat: 'graphic-hero', focus: { x: 0, y: -190, w: 900, h: 700 }, keep: ['hook1', 'hook2'], fill: 0.95, sy: 740, st: { x: 905, y: 1400, s: 0.8 }, pose: 'talk' },
     { at: '@congrats', beat: 'zoom-on-number', focus: 'hook2', fill: 0.96, sy: 740, pose: 'shrug' },                                    // push 1
     { at: '@5', beat: 'peek', focus: 'stmt', move: 'whip', fill: 0.8, sy: 880, maxH: 800 },
     { at: '@22%', beat: 'zoom-on-number', focus: 'stmt.apr', fill: 0.8, sy: 740, rot: -0.008, dur: 0.5, st: 'corner-left' },           // push 2
     { at: '@minimum#2', beat: 'zoom-on-number', focus: 'stmt.due', fill: 0.84, sy: 790, st: 'corner-left' },                            // push 3
     { at: '@payments', beat: 'graphic-hero', focus: 'track', move: 'whip', fill: 0.94, sy: 770, st: 'corner-left', pose: 'idle' },
-    { at: '@16', beat: 'zoom-on-number', focus: 'track.years', fill: 0.92, sy: 780 },                                                  // push 4
+    { at: '@16', beat: 'zoom-on-number', focus: 'track.years', fill: 0.8, sy: 780 },                                                  // push 4
     { at: '@$12', beat: 'zoom-on-number', focus: 'rcpt.paid', move: 'whip', fill: 0.84, sy: 760, st: 'corner', pose: 'shock' },       // push 5
-    { at: '@for', beat: 'graphic-hero', focus: ['rcpt', 'fast'], fill: 0.8, sy: 740, st: 'corner', pose: 'point' },
+    { at: '@for', beat: 'graphic-hero', focus: ['rcpt', 'fast'], fill: 0.8, sy: 740, st: { x: 930, y: 1420, s: 0.75 }, pose: 'point' },
     { at: '@crap', beat: 'zoom-on-number', focus: 'fast', fill: 0.92, sy: 800, st: 'corner', pose: 'shock' },
     { at: '@send', beat: 'presenter-front', focus: 'fast', pose: 'you', sy: 760 },
     { at: '@save', beat: 'presenter-front', focus: 'fast', pose: 'point', sy: 780, zoom: 0.97 },
