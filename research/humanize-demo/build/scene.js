@@ -180,7 +180,7 @@
   });
 })();
 BM2.scene({
-  series: 'decoded', title: 'CASE: FRANK · 2021', duration: 35.2,
+  series: 'decoded', title: 'CASE: FRANK · 2021', duration: 33.4,
   footnote: ['CONVICTED 2025 · 85 MONTHS · SOURCES: DOJ, SEC', 'FIGURES + LIST ARE ILLUSTRATIONS'],
   elements: [
     { id: 'hook', type: 'text', at: [0, -540], in: -1, out: '@The-0.15', props: { lines: [[['IMAGINE ', 'paper'], ['FAKING', 'paper']], [['4,000,000', 'bad']], [['CUSTOMERS', 'paper']]], size: 104 } },
