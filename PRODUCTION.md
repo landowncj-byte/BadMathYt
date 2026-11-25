@@ -56,3 +56,8 @@ Every build session: `list_inbox_conversations` (unreadOnly) → auto-reply to n
 
 ## Watching reference videos
 `brand/tools/watch.sh <url-or-file> <outdir>` downloads (yt-dlp), transcribes (Whisper) and makes a frame sheet — use it on any reference/competitor video the user sends or Fable flags. Instagram works once the reel's `scontent-*.cdninstagram.com` host is allowed; YouTube may block cloud servers (ask the user for the file). Log lessons into STYLE.md.
+
+## Memory & handoff (user rule 2026-11-25 — never lose context)
+- `HANDOFF.md` is the project's long-term memory; keep §7 (current state) updated at the end of every work block and every nightly build.
+- Run `python3 archive/export.py` (readable conversation backup) at the end of every work block; add `--raw` (full transcript) after every context compaction and before any handoff. Update `archive/LATEST.md`.
+- After the 3rd context compaction of a session, or when summaries start dropping detail: start a successor session per HANDOFF.md §8/§10 (create_session on this repo + environment, move both scheduled tasks using `archive/triggers.md`, tell the user the new link).

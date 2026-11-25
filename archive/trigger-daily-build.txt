@@ -1,0 +1,33 @@
+Daily Bad Math build. First re-read /home/user/badmathyt/PRODUCTION.md and follow it exactly, along with CHANNEL.md, STYLE.md (especially §14 hook gate, §15 three platform cuts, §16 pronunciation), brand/CHARACTER.md, brand/MEMES.md, brand/sfx-library/manifest.json, ideas.md, ANALYTICS.md, queue.md and the newest research/<date>/ folder. If /home/user/badmathyt is missing, attach landowncj-byte/BadMathYt with push access and clone it.
+
+MODEL SPLIT (user rule):
+- FABLE does ALL research (Agent tool, model "fable"). That covers CONTENT research (competitors in our niche, their viral outliers, what hooks/topics/formats are working, gaps) and FACT research (topic ideas, fact-check, number spine, sources). Output goes to research/<date>/competitors.md, ideas.md (ranked, with "inspired by" links) and <slug>/research.md per topic. If today's research/<date>/ folder already exists (built ahead), use it instead of redoing it.
+- OPUS (you) does creation and directing: pick topics from Fable's list, write hooks, the three platform scripts, the pronunciation pass and direction, review every contact sheet, approve publishing.
+- SONNET agents do coding, rendering and mixing. HAIKU agents do narration timings, sound, captions and packaging.
+
+1. ANALYTICS FIRST: pull get_post_analytics for the last 7 days (all platforms) and append today's block to ANALYTICS.md. Give our winners and losers to Fable together with its competitor findings. On Sunday (US Eastern), Fable refreshes competitors.md fully, and you write the weekly review and apply its 3–5 changes. Never repeat a topic. Copy competitor PATTERNS, never their topics, scripts, footage or audio.
+
+2. RESEARCH: one Fable agent researches the next day's batch. That is at least 8 Short topics, plus ONLY on Monday, Wednesday or Friday (US Eastern) 1 long-form topic. Every number is sourced; anything unverifiable is cut. Decoded = court-proven only, otherwise "alleged".
+
+3. BUILD — MINIMUM 8 posts per platform per day. Each topic gets THREE separate scripts, voices and edits:
+   - YouTube Shorts: ad-safe edgy hook, 40–55 s.
+   - TikTok @color.me.saved: spicy, 25–40 s, comment bait.
+   - Instagram badmath.tv + Facebook BadMath.tv: most vulgar and disrespectful, 15–25 s, built for sends and saves.
+   Voice everything through brand/voice/pronounce.py (say vs show). Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
+
+4. VOICE: Shorts use the FREE Kokoro am_michael voice. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%. Otherwise use Kokoro and tell the user. All SFX and music must be free CC0.
+
+5. QUEUE:
+   - Upload to uguu.se: curl -F "files[]=@video.mp4" https://uguu.se/upload
+   - In PostFast: upload_from_url, then create_posts with a comment-bait firstComment on every platform, then approve_posts right away. This runs on the user's standing authorization from 2026-11-24, unless they have since said "stop auto-posting".
+   - Slots, US Eastern: Shorts at 08/10/12/14/16/18/20/22, plus evening catch-up slots if the day is short of 8. Long-form at 17:00. Check list_posts first. Never schedule more than 7 days ahead; extras go to queue.md.
+   - Accounts:
+     - YouTube 7615365c-4085-4841-ae0b-7af4c8c441de
+     - TikTok 095075de-53fe-407f-9d08-4b5f47ed8390
+     - Instagram 1beb5c7d-4c01-4abf-a91f-0880aa3dee7e (REEL)
+     - Facebook d999359b-223e-4dfc-a6a1-bf0e120086e5 (REEL)
+   - AI disclosure on everywhere.
+
+6. AFTER EACH POST is queued, send the user a short note with the video and its slot. Commit and push everything to main. If time or usage runs out, stop after the last finished-and-queued video and tell the user how many of the 8 per platform are covered and what's left.
+
+Pending promise: the lottery TikTok promised a "Part 2" (what happened after the 1992 Virginia win). Fable is researching it in research/2026-11-25/lottery-part2/. Make it soon.

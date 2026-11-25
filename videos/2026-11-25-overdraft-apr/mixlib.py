@@ -20,6 +20,13 @@ def mix(base,DUR,FX,BEDS,voice='voice/narration.wav',sfx='sfx/'):
     subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y",*ins,"-filter_complex",";".join(fc),"-map","[out]","-t",str(DUR),"-c:a","pcm_f32le","build/mixpre.wav"],check=True)
     r=subprocess.run(["ffmpeg","-hide_banner","-y","-i","build/mixpre.wav","-af","loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json","-f","null","-"],capture_output=True,text=True).stderr
     m=json.loads(re.search(r'\{[^{}]*"input_i"[^{}]*\}',r,re.S).group(0));print(m)
-    af=f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,aresample=192000,alimiter=limit=0.85:level=false:attack=1:release=60,aresample=48000"
-    subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i","build/mixpre.wav","-af",af,"-c:a","pcm_s16le","build/mix.wav"],check=True)
-    subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i","build/video_noaudio.mp4","-i","build/mix.wav","-map","0:v","-map","1:a","-c:v","copy","-c:a","aac","-b:a","192k","-movflags","+faststart","-shortest","video.mp4"],check=True)
+    def meas(f):
+        o=subprocess.run(["ffmpeg","-hide_banner","-i",f,"-af","ebur128=peak=true","-f","null","-"],capture_output=True,text=True).stderr
+        return float(re.findall(r"I:\s+(-?[\d.]+) LUFS",o)[-1]),float(re.findall(r"Peak:\s+(-?[\d.]+) dBFS",o)[-1])
+    for tp in (-1.5,-2.5,-3.5,-4.5,-5.5):
+        lim=round(10**((tp-0.0)/20),3)
+        af=f"loudnorm=I=-14:TP={tp}:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,aresample=192000,alimiter=limit={lim}:level=false:attack=1:release=60,aresample=48000,afade=t=in:d=0.03,afade=t=out:st={DUR-0.08}:d=0.08"
+        subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i","build/mixpre.wav","-af",af,"-c:a","pcm_s16le","build/mix.wav"],check=True)
+        subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i","build/video_noaudio.mp4","-i","build/mix.wav","-map","0:v","-map","1:a","-c:v","copy","-c:a","aac","-b:a","192k","-movflags","+faststart","video.mp4"],check=True)
+        I,pk=meas("video.mp4"); print("try tp",tp,"LUFS",I,"peak",pk)
+        if pk<=-1.2 and abs(I+14)<=.4: break

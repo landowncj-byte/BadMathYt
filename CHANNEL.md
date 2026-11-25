@@ -99,3 +99,4 @@ decisions:
 - 2026-11-25: Fable also does content research: competitor map + viral outliers + patterns → research/<date>/competitors.md, feeding idea ranking (copy patterns, never topics/scripts/footage).
 - 2026-11-25: Comments = hybrid: auto-reply to normal comments, flag sensitive ones to the user (STYLE §17). Project .claude/settings.json allows PostFast + ElevenLabs speech tools without prompts.
 - 2026-11-25: Adopted the 'story loop' (STYLE §18) from the user's reference reel. Added brand/tools/watch.sh (yt-dlp + Whisper + frame sheet) to watch YouTube/Instagram videos; YouTube/Instagram hosts allowed in the environment.
+- 2026-11-25: Never lose context: HANDOFF.md (long-term memory + successor protocol), archive/ (conversation export, raw transcript, trigger prompts, LATEST.md). Successor session after the 3rd compaction. Disabled the paid-music Salad Oil one-shot task (free-music rule).

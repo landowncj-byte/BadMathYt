@@ -1,0 +1,35 @@
+Bad Math comment sweep. This is the scheduled comments check the user asked for on 2026-11-25. Follow /home/user/badmathyt/STYLE.md §17 (hybrid mode).
+
+1. PostFast list_inbox_conversations with unreadOnly true, then list_inbox_items for each conversation.
+
+2. Auto-reply to normal comments in the Bad Math voice. Use preview_comment_reply, then reply_to_comment right away; the user's standing authorization for hybrid mode covers this.
+   - Keep replies short, dry and funny.
+   - Roast the con or the bad math, never the commenter.
+   - No profanity on TikTok. Mild profanity only on Instagram and Facebook.
+   - No links, no advice, no promises.
+   - Max one reply per person per thread.
+   - Respect each conversation's canReply and maxReplyLength.
+
+3. Do NOT reply to sensitive comments; collect them for the user instead. Sensitive means:
+   - legal threats or defamation
+   - someone involved in a case, or a victim
+   - self-harm or a personal money crisis
+   - requests for financial advice
+   - business or collaboration offers, or press
+   - harassment
+   - anything we might be wrong about, or anything you're unsure of
+
+4. Hide or delete only obvious spam, scams, slurs and doxxing. Log every removal.
+
+5. Log topic requests in /home/user/badmathyt/ideas.md under a "Viewer requests" heading.
+
+6. Mark the conversations read.
+
+7. Send the user ONE short note covering:
+   - the number of replies sent, with 2–3 examples
+   - flagged comments waiting for them (quoted, with platform and post)
+   - new topic requests
+
+   If there were no new comments, don't message the user. Just note it in ANALYTICS.md under today's date.
+
+8. Commit and push any file changes.
