@@ -194,7 +194,7 @@ const HOOK = { lines: [[['ONE PICK IS', 'paper']], [['A $200K F*CK-UP', 'bad']]]
 const KEEP = ['hook', 'endt', 'scale', 'tower'];
 BM2.scene({
   series: 'whatif', title: 'WEIGHT VS HEIGHT', duration: 24.12,
-  footnote: ['HYPOTHETICAL · NOBODY IS OFFERING THIS · NOT FINANCIAL ADVICE', 'ASSUMES ≈1 G & 0.0043 IN PER BILL · FLIP POINT 2.56 LB PER INCH', 'AVG US MAN = CDC 199.0 LB · 68.9 IN (AUG 2021–AUG 2023)'],
+  footnote: ['HYPOTHETICAL · NOBODY IS OFFERING THIS · NOT FINANCIAL ADVICE', 'ASSUMES ≈1 G & 0.0043 IN PER BILL · FLIP POINT 2.56 LB PER INCH', 'AVG US MAN = CDC 199.0 LB · 68.9 IN (AUG 2021–AUG 2023)', 'PHOTOS: D.L. (CC BY-SA 2.0) · THE.COMEDIAN (CC BY 2.0) · VIA FLICKR'],
   elements: [
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: '@Double-0.25', props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: '@heights+0.4', props: HOOK },
@@ -204,6 +204,8 @@ BM2.scene({
       { t: 0, v: 36 }, { t: '@height#2', v: 36 }, { t: '@1+0.4', v: 68.9, e: 'out' }, { t: '@heights+0.4', v: 68.9 }, { t: '@heights+1.0', v: 36 }] } },
     { id: 'doll', type: 'doll', at: [0, 40], in: '@Average', out: '@weight#2-0.15', props: { lbAt: '@gramma', hAt: '@height#2' } },
     { id: 'gap', type: 'gap', at: [0, 580], in: '@Send-0.4', out: '@The+0.1', props: { to: 202980 } },
+    { id: 'ph1', type: 'photo', layer: 'screen', at: [200, 1130], in: '@weight', out: '@height', props: { src: 'brand/photos/stock/bathroom-scale/3.jpg', name: 'SCALE', credit: 'D.L. · CC BY-SA 2.0', w: 250, tilt: -0.07, treatment: 'polaroid', aspect: 1.0 } },
+    { id: 'ph2', type: 'photo', layer: 'screen', at: [880, 1130], in: '@height', out: "@one's", props: { src: 'brand/photos/stock/stack-of-hundred-dollar-bills/2.jpg', name: '$100 STACK', credit: 'THE.COMEDIAN · CC BY 2.0', w: 250, tilt: 0.07, treatment: 'polaroid', aspect: 1.0 } },
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Double', props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'hund', type: 'text', layer: 'screen', at: [540, 345], in: '@Double', out: '@Average-0.1', props: { lines: [[['HUNDREDS?', 'accent']]], size: 90 } },
     { id: 'g1', type: 'chip', layer: 'screen', at: [540, 345], in: '@gramma-0.4', out: '@weight#2-0.15', props: { text: '≈1 G A BILL · ASSUMED', size: 30 } },
