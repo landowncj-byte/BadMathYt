@@ -208,7 +208,7 @@
       }
       function hud(g, t) { // brand-locked series pill, top-left (same as v1)
         if (spec.pill === false) return; const [px, py, ph, pf, tf] = B.L.pill; g.save(); g.font = F.cap(pf); const pw = g.measureText(theme.name).width + 44;
-        rr(g, px, py, pw, ph, 8); g.fillStyle = theme.pill; g.fill(); txt(g, theme.name, px + pw / 2, py + ph / 2 + 1, F.cap(pf), theme.pillInk); if (spec.title) txt(g, spec.title, px + pw + 20, py + ph / 2 + 1, F.mono(tf), rgba(theme.paper, 0.9), 'left'); g.restore();
+        rr(g, px, py, pw, ph, 8); g.fillStyle = theme.pill; g.fill(); txt(g, theme.name, px + pw / 2, py + ph / 2 + 1, F.cap(pf), theme.pillInk); if (spec.title) { if (B.L.land) { g.font = F.mono(tf); const tw = g.measureText(spec.title).width; g.fillStyle = 'rgba(11,15,20,.8)'; rr(g, px + pw + 8, py + 2, tw + 28, ph - 4, 8); g.fill(); } txt(g, spec.title, px + pw + 20, py + ph / 2 + 1, F.mono(tf), rgba(theme.paper, 0.9), 'left'); } g.restore();
       }
       const vig = (() => { const g = X.createRadialGradient(...B.L.vig); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.5)'); return g; })();
       // ----- stage palettes over time (rooms): spec.stages = [{at, dur, theme:{stage, blobs, dust, paper, paperShade, rule}}] crossfade between rooms -----
@@ -224,8 +224,8 @@
         if (n === 1) world(X, t); else { for (let k = 0; k < n; k++) { world(WG, t - (k / n) * (0.75 / fps)); AG.globalAlpha = 1 / (k + 1); AG.setTransform(1, 0, 0, 1, 0, 0); AG.drawImage(WLD, 0, 0); } X.setTransform(1, 0, 0, 1, 0, 0); X.drawImage(ACC, 0, 0); }
         X.setTransform(1, 0, 0, 1, 0, 0); X.fillStyle = vig; X.fillRect(0, 0, W, H);
         const s = cam.at(t); for (const e of order) if (e.layer === 'screen') drawEl(X, e, t, s);
-        hud(X, t); captions(X, t);
-        const fa = B.L.land ? clamp((stTrack.at(t).x - 380) / 220) : 1; X.save(); X.globalAlpha = fa; [].concat(spec.footnote || []).forEach((ln, i) => txt(X, ln, B.L.foot.x, B.L.foot.y + i * B.L.foot.dy, F.mono(B.L.foot.size), rgba(CAPPAPER, 0.6 - 0.1 * i), 'left')); X.restore();
+        const hudOn = !(spec.hudOff || []).some(([a, b]) => t >= T(a) && t < T(b)); if (hudOn) hud(X, t); captions(X, t);
+        const fa = (hudOn ? 1 : 0) * (B.L.land ? clamp((stTrack.at(t).x - 380) / 220) : 1); X.save(); X.globalAlpha = fa; [].concat(spec.footnote || []).forEach((ln, i) => txt(X, ln, B.L.foot.x, B.L.foot.y + i * B.L.foot.dy, F.mono(B.L.foot.size), rgba(CAPPAPER, 0.6 - 0.1 * i), 'left')); X.restore();
         X.save(); X.globalAlpha = 0.5; X.globalCompositeOperation = 'multiply'; X.fillStyle = B.grainPattern; X.fillRect(0, 0, W, H); X.restore(); // paper tooth over the whole frame
       };
       B.debug = { cam, stTrack, els, beats, chunks, T, boxOf };

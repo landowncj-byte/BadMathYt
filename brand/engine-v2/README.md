@@ -147,6 +147,16 @@ Built from `words.json` automatically (≤ 3 words / 15 characters, split on pun
 
 `sfx: [{ at: '@$34', name: 'cash_register_1', gain: -9, dur: 1, offset: 0 }]` — `name` is a `brand/sfx-library/manifest.json` name (CC0 only). Whips get `whoosh_2` and push-ins get `swipe_2` automatically (`autoSfx: false` to stop). `bed: {name, gain, offset}`. `bm2.cjs check`/`render` write the resolved list to `sfx.json`; `mix.py` reads it, so picture and sound share the same word times. Typical gains: big hits −3 to −5 dB, registers/stamps −7 to −9, pops/clicks −7 to −12, counters −9 to −12.
 
+## Landscape (16:9, 1920×1080) and long-form (added 2026-11-25)
+
+Same engine, same look; Shorts are unchanged (re-rendered stills are byte-identical).
+
+- **Format.** `bm2.cjs init <dir> --voice <voiceDir> --format 16:9` writes `<script>window.BM2_FORMAT='16:9'</script>` before the engine scripts (`primitives.js` reads it and sets `BM2.W/H` and the layout tokens `BM2.L`). Landscape layout: stage centre (960, 470) (`sy` ≈ 470–520 keeps graphics clear of the caption band), captions Inter 800 58 px at y 945 (≤ 26 chars, 5 words, max width 1300), DECODED/WHAT IF pill top-left (64, 40) with the mono title on an Ink chip, footnote bottom-left (64, 1036; it fades out while he stands on the left), storyteller default bottom-right (1740, 1062, ×0.9). Beat presets and storyteller spots are redefined for landscape (`corner` = bottom-right, `left`/`right`, `front` = big at x 1620, `shoulder`, `peek`), `fill` is the share of the 1920 width. Screen-UI defaults are in `BM2.L.bubble` / `BM2.L.follow`.
+- **Paragraph-keyed refs** (when `voice.paragraphs` exists; `bm2.cjs voice` takes it from `<voiceDir>/engine_voice.json` = `{words:[{w,s,e,p}], paragraphs:[{id,chapter,start,end}]}`): `'@P15'` paragraph start, `'@P15>'` end, `'@P15:20'` first "20" spoken in P15, `'@P15:20#2'` second, `'@P15:twenty'` (spelled numbers match their digits), `'@P15:#3'` third word, `'@P15:20>'` word end, any ref + `+0.3` / `-0.2`. Whisper digit splits apply (`10 .5 %` → words `10`, `5`; `$64 .8`; `900 ,000` → `900`, `000`).
+- **Rooms / stage over time.** `stages: [{at, dur, theme: {stage, blobs, dust, paper, paperShade, rule}}]` crossfades the stage palette (sepia chapter, cool chapter). A chapter card is an element in a new "room" far away in the world plus a long `move: 'whip'` beat.
+- **HUD off.** `hudOff: [[from, to]]` hides pill + footnote (end card); captions use `captions.hide`.
+- **Long renders.** `bm2.cjs render <dir> --jobs 4 --chunk 40 --crf 21 [--from s --to s] [--force]` renders independent chunks (one browser + ffmpeg each, flat memory), skips finished chunks (resumable), then concatenates. Delete `parts/cNNN.mp4*` to redo one chunk. Local sounds: `sfx: {name: 'local:pipes'}` reads `<video>/sfx/pipes.mp3`.
+
 ## How to direct a v2 video (checklist)
 
 1. **Stations.** From the script, pick 2–4 graphics that carry the story (hook object → evidence → comparison/payoff). Place them in a row (`[0,0]`, `[1750,…]`, `[3450,…]`).

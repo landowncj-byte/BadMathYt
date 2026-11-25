@@ -45,5 +45,5 @@ sf('@P06:from+0.0', 'pop_1', -14, 0.3);
 // G: the three-question test card, then the TITLE
 el('test0', 'checklist', 15300, 40, '@P07-0.3', { rows: [{}, {}, {}], title: 'THE IMPOSSIBLE NUMBER TEST' }, { out: '@P07:ponzi-0.05' });
 el('title', 'headline', 15300, 40, '@P07:ponzi-0.05', { kicker: 'A BAD MATH CASE FILE', lines: ['THE IMPOSSIBLE', 'NUMBER'], size: 200, underAt: 0.9 });
-bt('@P07', 'graphic-hero', 'test0', { move: 'whip', fill: 0.44, sy: 490, pose: 'point' }); bt('@P07:three', 'zoom-on-number', 'test0.head', { fill: 0.5, maxH: 300 }); bt('@P07:caught', 'graphic-hero', 'test0', { fill: 0.44, sy: 490, pose: 'you' });
+bt('@P07', 'graphic-hero', 'test0', { move: 'whip', fill: 0.44, sy: 490, pose: 'point' }); bt('@P07:three', 'zoom-on-number', 'test0.head', { fill: 0.46, maxH: 300, sy: 300 }); bt('@P07:caught', 'graphic-hero', 'test0', { fill: 0.44, sy: 490, pose: 'you' });
 bt('@P07:ponzi', 'graphic-hero', 'title', { fill: 0.72, sy: 470, pose: 'shock', dur: 0.5 }); sf('@P07', 'paper_slam_2', -10, 0.5); sf('@P07:ponzi-0.05', 'deep_boom_1', -3, 2.0); sk('@P07:ponzi', 12);

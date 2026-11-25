@@ -30,3 +30,12 @@ research/visual-v2/prototype/scene/mix.wav
 **/voice/narration.prev.wav
 research/humanize-demo/build/parts/
 **/build/parts/
+
+# impossible-number long-form v2 (engine v2, landscape)
+videos/2026-11-25-impossible-number/video-v2.mp4
+videos/2026-11-25-impossible-number/build2/parts/
+videos/2026-11-25-impossible-number/build2/video_noaudio.mp4
+videos/2026-11-25-impossible-number/build2/mix.wav
+videos/2026-11-25-impossible-number/build2/mixpre.wav
+videos/2026-11-25-impossible-number/build2/stills/
+videos/2026-11-25-impossible-number/build2/gal/

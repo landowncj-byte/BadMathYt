@@ -3,14 +3,14 @@ const R1 = k => K(X1, k);
 el('ch1', 'headline', R1(0), 40, '@P08-0.3', { kicker: 'CHAPTER ONE', lines: ['THE COUPON', [["THAT COULDN'T ", 'paper'], ['EXIST', 'bad']]], size: 150, underAt: 1.0 });
 bt('@P08', 'graphic-hero', 'ch1', { move: 'whip', dur0: 0.7, fill: 0.74, sy: 470, pose: 'shrug', arc: 0.2 }); sf('@P08-0.6', 'tape_stop_1', -8, 1.0); sf('@P08-0.1', 'cinematic_hit_1', -9, 1.5); sf('@P08+0.9', 'paper_slam_2', -10, 0.5); sk('@P08+0.7', 8);
 // S1: banks vs Ponzi
-el('h9', 'text', R1(1) + 340, -300, '@P09', { lines: [[['BOSTON, ', 'paper'], ['1920', 'accent']]], size: 86 }, { out: '@P10-0.2' });
+el('h9', 'text', R1(1) + 340, -300, '@P09', { lines: [[['BOSTON, ', 'paper'], ['1920', 'accent']]], size: 86 }, { out: '@P09:5-0.3' });
 el('sil9', 'silh', R1(1) - 760, 40, '@P09:charles-0.35', { name: 'CHARLES PONZI', role: 'FORMER DISHWASHER', hat: 'bowler' }, { out: '@P10-0.2', rot: -0.03 });
 el('bars9', 'bars', R1(1) + 340, 70, '@P09+0.2', { h: 460, barW: 170, gap: 110, note: 'ON EVERY $100', items: [
   { id: 'bank', label: 'BANK', sub: '~5% A YEAR', value: 5, display: { prefix: '+$' }, tone: 'good', at: '@P09:5' },
   { id: 'ponzi', label: 'PONZI', sub: '50% IN 45 DAYS', value: 50, display: { prefix: '+$' }, tone: 'bad', at: '@P09:50' }] }, { out: '@P10-0.2' });
 bt('@P09', 'graphic-hero', ['h9', 'bars9'], { move: 'whip', fill: 0.5, sx: 960, sy: 500, pose: 'point' });
-bt('@P09:5', 'zoom-on-number', 'bars9.bank_top', { fill: 0.4, maxH: 330 }); bt('@P09:charles', 'peek', 'sil9', { fill: 0.34, sy: 560, maxH: 600, pose: 'idle' });
-bt('@P09:50', 'zoom-on-number', 'bars9.ponzi_top', { fill: 0.4, maxH: 330, pose: 'shock' }); sk('@P09:50', 12); bt('@P09:45', 'graphic-hero', 'bars9', { fill: 0.4, sy: 500, pose: 'point' });
+bt('@P09:5', 'zoom-on-number', 'bars9.bank_top', { fill: 0.32, maxH: 260, sy: 400 }); bt('@P09:charles', 'peek', 'sil9', { fill: 0.34, sy: 560, maxH: 600, pose: 'idle' });
+bt('@P09:50', 'zoom-on-number', 'bars9', { fill: 0.36, maxH: 560, sy: 470, pose: 'shock' }); sk('@P09:50', 12); bt('@P09:45', 'graphic-hero', 'bars9', { fill: 0.34, maxH: 580, sy: 470, pose: 'point' });
 sf('@P09:5', 'pop_2', -8, 0.3); sf('@P09:5+0.1', 'money_counter_2', -13, 0.7); sf('@P09:charles-0.2', 'camera_flash_1', -9, 0.6); sf('@P09:50', 'cash_register_1', -8, 0.9); sf('@P09:50+0.05', 'deep_boom_2', -7, 0.4);
 // S2: reply coupons, Europe -> America
 el('h10', 'text', R1(2) - 650, -230, '@P10+0.1', { lines: [[['THE PITCH:', 'paper']]], size: 80 }, { out: '@P10:little' });
@@ -44,23 +44,23 @@ el('bars15', 'bars', R1(5), 40, '@P15', { h: 540, barW: 200, gap: 340, note: 'PO
   { id: 'need', label: 'NEEDED', sub: 'IN CIRCULATION', value: 160000000, tone: 'bad', at: '@P15:160-0.3', size: 80 },
   { id: 'real', label: 'ACTUAL', sub: 'IN CIRCULATION', value: 27000, tone: 'good', at: '@P15:27-0.1', size: 80, minH: 6 }] }, { out: '@P16-0.2' });
 bt('@P15', 'graphic-hero', 'bars15', { move: 'whip', fill: 0.34, maxH: 720, sy: 500, pose: 'point' });
-bt('@P15:160', 'zoom-on-number', 'bars15.need_top', { fill: 0.42, maxH: 400, sy: 400, pose: 'shock' }); sk('@P15:160+0.8', 10); bt('@P15:circulation', 'pull-back', 'bars15', { fill: 0.34, maxH: 720, sy: 500 });
-bt('@P15:the', 'graphic-hero', 'bars15.real_base', { fill: 0.5, maxH: 400, sy: 600, pose: 'chin', dur: 1.2 }); sf('@P15:the-0.3', 'heartbeat_1', -9, 2.0);
-bt('@P15:27', 'zoom-on-number', 'bars15.real_base', { fill: 0.6, maxH: 420, sy: 600, pose: 'shock' }); sk('@P15:27', 8);
+bt('@P15:160', 'zoom-on-number', 'bars15.need_top', { fill: 0.42, maxH: 400, sy: 400, pose: 'shock' }); sk('@P15:160+0.8', 10); bt('@P15:circulation', 'pull-back', 'bars15', { fill: 0.34, maxH: 600, sy: 520, st: 'peek' });
+bt('@P15:the', 'graphic-hero', 'bars15.real_base', { fill: 0.5, maxH: 400, sy: 480, pose: 'chin', dur: 1.2 }); sf('@P15:the-0.3', 'heartbeat_1', -9, 2.0);
+bt('@P15:27', 'zoom-on-number', 'bars15.real_base', { fill: 0.6, maxH: 420, sy: 480, pose: 'shock' }); sk('@P15:27', 8);
 sf('@P15:160-0.3', 'money_counter_1', -11, 1.2); sf('@P15:160+0.9', 'deep_boom_1', -5, 1.6); sf('@P15:27-0.1', 'pop_2', -8, 0.3); sf('@P15:27+0.5', 'ding_2', -9, 0.7);
 // S6: one coupon in 6,000
-el('dots', 'dotgrid', R1(6), 20, '@P16', { at: '@P16+0.1', per: 0.7, hiAt: '@P16:one', hiCol: 72, hiRow: 22 }, { out: '@P17-0.2' });
-el('lab16', 'text', R1(6), -560, '@P16:6-0.2', { lines: [[['1 ', 'good'], ['COUPON FOR EVERY ~6,000 NEEDED', 'paper']]], size: 56 }, { out: '@P17-0.2' });
-bt('@P16', 'graphic-hero', 'dots', { move: 'whip', fill: 0.7, maxH: 800, sy: 470, pose: 'point' }); bt('@P16:one', 'zoom-on-number', 'dots.hi', { fill: 0.12, maxH: 150, sy: 470, dur: 0.9, pose: 'shock' }); sf('@P16:one', 'pop_1', -6, 0.4); sf('@P16:one+0.05', 'ding_2', -8, 0.7);
-bt('@P16:6', 'graphic-hero', ['dots', 'lab16'], { fill: 0.8, maxH: 760, sy: 480, dur: 1.2, pose: 'idle' }); sf('@P16+0.1', 'money_counter_2', -16, 1.4);
+el('dots', 'dotgrid', R1(6), 110, '@P16', { at: '@P16+0.1', per: 0.7, hiAt: '@P16:one', hiCol: 72, hiRow: 22 }, { out: '@P17-0.2' });
+el('lab16', 'text', R1(6), -440, '@P16:6-0.2', { lines: [[['1 ', 'good'], ['COUPON FOR EVERY ~6,000 NEEDED', 'paper']]], size: 56 }, { out: '@P17-0.2' });
+bt('@P16', 'graphic-hero', 'dots', { move: 'whip', fill: 0.7, maxH: 800, sy: 490, pose: 'point' }); bt('@P16:one', 'zoom-on-number', 'dots.hi', { fill: 0.12, maxH: 150, sy: 480, dur: 0.9, pose: 'shock' }); sf('@P16:one', 'pop_1', -6, 0.4); sf('@P16:one+0.05', 'ding_2', -8, 0.7);
+bt('@P16:6', 'graphic-hero', ['dots', 'lab16'], { fill: 0.8, maxH: 760, sy: 500, dur: 1.2, pose: 'idle' }); sf('@P16+0.1', 'money_counter_2', -16, 1.4);
 // S7: the pyramid (new money pays old)
 el('pyr', 'pyramid', R1(7), 40, '@P17-0.3', { at: '@P17+0.1', flowAt: '@P17:old', label: 'NEW MONEY PAYS OLD' }, { out: '@P18-0.2' });
-bt('@P17', 'graphic-hero', 'pyr', { move: 'whip', fill: 0.4, maxH: 760, sy: 470, pose: 'point' }); bt('@P17:next', 'zoom-on-number', 'pyr.base', { fill: 0.5, maxH: 420, sy: 600 });
+bt('@P17', 'graphic-hero', 'pyr', { move: 'whip', fill: 0.4, maxH: 760, sy: 470, pose: 'point' }); bt('@P17:next', 'zoom-on-number', 'pyr.base', { fill: 0.5, maxH: 420, sy: 480 });
 bt('@P17:old', 'zoom-on-number', 'pyr.top', { fill: 0.3, maxH: 420, sy: 400, pose: 'point' }); bt('@P17:that\'s', 'presenter-front', 'pyr', { fill: 0.42, pose: 'talk', sy: 470 });
 sf('@P17+0.1', 'pop_2', -12, 0.3); sf('@P17:next', 'pop_1', -9, 0.3); sf('@P17:old', 'coins_drop_1', -11, 1.2); sf('@P17:trick', 'rubber_stamp_2', -10, 0.5);
 // S8: the papers ran the numbers; six banks; $20,000,000
 el('news', 'news', R1(8) - 760, 20, '@P18:papers-0.25', {}, { out: '@P19-0.2' });
-el('banks6', 'banks', R1(8) + 500, -150, '@P18:six-0.6', { n: 6, at: '@P18:six-0.6', times: [0, 1, 2, 3, 4, 5].map(i => `@P18:six+${(0.35 + i * 0.32).toFixed(2)}`), label: 'x', labelAt: '@P18:six', s: 130, gap: 40 }, { out: '@P19-0.2' });
+el('banks6', 'banks', R1(8) + 500, -100, '@P18:six-0.6', { n: 6, at: '@P18:six-0.6', times: [0, 1, 2, 3, 4, 5].map(i => `@P18:six+${(0.35 + i * 0.32).toFixed(2)}`), label: 'x', labelAt: '@P18:six', s: 130, gap: 40 }, { out: '@P19-0.2' });
 el('lost20', 'counter', R1(8) + 500, 330, '@P18:20-0.3', { label: 'INVESTORS LOST ABOUT', sub: 'IN 1920', to: 20000000, prefix: '$', at: '@P18:20-0.15', dur: 1.0, tone: 'bad', size: 120, w: 800, underline: false }, { out: '@P19-0.2' });
 bt('@P18', 'graphic-hero', 'news', { move: 'whip', fill: 0.4, sy: 480, pose: 'point' }); sf('@P18:papers-0.2', 'swoosh_2', -10, 0.8); sf('@P18:papers+0.5', 'paper_slam_2', -10, 0.5);
 bt('@P18:line', 'presenter-front', 'news', { fill: 0.42, pose: 'talk' }); sf('@P18:line', 'crowd_ooh_1', -15, 2.5);
@@ -79,6 +79,6 @@ bt('@P19:and', 'graphic-hero', 'est', { move: 'whip', fill: 0.36, sy: 480, pose:
 // S10: coupons -> a tank
 el('c20', 'coupon', R1(11) - 400, 40, '@P20-0.2', { flipAt: '@P20-0.15' }, { out: '@P20:tank-0.05' });
 el('t20', 'icon', R1(11) + 380, 40, '@P20:tank-0.3', { kind: 'tank', s: 380, col: 'paper' }, { enter: 'pop' });
-el('h20', 'text', R1(11), -330, '@P20:coupons-0.2', { lines: [[['HIDING IN ', 'paper'], ['COUPONS', 'accent']]], size: 70 }, { out: '@P20:inside-0.1' });
+el('h20', 'text', R1(11), -280, '@P20:coupons-0.2', { lines: [[['HIDING IN ', 'paper'], ['COUPONS', 'accent']]], size: 70 }, { out: '@P20:inside-0.1' });
 bt('@P20', 'graphic-hero', 'c20', { move: 'whip', fill: 0.38, sx: 960, sy: 500, pose: 'chin' }); bt('@P20:next', 'presenter-front', ['c20', 't20'], { fill: 0.5, pose: 'talk' });
 bt('@P20:tank', 'zoom-on-number', 't20', { fill: 0.2, maxH: 480, sy: 480, pose: 'point' }); sf('@P20:tank-0.3', 'pop_2', -7, 0.4); sf('@P20:tank-0.25', 'tape_stop_1', -12, 0.9);

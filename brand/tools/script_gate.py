@@ -14,6 +14,9 @@ Reads <cut>/voice/script.json ([[line_with_tags, pause_s], ...]) and <cut>/voice
 script) timings are ESTIMATED from word counts (Liam ~3.3 words/s inside a line + pauses + tags).
 
 Exit 0 = PASS (warnings allowed) · exit 1 = FAIL (reasons printed) · exit 2 = usage/file error.
+Also enforces the script-writing skills (brand/skills/short-form-video-script, hook-writer): hook first
+sentence <= 12 words, no throat-clearing opener, a beats*.md with three-track beats + >= 5 scored hook
+candidates next to the script, word targets, loop hint.
 It only checks what a machine can check. The judgement items (hook is outrageous AND true, twist,
 facts grade, humanized feel) stay with the director — see the SCRIPT GATE in RULES.md.
 """
@@ -50,6 +53,7 @@ TT_PROFANITY = r"\b(?:shit\w*|fuck\w*|bitch\w*|asshole)\b"
 ALLOWED_TAGS = {"breath", "gasp", "sigh", "sniff", "smack", "throat", "pause"}
 NUM = r"\d|\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|trillion|grand|percent|bucks|dollars?|half|double|triple|zero|mil)\b"
 TURN = r"\?|\b(?:but|wait|except|nope|nah|turns\s+out|plot\s+twist|worse|dumber|instead|until|then|so\s+where|here's|guess|yeah|still|never|actually|okay|now)\b"
+THROAT = r"\s*(?:so,?\s+)?(?:hey|hi|hello|what'?s up|welcome|okay so today|today|in this video|in today'?s|let'?s talk about|let me tell you|i want to talk|so i'?ve been|have you ever wondered|did you know|here'?s a (?:video|story)|this (?:video|is a video)|quick (?:story|video)|story time)\b"
 STIFF = r"\b(?:do not|does not|did not|is not|are not|was not|were not|cannot|will not|would not|could not|should not|it is|that is|you are|they are|he is|she is|you would|you will|there is)\b"
 
 def strip_tags(s): return re.sub(r"\s+", " ", re.sub(r"\[[^\]]*\]", " ", s)).strip()
@@ -112,6 +116,17 @@ def gate(cut_dir, script_name=None):
     elif est and not lo + 1.5 <= dur <= hi - 1.5: warns.append(f"estimated duration {dur:.1f} s is within 1.5 s of the {lo}–{hi} s limit — re-run after voicing")
     if nwords > maxw: (fails if nwords > maxw * 1.1 else warns).append(f"WORDS {nwords} > {maxw} target for {name}")
 
+    if key == "tiktok" and 80 < nwords <= maxw: warns.append(f"{nwords} words — skill target is ~75 words ≈ 30 s on TikTok; cut-test every line again")
+    vdir = os.path.dirname(sp)
+    beats = [f for f in os.listdir(vdir) if f.startswith("beats") and f.endswith(".md")]
+    if not beats: fails.append("NO beats*.md next to the script — write the three-track beats (time · VISUAL · ON-SCREEN TEXT · SPOKEN) and the scored hook candidates first (brand/skills/short-form-video-script + hook-writer)")
+    else:
+        b = open(os.path.join(vdir, sorted(beats)[-1])).read()
+        if "ON-SCREEN TEXT" not in b or "VISUAL" not in b: fails.append(f"{sorted(beats)[-1]} has no three-track beat table (VISUAL · ON-SCREEN TEXT · SPOKEN)")
+        rows = len(re.findall(r"^\|\s*\d+\s*\|[^|]+\|[^|]+\|\s*[0-2]\s*\|", b, re.M))
+        if rows < 5: fails.append(f"{sorted(beats)[-1]} lists {rows} scored hook candidates (need 5–10 across different mechanisms, scored with the rubric)")
+        if strip_tags(script[0][0])[:25].lower() not in strip_tags(b).lower(): warns.append("beats file does not contain the script's hook line — beats and script are out of sync")
+
     # 2 banned strings
     for rx, why in BANNED:
         m = re.search(rx, raw, re.I)
@@ -158,8 +173,10 @@ def gate(cut_dir, script_name=None):
 
     # 4 hook
     hook = strip_tags(script[0][0]); h1 = re.split(r"(?<=[.?!])\s+", hook)[0]; hw = len(words(h1))
-    if hw > 18: fails.append(f"HOOK first sentence is {hw} words (max 12): \"{h1}\"")
-    elif hw > 12: warns.append(f"hook first sentence is {hw} words (target ≤ 12)")
+    if hw > 12: fails.append(f"HOOK first sentence is {hw} words (max 12): \"{h1}\"")
+    m = re.match(THROAT, hook, re.I)
+    if m: fails.append(f"HOOK opens with throat-clearing (\"{m.group(0).strip()}\") — start on the claim / number / scene (hook-writer anti-patterns)")
+    if not m and re.search(r"you won'?t believe|nobody (?:is )?talk(?:s|ing) about|the secret to", hook, re.I): fails.append("HOOK is a vague tease / dead template (hook-writer anti-patterns) — be specific")
     if sent[0]["end"] > 5.5: warns.append(f"hook line runs {sent[0]['end']:.1f} s — the outrageous part must land inside ~3 s")
     if re.match(r"\s*what if\b", hook, re.I): warns.append("hook opens with a soft \"What if…\" question — lead with the outrageous statement/number, put the What If on the pill")
     if not re.search(NUM, hook, re.I) and not re.search(r"\b(dumb|stupid|idiot|robbed|scam|fraud|con|played|insane|greedy)\w*", hook, re.I):
@@ -186,6 +203,10 @@ def gate(cut_dir, script_name=None):
     if setup_end / dur > 0.30: warns.append(f"first turn/question after the hook comes at {pct(setup_end)} — setup is too long (target < 20%)")
     longest = max(len(words(l)) for l, _ in script)
     if longest > 26: warns.append(f"a line has {longest} words — break it up for the voice")
+
+    stop = set("a an the and or but so if of to in on at it its it's is was that this you your for with one still would have what why how".split())
+    kw = lambda t: {w.lower().strip("'") for w in words(t)} - stop
+    if not (kw(script[0][0]) & kw(script[-1][0])): warns.append("LOOP: the last line shares no key word with the hook — does the ending flow back into frame 1? (director: confirm the visual loop)")
 
     # 6 humanize (warnings — the director judges feel)
     if re.search(STIFF, clean, re.I): warns.append(f"stiff phrasing \"{re.search(STIFF, clean, re.I).group(0)}\" — use contractions")

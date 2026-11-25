@@ -4,7 +4,7 @@
   0.25
  ],
  [
-  "[breath] Two identical funds. One charges one percent more a year.",
+  "[breath] Same two funds, except one charges one percent more a year.",
   0.25
  ],
  [
@@ -16,7 +16,7 @@
   0.25
  ],
  [
-  "Year ten, the gap's forty-six hundred bucks. Whatever.",
+  "Year ten? The gap's forty-six hundred bucks. Whatever.",
   0.25
  ],
  [
@@ -24,19 +24,23 @@
   0.25
  ],
  [
-  "Year thirty? A hundred seven grand.",
+  "Year thirty? A hundred seven grand. Yeah.",
   0.25
  ],
  [
-  "Follow, this page catches the quiet ones. Year forty?",
+  "Year forty's next. Follow, this page catches the quiet ones.",
   0.4
  ],
  [
-  "Three hundred sixteen grand. Gone. To— to a fee.",
+  "Three hundred sixteen grand. To— to a fee.",
   0.3
  ],
  [
-  "You only put in two forty. [sigh] Would you even notice?",
+  "You only put in two forty. [sigh]",
+  0.3
+ ],
+ [
+  "Still tiny?",
   0.45
  ]
 ]

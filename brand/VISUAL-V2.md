@@ -234,3 +234,15 @@ Element `type`s in `brand/engine-v2/charts.js`. Full props in the README.
 - [ ] No glow anywhere; depth from shadow, blur and parallax only.
 - [ ] Brand lock respected (§0). Captions fixed; safe zones clear.
 - [ ] Last frame can cut to frame 0.
+
+---
+
+## 8. Landscape / long-form (1920×1080), added 2026-11-25
+
+Same brand lock, same stage, same camera; only the layout tokens change (`BM2.L` in `brand/engine-v2/primitives.js`; enable with `window.BM2_FORMAT = '16:9'`).
+
+- **Stage:** focus lands at (960, 470) (use `sy` 470–520; graphics 90–880 px tall); the dark Ink stage, parallax layers, vignette and grain are unchanged. Per-chapter stage palettes (`stages: [...]`) are allowed (warm sepia for 1920s material, cool slate for the finance chapter) as long as there is no glow.
+- **Screen UI:** series pill top-left (64, 40) with the mono title on an Ink chip; captions Inter 800 58 px, Paper White with the dark outline, centred at y 945, ≤ 26 characters / 5 words per chunk, max width 1300; footnote JetBrains Mono 16 px bottom-left (64, 1036), faded out while he stands in the left third; comment bubble / follow button anchors `BM2.L.bubble` (1500, 520) / `BM2.L.follow` (1500, 700) up-left of his default spot.
+- **Storyteller:** default bottom-right (feet 1740, 1062, ×0.9); `corner` (1760, 1064), `left` / `corner-left` on the left edge, `front` = big (×1.5) at the right (1620, 1100) so captions stay clear, `peek` = behind the graphic, head over its top edge, `shoulder`, `off`. Never in front of a focused number; he may be in front of / behind other graphics.
+- **Chapter cards** are a new "room" of the world: a headline element (Anton kicker + title) far from the previous room, reached by a long whip with motion blur; the stage palette crossfades on the way.
+- **End card** (15 s, no HUD / captions): wordmark (Anton, Paper White), YouTube end-screen placeholders (800×450 rect at (120, 310), r = 170 circle at (1400, 535)), storyteller waving between them, music only.
