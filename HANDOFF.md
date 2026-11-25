@@ -56,7 +56,6 @@ Last updated: 2026-11-25 (US Eastern evening of Tue Nov 24). Session that wrote 
 
 ## 7. Current state (update every work block)
 - **Posted/scheduled 2026-11-24 (ET):** YouTube 8 (user's 3 + FTX 20:00, Theranos 21:00, lottery 22:00, Fyre 23:00, coffee 23:30); TikTok 8 (user's 3 + FTX, coffee, lottery, Theranos, Fyre); IG/FB 5 each.
-- **Wed 2026-11-25 scheduled:** parlay math, all 4 platforms 08:00 ET.
 - **Wed 2026-11-25 scheduled (all 4 platforms):** parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00 ET. Nightly build fills 14:00+ and the 17:00 long-form.
 - **Next up (Fable's ranked list `research/2026-11-25/ideas.md`):** Javice fake users, Tipton lottery rig, Tucker payday loans, BitConnect, credit-card minimum, 1% fee, OneCoin; **long-form Wed = Do Kwon / Terra-Luna** (Owen voice); **lottery Part 2** (promised on TikTok).
 - **Pending with the user:** none blocking. (They installed nothing yet from the plugin card; watch.sh covers it.)
