@@ -20,3 +20,8 @@ Final reply (short): three paths + durations + sizes, contact sheet paths, VIDEO
 1. Frame 0 shows the FULL hook text; the storyteller never covers it.
 2. Keep all on-screen text, buttons and counters out of the caption band (screen y > ~1340) and never stack on-screen text over counters.
 3. Temporary on-screen text exits cleanly; nothing lingers half-visible or blurred behind captions.
+
+## Real photos and stock images (owner rule 2026-11-25)
+- Every real person named in the video gets a REAL licensed photo if one exists: `python3 brand/tools/photos.py "<name>"` → `brand/photos/<slug>/` (+ credits.json). Look at the image and its description to confirm it is that person. Show it with the engine's `photo` element (paper frame, name tag, small credit). No licensed photo → silhouette card labelled ILLUSTRATION. Never AI-generate a real person's face.
+- Use licensed stock/real-world images (same tool, or Canva-generated generic imagery labelled ILLUSTRATION) where a real object or place sells the beat. Photos live in paper frames; brand lock unchanged; no real logos.
+- Put photo credits in the footnote ("PHOTOS: …, PUBLIC DOMAIN / CC BY-SA, VIA WIKIMEDIA COMMONS") and list them in qa.md.
