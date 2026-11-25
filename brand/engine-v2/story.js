@@ -289,7 +289,21 @@
       }
       // ------------------------------------------------------------ captions (same look as the infographic engine)
       const capO = spec.captions === false ? null : { size: 66, y: B.L.cap.y, maxWords: B.L.cap.maxWords, maxChars: B.L.cap.maxChars, width: B.L.cap.width, lh: B.L.cap.lh, emph: {}, hide: [], ...(spec.captions || {}) }; let chunks = [];
-      if (capO) { const toks = (voice.words || []).map(w => ({ ...w })); let cur = []; const flush = () => { if (cur.length) chunks.push(cur); cur = []; };
+      // Captions show the SCRIPT text (voice.sentences[].text, the show-text), never Whisper's spelling: Whisper words are only the CLOCK. Per sentence the whisper words are aligned to the script tokens by LCS on normalised text; the gaps between
+      // exact anchors (names, numbers: "Kernioan" vs "Kurniawan", "2006" vs "two thousand six") are spread across the whisper span by character length. `captions: { source: 'whisper' }` turns this off.
+      const nrm = x => String(x).toLowerCase().replace(/[^a-z0-9]/g, '');
+      function scriptWords() {
+        const ws = voice.words || [], sn = voice.sentences || []; if (!sn.length || capO.source === 'whisper') return ws.map(w => ({ ...w })); const out = []; let wi = 0;
+        sn.forEach((sen, si) => { const nxt = sn[si + 1], mine = []; while (wi < ws.length && (!nxt || ws[wi].s < nxt.start - 0.06)) mine.push(ws[wi++]); const toks = String(sen.text).split(/\s+/).filter(Boolean); if (!toks.length) return; if (!mine.length) { const d = (sen.end - sen.start) / toks.length; toks.forEach((tk, i) => out.push({ w: tk, s: sen.start + i * d, e: sen.start + (i + 1) * d })); return; }
+          const A = mine.map(w => nrm(w.w)), Bn = toks.map(nrm), n = A.length, m = Bn.length, L = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+          for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = A[i] && A[i] === Bn[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+          const anchors = []; { let i = 0, j = 0; while (i < n && j < m) { if (A[i] && A[i] === Bn[j]) { anchors.push([i, j]); i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; } }
+          anchors.push([n, m]); let pi = 0, pj = 0;
+          for (const [ai, aj] of anchors) { const wsl = mine.slice(pi, ai), tks = toks.slice(pj, aj);
+            if (tks.length) { const t0 = wsl.length ? wsl[0].s : (pi > 0 ? mine[pi - 1].e : sen.start), t1 = wsl.length ? Math.max(wsl[wsl.length - 1].e, t0 + 0.12 * tks.length) : (ai < n ? Math.max(mine[ai].s, t0 + 0.1 * tks.length) : Math.max(sen.end, t0 + 0.1 * tks.length)), tot = tks.reduce((a, x) => a + nrm(x).length + 2, 0); let c = t0; for (const tk of tks) { const d = ((nrm(tk).length + 2) / tot) * (t1 - t0); out.push({ w: tk, s: c, e: c + d }); c += d; } }
+            if (ai < n) { out.push({ w: toks[aj], s: mine[ai].s, e: mine[ai].e }); } pi = ai + 1; pj = aj + 1; } });
+        return out; }
+      if (capO) { const toks = scriptWords(); let cur = []; const flush = () => { if (cur.length) chunks.push(cur); cur = []; };
         toks.forEach((w, i) => { const len = cur.reduce((a, x) => a + x.w.length + 1, 0); if (cur.length && (len + w.w.length > capO.maxChars || cur.length >= capO.maxWords)) flush(); cur.push(w); const nx = toks[i + 1]; if (/[.?!]$/.test(w.w) || (nx && nx.s - w.e > 0.35)) flush(); }); flush(); chunks = chunks.map((ws, i, all) => { const nx = all[i + 1], end = ws[ws.length - 1].e; return { s: ws[0].s, e: nx && nx[0].s - end < 0.5 ? nx[0].s : end + 0.3, ws }; }); }
       function captions(g, t) {
         if (!capO || capO.hide.some(([a, b]) => t >= T(a) && t < T(b))) return; const sc = scenes[sceneIdx(t)], sh = shotAt(sc, t); if (sh.nocaps || sh.kind === 'card') return; const ch = chunks.find(c => t >= c.s && t < c.e); if (!ch) return;
@@ -303,7 +317,7 @@
       window.render = function (t) {
         const sp = spec.motionBlur === false ? 0 : speed(t), n = sp > 260 ? 6 : sp > 150 ? 4 : sp > 70 ? 3 : sp > 40 ? 2 : 1;
         if (n === 1) { X.setTransform(1, 0, 0, 1, 0, 0); composite(X, t); } else { for (let k = 0; k < n; k++) { S1.setTransform(1, 0, 0, 1, 0, 0); composite(S1, t - (k / n) * (0.9 / fps)); AG.globalAlpha = 1 / (k + 1); AG.setTransform(1, 0, 0, 1, 0, 0); AG.drawImage(SCR, 0, 0); } AG.globalAlpha = 1; X.setTransform(1, 0, 0, 1, 0, 0); X.drawImage(ACC, 0, 0); }
-        X.save(); X.setTransform(1, 0, 0, 1, 0, 0); const vg = X.createRadialGradient(W / 2, H * 0.44, W * 0.5, W / 2, H * 0.5, H * 0.75); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, `rgba(0,0,0,${spec.vignette ?? 0.22})`); X.fillStyle = vg; X.fillRect(0, 0, W, H); X.restore();
+        X.save(); X.setTransform(1, 0, 0, 1, 0, 0); const vg = X.createRadialGradient(W / 2, H * 0.44, W * 0.5, W / 2, H * 0.5, H * 0.75); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, `rgba(${spec.theme === 'day' ? '61,42,115' : '0,0,0'},${spec.vignette ?? (spec.theme === 'day' ? 0.1 : 0.36)})`); X.fillStyle = vg; X.fillRect(0, 0, W, H); X.restore();
         captions(X, t); hud(X, t);
         if (spec.grain !== false && B.makeGrain) { if (!B.grainPattern) B.grainPattern = X.createPattern(B.makeGrain(256), 'repeat'); X.save(); X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = spec.grain ?? 0.18; X.globalCompositeOperation = 'multiply'; X.fillStyle = B.grainPattern; X.fillRect(0, 0, W, H); X.restore(); }
       };

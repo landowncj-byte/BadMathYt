@@ -12,6 +12,7 @@ Demo: `brand/engine-v2/demo-characters/` (15.3 s, 1080 x 1920). `scene.js` there
 | Rig | `cast.js` | token-people puppet: parts, 2-bone IK limbs, locked-stride gaits, gestures, face snap, mimed talk, hair / hats / accessories / outfits / builds |
 | Looks (data) | `looks.js` | HOST, CON, MARK, RICH, JUDGE, AGENT, YOU, PAL, EXPERT, TELLER, KID, CROWD |
 | Props | `props.js` | 2D art for every prop (held props and paper standees) |
+| Paper materials | `paper.js` | procedural, deterministic canvas textures (card grain + fibres, creased walls, ledger / receipt floors, banknote guilloche trim, round seals), baked once and cached |
 | 3D stage | `stage3d.js` + `sets3d.js` + `vendor/three.cjs` | three.js scene per story scene: paper sets, lamp + hard shadows, characters as camera-facing paper cards textured from the rig, perspective camera |
 | Sequence | `story.js` | compiler for the scene format, shot / camera system, devices, transitions, captions, `board` |
 | 2D fallback | `sets.js` | the earlier 4-layer parallax sets, used when three.js is not loaded or `stage: '2d'` |
@@ -130,7 +131,24 @@ A move is a path with a start and end time. Foot plants sit on a lattice **in wo
 
 ## 7. Sets (3D paper) and props
 
-`sets3d.js`: `void desk auction kitchen court street map`, with `night` and `day` themes (`BM2.Sets3D.themes`: bg, A backdrop, B wall paper, C accent, D furniture, E floor, F darkest, lamp, `amb`/`key`/`elev`/`soft` light values). Each set is a function that adds slabs, cylinders and textured planes to a group and returns `{update(t)}` for ambient motion; the stage adds one hard-shadow lamp (`lamp: [dx, dy, dz]` per scene; low elevation = long noir shadows, high + soft = What If) and a fill light.
+### 7.0 Paper look (paper.js, sets3d.js)
+Everything in a set is card. `paper.js` bakes the textures once per page load (seeded, no external images) and the sets reuse them, so render cost is the same as flat colour. Load `paper.js` before `sets3d.js` in `scene.html` (the starter and both demos do; without it sets fall back to flat colour).
+* **Card faces**: every `slab()` face is a per-size panel texture: fibre grain, speckle, soft mottling, a lighter 2-3 px cut edge on the top / left rim and a darker hairline bottom / right.
+* **Thickness edge**: thin slabs (min dimension <= 42 % of the middle one, or `card: true`) are folded card: the faces get the panel texture, the edge faces get a flat lighter strip, so you see the card's thickness from any off-axis camera. Chunky slabs (`card: false`) are blocks with a lighter top.
+* **Walls**: `c.wall(w, h, d, x, y, z, colour, {folds, seed, dado: {h, col, ink}, paint(g, w, h, px)})`: grain, vertical valley-fold creases (dark hairline + light twin + soft shadow), faint kinks, optional banknote-guilloche dado.
+* **Floors**: `c.floor(colour, w, d, z, {kind: 'ledger' | 'receipt' | 'card' | 'plain'})`. `ledger` (default) = accounts-ledger paper: rules and red margin lines that run to the vanishing point, so depth reads at once; `receipt` = cream thermal paper with faint printed item lines (pavements, desks).
+* **Banknote trim**: `c.band(w, h, x, y, z, colour, ink)` (interlaced sine guilloche strip), `Paper.band / Paper.rosette` (canvas painters), used for dados, bench fronts, sign plates and the map legend. `c.seal(r, x, y, z, paper, ink, {star})` = round crest with a rosette and a star (no real emblem).
+* **Dressing helpers** (all in the ctx passed to `build`): `sign(text, w, h, x, y, z)` (short world label, unlit, text auto-fits), `frame(w, h, x, y, z, paint)` (framed picture), `curtain(w, h, x, y, z, colour, {folds, depth})` (pleated drape), `cupboard(x, y, z, w, h, colour)`, `hangLamp(x, yShade, z, {r, top})` (cord + cone shade; the bulb is a flat disc, never a glow), `chairs(x0, x1, z, n, colour)` (chair backs), plus `slab cyl disc token text gobo`. Slab positions are centres in x and z, bottom in y.
+* **Depth layering** (every set): FAR (z < -450: wall, skyline, seal, sign), MID (z -450..-120: furniture, shop fronts, hanging lamps, bench), STAGE (z -120..120: where the cast stands), NEAR (z > 250: dark chair backs, door frame, rail balusters, lamp post, file stacks). Keep NEAR pieces at |x| > 400 so they only show in wides and trucks; at most 3 things to read per frame.
+* **Signs**: `K.sign` (set `palette: {sign: 'TEXT'}`) is the only text a set paints; keep it a 1-3 word world label (`AUCTION \u00B7 NEW YORK`, `BANK`, `WINE`, `PAWN`). Never a sign that repeats the narration.
+
+Set sampler: `brand/engine-v2/demo-sets/` renders one wide shot per set in night and day: `node brand/engine-v2/bm2.cjs board brand/engine-v2/demo-sets`.
+
+### 7.1 Sets and props
+
+`sets3d.js`: `void desk auction kitchen court street map` (dressed: desk = case board, filing cabinets, pendant, blotter; auction = panelled wall, sign plate, pilasters, drapes, pendants, dais, crested podium, lot pedestal, rows of chair backs; kitchen = window with curtains, framed picture, cupboards, counter, hanging lamp, island, chair back, door frame; court = crest, bench with banknote front and seal, jury box, witness stand, rail with balusters; street = skyline, cloud strips, three shop fronts with awnings and signs, lamp posts, bollards; map = folded map with creases, compass rose, legend and pop-up trees / houses / pins), with `night` and `day` themes (`BM2.Sets3D.themes`: bg, A backdrop, B wall paper, C accent, D furniture, E floor, F darkest, lamp, `amb`/`key`/`elev`/`soft` light values, `pool` (card falloff floor, 0 = no lamp pool), `vig` vignette). Each set is a function that adds slabs, cylinders and textured planes to a group and returns `{update(t)}` for ambient motion; the stage adds one hard-shadow lamp (`lamp: [dx, dy, dz]` per scene; low elevation = long noir shadows, high + soft = What If) and a fill light.
+
+**Lighting mood.** Night Edition: the lamp is a SpotLight (one shadow map) aimed at the set's pool point (`pool: [x, y, z]` on the set definition or per scene `pool:`; `pool: false` = flat directional light, used by the top-down map), so you get a warm pool, soft falloff into deep shadow, and the character cards fall off with the same cone (`poolMin` = `K.pool`); `K.poolAngle` widens it (default 0.78 rad). Day Edition: a soft directional key plus a bright hemisphere fill, no pool. Both: vignette (`spec.vignette`, default night 0.36 black, day 0.10 Grape) and the light multiply paper grain over the whole frame (`grain`, default 0.18). No glow, no bloom, no additive blending anywhere: lamp bulbs are flat cream discs.
 
 ```js
 BM2.Sets3D.define('bank', { marks: { A: -300, B: 300 }, build(c) {      // c: { K (theme colours), slab, cyl, disc, floor, text, token, theme }
@@ -143,6 +161,10 @@ BM2.Sets3D.define('bank', { marks: { A: -300, B: 300 }, build(c) {      // c: { 
 Camera marks (`A`, `B`, `door`...) are named x positions used by `cast.at` and `mark`. Props: every `BM2.Props.define(kind, {w, h, grip, draw})` is automatically a **paper standee** in the 3D set (the 2D art on a card with a shadow) and a held prop. Hero props can have a real 3D model (done: `bottle` lathe with label and cork, `jug`, `barrel`, `table`, `crate`, `podium`, `bars` (cell bars), `coinstack {n, cols}` (gold coin tower), `yearrack {cols, rows, hl}` (38-slot year rack), `torch {sweep, spread, tilt}` (flat paper beam wedge)): `BM2.Sets3D.defineProp('barrel', (c, o) => THREE.Group)` (table, barrel, crate, podium are done). Set props in a scene: `props: [{id, kind, x, lane, scale, yaw, color, text, in, out, anim: 'bob'|'sway'}]`.
 
 2D fallback: with `stage: '2d'` (or no three.js) the same story renders on `sets.js` parallax layers (cellar, office, street, studio).
+
+**Character cards (cut-outs).** The card shader adds a thin white paper border (alpha dilation, 5 card units, Paper `#F5F3EE`) and a tiny offset drop shadow (3 units down-right, 34 % ink) around the printed figure, so characters read as cut-outs standing in the set. Faces are untouched. Knobs before `BM2.story`: `BM2.Stage3D.border = false` (off), `BM2.Stage3D.borderW = 5`. The lamp-cast floor shadows are unchanged.
+
+**Captions use the script, not Whisper.** `voice.js` carries `sentences[].text` (the show-text from `voice/sentences.json`); per sentence the Whisper words are aligned to the script tokens (LCS on normalised text, gaps between exact anchors spread by character length over the Whisper span), so names and numbers are spelled as written ("Rudy Kurniawan", "two thousand six") while the timing is still word-by-word from `words.json`. `@word` refs in scenes still resolve against the Whisper words (Whisper's "kernioan" stays the ref). `captions: {source: 'whisper'}` restores the old behaviour. Rebuild `voice.js` with `bm2.cjs voice` after a re-voice so `sentences` is present.
 
 ## 8. Shots and the camera
 
@@ -181,7 +203,7 @@ What was done for speed: character textures are cropped to what is on screen (sn
 * DOF is a single-layer gather blur (22 taps, depth-weighted): near-field bleeding over sharp subjects is approximate; the blur radius is capped by `blur` (px). Split-screen panels do not get DOF.
 * Card shadows come from the set's casters only (one lamp, one mask); characters do not shadow each other's faces (floor shadows only).
 * Floor shadows are one-light, one-direction (per shot you may re-aim the lamp). The shadow proxy is a low-res (150 x 160) silhouette.
-* No tote-board flip tiles or the other P1 number props; kitchen dressing beyond counter / sink / fridge / island / window and the map pop-up sets are not built.
+* No tote-board flip tiles or the other P1 number props. Set dressing is big simple shapes only; the spot-lamp pool follows the scene's `pool` point, not the camera, so a wide that leaves the pool goes dark (aim `pool:` per scene).
 * The bible's per-part 2-frame hair lag and the +/-0.6 px outline wobble are not implemented; the paper-edge highlight on set shapes is replaced by flat colour and the lamp's hard shadows.
 * Landscape 16:9 for the story path is untested (sizes use `W`/`H`).
 
@@ -197,5 +219,5 @@ What was done for speed: character textures are cropped to what is on screen (sn
 | spoon, evidence tag, stick / shepherd's crook | built as paper standees: `spoon`, `tag {text}`, `crook` |
 | hero bottle (orbit) | built: `bottle` (3D lathe, label band, cork); held bottles stay 2D |
 | poses stir / tap / push-stack / unfold | built (gestures: `stir`, `tap`, `push-stack`, `unfold`) |
-| kitchen dressing, map pop-ups | NOT built (map set is a flat paper map with a dotted route only) |
+| kitchen dressing, map pop-ups | built (see 7.0; map = folded map with pop-up trees / houses / pins) |
 | tote-board flip tiles, calendar pages, cheque / receipt / verdict stamp props | NOT built (P1 #9) |
