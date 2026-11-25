@@ -211,6 +211,6 @@ Write the loop explicitly in each DIRECTION/script note: `STAKES: … / QUESTION
 
 ## 20. Visual system v2 — flowing, satisfying, no neon (user rule 2026-11-25)
 The user likes the animation but wants it better: the storyteller must stop standing still and pointing; graphics he references **come toward the camera**, the camera **pushes in on the important numbers and moving parts**, he **steps in front of the graphic to talk, then lets it come back in front of him** — one continuous, flowing, interactive experience. **Move away from the flat glowing-neon look.** Every graphic, graph and transition must be **extremely satisfying to watch** (springs, overshoot, precise motion, completion, depth, rich non-neon palette).
-- Owner of the change: **Fable** (research → `research/visual-v2/research.md`, spec → `brand/VISUAL-V2.md`, engine → `brand/engine-v2/`).
+- **One-time build by Fable** (research → `research/visual-v2/research.md`, spec → `brand/VISUAL-V2.md`, engine → `brand/engine-v2/`), then **handed back**: the normal pipeline continues unchanged — Fable researches topics, Opus creates/directs using the v2 engine and spec, Sonnet/Haiku build. Fable is not the daily animator.
 - Applies to **new videos only**. Already-scheduled or already-built videos stay as they are.
 - Once `brand/engine-v2/READY` exists, every new build uses engine v2 and VISUAL-V2.md; Opus's direction notes must specify camera moves on spoken numbers and storyteller choreography beats.

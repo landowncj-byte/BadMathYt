@@ -104,3 +104,4 @@ decisions:
 - 2026-11-25: AI-generated labels turned OFF on all platforms (user: "we are not mimicking people"). Descriptions drop "AI-narrated". Exception: any video that imitates a real person's voice/likeness gets the label (we don't make those).
 - 2026-11-25: PostFast YouTube cap = 10 posts per UTC day; scheduling rule added to PRODUCTION.md. Wednesday's 12 posts re-created without AI labels (parlay YT description typo −10 → −110 fixed).
 - 2026-11-25: Visual system v2 requested (STYLE §20): flowing camera push-ins on numbers, moving storyteller (in front / behind graphics), satisfying motion, move away from neon. Fable owns research + spec + engine-v2; new videos only.
+- 2026-11-25: Fable builds engine-v2 once and hands it to Opus; daily pipeline unchanged (Fable research → Opus direct → Sonnet/Haiku build with engine-v2).
