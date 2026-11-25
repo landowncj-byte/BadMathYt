@@ -21,12 +21,6 @@
   },
   {
    "gain": -10,
-   "dur": 0.7,
-   "at": 0.5,
-   "name": "whoosh_2"
-  },
-  {
-   "gain": -10,
    "dur": 0.5,
    "at": 0.8,
    "name": "paper_slam_2"
@@ -90,6 +84,12 @@
    "dur": 0.9,
    "at": 8.54,
    "name": "heartbeat_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 10.92,
+   "name": "whoosh_2"
   },
   {
    "gain": -13,
@@ -188,18 +188,6 @@
    "name": "pop_2"
   },
   {
-   "gain": -10,
-   "dur": 0.7,
-   "at": 27.55,
-   "name": "whoosh_2"
-  },
-  {
-   "gain": -11,
-   "dur": 0.7,
-   "at": 27.85,
-   "name": "rewind_2"
-  },
-  {
    "gain": -13,
    "dur": 0.45,
    "at": 28.38,
@@ -234,6 +222,18 @@
    "dur": 0.5,
    "at": 30.9,
    "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.7,
+   "at": 32.11,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.7,
+   "at": 32.41,
+   "name": "rewind_2"
   }
  ],
  "bed": {

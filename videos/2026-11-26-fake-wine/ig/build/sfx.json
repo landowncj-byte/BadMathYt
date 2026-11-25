@@ -1,5 +1,5 @@
 {
- "duration": 22.58,
+ "duration": 23.71,
  "sfx": [
   {
    "gain": -3,
@@ -34,145 +34,145 @@
   {
    "gain": -8,
    "dur": 0.9,
-   "at": 3.54,
+   "at": 3.86,
    "name": "heartbeat_1"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 5.54,
+   "at": 5.74,
    "name": "whoosh_2"
   },
   {
    "gain": -10,
    "dur": 0.5,
-   "at": 5.84,
+   "at": 7.18,
    "name": "paper_slam_2"
-  },
-  {
-   "gain": -10,
-   "dur": 0.4,
-   "at": 7.38,
-   "name": "pop_1"
   },
   {
    "gain": -8,
    "dur": 0.3,
-   "at": 7.4,
+   "at": 7.52,
    "name": "click_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.4,
+   "at": 7.6,
+   "name": "pop_1"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 7.8,
+   "at": 7.92,
    "name": "swipe_2"
   },
   {
    "gain": -9,
    "dur": 0.5,
-   "at": 7.8,
+   "at": 7.92,
    "name": "paper_slam_2"
   },
   {
    "gain": -12,
    "dur": 1.2,
-   "at": 8,
+   "at": 8.12,
    "name": "typewriter_1"
   },
   {
    "gain": -9,
    "dur": 1,
-   "at": 9.64,
+   "at": 9.7,
    "name": "swoosh_2"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 12.06,
+   "at": 11.74,
    "name": "whoosh_2"
   },
   {
    "gain": -10,
    "dur": 0.6,
-   "at": 12.36,
+   "at": 12.04,
    "name": "whoosh_2"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 13.62,
+   "at": 13.58,
    "name": "swipe_2"
   },
   {
    "gain": -9,
    "dur": 0.3,
-   "at": 13.82,
+   "at": 13.78,
    "name": "pop_2"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 16.74,
+   "at": 16.56,
    "name": "swipe_2"
   },
   {
    "gain": -4,
    "dur": 0.5,
-   "at": 16.94,
+   "at": 16.76,
    "name": "rubber_stamp_2"
   },
   {
    "gain": -3,
    "dur": 1.4,
-   "at": 16.94,
+   "at": 16.76,
    "name": "deep_boom_1"
   },
   {
    "gain": -13,
    "dur": 0.45,
-   "at": 17.29,
+   "at": 17.11,
    "name": "swipe_2"
   },
   {
    "gain": -9,
    "dur": 0.5,
-   "at": 17.44,
+   "at": 17.26,
    "name": "paper_slam_2"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 18.98,
+   "at": 19.56,
    "name": "whoosh_2"
   },
   {
    "gain": -4,
    "dur": 0.8,
-   "at": 19.18,
+   "at": 19.76,
    "name": "gavel_1"
   },
   {
    "gain": -8,
    "dur": 1,
-   "at": 19.28,
+   "at": 19.86,
    "name": "cell_door_1"
   },
   {
    "gain": -9,
    "dur": 0.5,
-   "at": 20.5,
+   "at": 21.6,
    "name": "pop_1"
   },
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 21.7,
+   "at": 22.65,
    "name": "whoosh_2"
   },
   {
    "gain": -11,
    "dur": 0.7,
-   "at": 22,
+   "at": 22.95,
    "name": "rewind_2"
   }
  ],
