@@ -11,9 +11,13 @@ Three briefcases, one has a million. Double-tap once you've picked.
 The host knows where the money is and always opens an empty one. Fifty-fifty? Bullshit.
 
 4
-00:00:13,962 --> 00:00:16,423
+00:00:13,912 --> 00:00:16,373
 Send this to someone who'd swear it's fifty-fifty.
 
 5
-00:00:16,773 --> 00:00:22,808
-Stay wins one in three. Switch wins two. Stay or switch? Don't join the PhDs.
+00:00:17,223 --> 00:00:20,482
+Staying wins one in three, but switching wins two.
+
+6
+00:00:20,782 --> 00:00:23,602
+So, stay or switch? Don't join the PhDs.

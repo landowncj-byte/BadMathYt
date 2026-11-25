@@ -3,49 +3,49 @@
 Nearly a thousand PhDs got this puzzle wrong. Your turn.
 
 2
-00:00:04,517 --> 00:00:07,418
-Three briefcases, one has a million bucks. You pick one.
+00:00:04,617 --> 00:00:07,765
+One of three briefcases has a million bucks. So you pick one.
 
 3
-00:00:07,668 --> 00:00:10,867
+00:00:08,015 --> 00:00:11,214
 The host knows where the money is, and always opens an empty one.
 
 4
-00:00:11,117 --> 00:00:13,337
-Then he offers a swap. Fifty-fifty, right?
+00:00:11,464 --> 00:00:13,921
+Then he offers a swap, and it's fifty-fifty, right?
 
 5
-00:00:13,587 --> 00:00:15,371
+00:00:14,171 --> 00:00:15,955
 Hit like if you said fifty-fifty.
 
 6
-00:00:15,671 --> 00:00:19,675
-Nope. Your first pick was a one in three guess. Opening a case didn't change that.
+00:00:16,255 --> 00:00:20,246
+Nope. Your first pick was a one in three guess, and opening a case changed nothing.
 
 7
-00:00:19,925 --> 00:00:21,774
+00:00:20,496 --> 00:00:22,345
 So switching wins two out of three.
 
 8
-00:00:22,674 --> 00:00:25,536
+00:00:23,645 --> 00:00:26,507
 Send this to the friend who's— who's already typing 'no way'.
 
 9
-00:00:26,436 --> 00:00:32,763
-A columnist printed that in nineteen ninety. By her count, nearly a thousand PhDs wrote in to say she's wrong.
+00:00:26,807 --> 00:00:32,997
+A columnist printed that in nineteen ninety, and by her count, nearly a thousand PhDs wrote in saying she's wrong.
 
 10
-00:00:33,063 --> 00:00:35,542
-Don't buy it? Follow, this page ends the argument.
+00:00:33,597 --> 00:00:36,323
+Still don't buy it? Follow, this page ends the argument.
 
 11
-00:00:36,256 --> 00:00:40,102
-Make it a hundred cases. You pick one, and he opens ninety-eight empties.
+00:00:37,037 --> 00:00:40,808
+Make it a hundred cases: you pick one, and he opens ninety-eight empties.
 
 12
-00:00:41,002 --> 00:00:43,919
+00:00:41,908 --> 00:00:44,825
 Now switching wins ninety-nine percent. Same game.
 
 13
-00:00:44,819 --> 00:00:46,735
+00:00:46,125 --> 00:00:48,041
 So… stay or switch? Your turn.
