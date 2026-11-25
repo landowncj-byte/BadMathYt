@@ -523,7 +523,7 @@ BM2.scene({
   captions: {
     gap: 16,
     emph: { '$35': 'good', '$35.': 'good', 'million': 'good', '95': 'bad', '$12': 'accent', '1945.': 'bad', '1982.': 'bad', '37': 'bad', FBI: 'accent', convicted: 'bad', '10': 'bad', '$28': 'bad', fakes: 'bad', fraud: 'bad' },
-    fix: [['Wade who', 'Wait, who'], ['Ruddy Kerniawin', 'Rudy Kurniawan']],
+    fix: [['Wade who', 'Wait, who'], ['Ruddy Kerniawin', 'Rudy Kurniawan'], ['cost 12', 'cost $12'], ["That's 1,000", "That's $1,000"], ['who who', 'who— who']],
   },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [

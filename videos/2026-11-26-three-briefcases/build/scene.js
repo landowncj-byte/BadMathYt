@@ -29,6 +29,7 @@
     clay(g, -24, y0 + h * 0.34 - 12, 48, 24, 8, shade(GOLD, -0.1), { shadowK: 0.3 });
     g.restore(); g.restore();
   }
+  window.__bcase = bcase;
   function pillTag(g, th, s, x, y, col, fs, k, tc) { // clay pill with a label, landed with a squash. k = 0..1 spring progress
     const f = F.hero(fs), w = mw(s, f) + 56, h = fs + 34; g.save(); g.translate(x, y); g.scale(0.55 + 0.45 * k, 0.55 + 0.45 * k); g.globalAlpha *= clamp(k * 3);
     clay(g, -w / 2, -h / 2, w, h, h / 2.6, col, { shadowK: 0.7 }); txt(g, s, 0, 3, f, tc || th.ink); g.restore(); return w;
@@ -281,108 +282,283 @@
       B.shadowed(g, sh, '#F5F3EE', 0.5); g.fillStyle = '#F5F3EE'; sh(); g.fill(); g.fillStyle = '#D8D3C7'; g.beginPath(); g.moveTo(70, 0); g.lineTo(-34, 0); g.lineTo(-60, 44); g.closePath(); g.fill(); g.strokeStyle = 'rgba(11,15,20,.35)'; g.lineWidth = 2; g.beginPath(); g.moveTo(70, 0); g.lineTo(-34, 0); g.stroke(); g.restore(); },
   });
 })();
+// ===== three-briefcases v3 (63-66 s re-edit) — extra recipes: live (real seeded 1,000-game tally HUD), blabel (beat label),
+// board3 (the three possible starts, numbered boxes that open one at a time), calendar ($100 a day), column (1990 magazine column).
+// Registered after cases.js; every draw is a pure function of env.t (the simulation is precomputed once, deterministic).
+(function () {
+  const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper, clay, marker, burst, roll, hash, hit, shade, mix } = B;
+  const MC = document.createElement('canvas').getContext('2d'); const mw = (s, f) => { MC.font = f; return MC.measureText(s).width; };
+  const NEVER = 99000;
+
+  // ---------- the real simulation: 1,000 seeded games of the actual rules (host knows, always opens an empty case) ----------
+  const SIM1K = (() => {
+    const N = 1000; let best = null;
+    for (let seed = 1; seed < 300; seed++) {
+      let sw = 0; const cum = [0];
+      for (let r = 0; r < N; r++) {
+        const money = Math.floor(hash(r * 7.31 + seed * 131.7) * 3), pick = Math.floor(hash(r * 3.77 + seed * 71.3 + 0.5) * 3);
+        // host opens an empty case that is neither the pick nor the money, then offers the swap: switching wins iff the first pick was empty
+        sw += pick === money ? 0 : 1; cum.push(sw);
+      }
+      const early = cum[60] / 60, pen = Math.abs(early - 0.667) > 0.15 ? 50 : 0, score = Math.abs(sw - 667) + pen;
+      if (!best || score < best.score) best = { seed, sw, cum, score };
+      if (best.score <= 1) break;
+    }
+    return best;
+  })();
+  B.SIM1K = SIM1K;
+
+  // ---------- live: always-on tally card (screen layer). props: end (seconds when game 1,000 is played) ----------
+  B.register('live', {
+    defaults: { end: 60, n0: 14, title: 'LIVE SIM · REAL RULES' }, ownEnter: true, size: () => [940, 104],
+    draw(g, p, env) {
+      const { t, theme: th } = env, N = 1000, u = clamp(t / p.end), n = Math.min(N, Math.floor(p.n0 + (N - p.n0) * (u * (1.15 - 0.15 * u)))), sw = SIM1K.cum[n], st = n - sw;
+      const W = 940, H = 100; g.save(); g.translate(-W / 2, -H / 2);
+      B.shadowed(g, () => rr(g, 0, 0, W, H, 22), '#0B0F14', 0.5); rr(g, 0, 0, W, H, 22); g.fillStyle = 'rgba(11,15,20,.93)'; g.fill(); g.strokeStyle = rgba(th.paper, 0.22); g.lineWidth = 2; g.stroke();
+      txt(g, p.title, 26, 24, F.monoX(17), rgba(th.paper, 0.7), 'left');
+      txt(g, 'GAME', 26, 62, F.monoX(18), rgba(th.paper, 0.6), 'left'); txt(g, String(n).padStart(4, '0'), 108, 66, F.monoX(40), th.paper, 'left');
+      txt(g, '/ 1,000', 232, 70, F.monoX(18), rgba(th.paper, 0.6), 'left');
+      const pc = x => (n ? (100 * x / n).toFixed(1) + '%' : '0%');
+      txt(g, 'STAY', 380, 28, F.hero(26), th.gold, 'left'); txt(g, String(st), 380, 66, F.monoX(34), th.paper, 'left'); txt(g, pc(st), 478, 68, F.monoX(22), th.gold, 'left');
+      txt(g, 'SWITCH', 650, 28, F.hero(26), th.good, 'left'); txt(g, String(sw), 650, 66, F.monoX(34), th.paper, 'left'); txt(g, pc(sw), 748, 68, F.monoX(22), th.good, 'left');
+      const bx = 26, bw = W - 52, by = H - 16; g.fillStyle = rgba(th.paper, 0.12); rr(g, bx, by, bw, 8, 4); g.fill();
+      const f = n ? st / n : 0.5; g.fillStyle = th.gold; rr(g, bx, by, Math.max(8, bw * f), 8, 4); g.fill(); g.fillStyle = th.good; rr(g, bx + bw * f + 2, by, Math.max(8, bw * (1 - f) - 2), 8, 4); g.fill();
+      g.fillStyle = th.paper; g.fillRect(bx + bw * 0.3333 - 1, by - 4, 3, 16);
+      g.restore();
+    },
+  });
+
+  // ---------- blabel: the pinned beat label. props: labels [[at, 'THE BET'], ...] ----------
+  B.register('blabel', {
+    defaults: { labels: [], size: 25 }, ownEnter: true, size: () => [10, 10],
+    draw(g, p, env) {
+      const { t, theme: th } = env; let idx = -1; p.labels.forEach((l, i) => { if (t >= l[0] - 0.01) idx = i; }); if (idx < 0) return;
+      const at = p.labels[idx][0], s = p.labels[idx][1], k = spring(t - at, 'bouncy'), f = F.monoX(p.size), w = mw(s, f) + 64, h = p.size * 2.1;
+      g.save(); g.translate(-w / 2, 0); g.scale(0.7 + 0.3 * clamp(k, 0, 1.1), 0.7 + 0.3 * clamp(k, 0, 1.1)); g.globalAlpha *= clamp((t - at) / 0.08 + (at < 0.1 ? 1 : 0));
+      clay(g, -w / 2, -h / 2, w, h, h / 2, '#0B0F14', { shadowK: 0.5 }); g.strokeStyle = th.accent; g.lineWidth = 3; rr(g, -w / 2, -h / 2, w, h, h / 2); g.stroke();
+      g.fillStyle = th.accent; g.beginPath(); g.arc(-w / 2 + 28, 0, 8, 0, 7); g.fill(); txt(g, s, 14, 2, f, th.paper);
+      if (t - at < 0.35) burst(g, 0, 0, 120, th.accent, t - at - 0.02, 8, 0.25); g.restore();
+    },
+  });
+
+  // ---------- board3: the three possible starts (numbered boxes that open one at a time) ----------
+  // rows: [[at, pickIdx, openIdx, verdictAt, hostOpenOffset], ...]  (money in case p.money, default index 1 = case 2)
+  const mcase = (g, th, x, y, open, col) => { g.save(); g.translate(x, y); g.scale(0.56, 0.56); window.__bcase(g, th, { open, col }); g.restore(); };
+  B.register('board3', {
+    defaults: { rows: [], sumAt: NEVER, title: 'EVERY POSSIBLE START', sub: 'THE MONEY IS IN CASE 2', money: 1, boxAt: -1 }, size: () => [1000, 1160],
+    anchors: () => ({ all: [0, 0, 1000, 1160], head: [0, -535, 980, 90], row0: [0, -345, 980, 262], row1: [0, -60, 980, 262], row2: [0, 225, 980, 262], v0: [400, -345, 160, 200], v1: [400, -60, 160, 200], v2: [400, 225, 160, 200], sum: [0, 470, 980, 180], rows: [0, -60, 980, 840] }),
+    draw(g, p, env) {
+      const { t, theme: th } = env, lt = t - p.boxAt, CY = [-345, -60, 225], X = [-230, -60, 110]; const kk = spring(lt, 'soft');
+      g.save(); g.translate(0, (1 - clamp(kk, 0, 1.05)) * -500); g.globalAlpha *= clamp(lt / 0.1);
+      paper(g, -490, -580, 980, 1160, 28, {}); g.save(); rr(g, -490, -580, 980, 1160, 28); g.clip(); g.fillStyle = th.navy; g.fillRect(-490, -580, 980, 90); g.restore();
+      txt(g, p.title, -460, -548, F.hero(52), th.paper, 'left'); txt(g, p.sub, -460, -512, F.monoX(20), th.accent, 'left');
+      txt(g, 'OUR MATH', 460, -535, F.monoX(20), rgba(th.paper, 0.7), 'right');
+      p.rows.forEach((R, i) => {
+        const [at, pick, opn, vAt] = R, oAt = R[4] != null ? R[4] : 0.9, T = t - at, y = CY[i], k = clamp(spring(T, { f: 2.3, z: 0.55 }), 0, 1.08), isOpen = T > 0;
+        const target = [0, 1, 2].find(c => c !== pick && c !== opn), win = target === p.money;
+        g.save(); g.translate(0, y);
+        const act = isOpen && !(p.rows[i + 1] && t > p.rows[i + 1][0] + 0.2) ? 1 : 0;
+        g.fillStyle = isOpen ? th.paper : th.paperShade; rr(g, -462, -131, 924, 262, 18); g.fill();
+        g.strokeStyle = act ? th.accent : th.rule; g.lineWidth = act ? 6 : 3; rr(g, -462, -131, 924, 262, 18); g.stroke();
+        const dk = isOpen ? clamp(spring(T, 'bouncy'), 0, 1.15) : 1; g.save(); g.translate(-396, 0); g.scale(dk, dk); clay(g, -50, -50, 100, 100, 50, isOpen ? th.accent : th.rule, { shadowK: 0.5 }); txt(g, String(i + 1), 0, 5, F.hero(80), th.ink); g.restore();
+        if (!isOpen) txt(g, 'START ' + (i + 1) + '  ·  ?', 40, 0, F.hero(60), th.inkSoft);
+        else {
+          g.save(); g.globalAlpha *= clamp(T / 0.15);
+          for (let c = 0; c < 3; c++) {
+            const ok = c === opn ? ease.out(lin(T, oAt, oAt + 0.38)) : 0;
+            g.save(); g.translate(X[c], -4); g.scale(0.8 + 0.2 * k, 0.8 + 0.2 * k); mcase(g, th, 0, 0, ok, '#7f8fa6');
+            g.fillStyle = th.paper; g.beginPath(); g.arc(-52, -26, 14, 0, 7); g.fill(); txt(g, String(c + 1), -52, -25, F.hero(21), th.ink); g.restore();
+          }
+          const mk = spring(T - 0.2, 'bouncy'); if (T > 0.2) { g.save(); g.translate(X[p.money], -88); g.scale(clamp(mk, 0, 1.1), clamp(mk, 0, 1.1)); clay(g, -50, -19, 100, 38, 12, th.good, { shadowK: 0.4 }); txt(g, '$1M', 0, 2, F.hero(26), th.ink); g.restore(); }
+          const pt = T - 0.5; if (pt > 0) { const pk = spring(pt, { f: 2.4, z: 0.42 }); g.save(); g.translate(X[pick], 70); g.rotate(-0.05 + 0.2 * (1 - clamp(pk, 0, 1))); g.scale(clamp(pk, 0.3, 1.1), clamp(pk, 0.3, 1.1)); clay(g, -72, -20, 144, 40, 12, th.accent, { shadowK: 0.5 }); txt(g, 'YOUR PICK', 0, 2, F.hero(24), th.ink); g.restore(); burst(g, X[pick], 70, 120, th.accent, pt - 0.03, 8, 0.3); }
+          if (T > oAt + 0.3 && t < vAt + 0.05) { g.save(); g.globalAlpha *= clamp((T - oAt - 0.3) / 0.2); txt(g, 'HOST OPENS #' + (opn + 1), X[opn] + 24, 70, F.monoX(17), th.inkSoft); g.restore(); }
+          const vt = t - vAt; if (vt > 0) {
+            const ak = ease.out(lin(vt, 0, 0.4)), col = win ? th.goodInk : th.badInk; g.save(); g.strokeStyle = col; g.lineWidth = 9; g.lineCap = 'round'; g.lineJoin = 'round';
+            const x0 = X[pick], x1 = X[target], up = -118 - Math.abs(x1 - x0) * 0.1; g.beginPath(); const N = 18; for (let s = 0; s <= N * ak; s++) { const u = s / N, xx = lerp(x0, x1, u), yy = -62 + (up + 62) * 4 * u * (1 - u); s ? g.lineTo(xx, yy) : g.moveTo(xx, yy); } g.stroke();
+            if (ak > 0.95) { const dirx = Math.sign(x1 - x0); g.beginPath(); g.moveTo(x1, -62); g.lineTo(x1 - dirx * 22 - 4, -62 - 24); g.moveTo(x1, -62); g.lineTo(x1 - dirx * 22 + 12, -62 + 20); g.stroke(); } g.restore();
+            if (vt > 0.2) { const vk = spring(vt - 0.2, { f: 2.5, z: 0.4 }), sc = clamp(vk, 0, 1.15); g.save(); g.translate(398, -22); g.scale(sc, sc); g.fillStyle = win ? th.good : th.bad; g.beginPath(); g.arc(0, 0, 52, 0, 7); g.fill(); g.strokeStyle = th.paper; g.lineWidth = 13; g.lineCap = 'round'; g.lineJoin = 'round'; g.beginPath();
+              if (win) { g.moveTo(-24, 2); g.lineTo(-6, 22); g.lineTo(28, -20); } else { g.moveTo(-22, -22); g.lineTo(22, 22); g.moveTo(22, -22); g.lineTo(-22, 22); } g.stroke(); g.restore();
+              g.save(); g.globalAlpha *= clamp((vt - 0.3) / 0.15); txt(g, 'SWITCH', 398, 54, F.monoX(17), th.inkSoft); txt(g, win ? 'WINS' : 'LOSES', 398, 88, F.hero(40), win ? th.goodInk : th.badInk); g.restore(); burst(g, 398, -22, 200, win ? th.good : th.bad, vt - 0.25, 12, 0.4); }
+          }
+          g.restore();
+        }
+        g.restore();
+      });
+      const sm = t - p.sumAt; if (sm > 0) { const k = spring(sm, 'bouncy'); g.save(); g.translate(0, 470); g.scale(clamp(k, 0.3, 1.05), clamp(k, 0.3, 1.05)); g.globalAlpha *= clamp(sm / 0.1);
+        clay(g, -462, -78, 924, 156, 26, th.good, { shadowK: 0.7 });
+        [0, 1, 2].forEach(i => { const x = -380 + i * 88, kk2 = spring(sm - 0.1 - i * 0.12, 'bouncy'); g.save(); g.translate(x, 0); g.scale(clamp(kk2, 0, 1.1), clamp(kk2, 0, 1.1)); g.fillStyle = i ? th.paper : th.bad; g.beginPath(); g.arc(0, 0, 34, 0, 7); g.fill(); g.strokeStyle = i ? th.good : th.paper; g.lineWidth = 9; g.lineCap = 'round'; g.lineJoin = 'round'; g.beginPath(); if (i) { g.moveTo(-15, 1); g.lineTo(-3, 14); g.lineTo(18, -12); } else { g.moveTo(-13, -13); g.lineTo(13, 13); g.moveTo(13, -13); g.lineTo(-13, 13); } g.stroke(); g.restore(); });
+        txt(g, 'SWITCH WINS', 150, -22, F.hero(54), th.ink); txt(g, '2 OUT OF 3', 150, 36, F.hero(70), th.ink); g.restore(); burst(g, 0, 470, 420, th.good, sm - 0.05, 16, 0.5); }
+      g.restore();
+    },
+  });
+
+  // ---------- calendar: $100 a day for 27 years ----------
+  B.register('calendar', {
+    defaults: { t0: -1, t1: 1, doneAt: NEVER }, size: () => [840, 700],
+    anchors: () => ({ all: [0, 0, 840, 700], head: [0, -280, 780, 110], cal: [-210, 20, 340, 400], years: [190, 10, 360, 330], pile: [-210, 190, 340, 160], sub: [0, 285, 780, 90] }),
+    draw(g, p, env) {
+      const { t, theme: th } = env, lt = env.lt, u = ease.inOut(lin(t, p.t0, p.t1)), days = Math.round(10000 * u), yrs = days / 365.25, k = spring(lt, 'snappy'), run = u > 0 && u < 1;
+      g.save(); g.scale(0.92 + 0.08 * k, 0.92 + 0.08 * k); paper(g, -420, -340, 840, 680, 28, {});
+      g.save(); rr(g, -420, -340, 840, 120, 28); g.clip(); g.fillStyle = th.navy; g.fillRect(-420, -340, 840, 120); g.restore();
+      txt(g, '$100 A DAY', -380, -296, F.hero(70), th.paper, 'left'); txt(g, 'ONE NEW BILL EVERY MORNING', -380, -245, F.monoX(21), th.accent, 'left');
+      g.save(); g.translate(-210, 20); clay(g, -150, -170, 300, 340, 16, th.paper, { shadowK: 0.5 }); g.fillStyle = th.bad; rr(g, -150, -170, 300, 62, 16); g.fill(); g.fillRect(-150, -130, 300, 22);
+      for (const sx of [-80, 80]) { g.fillStyle = th.ink; g.beginPath(); g.arc(sx, -172, 9, 0, 7); g.fill(); }
+      if (run) for (let i = 0; i < 3; i++) { const q = (days * 0.37 + i / 3) % 1; g.save(); g.translate(0, -108); g.rotate(-q * 1.2); g.globalAlpha *= 1 - q; g.fillStyle = th.paperShade; rr(g, -140, 0, 280, 250, 8); g.fill(); g.restore(); }
+      txt(g, 'DAY', 0, -139, F.monoX(24), th.paper); txt(g, String(Math.max(1, days)), 0, -10, F.hero(days > 999 ? 120 : 150), th.ink); txt(g, 'OF 10,000', 0, 110, F.monoX(22), th.inkSoft); g.restore();
+      const pileH = 18 + 110 * u; g.save(); g.translate(-210, 215);
+      if (run) for (let i = 0; i < 9; i++) { const cyc = (t * 3.2 + i * 0.37) % 1; g.save(); g.translate((hash(i + 4.1 + Math.floor(t * 3.2 + i * 0.37)) - 0.5) * 120, -150 + cyc * 120); g.rotate((hash(i * 2.2) - 0.5) * 0.8); g.globalAlpha *= 1 - 0.7 * cyc; clay(g, -34, -16, 68, 32, 6, th.good, { shadowK: 0.2 }); txt(g, '$100', 0, 1, F.hero(18), th.ink); g.restore(); }
+      for (let i = 0; i < 7; i++) { const w = 220 - i * 8; g.save(); g.translate((hash(i * 3.1) - 0.5) * 14, -i * pileH / 7); clay(g, -w / 2, -9, w, 22, 6, th.good, { shadowK: 0.25 }); g.fillStyle = 'rgba(11,15,20,.18)'; g.fillRect(-w / 2 + 10, -2, w - 20, 4); g.restore(); }
+      g.restore();
+      g.save(); g.translate(190, 10); paper(g, -170, -165, 340, 330, 22, { lift: 0 }); txt(g, 'YEARS', 0, -120, F.monoX(30), th.inkSoft);
+      roll(g, Math.round(yrs), 100, 28, { font: F.hero(210), size: 210, color: th.goodInk, align: 'right', speed: run ? 240 : 0 });
+      txt(g, '≈ 27.4', 0, 134, F.monoX(26), th.inkSoft); g.restore();
+      txt(g, '10,000 DAYS × $100 = $1,000,000 · OUR MATH', 0, 290, F.monoX(22), th.inkSoft);
+      const dn = t - p.doneAt; if (dn > 0) { const dk = spring(dn, 'bouncy'); g.save(); g.translate(190, -150); g.rotate(-0.08); g.scale(clamp(dk, 0.3, 1.1), clamp(dk, 0.3, 1.1)); clay(g, -150, -38, 300, 76, 18, th.accent, { shadowK: 0.7 }); txt(g, '27 YEARS', 0, 3, F.hero(56), th.ink); g.restore(); burst(g, 190, -150, 260, th.accent, dn - 0.05, 14, 0.45); }
+      g.restore();
+    },
+  });
+
+  // ---------- column: the 1990 magazine column with SWITCH circled ----------
+  B.register('column', {
+    defaults: { stampAt: NEVER, circleAt: NEVER }, size: () => [780, 860],
+    anchors: () => ({ all: [0, 0, 780, 860], head: [0, -340, 740, 150], ans: [0, 20, 640, 220], stamp: [230, -330, 260, 160], body: [0, 270, 700, 300] }),
+    draw(g, p, env) {
+      const { t, theme: th } = env, lt = env.lt, k = spring(lt, 'soft'); g.save(); g.translate(0, (1 - clamp(k, 0, 1.05)) * -600); g.rotate((1 - clamp(k, 0, 1)) * 0.25 - 0.02);
+      paper(g, -390, -430, 780, 860, 22, {}); g.save(); rr(g, -390, -430, 780, 130, 22); g.clip(); g.fillStyle = th.navy; g.fillRect(-390, -430, 780, 130); g.restore();
+      txt(g, 'THE MAGAZINE COLUMN', -350, -392, F.hero(54), th.paper, 'left'); txt(g, 'ILLUSTRATION · NOT A REAL PAGE', -350, -338, F.monoX(20), rgba(th.paper, 0.7), 'left');
+      g.strokeStyle = th.rule; g.lineWidth = 3; for (let i = 0; i < 4; i++) { g.beginPath(); g.moveTo(-340, -262 + i * 30); g.lineTo(i === 3 ? 60 : 340, -262 + i * 30); g.stroke(); }
+      txt(g, 'THE ANSWER:', -340, -118, F.monoX(30), th.inkSoft, 'left'); txt(g, 'SWITCH.', -10, 20, F.hero(190), th.ink);
+      const cs = t - p.circleAt; if (cs > 0) { const u = ease.out(lin(cs, 0, 0.55)); g.save(); g.strokeStyle = th.bad; g.lineWidth = 12; g.lineCap = 'round'; g.beginPath(); const N = 60; for (let s = 0; s <= N * u; s++) { const a = -2.6 + s / N * 6.9, wob = 1 + 0.04 * Math.sin(a * 3); const x = -8 + Math.cos(a) * 345 * wob, y = 22 + Math.sin(a) * 118 * wob; s ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke(); g.restore(); }
+      g.strokeStyle = th.rule; g.lineWidth = 3; for (let i = 0; i < 6; i++) { g.beginPath(); g.moveTo(-340, 170 + i * 36); g.lineTo(i % 3 === 2 ? 100 : 340, 170 + i * 36); g.stroke(); }
+      const ss = t - p.stampAt; if (ss > 0) { const u = ease.expo(lin(ss, 0, 0.14)), sc = 1 + 2.0 * (1 - u); g.save(); g.translate(230, -330); g.rotate(-0.16); g.scale(sc, sc); g.globalAlpha *= clamp(ss / 0.05); g.strokeStyle = '#B88700'; g.lineWidth = 7; g.fillStyle = 'rgba(245,243,238,.92)'; rr(g, -110, -48, 220, 96, 8); g.fill(); g.stroke(); txt(g, '1990', 0, 4, F.hero(78), '#B88700'); g.restore(); burst(g, 230, -330, 200, th.accent, ss - 0.1, 12, 0.4); }
+      g.restore();
+    },
+  });
+})();
+// YouTube cut — v3 re-edit (66 s). Stations (world x): 0 table3 · 1750 calendar · 3500 column · 5250 letters · 7000 the three starts · 8750 100 cases
 const F0 = { x: 0, y: 10, w: 900, h: 1360 };      // frame 0 and the loop frame share this framing
-const HOOK = { lines: [[['≈1,000 PhDs', 'paper']], [['GOT THIS ', 'paper'], ['WRONG', 'bad']]], size: 112 };
-const LOOP = '@So#3-0.4';   // whip back to the frame-0 composition just before the final question
+const ST = { sx: 560, sy: 975, maxH: 1110 };
+const HOOK = { lines: [[['≈1,000 PhDs', 'paper']], [['GOT THIS ', 'paper'], ['WRONG', 'bad']]], size: 100 };
+const LOOP = '@So#4-0.4';   // whip back to the frame-0 composition just before the final question
+const P = 'brand/photos/stock/briefcase-cash/7.jpg';
 BM2.scene({
-  series: 'whatif', title: 'THREE BRIEFCASES', duration: 48.84,
+  series: 'whatif', title: 'THREE BRIEFCASES', duration: 66.3,
   footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW', 'PHOTO: SEMTRIO · CC BY 2.0 · VIA FLICKR'],
   elements: [
-    // --- station 1: the three cases (frame 0 + loop frame) ---
+    // --- station 0: the three cases (frame 0 + loop frame) ---
     { id: 'hook', type: 'text', at: [0, -470], in: -1, out: '@Your-0.1', props: HOOK },
-    { id: 'src', type: 'text', at: [0, -330], in: 0.3, out: '@Your-0.1', props: { lines: [[['COLUMNIST\'S COUNT · 1990', 'accent']]], size: 38, font: 'mono' } },
-    { id: 'turn', type: 'text', at: [0, -190], in: '@Your', out: '@Three-0.25', props: { lines: [[['YOUR TURN', 'accent']]], size: 170 } },
+    { id: 'src', type: 'text', at: [0, -335], in: 0.3, out: '@Your-0.1', props: { lines: [[['COLUMNIST\'S COUNT · 1990', 'accent']]], size: 36, font: 'mono' } },
+    { id: 'turn', type: 'text', at: [0, -190], in: '@Your', out: '@Picture-0.25', props: { lines: [[['YOUR TURN', 'accent']]], size: 170 } },
     { id: 'endt', type: 'text', at: [0, -470], in: LOOP, props: HOOK },
-    { id: 'tbl', type: 'table3', at: [0, 330], in: -1, props: { reAt: LOOP, slam: [-0.36, -0.29, -0.22], tagIn: -1, tagIdx: 1, tagAway: '@You', numAt: '@Three', pickAt: '@pick', pickIdx: 0,
-      handAt: '@host', handIdx: 2, xrayAt: '@where', flipAt: '@opens', opens: [[2, '@opens', 99999]],
-      pullAt: '@offers', swapAt: '@swap', btnAt: '@swap+0.15', fiftyAt: '@50', crackAt: '@Nope', pullOut: '@Nope+0.55',
-      lockAt: '@one#4', slideAt: '@So#2', tag2At: '@So#2+0.45', winAt: '@two',
-      diploma: [[0.2, '@wrong', '@three-0.3', -150]] } },
-    { id: 'cash', type: 'photo', at: [0, 70], in: '@million-0.3', out: '@pick+0.3', props: { src: 'brand/photos/stock/briefcase-cash/7.jpg', name: 'CASH', role: 'STOCK PHOTO', credit: 'PHOTO: SEMTRIO · CC BY 2.0', w: 230, aspect: 0.8, tilt: -0.05, fx: 0.5, fy: 0.5 } },
-    // --- station 2: our math, a bar race of simulated rounds ---
-    { id: 'tally', type: 'tally', at: [1750, 330], in: '@Send-0.9', out: '@way+0.6', props: { variant: 'race', t0: '@Send-0.2', t1: '@way-0.1', doneAt: '@way' } },
+    { id: 'tbl', type: 'table3', at: [0, 330], in: -1, props: { reAt: LOOP, slam: [-0.36, -0.29, -0.22], tagIn: -1, tagIdx: 1, tagAway: '@You', numAt: '@three', pickAt: '@pick', pickIdx: 0,
+      handAt: '@host', handIdx: 2, xrayAt: '@two', flipAt: '@opens', opens: [[2, '@opens', 99999]],
+      pullAt: '@Then', swapAt: '@stay', btnAt: '@stay+0.15', fiftyAt: '@50', crackAt: '@columnist-0.3', pullOut: '@columnist+0.4',
+      diploma: [[0.2, '@wrong', '@Picture-0.3', -150]] } },
+    { id: 'cash', type: 'photo', at: [0, 70], in: '@million-0.3', out: '@two+0.6', props: { src: P, name: 'CASH', role: 'STOCK PHOTO', credit: 'PHOTO: SEMTRIO · CC BY 2.0', w: 230, aspect: 0.8, tilt: -0.05, fx: 0.5, fy: 0.5 } },
+    // --- station 1: $100 a day ---
+    { id: 'cal', type: 'calendar', at: [1750, 330], in: '@That\'s-0.9', out: '@You+0.3', props: { t0: '@That\'s-0.1', t1: '@27+0.25', doneAt: '@years' } },
+    // --- station 2: the 1990 column ---
+    { id: 'col', type: 'column', at: [3500, 330], in: '@columnist-0.7', out: '@By-0.2', props: { stampAt: '@1990', circleAt: '@switch#2-0.3' } },
     // --- station 3: the letters ---
-    { id: 'mail', type: 'mail', at: [3500, 330], in: '@way+0.4', out: '@Make-0.4', props: { t0: '@columnist-0.2', t1: '@By-0.1', n: 64, countAt: '@By', stampAt: '@PhDs#2' } },
-    // --- station 4: 100 cases (payoff) ---
-    { id: 'fan', type: 'fan100', at: [5250, 330], in: '@Make-0.5', out: '@So#3+0.5', props: { dealAt: '@Make', pickAt: '@pick#3', waveAt: '@98', stampAt: '@99%', awayAt: '@So#3-0.9', pickIdx: 23, keepIdx: 67 } },
-    // --- screen-fixed micro-moments and chips ---
-    { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Three', props: { text: 'HYPOTHETICAL', size: 24 } },
-    { id: 'asm', type: 'assumes', layer: 'screen', at: [450, 338], in: '@host+0.3', props: { text: 'HOST KNOWS · ALWAYS OPENS AN EMPTY CASE', size: 21 } },
+    { id: 'mail', type: 'mail', at: [5250, 330], in: '@By-0.6', out: '@Let\'s-0.2', props: { t0: '@By+0.2', t1: '@wrote', n: 64, countAt: '@thousand#2', stampAt: '@PhDs#2' } },
+    // --- station 4: the three possible starts ---
+    { id: 'brd', type: 'board3', at: [7000, 330], in: '@Let\'s-0.6', out: '@Make-0.3', props: { boxAt: '@Let\'s-0.2', rows: [['@one#2-0.15', 1, 2, '@loses', 1.0], ['@two#2-0.15', 0, 2, '@wins', 1.7], ['@three#2-0.1', 2, 0, '@again', 1.3]], sumAt: '@That\'s#2' } },
+    // --- station 5: 100 cases (payoff) ---
+    { id: 'fan', type: 'fan100', at: [8750, 330], in: '@Make-0.6', out: '@So#4+0.5', props: { dealAt: '@Make', pickAt: '@pick#5', waveAt: '@98', stampAt: '@99', awayAt: '@So#4-1.0', pickIdx: 23, keepIdx: 67 } },
+    // --- screen-fixed: live tally from frame 0, beat labels, chips, micro-moments ---
+    { id: 'live', type: 'live', layer: 'screen', at: [540, 342], in: -1, props: { end: '@So#4-0.3', n0: 14 } },
+    { id: 'lab', type: 'blabel', layer: 'screen', at: [830, 264], in: -1, props: { labels: [[0, 'THE BET'], ['@columnist-0.2', 'THE TWIST'], ['@Let\'s-0.1', 'THE CHECK'], ['@Make-0.2', 'THE ANSWER']] } },
+    { id: 'hyp', type: 'chip', layer: 'screen', at: [540, 416], in: '@Picture+0.2', out: '@host+0.1', props: { text: 'HYPOTHETICAL', size: 22 } },
+    { id: 'asm', type: 'assumes', layer: 'screen', at: [540, 416], in: '@host+0.3', props: { text: 'HYPOTHETICAL · HOST KNOWS · ALWAYS OPENS AN EMPTY CASE', size: 17 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@like', props: { s: 1, dur: 0.9 } },
-    { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 420], dur: 0.85, s: 0.62 } },
-    { id: 'noway', type: 'bubble', layer: 'screen', at: [640, 1030], in: '@typing', out: '@way+0.9', props: { l1: 'NO WAY', size: 54, tail: 'left' } },
-    { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@follow+0.05', out: '@follow+1.45', props: { press: 0.55 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 720], in: '@stay', out: 48.8, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
+    { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 520], dur: 0.85, s: 0.62 } },
+    { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@Follow+0.05', out: '@Follow+1.45', props: { press: 0.55 } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: '@stay#2', out: 66.2, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
   ],
   beats: [
-    { at: 0, beat: 'side-by-side', focus: F0, fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
-    { at: '@thousand', beat: 'zoom-on-number', focus: 'hook', fill: 0.96, sy: 640, rot: 0.008, pose: 'point', keep: ['hook', 'src', 'tbl'] },
-    { at: '@got', beat: 'pull-back', focus: F0, fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'talk', keep: ['hook', 'src', 'tbl'] },
-    { at: '@wrong', beat: 'zoom-on-number', focus: 'tbl.diploma', fill: 0.78, sy: 820, rot: -0.01, pose: 'shock', keep: ['hook', 'src', 'tbl'] },
-    { at: '@Your', beat: 'presenter-front', focus: 'tbl', sy: 820, pose: 'you', keep: ['turn'] },
-    // stakes
-    { at: '@Three', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 800, st: 'corner-left', pose: 'idle' },
+    // THE BET
+    { at: 0, beat: 'side-by-side', focus: F0, fill: 0.70, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
+    { at: '@thousand', beat: 'zoom-on-number', focus: 'hook', fill: 0.96, sy: 700, rot: 0.008, pose: 'point', keep: ['hook', 'src', 'tbl'] },
+    { at: '@got', beat: 'pull-back', focus: F0, fill: 0.70, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'talk', keep: ['hook', 'src', 'tbl'] },
+    { at: '@wrong', beat: 'zoom-on-number', focus: 'tbl.diploma', fill: 0.78, sy: 860, rot: -0.01, pose: 'shock', keep: ['hook', 'src', 'tbl'] },
+    { at: '@Your', beat: 'presenter-front', focus: 'tbl', sy: 880, pose: 'you', keep: ['turn'] },
+    { at: '@Picture', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 860, st: 'corner-left', pose: 'idle' },
     { at: '@million', beat: 'zoom-on-number', focus: 'tbl.tag', fill: 0.8, sy: 950, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['cash'] },
-    { at: '@You', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 800, st: 'left', pose: 'point', point: 'tbl.c0', keep: ['cash'] },
-    // host rule
-    { at: '@The', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
-    { at: '@where', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 820, rot: 0.008, st: 'corner-left', pose: 'chin' },
-    { at: '@opens', beat: 'zoom-on-number', focus: 'tbl.c2', fill: 0.76, sy: 820, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Then', beat: 'graphic-hero', focus: 'tbl.pulled', fill: 0.72, sy: 780, st: 'corner-left', pose: 'idle' },
-    { at: '@50', beat: 'zoom-on-number', focus: 'tbl.fifty', fill: 0.8, sy: 660, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Hit', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'left', pose: 'chin', point: 'tbl.fifty' },
-    { at: '@Nope', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'shrug' },
-    { at: '@one#4', beat: 'zoom-on-number', focus: 'tbl.bar0', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point' },
-    { at: '@Opening', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'shrug' },
-    { at: '@So#2', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 1000, sy: 800, st: 'corner-left', pose: 'point', point: 'tbl.bar1' },
-    { at: '@two', beat: 'zoom-on-number', focus: 'tbl.bar1', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    // our math
-    { at: '@Send-0.8', beat: 'graphic-hero', focus: 'tally', move: 'whip', fill: 0.9, maxH: 900, sy: 820, st: 'corner-left', pose: 'idle' },
-    { at: '@Send', beat: 'presenter-front', focus: 'tally', sy: 820, pose: 'you' },
-    { at: '@already', beat: 'zoom-on-number', focus: 'tally.bars', fill: 0.9, sy: 800, rot: 0.008, st: 'corner-left', pose: 'point' },
-    { at: '@way', beat: 'zoom-on-number', focus: 'tally.done', fill: 0.9, sy: 780, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    // letters
-    { at: '@way+0.5', beat: 'peek', focus: 'mail', move: 'whip', sy: 930, maxH: 880, pose: 'idle' },
-    { at: '@1990', beat: 'zoom-on-number', focus: 'mail.head', fill: 0.92, sy: 700, rot: 0.01, st: 'corner-left', pose: 'point' },
-    { at: '@By', beat: 'graphic-hero', focus: 'mail', fill: 0.9, maxH: 880, sy: 930, st: 'corner-left', pose: 'shock' },
-    { at: '@thousand#2', beat: 'zoom-on-number', focus: 'mail.count', fill: 0.92, sy: 720, rot: -0.01, st: 'corner-left', pose: 'point' },
-    { at: '@wrote', beat: 'pull-back', focus: 'mail', fill: 0.9, maxH: 880, sy: 930, st: 'corner-left', pose: 'shrug' },
-    { at: '@she\'s', beat: 'zoom-on-number', focus: 'mail.pile', fill: 0.9, sy: 1000, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Don\'t', beat: 'presenter-front', focus: 'mail', sy: 820, pose: 'you' },
-    { at: '@this#3', beat: 'graphic-hero', focus: 'mail', fill: 0.9, maxH: 880, sy: 930, st: 'corner-left', pose: 'point' },
-    // 100 cases
-    { at: '@Make-0.3', beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'idle' },
-    { at: '@pick#3', beat: 'zoom-on-number', focus: 'fan.pick', fill: 0.5, sy: 800, rot: 0.01, st: 'corner-left', pose: 'point' },
+    { at: '@two', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.98, sy: 860, st: 'left', pose: 'chin', keep: ['cash'] },
+    // $100 a day (layout flip: whip to the calendar)
+    { at: '@That\'s', beat: 'graphic-hero', focus: 'cal', move: 'whip', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'idle' },
+    { at: '@hundred', beat: 'zoom-on-number', focus: 'cal.cal', fill: 0.62, sy: 860, rot: 0.01, st: 'corner-left', pose: 'point' },
+    { at: '@27', beat: 'zoom-on-number', focus: 'cal.years', fill: 0.72, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@years+0.2', beat: 'pull-back', focus: 'cal', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'shock' },
+    // the rule
+    { at: '@You', beat: 'graphic-hero', focus: 'tbl.row', move: 'whip', fill: 0.92, sy: 860, st: 'left', pose: 'point', point: 'tbl.c0' },
+    { at: '@host', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
+    { at: '@where', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 860, rot: 0.008, st: 'corner-left', pose: 'chin' },
+    { at: '@And', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
+    { at: '@opens', beat: 'zoom-on-number', focus: 'tbl.c2', fill: 0.76, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@didn\'t', beat: 'pull-back', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'shrug' },
+    { at: '@Then', beat: 'graphic-hero', focus: 'tbl.pulled', fill: 0.72, sy: 860, st: 'corner-left', pose: 'idle' },
+    { at: '@Hit', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'left', pose: 'chin', point: 'tbl.fifty' },
+    { at: '@50', beat: 'zoom-on-number', focus: 'tbl.fifty', fill: 0.8, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    // THE TWIST
+    { at: '@columnist-0.1', beat: 'peek', focus: 'col', move: 'whip', sy: 930, maxH: 800, pose: 'idle' },
+    { at: '@1990', beat: 'zoom-on-number', focus: 'col.stamp', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point' },
+    { at: '@switch#2', beat: 'zoom-on-number', focus: 'col.ans', fill: 0.95, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@By', beat: 'graphic-hero', focus: 'mail', move: 'whip', fill: 0.9, maxH: 800, sy: 930, st: 'corner-left', pose: 'shock' },
+    { at: '@thousand#2', beat: 'zoom-on-number', focus: 'mail.count', fill: 0.92, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point' },
+    { at: '@wrote', beat: 'pull-back', focus: 'mail', fill: 0.9, maxH: 800, sy: 930, st: 'corner-left', pose: 'shrug' },
+    { at: '@wrong#2', beat: 'zoom-on-number', focus: 'mail.pile', fill: 0.9, sy: 980, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    // THE CHECK
+    { at: '@Let\'s-0.1', beat: 'graphic-hero', focus: 'brd.rows', move: 'whip', fill: 0.98, maxH: 800, sy: 880, st: 'corner-left', pose: 'idle' },
+    { at: '@every#2', beat: 'graphic-hero', focus: 'brd.all', fill: 0.7, maxH: 800, sy: 880, st: 'corner-left', pose: 'point', point: 'brd.row0' },
+    { at: '@one#2-0.2', beat: 'graphic-hero', focus: 'brd.row0', fill: 0.98, sy: 860, st: 'corner-left', pose: 'point' },
+    { at: '@empty#3', beat: 'zoom-on-number', focus: 'brd.row0', fill: 1.0, sy: 880, rot: 0.01, st: 'corner-left', pose: 'chin' },
+    { at: '@loses', beat: 'zoom-on-number', focus: 'brd.v0', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@Send', beat: 'presenter-front', focus: 'brd.rows', sy: 860, pose: 'you' },
+    { at: '@two#2-0.2', beat: 'graphic-hero', focus: 'brd.row1', fill: 0.98, sy: 860, st: 'corner-left', pose: 'point' },
+    { at: '@so#2', beat: 'zoom-on-number', focus: 'brd.row1', fill: 1.0, sy: 880, rot: -0.01, st: 'corner-left', pose: 'chin' },
+    { at: '@wins', beat: 'zoom-on-number', focus: 'brd.v1', fill: 0.42, maxH: 520, sy: 840, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@three#2-0.2', beat: 'graphic-hero', focus: 'brd.row2', fill: 0.98, sy: 860, st: 'corner-left', pose: 'point' },
+    { at: '@so#3', beat: 'zoom-on-number', focus: 'brd.row2', fill: 1.0, sy: 880, rot: 0.01, st: 'corner-left', pose: 'chin' },
+    { at: '@again', beat: 'zoom-on-number', focus: 'brd.v2', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@That\'s#2', beat: 'zoom-on-number', focus: 'brd.sum', fill: 0.92, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@Follow-0.1', beat: 'graphic-hero', focus: 'brd.rows', fill: 0.98, maxH: 800, sy: 880, st: 'left', pose: 'follow' },
+    // THE ANSWER
+    { at: '@Make-0.3', beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'idle' },
+    { at: '@pick#5', beat: 'zoom-on-number', focus: 'fan.pick', fill: 0.5, sy: 860, rot: 0.01, st: 'corner-left', pose: 'point' },
     { at: '@98', beat: 'zoom-on-number', focus: 'fan.count', fill: 0.8, sy: 560, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@98+0.9', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'shock' },
-    { at: '@99%', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 840, rot: 0.012, st: 'corner-left', pose: 'shock', dur: 0.4 },
-    { at: '@same', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 1000, sy: 950, st: 'corner-left', pose: 'shrug' },
-    { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.70, maxH: 1250, sx: 560, sy: 890, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
+    { at: '@98+0.9', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shock' },
+    { at: '@99', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 860, rot: 0.012, st: 'corner-left', pose: 'shock', dur: 0.4 },
+    { at: '@time', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shrug' },
+    { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.70, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'shock', keep: ['hook', 'src', 'tbl', 'endt'] },
   ],
-  poses: [['@follow', 'follow', { target: [650, 1120] }], ['@Send', 'you'], ['@stay', 'chin']],
-  shakes: [[0.3, 10], ['@wrong', 10], ['@50', 10], ['@Nope', 12], ['@two', 10], ['@way', 12], ['@99%', 26], ['@So#3-0.3', 10]],
-  captions: { gap: 16, emph: { thousand: 'bad', 'wrong.': 'bad', million: 'good', 'bucks.': 'good', '50': 'accent', 'two': 'good', 'three.': 'accent', '99%,': 'good', 'empty': 'accent' }, fix: [['it,', 'it?'], ['follow,', 'Follow,'], ['switch,', 'switch?'], ['99%,', '99%.'], ['same', 'Same'], ['Nope,', 'Nope.']] },
+  poses: [['@Follow', 'follow', { target: [650, 1120] }], ['@Send', 'you'], ['@stay#2', 'chin']],
+  shakes: [[0.3, 10], ['@wrong', 10], ['@50', 10], ['@loses', 8], ['@That\'s#2', 12], ['@years', 10], ['@99', 26], ['@So#4-0.3', 10]],
+  captions: { gap: 16, emph: { thousand: 'bad', 'wrong.': 'bad', million: 'good', 'dollars': 'good', '50': 'accent', 'two': 'good', 'three.': 'accent', '99': 'good', 'empty': 'accent', 'loses.': 'bad', 'wins.': 'good', 'again.': 'good', '27': 'accent' }, fix: [] },
   bed: { name: 'lofi_bed_1', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.16, name: 'thud_1', gain: -8, dur: 0.4 }, { at: 0.3, name: 'thud_2', gain: -8, dur: 0.4 }, { at: 0.44, name: 'paper_slam_1', gain: -7, dur: 0.5 },
     { at: '@wrong', name: 'rubber_stamp_2', gain: -4, dur: 0.5 },
-    { at: '@Three', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@Three+0.12', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@Three+0.24', name: 'pop_2', gain: -10, dur: 0.4 },
-    { at: '@million', name: 'coin_single_1', gain: -9, dur: 0.6 }, { at: '@pick', name: 'paper_slam_2', gain: -7, dur: 0.5 }, { at: '@pick+0.02', name: 'click_1', gain: -9, dur: 0.3 },
+    { at: '@three', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@three+0.12', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@three+0.24', name: 'pop_2', gain: -10, dur: 0.4 },
+    { at: '@million', name: 'coin_single_1', gain: -9, dur: 0.6 }, { at: '@two', name: 'camera_flash_1', gain: -12, dur: 0.6 },
+    { at: '@That\'s-0.1', name: 'swoosh_1', gain: -9, dur: 0.8 }, { at: '@That\'s', name: 'money_counter_2', gain: -13, dur: 2.2 }, { at: '@years', name: 'ding_2', gain: -8, dur: 0.6 }, { at: '@years', name: 'cinematic_hit_2', gain: -10, dur: 1.0 },
+    { at: '@pick', name: 'paper_slam_2', gain: -7, dur: 0.5 }, { at: '@pick+0.02', name: 'click_1', gain: -9, dur: 0.3 },
     { at: '@host', name: 'swoosh_1', gain: -10, dur: 0.8 }, { at: '@where', name: 'riser_1', gain: -14, dur: 0.9 }, { at: '@host+0.3', name: 'click_2', gain: -9, dur: 0.2 },
     { at: '@opens', name: 'door_slam_1', gain: -11, dur: 0.45 }, { at: '@opens', name: 'pop_2', gain: -9, dur: 0.3 },
-    { at: '@swap', name: 'swoosh_2', gain: -11, dur: 0.6 }, { at: '@50', name: 'deep_boom_2', gain: -8, dur: 0.36 }, { at: '@50', name: 'pop_2', gain: -8, dur: 0.3 },
+    { at: '@stay', name: 'swoosh_2', gain: -11, dur: 0.6 }, { at: '@50', name: 'deep_boom_2', gain: -8, dur: 0.36 }, { at: '@50', name: 'pop_2', gain: -8, dur: 0.3 },
     { at: '@like', name: 'pop_2', gain: -9, dur: 0.3 },
-    { at: '@Nope', name: 'glass_shatter_2', gain: -12, dur: 0.7 }, { at: '@Nope', name: 'sub_drop_1', gain: -10, dur: 0.8 },
-    { at: '@one#4', name: 'click_1', gain: -7, dur: 0.3 }, { at: '@one#4+0.3', name: 'click_2', gain: -7, dur: 0.3 },
-    { at: '@So#2', name: 'swoosh_2', gain: -9, dur: 0.6 }, { at: '@So#2+0.5', name: 'success_chime_1', gain: -12, dur: 1.0 }, { at: '@So#2+0.5', name: 'pop_1', gain: -8, dur: 0.4 },
-    { at: '@Send-0.2', name: 'money_counter_2', gain: -13, dur: 2.7 }, { at: '@Send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 }, { at: '@way', name: 'ding_2', gain: -8, dur: 0.6 }, { at: '@way', name: 'cinematic_hit_2', gain: -9, dur: 1.0 },
-    { at: '@typing', name: 'keyboard_typing_1', gain: -12, dur: 0.9 }, { at: '@typing', name: 'pop_1', gain: -10, dur: 0.4 },
-    { at: '@way+0.5', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@columnist-0.2', name: 'thud_1', gain: -12, dur: 0.5 }, { at: '@columnist+0.6', name: 'thud_2', gain: -12, dur: 0.5 }, { at: '@columnist+1.3', name: 'thud_1', gain: -12, dur: 0.5 },
-    { at: '@By', name: 'money_counter_1', gain: -13, dur: 1.4 }, { at: '@PhDs#2', name: 'rubber_stamp_1', gain: -5, dur: 0.5 },
-    { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.6', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.7', name: 'success_chime_1', gain: -12, dur: 1.2 },
-    { at: '@Make', name: 'whoosh_1', gain: -10, dur: 0.7 }, { at: '@Make+0.4', name: 'pop_1', gain: -12, dur: 0.4 }, { at: '@Make+0.8', name: 'pop_2', gain: -12, dur: 0.4 }, { at: '@pick#3', name: 'click_1', gain: -9, dur: 0.3 },
+    { at: '@columnist-0.3', name: 'glass_shatter_2', gain: -12, dur: 0.7 }, { at: '@columnist-0.2', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@1990', name: 'rubber_stamp_1', gain: -5, dur: 0.5 }, { at: '@switch#2-0.3', name: 'swoosh_2', gain: -10, dur: 0.6 },
+    { at: '@By', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@By+0.2', name: 'thud_1', gain: -12, dur: 0.5 }, { at: '@By+1.0', name: 'thud_2', gain: -12, dur: 0.5 }, { at: '@By+1.8', name: 'thud_1', gain: -12, dur: 0.5 },
+    { at: '@thousand#2', name: 'money_counter_1', gain: -13, dur: 1.4 }, { at: '@PhDs#2', name: 'rubber_stamp_1', gain: -5, dur: 0.5 },
+    { at: '@Let\'s-0.1', name: 'whoosh_1', gain: -9, dur: 0.8 }, { at: '@Let\'s+0.4', name: 'paper_slam_1', gain: -9, dur: 0.5 },
+    { at: '@one#2-0.15', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@loses', name: 'wrong_buzzer_1', gain: -14, dur: 0.6 },
+    { at: '@two#2-0.15', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@wins', name: 'success_chime_1', gain: -12, dur: 1.0 }, { at: '@wins', name: 'pop_1', gain: -8, dur: 0.4 },
+    { at: '@three#2-0.1', name: 'click_2', gain: -8, dur: 0.3 }, { at: '@again', name: 'success_chime_1', gain: -12, dur: 1.0 }, { at: '@again', name: 'pop_2', gain: -8, dur: 0.4 },
+    { at: '@That\'s#2', name: 'cinematic_hit_2', gain: -8, dur: 1.0 }, { at: '@That\'s#2', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@Follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@Follow+0.6', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@Follow+0.7', name: 'success_chime_1', gain: -12, dur: 1.2 },
+    { at: '@Make', name: 'whoosh_1', gain: -10, dur: 0.7 }, { at: '@Make+0.4', name: 'pop_1', gain: -12, dur: 0.4 }, { at: '@Make+0.8', name: 'pop_2', gain: -12, dur: 0.4 }, { at: '@pick#5', name: 'click_1', gain: -9, dur: 0.3 },
     { at: '@98', name: 'pop_2', gain: -11, dur: 0.3 }, { at: '@98+0.2', name: 'pop_1', gain: -11, dur: 0.3 }, { at: '@98+0.4', name: 'pop_2', gain: -11, dur: 0.3 }, { at: '@98+0.6', name: 'pop_1', gain: -11, dur: 0.3 }, { at: '@98+0.8', name: 'pop_2', gain: -11, dur: 0.3 },
-    { at: '@99%', name: 'rubber_stamp_2', gain: -3, dur: 0.5 }, { at: '@99%', name: 'deep_boom_1', gain: -2, dur: 1.6 }, { at: '@99%', name: 'cinematic_hit_1', gain: -6, dur: 1.2 },
-    { at: '@So#3-0.9', name: 'whoosh_1', gain: -8, dur: 0.8 }, { at: LOOP, name: 'deep_boom_2', gain: -6, dur: 0.36 }, { at: '@stay-0.05', name: 'pop_1', gain: -9, dur: 0.5 },
+    { at: '@99', name: 'rubber_stamp_2', gain: -3, dur: 0.5 }, { at: '@99', name: 'deep_boom_1', gain: -2, dur: 1.6 }, { at: '@99', name: 'cinematic_hit_1', gain: -6, dur: 1.2 },
+    { at: '@So#4-1.0', name: 'whoosh_1', gain: -8, dur: 0.8 }, { at: LOOP, name: 'deep_boom_2', gain: -6, dur: 0.36 }, { at: '@stay#2-0.05', name: 'pop_1', gain: -9, dur: 0.5 },
   ],
 });
