@@ -3,6 +3,7 @@
 <canvas id="a" width="1280" height="720"></canvas>
 <canvas id="b" width="1280" height="720"></canvas>
 <canvas id="c" width="1280" height="720"></canvas>
+<canvas id="d" width="1280" height="720"></canvas>
 <script src="../../../brand/storyteller.js"></script>
 <script>
 const INK='#0B0F14',PAPER='#F5F3EE',RED='#FF3B30',GREEN='#00D26A',GOLD='#F2B705';
@@ -102,5 +103,23 @@ function C(){const c=document.getElementById('c').getContext('2d');stage(c);
   card(556,372,236,290,-1,'MADOFF · 2008','2008',line,-4);
   character(c,1050,330,170);
   vignette(c);}
-(async()=>{await loadFonts();A();B();C();window.READY=true;})();
+
+const P='../../../brand/photos/';
+function loadImg(u){return new Promise((r,j)=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>j(u);i.src=u;});}
+function D(imgs){const c=document.getElementById('d').getContext('2d');stage(c);
+  c.textBaseline='alphabetic';c.textAlign='left';
+  const T=(t,x,y,sz,col)=>{c.save();c.font=sz+'px Anton';c.fillStyle=col;c.shadowColor='rgba(2,4,9,.6)';c.shadowBlur=8;c.shadowOffsetY=4;c.fillText(t,x,y);c.restore();};
+  T('3 FRAUDS',48,200,190,PAPER);T('1 MATH TRICK',48,318,118,GOLD);
+  const pol=(x,y,rot,img,crop,name,srot)=>{const w=236,h=300;const e=paper(c,x,y,w,h,rot);
+    c.save();c.beginPath();c.roundRect(16,16,204,204,6);c.clip();c.drawImage(img,crop[0],crop[1],crop[2],crop[2],16,16,204,204);
+    const g=c.createLinearGradient(16,16,220,220);g.addColorStop(0,'rgba(255,255,255,.12)');g.addColorStop(1,'rgba(0,0,0,.12)');c.fillStyle=g;c.fillRect(16,16,204,204);c.restore();
+    c.strokeStyle='rgba(11,15,20,.25)';c.lineWidth=2;c.beginPath();c.roundRect(16,16,204,204,6);c.stroke();
+    c.fillStyle=INK;c.font='31px Anton';c.textAlign='center';c.letterSpacing='1px';c.fillText(name,w/2,260);c.letterSpacing='0px';
+    e();stamp(c,'CAUGHT',x+w/2+6,y+198,46,srot);};
+  pol(40,365,-2.5,imgs[0],[105,10,300],'CHARLES PONZI',-7);
+  pol(298,375,1.5,imgs[1],[60,15,290],'TINO DE ANGELIS',5);
+  pol(556,365,-1,imgs[2],[95,5,790],'BERNIE MADOFF',-4);
+  character(c,1050,330,170);
+  vignette(c);}
+(async()=>{await loadFonts();A();B();C();D(await Promise.all([P+'charles-ponzi/2.jpg',P+'tino-de-angelis/1.jpg',P+'bernie-madoff/2.jpg'].map(loadImg)));window.READY=true;})();
 </script>

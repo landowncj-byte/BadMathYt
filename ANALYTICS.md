@@ -19,3 +19,5 @@ First Bad Math posts go out tonight (YouTube FTX 20:00 ET, lottery 22:00 ET; Tik
 | Theranos | IG / TikTok | 129 / 123 | 7.0 / 8.6 s | IG skip 43.4% | 0 |
 | Lottery | IG / YT | 109 / 28 | 7.1 s | IG skip 52% | 0 / 2 |
 **Read:** winners = the two-button DILEMMA (most reach, longest watch) and salad oil (best retention; a physical "it's not what it looks like" visual). Losers = lottery and Theranos IG cuts (skip 43–52%: the first 3 s don't land). The Tuesday-evening batch averages only 7–9 s of watch: people leave right after the hook, so the second beat (seconds 3–8) is the problem, matching the owner's "bad pacing". Actions: (1) more choose-A-or-B dilemmas; (2) frame 0 must be a physical pattern break, payoff promise in the first line; (3) a turn/question by second ~5; (4) zero comments so far → sharper one-word comment questions.
+
+- 2026-11-25 15:38 UTC comment sweep: 1 real comment (IG two-buttons, @r0hanko: "Or just S&P and pays you 10% per year") → replied (S&P averages ~10% long-run but had -37% in 2008; no advice). 3 others were our own first comments. No flags, no topic requests.
