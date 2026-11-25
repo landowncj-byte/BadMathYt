@@ -2,6 +2,7 @@
 <body style="margin:0;background:#000">
 <canvas id="a" width="1280" height="720"></canvas>
 <canvas id="b" width="1280" height="720"></canvas>
+<canvas id="c" width="1280" height="720"></canvas>
 <script src="../../../brand/storyteller.js"></script>
 <script>
 const INK='#0B0F14',PAPER='#F5F3EE',RED='#FF3B30',GREEN='#00D26A',GOLD='#F2B705';
@@ -77,5 +78,29 @@ function B(){const c=document.getElementById('b').getContext('2d');stage(c);
   character(c,1030,330,170);
   stamp(c,'TOO PERFECT',470,615,140,-5);
   vignette(c);}
-(async()=>{await loadFonts();A();B();window.READY=true;})();
+
+function C(){const c=document.getElementById('c').getContext('2d');stage(c);
+  c.textBaseline='alphabetic';c.textAlign='left';
+  const T=(t,x,y,sz,col)=>{c.save();c.font=sz+'px Anton';c.fillStyle=col;c.shadowColor='rgba(2,4,9,.6)';c.shadowBlur=8;c.shadowOffsetY=4;c.fillText(t,x,y);c.restore();};
+  T('3 FRAUDS',48,200,190,PAPER);T('1 MATH TRICK',48,318,118,GOLD);
+  const card=(x,y,w,h,rot,tag,year,icon,srot)=>{const e=paper(c,x,y,w,h,rot);
+    c.fillStyle='#59606B';c.font='800 21px "JetBrains Mono"';c.textAlign='left';c.fillText(tag,18,38);
+    c.strokeStyle='#D8D3C7';c.lineWidth=3;c.setLineDash([8,7]);c.beginPath();c.moveTo(18,52);c.lineTo(w-18,52);c.stroke();c.setLineDash([]);
+    icon(c,w/2,138);
+        e();stamp(c,'CAUGHT',x+w/2+8,y+h-60,54,srot);};
+  const coupon=(c,x,y)=>{c.save();c.translate(x,y);c.rotate(-.1);c.fillStyle='#E2C48D';c.strokeStyle='#B88700';c.lineWidth=3;c.beginPath();c.roundRect(-70,-38,140,76,8);c.fill();c.stroke();
+    c.setLineDash([7,6]);c.strokeStyle='#8a6408';c.beginPath();c.roundRect(-60,-29,120,58,5);c.stroke();c.setLineDash([]);c.fillStyle=PG;c.font='46px Anton';c.textAlign='center';c.fillText('$$$',0,15);c.restore();};
+  const tank=(c,x,y)=>{c.save();c.translate(x,y);c.fillStyle='#6f86b8';c.strokeStyle=SUIT;c.lineWidth=4;c.beginPath();c.roundRect(-52,-44,104,88,[16,16,10,10]);c.fill();c.stroke();
+    const g=c.createLinearGradient(-52,0,52,0);g.addColorStop(0,'rgba(255,255,255,.35)');g.addColorStop(.5,'rgba(255,255,255,0)');g.addColorStop(1,'rgba(0,0,0,.2)');c.fillStyle=g;c.beginPath();c.roundRect(-52,-44,104,88,[16,16,10,10]);c.fill();
+    c.strokeStyle=SUIT;c.lineWidth=3;c.beginPath();c.moveTo(-52,-14);c.lineTo(52,-14);c.moveTo(-52,16);c.lineTo(52,16);c.stroke();
+    c.restore();};
+  const line=(c,x,y)=>{c.save();c.translate(x,y);c.strokeStyle='#59606B';c.lineWidth=5;c.lineJoin='round';c.beginPath();const w=[-80,-30,-55,-5,-25,25,0,50,30,70];
+    c.moveTo(-85,30);[[-65,10],[-48,28],[-28,2],[-10,22],[10,-6],[30,16],[55,-8],[85,8]].forEach(p=>c.lineTo(...p));c.stroke();
+    c.strokeStyle=PG;c.lineWidth=10;c.lineCap='round';c.beginPath();c.moveTo(-85,40);c.lineTo(85,-42);c.stroke();c.restore();};
+  card(40,372,236,290,-2.5,'PONZI · 1920','1920',coupon,-7);
+  card(298,382,236,290,1.5,'SALAD OIL · 1963','1963',tank,5);
+  card(556,372,236,290,-1,'MADOFF · 2008','2008',line,-4);
+  character(c,1050,330,170);
+  vignette(c);}
+(async()=>{await loadFonts();A();B();C();window.READY=true;})();
 </script>
