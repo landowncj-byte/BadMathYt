@@ -7,7 +7,7 @@ Each topic is remade per brand/REBUILD-LONGER.md: Stage 1 scripts (Fable) → St
 |---|---|---|---|---|---|
 | 1 | Weight vs height | 2026-11-26-weight-vs-height | YT/TT/IG | BUILDING (Sonnet) | 0a50e94d 1ecd4500 b5b54e16 e7f2c3e7 |
 | 2 | Fake wine | 2026-11-26-fake-wine | YT/TT/IG | BUILDING (Sonnet) | 47a76198 ad700081 f3a73160 fc608a0a |
-| 3 | Three briefcases | 2026-11-26-three-briefcases | YT/TT/IG | SCRIPTS DONE (63–66 s, PASS) → build | 2751cbc5 45421b23 571e0493 f988b64a |
+| 3 | Three briefcases | 2026-11-26-three-briefcases | YT/TT/IG | BUILDING (Sonnet, with motion tips + playbook) | 2751cbc5 45421b23 571e0493 f988b64a |
 | 4 | Lottery rig | 2026-11-26-lottery-rig | YT/TT/IG | SCRIPTS DONE (83–86 s; IG "missed the jackpot" fixed) → build | 0d774d4d 2266d545 47151aa9 9a492028 |
 | 5 | Fake prince | 2026-11-26-fake-prince | YT/TT/IG | SCRIPTS DONE (~88–89 s, pork lines softened, re-voiced, PASS) → build | 36948ee3 ae6a2407 d9fb0a6e fe767f3f |
 | 6 | Penny doubled | 2026-11-26-penny-doubled | YT/TT/IG | SCRIPTS DONE (65–66 s, PASS) → build | 675107e4 9ee165e0 be13bba7 fff3cd16 |
@@ -26,3 +26,4 @@ Full post ids: PostFast list_posts (approvalStatus NEEDS_WORK).
 - 2026-11-25 ~19:05 UTC: 5-hour usage limit hit; weight + wine builds and the creator study paused; resumed after the 19:20 UTC reset.
 - Fake prince re-voiced after softening the pork-causation lines; gate PASS (IG 89.3 s).
 - 2026-11-25 ~19:40 UTC: Claude Motion Tips studied (withian.notion.site + www.notion.so + file.notion.so added to the env allowlist; owner approved). Notes → research/claude-motion-tips/README.md. Workflow tips added to REBUILD-LONGER stage 2. QUEUED: Sonnet ENGINE task = Rough.js `sketch`, Matter.js `physics` (pre-simulated), `marker`, subframe motion blur, optional `glitch` (after the current builds).
+- 2026-11-25 ~19:55 UTC: creator study DONE → research/creators/robertmckeaveney/PLAYBOOK.md (+ Martin Wang, Kallaway reels). Rules → REBUILD-LONGER 'PLAYBOOK add-on'. Creator footage untracked + gitignored (it is still in commit 11491e8's history; owner may want a history scrub).
