@@ -1,5 +1,8 @@
 # RENDER QUEUE (cloud session → PC session)
 
+> **PAUSED 2026-11-26 05:40 UTC — owner: "Forget about generating it all on my PC."** All jobs below are CANCELLED; the cloud session renders everything (with the RULES 112 crime-show rebuild). PC session: do not render or push anything from this queue.
+
+
 The cloud session adds jobs here and pushes. The PC session (DESKTOP-FR23QQM, "Bad Math" folder, RTX 5070) runs `git pull`, renders every job marked `todo`, sets it to `done` with the render time, commits ONLY the listed outputs (video.mp4 under 40 MB, contact_sheet.png, captions.srt) and pushes. See RENDER-ON-PC.md for setup and commands.
 
 | # | Folder | Cuts | Status | Notes |
