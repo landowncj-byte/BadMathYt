@@ -1,0 +1,202 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A magazine paid millions for fake diaries with the wrong initials.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "West Germany, the early nineteen eighties.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "A man named Konrad Kujau sells old war souvenirs in Stuttgart.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then he starts hand-writing notebooks, and claims they're Hitler's secret diaries.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He sells them under a fake name, through a middleman.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then a star reporter at Stern, a big German magazine, gets them.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "His name is Gerd Heidemann, and he actually believes they're real.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you can already smell the fake.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "He talks his bosses into paying about nine million marks.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Marks were West Germany's money back then, and this was a fortune.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And Heidemann? He secretly kept a big chunk for himself.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "In April nineteen eighty-three, the magazine tells the whole world.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But nobody really checked the most obvious thing, the cover.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "On the covers were plastic letters from a shop, F and H.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But Hitler's first name, Adolf, starts with an A. It should have said A H.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who never proofreads anything.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then Germany's national archives tested the paper and the ink.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Both were modern, way too new to be real.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And that took less than two weeks after the announcement.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "They called it a crude forgery, which means a cheap, obvious fake.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you love when one tiny detail sinks a giant lie.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "In nineteen eighty-five, a court in Hamburg convicted Kujau and Heidemann.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "Each was sentenced to about four and a half years in prison.",
+  "override": null
+ },
+ {
+  "line": 24,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Millions of marks, and nobody checked two letters on the cover.",
+  "override": null
+ },
+ {
+  "line": 25,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Would you have caught it? Yes or no.",
+  "override": null
+ }
+]

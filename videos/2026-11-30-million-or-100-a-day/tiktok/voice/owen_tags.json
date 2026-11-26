@@ -1,0 +1,162 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A million dollars loses to a hundred bucks a day.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Wait, how? Picture two piles of money on a table.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "On the left, one million dollars cash, today.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "On the right, a hundred dollars every day, for the rest of your life.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "No taxes, no interest, just the money.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Tap the heart if your hand already went for the million.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now let's race them. Every morning, another hundred dollar bill lands on the pile.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's about three thousand a month, basically your rent, forever.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Year one, the pile hits thirty-six thousand five hundred dollars.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Year ten? Three hundred sixty-five thousand. Still way behind.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then on day ten thousand, the little pile finally catches the million.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's about twenty-seven years in.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who says, just give me the million.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But here's the catch. The pile only grows while you're alive.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Start at twenty-five, live to eighty, and you end up with about two million.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you just checked how old you are.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But start at sixty and live to eighty, and you only get seven hundred thirty thousand.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "The million wins by two hundred seventy thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "So it was never about the money. It's how many years you've got left.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Million or a hundred a day? One word.",
+  "override": null
+ }
+]

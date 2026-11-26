@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "One thousand twenty-three people flipped for a million and got nothing.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Here's the bet. Grab a thousand bucks in cash, or flip a coin.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Heads doubles your money. Tails wipes you out.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And there's no quitting until you win ten in a row.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Pull that off, and it's one million twenty-four thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Sounds easy, right? Most people grab the coin.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Tap the heart if you're grabbing it too.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now put one thousand twenty-four people in a room, and they all flip.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Flip one, half of them hit tails and they're broke.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Flip three, the survivors hold eight thousand dollars. Only one in eight is left.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Flip five, it's thirty-two thousand, basically a new car.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd never take the safe cash.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "By flip seven, the pot is a hundred twenty-eight thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But almost everybody is already out.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "By flip ten, one single person is left standing.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "That one person gets the million. The other thousand twenty-three get zero.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if a coin just roasted your gut.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now the wild part. Split that million across the room.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Everybody averages exactly a thousand dollars, the same as the cash.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The coin never pays more. It just hides the losers.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So be real with me. Cash or coin? One word.",
+  "override": null
+ }
+]

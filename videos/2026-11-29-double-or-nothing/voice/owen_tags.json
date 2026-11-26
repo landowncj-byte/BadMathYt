@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A coin can turn a thousand dollars into over a million.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Here's the deal. Take a thousand dollars cash, right now.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Or flip a coin. Heads doubles your money, tails loses it all.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And you have to win ten flips in a row.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Do it, and you walk away with one million twenty-four thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So which one? Most people grab the coin.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you would too.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Win the first flip, and you've got two thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Win three, and it's eight thousand. But only one person in eight gets there.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Win five, and it's thirty-two thousand, about the price of a nice car.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But only one person in thirty-two is still standing.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who always says double or nothing.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now picture one thousand twenty-four people, all flipping.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Every flip, half of them hit tails and go home with nothing.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "By flip ten, how many are left? Just one.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's about a tenth of one percent.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if your gut just changed its answer.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "excited",
+  "why": "payoff",
+  "short_pause_after": false,
+  "text": "The winner gets the million. The other thousand twenty-three get zero.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's the twist. Spread that million across everyone, and it's a thousand each.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Same as the cash. The coin just hides how rare the winner is.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So, cash or coin? One word.",
+  "override": null
+ }
+]
