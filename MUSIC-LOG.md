@@ -29,3 +29,23 @@ Rule: pick a bed not used by the previous 3 posted topics; log it in the table a
 | victor lustig | noir_bed_2 |
 | billionaires split | acoustic_bed_1 |
 | fakes long-form | per chapter: noir_bed_1 / heist_bed_2 / orchestral_bed_2 / mystery_bed_2 / jazz_bed_2 / ambient_bed_1 |
+
+## Week 2 assignments (Wed 12/2 → Sun 12/6), all distinct, none reused from earlier topics
+| Topic folder | Bed |
+|---|---|
+| 2026-12-02-antwerp-sandwich | heist_bed_3 |
+| 2026-12-02-car-loan-7-years | funk_bed_2 |
+| 2026-12-02-train-robbery-monopoly | orchestral_bed_3 |
+| 2026-12-03-brinks-six-years | mystery_bed_3 |
+| 2026-12-03-roulette-1000-spins | electronic_bed_1 |
+| 2026-12-03-hatton-garden | synth_bed_2 |
+| 2026-12-04-world-cup-pickles | quirky_bed_1 |
+| 2026-12-04-phone-hours | electronic_bed_3 |
+| 2026-12-04-stanford-ponzi | synth_bed_3 |
+| 2026-12-05-million-median-salary | acoustic_bed_2 |
+| 2026-12-05-wells-fargo-accounts | ambient_bed_2 |
+| 2026-12-05-lifetime-rent | hiphop_bed_1 |
+| 2026-12-06-tinder-swindler | funk_bed_3 |
+| 2026-12-06-commute-year | ambient_bed_3 |
+| 2026-12-06-tipping-40-years | quirky_bed_2 |
+| Fri 12/4 heists long-form | heist_bed_2, mystery_bed_3, orchestral_bed_3, synth_bed_2, quirky_bed_1, acoustic_bed_3 (per chapter) |
