@@ -51,3 +51,4 @@ research/creators/**/*.m4a
 **/build/vna_small.mp4
 **/build/*_tmp*.mp4
 **/build/*.partial.mp4
+**/build/render.log
