@@ -1,0 +1,146 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "The phone isn't the expensive part. The plan is.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Want proof? Let's count it in hours of your life.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you make the middle American wage, about twenty-four fifty-one an hour.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Half of workers make more, half make less.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Okay, the phone. Say it costs a thousand bucks.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's about forty-one hours of work, so a full work week and change.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now the plan. Say seventy bucks a month, for three years.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Smash like if your plan is even higher than that.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's two thousand five hundred twenty dollars. Two\u2014 no, two and a half phones.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "In hours? About a hundred and three. Just to keep the thing turned on.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who still brags about their new phone.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "So, phone plus plan is three thousand five hundred twenty dollars.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Wait, that's almost a hundred bucks a month, all in.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you want more stuff priced in your actual hours.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Total time? A hundred and forty-four hours. That's eighteen full work days.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And if a fifth of your check goes to taxes, it's closer to twenty-two days.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So you basically worked a whole month for one phone and its plan.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Phone or plan, which one hurts more? Pick one.",
+  "override": null
+ }
+]

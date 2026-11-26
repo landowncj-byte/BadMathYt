@@ -1,0 +1,194 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A hundred million dollar diamond heist got wrecked by a salami sandwich.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "February two thousand three. A trash bag sits by a road near Brussels.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Inside: evidence from a robbery, and a half-eaten sandwich.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Okay, rewind. Whose sandwich, and what robbery?",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Antwerp, Belgium, the diamond capital of the world.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now, under its Diamond Centre sits a vault of safe-deposit boxes, locked drawers people rent.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Layer after layer of security. Nobody gets in\u2014 well, nobody's supposed to.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then enter Leonardo Notarbartolo. He said he was a diamond dealer.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He rented an office there, so now he could come and go.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Tap like if you'd have bought that cover story too.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "One weekend, his crew hits the vault and cracks box after box.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Estimates say about a hundred million dollars.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "A thousand years of hundred-grand paychecks, gone in one weekend.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then the last step: burn the trash, so nothing's left.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend whose plans always die at the last step.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But nobody burned it. The bag got dumped, and police found it.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Police say that sandwich actually carried Notarbartolo's DNA.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And bro wasn't done. Five days later, he walked back into the Diamond Centre and got arrested.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you collect dumb ways to blow genius plans.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "In two thousand five, an Antwerp court convicted him as the planner.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "He was sentenced to ten years in prison.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Three of his crew got five years each.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And most of the diamonds? Never found.",
+  "override": null
+ },
+ {
+  "line": 24,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So which was dumber, the sandwich or walking back in?",
+  "override": null
+ }
+]

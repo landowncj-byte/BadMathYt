@@ -1,0 +1,146 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Your phone costs you a hundred and forty-four hours of work.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But let's price it in hours, not dollars.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you earn the middle wage in America, about twenty-four fifty-one an hour.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's the government's middle number. Half earn more, half earn less.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now say your new phone costs a thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Divide that by your pay, and it's about forty-one hours of work.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's a full work week\u2014 well, a week and then some.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you never thought of it that way.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But wait, the phone is actually the cheap part.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say your plan is seventy dollars a month, for three years.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's two thousand five hundred twenty dollars, about two and a half times the phone.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's about a hundred and three hours of work.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who keeps upgrading every year.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Phone plus plan is three thousand five hundred twenty dollars.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you want the real price of everyday stuff.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's the hit. That's a hundred and forty-four hours, or eighteen full work days.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And if a fifth of your pay goes to taxes, it's more like twenty-two work days. About a month.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So what's your plan a month, in hours?",
+  "override": null
+ }
+]
