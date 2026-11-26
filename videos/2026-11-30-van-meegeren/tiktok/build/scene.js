@@ -478,7 +478,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         const L = [seg.L[0], val(seg.L[1], t)], R = [seg.R[0], val(seg.R[1], t)]; g.fillStyle = 'rgba(11,15,20,.14)'; rr(g, 98, 344, 884, 22, 11); g.fill();
         const fr = seg.bar ? clamp(seg.bar(t)) : 0; if (fr > 0.005) { g.fillStyle = th.bad; rr(g, 98, 344, Math.max(22, fr * 884), 22, 11); g.fill(); }
         label(g, L[0], 100, 398, th.inkSoft, 26, 'left'); label(g, R[0], 980, 398, th.inkSoft, 26, 'right');
-        const sL = fit(L[1], F.hero, 440, 100, 22), sR = fit(R[1], F.hero, 440, 100, 22), cc = c => c === 'bad' ? th.badInk : c === 'gold' ? '#B88700' : th.ink;
+        const sL = fit(L[1], F.hero, 415, 100, 22), sR = fit(R[1], F.hero, 415, 100, 22), cc = c => c === 'bad' ? th.badInk : c === 'gold' ? '#B88700' : th.ink;
         txt(g, L[1], 100, 484, F.hero(sL), cc(seg.Lc), 'left'); txt(g, R[1], 980, 484, F.hero(sR), cc(seg.Rc), 'right');
         g.restore();
       }
@@ -544,12 +544,12 @@ const S = V5.make({
   C: [
     { from: 0, L: ['THE PROOF', 'PAINT ANOTHER'], R: ['THE LABEL', 'FORGER'], Lc: 'gold', Rc: 'bad' },
     { from: "@let's-0.1", L: ['YEAR', '1945'], R: ['THE WAR IN EUROPE', 'JUST ENDED'], Lc: 'gold' },
-    { from: '@investigators-0.1', L: ['SEARCHING', 'ART COLLECTION'], R: ['OF', 'A NAZI LEADER'], Rc: 'bad' },
+    { from: '@investigators-0.1', L: ['SEARCHING', 'THE ART'], R: ['OF', 'A NAZI LEADER'], Rc: 'bad' },
     { from: '@göring#2-0.1', L: ['PRICE PAID (GUILDERS)', { from: 0, to: 1650000, at: '@1#1', dur: 1.3 }], R: ['FOR', 'A VERMEER'], Lc: 'bad' },
-    { from: '@so#1-0.1', L: ['WHO SOLD', 'HIM A TREASURE?'], R: ['TRACED TO', 'A PAINTER'], Lc: 'gold' },
+    { from: '@so#1-0.1', L: ['WHO SOLD IT', 'TO HIM?'], R: ['TRACED TO', 'A PAINTER'], Lc: 'gold' },
     { from: '@now#1-0.1', L: ['STATUS', 'ARRESTED'], R: ['CHARGE', 'COLLABORATION'], Lc: 'bad', Rc: 'bad' },
-    { from: '@and#3-0.1', L: ['HIS ANSWER', 'I PAINTED IT'], R: ['THE PAINTING', 'NOT A VERMEER'], Lc: 'gold', Rc: 'bad' },
-    { from: '@turns-0.1', L: ['FOR YEARS', 'FAKING VERMEERS'], R: ['SOLD AS', '“LOST” FINDS'], Lc: 'bad', Rc: 'gold' },
+    { from: '@and#3-0.1', L: ['HIS ANSWER', 'I PAINTED IT'], R: ['THE PAINTING', 'A FAKE'], Lc: 'gold', Rc: 'bad' },
+    { from: '@turns-0.1', L: ['FOR YEARS', 'FAKING'], R: ['SOLD AS', '“LOST” FINDS'], Lc: 'bad', Rc: 'gold' },
     { from: '@but#1-0.1', L: ['NOBODY', 'BELIEVES HIM'], R: ['HIS REPLY', 'WATCH ME'], Lc: 'bad', Rc: 'gold' },
     { from: '@then#3-0.1', L: ['THE PROOF', 'PAINT IT LIVE'], R: ['WHO WATCHED', 'OFFICIALS'], Lc: 'gold' },
     { from: '@wait-0.1', L: ['WHO GOT SCAMMED', 'A NAZI LEADER'], R: ['WITH', 'A FAKE'], Lc: 'bad', Rc: 'bad' },

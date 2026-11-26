@@ -478,7 +478,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         const L = [seg.L[0], val(seg.L[1], t)], R = [seg.R[0], val(seg.R[1], t)]; g.fillStyle = 'rgba(11,15,20,.14)'; rr(g, 98, 344, 884, 22, 11); g.fill();
         const fr = seg.bar ? clamp(seg.bar(t)) : 0; if (fr > 0.005) { g.fillStyle = th.bad; rr(g, 98, 344, Math.max(22, fr * 884), 22, 11); g.fill(); }
         label(g, L[0], 100, 398, th.inkSoft, 26, 'left'); label(g, R[0], 980, 398, th.inkSoft, 26, 'right');
-        const sL = fit(L[1], F.hero, 440, 100, 22), sR = fit(R[1], F.hero, 440, 100, 22), cc = c => c === 'bad' ? th.badInk : c === 'gold' ? '#B88700' : th.ink;
+        const sL = fit(L[1], F.hero, 415, 100, 22), sR = fit(R[1], F.hero, 415, 100, 22), cc = c => c === 'bad' ? th.badInk : c === 'gold' ? '#B88700' : th.ink;
         txt(g, L[1], 100, 484, F.hero(sL), cc(seg.Lc), 'left'); txt(g, R[1], 980, 484, F.hero(sR), cc(seg.Rc), 'right');
         g.restore();
       }

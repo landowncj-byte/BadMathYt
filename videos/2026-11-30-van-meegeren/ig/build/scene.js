@@ -552,7 +552,7 @@ const S = V5.make({
     { from: '@so#2-0.1', L: ['HIS ANSWER', 'I PAINTED IT'], R: ['THE PAINTING', 'A FAKE'], Lc: 'gold', Rc: 'bad' },
     { from: '@but#1-0.1', L: ['NOBODY', 'BELIEVED HIM'], R: ['SO HE', 'GRABBED A BRUSH'], Lc: 'bad', Rc: 'gold' },
     { from: '@and#7-0.1', L: ['THE PROOF', 'PAINT IT LIVE'], R: ['WHO WATCHED', 'OFFICIALS'], Lc: 'gold' },
-    { from: '@yeah-0.1', L: ['NOT A TRAITOR', 'JUST A FAKER'], R: ['HOW HE PROVED IT', 'THE CRIME, LIVE'], Lc: 'gold', Rc: 'bad' },
+    { from: '@yeah-0.1', L: ['NOT A TRAITOR', 'A FAKER'], R: ['HOW HE PROVED IT', 'CRIME, LIVE'], Lc: 'gold', Rc: 'bad' },
     { from: '@then#3-0.1', L: ['THE CHARGE', 'FORGERY'], R: ['MEANS', 'FAKING ART'], Lc: 'bad' },
     { from: '@in#3-0.1', L: ['YEAR', '1947'], R: ['SENTENCE', '1 YEAR'], Rc: 'bad' },
     { from: '@and#8-0.1', L: ['WEEKS LATER', 'HE DIED'], R: ['SENTENCE SERVED', 'NONE'], Lc: 'bad', Rc: 'bad' },

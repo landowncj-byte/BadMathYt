@@ -302,7 +302,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     const st = S.at; for (let i = 0; i < 14; i++) { const on = t - (st + i * 0.12); if (on <= 0) continue; const k = Math.min(1, spring(on, 'snappy')); const y = base - (i + 1) * tb - (1 - k) * 60; g.save(); g.globalAlpha *= clamp(on / 0.05); g.fillStyle = i % 2 ? '#2FA46B' : '#27935E'; rr(g, 750 - 150, y, 300, tb - 0.8, 2); g.fill(); g.fillStyle = 'rgba(255,255,255,.3)'; g.fillRect(750 - 148, y, 296, 1.2); g.restore(); }
     label(g, '14 DOLLAR BILLS', 750, base + 36, th.paper, 28); label(g, '0.109 mm EACH', 750, base + 70, th.good, 28);
     g.strokeStyle = th.accent; g.lineWidth = 3; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(150, base - tp); g.lineTo(930, base - tp); g.stroke(); g.setLineDash([]);
-    if (S.eq && t >= S.eq) { const k = Math.min(1.1, spring(t - S.eq, 'bouncy')); g.save(); g.translate(540, base - tp - 120); g.scale(k, k); g.fillStyle = '#0B0F14'; g.beginPath(); g.arc(0, 0, 40, 0, 7); g.fill(); g.strokeStyle = th.accent; g.lineWidth = 5; g.stroke(); txt(g, '≈', 0, 3, F.hero(64), th.accent); g.restore(); }
+    if (S.eq && t >= S.eq) { const k = Math.min(1.1, spring(t - S.eq, 'bouncy')); g.save(); g.translate(540, base - tp - 62); g.scale(k, k); g.fillStyle = '#0B0F14'; g.beginPath(); g.arc(0, 0, 40, 0, 7); g.fill(); g.strokeStyle = th.accent; g.lineWidth = 5; g.stroke(); txt(g, '≈', 0, 3, F.hero(64), th.accent); g.restore(); }
     mchip(g, p, t, th, S, 1050);
   }
   // the penny tower split across everyone: 31 pennies each
@@ -325,7 +325,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     g.fillStyle = 'rgba(245,243,238,.35)'; g.fillRect(180, base, 720, 4);
     clay(g, 220, base - mx * k, 250, mx * k, 16, bills, { shadowK: 0.6 }); if (k > 0.5) { stk(g, '$3.52T', 345, base - mx * k - 40, F.hero(66), th.good, 'center', 12); } label(g, 'DOLLAR-BILL TOWER', 345, base + 36, th.paper, 22);
     const pk = ease.out(clamp((t - S.at - 0.6) / 0.6)); g.save(); g.globalAlpha *= pk; g.fillStyle = '#C77B45'; g.fillRect(610, base - 4, 250, 4); g.restore(); if (pk > 0) { g.save(); g.globalAlpha *= pk; stk(g, '$2.53B', 735, base - 100, F.hero(66), '#F0A56F', 'center', 12); g.strokeStyle = '#F0A56F'; g.lineWidth = 4; g.beginPath(); g.moveTo(735, base - 62); g.lineTo(735, base - 12); g.stroke(); g.beginPath(); g.moveTo(725, base - 24); g.lineTo(735, base - 10); g.lineTo(745, base - 24); g.stroke(); g.restore(); label(g, 'PENNY TOWER', 735, base + 36, th.paper, 22); }
-    if (S.ratio && t >= S.ratio) { const rk = spring(t - S.ratio, 'bouncy'); chip(g, 'PENNIES: ~1,400× CHEAPER', 540, 650, 'accent', th, 46, 900, rk); }
+    if (S.ratio && t >= S.ratio) { const rk = spring(t - S.ratio, 'bouncy'); chip(g, 'PENNIES: ~1,400× CHEAPER', 540, 622, 'accent', th, 46, 900, rk); }
     mchip(g, p, t, th, S, 1058);
   }
   function ask(g, p, lt, t, th, S) { const k = spring(lt, 'bouncy'); g.save(); g.translate(540, 800); g.scale(0.7 + 0.3 * Math.min(1.06, k), 0.7 + 0.3 * Math.min(1.06, k)); g.globalAlpha *= clamp(k * 2); const sz = Math.min(fit(S.l1, F.hero, 900, 112), fit(S.l2, F.hero, 900, 112)); stk(g, S.l1, 0, -62, F.hero(sz), th.accent, 'center', 16); stk(g, S.l2, 0, 62, F.hero(sz), th.good, 'center', 16); g.restore(); }
