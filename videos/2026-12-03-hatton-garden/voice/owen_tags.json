@@ -1,0 +1,202 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "They stole over fourteen million pounds. Then their own cars ratted them out.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Let's go back to London, Easter weekend, twenty fifteen.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Hatton Garden is the city's jewelry district.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Under one building sits a vault of safe-deposit boxes, locked drawers people rent.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now meet the gang: mostly older men, led by a man in his seventies.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step one: they climb down a lift shaft, an elevator shaft.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you'd never have suspected this crew.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step two: they drill through the wall\u2014 a thick concrete vault wall.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then they open box after box.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The haul is worth more than fourteen million pounds.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Saving a thousand pounds a month, that's over eleven hundred years.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But London has cameras everywhere.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Police comb through the footage, and spot a car near the building.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Now send this to the friend who thinks nobody's watching.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then detectives get sneaky. They hide listening devices in the gang's cars.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And the gang? They drive around arguing about what went wrong and splitting the loot.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Yeah, every word got recorded.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "In May twenty fifteen, police arrest nine people.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you love it when the bad guys narrate their own case.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "The judge? He called it the biggest burglary in English legal history.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "Four men were sentenced to seven years in prison.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Two others got about six years each.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And their electronics man got ten years, in twenty nineteen.",
+  "override": null
+ },
+ {
+  "line": 24,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Fourteen million pounds, and they got caught talking in the car.",
+  "override": null
+ },
+ {
+  "line": 25,
+  "tag": "playfully",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Would you have kept quiet in those cars? Yes or no.",
+  "override": "playfully"
+ }
+]

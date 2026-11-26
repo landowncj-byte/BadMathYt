@@ -1,0 +1,130 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Save every dollar you earn, and a million takes over fifteen years.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And that's with zero rent, zero food, zero fun. Now let's get real.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The middle full-time paycheck in America is about twelve thirty-two a week, says the government.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's about sixty-four thousand dollars a year, before anything comes out.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you save fifteen percent. That's about eight hundred bucks a month.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Smash like if that number made you flinch.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "Leave it in a jar, and a million takes a hundred and four years. Wait, what?",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Yeah, that's two and a half careers. Your grandkids would finish saving it.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend whose whole plan is still a savings jar.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Okay, here's the twist. Money that grows earns money on top of itself.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say it grows seven percent a year. Big assumption, not a promise.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now that same eight hundred a month hits a million in about thirty-one years.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you want more math your bank app won't show you.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's the crazy part. You only put in about three hundred thousand of it.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The other seven hundred thousand is growth. The money basically paid itself.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So be honest, what percent do you save? Just the number.",
+  "override": null
+ }
+]

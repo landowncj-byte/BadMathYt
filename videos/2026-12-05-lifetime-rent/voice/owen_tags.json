@@ -1,0 +1,130 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Your rent adds up to one point three six million dollars.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But you never pay that much at once, so it hides. Let's add it up.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you start at fifteen hundred dollars a month, and you rent for forty years.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And say the rent goes up three percent a year. That's an assumption, not a forecast.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Three percent sounds tiny. On fifteen hundred, it's just forty-five bucks.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if your rent went up way more than that this year.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "After ten years, you've paid about two hundred six thousand, and rent is up to nineteen fifty-seven.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After twenty years, you're at about four hundred eighty-four thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who never reads the lease renewal.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "By year thirty, it's about eight hundred fifty-six thousand. And it's still climbing.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then year forty. The same place now costs forty-seven fifty-one a month. That's more than triple.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Total, one point three six million dollars.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you want the bill nobody hands you upfront.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now the twist. With no raises, forty years is seven hundred twenty thousand.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So those tiny raises added six hundred thirty-seven thousand. Almost as much as the rent itself.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "What's your rent right now, and what was your first? Just the numbers.",
+  "override": null
+ }
+]

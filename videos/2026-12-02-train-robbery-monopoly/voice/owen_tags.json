@@ -1,0 +1,202 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A gang robbed a mail train, then played Monopoly with the cash.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Let's go back to England, August nineteen sixty-three.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now a Royal Mail train, the post office train, rolls through the night.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "It's carrying sacks of used banknotes. Guess who wants them?",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "A gang of about fifteen men, with a plan.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step one: they rig a signal, so the driver thinks he has to stop.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you'd never have thought of that.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "It stops at a bridge in the countryside.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step two: they grab a hundred and twenty mail sacks.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Inside is about two point six million pounds.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's around two and a half tons of cash, heavier than a car.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step three: hide at a farmhouse.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And to pass the time? They play Monopoly with the real money.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Now send this to the friend who'd do the same.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But hiding means no trace, so they wipe the place down.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "They planned to burn the farmhouse too. Reportedly, nobody did.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then a tip sends police to the farm.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "They wiped almost everything\u2014 well, almost.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But police found fingerprints on the Monopoly board, and on a ketchup bottle.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Wait, a board game and ketchup helped crack the case?",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you love master plans beaten by board games.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "In April nineteen sixty-four, a court convicted most of the gang.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "The main men were sentenced to up to thirty years in prison.",
+  "override": null
+ },
+ {
+  "line": 24,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Two and a half tons of cash, undone by a board game.",
+  "override": null
+ },
+ {
+  "line": 25,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So, Monopoly or ketchup, which one was dumber?",
+  "override": null
+ }
+]

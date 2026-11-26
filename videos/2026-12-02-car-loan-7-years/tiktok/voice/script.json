@@ -4,27 +4,31 @@
   0.45
  ],
  [
-  "Two payments for the exact same car: one thousand seventy a month, or six seventy-four.",
+  "Same car, but you pick the monthly payment. Option one is one thousand seventy dollars.",
   0.45
  ],
  [
-  "Which one you picking? Yeah, everybody picks the small one.",
+  "Option two? Only six seventy-four.",
+  0.45
+ ],
+ [
+  "Which one you picking? Yeah, the small one.",
   0.35
  ],
  [
-  "Here's the setup. You borrow about forty-four thousand seven hundred for a new car.",
+  "You borrow about forty-four thousand seven hundred for a new car.",
+  0.45
+ ],
+ [
+  "That's the average new car loan, per Edmunds.",
   0.35
  ],
  [
-  "That's the average new car loan right now, per Edmunds.",
+  "Now tap like if your car payment already hurts.",
   0.35
  ],
  [
-  "Tap like if your car payment already hurts.",
-  0.35
- ],
- [
-  "The bank charges seven percent a year. That's interest, basically rent on money.",
+  "The bank charges seven percent a year in interest. Basically, rent on money.",
   0.35
  ],
  [
@@ -32,7 +36,7 @@
   0.45
  ],
  [
-  "Stretch it to seven years, and it's almost twelve thousand.",
+  "Stretch it to seven years, and it's about ten— no, almost twelve thousand.",
   0.45
  ],
  [
@@ -40,31 +44,31 @@
   0.45
  ],
  [
-  "Yep. Same car, same rate, you just pay interest for three extra years.",
-  0.35
- ],
- [
-  "Send this to the friend who said his payment's \"only six seventy-four.\"",
-  0.35
- ],
- [
-  "At the typical wage, that's two hundred sixteen hours of work, gone.",
+  "Yep. Same car, same rate, three extra years of interest.",
   0.45
  ],
  [
-  "And if your rate's nine percent? The seven-year interest hits almost fifteen thousand seven hundred.",
+  "Send this to the friend whose payment is \"only six seventy-four.\"",
+  0.35
+ ],
+ [
+  "At the typical wage, that's two hundred sixteen hours of work.",
   0.45
  ],
  [
-  "Follow if you'd rather see the receipt before you sign.",
+  "And at nine percent? Seven-year interest hits almost fifteen thousand seven hundred.",
+  0.45
+ ],
+ [
+  "Follow if you'd rather see the receipt first.",
   0.35
  ],
  [
   "Oh, and when it's finally paid off, your car's seven years old.",
-  0.35
+  0.45
  ],
  [
-  "Low payment, high price. That's the whole trick.",
+  "Low payment, high price. That's the trick.",
   0.35
  ],
  [

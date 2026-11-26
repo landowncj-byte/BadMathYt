@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "sarcastic",
+  "why": "hook (IG roast cut)",
+  "short_pause_after": false,
+  "text": "Roulette looks fifty-fifty, and that's exactly how it gets you.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Bet one dollar on red, a thousand times in a row.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Win, you get a dollar. Lose, the dollar's gone.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Same as a coin flip, right? That's what everybody thinks.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Double-tap if you've ever said, just one more spin.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But an American wheel has thirty-eight slots, and only eighteen are red.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "matter of fact",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Eighteen are black, and two are green: zero and double zero.",
+  "override": "matter of fact"
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So red only hits about forty-seven percent of the time.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Those two green slots are the house edge, the casino's cut.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now it gets ugly.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After ten spins, about thirty-one percent of players are ahead.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After a hundred, about twenty-six percent.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who thinks he's got a system.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "After five hundred spins, only eleven percent.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "After a thousand? About four and a half damn percent.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "That's one in twenty-two, like one person in a whole classroom.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Save this before your next casino trip.",
+  "override": "playfully"
+ },
+ {
+  "line": 18,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "The average player walks out down about fifty-three bucks.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And more than half end up down fifty bucks or more.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "One spin feels harmless. A thousand of them eat you alive.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "How many roulette spins before you'd walk, honestly?",
+  "override": null
+ }
+]

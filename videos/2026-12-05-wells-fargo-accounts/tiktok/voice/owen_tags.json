@@ -1,0 +1,162 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "Fifty-three hundred people got fired, and an executive got probation.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "The crime? Opening bank accounts customers never asked for. Wait, what?",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Okay, here's the bank. Wells Fargo, one of the biggest in America.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Its whole thing was selling every customer more stuff, about six products each.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But prosecutors say from two thousand two to two thousand sixteen, the sales goals were unrealistic.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So some employees just faked it. Smash like if your job ever pulled this.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step one, open an account the customer never asked for.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step two, make up a PIN, or straight up forge a signature.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step three, move the customer's own money into it so it looks legit.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The bank's own review found more than two million accounts that may not have been authorized.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's one account a minute, nonstop, for almost four years.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who still hasn't opened their bank app this year.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then in two thousand sixteen, regulators fined the bank a hundred eighty-five million dollars.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And in two thousand twenty, it agreed to pay three billion dollars to settle criminal and civil investigations.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "It even admitted top managers knew. Still not convicted, though.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "It got a deferred prosecution deal. Behave for three years, and the charge goes away.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you want more stuff banks hope you never read.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "Then the executive in charge, Carrie Tolstedt, pleaded guilty to obstructing a bank examination.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "She was sentenced to three years of probation, including six months at home.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So workers got fired, and she got probation at home. Fair or not?",
+  "override": null
+ }
+]

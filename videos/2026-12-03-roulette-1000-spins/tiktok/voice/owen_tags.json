@@ -1,0 +1,154 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Spin roulette a thousand times. Almost ninety-five percent end up behind.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's the setup. You bet one dollar on red, every spin, a thousand spins.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Win, you get a dollar. Lose, you lose the dollar.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Wait, that's basically fifty-fifty, right? Not\u2014 not quite.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "playfully",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Tap like if you'd have bet on red too.",
+  "override": "playfully"
+ },
+ {
+  "line": 6,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "An American wheel has thirty-eight slots, and only eighteen are red.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "matter of fact",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "The other twenty? Eighteen black, plus two green ones, zero and double zero.",
+  "override": "matter of fact"
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So red hits about forty-seven percent of the time, not fifty.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That tiny gap is the house edge, basically the casino's cut on every bet.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now watch it stack up.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who keeps saying, I'm due.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "After ten spins, about thirty-one percent of players are still ahead.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After a hundred spins, about twenty-six percent.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After five hundred, about eleven percent.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After a thousand? About four and a half percent. That's one in twenty-two.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you're tired of losing to math you can't see.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And the average player walks away down about fifty-three bucks.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Each spin barely hurts. A thousand of them? Different story.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So be honest, how many times do you spin before you walk?",
+  "override": null
+ }
+]

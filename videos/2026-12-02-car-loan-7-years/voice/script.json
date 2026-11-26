@@ -5,7 +5,7 @@
  ],
  [
   "Say you borrow about forty-four thousand seven hundred dollars for a new car.",
-  0.35
+  0.45
  ],
  [
   "That's the average new car loan, says Edmunds.",
@@ -13,11 +13,11 @@
  ],
  [
   "The bank charges seven percent a year in interest, the fee for borrowing.",
-  0.35
+  0.45
  ],
  [
-  "Now, two choices: pay it off in four years or seven.",
-  0.35
+  "Now pick: pay it off in four years, or seven?",
+  0.45
  ],
  [
   "Four years means about one thousand seventy dollars a month.",
@@ -29,10 +29,10 @@
  ],
  [
   "Hit like if you'd grab the seven-year deal.",
-  0.35
+  0.45
  ],
  [
-  "That's three hundred ninety-five bucks a month back in your pocket.",
+  "That's three hundred ninety-five bucks back every month.",
   0.45
  ],
  [
@@ -48,11 +48,11 @@
   0.45
  ],
  [
-  "Send this to the friend bragging about their low payment.",
+  "Send this to the friend bragging about a low payment.",
   0.35
  ],
  [
-  "Same car, same rate, and you pay about five thousand three hundred more.",
+  "Same car, same rate, about five thousand three hundred more.",
   0.45
  ],
  [
@@ -69,7 +69,7 @@
  ],
  [
   "And when it's paid off, your car is seven years old.",
-  0.35
+  0.45
  ],
  [
   "So the payment went down, but the price went up.",

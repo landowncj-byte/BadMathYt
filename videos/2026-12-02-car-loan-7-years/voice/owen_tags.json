@@ -1,1 +1,162 @@
-[{"line":1,"override":"curious"}]
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "That lower car payment? It just cost you over five thousand dollars.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Say you borrow about forty-four thousand seven hundred dollars for a new car.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's the average new car loan, says Edmunds.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The bank charges seven percent a year in interest, the fee for borrowing.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "Now pick: pay it off in four years, or seven?",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Four years means about one thousand seventy dollars a month.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Seven years? Only about six hundred\u2014 six hundred seventy-four.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you'd grab the seven-year deal.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "That's three hundred ninety-five bucks back every month.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But here's the catch: interest piles up every month you owe.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Four years costs about six thousand seven hundred in interest.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Seven years? Almost twelve thousand dollars.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend bragging about a low payment.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Same car, same rate, about five thousand three hundred more.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "At the typical wage, that's two hundred sixteen hours of work.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "More than five full work weeks, just for the longer loan.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you like seeing the bill behind the price tag.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And when it's paid off, your car is seven years old.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So the payment went down, but the price went up.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "What's your car loan term, in years?",
+  "override": null
+ }
+]

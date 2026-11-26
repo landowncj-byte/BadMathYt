@@ -1,0 +1,186 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "They drilled into a vault, then snitched on themselves in the car.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "London, May twenty fifteen. A few guys are driving around, arguing about a robbery.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "What they don't know? Police hid listening devices in their cars.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Okay, rewind. What robbery?",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Hatton Garden is London's jewelry district.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Under one building sits a vault of safe-deposit boxes, locked drawers people rent.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Easter weekend, twenty fifteen, a gang of mostly older men breaks in.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "playfully",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Tap like if you didn't have them on your bingo card.",
+  "override": "playfully"
+ },
+ {
+  "line": 9,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step one: they climb down a lift shaft, basically an elevator shaft.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Step two: they drill straight through a\u2014 a thick concrete wall.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then they empty box after box, worth more than fourteen million pounds.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Save a thousand pounds a month, and that'd take you over eleven hundred years.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But London is basically one giant security camera.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Now send this to the friend who thinks nobody's watching.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then police comb the footage, spot a car, and that leads them to the gang.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And the gang? They actually talk about it: what went wrong, who gets what, all recorded.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you love when the bad guys do the detective's job.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "On May nineteenth, twenty fifteen, police arrest nine people.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The judge? He called it the biggest burglary in English legal history.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "Four men were sentenced to seven years in prison.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Two more got about six years each.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And their electronics man? He later got ten years.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "Fourteen million pounds, and they lost it running their mouths. Would you have stayed quiet?",
+  "override": null
+ }
+]

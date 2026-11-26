@@ -4,16 +4,16 @@
   0.45
  ],
  [
-  "Stretch your loan from four years to seven, and your payment drops three hundred ninety-five bucks a month.",
+  "Stretch your car loan from four years to seven, and the payment drops.",
   0.45
  ],
  [
-  "Sounds like a win, right? Hell no. Watch.",
-  0.35
+  "Like, three hundred ninety-five bucks a month. Sounds like a win, right? Hell no.",
+  0.45
  ],
  [
   "You borrow about forty-four thousand seven hundred for a new car, the average loan, per Edmunds.",
-  0.35
+  0.45
  ],
  [
   "The bank charges seven percent a year. That's interest, the fee for borrowing.",
@@ -24,11 +24,19 @@
   0.35
  ],
  [
-  "Four years: about one thousand seventy a month, and six thousand seven hundred in interest.",
+  "Four years? About one thousand seventy a month.",
   0.45
  ],
  [
-  "Seven years: about six seventy-four a month, and almost twelve thousand in interest.",
+  "And about six thousand seven hundred in interest.",
+  0.45
+ ],
+ [
+  "Seven years? About six seventy-four a month.",
+  0.45
+ ],
+ [
+  "But almost twelve thousand in interest.",
   0.45
  ],
  [
@@ -44,7 +52,7 @@
   0.45
  ],
  [
-  "More than five full work weeks of clocking in, just for the longer loan.",
+  "That's more than five full work weeks of clocking in, just for the longer loan.",
   0.35
  ],
  [
@@ -52,15 +60,15 @@
   0.35
  ],
  [
-  "And when it's finally paid off? Your car's seven years old.",
-  0.35
+  "And when it's finally paid off? Your car's already seven years old.",
+  0.45
  ],
  [
   "Lower payment, bigger bill. The math doesn't care how it feels.",
   0.35
  ],
  [
-  "Four years or seven, what's yours?",
-  0.4
+  "Four years or seven, what's your car loan?",
+  0.45
  ]
 ]

@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "They kept a two point seven million secret for six years. Then one guy snitched.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Boston, January nineteen fifty. Masked men walk into the Brink's building.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Brink's? It's the armored truck company, basically the people who move cash.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then the gang, in rubber Halloween masks and chauffeur caps, ties up the workers.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And they walk out with more than two point seven million dollars in cash, checks and more.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Tap like if that already sounds like a movie.",
+  "override": "playfully"
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But police chase hundreds of dead ends.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Because the gang has a deal: nobody says a word for\u2014 get this\u2014 six years.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Why six? The statute of limitations, basically a legal expiration date.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After six years, they can't be charged. They'd basically win.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Now send this to the group chat that can't keep a secret for a day.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But then one of them, Joseph \"Specs\" O'Keefe, gets jailed for another burglary.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And in jail, he reportedly feels shorted.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So bro does the one thing that kills the plan. Yeah, he talks.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "January nineteen fifty-six. With less than a week on the clock, eleven men get charged.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "About two thousand one hundred ninety days, and they fell short by less than a week.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you're here for the plot twists.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "Eight men were sentenced to life in prison.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "Specs? He pleaded guilty, testified, and got four years.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And of all that money, only about sixty thousand dollars was ever found.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So who's dumber: the guy who snitched, or the gang that reportedly stiffed him?",
+  "override": null
+ }
+]

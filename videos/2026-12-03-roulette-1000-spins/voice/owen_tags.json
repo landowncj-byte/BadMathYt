@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Bet a dollar on red a thousand times. Only one in twenty-two people end up ahead.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "An American roulette wheel has thirty-eight slots.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Eighteen are red, and eighteen are black.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": "matter of fact",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "And two are green: zero and double zero.",
+  "override": "matter of fact"
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Bet red: win, you get a dollar. Lose, it's gone.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Sounds like a coin flip, right? Almost\u2014 but not quite.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if you thought it was fifty-fifty.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Red only hits eighteen times out of thirty-eight, about forty-seven percent.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That gap is the house edge, the casino's built-in cut.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "On average, it eats just over five cents per dollar.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Now watch what happens the longer you play.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who always says, just one more spin.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "After ten spins, about thirty-one percent of players are ahead.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After a hundred spins, it's about twenty-six percent.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "After five hundred, only eleven percent.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And after a thousand spins? About four and a half percent.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you'd rather know the odds before the wheel does.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "So about one in twenty-two ends up ahead, one kid in a class.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The average player? Down about fifty-three bucks.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Every spin feels almost fair. A thousand of them aren't.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "How many spins of red before you walk away?",
+  "override": null
+ }
+]

@@ -1,0 +1,130 @@
+[
+ {
+  "line": 1,
+  "tag": "sarcastic",
+  "why": "hook (IG roast cut)",
+  "short_pause_after": false,
+  "text": "A million bucks on a normal paycheck? See you in a hundred and four years.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "Not a typo. Let's do the damn math.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "The middle full-time worker in America makes about twelve thirty-two a week, according to the government.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's about sixty-four thousand dollars a year. Before taxes even touch it.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you save fifteen percent. That's about eight hundred bucks a month.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Hit like if your savings account is currently crying.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Throw that in a jar, and a million takes a hundred and four freaking years.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's two and a half careers. Even saving every single dollar takes fifteen and a half years.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who swears they'll be a millionaire by thirty.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But here's the twist. Jar money is lazy. Money that grows makes more money.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "Say it grows seven percent a year. That's an assumption, not a damn promise.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now the same eight hundred a month hits a million in about thirty-one years.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you want the math nobody explains at work.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And you only put in about three hundred thousand of that million. Wild.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The other seven hundred thousand is growth. The money did the heavy lifting.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "What percent of your paycheck do you save? Just the number.",
+  "override": null
+ }
+]

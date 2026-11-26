@@ -1,0 +1,130 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "People fight about fifteen versus twenty percent. It's five bucks a week.",
+  "override": "curious"
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Yeah, the whole internet tipping war. Let's actually do the math.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Say you eat out twice a week, and the bill is fifty dollars.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Twenty percent is a ten-dollar tip. Fifteen percent is seven fifty.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So the gap is two dollars and fifty cents a meal. That's it.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Smash like if you've seen a whole comment section fight over that.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Twice a week, that's five bucks. Over forty years, about ten thousand four hundred dollars.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Okay, now the bigger number. At twenty percent, you tip one thousand forty dollars a year.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who still argues about tipping at every dinner.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Over forty years, that's forty-one thousand six hundred dollars.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "On paper, at an assumed seven percent a year, it'd be about two hundred seven thousand.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "But wait, that money didn't disappear. It paid for about four thousand meals' worth of service, plate after plate.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you want more math that ends arguments.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "So the habit is forty-one grand, and the fight is five bucks a week.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The math says the war is tiny. But go ahead, pick a side anyway.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Fifteen or twenty? Just the number.",
+  "override": null
+ }
+]
