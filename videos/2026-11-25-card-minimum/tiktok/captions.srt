@@ -1,23 +1,68 @@
 1
-00:00:00,000 --> 00:00:03,937
-Imagine paying $143 and your debt only drops $50.
+00:00:00,000 --> 00:00:03,160
+You pay a hundred forty-three dollars, and your debt drops fifty.
 
 2
-00:00:04,237 --> 00:00:08,693
-That's the credit card minimum, on a $5,000 balance at about 22%.
+00:00:04,140 --> 00:00:06,620
+That's the credit card minimum, and it's a trap.
 
 3
-00:00:09,043 --> 00:00:13,709
-Keep paying the minimum: 16.5 years. $12,811 total.
+00:00:07,140 --> 00:00:10,620
+Here's the setup. You owe five thousand dollars on a card at about twenty-two percent.
 
 4
-00:00:14,059 --> 00:00:16,390
-A fixed $250 a month? 26 months.
+00:00:11,720 --> 00:00:15,300
+The minimum? It's the smallest payment the bank allows each month.
 
 5
-00:00:16,740 --> 00:00:19,733
-What's your balance? No judgment. Okay, some judgment. Comment.
+00:00:16,240 --> 00:00:20,740
+Ninety-three dollars of that first payment is just interest, basically the bank's rent on your money.
 
 6
-00:00:20,033 --> 00:00:21,745
-Follow before your next statement.
+00:00:21,300 --> 00:00:23,600
+Tap the heart if you've ever paid just the minimum.
+
+7
+00:00:24,140 --> 00:00:29,780
+Now the sneaky part. Your balance goes down, so what happens to your minimum? It goes down too.
+
+8
+00:00:30,280 --> 00:00:34,700
+So every month you pay less. And the debt? It crawls even slower.
+
+9
+00:00:35,360 --> 00:00:37,120
+Five years in, you still owe about twenty-seven hundred dollars.
+
+10
+00:00:38,760 --> 00:00:42,020
+That's more than half of what you started with, still sitting there.
+
+11
+00:00:42,520 --> 00:00:44,960
+Send this to the friend whose card is maxed out right now.
+
+12
+00:00:45,420 --> 00:00:48,940
+So how long until it's gone? Sixteen and a half years.
+
+13
+00:00:49,460 --> 00:00:51,520
+Follow if the math is making you mad too.
+
+14
+00:00:51,960 --> 00:00:57,100
+And the total you paid? Twelve thousand eight hundred eleven dollars, for a five grand balance.
+
+15
+00:00:57,100 --> 00:01:01,260
+Pay a fixed two fifty a month instead, and it's gone in twenty-six months.
+
+16
+00:01:01,740 --> 00:01:05,080
+That's fourteen years faster, same card, same rate.
+
+17
+00:01:05,540 --> 00:01:07,480
+What's your card's interest rate? Drop it below.
+

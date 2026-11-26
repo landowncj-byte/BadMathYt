@@ -1,0 +1,53 @@
+// YouTube cut — v5 (clean, one idea at a time). Stages: hook · deal · coins(1→512) · coffee · bars(day 20/27) · meter(3 days left) · bars(passes) · boom · 7/8 pie · ask
+const Q = { hookEnd: '@here\'s-0.12' };
+const K = [[0, 1], ['@two-0.25', 1], ['@two+0.05', 2], ['@four-0.25', 2], ['@four+0.05', 3], ['@eight-0.3', 3], ['@eight+0.05', 4], ['@after-0.05', 4], ['@week+0.2', 4], ['@64', 7], ['@day#4-0.2', 7], ['@10+0.2', 10], ['@by-0.05', 10], ['@20+0.1', 20],
+  ['@now-0.3', 20], ['@27+0.0', 27], ['@28-0.2', 27], ['@28+0.25', 28], ['@and#3', 28], ['@day#8+0.5', 30], ['@so#3-0.05', 30], ['@so#3+0.4', 20]];
+const S = PD5.make({
+  dur: 70.95, K, counterIn: '@here\'s-0.05',
+  hook: { variant: 'brick', until: Q.hookEnd, y: 440, size: 100, lines: [[['ONE ', 'paper'], ['PENNY ', 'accent'], ['BEATS', 'paper']], [['A MILLION DOLLARS', 'good']]], sub: { at: '@but', text: 'BUT FIRST, IT TORTURES YOU' } },
+  deal: { cards: [{ at: '@you#2', letter: 'A', col: '#00D26A', l1: '$1,000,000', l2: 'RIGHT NOW · YOURS TODAY', icon: 'bill' }, { at: '@or-0.05', letter: 'B', col: '#FFD60A', l1: '1¢ DOUBLES DAILY', l2: 'FOR 30 DAYS', icon: 'coin', dbl: '@doubles' }], chip: { at: '@no', text: 'NO TAXES' } },
+  scenes: [
+    { type: 'deal', from: Q.hookEnd, to: '@doubling-0.22', pose: 'talk' },
+    { type: 'coins', from: '@doubling-0.22', to: '@that\'s-0.1', pose: 'shock' },
+    { type: 'item', kind: 'coffee', l1: 'ONE COFFEE', from: '@that\'s-0.1', to: '@by-0.1', pose: 'chin' },
+    { type: 'bars', from: '@by-0.1', to: '@three#2-0.15', pose: 'shock' },
+    { type: 'meter', from: '@three#2-0.15', to: '@follow-0.15', pose: 'chin', ticks: [{ d: 28, at: '@three#2+0.1' }, { d: 29, at: '@three#2+0.55' }, { d: 30, at: '@three#2+1.0' }] },
+    { type: 'bars', from: '@follow-0.15', to: '@and#3-0.1', pose: 'shock' },
+    { type: 'boom', from: '@and#3-0.1', to: '@almost-0.14', pose: 'shock', revealAt: '@$5#3', chipAt: '@million#6-0.2' },
+    { type: 'pie', from: '@almost-0.14', to: '@so#3-0.1', pose: 'chin', centerAt: '@seven-0.15' },
+    { type: 'ask', from: '@so#3-0.1', to: 99, l1: 'DAY 20: STILL', l2: 'HOLDING THE PENNY?', pose: 'you' },
+  ],
+  hideCounter: [['@and#3-0.1', '@almost-0.14'], ['@so#3-0.1', 99]],
+  labels: [[0, 'THE BET'], ['@here\'s-0.12', 'THE DEAL'], ['@doubling-0.22', 'THE DOUBLING'], ['@sounds', 'THE WAIT'], ['@now-0.1', 'THE PAIN'], ['@day#7', 'THE TURN'], ['@and#3-0.1', 'THE ANSWER']],
+  notes: [
+    { at: '@same-0.1', out: '@so#1-0.1', text: 'THE SAME AMOUNT AGAIN', tone: 'accent', y: 640 },
+    { at: '@190-0.2', out: '@send+0.3', text: 'MILLION STILL ≈190× BIGGER', tone: 'bad', y: 628 },
+    { at: '@now+0.1', out: '@27-0.2', text: 'NOW IT GETS PAINFUL', tone: 'bad', y: 628, size: 40 },
+    { at: '@passes-0.1', out: '@and#3-0.12', text: 'PASSES THE MILLION', tone: 'good', y: 628, stamp: true, size: 60, rot: -0.04 },
+  ],
+  you: [{ at: 0, mood: 'neutral', text: 'YOU' }, { at: '@here\'s', mood: 'neutral', text: 'YOU PICK ONE' }, { at: '@or', mood: 'smirk', text: 'YOU TAKE THE PENNY' }, { at: '@sounds', mood: 'worried', text: 'SO TINY…' },
+    { at: '@day#4', mood: 'worried', text: 'STILL TINY…' }, { at: '@now', mood: 'angry', text: 'STILL LOSING' }, { at: '@28', mood: 'wow', text: 'WAIT…' }, { at: '@$5#3', mood: 'happy', text: 'YES!!' }, { at: '@so#3', mood: 'smirk', text: 'YOUR CALL' }],
+  cta: { like: '@like-0.1', send: '@send', follow: '@follow+0.05', followOut: '@follow+1.9', bubble: { at: '@are', l1: 'YES or NO?', l2: 'COMMENT · DAY 20' } },
+  poses: [['@like', 'you'], ['@send', 'you']],
+  shakes: [[0.1, 8], ['@$5#3', 24], ['@passes', 10]],
+  captions: { gap: 16, emph: { '64': 'good', 'cents.': 'good', 'coffee.': 'accent', million: 'good', '190': 'bad', 'painful.': 'bad', '27,': 'bad', 'losing': 'bad', '28,': 'good', '30,': 'good', 'seven': 'accent', 'eighths,': 'accent', 'penny': 'accent', 'tortures': 'bad' },
+    fix: [['$5 .12.', '$5.12.'], ['$5 ,000.', '$5,000.'], ['$671 ,000.', '$671,000.'], ['$5 .37', '$5.37']] },
+  sfx: [
+    { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.06, name: 'paper_slam_1', gain: -7, dur: 0.5 }, { at: '@tortures', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@here\'s-0.1', name: 'whoosh_1', gain: -10, dur: 0.7 }, { at: '@million#2', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@or', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@doubles', name: 'coin_single_1', gain: -9, dur: 0.5 }, { at: '@no', name: 'click_2', gain: -10, dur: 0.3 },
+    { at: '@doubling-0.22', name: 'swoosh_1', gain: -9, dur: 0.8 }, { at: '@two', name: 'pop_1', gain: -8, dur: 0.4 }, { at: '@two+0.1', name: 'coin_single_1', gain: -9, dur: 0.5 }, { at: '@four', name: 'pop_2', gain: -8, dur: 0.4 }, { at: '@four+0.12', name: 'coin_single_1', gain: -9, dur: 0.5 },
+    { at: '@four#2', name: 'pop_2', gain: -9, dur: 0.4 }, { at: '@eight', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@eight+0.05', name: 'ding_2', gain: -9, dur: 0.6 }, { at: '@like', name: 'pop_2', gain: -9, dur: 0.3 },
+    { at: '@after', name: 'money_counter_1', gain: -13, dur: 1.0 }, { at: '@64', name: 'ding_2', gain: -9, dur: 0.6 }, { at: '@day#4-0.2', name: 'money_counter_1', gain: -13, dur: 0.9 }, { at: '@10+0.2', name: 'ding_2', gain: -8, dur: 0.6 },
+    { at: '@that\'s-0.1', name: 'swoosh_2', gain: -11, dur: 0.6 }, { at: '@coffee', name: 'pop_1', gain: -9, dur: 0.4 },
+    { at: '@by-0.1', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@by-0.05', name: 'money_counter_2', gain: -13, dur: 1.4 }, { at: '@20+0.1', name: 'ding_2', gain: -8, dur: 0.6 },
+    { at: '@190-0.2', name: 'click_1', gain: -9, dur: 0.25 }, { at: '@send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 },
+    { at: '@now-0.3', name: 'money_counter_2', gain: -13, dur: 1.9 }, { at: '@27+0.05', name: 'wrong_buzzer_1', gain: -14, dur: 0.6 }, { at: '@27+0.05', name: 'thud_1', gain: -8, dur: 0.4 },
+    { at: '@three#2-0.1', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@three#2+0.1', name: 'click_1', gain: -9, dur: 0.2 }, { at: '@three#2+0.55', name: 'click_1', gain: -9, dur: 0.2 }, { at: '@three#2+1.0', name: 'click_1', gain: -9, dur: 0.2 },
+    { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.8', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.9', name: 'success_chime_1', gain: -12, dur: 1.2 },
+    { at: '@28-0.2', name: 'whoosh_1', gain: -9, dur: 0.7 }, { at: '@28+0.25', name: 'success_chime_1', gain: -10, dur: 1.0 }, { at: '@passes', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
+    { at: '@and#3-0.1', name: 'riser_1', gain: -12, dur: 1.4 }, { at: '@$5#3', name: 'deep_boom_1', gain: -2, dur: 1.6 }, { at: '@$5#3', name: 'cinematic_hit_1', gain: -6, dur: 1.2 }, { at: '@$5#3+0.1', name: 'coins_drop_1', gain: -8, dur: 1.8 },
+    { at: '@almost-0.14', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@seven-0.1', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@eighths+0.4', name: 'ding_1', gain: -10, dur: 0.6 },
+    { at: '@so#3-0.1', name: 'rewind_1', gain: -13, dur: 1.0 }, { at: '@holding-0.4', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@so#3+0.1', name: 'deep_boom_2', gain: -8, dur: 0.36 },
+  ],
+});
+BM2.scene(S);

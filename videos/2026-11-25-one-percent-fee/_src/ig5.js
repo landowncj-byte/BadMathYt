@@ -1,0 +1,51 @@
+// IG/FB cut — v5 (loudest copy, same stages). Hyperbole "robbed" carries the on-screen caveat LEGAL · DISCLOSED · EXPENSIVE.
+const Q = { hookEnd: '@here\'s-0.12' };
+const K = [[0, 0], ['@after-0.3', 0], ['@after+0.9', 10], ['@wait-0.1', 10], ['@30+0.3', 30], ['@40#2-0.4', 30], ['@40#2+0.7', 40]];
+const S = FEE.make({
+  dur: 68.07, K, counterIn: '@after-0.3',
+  hook: { until: Q.hookEnd, y: 430, size: 100, lines: [[['A LEGAL ', 'paper'], ['1% FEE', 'bad']], [['ROBBED YOU OF ', 'paper'], ['$316K', 'bad']]] },
+  scenes: [
+    { type: 'deposit', from: Q.hookEnd, to: '@assume-0.12', sumAt: '@240-0.05', pose: 'talk' },
+    { type: 'hero', from: '@assume-0.12', to: '@picture-0.12', steps: [{ at: 0, lines: [['7%', 'good']], size: 300, sub: 'A YEAR · JUST AN ASSUMPTION' }], pose: 'chin' },
+    { type: 'twin', from: '@picture-0.12', to: '@a#5-0.12', la: 'FUND A · NO FEE', lb: 'FUND B · 1% FEE', tagAt: '@1#2', pose: 'shock' },
+    { type: 'hero', from: '@a#5-0.12', to: '@after-0.33', steps: [{ at: 0, lines: [['A FEE =', 'accent'], ['THE CUT THEY KEEP', 'paper'], ['FOR MANAGING YOUR MONEY', 'paper']], size: 110 }], pose: 'chin' },
+    { type: 'pigs', from: '@after-0.33', to: '@and#1-0.12', gapAt: '@down#2-0.2', pose: 'shock' },
+    { type: 'hero', from: '@and#1-0.12', to: '@40#2-0.12', steps: [{ at: 0, lines: [['WHY?', 'accent']], size: 230 }, { at: '@the#2', lines: [['THE FEE TAKES', 'paper'], ['1% OF YOUR', 'paper'], ['WHOLE DAMN PILE', 'bad']], size: 120, sub: 'EVERY YEAR · GROWTH INCLUDED' }], pose: 'chin' },
+    { type: 'pigs', from: '@40#2-0.12', to: '@so#1-0.12', bAt: '@1#6-0.15', gapAt: '@996-0.3', pose: 'shock' },
+    { type: 'cost', from: '@so#1-0.12', to: '@more-0.12', a: '@fee#6', b: '@316#2', pose: 'shock' },
+    { type: 'compare', from: '@more-0.12', to: '@that\'s#2-0.12', a: '@more', b: '@you#3', moreAt: '@put#2', pose: 'chin' },
+    { type: 'hero', from: '@that\'s#2-0.12', to: '@still-0.12', steps: [{ at: 0, lines: [['GONE FOR A FEE', 'bad'], ['YOU NEVER NOTICED', 'paper']], size: 120 }], pose: 'shock' },
+    { type: 'ask', from: '@still-0.12', to: 99, l1: '1% STILL', l2: 'SMALL?', pose: 'you' },
+  ],
+  bHide: [['@40#2-0.12', '@1#6-0.15']],
+  hideCounter: [['@so#1-0.12', 99], ['@and#1-0.12', '@40#2-0.12']],
+  labels: [[0, 'THE COST'], ['@here\'s-0.12', 'THE SETUP'], ['@picture-0.12', 'THE FUNDS'], ['@after-0.33', 'THE GAP'], ['@and#1-0.12', 'THE TRAP'], ['@40#2-0.12', 'YEAR 40'], ['@so#1-0.12', 'THE BILL']],
+  notes: [
+    { at: 0.5, out: '@here\'s-0.15', text: 'LEGAL · DISCLOSED · EXPENSIVE', tone: 'ink', y: 612, size: 38 },
+    { at: '@wait', out: '@and#1-0.15', text: 'THE GAP KEEPS GROWING', tone: 'bad' },
+  ],
+  you: [{ at: 0, mood: 'angry', text: 'YOU GOT ROBBED?' }, { at: '@here\'s', mood: 'neutral', text: 'YOU INVEST' }, { at: '@picture', mood: 'smirk', text: 'TWO FUNDS' }, { at: '@after', mood: 'smirk', text: 'WHO CARES?' }, { at: '@wait', mood: 'worried', text: 'WAIT…' },
+    { at: '@40#2', mood: 'wow', text: 'YEAR 40' }, { at: '@so#1', mood: 'angry', text: 'THE FEE ATE IT' }, { at: '@still', mood: 'smirk', text: 'YOUR CALL' }],
+  cta: { like: '@tap-0.1', likeOut: '@tap+1.0', send: '@send', sendOut: '@send+1.5', follow: '@follow+0.05', followOut: '@follow+1.9', bubble: { at: '@one#2-0.1', l1: 'ONE WORD', l2: 'SMALL or NOT?' } },
+  poses: [['@tap', 'you'], ['@send', 'you']],
+  shakes: [[0.1, 8], ['@316#2', 20]],
+  footnote: ['ASSUMES: $500/MONTH · 40 YEARS · A EARNS 7% · B NETS 6% (1% FEE)', 'FEES ARE LEGAL & DISCLOSED · NO REAL FUND · HYPOTHETICAL · NOT FINANCIAL ADVICE'],
+  captions: { gap: 16, emph: { 'grand.': 'bad', million: 'good', damn: 'bad', shit: 'bad', nothing: 'accent' }, fix: [] },
+  sfx: [
+    { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.06, name: 'paper_slam_1', gain: -7, dur: 0.5 }, { at: 0.2, name: 'rubber_stamp_2', gain: -7, dur: 0.5 }, { at: 0.5, name: 'rubber_stamp_1', gain: -9, dur: 0.5 },
+    { at: '@here\'s-0.1', name: 'whoosh_1', gain: -10, dur: 0.7 }, { at: '@500', name: 'cash_rustle_1', gain: -12, dur: 0.8 }, { at: '@240-0.05', name: 'money_counter_1', gain: -13, dur: 1.2 }, { at: '@grand#2', name: 'ding_2', gain: -9, dur: 0.6 },
+    { at: '@assume-0.12', name: 'swoosh_1', gain: -9, dur: 0.8 }, { at: '@7', name: 'pop_2', gain: -9, dur: 0.4 },
+    { at: '@picture-0.12', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@1#2', name: 'rubber_stamp_1', gain: -7, dur: 0.5 }, { at: '@tap', name: 'pop_2', gain: -9, dur: 0.3 },
+    { at: '@a#5-0.12', name: 'swoosh_2', gain: -11, dur: 0.6 },
+    { at: '@after-0.33', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@after+0.9', name: 'money_counter_1', gain: -13, dur: 1.0 }, { at: '@down#2', name: 'click_1', gain: -9, dur: 0.3 },
+    { at: '@send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 }, { at: '@wait-0.1', name: 'money_counter_2', gain: -13, dur: 1.2 },
+    { at: '@and#1-0.12', name: 'record_scratch_1', gain: -12, dur: 0.6 }, { at: '@the#2', name: 'pop_1', gain: -9, dur: 0.4 },
+    { at: '@40#2-0.12', name: 'whoosh_1', gain: -9, dur: 0.7 }, { at: '@40#2+0.7', name: 'money_counter_2', gain: -13, dur: 1.5 }, { at: '@million', name: 'success_chime_1', gain: -10, dur: 1.0 },
+    { at: '@1#6-0.15', name: 'pop_1', gain: -8, dur: 0.4 }, { at: '@996', name: 'ding_1', gain: -10, dur: 0.6 },
+    { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.8', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.9', name: 'success_chime_1', gain: -12, dur: 1.2 },
+    { at: '@so#1-0.12', name: 'riser_1', gain: -12, dur: 1.2 }, { at: '@316#2', name: 'deep_boom_1', gain: -3, dur: 1.6 }, { at: '@316#2', name: 'cinematic_hit_1', gain: -7, dur: 1.2 }, { at: '@316#2+0.1', name: 'coins_drop_1', gain: -9, dur: 1.6 },
+    { at: '@more-0.12', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@more', name: 'pop_2', gain: -9, dur: 0.4 }, { at: '@you#3', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@put#2', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
+    { at: '@that\'s#2-0.12', name: 'whoosh_1', gain: -9, dur: 0.7 }, { at: '@still-0.12', name: 'rewind_1', gain: -13, dur: 1.0 }, { at: '@one#2-0.1', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@still', name: 'deep_boom_2', gain: -8, dur: 0.36 },
+  ],
+});
+BM2.scene(S);

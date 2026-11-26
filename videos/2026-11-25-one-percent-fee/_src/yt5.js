@@ -1,0 +1,50 @@
+// YouTube cut — v5. hook · deposit · 7% · twin funds · fee defined · pigs (10→30 yrs) · pigs (40 yrs) · cost · compare · ask
+const Q = { hookEnd: '@here\'s-0.12' };
+const K = [[0, 0], ['@after-0.25', 0], ['@after+0.6', 10], ['@takes#1-0.2', 10], ['@included+0.3', 30], ['@at-0.35', 30], ['@at+0.6', 40]];
+const S = FEE.make({
+  dur: 66.56, K, counterIn: '@after-0.25',
+  hook: { until: Q.hookEnd, y: 440, size: 100, lines: [[['A ', 'paper'], ['1% FEE', 'bad'], [' CAN COST YOU', 'paper']], [['OVER $300,000', 'bad']]] },
+  scenes: [
+    { type: 'deposit', from: Q.hookEnd, to: '@let\'s-0.12', sumAt: '@$240-0.05', pose: 'talk' },
+    { type: 'hero', from: '@let\'s-0.12', to: '@now-0.12', steps: [{ at: 0, lines: [[ '7%', 'good']], size: 300, sub: 'A YEAR · AN ASSUMPTION, NOT A PROMISE' }], pose: 'chin' },
+    { type: 'twin', from: '@now-0.12', to: '@a#6-0.12', la: 'FUND A · NO FEE', lb: 'FUND B · 1% FEE', tagAt: '@1#2', pose: 'shock' },
+    { type: 'hero', from: '@a#6-0.12', to: '@after-0.28', steps: [{ at: 0, lines: [['A FEE =', 'accent'], ['WHAT THE FUND KEEPS', 'paper'], ['FOR MANAGING YOUR MONEY', 'paper']], size: 110 }, { at: '@1#4-0.1', lines: [['1% SOUNDS TINY…', 'bad']], size: 130 }], pose: 'chin' },
+    { type: 'pigs', from: '@after-0.28', to: '@at-0.1', gapAt: '@gap-0.1', pose: 'shock' },
+    { type: 'pigs', from: '@at-0.1', to: '@that-0.12', bAt: '@1#7-0.12', gapAt: '@996-0.3', pose: 'shock' },
+    { type: 'cost', from: '@that-0.12', to: '@that\'s#3-0.12', a: '@fee#6', b: '@$316-0.3', pose: 'shock' },
+    { type: 'compare', from: '@that\'s#3-0.12', to: '@is#3-0.12', a: '@that\'s#3+0.1', b: '@all', moreAt: '@ever', pose: 'chin' },
+    { type: 'ask', from: '@is#3-0.12', to: 99, l1: '1% STILL', l2: 'SMALL?', pose: 'you' },
+  ],
+  bHide: [['@at-0.1', '@1#7-0.12']],
+  hideCounter: [['@that-0.12', 99]],
+  labels: [[0, 'THE COST'], ['@here\'s-0.12', 'THE SETUP'], ['@now-0.12', 'THE FUNDS'], ['@after-0.28', 'THE GAP'], ['@but#2-0.12', 'THE TRAP'], ['@at-0.1', 'YEAR 40'], ['@that-0.12', 'THE BILL']],
+  notes: [
+    { at: '@but#2-0.05', out: '@it#2-0.1', text: 'NOT 1% OF WHAT YOU ADD', tone: 'accent' },
+    { at: '@it#2', out: '@growth', text: '1% OF EVERYTHING · EVERY YEAR', tone: 'bad' },
+    { at: '@growth-0.1', out: '@at-0.25', text: 'GROWTH INCLUDED', tone: 'bad' },
+  ],
+  you: [{ at: 0, mood: 'neutral', text: 'YOU' }, { at: '@here\'s', mood: 'smirk', text: 'YOU INVEST' }, { at: '@now', mood: 'neutral', text: 'TWO FUNDS' }, { at: '@after', mood: 'smirk', text: 'ONLY 1%?' }, { at: '@but#2', mood: 'worried', text: 'WAIT…' },
+    { at: '@at', mood: 'wow', text: 'YEAR 40' }, { at: '@that', mood: 'angry', text: 'THE FEE ATE IT' }, { at: '@is#3', mood: 'smirk', text: 'YOUR CALL' }],
+  cta: { like: '@hit-0.1', likeOut: '@hit+1.0', send: '@send', sendOut: '@send+1.5', follow: '@follow+0.05', followOut: '@follow+1.9', bubble: { at: '@yes-0.1', l1: 'YES or NO?', l2: 'COMMENT' } },
+  poses: [['@hit', 'you'], ['@send', 'you']],
+  shakes: [[0.1, 8], ['@$316', 20]],
+  footnote: ['ASSUMES: $500/MONTH · 40 YEARS · A EARNS 7% · B NETS 6% (1% FEE)', 'NO TAXES · NO REAL FUND · FEES LEGAL · HYPOTHETICAL · NOT FINANCIAL ADVICE'],
+  captions: { gap: 16, emph: { '$240,000': 'accent', '316,000': 'bad', million: 'good', tiny: 'accent' }, fix: [] },
+  sfx: [
+    { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.06, name: 'paper_slam_1', gain: -7, dur: 0.5 }, { at: 0.2, name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
+    { at: '@here\'s-0.1', name: 'whoosh_1', gain: -10, dur: 0.7 }, { at: '@$500', name: 'cash_rustle_1', gain: -12, dur: 0.8 }, { at: '@$240-0.05', name: 'money_counter_1', gain: -13, dur: 1.2 }, { at: '@000#2', name: 'ding_2', gain: -9, dur: 0.6 },
+    { at: '@let\'s-0.12', name: 'swoosh_1', gain: -9, dur: 0.8 }, { at: '@7', name: 'pop_2', gain: -9, dur: 0.4 },
+    { at: '@now-0.12', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@two', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@1#2', name: 'rubber_stamp_1', gain: -7, dur: 0.5 }, { at: '@hit', name: 'pop_2', gain: -9, dur: 0.3 },
+    { at: '@a#6-0.12', name: 'swoosh_2', gain: -11, dur: 0.6 }, { at: '@1#4', name: 'pop_1', gain: -9, dur: 0.4 },
+    { at: '@after-0.28', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@after+0.6', name: 'money_counter_1', gain: -13, dur: 1.0 }, { at: '@gap', name: 'click_1', gain: -9, dur: 0.3 },
+    { at: '@but#2-0.05', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@it#2', name: 'pop_2', gain: -9, dur: 0.4 }, { at: '@takes#1-0.2', name: 'money_counter_2', gain: -13, dur: 3.2 }, { at: '@growth-0.1', name: 'click_2', gain: -9, dur: 0.3 },
+    { at: '@send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 },
+    { at: '@at-0.1', name: 'whoosh_1', gain: -9, dur: 0.7 }, { at: '@at+0.6', name: 'money_counter_2', gain: -13, dur: 1.5 }, { at: '@million', name: 'success_chime_1', gain: -10, dur: 1.0 },
+    { at: '@1#7-0.12', name: 'pop_1', gain: -8, dur: 0.4 }, { at: '@996', name: 'ding_1', gain: -10, dur: 0.6 },
+    { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.8', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.9', name: 'success_chime_1', gain: -12, dur: 1.2 },
+    { at: '@that-0.12', name: 'riser_1', gain: -12, dur: 1.2 }, { at: '@$316', name: 'deep_boom_1', gain: -3, dur: 1.6 }, { at: '@$316', name: 'cinematic_hit_1', gain: -7, dur: 1.2 }, { at: '@$316+0.1', name: 'coins_drop_1', gain: -9, dur: 1.6 },
+    { at: '@that\'s#3-0.12', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@that\'s#3+0.1', name: 'pop_2', gain: -9, dur: 0.4 }, { at: '@all', name: 'pop_1', gain: -9, dur: 0.4 }, { at: '@ever', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
+    { at: '@is#3-0.12', name: 'rewind_1', gain: -13, dur: 1.0 }, { at: '@yes-0.1', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@is#3', name: 'deep_boom_2', gain: -8, dur: 0.36 },
+  ],
+});
+BM2.scene(S);

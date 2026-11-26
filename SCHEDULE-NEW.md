@@ -35,3 +35,8 @@ Penny YT/TT: old partial renders (pre-pivot) — need a crime-show rebuild befor
 - Sun 11/29: 11:00 NEW What If "spend a billion at $1,000/day" · 15:00 NEW What If "$1M sure vs 50/50 at $10M" · 19:00 NEW Decoded (research needed)
 - Then Mon 11/30 → Sun 12/6: ~21 new topics + long-forms Tue 12/1, Fri 12/4. What Ifs = pure math (Opus can script without research); Decoded need a Sonnet research pass (2+ sources).
 - QC: director views every contact sheet (≤1100 px) before posting; reject cropped text/numbers, clutter.
+| lottery part 2 | YouTube | Fri 11/27 11:00 | 16:00Z | b737a6fd-763c-4290-83de-8f99aa2f49ae | APPROVED |
+| lottery part 2 | TikTok (song: Final Game Showdown) | Fri 11/27 11:00 | 16:00Z | fc6c2568-1b43-45b4-aa65-6ffc827cbf0c | APPROVED |
+| lottery part 2 | Instagram REEL | Fri 11/27 11:00 | 16:00Z | 8a89472b-353a-4dad-8704-10ca78a2b33d | APPROVED |
+| lottery part 2 | Facebook REEL | Fri 11/27 11:00 | 16:00Z | f96a207c-04ca-4a6c-a329-f9b845b10f61 | APPROVED |
+card-minimum: REJECTED at QC (16.5 YEARS cropped at right edge, INTEREST label overlap) → fix in progress, then Fri 19:00 ET.

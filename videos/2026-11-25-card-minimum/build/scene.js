@@ -1190,7 +1190,7 @@ window.CM = function (W, V) {
   bt(R(W.yrs, 0.2), { beat: ZN, focus: 'pf.counter', fill: 0.84, maxH: 400, sy: 740, st: STL, pose: 'shock', dur: 0.5 });
   bt(R(W.yrs, 2.4), { beat: GH, focus: ['pf', 'you7'], fill: 0.97, maxH: 860, sy: 880, st: STL, pose: 'idle', dur: 0.7 });
   bt(R(W.kid, -0.25), { beat: GH, focus: 'kid', move: 'whip', fill: 0.94, maxH: 860, sy: 880, st: STL, pose: 'point' });
-  bt(W.growAt, { beat: ZN, focus: 'kid.age', fill: 0.62, maxH: 420, sy: 780, st: STL, pose: 'shock', dur: 0.5 });
+  bt(W.growAt, { beat: ZN, focus: 'kid.age', fill: 0.4, maxH: 300, sy: 800, st: STL, pose: 'shock', dur: 0.5 });
   bt(W.drive, { beat: GH, focus: 'kid', fill: 0.94, maxH: 860, sy: 880, st: STR, pose: 'shock', dur: 0.7 });
   bt(W.follow, { beat: PF, focus: V.followFocus || 'kid', sy: 800, pose: 'follow', zoom: 0.9 });
   bt(R(W.s9, -0.25), { beat: GH, focus: 'rcpt', move: 'whip', fill: 0.7, maxH: 760, sy: 880, st: STL, pose: 'idle' });
@@ -1199,7 +1199,7 @@ window.CM = function (W, V) {
   bt(R(W.s10, -0.25), { beat: GH, focus: ['track', 'you10'], move: 'whip', fill: 0.94, maxH: 900, sy: 880, st: STL, pose: 'idle' });
   bt(W.fx250, { beat: ZN, focus: 'track.ghost', fill: 0.72, sy: 1000, st: STL, pose: 'point', dur: 0.5 });
   bt(W.m26, { beat: GH, focus: ['track', 'you10'], fill: 0.94, maxH: 900, sy: 880, st: STR, pose: 'shock', dur: 0.6 });
-  bt(W.fast, { beat: ZN, focus: 'fast', fill: 0.9, maxH: 520, sy: 760, st: STL, pose: 'shock', dur: 0.45 });
+  bt(W.fast, { beat: ZN, focus: 'fast', fill: 0.62, maxH: 380, sy: 860, st: STL, pose: 'shock', dur: 0.45 });
   bt(R(W.q, -0.3), { beat: PF, focus: 'track', sy: 800, pose: 'talk', dur: 0.6 });
   bt(W.end, { beat: SB, focus: F0e, move: 'whip', fill: 0.9, maxH: 900, sx: 540, sy: 905, st: { x: 130, y: 1410, s: 0.85 }, pose: 'you', keep: ['hook', 'hook2'] });
   for (const b of beats) { if (b.beat === PF || b.beat === ZN || b.at === 0) continue; b.maxH = Math.min(b.maxH || 860, 860); const lo = 430 + b.maxH / 2, hi = 1330 - b.maxH / 2; b.sy = Math.min(hi, Math.max(lo, b.sy || 880)); }

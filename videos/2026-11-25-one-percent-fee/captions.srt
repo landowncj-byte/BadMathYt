@@ -1,47 +1,68 @@
 1
-00:00:00,000 --> 00:00:02,671
-A one percent fee can take more than you ever put in.
+00:00:00,000 --> 00:00:02,000
+A one percent fee can cost you over three hundred thousand dollars.
 
 2
-00:00:03,571 --> 00:00:06,587
-It's legal. It's disclosed. And you'd never feel it. So how?
+00:00:04,280 --> 00:00:08,900
+Here's the setup. You put five hundred dollars a month into an investment for forty years.
 
 3
-00:00:06,837 --> 00:00:11,448
-Two funds. Same— literally the same investments. One charges one percent more a year.
+00:00:09,260 --> 00:00:12,220
+That's two hundred forty thousand dollars of your own money.
 
 4
-00:00:11,698 --> 00:00:14,243
-Hit like if that sounds like nothing. It's supposed to.
+00:00:12,680 --> 00:00:16,580
+Let's say it grows seven percent a year. That's just an assumption, not a promise.
 
 5
-00:00:14,543 --> 00:00:18,802
-Five hundred a month, forty years. Say both earn seven percent, that's an assumption.
+00:00:17,260 --> 00:00:22,300
+Now picture two identical funds, but one charges a one percent fee every year.
 
 6
-00:00:19,102 --> 00:00:22,508
-Ten years in, the gap's forty-six hundred bucks. Whatever, right?
+00:00:22,720 --> 00:00:24,720
+Hit like if one percent sounds like nothing.
 
 7
-00:00:23,358 --> 00:00:25,828
-Send this to the friend who's never checked their fees.
+00:00:25,300 --> 00:00:29,820
+A fee is what the fund keeps for managing your money. One percent sounds tiny, right?
 
 8
-00:00:26,128 --> 00:00:30,359
-Year twenty? Twenty-nine grand. Okay, that's a car. Year thirty? A hundred seven grand.
+00:00:30,400 --> 00:00:32,520
+After ten years, the gap is only about forty-six hundred dollars.
 
 9
-00:00:30,659 --> 00:00:34,227
-Year forty's next. Follow, 'cause this page catches the quiet ones.
+00:00:34,120 --> 00:00:37,560
+But here's the thing. The fee doesn't take one percent of what you add.
 
 10
-00:00:35,277 --> 00:00:37,919
-That one percent cost you three hundred sixteen grand.
+00:00:37,920 --> 00:00:41,900
+It takes one percent of everything, every year, growth included.
 
 11
-00:00:38,219 --> 00:00:42,373
-You only put in two forty. The fee beat you.
+00:00:42,520 --> 00:00:44,680
+Send this to the friend who's never checked their fees.
 
 12
-00:00:42,673 --> 00:00:44,631
-So… still call one percent small?
+00:00:45,320 --> 00:00:48,940
+At forty years, the no-fee fund has about one point three million dollars.
+
+13
+00:00:49,780 --> 00:00:51,420
+The one percent fund? About nine hundred ninety-six thousand.
+
+14
+00:00:53,580 --> 00:00:56,120
+Follow if you like knowing the math before the fine print.
+
+15
+00:00:56,520 --> 00:00:58,220
+That tiny fee cost you three hundred sixteen thousand dollars.
+
+16
+00:01:00,780 --> 00:01:03,040
+That's more than all the money you ever put in.
+
+17
+00:01:03,500 --> 00:01:05,900
+Is one percent still small? Yes or no.
+
