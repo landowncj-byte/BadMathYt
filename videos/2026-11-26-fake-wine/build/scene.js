@@ -420,7 +420,7 @@ BM2.scene({
     { id: 'cal', type: 'calendar', at: [5400, 1800], in: "@that's-0.4", props: { at: "@that's", dur: 1.5, yrsAt: '@for#4', yrsDur: 0.9 } },
     // ---- S5 record ----
     { id: 'gav2', type: 'gavel', at: [3380, 1560], in: '@one#2-0.3', props: { at: '@set' } },
-    { id: 'rtx', type: 'text', at: [3600, 1330], in: '@one#2', out: '@then', props: { lines: [[['ONE OF HIS SALES', 'paper']]], size: 62 } },
+    { id: 'rtx', type: 'text', at: [3600, 1690], in: '@one#2', out: '@then', props: { lines: [[['ONE OF HIS SALES', 'paper']]], size: 62 } },
     { id: 'rec', type: 'stamp', at: [3650, 1900], rot: -0.06, in: '@world-0.15', props: { text: 'WORLD RECORD', tone: 'bad', size: 120 } },
     // ---- S6 catalogue / winemaker ----
     { id: 'lot', type: 'lotpage', at: [1650, 1800], in: '@then-0.4', props: { yearAt: '@1945' } },
@@ -478,7 +478,7 @@ BM2.scene({
     { at: '@hit', beat: PF, focus: 'cal', sy: 760, pose: 'talk' },
     { at: '@12', beat: PF, focus: 'cal', sy: 760, zoom: 1.08, pose: 'you', dur: 0.4 },
     { at: '@one#2', beat: SB, focus: ['gav2', 'rtx', 'rec'], move: 'whip', sx: 540, sy: 800, fill: 0.9, maxH: 1100, st: 'corner-left', pose: 'point' },
-    { at: '@record', beat: ZN, focus: 'rec', fill: 0.8, maxH: 500, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.45 },
+    { at: '@record', beat: ZN, focus: ['rtx', 'rec'], fill: 0.85, maxH: 700, sy: 800, st: 'corner-left', pose: 'shock', dur: 0.45 },
     { at: '@then', beat: SB, focus: 'lot', move: 'whip', sx: 540, sy: 880, fill: 0.66, maxH: 800, st: 'right', pose: 'point' },
     { at: '@french', beat: GH, focus: 'lot', sy: 880, fill: 0.7, maxH: 800, st: 'corner', dur: 0.7 },
     { at: '@1945', beat: ZN, focus: 'lot.year', fill: 0.4, maxH: 520, sy: 840, st: 'corner', pose: 'shock', dur: 0.5 },
