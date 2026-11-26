@@ -17,3 +17,7 @@ Upload: uguu.se → upload_from_url → create_posts → approve_posts (standing
 | lottery rig | Instagram REEL | Thu 11/26 15:00 | 20:00Z | fe5bf9a1-4ea1-4f3f-bc8c-dfc6bf9fdacf | APPROVED |
 | lottery rig | Facebook REEL | Thu 11/26 15:00 | 20:00Z | fa25d137-71d6-463d-bf14-5e4472c1e004 | APPROVED |
 Next free Thu slots: 17:00 ET (22Z) briefcases · 19:00 ET (00Z) wine · 21:00 ET (02Z). TikTok songs: list_tiktok_sounds daily (RULES 113); IG songs only in-app.
+| fake wine | YouTube | Thu 11/26 19:00 | 00:00Z Fri | b149bcc0-959d-475e-ab19-cf42b7b96113 | APPROVED |
+| fake wine | TikTok (song: Tense) | Thu 11/26 19:00 | 00:00Z Fri | 76fa074b-a53d-4ce4-9352-6613ee9fbac8 | APPROVED |
+| fake wine | Instagram REEL | Thu 11/26 19:00 | 00:00Z Fri | 71afe4b6-7e07-42f0-8189-32433cb7406d | APPROVED |
+| fake wine | Facebook REEL | Thu 11/26 19:00 | 00:00Z Fri | 65e0ecd6-70c0-4e3d-aa19-04c85b8b9662 | APPROVED |

@@ -1,0 +1,26 @@
+// YouTube cut v3 (68.56 s narration) — see lot.js
+BM2.scene(LOT({
+  five: '@5', n27: '@27', hookOut: '@This', endAt: '@Yes', reframe: '@lottery', tickets: '@tickets',
+  s1: '@This', fund: '@Australian', tried: '@tried', every: '@every', vas: "@Virginia's",
+  s2: '@worked', jackpot: '@jackpot', jackpotN: '@jackpot', record: '@record',
+  but: '@But', licensed: '@licensed', store: '@store',
+  s4: '@group#2', printed: '@printed', bulk: '@bulk',
+  s5: '@So', legal: '@legal', like: '@like',
+  s6: '@Virginia#2', weeks: '@weeks', nobody: '@nobody', prove: '@prove', bought: '@bought#3',
+  s8: '@No', paid: '@paid',
+  s9: '@About#2', one: '@1', year: '@year', years: '@years', twenty: '@20',
+  sal: "@That's", salaries: '@salaries', single: '@single',
+  send: '@Send', wins: '@wins',
+  then: '@Then', rushed: '@rushed', bulk2: '@bulk#2', problem: '@Problem',
+  y31: '@31', later: '@later', follow: '@Follow',
+  s15: '@2023', nearly: '@nearly', crZN: '@nearly', oneZN: '@1', comb: '@combination',
+  n95: '@95', commS: '@It#2', shut: '@shut', commission: '@commission',
+  q: '@So#4', pay: '@pay', yes: '@Yes',
+}, {
+  open: 'va', duration: 68.96, jack: true, title: 'PART 2 · LOTTERY · 1992', likeText: 'LIKE',
+  hook: { stamp: 'PART 2', lines: [[['5,000,000+ ', 'gold'], ['TICKETS', 'paper']], [['THEY ', 'paper'], ['WON', 'good']]], size: 106 },
+  labels: [{ at: -1, text: 'THE BUY' }, { at: '@But', text: 'THE SNAG' }, { at: '@Virginia#2', text: 'THE VERDICT' }, { at: '@About#2', text: 'THE PAYOUT' }, { at: '@Then', text: 'THE FIX' }, { at: '@31', text: 'THE REPEAT' }, { at: '@It#2', text: 'THE FALLOUT' }, { at: '@Yes', text: 'THE BUY' }],
+  items: [{ at: 0, label: 'TICKETS BOUGHT', from: 0, to: 5000000, dur: 1.5, suffix: '+' }, { at: '@27', label: 'JACKPOT WON', to: 27000000, prefix: '$', dur: 1.2, tone: 'good' }, { at: '@weeks', label: 'WEEKS OF DOUBT', from: 0, to: 3, dur: 0.6 }, { at: '@1', label: 'PAID EACH YEAR', from: 0, to: 1300000, prefix: '$', dur: 1.0, tone: 'good' }, { at: '@salaries', label: 'NORMAL SALARIES', from: 0, to: 20, dur: 1.3 }, { at: '@31', label: 'YEARS LATER', from: 0, to: 31, dur: 1.0, tone: 'bad' }, { at: '@95', label: 'TEXAS JACKPOT', from: 0, to: 95000000, prefix: '$', dur: 1.2, tone: 'good' }, { at: '@Yes+0.1', label: 'TICKETS BOUGHT', from: 0, to: 5000000, dur: 1.2, suffix: '+' }],
+  shakes: [[0.05, 14], ['@record', 8], ['@paid', 10], ['@bulk#2', 10], ['@95', 26], ['@shut', 14]],
+  captions: { gap: 16, emph: { '5': 'accent', '$27': 'good', '$1.3': 'good', paid: 'good', '31': 'bad', '$95': 'good', broken: 'bad', record: 'accent', commission: 'bad', 'wild.': 'bad' }, fix: [['27', '$27'], ['1', '$1.3'], ['95', '$95']] },
+}));

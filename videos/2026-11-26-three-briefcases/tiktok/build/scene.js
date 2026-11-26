@@ -578,7 +578,7 @@ const H1 = { lines: [[['THE ', 'paper'], ['$1,000,000', 'good']], [['QUESTION', 
 const LOOP = '@So#4-0.45';  // whip lead/dur shortened below to avoid a blank travel frame
 const P = 'brand/photos/stock/briefcase-cash/7.jpg';
 BM2.scene({
-  series: 'whatif', title: 'THREE BRIEFCASES', duration: 64.99,
+  series: 'whatif', title: 'THREE BRIEFCASES', duration: 64.66,
   footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW', 'PHOTO: SEMTRIO · CC BY 2.0 · VIA FLICKR'],
   elements: [
     { id: 'you1', type: 'char', layer: 'screen', at: [140, 1212], in: -1, props: { who: 'you', s: 0.82, moods: [{ t: 0, m: 'think' }, { t: '@wrong', m: 'shock' }, { t: '@three', m: 'think' }, { t: '@million#2', m: 'greed' }, { t: '@two', m: 'neutral' }, { t: '@that\'s', m: 'think' }, { t: '@27', m: 'shock' }, { t: '@pick', m: 'smug' }, { t: '@host', m: 'worried' }, { t: '@opens', m: 'shock' }, { t: '@wanna', m: 'think', look: [1, -1] }, { t: '@tap', m: 'smug' }, { t: '@nah', m: 'shock' }, { t: '@try', m: 'think' }, { t: '@98', m: 'shock' }, { t: '@skipped', m: 'worried' }, { t: '@99', m: 'shock' }, { t: '@send', m: 'smug' }, { t: '@three#2', m: 'think' }, { t: '@pick#4', m: 'worried' }, { t: '@wins', m: 'grin' }, { t: '@second', m: 'think' }, { t: '@same#2', m: 'grin' }, { t: '@staying', m: 'worried' }, { t: '@doubles', m: 'shock' }, { t: '@columnist', m: 'shock' }, { t: '@by', m: 'think' }, { t: '@wrong#2', m: 'wrong' }, { t: '@so#4', m: 'worried' }], tagDur: 2.2 } },
@@ -606,7 +606,7 @@ BM2.scene({
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@heart', props: { s: 1, dur: 0.9 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 520], dur: 0.85, s: 0.62 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [650, 1120], in: '@Follow+0.05', out: '@Follow+1.45', props: { press: 0.55 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [800, 830], in: '@stay', out: 64.95, props: { l1: 'STAY OR SWITCH?', l2: 'ONE WORD', size: 50, tail: 'left' } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [800, 830], in: '@stay', out: 64.66, props: { l1: 'STAY OR SWITCH?', l2: 'ONE WORD', size: 50, tail: 'left' } },
   ],
   beats: [
     { at: 0, beat: 'side-by-side', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, st: ST0, pose: 'shock', keep: ['hook1', 'ws', 'tbl', 'endt'] },

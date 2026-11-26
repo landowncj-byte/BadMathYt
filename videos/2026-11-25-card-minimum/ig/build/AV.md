@@ -1,0 +1,22 @@
+# AV.md — line -> exact visual + trigger (generated from the real beat list of `bm2.cjs check`; recurring cast and live number as listed)
+
+| # | t | SPOKEN | VISUAL (camera focus, in order) | TRIGGER |
+|---|---|---|---|---|
+| 1 | 0.0 | The bank turned five grand of debt into twelve fucking thousand. | cam 0.0s: hook text + YOU holding the card (YEAR 1); PUSH 2.2s: hook text | 5 |
+| 2 | 4.3 | And all you did was pay the minimum, like they told you. | cam 7.0s: YOU thinks / worries ($5,000 owed) + credit card statement: balance, APR, minimum due |  |
+| 3 | 7.3 | Here's the setup: you owe five thousand on a card at about twenty-two percent. | cam 7.0s: YOU thinks / worries ($5,000 owed) + credit card statement: balance, APR, minimum due; PUSH 8.8s: credit card statement: balance, APR, minimum due [bal]; PUSH 10.5s: credit card statement: balance, APR, minimum due [apr] | 5 |
+| 4 | 11.6 | The minimum is the tiniest payment they'll let you make. | cam 12.0s: YOU thinks / worries ($5,000 owed) + credit card statement: balance, APR, minimum due |  |
+| 5 | 15.1 | Month one, you pay a hundred forty-three bucks, and your debt drops just fifty. | cam 14.8s: payment bar: red INTEREST vs thin green DEBT + YOU reacts (MONTH 1); PUSH 15.9s: payment bar: red INTEREST vs thin green DEBT [total]; PUSH 18.4s: payment bar: red INTEREST vs thin green DEBT [debt] | 143 |
+| 6 | 19.2 | The rest is interest, aka the bank's tip for being a bank. | cam 19.6s: payment bar: red INTEREST vs thin green DEBT + YOU reacts (MONTH 1); cam 20.0s: payment bar: red INTEREST vs thin green DEBT + YOU reacts (MONTH 1) |  |
+| 7 | 23.6 | Double-tap if your card has ever done you dirty. | (holds the previous composition; world elements animate on this line) |  |
+| 8 | 26.4 | And here's the shitty part. As your balance shrinks, the minimum shrinks too, so you crawl. | cam 26.8s: payment bars for months 1..60, red interest / green debt, shrinking + YOU (MONTH 60); PUSH 29.6s: payment bars for months 1..60, red interest / green debt, shrinking [bars]; PUSH 31.2s: payment bars for months 1..60, red interest / green debt, shrinking [last] |  |
+| 9 | 32.2 | Five years later? You still owe about twenty-seven hundred dollars. | cam 32.0s: calendar pages 2026->2031 + STILL OWED $2,736 + YOU five years older; PUSH 34.0s: calendar pages 2026->2031 + STILL OWED $2,736 [owed] |  |
+| 10 | 35.6 | That's more than half the original debt, still sitting there. | PUSH 36.2s: calendar pages 2026->2031 + STILL OWED $2,736 [owed] |  |
+| 11 | 38.8 | Send this to whoever's been paying the minimum since college. | storyteller front 38.8s: calendar pages 2026->2031 + STILL OWED $2,736 |  |
+| 12 | 41.9 | So when are you free? Sixteen and a half damn years. | cam 41.7s: calendar pages flying to 16.5 YEARS + YOU 16 years older; PUSH 43.5s: calendar pages flying to 16.5 YEARS [counter] | 16 |
+| 13 | 45.7 | A baby born that day could be getting a driver's license. | cam 45.7s: calendar pages flying to 16.5 YEARS + YOU 16 years older; cam 45.7s: baby born that day grows to 16, learning to drive (YOU grey beside); PUSH 46.2s: baby born that day grows to 16, learning to drive (YOU grey beside) [age]; cam 47.2s: baby born that day grows to 16, learning to drive (YOU grey beside) |  |
+| 14 | 48.8 | Follow, 'cause the total? It's disgusting. | storyteller front 48.8s: baby born that day grows to 16, learning to drive (YOU grey beside); cam 49.4s: final receipt: borrowed $5,000 / paid $12,811 / interest $7,811 |  |
+| 15 | 51.7 | You paid twelve thousand eight hundred eleven dollars for five grand of stuff you don't even remember. | PUSH 52.0s: final receipt: borrowed $5,000 / paid $12,811 / interest $7,811 [paid]; cam 55.2s: $5,000 of shopping bags + final receipt: borrowed $5,000 / paid $12,811 / interest $7,811; cam 56.3s: timeline: minimum 16.5 yrs vs ghost fixed $250 = 26 months + YOU grins (FIXED $250) | $12 |
+| 16 | 56.5 | Paying a flat two fifty a month would've killed it in twenty-six months. | cam 56.3s: timeline: minimum 16.5 yrs vs ghost fixed $250 = 26 months + YOU grins (FIXED $250); PUSH 57.6s: timeline: minimum 16.5 yrs vs ghost fixed $250 = 26 months [ghost]; cam 59.5s: timeline: minimum 16.5 yrs vs ghost fixed $250 = 26 months + YOU grins (FIXED $250) | $2 |
+| 17 | 60.9 | That's fourteen years faster, with the exact same card. | PUSH 61.1s: 14 YEARS FASTER stamp | 14 |
+| 18 | 64.3 | Minimum or flat? One word. | storyteller front 64.0s: timeline: minimum 16.5 yrs vs ghost fixed $250 = 26 months; cam 65.7s: hook (loop) + YOU (loop) |  |

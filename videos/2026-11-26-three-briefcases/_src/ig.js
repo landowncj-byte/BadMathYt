@@ -5,7 +5,7 @@ const H1 = { lines: [[['$1,000,000', 'good']], [['2 CASES LEFT', 'paper']]], siz
 const LOOP = '@So#3-0.4';
 const P = 'brand/photos/stock/briefcase-cash/7.jpg';
 BM2.scene({
-  series: 'whatif', title: 'THREE BRIEFCASES', duration: 64.79,
+  series: 'whatif', title: 'THREE BRIEFCASES', duration: 64.44,
   footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW', 'PHOTO: SEMTRIO · CC BY 2.0 · VIA FLICKR'],
   elements: [
     { id: 'you1', type: 'char', layer: 'screen', at: [140, 1212], in: -1, props: { who: 'you', s: 0.82, moods: [{ t: 0, m: 'greed' }, { t: '@guts', m: 'worried' }, { t: '@rewind', m: 'think' }, { t: '@three', m: 'think' }, { t: '@million#2', m: 'greed' }, { t: '@that\'s', m: 'think' }, { t: '@27', m: 'shock' }, { t: '@you', m: 'smug' }, { t: '@host', m: 'worried' }, { t: '@opens', m: 'shock' }, { t: '@then#2', m: 'think' }, { t: '@double', m: 'grin' }, { t: '@bullshit', m: 'wrong' }, { t: '@check', m: 'think' }, { t: '@okay', m: 'think' }, { t: '@screwed', m: 'worried' }, { t: '@say#2', m: 'think' }, { t: '@wins', m: 'grin' }, { t: '@send', m: 'smug' }, { t: '@say#3', m: 'think' }, { t: '@again', m: 'grin' }, { t: '@that\'s#2', m: 'shock' }, { t: '@doubles', m: 'shock' }, { t: '@columnist', m: 'shock' }, { t: '@wrong', m: 'wrong' }, { t: '@still', m: 'think' }, { t: '@98', m: 'shock' }, { t: '@99%', m: 'shock' }, { t: '@so#3', m: 'worried' }], tagDur: 2.2 } },
@@ -30,7 +30,7 @@ BM2.scene({
     { id: 'asm', type: 'assumes', layer: 'screen', at: [540, 416], in: '@host+0.3', props: { text: 'HYPOTHETICAL · HOST KNOWS · ALWAYS OPENS AN EMPTY CASE', size: 17 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@Double', props: { s: 1, dur: 0.9 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 520], dur: 0.85, s: 0.62 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: '@stay#2', out: 64.8, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: '@stay#2', out: 64.44, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
   ],
   beats: [
     { at: 0, beat: 'side-by-side', st: 'corner', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'you', keep: ['hook1', 'gut', 'tbl', 'endt'] },

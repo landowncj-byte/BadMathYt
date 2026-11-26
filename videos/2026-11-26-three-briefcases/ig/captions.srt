@@ -1,63 +1,68 @@
 1
-00:00:00,000 --> 00:00:02,871
+00:00:00,000 --> 00:00:03,720
 A million bucks, two cases left, and your gut's full of shit.
 
 2
-00:00:04,071 --> 00:00:06,897
+00:00:04,240 --> 00:00:07,760
 Rewind. Three briefcases, and one has a million bucks.
 
 3
-00:00:08,097 --> 00:00:11,086
+00:00:08,220 --> 00:00:11,540
 That's a hundred bucks a day. For twenty-seven damn years.
 
 4
-00:00:12,386 --> 00:00:16,115
+00:00:12,160 --> 00:00:16,100
 You pick a case. Then the host, who knows where the money is, opens an empty one.
 
 5
-00:00:17,115 --> 00:00:19,733
+00:00:16,460 --> 00:00:19,800
 He always does that. Then he asks: stay, or switch?
 
 6
-00:00:20,133 --> 00:00:22,320
+00:00:20,400 --> 00:00:21,580
 Double-tap if your gut says fifty-fifty.
 
 7
-00:00:22,720 --> 00:00:25,350
+00:00:22,920 --> 00:00:25,760
 Bullshit. Now check every— every possible start.
 
 8
-00:00:26,250 --> 00:00:28,943
+00:00:26,200 --> 00:00:29,080
 Okay, say you picked the money. Switch, and you're screwed.
 
 9
-00:00:29,343 --> 00:00:33,944
+00:00:29,080 --> 00:00:34,060
 Say you picked the first empty case. He has to open the other empty one, so switching wins.
 
 10
-00:00:34,344 --> 00:00:36,938
+00:00:34,800 --> 00:00:36,800
 Send this to the friend who'd argue with a calculator.
 
 11
-00:00:37,938 --> 00:00:41,715
+00:00:37,500 --> 00:00:41,180
 Now say you picked the second empty case. Same deal, switching wins again.
 
 12
-00:00:42,115 --> 00:00:43,666
+00:00:41,700 --> 00:00:43,040
 That's two wins out of three.
 
 13
-00:00:45,066 --> 00:00:50,259
-A columnist printed that, and by her count, nearly a thousand PhDs wrote in to say she's wrong.
+00:00:43,360 --> 00:00:46,260
+So switching? It literally doubles your damn odds.
 
 14
-00:00:51,022 --> 00:00:54,653
-Still doubt it? Make it a hundred cases, and he opens ninety-eight empties.
+00:00:46,820 --> 00:00:51,660
+A columnist printed that, and by her count, nearly a thousand PhDs wrote in to say she's wrong.
 
 15
-00:00:55,253 --> 00:00:59,532
-Your case is a one in a hundred guess. The case he skipped is ninety-nine percent.
+00:00:52,020 --> 00:00:55,880
+Still doubt it? Make it a hundred cases, and he opens ninety-eight empties.
 
 16
-00:01:00,432 --> 00:01:02,803
+00:00:56,220 --> 00:00:59,720
+Your case is a one in a hundred guess. The case he skipped is ninety-nine percent.
+
+17
+00:01:01,080 --> 00:01:04,040
 So with a million bucks on it: stay, or switch?
+

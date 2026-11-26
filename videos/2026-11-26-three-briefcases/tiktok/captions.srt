@@ -1,71 +1,76 @@
 1
-00:00:00,000 --> 00:00:03,313
+00:00:00,820 --> 00:00:03,540
 Fifty-fifty is the wrong answer to this million-dollar question.
 
 2
-00:00:04,513 --> 00:00:07,475
+00:00:04,360 --> 00:00:07,320
 Three briefcases. One's got a million bucks, two are empty.
 
 3
-00:00:08,075 --> 00:00:10,742
+00:00:07,660 --> 00:00:10,340
 That's a hundred bucks a day. For twenty-seven years.
 
 4
-00:00:12,042 --> 00:00:16,182
+00:00:10,940 --> 00:00:15,460
 You pick a case. Then the host, who knows where the cash is, always opens an empty one.
 
 5
-00:00:16,582 --> 00:00:19,927
+00:00:15,940 --> 00:00:19,380
 Now he asks: wanna switch? Tap the heart if you're thinking coin flip.
 
 6
-00:00:20,327 --> 00:00:22,217
+00:00:19,900 --> 00:00:21,980
 Nah, bro. Try a hundred cases.
 
 7
-00:00:22,817 --> 00:00:25,256
+00:00:22,520 --> 00:00:24,940
 You pick one, and he opens ninety-eight empties.
 
 8
-00:00:25,856 --> 00:00:29,368
+00:00:25,260 --> 00:00:29,260
 He skipped just— just one case. Your pick was a one in a hundred guess.
 
 9
-00:00:29,868 --> 00:00:32,675
+00:00:29,740 --> 00:00:32,700
 So the money's in his case ninety-nine percent of the time.
 
 10
-00:00:33,475 --> 00:00:35,790
+00:00:33,180 --> 00:00:35,300
 Send this to the friend who'd still keep their case.
 
 11
-00:00:36,190 --> 00:00:39,795
+00:00:36,000 --> 00:00:39,260
 Three cases works the same. Pick the money first, and switching loses.
 
 12
-00:00:40,195 --> 00:00:44,521
+00:00:39,840 --> 00:00:44,020
 Pick the first empty case, and he has to open the other empty one, so switching wins.
 
 13
-00:00:45,521 --> 00:00:47,630
+00:00:44,500 --> 00:00:46,340
 And the second empty case? Same deal.
 
 14
-00:00:48,030 --> 00:00:50,037
+00:00:46,960 --> 00:00:48,760
 Follow, this page settles arguments.
 
 15
-00:00:51,037 --> 00:00:53,026
+00:00:49,400 --> 00:00:51,040
 Switching wins two times out of three.
 
 16
-00:00:54,426 --> 00:00:56,875
-A columnist printed that in nineteen ninety.
+00:00:51,500 --> 00:00:55,020
+Staying only wins one time in three, so switching doubles your chances.
 
 17
-00:00:57,275 --> 00:01:00,980
-By her count, nearly a thousand PhDs wrote in to say she was wrong.
+00:00:55,580 --> 00:00:56,800
+A columnist printed that in nineteen ninety.
 
 18
-00:01:01,680 --> 00:01:03,429
+00:00:57,820 --> 00:01:01,660
+By her count, nearly a thousand PhDs wrote in to say she was wrong.
+
+19
+00:01:02,120 --> 00:01:04,260
 So who's wrong? Stay, or switch?
+

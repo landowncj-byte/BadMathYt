@@ -162,7 +162,7 @@
     },
   });
 
-  // ---------- sign: office sign "TEXAS / LOTTERY COMMISSION" swings on two chains, unhooks, drops; ABOLISHED tag flips on ----------
+  // ---------- sign: office sign "TEXAS / LOTTERY COMMISSION" swings on two chains, unhooks, drops; SHUT DOWN tag flips on ----------
   B.register('sign', {
     defaults: { dropAt: 99999, tagAt: 99999, fall: 520, src: 'PER KUT · HOUSTON CHRONICLE', w: 760 }, ownEnter: true,
     size: p => [p.w, 640], anchors: p => ({ board: [0, 40 + 0, p.w, 260], tag: [0, 120, 560, 150] }),
@@ -177,7 +177,7 @@
       B.shadowed(g, () => rr(g, -bw / 2, -bh / 2, bw, bh, 18), theme.navy, 0.6); g.strokeStyle = theme.paper; g.lineWidth = 5; rr(g, -bw / 2 + 12, -bh / 2 + 12, bw - 24, bh - 24, 10); g.stroke();
       txt(g, 'TEXAS', 0, -62, F.monoX(34), theme.gold); txt(g, 'LOTTERY COMMISSION', 0, 20, F.hero(76), theme.paper); txt(g, 'ILLUSTRATION', bw / 2 - 28, bh / 2 - 26, F.mono(16), 'rgba(245,243,238,.6)', 'right');
       g.restore();
-      const tg = t - p.tagAt; if (tg > 0) { const f = ease.out(clamp(tg / 0.35)), sc = Math.abs(Math.cos((1 - f) * Math.PI / 2)); g.save(); g.translate(0, by + 150 + 30); g.rotate(-0.07); g.scale(1, 0.1 + 0.9 * f); g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 14 * zn(); g.shadowOffsetY = 8 * zn(); g.fillStyle = theme.paper; rr(g, -270, -56, 540, 112, 14); g.fill(); g.shadowColor = 'transparent'; g.strokeStyle = theme.badInk; g.lineWidth = 8; rr(g, -262, -48, 524, 96, 10); g.stroke(); txt(g, 'ABOLISHED', 0, 4, F.hero(80), theme.badInk); g.restore(); burst(g, 0, by + 180, 330, theme.bad, tg - 0.2, 18, 0.5); }
+      const tg = t - p.tagAt; if (tg > 0) { const f = ease.out(clamp(tg / 0.35)), sc = Math.abs(Math.cos((1 - f) * Math.PI / 2)); g.save(); g.translate(0, by + 150 + 30); g.rotate(-0.07); g.scale(1, 0.1 + 0.9 * f); g.shadowColor = 'rgba(2,4,9,.4)'; g.shadowBlur = 14 * zn(); g.shadowOffsetY = 8 * zn(); g.fillStyle = theme.paper; rr(g, -270, -56, 540, 112, 14); g.fill(); g.shadowColor = 'transparent'; g.strokeStyle = theme.badInk; g.lineWidth = 8; rr(g, -262, -48, 524, 96, 10); g.stroke(); txt(g, 'SHUT DOWN', 0, 4, F.hero(80), theme.badInk); g.restore(); burst(g, 0, by + 180, 330, theme.bad, tg - 0.2, 18, 0.5); }
       const sr = t - p.tagAt; if (sr > 0.2) { g.save(); g.globalAlpha = clamp((sr - 0.2) / 0.3); txt(g, p.src, 0, by + 262, F.mono(20), 'rgba(245,243,238,.8)'); g.restore(); }
     },
   });

@@ -223,4 +223,20 @@
       g.restore();
     },
   });
+
+  // ---------------------------------------------------------------- oneticket: the friend who buys ONE ticket and prays
+  B.register('oneticket', {
+    defaults: { xAt: NOW, winsAt: NOW, w: 760, h: 700 }, size: p => [p.w, p.h], anchors: p => ({ sign: [0, -p.h * 0.2, p.w * 0.8, 130], ticket: [0, -p.h * 0.05, p.w * 0.8, p.h * 0.45] }),
+    draw(g, p, env) {
+      const { t, theme, lift } = env, w = p.w, h = p.h, x0 = -w / 2, y0 = -h / 2; paper(g, x0, y0, w, h, 22, { lift });
+      g.save(); rr(g, x0, y0, w, h, 22); g.clip(); const bg = g.createLinearGradient(0, y0, 0, y0 + h); bg.addColorStop(0, '#E6DDF4'); bg.addColorStop(1, '#F6E8C0'); g.fillStyle = bg; g.fillRect(x0, y0, w, h); g.restore();
+      txt(g, 'THE FRIEND WHO BUYS', 0, y0 + 62, F.cap(40), theme.ink); txt(g, 'ONE TICKET', 0, y0 + 132, F.hero(92), theme.badInk);
+      const wn = t - p.winsAt, k = wn > -0.2 ? ease.out(clamp((wn + 0.2) / 0.5)) : 0;
+      g.save(); g.translate(0, y0 + 330); g.rotate(-0.05 + Math.sin(t * 1.3) * 0.015); B.ticket(g, 0, 0, 440, 200, 0, 1, { sh: 16, edge: theme.gold, edgeW: 6, label: 'ONE TICKET' }); g.restore();
+      // sparkles = the prayer
+      for (let i = 0; i < 10; i++) { const a = k * clamp((wn + 0.2) / 0.4 + i * 0.02); if (a <= 0) continue; const ang = i / 10 * Math.PI * 2 + t * 0.6, r = 190 + 30 * Math.sin(t * 3 + i), x = Math.cos(ang) * r * 1.2, y = y0 + 330 + Math.sin(ang) * r * 0.55; g.save(); g.translate(x, y); g.rotate(ang); g.globalAlpha *= a; g.fillStyle = theme.gold; g.beginPath(); for (let j = 0; j < 8; j++) { const rr2 = j % 2 ? 6 : 16, aa = j / 8 * Math.PI * 2; g.lineTo(Math.cos(aa) * rr2, Math.sin(aa) * rr2); } g.closePath(); g.fill(); g.restore(); }
+      if (wn > -0.02) { const kk = spring(Math.max(0, wn), 'snappy'); g.save(); g.translate(0, y0 + h - 100 + (1 - kk) * 40); g.globalAlpha *= clamp(wn / 0.1); marker(g, -w * 0.4, -46, w * 0.8, 92, theme.gold, clamp(wn / 0.3), 0.5); txt(g, 'AND PRAYS', 0, 4, F.hero(76), theme.ink);
+        const xn = t - p.xAt; if (xn > 0) { const u = ease.out(clamp(xn / 0.3)); g.strokeStyle = theme.badInk; g.lineWidth = 12; g.lineCap = 'round'; g.beginPath(); g.moveTo(-w * 0.34, 6); g.lineTo(-w * 0.34 + w * 0.68 * u, 2); g.stroke(); } g.restore(); }
+    },
+  });
 })();
