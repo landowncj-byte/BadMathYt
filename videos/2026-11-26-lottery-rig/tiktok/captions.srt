@@ -1,39 +1,84 @@
 1
-00:00:00,000 --> 00:00:03,612
-This guy guarded the lottery computers. Then he rigged it. Five states.
+00:00:00,000 --> 00:00:05,080
+A lottery jackpot advertised at sixteen point five million was never collected.
 
 2
-00:00:04,168 --> 00:00:06,870
-Yeah, he told a court he wrote code to predict the numbers.
+00:00:05,700 --> 00:00:10,360
+Say you make fifty grand a year. You'd need three hundred thirty years to earn that.
 
 3
-00:00:07,120 --> 00:00:08,853
-Tap the heart if you always knew.
+00:00:10,600 --> 00:00:14,020
+So who walks away from that kinda money? Okay, rewind.
 
 4
-00:00:09,103 --> 00:00:12,699
-Then he gave people the numbers, he said. They won, and they shared it with him.
+00:00:14,620 --> 00:00:18,180
+Meet Eddie Tipton. He worked at the Multi-State Lottery Association.
 
 5
-00:00:13,549 --> 00:00:17,044
-Biggest ticket? A jackpot advertised at sixteen point five mil.
+00:00:18,780 --> 00:00:23,080
+That's one office running the computers that draw the numbers, for lotteries in many states.
 
 6
-00:00:17,407 --> 00:00:20,091
-Send this to the one friend who plays every— every week.
+00:00:23,720 --> 00:00:28,880
+A lottery computer's whole job is picking numbers nobody can guess, like a robot rolling dice.
 
 7
-00:00:20,941 --> 00:00:23,430
-So who actually got paid? Follow, it's perfect.
+00:00:29,360 --> 00:00:31,840
+Tap the heart if that sounds impossible to cheat.
 
 8
-00:00:23,830 --> 00:00:25,414
-Nobody. Not one dollar.
+00:00:32,360 --> 00:00:36,300
+Here's the wild part. Eddie's title was information security director.
 
 9
-00:00:26,964 --> 00:00:28,721
-He got up to twenty-five years.
+00:00:36,800 --> 00:00:42,240
+So the guy keeping it safe is the guy who broke it? Yeah. Here's how, step by step.
 
 10
-00:00:29,021 --> 00:00:31,065
-Still trust the lottery? Yes or no.
+00:00:42,280 --> 00:00:46,820
+Step one: he later told a court he wrote code that let him predict the winning numbers.
+
+11
+00:00:47,300 --> 00:00:49,520
+He knew the dice roll before anybody threw.
+
+12
+00:00:50,200 --> 00:00:53,220
+Step two: he said he passed those numbers to other people.
+
+13
+00:00:53,740 --> 00:00:56,640
+Send this to the friend who plays every— every week.
+
+14
+00:00:57,200 --> 00:01:00,700
+Step three: those people won, and shared the winnings with him.
+
+15
+00:01:01,080 --> 00:01:02,780
+And this went down in five states.
+
+16
+00:01:03,440 --> 00:01:07,860
+Now, back to that jackpot. In twenty ten, a ticket tied to his scheme hit it.
+
+17
+00:01:08,020 --> 00:01:13,100
+So guess how much of that sixteen point five million got paid. Follow, it's so good.
+
+18
+00:01:13,740 --> 00:01:15,980
+Nobody got a dollar. Not one.
+
+19
+00:01:16,480 --> 00:01:20,120
+In twenty seventeen, he pleaded guilty, meaning he admitted it in court.
+
+20
+00:01:20,460 --> 00:01:23,180
+He was sentenced to up to twenty-five years in prison.
+
+21
+00:01:23,620 --> 00:01:26,240
+So be real: is that enough for rigging the lottery?
+

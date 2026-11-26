@@ -1,19 +1,84 @@
 1
-00:00:00,000 --> 00:00:03,635
-The lottery's own security director rigged the damn thing in five states.
+00:00:00,000 --> 00:00:05,140
+This dumbass rigged the lottery in five states. And his biggest ticket? Never cashed.
 
 2
-00:00:04,485 --> 00:00:07,731
-Wait, it's worse: he told a court he wrote code to predict numbers.
+00:00:05,740 --> 00:00:08,500
+His name's Eddie Tipton, but wait for his job title.
 
 3
-00:00:07,981 --> 00:00:10,057
-Send this to whoever plays every week.
+00:00:08,880 --> 00:00:13,160
+He was actually the information security director at the Multi-State Lottery Association.
 
 4
-00:00:10,357 --> 00:00:14,582
-Biggest ticket, sixteen point five million advertised? Follow, guess what it paid.
+00:00:14,000 --> 00:00:19,060
+That's one office running the damn computers that draw the numbers, for lotteries in many states.
 
 5
-00:00:14,932 --> 00:00:20,861
-Not a fucking cent. He got up to twenty-five years. You still trust the damn lottery?
+00:00:19,740 --> 00:00:23,520
+Think of that office as the lottery's engine room, where the drawings actually happen.
+
+6
+00:00:23,900 --> 00:00:29,040
+And a lottery computer has one job: pick numbers nobody can guess, like a robot rolling dice.
+
+7
+00:00:29,680 --> 00:00:33,540
+So the security guy rigs it? Double-tap if you saw that shit coming.
+
+8
+00:00:34,080 --> 00:00:36,260
+Okay, here's the scam, nice and slow.
+
+9
+00:00:36,840 --> 00:00:40,920
+Step one: he later told a court he wrote code that let him predict the winning numbers.
+
+10
+00:00:41,340 --> 00:00:43,480
+So he knew the dice roll before anybody threw.
+
+11
+00:00:44,200 --> 00:00:46,980
+Step two: he said he handed those numbers to other people.
+
+12
+00:00:47,640 --> 00:00:50,700
+Step three: those people won, and shared the winnings with him.
+
+13
+00:00:51,140 --> 00:00:53,720
+Send this to whoever still plays every damn week.
+
+14
+00:00:54,240 --> 00:00:58,260
+Now the big one. In twenty ten, a ticket tied to the scheme hit a jackpot.
+
+15
+00:00:58,260 --> 00:01:03,000
+The billboard prize? It was advertised at sixteen point five million dollars.
+
+16
+00:01:03,380 --> 00:01:07,240
+Say you make fifty grand a year. That's three hundred thirty years of your life.
+
+17
+00:01:07,980 --> 00:01:09,760
+Follow, 'cause guess how much of it got paid.
+
+18
+00:01:10,160 --> 00:01:13,600
+Not a fucking cent. Nobody ever collected it.
+
+19
+00:01:13,880 --> 00:01:17,300
+In twenty seventeen he pleaded guilty, which means he admitted it in court.
+
+20
+00:01:17,700 --> 00:01:20,160
+He was sentenced to up to twenty-five years in prison.
+
+21
+00:01:20,760 --> 00:01:23,960
+So he rigged it in five states. Still trust the damn lottery?
+

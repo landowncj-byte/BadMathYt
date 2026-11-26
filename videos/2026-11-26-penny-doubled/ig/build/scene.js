@@ -562,7 +562,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       paper(g, -100, -150, 200, 262, 14, { lift: 0.5 }); g.save(); rr(g, -90, -140, 180, 190, 12); g.clip(); const bg = g.createRadialGradient(0, -40, 10, 0, -20, 150); bg.addColorStop(0, '#7FD6C9'); bg.addColorStop(1, '#2E9C8E'); g.fillStyle = bg; g.fillRect(-90, -140, 180, 190);
       you(g, 0, -34, 0.62, K.mood, t); g.restore(); g.strokeStyle = INK; g.lineWidth = 4; rr(g, -90, -140, 180, 190, 12); g.stroke();
       g.fillStyle = '#E8590C'; rr(g, -90, 56, 180, 28, 8); g.fill(); txt(g, 'YOU · ILLUSTRATION', 0, 70, F.cap(13), '#F5F3EE');
-      const w = Math.max(190, mw(K.text, F.cap(19)) + 24); g.save(); g.translate(0, 120); g.fillStyle = theme.ink; rr(g, -w / 2, -20, w, 40, 10); g.fill(); g.strokeStyle = K.tone === 'bad' ? '#FF3B30' : K.tone === 'good' ? '#00D26A' : '#FFD60A'; g.lineWidth = 3; rr(g, -w / 2, -20, w, 40, 10); g.stroke(); txt(g, K.text, 0, 2, F.cap(19), g.strokeStyle); g.restore();
+      const w = Math.max(196, mw(K.text, F.cap(22)) + 22); g.save(); g.translate(0, 120); g.fillStyle = theme.ink; rr(g, -w / 2, -20, w, 40, 10); g.fill(); g.strokeStyle = K.tone === 'bad' ? '#FF3B30' : K.tone === 'good' ? '#00D26A' : '#FFD60A'; g.lineWidth = 3; rr(g, -w / 2, -20, w, 40, 10); g.stroke(); txt(g, K.text, 0, 2, F.cap(22), g.strokeStyle); g.restore();
       g.restore();
     },
   });
@@ -629,10 +629,10 @@ const S = PDS.make({
   ],
   bubble: { l1: 'PENNY or MILLION?', l2: 'ONE WORD · COMMENT', size: 48, tail: 'left' },
   extra: [
-    { id: 'you', type: 'you', layer: 'screen', at: [122, 585], scale: 0.86, in: -1, z: 80, props: { keys: [
+    { id: 'you', type: 'you', layer: 'screen', at: [135, 610], scale: 1.1, in: -1, z: 80, props: { keys: [
       { at: 0, mood: 'neutral', text: 'YOU' }, { at: '@Here\'s', mood: 'neutral', text: 'YOU · PICK ONE' }, { at: '@penny', mood: 'smirk', text: 'YOU TAKE THE PENNY' },
-      { at: '@week-0.2', mood: 'worried', text: 'DAY 7 · 64¢' }, { at: '@10-0.1', mood: 'worried', text: 'DAY 10 · $5.12' }, { at: '@20+0.0', mood: 'worried', text: 'DAY 20 · $5,242.88' },
-      { at: '@27-0.2', mood: 'angry', text: 'DAY 27 · $671,088.64', tone: 'bad' }, { at: '@28+0.1', mood: 'wow', text: 'DAY 28 · $1,342,177.28', tone: 'good' }, { at: '@5-0.1', mood: 'happy', text: 'DAY 30 · $5,368,709.12', tone: 'good' },
+      { at: '@week-0.2', mood: 'worried', text: 'DAY 7 · 64¢' }, { at: '@10-0.1', mood: 'worried', text: 'DAY 10 · $5.12' }, { at: '@20+0.0', mood: 'worried', text: 'DAY 20 · $5.2K' },
+      { at: '@27-0.2', mood: 'angry', text: 'DAY 27 · $671K', tone: 'bad' }, { at: '@28+0.1', mood: 'wow', text: 'DAY 28 · $1.34M', tone: 'good' }, { at: '@5-0.1', mood: 'happy', text: 'DAY 30 · $5.37M', tone: 'good' },
       { at: '@So#3', mood: 'smirk', text: 'PENNY OR MILLION?' }] } },
     { id: 'twice', type: 'text', layer: 'screen', at: [540, 560], in: '@twice-0.3', out: '@Double-0.1', props: { lines: [[['EVERY DAY =', 'paper']], [['2× THE DAY BEFORE', 'accent']]], size: 64 } },
     { id: 'pass', type: 'stamp', layer: 'screen', at: [540, 470], rot: -0.06, in: '@past', out: '@29', props: { text: 'PASSES THE MILLION', tone: 'good', size: 66 } },

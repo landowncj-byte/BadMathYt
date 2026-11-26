@@ -30,7 +30,7 @@ BM2.scene({
     { id: 'asm', type: 'assumes', layer: 'screen', at: [540, 416], in: '@host+0.3', props: { text: 'HYPOTHETICAL · HOST KNOWS · ALWAYS OPENS AN EMPTY CASE', size: 17 } },
     { id: 'heart', type: 'heart', layer: 'screen', at: [800, 900], in: '@Double', props: { s: 1, dur: 0.9 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [0, 0], in: '@Send-0.05', out: '@Send+1.0', props: { from: [470, 1000], to: [1150, 520], dur: 0.85, s: 0.62 } },
-    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: '@stay#2', out: 63.55, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
+    { id: 'ask', type: 'bubble', layer: 'screen', at: [690, 800], in: '@stay#2', out: 64.8, props: { l1: 'STAY OR SWITCH?', size: 50, tail: 'left' } },
   ],
   beats: [
     { at: 0, beat: 'side-by-side', st: 'corner', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'you', keep: ['hook1', 'gut', 'tbl', 'endt'] },
@@ -81,7 +81,7 @@ BM2.scene({
     { at: '@Your#3', beat: 'graphic-hero', focus: 'fan.pick', fill: 0.45, sy: 860, st: 'corner', pose: 'point' },
     { at: '@skipped', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 1030, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.4 },
     { at: '@guess', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner', pose: 'shrug' },
-    { at: LOOP, beat: 'side-by-side', st: 'corner', focus: F0, move: 'whip', fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'shock', keep: ['hook1', 'gut', 'tbl', 'endt'] },
+    { at: LOOP, beat: 'side-by-side', st: 'corner', focus: F0, move: 'whip', lead: 0.22, dur0: 0.3, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, pose: 'shock', keep: ['hook1', 'gut', 'tbl', 'endt'] },
   ],
   poses: [['@Send', 'you'], ['@stay#2', 'chin']],
   shakes: [[0.3, 10], ['@guts', 12], ['@50', 10], ['@Bullshit', 12], ['@screwed', 8], ['@That\'s#2', 12], ['@years', 10], ['@99%', 26], ['@So#3-0.3', 10]],

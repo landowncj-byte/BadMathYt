@@ -49,3 +49,6 @@ One stock image, same file in all cuts: `brand/photos/stock/briefcase-cash/7.jpg
 - TikTok: during the "coin flip" push-in the blurred STAY/SWITCH buttons briefly sit in the caption band.
 - Tall boards (board3 rows, fan100 zooms) pass behind the HUD during close-ups; HUD is a screen layer by design.
 - Bed music still has no drop-out (engine has no bed envelope).
+
+## CRIME-SHOW BUILD STATUS (2026-11-26, RULES 112)
+RENDERED READY: three-briefcases (YouTube) 72.30s 20.7MB (-14.0 LUFS, -1.3 dBTP). Doubt: board/summary card 53-59 s holds ~6 s (only coin/YOU/tally move) and a one-frame whip blank at ~61 s.

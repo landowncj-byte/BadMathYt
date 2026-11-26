@@ -14,6 +14,12 @@
    "name": "rubber_stamp_2"
   },
   {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 0.05,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -9,
    "dur": 0.4,
    "at": 0.1,
@@ -30,6 +36,12 @@
    "dur": 0.7,
    "at": 4.16,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 4.46,
+   "name": "camera_shutter_2"
   },
   {
    "gain": -12,
@@ -176,6 +188,12 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 26.6,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -6,
    "dur": 0.8,
    "at": 27.64,
@@ -198,6 +216,12 @@
    "dur": 0.7,
    "at": 29.06,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.8,
+   "at": 29.36,
+   "name": "typewriter_2"
   },
   {
    "gain": -10,
@@ -302,6 +326,12 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 48.4,
+   "name": "camera_shutter_2"
+  },
+  {
    "gain": -8,
    "dur": 0.6,
    "at": 48.4,
@@ -312,6 +342,12 @@
    "dur": 0.45,
    "at": 49.62,
    "name": "swipe_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 49.82,
+   "name": "rubber_stamp_2"
   },
   {
    "gain": -10,
@@ -342,6 +378,12 @@
    "dur": 0.7,
    "at": 54.64,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -14,
+   "dur": 3,
+   "at": 54.94,
+   "name": "suspense_drone_1"
   },
   {
    "gain": -13,
@@ -428,10 +470,22 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 71.02,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -11,
    "dur": 0.4,
    "at": 71.12,
    "name": "swipe_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 72.26,
+   "name": "paper_slam_1"
   },
   {
    "gain": -8,
@@ -452,6 +506,12 @@
    "name": "swipe_2"
   },
   {
+   "gain": -12,
+   "dur": 0.7,
+   "at": 74.54,
+   "name": "typewriter_1"
+  },
+  {
    "gain": -14,
    "dur": 0.9,
    "at": 75.2,
@@ -462,6 +522,12 @@
    "dur": 0.45,
    "at": 75.9,
    "name": "swipe_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 76.1,
+   "name": "camera_shutter_2"
   },
   {
    "gain": -3,
@@ -486,6 +552,12 @@
    "dur": 0.45,
    "at": 78.44,
    "name": "swipe_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.9,
+   "at": 78.64,
+   "name": "cell_door_1"
   },
   {
    "gain": -5,

@@ -46,5 +46,5 @@ tail_beats(c,[("['hook', 'tally0', 'mug0']","['hook', 'mug0']"),("['hook2', 'tal
 ])
 fixfocus(c)
 storyright(c,['mug','mug2','sus3','suspc','sv','cos','sus17','sus15','susd','sus0','mug0'])
-add_sfx(c,[(0.05,'camera_shutter_1',-8,0.4),("'@Okay'",'camera_shutter_2',-8,0.4),("'@His'",'camera_shutter_1',-9,0.4),("'@Step'",'typewriter_2',-12,0.8),("'@But#2'",'camera_shutter_2',-9,0.4),("'@Remember-0.2'",'camera_shutter_1',-8,0.4),("'@pleaded'",'camera_shutter_2',-8,0.4),("'@sentenced'",'cell_door_1',-6,0.9),("'@guilty'",'rubber_stamp_1',-4,0.5),("'@So#4-0.1'",'suspense_drone_1',-14,3.0),("'@victim-0.5'",'camera_shutter_1',-9,0.4),("'@Remember+0.3'",'paper_slam_1',-12,0.4),("'@arrested'",'rubber_stamp_2',-7,0.5)])
+add_sfx(c,[(0.05,'camera_shutter_1',-12,0.4),("'@Okay'",'camera_shutter_2',-12,0.4),("'@His'",'camera_shutter_1',-12,0.4),("'@Step'",'typewriter_2',-12,0.8),("'@But#2'",'camera_shutter_2',-12,0.4),("'@Remember-0.2'",'camera_shutter_1',-12,0.4),("'@pleaded'",'camera_shutter_2',-12,0.4),("'@sentenced'",'cell_door_1',-10,0.9),("'@guilty'",'rubber_stamp_1',-10,0.5),("'@So#4-0.1'",'suspense_drone_1',-14,3.0),("'@victim-0.5'",'camera_shutter_1',-12,0.4),("'@Remember+0.3'",'paper_slam_1',-12,0.4),("'@arrested'",'rubber_stamp_2',-11,0.5)])
 c.save('tt.crime.js')
