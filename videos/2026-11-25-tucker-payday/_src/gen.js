@@ -146,6 +146,7 @@
       E.push({ id: 'rt', type: 'rate', at: [x, y], in: O(R.rate, '-0.4'), props: { at: R.p700 } });
       b(R.rate, SB, 'rt', { move: 'whip', sx: 540, sy: 840, fill: 0.84, maxH: 800, st: 'corner-left', pose: 'point' });
       b(R.p700, ZN, 'rt.hero', { fill: 0.7, maxH: 520, sy: 840, st: 'corner-left', pose: 'shock', dur: 0.5 });
+      if (R.rateAfter) b(R.rateAfter, PF, 'rt', { sy: 820, pose: 'talk' });
       sfx(R.rate, 'paper_slam_2', -10); sfx(R.p700, 'cinematic_hit_1', -8, 0.8); SH.push([O(R.p700, '+1.0'), 10]); }
 
     // ---- 4.5 MILLION ----

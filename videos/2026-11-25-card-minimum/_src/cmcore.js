@@ -88,9 +88,9 @@ window.CM = function (W, V) {
   bt(R(W.s9, -0.25), { beat: GH, focus: 'rcpt', move: 'whip', fill: 0.7, maxH: 760, sy: 880, st: STL, pose: 'idle' });
   bt(W.paid, { beat: ZN, focus: 'rcpt.paid', fill: 0.6, sy: 900, st: STL, pose: 'shock', dur: 0.5 });
   bt(R(W.stuff, -0.1), { beat: GH, focus: ['stf', 'rcpt'], fill: 0.97, maxH: 760, sy: 880, st: STR, pose: 'point', dur: 0.7 });
-  bt(R(W.s10, -0.25), { beat: GH, focus: ['track', 'you10'], move: 'whip', fill: 0.94, maxH: 900, sy: 880, st: STL, pose: 'idle' });
-  bt(W.fx250, { beat: ZN, focus: 'track.ghost', fill: 0.72, sy: 1000, st: STL, pose: 'point', dur: 0.5 });
-  bt(W.m26, { beat: GH, focus: ['track', 'you10'], fill: 0.94, maxH: 900, sy: 880, st: STR, pose: 'shock', dur: 0.6 });
+  bt(R(W.s10, -0.25), { beat: GH, focus: ['track', 'you10'], move: 'whip', fill: 0.94, maxH: 900, sy: 930, st: STL, pose: 'idle' });
+  bt(W.fx250, { beat: ZN, focus: 'track.ghost', fill: 0.72, sy: 1080, st: STL, pose: 'point', dur: 0.5 });
+  bt(W.m26, { beat: GH, focus: ['track', 'you10'], fill: 0.94, maxH: 900, sy: 930, st: STR, pose: 'shock', dur: 0.6 });
   bt(W.fast, { beat: ZN, focus: 'fast', fill: 0.62, maxH: 380, sy: 860, st: STL, pose: 'shock', dur: 0.45 });
   bt(R(W.q, -0.3), { beat: PF, focus: 'track', sy: 800, pose: 'talk', dur: 0.6 });
   bt(W.end, { beat: SB, focus: F0e, move: 'whip', fill: 0.9, maxH: 900, sx: 540, sy: 905, st: { x: 130, y: 1410, s: 0.85 }, pose: 'you', keep: ['hook', 'hook2'] });

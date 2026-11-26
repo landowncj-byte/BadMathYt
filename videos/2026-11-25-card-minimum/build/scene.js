@@ -924,10 +924,10 @@ window.CM_SIM = {min:[[4950.0, 93.17, 143.17], [4900.5, 92.23, 141.73], [4851.49
   B.register('track', {
     defaults: { w: 940, years: 17, y0: 2026, months: 198, fillAt: NOW, fillDur: 1.2, ghostAt: NOW, ghostDur: 1.0, ghostMonths: 26, ghostLabel: 'FIXED $250 / MONTH → 26 MONTHS', tagAt: NOW, tag: 'SAME MATH, DIFFERENT PAYMENT', label: 'ONLY PAYING THE MINIMUM', big: 16.5 },
     size: p => [p.w + 100, 720],
-    anchors: p => ({ years: [0, -190, p.w * 0.85, 250], strip: [0, 40, p.w + 60, 150], ghost: [-p.w / 2 + 300, 195, 700, 130], end: [p.w * 0.43, 40, 220, 160], tag: [0, 300, p.w, 90] }),
+    anchors: p => ({ years: [0, -190, p.w * 0.85, 250], strip: [0, 40, p.w + 60, 150], ghost: [0, 195, p.w + 40, 130], end: [p.w * 0.43, 40, 220, 160], tag: [0, 300, p.w, 90] }),
     draw(g, p, env) { const { t, theme } = env, w = p.w, span = p.years * 12, x0 = -w / 2, sy = 40, sh = 70, fon = t - p.fillAt, fp = fon > 0 ? ease.out(lin(fon, 0, p.fillDur)) : 0;
       txt(g, p.label, 0, -355, F.cap(32), rgba(theme.paper, 0.8));
-      const v = p.big * fp, cf = F.hero(210); g.font = cf; const cw = B.rollWidth(g, p.big, { font: cf, decimals: 1 }).w + g.measureText(' YEARS').width; roll(g, v, -cw / 2, -200, { font: cf, size: 210, color: tone('bad', false), decimals: 1, suffix: ' YEARS', align: 'left', speed: fp > 0 && fp < 0.98 ? p.big / p.fillDur : 0 });
+      const v = p.big * fp; let fs = 210, cf = F.hero(fs); g.font = cf; let cw = B.rollWidth(g, p.big, { font: cf, decimals: 1 }).w + g.measureText(' YEARS').width; if (cw > w * 0.86) { fs = Math.floor(fs * w * 0.86 / cw); cf = F.hero(fs); g.font = cf; cw = B.rollWidth(g, p.big, { font: cf, decimals: 1 }).w + g.measureText(' YEARS').width; } roll(g, v, -cw / 2, -200, { font: cf, size: fs, color: tone('bad', false), decimals: 1, suffix: ' YEARS', align: 'left', speed: fp > 0 && fp < 0.98 ? p.big / p.fillDur : 0 });
       const lp = fon - p.fillDur; burst(g, 0, -200, 260, tone('bad', false), lp, 18, 0.55);
       g.fillStyle = rgba(theme.paper, 0.14); rr(g, x0, sy, w, sh, 20); g.fill();
       const fw = w * p.months / span * fp; if (fw > 4) { g.save(); rr(g, x0, sy, w, sh, 20); g.clip(); clay(g, x0 - 40, sy, 40 + fw, sh, 20, theme.bad, { shadowK: 0.3 }); g.restore(); const hx = x0 + fw; g.fillStyle = theme.paper; g.beginPath(); g.arc(hx, sy + sh / 2, 17, 0, 7); g.fill(); }
@@ -936,7 +936,7 @@ window.CM_SIM = {min:[[4950.0, 93.17, 143.17], [4900.5, 92.23, 141.73], [4851.49
         clay(g, x0, gy, Math.max(8, gw * gp), gh, 14, theme.good, { shadowK: 0.4 }); const hx = x0 + gw * gp; g.fillStyle = theme.paper; g.beginPath(); g.arc(hx, gy + gh / 2, 15, 0, 7); g.fill();
         const ld = gon - p.ghostDur; g.save(); g.globalAlpha *= clamp(gon / 0.25); txt(g, p.ghostLabel, x0, gy + 78, F.cap(31), tone('good', false), 'left'); g.restore(); burst(g, x0 + gw, gy + gh / 2, 70, tone('good', false), ld, 12, 0.45);
         if (ld > 0) { const k = spring(ld, 'bouncy'); g.save(); g.translate(x0 + gw + 34, gy + gh / 2 + 2); g.scale(k, k); txt(g, '✓ DONE', 0, 0, F.cap(30), tone('good', false), 'left'); g.restore(); } }
-      const ton = t - p.tagAt; if (ton > 0) { const k = spring(ton, 'snappy'), tw = measure(p.tag, F.cap(36)) + 60; g.save(); g.translate(0, 330 + (1 - k) * 30); g.globalAlpha *= clamp(ton / 0.12); paper(g, -tw / 2, -34, tw, 68, 12, { lift: env.lift }); txt(g, p.tag, 0, 2, F.cap(36), theme.ink); g.restore(); } },
+      const ton = t - p.tagAt; if (ton > 0) { const k = spring(ton, 'snappy'), tw = measure(p.tag, F.cap(36)) + 60; g.save(); g.translate(0, 372 + (1 - k) * 30); g.globalAlpha *= clamp(ton / 0.12); paper(g, -tw / 2, -34, tw, 68, 12, { lift: env.lift }); txt(g, p.tag, 0, 2, F.cap(36), theme.ink); g.restore(); } },
   });
 
   // bigstamp: multi-line stamp (slams in)
@@ -1196,9 +1196,9 @@ window.CM = function (W, V) {
   bt(R(W.s9, -0.25), { beat: GH, focus: 'rcpt', move: 'whip', fill: 0.7, maxH: 760, sy: 880, st: STL, pose: 'idle' });
   bt(W.paid, { beat: ZN, focus: 'rcpt.paid', fill: 0.6, sy: 900, st: STL, pose: 'shock', dur: 0.5 });
   bt(R(W.stuff, -0.1), { beat: GH, focus: ['stf', 'rcpt'], fill: 0.97, maxH: 760, sy: 880, st: STR, pose: 'point', dur: 0.7 });
-  bt(R(W.s10, -0.25), { beat: GH, focus: ['track', 'you10'], move: 'whip', fill: 0.94, maxH: 900, sy: 880, st: STL, pose: 'idle' });
-  bt(W.fx250, { beat: ZN, focus: 'track.ghost', fill: 0.72, sy: 1000, st: STL, pose: 'point', dur: 0.5 });
-  bt(W.m26, { beat: GH, focus: ['track', 'you10'], fill: 0.94, maxH: 900, sy: 880, st: STR, pose: 'shock', dur: 0.6 });
+  bt(R(W.s10, -0.25), { beat: GH, focus: ['track', 'you10'], move: 'whip', fill: 0.94, maxH: 900, sy: 930, st: STL, pose: 'idle' });
+  bt(W.fx250, { beat: ZN, focus: 'track.ghost', fill: 0.72, sy: 1080, st: STL, pose: 'point', dur: 0.5 });
+  bt(W.m26, { beat: GH, focus: ['track', 'you10'], fill: 0.94, maxH: 900, sy: 930, st: STR, pose: 'shock', dur: 0.6 });
   bt(W.fast, { beat: ZN, focus: 'fast', fill: 0.62, maxH: 380, sy: 860, st: STL, pose: 'shock', dur: 0.45 });
   bt(R(W.q, -0.3), { beat: PF, focus: 'track', sy: 800, pose: 'talk', dur: 0.6 });
   bt(W.end, { beat: SB, focus: F0e, move: 'whip', fill: 0.9, maxH: 900, sx: 540, sy: 905, st: { x: 130, y: 1410, s: 0.85 }, pose: 'you', keep: ['hook', 'hook2'] });

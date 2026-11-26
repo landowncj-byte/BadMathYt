@@ -11,7 +11,7 @@ TUCKER({
     cal: '@each', fee: '@$150', pd: ['@$150', '@$150+0.45', '@$150+0.9', '@$150+1.35', '@$150+1.8', '@$150+2.25'], pdEnd: '@$150+2.6', never: '@never', neverEnd: '@down+0.4',
     rent: "@it's", rentWord: '@rent',
     doj: '@justice', dojNum: '@925',
-    rate: '@prosecutors', p700: '@700',
+    rate: '@prosecutors', p700: '@700', rateAfter: '@send',
     crowd: '@it#2', four: '@$4',
     rev: '@his#3', rev3: '@$3',
     race0: '@so', raceDrive: '@some', raceOwn: '@race',
