@@ -96,22 +96,22 @@
 
   // ---- auction: FAR panelled wall, sign plate, pilasters + drapes, pendant lamps; MID: dais, podium with crest, lot pedestal; STAGE aisle; NEAR: rows of chair backs and bidder shoulders
   S.define('auction', { marks: { A: -300, B: 300, podium: -100 }, pool: [60, 0, -120], build(c) { const { K, slab, wall, floor, token, text, cyl, T } = c, N = night(c); floor(K.E, 7000, 5000, 0, { kind: 'ledger' });
-    wall(4400, 1000, 30, 0, 0, -520, K.B, { seed: 2, dado: { h: 150, col: N ? '#4a1815' : K.D, ink: N ? '#C9A66B' : K.C }, folds: 7 });
+    wall(4400, 1000, 30, 0, 0, -520, K.B, { seed: 2, dado: { h: 150, col: K.dado || (N ? '#4a1815' : K.D), ink: N ? '#C9A66B' : K.C }, folds: 7 });
     for (const x of R(-1700, 1700, 15)) slab(60, 720, 10, x, 170, -498, K.C, { cast: false }); // panelling strips
     slab(460, 200, 30, 0, 580, -500, K.F); c.sign(K.sign || 'AUCTION · NEW YORK', 860, 170, 0, 560, -478); // FAR: the one short world label
-    for (const x of [-900, 900]) { slab(120, 860, 60, x - 60, 0, -480, N ? '#6f2823' : K.D); slab(150, 40, 80, x - 75, 820, -475, K.C); slab(150, 40, 80, x - 75, 0, -475, K.C); } // pilasters
-    c.curtain(300, 700, -1130, 90, -440, N ? '#3a1210' : K.F, { folds: 8, depth: 26 }); c.curtain(300, 700, 1130, 90, -440, N ? '#3a1210' : K.F, { folds: 8, depth: 26 });
+    for (const x of [-900, 900]) { slab(120, 860, 60, x - 60, 0, -480, K.pil || (N ? '#6f2823' : K.D)); slab(150, 40, 80, x - 75, 820, -475, K.C); slab(150, 40, 80, x - 75, 0, -475, K.C); } // pilasters
+    c.curtain(300, 700, -1130, 90, -440, K.curt || (N ? '#3a1210' : K.F), { folds: 8, depth: 26 }); c.curtain(300, 700, 1130, 90, -440, K.curt || (N ? '#3a1210' : K.F), { folds: 8, depth: 26 });
     for (const x of [-520, 520]) c.hangLamp(x, 790, -380, { r: 80, col: N ? '#10151d' : K.F, top: 1500 }); // pendant lamps
     slab(780, 28, 380, -100, 0, -320, N ? '#2a3647' : K.D); slab(740, 12, 340, -100, 28, -320, K.C, { card: false }); // MID: dais (ledger-ish step)
     slab(190, 200, 110, -100, 40, -300, N ? '#6b7482' : K.D); slab(230, 20, 140, -100, 240, -300, K.C); c.seal(40, -100, 160, -243, '#C9A66B', '#5E1F1B'); // podium + crest
-    cyl(60, 150, 400, 0, -210, K.G, { seg: 32 }); slab(130, 12, 130, 335, 150, -275, '#a43b2f', { card: false }); // lot pedestal with a cloth
+    cyl(60, 150, 400, 0, -210, K.G, { seg: 32 }); slab(130, 12, 130, 335, 150, -275, K.cloth || '#a43b2f', { card: false }); // lot pedestal with a cloth
     for (const [x0, dir] of [[-760, 1], [760, -1]]) for (let r = 0; r < 3; r++) for (let i = 0; i < 4; i++) token(x0 + dir * i * 140, 0, 130 + r * 130, i % 2 ? K.D : K.E, 1.2); // bidder crowd mass
     for (const [r, z] of [[0, 90], [1, 220], [2, 350]]) { c.chairs(-1300, -450, z, 6, N ? '#1a2230' : K.F, { h: 100 + r * 10 }); c.chairs(450, 1300, z, 6, N ? '#1a2230' : K.F, { h: 100 + r * 10 }); } // NEAR: chair backs, aisle in the middle
     return { bg: K.bg, update(t) { } }; } });
 
   // ---- kitchen: FAR wall + window with curtains and a framed picture; MID: cupboards, counter + sink, fridge, hanging lamp, island; NEAR: chair back and door frame
   S.define('kitchen', { marks: { A: -250, B: 250, door: -900, counter: -150 }, pool: [120, 0, -150], build(c) { const { K, slab, wall, floor, cyl, text } = c, N = night(c); floor(K.E, 7000, 5000, 0, { kind: 'ledger' });
-    wall(4400, 1000, 30, 0, 0, -540, N ? K.A : K.G, { seed: 5, dado: { h: 130, col: N ? '#2A3647' : K.D, ink: N ? '#8d9bb0' : K.G }, folds: 7, paint: (g, w, h, px) => { g.strokeStyle = 'rgba(0,0,0,.07)'; g.lineWidth = 1; for (let y = 140; y < 1000; y += 80) { g.beginPath(); g.moveTo(0, h - y * px); g.lineTo(w, h - y * px); g.stroke(); } } });
+    wall(4400, 1000, 30, 0, 0, -540, N ? K.A : K.G, { seed: 5, dado: { h: 130, col: K.dado || (N ? '#2A3647' : K.D), ink: N ? '#8d9bb0' : K.G }, folds: 7, paint: (g, w, h, px) => { g.strokeStyle = 'rgba(0,0,0,.07)'; g.lineWidth = 1; for (let y = 140; y < 1000; y += 80) { g.beginPath(); g.moveTo(0, h - y * px); g.lineTo(w, h - y * px); g.stroke(); } } });
     slab(520, 380, 8, -110, 290, -516, N ? '#E9D9A6' : '#BDE7F7', { cast: false, card: false }); slab(560, 20, 40, -130, 280, -510, K.C); slab(560, 20, 40, -130, 660, -510, K.C); slab(18, 380, 40, -140, 290, -510, K.C); // window (FAR)
     c.curtain(150, 420, -440, 270, -498, N ? '#5E1F1B' : K.F, { folds: 4, depth: 20 }); c.curtain(150, 420, 130, 270, -498, N ? '#5E1F1B' : K.F, { folds: 4, depth: 20 });
     c.frame(210, 270, 620, 340, -520, (g, w, h) => { g.fillStyle = N ? '#C9A66B' : '#BDE7F7'; g.fillRect(0, 0, w, h); g.fillStyle = N ? '#5E1F1B' : '#9BE3C0'; g.beginPath(); g.moveTo(0, h); g.lineTo(w * 0.35, h * 0.45); g.lineTo(w * 0.7, h); g.fill(); g.fillStyle = '#F5F3EE'; g.beginPath(); g.arc(w * 0.72, h * 0.28, 22, 0, TAU); g.fill(); }, { frame: K.F, border: 14 }); // framed picture
@@ -127,8 +127,8 @@
 
   // ---- court: FAR wall with the big crest, pilasters; MID: judge's bench with seal, flags-free dais, jury box; STAGE: witness stand + defence table; NEAR: public rail with balusters
   S.define('court', { marks: { A: -300, B: 300, bench: 0, stand: 520 }, pool: [0, 0, -150], build(c) { const { K, slab, wall, floor, token, cyl, T } = c, N = night(c); floor(K.E, 7000, 5000, 0, { kind: 'ledger' });
-    wall(4400, 1100, 30, 0, 0, -600, K.A, { seed: 8, dado: { h: 220, col: N ? '#4a1815' : K.D, ink: N ? '#C9A66B' : K.G }, folds: 8 });
-    for (const x of [-840, 840]) { slab(110, 900, 60, x - 55, 0, -570, N ? '#59606B' : K.D); slab(150, 38, 80, x - 75, 880, -565, K.C); } // pilasters
+    wall(4400, 1100, 30, 0, 0, -600, K.A, { seed: 8, dado: { h: 220, col: K.dado || (N ? '#4a1815' : K.D), ink: N ? '#C9A66B' : K.G }, folds: 8 });
+    for (const x of [-840, 840]) { slab(110, 900, 60, x - 55, 0, -570, K.pil || (N ? '#59606B' : K.D)); slab(150, 38, 80, x - 75, 880, -565, K.C); } // pilasters
     c.seal(150, 0, 640, -565, '#C9A66B', '#5E1F1B', { star: 6 }); // FAR: the crest
     for (const x of [-460, 460]) c.hangLamp(x, 900, -420, { r: 85, col: N ? '#10151d' : K.F, top: 1500 });
     slab(900, 70, 330, 0, 0, -400, N ? '#2a3647' : K.D, { card: false }); // MID: dais step

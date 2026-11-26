@@ -1,5 +1,130 @@
 {
- "duration": 8,
- "sfx": [],
+ "duration": 86.4,
+ "sfx": [
+  {
+   "gain": -9,
+   "dur": 0.9,
+   "at": 0.3,
+   "name": "cash_rustle_1",
+   "cue": "cash-rustle"
+  },
+  {
+   "gain": -9,
+   "dur": 0.9,
+   "at": 0.65,
+   "name": "cash_rustle_1",
+   "cue": "cash-rustle"
+  },
+  {
+   "gain": -9,
+   "dur": 0.9,
+   "at": 0.95,
+   "name": "cash_rustle_1",
+   "cue": "cash-rustle"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 1.95,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -8,
+   "dur": 1.4,
+   "at": 2.92,
+   "name": "pour_glug_1",
+   "cue": "pour"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 3.7,
+   "name": "cork_pop_1",
+   "cue": "cork-pop"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 3.96,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.4,
+   "at": 4,
+   "name": "label_slap_1",
+   "cue": "label-slap"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 4.3,
+   "name": "cork_pop_1",
+   "cue": "cork-pop"
+  },
+  {
+   "gain": -5,
+   "dur": 0.7,
+   "at": 10.9,
+   "name": "gavel_1",
+   "cue": "gavel"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 12.96,
+   "name": "paddle_whoosh_1",
+   "cue": "paddle-raise"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 13.18,
+   "name": "paddle_whoosh_1",
+   "cue": "paddle-raise"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 13.48,
+   "name": "paddle_whoosh_1",
+   "cue": "paddle-raise"
+  },
+  {
+   "gain": -5,
+   "dur": 0.7,
+   "at": 14.34,
+   "name": "gavel_1",
+   "cue": "gavel"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 16.5,
+   "name": "paddle_whoosh_1",
+   "cue": "paddle-raise"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 16.64,
+   "name": "paddle_whoosh_1",
+   "cue": "paddle-raise"
+  },
+  {
+   "gain": -5,
+   "dur": 0.7,
+   "at": 16.9,
+   "name": "gavel_1",
+   "cue": "gavel"
+  },
+  {
+   "gain": -5,
+   "dur": 0.7,
+   "at": 27.06,
+   "name": "gavel_1",
+   "cue": "gavel"
+  }
+ ],
  "bed": null
 }
