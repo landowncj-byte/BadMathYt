@@ -1,32 +1,87 @@
 [
  {
-  "text": "Imagine paying a hundred forty-three dollars and your debt only drops fifty.",
+  "text": "You pay a hundred forty-three dollars, and your debt drops fifty.",
   "start": 0.0,
-  "end": 3.937
+  "end": 3.16
  },
  {
-  "text": "That's the credit card minimum, on a five thousand dollar balance at about twenty-two percent.",
-  "start": 4.237,
-  "end": 8.693
+  "text": "That's the credit card minimum, and it's a trap.",
+  "start": 4.14,
+  "end": 6.62
  },
  {
-  "text": "Keep paying the minimum: sixteen and a half years. Twelve thousand eight hundred eleven dollars total.",
-  "start": 9.043,
-  "end": 13.709
+  "text": "Here's the setup. You owe five thousand dollars on a card at about twenty-two percent.",
+  "start": 7.14,
+  "end": 10.62
  },
  {
-  "text": "A fixed two fifty a month? Twenty-six months.",
-  "start": 14.059,
-  "end": 16.39
+  "text": "The minimum? It's the smallest payment the bank allows each month.",
+  "start": 11.72,
+  "end": 15.3
  },
  {
-  "text": "What's your balance? No judgment. Okay, some judgment. Comment.",
-  "start": 16.74,
-  "end": 19.733
+  "text": "Ninety-three dollars of that first payment is just interest, basically the bank's rent on your money.",
+  "start": 16.24,
+  "end": 20.74
  },
  {
-  "text": "Follow before your next statement.",
-  "start": 20.033,
-  "end": 21.745
+  "text": "Tap the heart if you've ever paid just the minimum.",
+  "start": 21.3,
+  "end": 23.6
+ },
+ {
+  "text": "Now the sneaky part. Your balance goes down, so what happens to your minimum? It goes down too.",
+  "start": 24.14,
+  "end": 29.78
+ },
+ {
+  "text": "So every month you pay less. And the debt? It crawls even slower.",
+  "start": 30.28,
+  "end": 34.7
+ },
+ {
+  "text": "Five years in, you still owe about twenty-seven hundred dollars.",
+  "start": 35.36,
+  "end": 37.12
+ },
+ {
+  "text": "That's more than half of what you started with, still sitting there.",
+  "start": 38.76,
+  "end": 42.02
+ },
+ {
+  "text": "Send this to the friend whose card is maxed out right now.",
+  "start": 42.52,
+  "end": 44.96
+ },
+ {
+  "text": "So how long until it's gone? Sixteen and a half years.",
+  "start": 45.42,
+  "end": 48.94
+ },
+ {
+  "text": "Follow if the math is making you mad too.",
+  "start": 49.46,
+  "end": 51.52
+ },
+ {
+  "text": "And the total you paid? Twelve thousand eight hundred eleven dollars, for a five grand balance.",
+  "start": 51.96,
+  "end": 57.1
+ },
+ {
+  "text": "Pay a fixed two fifty a month instead, and it's gone in twenty-six months.",
+  "start": 57.1,
+  "end": 61.26
+ },
+ {
+  "text": "That's fourteen years faster, same card, same rate.",
+  "start": 61.74,
+  "end": 65.08
+ },
+ {
+  "text": "What's your card's interest rate? Drop it below.",
+  "start": 65.54,
+  "end": 67.48
  }
 ]

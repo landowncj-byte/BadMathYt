@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A professor got paid to invent four million fake people.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And JPMorgan paid one hundred seventy-five million dollars for them.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "How? Let's go back. Charlie Javice ran Frank, a website helping students apply for college financial aid.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "She told banks it had four and a quarter million users.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The SEC says it had fewer than three hundred thousand.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's like saying fourteen people came to your party when only one showed up.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Tap the heart if you'd have bought it.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But JPMorgan wasn't dumb. Before buying, it asked for the customer list.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So now she needs four million people who don't exist.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The SEC says she asked her own engineer to fake the data first. But he refused.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then she and a coworker hired a data science professor to generate them.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Over four million fake customers, for about eighteen thousand dollars, according to the bank's lawsuit.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who fakes their follower count.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "The deal closed in twenty twenty-one. Then the bank tried to reach its new customers.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And the list? It fell apart.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "So the bank sued, and then prosecutors charged her. Follow, 'cause the ending's brutal.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "A jury convicted her on all four counts.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "She got eighty-five months in prison, over seven years.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "She was also ordered to pay back two hundred eighty-seven and a half million dollars.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And her coworker who helped? He got sixty-eight months.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Would you have caught it? Yes or no.",
+  "override": null
+ }
+]

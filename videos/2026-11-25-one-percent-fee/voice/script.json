@@ -1,50 +1,70 @@
 [
  [
-  "A one percent fee can take more than you ever put in.",
-  0.3
+  "A one percent fee can cost you over three hundred thousand dollars.",
+  0.6
  ],
  [
-  "[breath] It's legal. It's disclosed. And you'd never feel it. So how?",
-  0.25
- ],
- [
-  "Two funds. Same— literally the same investments. One charges one percent more a year.",
-  0.25
- ],
- [
-  "Hit like if that sounds like nothing. It's supposed to.",
-  0.3
- ],
- [
-  "Five hundred a month, forty years. Say both earn seven percent, that's an assumption.",
-  0.3
- ],
- [
-  "Ten years in, the gap's forty-six hundred bucks. Whatever, right?",
-  0.25
- ],
- [
-  "Send this to the friend who's never checked their fees.",
-  0.3
- ],
- [
-  "Year twenty? Twenty-nine grand. Okay, that's a car. Year thirty? A hundred seven grand.",
-  0.3
- ],
- [
-  "Year forty's next. Follow, 'cause this page catches the quiet ones.",
+  "Here's the setup. You put five hundred dollars a month into an investment for forty years.",
   0.45
  ],
  [
-  "That one percent cost you three hundred sixteen grand.",
-  0.3
+  "That's two hundred forty thousand dollars of your own money.",
+  0.5
  ],
  [
-  "You only put in two forty. [sigh] The fee beat you.",
-  0.3
+  "Let's say it grows seven percent a year. That's just an assumption, not a promise.",
+  0.45
  ],
  [
-  "So… still call one percent small?",
-  0.4
+  "Now picture two identical funds, but one charges a one percent fee every year.",
+  0.45
+ ],
+ [
+  "Hit like if one percent sounds like nothing.",
+  0.45
+ ],
+ [
+  "A fee is what the fund keeps for managing your money. One percent sounds tiny, right?",
+  0.45
+ ],
+ [
+  "After ten years, the gap is only about forty-six hundred dollars.",
+  0.5
+ ],
+ [
+  "But here's the thing. The fee doesn't take one percent of what you add.",
+  0.45
+ ],
+ [
+  "It takes one percent of everything, every year, growth included.",
+  0.45
+ ],
+ [
+  "Send this to the friend who's never checked their fees.",
+  0.45
+ ],
+ [
+  "At forty years, the no-fee fund has about one point three million dollars.",
+  0.6
+ ],
+ [
+  "The one percent fund? About nine hundred ninety-six thousand.",
+  0.6
+ ],
+ [
+  "Follow if you like knowing the math before the fine print.",
+  0.45
+ ],
+ [
+  "That tiny fee cost you three hundred sixteen thousand dollars.",
+  0.6
+ ],
+ [
+  "That's more than all the money you ever put in.",
+  0.5
+ ],
+ [
+  "Is one percent still small? Yes or no.",
+  0.45
  ]
 ]

@@ -1,0 +1,170 @@
+[
+ {
+  "line": 1,
+  "tag": "sarcastic",
+  "why": "hook (IG roast cut)",
+  "short_pause_after": false,
+  "text": "She sold JPMorgan four million fucking customers that didn't exist.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Who's she? Charlie Javice, who ran Frank, a website that helped students fill out college aid forms.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "You know, the giant form you need for college money? Super boring, super useful.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "When banks came shopping, she said Frank had four and a quarter million users.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The SEC says the real number was under three hundred thousand.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's like telling people your party had fourteen guests when one guy showed up.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Double-tap if you'd have fallen for it.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But JPMorgan asked to see the customer list. Oops.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The SEC says she asked her own engineer to fake it. He refused.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So she and a coworker paid a data science professor to make up over four million fake people.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "According to the bank's lawsuit, that cost about eighteen thousand bucks.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to whoever fakes their follower count.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And it worked. JPMorgan paid one hundred seventy-five million dollars for Frank.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "That's about five hundred eighty bucks for every real user. Damn.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then the bank tried to reach those customers, and the whole list fell apart.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow, 'cause the ending is chef's kiss.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "A jury convicted her on all four counts in twenty twenty-five.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "She got eighty-five months in prison, over seven years.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Prosecutors had asked for twelve.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And she was ordered to pay back two hundred eighty-seven and a half million dollars.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "Genius or idiot? One word.",
+  "override": null
+ }
+]

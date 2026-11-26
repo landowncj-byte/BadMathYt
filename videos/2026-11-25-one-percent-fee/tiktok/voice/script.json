@@ -1,46 +1,70 @@
 [
  [
-  "One percent sounds tiny. It ate three hundred sixteen grand.",
-  0.25
+  "Your one percent fee just ate three hundred sixteen thousand dollars.",
+  0.6
  ],
  [
-  "[breath] Same two funds, except one charges one percent more a year.",
-  0.25
+  "Think that sounds fake? Here's the actual math.",
+  0.45
  ],
  [
-  "Tap the heart if that sounds like nothing.",
-  0.25
+  "You invest five hundred bucks a month for forty years. Two hundred forty grand of your money.",
+  0.5
  ],
  [
-  "Five hundred a month, forty years, an assumed seven percent.",
-  0.25
+  "We'll assume seven percent growth a year. Not a promise, just math.",
+  0.45
  ],
  [
-  "Year ten? The gap's forty-six hundred bucks. Whatever.",
-  0.25
+  "Fund A charges basically nothing. Fund B charges one percent a year.",
+  0.45
  ],
  [
-  "Send this to your friend with their first real job.",
-  0.25
+  "That one percent is a fee the fund keeps for managing your money.",
+  0.45
  ],
  [
-  "Year thirty? A hundred seven grand. Yeah.",
-  0.25
+  "Tap the heart if you've never checked yours.",
+  0.45
  ],
  [
-  "Year forty's next, and it's ugly. Follow, this page catches the quiet ones.",
-  0.4
+  "Ten years in, Fund B is behind by about forty-six hundred. Who really cares, right?",
+  0.5
  ],
  [
-  "Three hundred sixteen grand. To\u2014 to a fee.",
-  0.3
+  "Thirty years in, it's behind by over a hundred thousand.",
+  0.5
  ],
  [
-  "You only put in two forty. [sigh]",
-  0.3
+  "Send this to the friend who says one percent is nothing. Still think it's tiny?",
+  0.45
  ],
  [
-  "Still tiny?",
+  "Wait, how does that happen? The fee takes a cut of your whole pile, every single year, including the growth.",
+  0.45
+ ],
+ [
+  "And a smaller pile? It grows slower, forever, and the gap keeps getting bigger.",
+  0.45
+ ],
+ [
+  "Forty years in, Fund A has about one point three million.",
+  0.6
+ ],
+ [
+  "Follow if this makes you want to check your account.",
+  0.45
+ ],
+ [
+  "Fund B? About nine hundred ninety-six thousand.",
+  0.6
+ ],
+ [
+  "That fee cost more than every dollar you ever put in.",
+  0.5
+ ],
+ [
+  "One percent: small or not? One word.",
   0.45
  ]
 ]

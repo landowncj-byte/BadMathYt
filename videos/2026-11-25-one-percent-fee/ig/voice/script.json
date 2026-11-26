@@ -1,22 +1,70 @@
 [
  [
-  "One percent sounds like nothing. It's a slow-ass robbery, and it's legal.",
-  0.25
+  "A legal one percent fee robbed you of three hundred sixteen grand.",
+  0.6
  ],
  [
-  "Ever checked your fees? Double-tap if that's a no.",
-  0.25
+  "Here's how that shit works.",
+  0.45
  ],
  [
-  "Five hundred a month for forty years, at an assumed seven percent. That fee eats three hundred sixteen grand.",
-  0.3
+  "You put in five hundred bucks a month for forty years. That's two hundred forty grand of your own money.",
+  0.5
  ],
  [
-  "Send this to the friend who hasn't checked either.",
-  0.35
+  "Assume it grows seven percent a year. Just an assumption, calm down.",
+  0.45
  ],
  [
-  "You only put in two forty. [sigh] Still think one percent's nothing?",
+  "Picture two identical funds, except one charges a one percent fee every year.",
+  0.45
+ ],
+ [
+  "Double-tap if you've literally never looked at yours.",
+  0.45
+ ],
+ [
+  "A fee is the cut they keep for managing your money. That sounds pretty harmless, right?",
+  0.45
+ ],
+ [
+  "After ten years, you're down about forty-six hundred. Whatever, who cares, right?",
+  0.5
+ ],
+ [
+  "Send this to whoever thinks one percent is nothing.",
+  0.45
+ ],
+ [
+  "Wait until thirty years: over a hundred thousand.",
+  0.5
+ ],
+ [
+  "And why is that? The fee takes one percent of your whole damn pile, every year, growth included.",
+  0.45
+ ],
+ [
+  "Forty years later, the no-fee fund has about one point three million.",
+  0.6
+ ],
+ [
+  "Follow, 'cause this next number hurts.",
+  0.45
+ ],
+ [
+  "The one percent fund? About nine hundred ninety-six thousand.",
+  0.6
+ ],
+ [
+  "So that tiny fee took three hundred sixteen grand, more than you ever put in.",
+  0.5
+ ],
+ [
+  "That's most of a house, gone, for a fee you never even noticed.",
+  0.5
+ ],
+ [
+  "Still small? One word.",
   0.45
  ]
 ]

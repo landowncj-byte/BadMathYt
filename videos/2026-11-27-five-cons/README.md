@@ -1,0 +1,5 @@
+# Long-form · Fri 2026-11-27 17:00 ET · "5 Cons That Fooled Billionaires, Banks and Entire States"
+Script: paragraphs.json (81 paragraphs, 7 chapters, 1,405 words; Opus 2026-11-26). Facts only from research/2026-11-26/{kurniawan-fake-wine,gignac-fake-prince,tipton-lottery-rig}, research/2026-11-25/{tucker-payday-loans,javice-fake-users}.
+Voice: Owen, one take per chapter → voice-owen/ch0..ch6.mp3 (35.4 / 90.1 / 75.2 / 94.8 / 81.1 / 69.6 / 44.7 s ≈ 8 min 11 s). Prompts: voice/owen_prompts.json.
+Build: copy the Madoff long-form pipeline (videos/2026-11-25-impossible-number: DIRECTION.md, build2/, voice-owen/build_owen.py alignment, mix_long.py) in 16:9 — RULES 111 look + RULES 112 crime-show (each chapter's con as recurring character: real licensed photos for Kurniawan (brand/photos/rudy-kurniawan) and Gignac (brand/photos/anthony-gignac); coloured ILLUSTRATION cards for Tipton, Tucker, Javice), per-paragraph storyboard in DIRECTION.md, evidence board in the pattern chapter.
+Title idea: "5 Cons That Fooled Billionaires, Banks and Entire States" · Thumbnail: v2 look, real photos where licensed.

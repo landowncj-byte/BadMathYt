@@ -1,0 +1,138 @@
+[
+ {
+  "line": 1,
+  "tag": "sarcastic",
+  "why": "hook (IG roast cut)",
+  "short_pause_after": false,
+  "text": "A legal one percent fee robbed you of three hundred sixteen grand.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "Here's how that shit works.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "You put in five hundred bucks a month for forty years. That's two hundred forty grand of your own money.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Assume it grows seven percent a year. Just an assumption, calm down.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Picture two identical funds, except one charges a one percent fee every year.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Double-tap if you've literally never looked at yours.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "A fee is the cut they keep for managing your money. That sounds pretty harmless, right?",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "curious",
+  "why": "question",
+  "short_pause_after": false,
+  "text": "After ten years, you're down about forty-six hundred. Whatever, who cares, right?",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to whoever thinks one percent is nothing.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Wait until thirty years: over a hundred thousand.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "And why is that? The fee takes one percent of your whole damn pile, every year, growth included.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Forty years later, the no-fee fund has about one point three million.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow, 'cause this next number hurts.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "The one percent fund? About nine hundred ninety-six thousand.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So that tiny fee took three hundred sixteen grand, more than you ever put in.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's most of a house, gone, for a fee you never even noticed.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Still small? One word.",
+  "override": null
+ }
+]
