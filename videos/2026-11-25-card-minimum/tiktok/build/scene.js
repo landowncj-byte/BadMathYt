@@ -1124,14 +1124,14 @@ window.CM = function (W, V) {
   // ---------------------------------------------------------------- S1 setup: owe $5,000 + the minimum
   E({ id: 'you1', type: 'you', at: [1470, 40], in: R(W.s1, -0.3), props: { w: 400, h: 480, labelSize: 40, bg: 1, moods: [{ t: 0, m: 'think' }, { t: W.bal, m: 'worried' }], tag: 'OWES $5,000' } },
     { id: 'stmt', type: 'stmt', at: [2130, 20], scale: 0.84, in: R(W.s1, -0.1), props: { balAt: W.bal, aprAt: has('apr1') ? W.apr1 : 99999, dueAt: 99999, fineAt: 99999, fine1At: 99999, fine2At: 99999 } },
-    { id: 'minT', type: 'text', layer: 'screen', at: [540, 478], in: W.minimum, out: R(W.s2 || W.s3, -0.15), props: { lines: V.minLines || [[['THE MINIMUM =', 'gold']], [['THE SMALLEST PAYMENT ALLOWED', 'paper']]], size: 54 } });
+    { id: 'minT', type: 'text', layer: 'screen', at: [540, 478], in: W.minimum, out: W.s2 ? R(W.s2, -0.15) : R(W.s3, -0.8), props: { lines: V.minLines || [[['THE MINIMUM =', 'gold']], [['THE SMALLEST PAYMENT ALLOWED', 'paper']]], size: 54 } });
   // ---------------------------------------------------------------- S2 APR (skipped when the cut merges it into the statement)
   if (has('s2')) E({ id: 'plastic', type: 'plastic', at: [3600, -100], scale: 1.1, rot: -0.09, in: R(W.s2, -0.35) },
     { id: 'apr', type: 'counter', at: [3600, 330], in: R(W.s2, -0.2), props: { at: W.apr, dur: 1.1, to: 22.36, decimals: 2, suffix: '%', label: 'APR · A YEAR', sub: V.aprSub || 'AVERAGE · CARRYING A BALANCE', tone: 'bad', size: 170, w: 840 } });
   // ---------------------------------------------------------------- S3 month one: the payment splits
   E({ id: 'bar', type: 'paybar', at: [5400, -170], in: R(W.s3, -0.4), props: { fillAt: W.fillAt || W.intr, splitAt: W.drop } },
     { id: 'you3', type: 'you', at: [5400, 510], in: R(W.s3, -0.3), props: { w: 400, h: 440, labelSize: 40, bg: 2, moods: [{ t: 0, m: 'neutral' }, { t: R(W.intr, 0), m: 'worried' }, { t: W.drop, m: 'shock' }], tag: 'MONTH 1' } },
-    { id: 'feeT', type: 'text', layer: 'screen', at: [540, 480], in: W.fee, out: R(W.drop, -0.15), props: { lines: V.feeLines || [[['INTEREST = ', 'bad'], ["THE BANK'S FEE", 'paper']], [['FOR LENDING YOU MONEY', 'gold']]], size: 50 } });
+    { id: 'feeT', type: 'text', layer: 'screen', at: [540, V.feeY || 480], in: W.fee, out: R(W.drop, -0.15), props: { lines: V.feeLines || [[['INTEREST = ', 'bad'], ["THE BANK'S FEE", 'paper']], [['FOR LENDING YOU MONEY', 'gold']]], size: V.feeSize || 50 } });
   // ---------------------------------------------------------------- S4 the trap: the minimum shrinks
   E({ id: 'shr', type: 'shrink', at: [7200, -90], in: R(W.s4, -0.4), props: { at: R(W.shrAt, 0), per: V.shrPer || 0.42, labelAt: R(W.shrAt, 0.1) } },
     { id: 'you4', type: 'you', at: [7200, 560], in: R(W.s4, -0.3), props: { w: 380, h: 420, labelSize: 38, bg: 0, moods: [{ t: 0, m: 'think' }, { t: R(W.shrAt, 0.2), m: 'wrong' }], tag: 'MONTH 60' } });

@@ -292,7 +292,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
   const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper, clay, burst, hash, hit } = B;
   const MC = document.createElement('canvas').getContext('2d'); const mw = (s, f) => { MC.font = f; return MC.measureText(s).width; };
   const dol = n => Math.pow(2, n - 1) / 100, fmt = (v, d = 2) => B.fmtNum(v, d, true), money = n => '$' + fmt(dol(n), 2);
-  window.PD5 = { dol, money };
+  window.PD5 = { dol, money, h: {} };
   const fit = (s, ff, maxW, size, min = 18) => { while (size > min && mw(s, ff(size)) > maxW) size -= 2; return size; };
   const stk = (g, s, x, y, font, col, al = 'center', lw = 12) => { g.save(); g.font = font; g.textAlign = al; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = lw; g.strokeStyle = 'rgba(6,8,11,.92)'; g.strokeText(s, x, y); g.fillStyle = col; g.fillText(s, x, y); g.restore(); };
   const TONE = th => ({ paper: th.paper, accent: th.accent, good: th.good, bad: th.bad, gold: th.gold, ink: '#0B0F14' });
@@ -427,6 +427,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     const l1 = S.l1, l2 = S.l2, sz = Math.min(fit(l1, F.hero, 900, 112), fit(l2, F.hero, 900, 112)); stk(g, l1, 0, -62, F.hero(sz), th.accent, 'center', 16); stk(g, l2, 0, 62, F.hero(sz), th.good, 'center', 16); g.restore();
   }
 
+  Object.assign(window.PD5.h, { fit, stk, chip, stamp, label, coin, mw, TONE });
   // ---------- the stage ----------
   B.register('pstage', {
     defaults: { K: [[0, 1]], scenes: [], hook: null, deal: null, counterIn: 0, hideCounter: [], beats: [], notes: [] }, ownEnter: true, size: () => [1080, 1920],
@@ -496,7 +497,7 @@ const K = [[0, 1], ['@two-0.25', 1], ['@two+0.05', 2], ['@four-0.25', 2], ['@fou
 const S = PD5.make({
   dur: 68.7, K, counterIn: '@wait-0.05',
   hook: { variant: 'brick', until: Q.hookEnd, y: 430, size: 100, lines: [[['YOU PICKED A ', 'paper'], ['PENNY', 'accent']], [['OVER A MILLION BUCKS', 'good']]], sub: { at: '@by-0.1', text: 'BY DAY 20 YOU HAVE ~5 GRAND' } },
-  deal: { cards: [{ at: '@million#2-0.1', letter: 'A', col: '#00D26A', l1: '$1,000,000', l2: 'RIGHT NOW · YOURS TODAY', icon: 'bill' }, { at: '@or-0.05', letter: 'B', col: '#FFD60A', l1: '1¢ DOUBLES DAILY', l2: 'FOR 30 DAYS', icon: 'coin', dbl: '@doubles' }], chip: { at: '@no', text: 'NO TAXES' } },
+  deal: { cards: [{ at: '@offers', letter: 'A', col: '#00D26A', l1: '$1,000,000', l2: 'RIGHT NOW · YOURS TODAY', icon: 'bill' }, { at: '@or-0.05', letter: 'B', col: '#FFD60A', l1: '1¢ DOUBLES DAILY', l2: 'FOR 30 DAYS', icon: 'coin', dbl: '@doubles' }], chip: { at: '@no', text: 'NO TAXES' } },
   scenes: [
     { type: 'deal', from: Q.hookEnd, to: '@doubling-0.22', pose: 'talk' },
     { type: 'coins', from: '@doubling-0.22', to: '@which-0.1', pose: 'shock' },

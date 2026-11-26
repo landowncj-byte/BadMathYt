@@ -8,7 +8,7 @@ BM2.scene(CM({
   s7: '@So#2', yrs: '@16', kid: '@kid', growAt: '@would', drive: '@learning', follow: '@Follow',
   s9: '@Ready', paid: '@$12#2', stuff: '@stuff', s10: '@Now', fx250: '@$250', m26: '@26', same: '@Same', fast: '@14', q: '@So#3', end: '@minimum#4',
 }, {
-  duration: 66.01, title: 'CARD MINIMUM', likeText: 'LIKE', shockAt: '@cost',
+  duration: 66.01, title: 'CARD MINIMUM', feeY: 965, feeSize: 36, likeText: 'LIKE', shockAt: '@cost',
   hook: [[['$5,000 ', 'good'], ['OF DEBT', 'paper']], [['CAN COST ', 'paper'], ['$12,000', 'bad']]], hookSize: 118,
   askL1: 'STILL PAYING THE MINIMUM?', askL2: 'YES / NO',
   clock: [[0, 0], ['@As', 0], ['@As+3.2', 36], ['@five', 36], ['@five+1.6', 60], ['@16', 60], ['@16+2.4', 198], ['@minimum#4', 198], ['@minimum#4+0.9', 0]],

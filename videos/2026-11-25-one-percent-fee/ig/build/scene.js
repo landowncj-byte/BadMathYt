@@ -629,17 +629,18 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
 })();
 // IG/FB cut — v5 (loudest copy, same stages). Hyperbole "robbed" carries the on-screen caveat LEGAL · DISCLOSED · EXPENSIVE.
 const Q = { hookEnd: '@here\'s-0.12' };
-const K = [[0, 0], ['@after-0.3', 0], ['@after+0.9', 10], ['@wait-0.1', 10], ['@30+0.3', 30], ['@40#2-0.4', 30], ['@40#2+0.7', 40]];
+const K = [[0, 0], ['@after-0.3', 0], ['@after+0.9', 10], ['@wait-0.1', 10], ['@30+0.3', 30], ['@every#2-0.1', 30], ['@growth+0.5', 38], ['@40#2-0.45', 38], ['@40#2+0.7', 40]];
 const S = FEE.make({
   dur: 68.07, K, counterIn: '@after-0.3',
   hook: { until: Q.hookEnd, y: 430, size: 100, lines: [[['A LEGAL ', 'paper'], ['1% FEE', 'bad']], [['ROBBED YOU OF ', 'paper'], ['$316K', 'bad']]] },
   scenes: [
     { type: 'deposit', from: Q.hookEnd, to: '@assume-0.12', sumAt: '@240-0.05', pose: 'talk' },
-    { type: 'hero', from: '@assume-0.12', to: '@picture-0.12', steps: [{ at: 0, lines: [['7%', 'good']], size: 300, sub: 'A YEAR · JUST AN ASSUMPTION' }], pose: 'chin' },
+    { type: 'hero', from: '@assume-0.12', to: '@picture-0.12', steps: [{ at: 0, lines: [['7%', 'good']], size: 300, sub: 'A YEAR · AN ASSUMPTION' }, { at: '@just', lines: [['7%', 'good']], size: 300, sub: 'JUST AN ASSUMPTION · CALM DOWN' }], pose: 'chin' },
     { type: 'twin', from: '@picture-0.12', to: '@a#5-0.12', la: 'FUND A · NO FEE', lb: 'FUND B · 1% FEE', tagAt: '@1#2', pose: 'shock' },
-    { type: 'hero', from: '@a#5-0.12', to: '@after-0.33', steps: [{ at: 0, lines: [['A FEE =', 'accent'], ['THE CUT THEY KEEP', 'paper'], ['FOR MANAGING YOUR MONEY', 'paper']], size: 110 }], pose: 'chin' },
+    { type: 'hero', from: '@a#5-0.12', to: '@after-0.33', steps: [{ at: 0, lines: [['A FEE =', 'accent'], ['THE CUT THEY KEEP', 'paper'], ['FOR MANAGING YOUR MONEY', 'paper']], size: 110 }, { at: '@that#2-0.1', lines: [['SOUNDS HARMLESS?', 'accent']], size: 130 }], pose: 'chin' },
     { type: 'pigs', from: '@after-0.33', to: '@and#1-0.12', gapAt: '@down#2-0.2', pose: 'shock' },
-    { type: 'hero', from: '@and#1-0.12', to: '@40#2-0.12', steps: [{ at: 0, lines: [['WHY?', 'accent']], size: 230 }, { at: '@the#2', lines: [['THE FEE TAKES', 'paper'], ['1% OF YOUR', 'paper'], ['WHOLE DAMN PILE', 'bad']], size: 120, sub: 'EVERY YEAR · GROWTH INCLUDED' }], pose: 'chin' },
+    { type: 'hero', from: '@and#1-0.12', to: '@every#2-0.12', steps: [{ at: 0, lines: [['WHY?', 'accent']], size: 230 }, { at: '@the#2', lines: [['THE FEE TAKES', 'paper'], ['1% OF YOUR', 'paper'], ['WHOLE DAMN PILE', 'bad']], size: 120, sub: 'EVERY YEAR · GROWTH INCLUDED' }], pose: 'chin' },
+    { type: 'pigs', from: '@every#2-0.12', to: '@40#2-0.12', pose: 'shock' },
     { type: 'pigs', from: '@40#2-0.12', to: '@so#1-0.12', bAt: '@1#6-0.15', gapAt: '@996-0.3', pose: 'shock' },
     { type: 'cost', from: '@so#1-0.12', to: '@more-0.12', a: '@fee#6', b: '@316#2', pose: 'shock' },
     { type: 'compare', from: '@more-0.12', to: '@that\'s#2-0.12', a: '@more', b: '@you#3', moreAt: '@put#2', pose: 'chin' },
@@ -647,11 +648,12 @@ const S = FEE.make({
     { type: 'ask', from: '@still-0.12', to: 99, l1: '1% STILL', l2: 'SMALL?', pose: 'you' },
   ],
   bHide: [['@40#2-0.12', '@1#6-0.15']],
-  hideCounter: [['@so#1-0.12', 99], ['@and#1-0.12', '@40#2-0.12']],
+  hideCounter: [['@so#1-0.12', 99], ['@and#1-0.12', '@every#2-0.12']],
   labels: [[0, 'THE COST'], ['@here\'s-0.12', 'THE SETUP'], ['@picture-0.12', 'THE FUNDS'], ['@after-0.33', 'THE GAP'], ['@and#1-0.12', 'THE TRAP'], ['@40#2-0.12', 'YEAR 40'], ['@so#1-0.12', 'THE BILL']],
   notes: [
     { at: 0.5, out: '@here\'s-0.15', text: 'LEGAL · DISCLOSED · EXPENSIVE', tone: 'ink', y: 612, size: 38 },
     { at: '@wait', out: '@and#1-0.15', text: 'THE GAP KEEPS GROWING', tone: 'bad' },
+    { at: '@every#2', out: '@40#2-0.3', text: 'GROWTH INCLUDED', tone: 'bad' },
   ],
   you: [{ at: 0, mood: 'angry', text: 'YOU GOT ROBBED?' }, { at: '@here\'s', mood: 'neutral', text: 'YOU INVEST' }, { at: '@picture', mood: 'smirk', text: 'TWO FUNDS' }, { at: '@after', mood: 'smirk', text: 'WHO CARES?' }, { at: '@wait', mood: 'worried', text: 'WAIT…' },
     { at: '@40#2', mood: 'wow', text: 'YEAR 40' }, { at: '@so#1', mood: 'angry', text: 'THE FEE ATE IT' }, { at: '@still', mood: 'smirk', text: 'YOUR CALL' }],

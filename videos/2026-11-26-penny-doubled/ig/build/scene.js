@@ -497,7 +497,7 @@ const K = [[0, 1], ['@two#2-0.25', 1], ['@two#2+0.05', 2], ['@four-0.25', 2], ['
 const S = PD5.make({
   dur: 68.24, K, counterIn: '@here\'s-0.05',
   hook: { variant: 'brick', until: Q.hookEnd, y: 440, size: 100, lines: [[['TAKING THE MILLION', 'paper']], [['COSTS YOU ', 'paper'], ['OVER $4,000,000', 'bad']]] },
-  deal: { cards: [{ at: '@million#3-0.1', letter: 'A', col: '#00D26A', l1: '$1,000,000', l2: 'RIGHT NOW · YOURS TODAY', icon: 'bill' }, { at: '@option#2-0.05', letter: 'B', col: '#FFD60A', l1: '1¢ DOUBLES DAILY', l2: 'FOR 30 DAYS', icon: 'coin', dbl: '@doubles' }], chip: { at: '@no', text: 'NO TAXES' } },
+  deal: { cards: [{ at: '@option#1', letter: 'A', col: '#00D26A', l1: '$1,000,000', l2: 'RIGHT NOW · YOURS TODAY', icon: 'bill' }, { at: '@option#2-0.05', letter: 'B', col: '#FFD60A', l1: '1¢ DOUBLES DAILY', l2: 'FOR 30 DAYS', icon: 'coin', dbl: '@doubles' }], chip: { at: '@no', text: 'NO TAXES' } },
   scenes: [
     { type: 'deal', from: Q.hookEnd, to: '@doubling\'s-0.22', pose: 'talk' },
     { type: 'coins', from: '@doubling\'s-0.22', to: '@20-0.14', pose: 'shock' },

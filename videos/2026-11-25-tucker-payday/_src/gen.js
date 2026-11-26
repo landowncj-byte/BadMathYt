@@ -91,6 +91,7 @@
       b(R.def, SB, ['bor', 'dtx'], { move: 'whip', sx: 540, sy: 860, fill: 0.95, maxH: 860, st: 'left', pose: 'point' });
       b(R.defLoan, ZN, ['bor', 'dtx'], { fill: 0.9, maxH: 900, sy: 860, st: 'corner', pose: 'point', dur: 0.5 });
       b(R.defPay, GH, ['bor', 'dtx'], { fill: 0.95, maxH: 860, sy: 860, st: 'corner-left', pose: 'talk', dur: 0.7 });
+      if (R.defMid) b(R.defMid, PK, ['bor', 'dtx'], { fill: 0.9, maxH: 860, sy: 860, pose: 'chin', dur: 0.8 });
       if (R.defExtra) b(R.defExtra, ZN, 'bor', { fill: 0.5, maxH: 700, sy: 880, st: 'corner', pose: 'shrug', dur: 0.5 });
       sfx(R.def, 'swipe_2', -11, 0.4); sfx(R.defLoan, 'pop_1', -9, 0.4); }
 
@@ -222,7 +223,7 @@
     // ---- his lawyer (TikTok only) ----
     if (R.lawyer) { const [x, y] = seg();
       E.push({ id: 'lw', type: 'text', at: [x, y], in: O(R.lawyer, '-0.3'), props: { lines: [[['HIS OWN LAWYER:', 'gold']], [['7 YEARS', 'bad']], [['(84 MONTHS)', 'paper']]], size: 90, per: 0.12 } });
-      b(R.lawyer, SB, 'lw', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 700, st: 'corner-left', pose: 'shock' });
+      b(R.lawyer, SB, 'lw', { move: 'whip', sx: 540, sy: 840, fill: 0.7, maxH: 700, st: 'corner-left', pose: 'shock' });
       sfx(R.lawyer, 'rubber_stamp_2', -8); }
 
     // ---- screen micro-moments (CTAs) + comment bubble ----

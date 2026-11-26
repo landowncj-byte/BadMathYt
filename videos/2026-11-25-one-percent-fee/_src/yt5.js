@@ -6,7 +6,7 @@ const S = FEE.make({
   hook: { until: Q.hookEnd, y: 440, size: 100, lines: [[['A ', 'paper'], ['1% FEE', 'bad'], [' CAN COST YOU', 'paper']], [['OVER $300,000', 'bad']]] },
   scenes: [
     { type: 'deposit', from: Q.hookEnd, to: '@let\'s-0.12', sumAt: '@$240-0.05', pose: 'talk' },
-    { type: 'hero', from: '@let\'s-0.12', to: '@now-0.12', steps: [{ at: 0, lines: [[ '7%', 'good']], size: 300, sub: 'A YEAR · AN ASSUMPTION, NOT A PROMISE' }], pose: 'chin' },
+    { type: 'hero', from: '@let\'s-0.12', to: '@now-0.12', steps: [{ at: 0, lines: [['7%', 'good']], size: 300, sub: 'A YEAR · AN ASSUMPTION' }, { at: '@not', lines: [['7%', 'good']], size: 300, sub: 'NOT A PROMISE · NOT A FORECAST' }], pose: 'chin' },
     { type: 'twin', from: '@now-0.12', to: '@a#6-0.12', la: 'FUND A · NO FEE', lb: 'FUND B · 1% FEE', tagAt: '@1#2', pose: 'shock' },
     { type: 'hero', from: '@a#6-0.12', to: '@after-0.28', steps: [{ at: 0, lines: [['A FEE =', 'accent'], ['WHAT THE FUND KEEPS', 'paper'], ['FOR MANAGING YOUR MONEY', 'paper']], size: 110 }, { at: '@1#4-0.1', lines: [['1% SOUNDS TINY…', 'bad']], size: 130 }], pose: 'chin' },
     { type: 'pigs', from: '@after-0.28', to: '@at-0.1', gapAt: '@gap-0.1', pose: 'shock' },

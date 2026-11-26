@@ -1,43 +1,68 @@
 1
-00:00:00,000 --> 00:00:03,378
-One percent sounds tiny. It ate three hundred sixteen grand.
+00:00:00,000 --> 00:00:01,820
+Your one percent fee just ate three hundred sixteen thousand dollars.
 
 2
-00:00:04,228 --> 00:00:07,616
-Same two funds, except one charges one percent more a year.
+00:00:04,680 --> 00:00:07,160
+Think that sounds fake? Here's the actual math.
 
 3
-00:00:07,866 --> 00:00:09,887
-Tap the heart if that sounds like nothing.
+00:00:07,700 --> 00:00:12,280
+You invest five hundred bucks a month for forty years. Two hundred forty grand of your money.
 
 4
-00:00:10,137 --> 00:00:13,080
-Five hundred a month, forty years, an assumed seven percent.
+00:00:12,720 --> 00:00:16,140
+We'll assume seven percent growth a year. Not a promise, just math.
 
 5
-00:00:13,330 --> 00:00:16,309
-Year ten? The gap's forty-six hundred bucks. Whatever.
+00:00:16,780 --> 00:00:21,080
+Fund A charges basically nothing. Fund B charges one percent a year.
 
 6
-00:00:16,559 --> 00:00:19,072
-Send this to your friend with their first real job.
+00:00:21,480 --> 00:00:24,580
+That one percent is a fee the fund keeps for managing your money.
 
 7
-00:00:19,922 --> 00:00:22,225
-Year thirty? A hundred seven grand. Yeah.
+00:00:25,120 --> 00:00:26,620
+Tap the heart if you've never checked yours.
 
 8
-00:00:23,075 --> 00:00:26,990
-Year forty's next, and it's ugly. Follow, this page catches the quiet ones.
+00:00:27,380 --> 00:00:32,140
+Ten years in, Fund B is behind by about forty-six hundred. Who really cares, right?
 
 9
-00:00:27,390 --> 00:00:29,738
-Three hundred sixteen grand. To— to a fee.
+00:00:32,840 --> 00:00:34,520
+Thirty years in, it's behind by over a hundred thousand.
 
 10
-00:00:30,638 --> 00:00:33,578
-You only put in two forty.
+00:00:36,180 --> 00:00:39,660
+Send this to the friend who says one percent is nothing. Still think it's tiny?
 
 11
-00:00:33,878 --> 00:00:34,904
-Still tiny?
+00:00:40,200 --> 00:00:46,460
+Wait, how does that happen? The fee takes a cut of your whole pile, every single year, including the growth.
+
+12
+00:00:46,840 --> 00:00:51,320
+And a smaller pile? It grows slower, forever, and the gap keeps getting bigger.
+
+13
+00:00:51,960 --> 00:00:54,840
+Forty years in, Fund A has about one point three million.
+
+14
+00:00:55,300 --> 00:00:57,280
+Follow if this makes you want to check your account.
+
+15
+00:00:57,780 --> 00:00:58,720
+Fund B? About nine hundred ninety-six thousand.
+
+16
+00:01:00,920 --> 00:01:03,900
+That fee cost more than every dollar you ever put in.
+
+17
+00:01:04,920 --> 00:01:07,180
+One percent: small or not? One word.
+

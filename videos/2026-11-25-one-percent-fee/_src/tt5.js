@@ -1,26 +1,26 @@
 // TikTok cut — v5 (spicy copy, same stages).
 const Q = { hookEnd: '@think-0.12' };
-const K = [[0, 0], ['@10-0.25', 0], ['@10+0.6', 10], ['@30-0.25', 10], ['@30+0.5', 30], ['@that#3-0.1', 30], ['@year#3+0.5', 30], ['@40#2-0.35', 30], ['@40#2+0.6', 40]];
+const K = [[0, 0], ['@10-0.25', 0], ['@10+0.6', 10], ['@30-0.25', 10], ['@30+0.5', 30], ['@and#1-0.1', 30], ['@bigger', 37], ['@40#2-0.35', 37], ['@40#2+0.6', 40]];
 const S = FEE.make({
   dur: 67.92, K, counterIn: '@10-0.3',
   hook: { until: Q.hookEnd, y: 440, size: 100, lines: [[['YOUR ', 'paper'], ['1% FEE', 'bad'], [' JUST ATE', 'paper']], [['$316,000', 'bad']]] },
   scenes: [
     { type: 'deposit', from: Q.hookEnd, to: '@we\'ll-0.12', sumAt: '@240-0.05', pose: 'talk' },
-    { type: 'hero', from: '@we\'ll-0.12', to: '@fund#1-0.12', steps: [{ at: 0, lines: [['7%', 'good']], size: 300, sub: 'A YEAR · NOT A PROMISE, JUST MATH' }], pose: 'chin' },
+    { type: 'hero', from: '@we\'ll-0.12', to: '@fund#1-0.12', steps: [{ at: 0, lines: [['7%', 'good']], size: 300, sub: 'A YEAR · AN ASSUMPTION' }, { at: '@not', lines: [['7%', 'good']], size: 300, sub: 'NOT A PROMISE · JUST MATH' }], pose: 'chin' },
     { type: 'twin', from: '@fund#1-0.12', to: '@that#2-0.12', la: 'FUND A · BASICALLY FREE', lb: 'FUND B · 1% FEE', tagAt: '@1#2', pose: 'shock' },
-    { type: 'hero', from: '@that#2-0.12', to: '@10-0.28', steps: [{ at: 0, lines: [['A FEE =', 'accent'], ['WHAT THE FUND KEEPS', 'paper'], ['FOR MANAGING YOUR MONEY', 'paper']], size: 110 }], pose: 'chin' },
+    { type: 'hero', from: '@that#2-0.12', to: '@10-0.28', steps: [{ at: 0, lines: [['A FEE =', 'accent'], ['WHAT THE FUND KEEPS', 'paper'], ['FOR MANAGING YOUR MONEY', 'paper']], size: 110 }, { at: '@tap-0.1', lines: [['NEVER CHECKED', 'accent'], ['YOURS?', 'bad']], size: 150 }], pose: 'chin' },
     { type: 'pigs', from: '@10-0.28', to: '@wait-0.12', gapAt: '@behind-0.1', pose: 'shock' },
-    { type: 'hero', from: '@wait-0.12', to: '@and#2-0.12', steps: [{ at: 0, lines: [['WAIT, HOW?', 'accent']], size: 190 }, { at: '@the#5', lines: [['THE FEE TAKES', 'paper'], ['A CUT OF YOUR', 'paper'], ['WHOLE PILE', 'bad']], size: 120, sub: 'EVERY YEAR · GROWTH INCLUDED' }], pose: 'chin' },
-    { type: 'pigs', from: '@and#2-0.12', to: '@40#2-0.12', pose: 'shock' },
+    { type: 'hero', from: '@wait-0.12', to: '@and#1-0.12', steps: [{ at: 0, lines: [['WAIT, HOW?', 'accent']], size: 190 }, { at: '@the#5', lines: [['THE FEE TAKES', 'paper'], ['A CUT OF YOUR', 'paper'], ['WHOLE PILE', 'bad']], size: 120, sub: 'EVERY YEAR · GROWTH INCLUDED' }], pose: 'chin' },
+    { type: 'pigs', from: '@and#1-0.12', to: '@40#2-0.12', pose: 'shock' },
     { type: 'pigs', from: '@40#2-0.12', to: '@that#4-0.12', bAt: '@b#3-0.15', gapAt: '@996-0.3', pose: 'shock' },
     { type: 'cost', from: '@that#4-0.12', to: '@cost#1+1.6', a: '@fee#4', b: '@cost#1', pose: 'shock' },
     { type: 'compare', from: '@cost#1+1.6', to: '@small-0.5', a: '@more', b: '@every#2', moreAt: '@dollar', pose: 'chin' },
     { type: 'ask', from: '@small-0.5', to: 99, l1: '1% SMALL', l2: 'OR NOT?', pose: 'you' },
   ],
   bHide: [['@40#2-0.12', '@b#3-0.15']],
-  hideCounter: [['@that#4-0.12', 99], ['@wait-0.12', '@and#2-0.12']],
+  hideCounter: [['@that#4-0.12', 99], ['@wait-0.12', '@and#1-0.12']],
   labels: [[0, 'THE COST'], ['@think-0.12', 'THE SETUP'], ['@fund#1-0.12', 'THE FUNDS'], ['@10-0.28', 'THE GAP'], ['@wait-0.12', 'THE TRAP'], ['@40#2-0.12', 'YEAR 40'], ['@that#4-0.12', 'THE BILL']],
-  notes: [{ at: '@gap#1-0.1', out: '@40#2-0.3', text: 'THE GAP KEEPS GROWING', tone: 'bad' }],
+  notes: [{ at: '@smaller-0.1', out: '@gap#1-0.1', text: 'SMALLER PILE · SLOWER GROWTH', tone: 'accent' }, { at: '@gap#1-0.1', out: '@40#2-0.3', text: 'THE GAP KEEPS GROWING', tone: 'bad' }],
   you: [{ at: 0, mood: 'angry', text: 'YOUR FEE ATE IT' }, { at: '@think', mood: 'neutral', text: 'YOU INVEST' }, { at: '@fund#1', mood: 'smirk', text: 'TWO FUNDS' }, { at: '@10', mood: 'smirk', text: 'WHO CARES?' }, { at: '@wait', mood: 'worried', text: 'WAIT…' },
     { at: '@40#2', mood: 'wow', text: 'YEAR 40' }, { at: '@that#4', mood: 'angry', text: 'THE FEE ATE IT' }, { at: '@small-0.3', mood: 'smirk', text: 'YOUR CALL' }],
   cta: { like: '@tap-0.1', likeOut: '@tap+1.0', send: '@send', sendOut: '@send+1.5', follow: '@follow+0.05', followOut: '@follow+1.9', bubble: { at: '@one#1-0.1', l1: 'ONE WORD', l2: 'SMALL or NOT?' } },
@@ -37,7 +37,7 @@ const S = FEE.make({
     { at: '@10-0.28', name: 'whoosh_2', gain: -10, dur: 0.6 }, { at: '@10+0.6', name: 'money_counter_1', gain: -13, dur: 1.0 }, { at: '@behind', name: 'click_1', gain: -9, dur: 0.3 },
     { at: '@30-0.25', name: 'money_counter_2', gain: -13, dur: 1.2 }, { at: '@send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 },
     { at: '@wait-0.12', name: 'record_scratch_1', gain: -12, dur: 0.6 }, { at: '@the#5', name: 'pop_1', gain: -9, dur: 0.4 },
-    { at: '@and#2-0.12', name: 'whoosh_1', gain: -9, dur: 0.7 },
+    { at: '@and#1-0.12', name: 'whoosh_1', gain: -9, dur: 0.7 },
     { at: '@40#2-0.12', name: 'whoosh_1', gain: -9, dur: 0.7 }, { at: '@40#2+0.6', name: 'money_counter_2', gain: -13, dur: 1.5 }, { at: '@million', name: 'success_chime_1', gain: -10, dur: 1.0 },
     { at: '@b#3-0.15', name: 'pop_1', gain: -8, dur: 0.4 }, { at: '@996', name: 'ding_1', gain: -10, dur: 0.6 },
     { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.8', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.9', name: 'success_chime_1', gain: -12, dur: 1.2 },
