@@ -1,0 +1,32 @@
+[
+ {
+  "provider": "loc",
+  "title": "San Juan, Puerto Rico. Selling lottery tickets on the street",
+  "url": "https://tile.loc.gov/storage-services/service/pnp/fsa/8c29000/8c29600/8c29606v.jpg",
+  "page": "https://www.loc.gov/item/2017799054/",
+  "license": "No known restrictions (Library of Congress)",
+  "author": "delano, jack",
+  "credit": "Library of Congress",
+  "file": "1.jpg"
+ },
+ {
+  "provider": "loc",
+  "title": "[Untitled photo, possibly related to: San Juan, Puerto Rico. Selling lottery tickets on the street]",
+  "url": "https://tile.loc.gov/storage-services/service/pnp/fsa/8c29000/8c29600/8c29602v.jpg",
+  "page": "https://www.loc.gov/item/2017799050/",
+  "license": "No known restrictions (Library of Congress)",
+  "author": "delano, jack",
+  "credit": "Library of Congress",
+  "file": "2.jpg"
+ },
+ {
+  "provider": "loc",
+  "title": "[Untitled photo, possibly related to: San Juan, Puerto Rico. Selling lottery tickets on the street]",
+  "url": "https://tile.loc.gov/storage-services/service/pnp/fsa/8c29000/8c29600/8c29603v.jpg",
+  "page": "https://www.loc.gov/item/2017799051/",
+  "license": "No known restrictions (Library of Congress)",
+  "author": "delano, jack",
+  "credit": "Library of Congress",
+  "file": "3.jpg"
+ }
+]

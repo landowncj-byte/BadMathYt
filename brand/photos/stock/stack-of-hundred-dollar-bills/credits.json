@@ -1,0 +1,36 @@
+[
+ {
+  "provider": "openverse:flickr",
+  "title": "Pirates Chest Bank",
+  "url": "https://live.staticflickr.com/1471/25429563664_47118a7bae_b.jpg",
+  "page": "https://www.flickr.com/photos/94846844@N04/25429563664",
+  "license": "BY 2.0",
+  "author": "Lisa Zins",
+  "credit": "\"Pirates Chest Bank\" by Lisa Zins is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 1024,
+  "file": "1.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "Stack of US currency",
+  "url": "https://live.staticflickr.com/4204/34914756152_926973d3c8_b.jpg",
+  "page": "https://www.flickr.com/photos/37815348@N00/34914756152",
+  "license": "BY 2.0",
+  "author": "The.Comedian",
+  "credit": "\"Stack of US currency\" by The.Comedian is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 768,
+  "file": "2.jpg"
+ },
+ {
+  "provider": "commons",
+  "title": "File:Two Dollar Tom.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Two_Dollar_Tom.jpg/960px-Two_Dollar_Tom.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Two_Dollar_Tom.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "MykeHuntIV",
+  "credit": "MykeHuntIV, CC BY-SA 4.0, via Wikimedia Commons",
+  "file": "3.jpg"
+ }
+]

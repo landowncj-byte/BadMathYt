@@ -1,0 +1,36 @@
+[
+ {
+  "provider": "openverse:flickr",
+  "title": "Cryptocurrency Mining Rig GPU Farm",
+  "url": "https://live.staticflickr.com/65535/53388290798_1cea94347d_b.jpg",
+  "page": "https://www.flickr.com/photos/190906320@N06/53388290798",
+  "license": "BY 2.0",
+  "author": "digicloudmedia",
+  "credit": "\"Cryptocurrency Mining Rig GPU Farm\" by digicloudmedia is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 683,
+  "file": "1.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "Ethereum Mining Rig GPU Crypto Miner",
+  "url": "https://live.staticflickr.com/65535/53388102481_4a3cfacfce_b.jpg",
+  "page": "https://www.flickr.com/photos/190906320@N06/53388102481",
+  "license": "BY 2.0",
+  "author": "digicloudmedia",
+  "credit": "\"Ethereum Mining Rig GPU Crypto Miner\" by digicloudmedia is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 683,
+  "file": "2.jpg"
+ },
+ {
+  "provider": "commons",
+  "title": "File:Mining-Rig.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Mining-Rig.jpg/960px-Mining-Rig.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Mining-Rig.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Jasper Reichardt",
+  "credit": "Jasper Reichardt, CC BY-SA 4.0, via Wikimedia Commons",
+  "file": "3.jpg"
+ }
+]

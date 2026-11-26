@@ -1,0 +1,48 @@
+[
+ {
+  "provider": "openverse:flickr",
+  "title": "Monopoly with Real Money",
+  "url": "https://live.staticflickr.com/2648/3981995612_cc6ddde207_b.jpg",
+  "page": "https://www.flickr.com/photos/84987970@N00/3981995612",
+  "license": "BY-SA 2.0",
+  "author": "Sweet One",
+  "credit": "\"Monopoly with Real Money\" by Sweet One is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+  "w": 1024,
+  "h": 768,
+  "file": "1.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "Aztec Theatre, Downtown San Antonio, Texas",
+  "url": "https://live.staticflickr.com/7646/28064871021_41812fc970_b.jpg",
+  "page": "https://www.flickr.com/photos/75683070@N00/28064871021",
+  "license": "BY-SA 2.0",
+  "author": "Ken Lund",
+  "credit": "\"Aztec Theatre, Downtown San Antonio, Texas\" by Ken Lund is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+  "w": 1024,
+  "h": 768,
+  "file": "2.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "Aztec Theatre, Downtown San Antonio, Texas",
+  "url": "https://live.staticflickr.com/7652/28108873366_be0749c0a1_b.jpg",
+  "page": "https://www.flickr.com/photos/75683070@N00/28108873366",
+  "license": "BY-SA 2.0",
+  "author": "Ken Lund",
+  "credit": "\"Aztec Theatre, Downtown San Antonio, Texas\" by Ken Lund is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+  "w": 768,
+  "h": 1024,
+  "file": "3.jpg"
+ },
+ {
+  "provider": "loc",
+  "title": "The Fox Theatre in Montrose, Colorado",
+  "url": "https://tile.loc.gov/image-services/iiif/service:pnp:highsm:32400:32485/full/pct:50/0/default.jpg",
+  "page": "https://www.loc.gov/item/2015632500/",
+  "license": "No known restrictions (Library of Congress)",
+  "author": "highsmith, carol m.",
+  "credit": "Library of Congress",
+  "file": "4.jpg"
+ }
+]

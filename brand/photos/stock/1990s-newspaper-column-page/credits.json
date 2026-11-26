@@ -1,0 +1,24 @@
+[
+ {
+  "provider": "openverse:flickr",
+  "title": "The Enchanted Forest, Newspaper Advertisement, July 21, 1974 - Chesterton, Indiana",
+  "url": "https://live.staticflickr.com/65535/53706803896_bc6429e3e3_b.jpg",
+  "page": "https://www.flickr.com/photos/24724221@N07/53706803896",
+  "license": "BY 2.0",
+  "author": "Shook Photos",
+  "credit": "\"The Enchanted Forest, Newspaper Advertisement, July 21, 1974 - Chesterton, Indiana\" by Shook Photos is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 696,
+  "h": 1024,
+  "file": "1.jpg"
+ },
+ {
+  "provider": "commons",
+  "title": "File:PIIGS Mk 4 map.png",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/PIIGS_Mk_4_map.png/960px-PIIGS_Mk_4_map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:PIIGS_Mk_4_map.png",
+  "license": "CC BY 3.0",
+  "author": "The original uploader was Snow storm in Eastern Asia at English Wikipedia.",
+  "credit": "The original uploader was Snow storm in Eastern Asia at English Wikipedia., CC BY 3.0, via Wikimedia Commons",
+  "file": "2.jpg"
+ }
+]

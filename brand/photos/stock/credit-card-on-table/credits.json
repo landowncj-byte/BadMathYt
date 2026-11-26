@@ -1,0 +1,62 @@
+[
+ {
+  "provider": "openverse:flickr",
+  "title": "Pile of old cards",
+  "url": "https://live.staticflickr.com/3262/2346878945_f4ebda10bf_b.jpg",
+  "page": "https://www.flickr.com/photos/82365211@N00/2346878945",
+  "license": "BY 2.0",
+  "author": "kalleboo",
+  "credit": "\"Pile of old cards\" by kalleboo is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 768,
+  "file": "1.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "Poker",
+  "url": "https://live.staticflickr.com/3289/5857806294_1256f1d949_b.jpg",
+  "page": "https://www.flickr.com/photos/59937401@N07/5857806294",
+  "license": "BY 2.0",
+  "author": "Images_of_Money",
+  "credit": "\"Poker\" by Images_of_Money is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 768,
+  "file": "2.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "Winning Blackjack hand",
+  "url": "https://live.staticflickr.com/3031/5857826966_9359f93ccc_b.jpg",
+  "page": "https://www.flickr.com/photos/59937401@N07/5857826966",
+  "license": "BY 2.0",
+  "author": "Images_of_Money",
+  "credit": "\"Winning Blackjack hand\" by Images_of_Money is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 768,
+  "h": 1024,
+  "file": "3.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "HealthStation installation v1",
+  "url": "https://live.staticflickr.com/250/457115581_a349a50ad3_b.jpg",
+  "page": "https://www.flickr.com/photos/38869431@N00/457115581",
+  "license": "BY 2.0",
+  "author": "juhansonin",
+  "credit": "\"HealthStation installation v1\" by juhansonin is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 683,
+  "file": "4.jpg"
+ },
+ {
+  "provider": "openverse:flickr",
+  "title": "Doug - Dario's shop, credit card machine, receipt book, Jefferson glass clock, corner office, Lake City Way, Seattle, Washington, USA",
+  "url": "https://live.staticflickr.com/7011/6773873411_6110bbd969_b.jpg",
+  "page": "https://www.flickr.com/photos/71401718@N00/6773873411",
+  "license": "BY 2.0",
+  "author": "Wonderlane",
+  "credit": "\"Doug - Dario's shop, credit card machine, receipt book, Jefferson glass clock, corner office, Lake City Way, Seattle, Washington, USA\" by Wonderlane is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+  "w": 1024,
+  "h": 681,
+  "file": "5.jpg"
+ }
+]

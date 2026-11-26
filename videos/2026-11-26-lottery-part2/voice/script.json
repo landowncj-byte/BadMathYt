@@ -1,14 +1,70 @@
 [
- ["Part two, as promised. They bought over five million lottery tickets and won. Did Virginia pay?", 0.3],
- ["[breath] In nineteen ninety-two, an Australian fund won twenty-seven million bucks, a state record.", 0.7],
- ["But Virginia investigates, 'cause tickets had to be bought at a licensed store.", 0.3],
- ["So was this one? Hit like if you'd have double-checked.", 0.3],
- ["About three weeks later, nobody could prove a rule was broken.", 0.3],
- ["So Virginia paid, about one point three million a year, for twenty years.", 0.7],
- ["Send this to the friend who swears the house always wins.", 0.3],
- ["Then Virginia passed emergency rules against bulk buying. Problem— problem solved, right?", 0.25],
- ["Thirty-one years later? Follow, this page finishes the story.", 0.45],
- ["[gasp] Somebody did it again, in Texas in twenty twenty-three, for ninety-five million.", 0.7],
- ["It ended with Texas shutting down its lottery commission.", 0.5],
- ["Should a state have to pay? Yes or no.", 0.4]
+ [
+  "A group bought over five million lottery tickets and won twenty-seven million.",
+  0.6
+ ],
+ [
+  "This is part two. In nineteen ninety-two, an Australian fund tried to buy every ticket in Virginia's lottery.",
+  0.3
+ ],
+ [
+  "And it worked. They hit the jackpot, a state record.",
+  0.5
+ ],
+ [
+  "But the rule said tickets had to be bought at a licensed store.",
+  0.3
+ ],
+ [
+  "And this group had millions of them printed in bulk.",
+  0.3
+ ],
+ [
+  "So was the winning ticket legal? Hit like if you think Virginia should keep the money.",
+  0.3
+ ],
+ [
+  "Virginia investigated for about three weeks, and nobody could prove how that ticket was bought.",
+  0.3
+ ],
+ [
+  "No proof means no broken rule. So Virginia paid.",
+  0.6
+ ],
+ [
+  "About one point three million dollars a year, for twenty years.",
+  0.6
+ ],
+ [
+  "That's like twenty normal salaries, every single year.",
+  0.5
+ ],
+ [
+  "Send this to the friend who says the house always wins.",
+  0.3
+ ],
+ [
+  "Then Virginia rushed in new rules against bulk buying. Problem solved, right?",
+  0.3
+ ],
+ [
+  "Thirty-one years later? Follow, 'cause this ending is wild.",
+  0.3
+ ],
+ [
+  "In twenty twenty-three, a group bought nearly every combination in the Texas lottery.",
+  0.3
+ ],
+ [
+  "And they won ninety-five million dollars.",
+  0.7
+ ],
+ [
+  "It got so messy that Texas shut down its whole lottery commission.",
+  0.6
+ ],
+ [
+  "So when someone buys every ticket, should the state have to pay? Yes or no?",
+  0.4
+ ]
 ]
