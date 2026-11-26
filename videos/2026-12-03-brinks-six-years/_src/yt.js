@@ -12,9 +12,9 @@ const E_ = (id, type, at, o) => els.push(Object.assign({ id, type, at }, o));
 // ---- S0 frame 0 ----
 E_('hook', 'hook', A(0, 0, -450), { in: 0, out: SW(0,9) + 0.4, props: { lines: HK, sizes: [74, 66] } });
 E_('hook2', 'hook', A(0, 0, -450), { in: E(23) + 0.2, props: { lines: HK, sizes: [74, 66] } });
-E_('clk0', 'bigclock', A(0, 0, -60), { in: -1, props: { w: 480, h: 480, a: '6 YEARS', b: '< 1 WEEK', flipAt: SW(0,7), speed: 3 } });
-E_('cap0', 'photo', A(0, 310, 340), { in: -1, props: { src: CAP, name: 'FBI EVIDENCE', role: "A CHAUFFEUR'S CAP", credit: 'PHOTO: FBI · PUBLIC DOMAIN', w: 360, aspect: 0.62, tilt: 0.05, treatment: 'paper', fx: 0.5, fy: 0.5 } });
-E_('gg0', 'suspect', A(0, -310, 300), { in: -1, props: G({ w: 380, nick: 'MASKED MEN', tilt: -0.03 }) });
+E_('clk0', 'bigclock', A(0, 0, -120), { in: -1, props: { w: 460, h: 460, a: '6 YEARS', b: '< 1 WEEK', flipAt: SW(0,7), speed: 3 } });
+E_('cap0', 'photo', A(0, 310, 400), { in: -1, props: { src: CAP, name: 'FBI EVIDENCE', role: "A CHAUFFEUR'S CAP", credit: 'PHOTO: FBI · PUBLIC DOMAIN', w: 360, aspect: 0.62, tilt: 0.05, treatment: 'paper', fx: 0.5, fy: 0.5 } });
+E_('gg0', 'suspect', A(0, -310, 370), { in: -1, props: G({ w: 380, nick: 'MASKED MEN', tilt: -0.03 }) });
 // ---- S1 date ----
 E_('bos', 'text', A(1, 0, 0), { in: S(1) - 0.2, props: { lines: [[['BOSTON', 'paper']], [['JANUARY 1950', 'gold']]], size: 120 } });
 // ---- S2 armored trucks ----
