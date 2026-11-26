@@ -745,7 +745,7 @@ BM2.scene({
     emph: { '$2': 'bad', fake: 'bad', '$35': 'good', '95': 'bad', '1945.': 'bad', '1982.': 'bad', '37': 'bad', convicted: 'bad', fraud: 'bad', '10': 'bad', '$28': 'bad', FBI: 'accent' },
     fix: [['Rudy Kerniawan,', 'Rudy Kurniawan,'], ['parts next so', "part's next, so"], ['Double tap', 'Double-tap'], ['wine snob', 'wine-snob']],
   },
-  bed: { name: 'tense_bed_2', gain: -1 },
+  bed: { name: 'jazz_bed_1', gain: -1 },
   sfx: [
     { at: 0.05, name: 'camera_shutter_1', gain: -12, dur: 0.4 }, { at: '@so#1', name: 'camera_shutter_2', gain: -12, dur: 0.4 }, { at: '@one#1', name: 'camera_shutter_1', gain: -12, dur: 0.4 }, { at: '@a#12', name: 'typewriter_2', gain: -12, dur: 0.8 }, { at: '@fbi-0.3', name: 'camera_shutter_2', gain: -12, dur: 0.4 }, { at: '@fbi+0.1', name: 'rubber_stamp_2', gain: -9, dur: 0.5 }, { at: '@he#6', name: 'camera_shutter_1', gain: -12, dur: 0.4 }, { at: '@10', name: 'cell_door_1', gain: -10, dur: 0.9 }, { at: '@step#1-0.2', name: 'suspense_drone_1', gain: -14, dur: 3.0 },
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.04, name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: 0.1, name: 'thud_1', gain: -9, dur: 0.4 },

@@ -608,7 +608,7 @@ BM2.scene({
   poses: [['@follow', 'follow', { target: [650, 1120] }]],
   shakes: [[0.3, 10], ['@20s#4', 18], ['@200', 8], ['@Keep', 6]],
   captions: { gap: 16, emph: { '200': 'bad', '454': 'good', '23': 'good', '20s': 'good', '9': 'good' }, fix: [['$20 bills','twenty dollar bills'], ['$100 bills','hundred dollar bills'], ['$100 is','A hundred is'], ['$100 bucks','a hundred bucks'], ['$200 ,000.','two hundred grand.'], ['200 grand.','two hundred grand.'], ['But weight,','But wait,'], ['For the','Per the'], ['here','here,']] },
-  bed: { name: 'upbeat_bed_2', gain: -1 },
+  bed: { name: 'gameshow_bed_2', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.2, name: 'paper_slam_1', gain: -6, dur: 0.5 }, { at: 0.3, name: 'thud_1', gain: -8, dur: 0.4 },
     { at: '@$200', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },

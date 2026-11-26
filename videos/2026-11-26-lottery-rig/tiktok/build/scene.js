@@ -704,7 +704,7 @@ BM2.scene({
   poses: [['@Follow-0.1', 'follow', { target: [830, 1010] }], ['@Follow+1.5', 'talk']],
   shakes: [[0.05, 14], ['@never', 8], ['@330', 10], ['@Nobody#2-0.05', 26], ['@guilty', 14], ['@25', 22], ['@prison+0.1', 10]],
   captions: { emph: { jackpot: 'accent', never: 'bad', collected: 'bad', '330': 'bad', Nobody: 'bad', '25': 'bad', guilty: 'bad', '16': 'accent', five: 'bad', broke: 'bad' }, gap: 16, fix: [['16.5 million', '$16.5 million'], ['a dollar, not once.', 'a dollar. Not one.'], ['Step one, he', 'Step one: he'], ['Step two, he', 'Step two: he'], ['Step three, those', 'Step three: those'], ['every, every', 'every— every'], ['rewind.', 'rewind.']] },
-  bed: { name: 'tense_bed_2', gain: -1 },
+  bed: { name: 'auction_tension_bed_1', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.03, name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: 0.1, name: 'glass_shatter_1', gain: -12, dur: 0.6 },
     { at: '@jackpot', name: 'money_counter_2', gain: -11, dur: 1.4 }, { at: '@$16+0.9', name: 'cash_register_1', gain: -9, dur: 0.9 }, { at: '@never', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },

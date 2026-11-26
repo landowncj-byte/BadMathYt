@@ -694,7 +694,7 @@ BM2.scene({
   poses: [['@Follow-0.1', 'follow', { target: [830, 1010] }], ['@Follow+1.5', 'talk']],
   shakes: [[0.05, 14], ['@rigged', 8], ['@330', 10], ['@Not-0.05', 26], ['@guilty', 14], ['@25', 22], ['@prison+0.1', 10]],
   captions: { emph: { dumbass: 'bad', rigged: 'bad', five: 'bad', never: 'bad', fucking: 'bad', cent: 'bad', '25': 'bad', guilty: 'bad', '$16': 'accent', '16': 'accent', '330': 'bad', rigs: 'bad' }, gap: 16, fix: [['16.5 million', '$16.5 million'], ['Step one, he', 'Step one: he'], ['Step two, he', 'Step two: he'], ['Step three, those', 'Step three: those'], ['Not a fucking', 'Not a fucking'], ['cent, nobody', 'cent. Nobody'], ['lottery. Yes', 'lottery?']] },
-  bed: { name: 'tense_bed_2', gain: -1 },
+  bed: { name: 'auction_tension_bed_1', gain: -1 },
   sfx: [
     { at: "@name's", name: 'camera_shutter_2', gain: -7, dur: 0.5 }, { at: '@Eddie', name: 'typewriter_2', gain: -11, dur: 0.9 }, { at: '@So-0.1', name: 'camera_shutter_1', gain: -8, dur: 0.5 },
     { at: '@rigs-0.05', name: 'rubber_stamp_1', gain: -8, dur: 0.5 }, { at: '@Okay+0.3', name: 'pop_1', gain: -10, dur: 0.4 }, { at: '@2010', name: 'typewriter_1', gain: -12, dur: 0.9 },

@@ -581,7 +581,7 @@ BM2.scene({
   poses: [['@follow', 'follow', { target: [650, 1120] }]],
   shakes: [[0.3, 10], ['@million', 18], ['@2', 14], ['@million#2', 8]],
   captions: { gap: 16, emph: { 'twenties': 'good', 'hundreds': 'accent', '199': 'good', '2.56': 'bad', 'grand': 'good', 'million': 'good' }, fix: [['Weight why','Wait, why?'], ['here','here,'], ['guy','guy,'], ['right?','right?']] },
-  bed: { name: 'upbeat_bed_2', gain: -1 },
+  bed: { name: 'gameshow_bed_2', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.2, name: 'paper_slam_1', gain: -6, dur: 0.5 }, { at: 0.3, name: 'thud_1', gain: -8, dur: 0.4 },
     { at: '@scale', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },

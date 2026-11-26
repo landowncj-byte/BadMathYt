@@ -704,7 +704,7 @@ BM2.scene({
   poses: [['@follow-0.1', 'follow', { target: [830, 1010] }], ['@follow+1.5', 'talk']],
   shakes: [[0.05, 14], ['@rigged', 8], ['@330', 10], ['@Zero-0.05', 26], ['@guilty', 14], ['@25', 22], ['@prison+0.1', 10]],
   captions: { emph: { rigged: 'bad', five: 'bad', Zero: 'bad', nobody: 'bad', '25': 'bad', guilty: 'bad', '$16': 'accent', '16': 'accent', '330': 'bad' }, gap: 16, fix: [['your, to', 'your— to'], ['16.5 million', '$16.5 million'], ['Zero nobody', 'Zero. Nobody'], ['the lottery, yes or no.', 'the lottery? Yes or no.'], ['Step one, he', 'Step one: he'], ['Step two, he', 'Step two: he'], ['Step three, those', 'Step three: those']] },
-  bed: { name: 'tense_bed_2', gain: -1 },
+  bed: { name: 'auction_tension_bed_1', gain: -1 },
   sfx: [
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.03, name: 'rubber_stamp_2', gain: -6, dur: 0.5 }, { at: 0.1, name: 'glass_shatter_1', gain: -10, dur: 0.6 },
     { at: '@rigged', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },

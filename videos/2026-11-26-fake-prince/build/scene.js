@@ -876,7 +876,7 @@ BM2.scene({
     fix: [['the slip up.', 'the slip-up.']],
     gap: 16,
   },
-  bed: { name: 'tense_bed_2', gain: -1 },
+  bed: { name: 'tense_bed_1', gain: -1 },
   sfx: [
     { at: 0.05, name: 'camera_shutter_1', gain: -8, dur: 0.4 }, { at: '@So', name: 'camera_shutter_2', gain: -8, dur: 0.4 }, { at: '@But', name: 'camera_shutter_1', gain: -9, dur: 0.4 }, { at: '@First', name: 'typewriter_2', gain: -12, dur: 0.8 }, { at: '@But#2', name: 'camera_shutter_2', gain: -9, dur: 0.4 }, { at: '@gets-0.2', name: 'camera_shutter_1', gain: -8, dur: 0.4 }, { at: '@pleaded', name: 'camera_shutter_2', gain: -8, dur: 0.4 }, { at: '@sentenced', name: 'cell_door_1', gain: -6, dur: 0.9 }, { at: '@guilty', name: 'rubber_stamp_1', gain: -4, dur: 0.5 }, { at: '@After-0.1', name: 'suspense_drone_1', gain: -14, dur: 3.0 }, { at: '@victim-0.5', name: 'camera_shutter_1', gain: -9, dur: 0.4 }, { at: '@gets+0.3', name: 'paper_slam_1', gain: -12, dur: 0.4 }, { at: '@arrested', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
     { at: 0, name: 'deep_boom_2', gain: -3, dur: 0.5 }, { at: 0.1, name: 'paper_slam_2', gain: -7, dur: 0.5 },
