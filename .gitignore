@@ -46,3 +46,8 @@ research/creators/**/*.mp4
 research/creators/**/*.webm
 research/creators/**/*.wav
 research/creators/**/*.m4a
+
+# render intermediates (builders)
+**/build/vna_small.mp4
+**/build/*_tmp*.mp4
+**/build/*.partial.mp4
