@@ -105,3 +105,14 @@ mix.py bed -24 → -30 LUFS, vocal-band EQ dip, harder ducking, SFX bus -3 dB. E
 | million vs billion | 16:00Z Fri 11/27 | 43980255 / f0858600 / 5a084f3b / 6ff19156 | APPROVED (old deleted) |
 | tucker payday | 20:00Z Fri | be046e7e / 2eff2d1f / 773cbea8 / 5ae869e2 | APPROVED (old deleted) |
 | card minimum | 00:00Z Sat | 9bbfac83 / df1910c2 / e92f9544 / 39418a9f | APPROVED (old deleted) |
+| javice | 16:00Z Sat 11/28 | e4726527 / c1c369e7 / 7ac1d873 / 3f2f78ac | APPROVED (old deleted) |
+| 1% fee | 20:00Z Sat | 4a2fd870 / 25de66ce / 25dd5a07 / a9b21fdb | APPROVED (old deleted) |
+| penny doubled | 00:00Z Sun | 42e783bf / 98a8e9bb / b246697d / 2c917879 | APPROVED (old deleted) |
+| mona lisa | 16:00Z Sun 11/29 | 23f2efd5 / ba32adb9 / cd1ee076 / 68e58b7b | APPROVED (old deleted) |
+| double or nothing | 20:00Z Sun | 1de99ece / ac314241 / a78a418f / a6032042 | APPROVED (old deleted) |
+| anna delvey | 00:00Z Mon 11/30 | 617359bc / e9fbb1dc / 7b758f8e / 389ffe99 | APPROVED (old deleted) |
+| van meegeren | 16:00Z Mon | 9f0f22e9 / 8d6cc1fc / 47c587cf / 085b5c68 | APPROVED (old deleted) |
+| million or 100 a day | 20:00Z Mon | a5ff6ebf / 3e2c9839 / 103f3bac / a7e2ed59 | APPROVED (old deleted) |
+| victor lustig | 00:00Z Tue 12/1 | d4ee6b74 / 6a8c0e18 / 738e6fc5 / c51e8a3e | APPROVED (old deleted) |
+| pennies to the moon | 16:00Z Tue | 4cfa2d5a / 701693df / b7072428 / c088a1f0 | APPROVED (old deleted) |
+| billionaires split | 20:00Z Tue | ce9c673b / c690b943 / 8b27ff3a / 6639f62c | APPROVED (old deleted) |

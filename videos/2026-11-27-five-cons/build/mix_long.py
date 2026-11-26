@@ -59,7 +59,7 @@ def main(bd, out):
     for a, b, files in segs:
         i0 = int(max(0, a - XF / 2) * SR); i1 = min(N, int((b + XF / 2) * SR)); n = i1 - i0; seg = np.zeros((n, 2), 'f4')
         for fn, g in files:
-            fp = MAN[fn]; x = decode(fp, lufs_norm(fp, -24)) * 10 ** (g / 20); seg += loop_to(x, n)
+            fp = MAN[fn]; x = decode(fp, lufs_norm(fp, -30)) * 10 ** (g / 20); seg += loop_to(x, n)
         env = np.ones(n, 'f4'); k = int(XF * SR)
         if a > 0: env[:k] = np.sin(np.linspace(0, np.pi / 2, k))
         if b < DUR - 1: env[-k:] = np.cos(np.linspace(0, np.pi / 2, k))
@@ -74,7 +74,7 @@ def main(bd, out):
         for q, val in enumerate(xs):
             k = ka if val > c else kr; c = k * c + (1 - k) * val; ys[q] = c
         return np.interp(np.arange(len(x)), np.arange(len(xs)) * step, ys).astype('f4')
-    duck = smooth(act, 0.04 * 10, 0.45 * 4) ; bed *= (10 ** (-5.5 * duck / 20))[:, None] * g[:, None]
+    duck = smooth(act, 0.04 * 10, 0.45 * 4) ; bed *= (10 ** (-7 * duck / 20))[:, None] * g[:, None]
     mix = voice + fx + bed; np.save(os.path.join(bd, 'mixpre.npy'), mix) if False else None
     pre = os.path.join(bd, 'mixpre.wav'); mw = os.path.join(bd, 'mix.wav')
     run(['ffmpeg', '-v', 'error', '-y', '-f', 'f32le', '-ar', str(SR), '-ac', '2', '-i', '-', '-c:a', 'pcm_f32le', pre], input=mix.astype('<f4').tobytes())
