@@ -55,8 +55,12 @@
         blurQuad = new T.Mesh(new T.PlaneGeometry(2, 2), new T.ShaderMaterial({ vertexShader: DOF_VS, fragmentShader: DOF_FS, uniforms: U(), depthTest: false, depthWrite: false })); blurScene.add(blurQuad); }
       st.build = function (sc, theme, setKind, palette) {
         const def = B.Sets3D.sets[setKind]; if (!def) throw new Error(`scene ${sc.id}: no 3D set "${setKind}". 3D sets: ${Object.keys(B.Sets3D.sets).join(', ')}`);
-        const scene = new T.Scene(), group = new T.Group(); scene.add(group); const ctx = B.Sets3D.ctxFor(group, theme, palette, sc.src.lamp), K2 = ctx.K;
-        const built = def.build(ctx) || {}; scene.background = new T.Color(built.bg || K2.bg); group.traverse(m => { if (m.isMesh) m.layers.enable(2); }); // layer 2 = set casters (the gobo mask)
+        const scene = new T.Scene(); let group = new T.Group(), K2, built; scene.add(group);
+        // SET REUSE: a set (kind + theme + palette + lamp) is built ONCE per page; every later scene that uses it (cutting back to the auction, kitchen, ...) gets a cheap clone that shares geometry, materials and textures. Fast cuts cost no set setup.
+        const ckey = [setKind, theme, JSON.stringify(palette || null), JSON.stringify(sc.src.lamp || null)].join('|'); st.setCache = st.setCache || {}; let base = st.setCache[ckey];
+        if (!base) { const ctx0 = B.Sets3D.ctxFor(group, theme, palette, sc.src.lamp); K2 = ctx0.K; built = def.build(ctx0) || {}; group.traverse(m => { if (m.isMesh) m.layers.enable(2); }); base = st.setCache[ckey] = { pristine: group.clone(true), K2, built }; } // layer 2 = set casters (the gobo mask)
+        else { group = base.pristine.clone(true); scene.remove(scene.children[0]); scene.add(group); K2 = base.K2; built = Object.assign({}, base.built, { update: base.built.update }); }
+        scene.background = new T.Color(built.bg || K2.bg);
         const poolOn = K2.pool > 0 && def.pool !== false, dirL = sc.src.lamp || [-0.75, K2.elev, 0.55], pc = sc.src.pool || (def.pool && def.pool.length ? def.pool : [0, 0, -100]), poolAng = K2.poolAngle || 0.78, key = poolOn ? new T.SpotLight(K2.lamp, K2.key, 6500, poolAng, 1, 0) : new T.DirectionalLight(K2.lamp, K2.key);
         const dn = new T.Vector3(...dirL).normalize(); key.target.position.set(pc[0], pc[1], pc[2]); key.position.copy(key.target.position).add(dn.clone().multiplyScalar(2400)); key.castShadow = true; key.shadow.mapSize.set(B.Stage3D.shadowSize || 1024, B.Stage3D.shadowSize || 1024); const sh = key.shadow.camera; if (!poolOn) { sh.left = -1500; sh.right = 1500; sh.top = 1500; sh.bottom = -1500; } sh.near = 300; sh.far = 6000; key.shadow.bias = -0.0008; key.shadow.radius = K2.soft; key.shadow.normalBias = 1; scene.add(key, key.target);
         scene.add(new T.HemisphereLight('#ffffff', theme === 'day' ? '#cfc4ff' : '#34415a', K2.amb));
@@ -80,6 +84,17 @@
           const tex = mkTex(c), geo = new T.PlaneGeometry(w + pad * 2, h + pad * 2), m = new T.Mesh(geo, new T.MeshBasicMaterial({ map: tex, transparent: false, alphaTest: 0.4, side: T.DoubleSide })); m.material.alphaToCoverage = true; m.position.y = (h + pad * 2) / 2 - pad; const prox = new T.Mesh(geo, new T.MeshBasicMaterial({ colorWrite: false, depthWrite: false, side: T.DoubleSide })); prox.position.copy(m.position); prox.castShadow = true; prox.customDepthMaterial = new T.MeshDepthMaterial({ depthPacking: T.RGBADepthPacking, map: tex, alphaTest: 0.4 }); obj = new T.Group(); obj.add(m); item.proxy = prox; obj.add(prox); item.standee = true;
         }
         o.group.add(obj); item.obj = obj; return item;
+      }
+      // Paper cut-out border, BAKED into the card texture when the figure is redrawn (pose step / face change), not per pixel per frame: a white dilated silhouette of the figure (12 offset blits) under it, plus a tiny dark drop offset.
+      // Dilation = the white silhouette blitted at 8 offsets on a ring + 4 on an inner ring; cost only on redraw (15 / s), unlike a per-pixel shader gather.
+      const mkc = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+      function addBorder(cc, bw) {
+        const w = cc.w, h = cc.h; if (!cc.O || cc.O.width !== w || cc.O.height !== h) { cc.O = mkc(w, h); cc.W = mkc(w, h); cc.F = mkc(w, h); cc.og = cc.O.getContext('2d'); cc.wg = cc.W.getContext('2d'); cc.fg = cc.F.getContext('2d'); }
+        const { og, wg, fg } = cc, g = cc.g; og.globalCompositeOperation = 'copy'; og.drawImage(cc.c, 0, 0); og.globalCompositeOperation = 'source-over';
+        fg.globalCompositeOperation = 'copy'; fg.drawImage(cc.O, 0, 0); fg.globalCompositeOperation = 'source-in'; fg.fillStyle = '#F5F3EE'; fg.fillRect(0, 0, w, h); fg.globalCompositeOperation = 'source-over'; // white silhouette
+        wg.clearRect(0, 0, w, h); for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2 + 0.2; wg.drawImage(cc.F, Math.cos(a) * bw, Math.sin(a) * bw); } for (let i = 0; i < 4; i++) { const a = (i / 4) * Math.PI * 2 + 0.6; wg.drawImage(cc.F, Math.cos(a) * bw * 0.5, Math.sin(a) * bw * 0.5); } wg.drawImage(cc.F, 0, 0);
+        fg.globalCompositeOperation = 'copy'; fg.drawImage(cc.W, 0, 0); fg.globalCompositeOperation = 'source-in'; fg.fillStyle = '#05080D'; fg.fillRect(0, 0, w, h); fg.globalCompositeOperation = 'source-over'; // dark copy for the drop offset
+        g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, w, h); g.globalAlpha = 0.34; g.drawImage(cc.F, bw * 0.6, bw * 0.6); g.globalAlpha = 1; g.drawImage(cc.W, 0, 0); g.drawImage(cc.O, 0, 0);
       }
       function drawShadowTex(e, ch, P, tPose, tFace) {
         if (!e.shadowTex) { const c = document.createElement('canvas'); c.width = 300; c.height = 320; e.shadowCv = c; e.shadowG = c.getContext('2d'); e.shadowTex = mkTex(c); e.proxy.customDepthMaterial.map = e.shadowTex; e.proxy.customDepthMaterial.needsUpdate = true; }
@@ -106,8 +121,8 @@
           const cw = u1 - u0, chh = v1 - v0, ppu = ppuS * sc2, dens = Math.min(4, Math.max(1, ppu * 1.1 * st.k)), qd = [1, 1.5, 2, 3, 4].find(d => d >= dens) || 4, tw = Math.max(8, Math.min(1400, Math.ceil(cw * qd))), th = Math.max(8, Math.min(1500, Math.ceil(chh * qd)));
           const Fc = P.face, key = tPose + '|' + Fc.id + '|' + Fc.eyes.mode + '|' + Fc.sx + '|' + (P.talk ? P.talk.level : 'x') + '|' + [u0, u1, v0, v1].join(',') + '|' + qd; // redraw only when something visible can have changed (pose step, face swap / blink / squash, crop)
           if (!e.cache || e.cache.w !== tw || e.cache.h !== th) { st.prof.allocs++; if (e.cache) e.cache.tex.dispose(); const c = document.createElement('canvas'); c.width = tw; c.height = th; e.cache = { w: tw, h: th, c, g: c.getContext('2d'), tex: mkTex(c), key: null, dens: qd }; e.card.material.uniforms.map.value = e.cache.tex; }
-          if (e.cache.key !== key) { st.prof.redraws++; const g = e.cache.g, kx = tw / cw, ky = th / chh; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, tw, th); g.setTransform(kx, 0, 0, ky, -(u0 + PLANE_W / 2) * kx, -(PLANE_H - (v1 + PLANE_H / 2)) * ky); P.sc = 1; P.x = PLANE_W / 2; P.y = PLANE_H * FEET; C.draw(g, ch, P, tPose); e.cache.tex.needsUpdate = true; e.cache.key = key; }
-          const cuC = (u0 + u1) / 2, cvC = (v0 + v1) / 2; e.card.scale.set(cw * sc2, chh * sc2, 1); e.card.position.set(pos.x, cyC + cvC * sc2, z); e.card.rotation.set(0, Math.atan2(cp.x - pos.x, cp.z - z), 0); e.card.translateX(cuC * sc2); { const U = e.card.material.uniforms, q = e.cache.dens; U.texel.value.set(1 / e.cache.w, 1 / e.cache.h); if (B.Stage3D.border !== false) { U.bw.value = (B.Stage3D.borderW || 5) * q; U.drop.value.set(3 * q, -3 * q); } else U.bw.value = 0; }
+          if (e.cache.key !== key) { st.prof.redraws++; const g = e.cache.g, kx = tw / cw, ky = th / chh; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, tw, th); g.setTransform(kx, 0, 0, ky, -(u0 + PLANE_W / 2) * kx, -(PLANE_H - (v1 + PLANE_H / 2)) * ky); P.sc = 1; P.x = PLANE_W / 2; P.y = PLANE_H * FEET; C.draw(g, ch, P, tPose); if (B.Stage3D.border !== false) addBorder(e.cache, (B.Stage3D.borderW || 5) * Math.min(kx, ky)); e.cache.tex.needsUpdate = true; e.cache.key = key; }
+          const cuC = (u0 + u1) / 2, cvC = (v0 + v1) / 2; e.card.scale.set(cw * sc2, chh * sc2, 1); e.card.position.set(pos.x, cyC + cvC * sc2, z); e.card.rotation.set(0, Math.atan2(cp.x - pos.x, cp.z - z), 0); e.card.translateX(cuC * sc2); { const U = e.card.material.uniforms, q = e.cache.dens; U.texel.value.set(1 / e.cache.w, 1 / e.cache.h); U.bw.value = 0; }
           e.lastP = { x: pos.x, z }; if (!e.shadowTex || e.shadowKey !== tPose + '|' + P.face.id) drawShadowTex(e, ch, P, tPose, tFace);
         }
         st.prof.chars += performance.now() - tP0;

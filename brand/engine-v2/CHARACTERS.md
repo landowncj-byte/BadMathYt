@@ -113,6 +113,20 @@ Other knobs: `eyes.lidTop/lidSlope/lidBot/look/dart/farSize`, `brows.farY/farTil
 
 ## 5. Looks, outfits, accessories (art direction)
 
+### 5.0 Archetypes: who is who at thumbnail size (owner rule, 2026-11-26)
+Each recurring character has ONE signature colour, ONE costume symbol and a different silhouette (hat / coat shape). Look names are in `looks.js`; `look: {RICH_A: 'RICH', RICH_B: 'RICH_B'}` maps scene ids to looks.
+
+| Look | Signature colour | Symbols | Silhouette |
+|---|---|---|---|
+| `CON` | RED suit | red pocket square, black tie, white shirt, slick black hair | bare slick hair, oval head |
+| `RICH` / `RICH_B` (collectors) | GOLD + PURPLE | purple top hat with gold band, monocle (A) / round glasses (B), cream fur collar, gold watch chain, holds a cash bundle (`give` / `handover`) | tall hat, long coat; B is wider (`build: 'wide'`) |
+| `AGENT` | NAVY | huge yellow FBI on the chest, navy cap with FBI, black sunglasses bar, gold badge | square head, cap peak |
+| `JUDGE` | BLACK robe | white collar band, white curly wig, gavel | huge robe, tiny head, wig puffs |
+| `WINEMAKER` | GREEN apron | grape-cluster logo, maroon beret | beret, round head |
+| `YOU` | neutral grey hoodie | plain hoodie | bean head |
+| `TELLER` (auctioneer) | slate waistcoat | green visor | visor |
+New costume pieces: accessories `monocle cap beret furcollar goldchain dollar collarband` (in `looks.js`), `look.apronLogo`, `look.chestText` + `palette.chest` (colour of the chest letters). Keep characters BIG: default to MS / CU; use FS only to see two bodies or a held prop at full arm length; WS only to establish.
+
 ```js
 BM2.Cast.define('CON', { head: 'oval', hair: 'swoop', outfit: 'suit',
   palette: { top: '#59606B', top2: '#F5F3EE', bottom: '#2A3647', hair: '#0B0F14' },
@@ -124,6 +138,27 @@ BM2.Cast.define('CON', { head: 'oval', hair: 'swoop', outfit: 'suit',
 * `hair`: `bald tuft swoop parted bun long curly`; hats (`flatcap visor tophat crown hood`), face (`glasses sunbar`) and body (`bowtie tie pocketsquare scarf badge`) accessories are registered with `Cast.accessory(name, {slot, draw(g, c, o)})`; `c` carries head sizes / feature positions so a new one is ~5 lines of canvas paths.
 * Per scene: `cast: { CON: { base: 'CON', outfit: 'apron' } }` or `override` on a cast entry. Global look overrides: `BM2.story({ style: { ink: '#0B0F14', ol: 4.2 } })`.
 * Gaits (`Cast.gait`): `walk` (stride 150 bible px, cycle 0.53 s), `run` (260 px, 0.40 s), `sneak` (0.8 s), `stomp`.
+
+### 5.1 Literal actions and sound cues (`actions.js`)
+If the line says it, we SEE it. Each action is a gesture whose prop is animated by `o.lt` (seconds since the gesture began), drawn at 1.4-1.5 x so it reads in silhouette:
+
+| `do:` | What you see | Cue (impact moment) |
+|---|---|---|
+| `pour` | jug tilts over the bottle, a wine stream, the wine level rises | `pour` (+0.2 s) |
+| `cork-press` | T-bar press drives the cork into the neck (twice), impact ticks | `cork-pop` (+0.3, +0.9) |
+| `label-slap` | a label flies in and sticks with a bounce and hit lines | `label-slap` (+0.22) |
+| `wax-dip` | bottle upside down, dips into a wax pot held by the other hand, comes up with a red wax cap and drip, flips upright | `wax-plop` (+0.55) |
+| `give` / `take` / `handover` | cash bundle held out, other hand takes it, bundle changes hands. Macro: `{do: 'handover', from, to, prop, at}` | `cash-rustle` (+0.3) |
+| `raise-paddle` | arm straight up with the numbered paddle (`override: {propOpts: {color, text}}`; use FS, the paddle goes above the head) | `paddle-raise` |
+| `cuff` / `cuffed` / `cuffs-on` | open cuffs close with a click and spark; the target holds both wrists together. Macro: `{do: 'cuffs-on', from, to, at}` | `cuffs` (+0.3) |
+| `gavel` | gavel up, slam down, screen shake | `gavel` (+0.44) |
+| background loops | `bounce`, `nod`, `cheer`, `sway`, `clap`, `wave`: cheap one-line loops for extras so every shot has 1-2 supporting moves | none |
+
+**SFX cue system** (`BM2.Cues`): every action emits its cue automatically at the impact time into `sfx.json` (`{at, name, gain, dur, cue}`); the storyboard can also say `sfx: 'siren'` / `'door-slam'` on any action, prop action or fx (`B.Cues.resolve`). Cues: `pour cork-pop label-slap cash-rustle paddle-raise gavel cuffs siren door-slam wax-plop`. `name` is the library file used today (stand-ins: swoosh, pop, paper_slam, coins_drop, click ...); `want` is the file the cue should get when it is recorded (`pour_1`, `cork_pop_1`, `label_slap_1`, `cash_rustle_1`, `paddle_raise_1`, `cuffs_1`, `wax_plop_1`): edit `BM2.Cues.cue[name].name` (actions.js) when the file exists and every video follows. `nocue: true` / `sfx: false` on an action silences it.
+
+### 5.2 Fast cutting (avg shot 1.1-1.4 s)
+* **Set reuse**: a set (kind + theme + palette + lamp) is built once per page; later scenes that cut back to it get a cheap clone sharing geometry, materials and textures (stage3d.js `setCache`). Cutting kitchen -> auction -> kitchen costs no set setup. Character cards are cropped / reused as before.
+* One shot = main action + 1-2 supporting moves (an extra's `cheer` / `nod` / `bounce`, a prop with `in:` appearing, a walk-in, a rack focus). The demo has 13 shots in 15.3 s.
 
 ## 6. Locomotion (no foot sliding)
 
@@ -162,7 +197,7 @@ Camera marks (`A`, `B`, `door`...) are named x positions used by `cast.at` and `
 
 2D fallback: with `stage: '2d'` (or no three.js) the same story renders on `sets.js` parallax layers (cellar, office, street, studio).
 
-**Character cards (cut-outs).** The card shader adds a thin white paper border (alpha dilation, 5 card units, Paper `#F5F3EE`) and a tiny offset drop shadow (3 units down-right, 34 % ink) around the printed figure, so characters read as cut-outs standing in the set. Faces are untouched. Knobs before `BM2.story`: `BM2.Stage3D.border = false` (off), `BM2.Stage3D.borderW = 5`. The lamp-cast floor shadows are unchanged.
+**Character cards (cut-outs).** When a card is redrawn (pose step / face change, 15 per second at most) the stage bakes a thin white paper border (white silhouette blitted on a 12-tap ring, 5 card units, Paper `#F5F3EE`) and a tiny offset drop shadow (34 % ink, down-right) into the card texture, so characters read as cut-outs standing in the set. Baked, not a per-pixel shader gather: the shader version cost +35 % per frame. Faces are untouched. Knobs before `BM2.story`: `BM2.Stage3D.border = false` (off), `BM2.Stage3D.borderW = 5`. The lamp-cast floor shadows are unchanged.
 
 **Captions use the script, not Whisper.** `voice.js` carries `sentences[].text` (the show-text from `voice/sentences.json`); per sentence the Whisper words are aligned to the script tokens (LCS on normalised text, gaps between exact anchors spread by character length over the Whisper span), so names and numbers are spelled as written ("Rudy Kurniawan", "two thousand six") while the timing is still word-by-word from `words.json`. `@word` refs in scenes still resolve against the Whisper words (Whisper's "kernioan" stays the ref). `captions: {source: 'whisper'}` restores the old behaviour. Rebuild `voice.js` with `bm2.cjs voice` after a re-voice so `sentences` is present.
 
