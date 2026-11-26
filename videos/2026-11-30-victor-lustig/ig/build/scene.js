@@ -664,7 +664,7 @@ const S = V5.make({
     { type: 'sentence', from: 74.3, to: 79.0, pose: 'shock', at: 74.4, guiltyAt: 74.6, fifteenAt: 76.1, fiveAt: 77.5 },
     { type: 'verdict', from: 79.0, to: 81.0, pose: 'shock', at: 79.0, barsAt: 79.0, yrsAt: 79.02, alcAt: 80.1, factAt: 79.6 },
     { type: 'island', from: 81.0, to: 83.2, pose: 'chin', at: 81.05, l1At: 81.3, factAt: 82.4 },
-    { type: 'tower', from: 83.2, to: 85.6, pose: 'shock', at: 83.3, tagAt: 83.4, stampAt: 84.9, xAt: 84.2, chips: [{ at: 84.2, text: 'NEVER CHARGED FOR IT', tone: 'bad' }], foot: 'THE STORY · NEVER PROVEN IN COURT' },
+    { type: 'tower', from: 83.2, to: 85.6, pose: 'shock', at: 83.3, tagAt: 83.4, stampAt: 84.9, xAt: 84.2, chips: [{ at: 84.2, text: 'NEVER CHARGED FOR IT', tone: 'bad', y: 1108 }], foot: 'THE STORY · NEVER PROVEN IN COURT' },
     { type: 'board', from: 85.6, to: 87.9, pose: 'shock', at: 85.65, step: 0.2, tightAt: 86.7, stampAt: 87.2 },
     { type: 'ask', from: 87.9, to: 99, pose: 'you', l1: 'REAL CON OR', l2: 'BULLSHIT LEGEND?' },
   ],

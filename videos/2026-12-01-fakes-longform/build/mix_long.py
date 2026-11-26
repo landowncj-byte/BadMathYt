@@ -47,14 +47,13 @@ def main(bd, out):
     fx *= 10 ** (-1 / 20)
     # ---- beds (per chapter, crossfaded) ----
     T = lambda k: pstart[k]
-    segs = [  # start, end, [(manifest bed name, gain dB)] — RULES 115: a different bed per chapter
-        (0, T('P07') - 0.3, [('tense_bed_1', 0)]),
-        (T('P07') - 0.3, T('P21') - 0.3, [('jazz_bed_1', 0)]),
-        (T('P21') - 0.3, T('P34') - 0.3, [('tense_bed_2', 0)]),
-        (T('P34') - 0.3, T('P48') - 0.3, [('auction_tension_bed_1', 0)]),
-        (T('P48') - 0.3, T('P60') - 0.3, [('verdict_bed_2', 0)]),
-        (T('P60') - 0.3, T('P71') - 0.3, [('tense_bed_1', 0)]),
-        (T('P71') - 0.3, DUR, [('lofi_bed_1', 0)])]
+    segs = [  # start, end, [(manifest bed name, gain dB)] — RULES 115: a different bed per chapter, none used in five-cons
+        (0, T('P08') - 0.3, [('noir_bed_1', 0)]),
+        (T('P08') - 0.3, T('P26') - 0.3, [('heist_bed_2', 0)]),
+        (T('P26') - 0.3, T('P46') - 0.3, [('orchestral_bed_2', 0)]),
+        (T('P46') - 0.3, T('P61') - 0.3, [('mystery_bed_2', 0)]),
+        (T('P61') - 0.3, T('P77') - 0.3, [('jazz_bed_2', 0)]),
+        (T('P77') - 0.3, DUR, [('ambient_bed_1', 0)])]
     bed = np.zeros((N, 2), 'f4'); XF = 1.2
     for a, b, files in segs:
         i0 = int(max(0, a - XF / 2) * SR); i1 = min(N, int((b + XF / 2) * SR)); n = i1 - i0; seg = np.zeros((n, 2), 'f4')

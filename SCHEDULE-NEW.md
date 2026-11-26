@@ -88,3 +88,4 @@ THU–SUN COMPLETE (all 4 platforms, 3/day + Thu catch-up + Fri long-form).
 Mon 19:00 ET = victor-lustig (building). Tue: 11:00 pennies · 15:00 billionaires-split · 17:00 LONG-FORM fakes · 19:00 hitler-diaries.
 | hitler diaries | YT / TT / IG / FB | Tue 12/1 19:00 | 00:00Z Wed | 5a399e12 / 82d7d1c4 / 4b8e97db / 7a096cb3 | APPROVED |
 pennies-to-the-moon: math error caught by builder ($35.2T → $3.52T for the $1-bill stack; 17,000 → ~1,725 jackpots) — scripts fixed, re-voiced, re-aligning; rebuild pending.
+| pennies to the moon (math fixed) | YT / TT (6500 RPM) / IG / FB | Tue 12/1 11:00 | 16:00Z | 2d2068f8 / 279ec08a / 97331e9e / 28936100 | APPROVED |

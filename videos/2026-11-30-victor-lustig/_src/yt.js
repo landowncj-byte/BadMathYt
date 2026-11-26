@@ -55,7 +55,7 @@ const S = V5.make({
     { type: 'sentence', from: 66.7, to: 70.8, pose: 'shock', at: 66.8, guiltyAt: 67.0, fifteenAt: 68.16, fiveAt: 69.44 },
     { type: 'verdict', from: 70.8, to: 74.7, pose: 'shock', at: 70.9, barsAt: 71.0, yrsAt: 71.18, alcAt: 72.3, factAt: 71.5 },
     { type: 'child', from: 74.7, to: 77.4, pose: 'chin', at: 74.8, kidAt: 75.0, longAt: 76.3 },
-    { type: 'tower', from: 77.4, to: 81.0, pose: 'shock', at: 77.5, tagAt: 77.6, xAt: 79.3, stampAt: 80.2, chips: [{ at: 79.34, text: 'NEVER CHARGED FOR IT', tone: 'bad' }], foot: 'THE STORY · NEVER PROVEN IN COURT' },
+    { type: 'tower', from: 77.4, to: 81.0, pose: 'shock', at: 77.5, tagAt: 77.6, xAt: 79.3, stampAt: 80.2, chips: [{ at: 79.34, text: 'NEVER CHARGED FOR IT', tone: 'bad', y: 1108 }], foot: 'THE STORY · NEVER PROVEN IN COURT' },
     { type: 'board', from: 81.0, to: 84.8, pose: 'shock', at: 81.1, tightAt: 83.3, stampAt: 83.6 },
     { type: 'ask', from: 84.8, to: 99, pose: 'you', l1: 'REAL CON OR', l2: 'TALL TALE?' },
   ],

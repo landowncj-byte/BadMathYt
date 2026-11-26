@@ -57,22 +57,20 @@ function loadImg(u){return new Promise((r,j)=>{const i=new Image();i.onload=()=>
 function A(imgs){const c=document.getElementById('a').getContext('2d');stage(c);
   c.textBaseline='alphabetic';c.textAlign='left';
   const T=(t,x,y,sz,col)=>{c.save();c.font=sz+'px Anton';c.fillStyle=col;c.shadowColor='rgba(2,4,9,.6)';c.shadowBlur=8;c.shadowOffsetY=4;c.fillText(t,x,y);c.restore();};
-  T('5 CONS',44,235,250,PAPER);T('1 NUMBER CAUGHT THEM ALL',48,322,76,GOLD);
-  // five polaroids: real photos (Kurniawan, Gignac) + illustrations (Tipton, Tucker, Javice)
-  const pol=(x,y,rot,img,crop,name,srot,tag)=>{const w=182,h=244;const e=paper(c,x,y,w,h,rot);
+  T('FAKES',44,240,250,PAPER);T('THAT FOOLED THE EXPERTS',48,318,64,GOLD);
+  // three real photos: Peruggia (police photo, PD), van Meegeren (Koos Raucamp / ANEFO, CC BY 4.0), Kurniawan (ICE, PD)
+  const pol=(x,y,rot,img,crop,name,srot)=>{const w=270,h=350;const e=paper(c,x,y,w,h,rot);
     c.save();c.beginPath();c.roundRect(12,12,w-24,w-24,6);c.clip();c.drawImage(img,crop[0],crop[1],crop[2],crop[3],12,12,w-24,w-24);
     const g=c.createLinearGradient(12,12,w,w);g.addColorStop(0,'rgba(255,255,255,.12)');g.addColorStop(1,'rgba(0,0,0,.12)');c.fillStyle=g;c.fillRect(12,12,w-24,w-24);c.restore();
     c.strokeStyle='rgba(11,15,20,.25)';c.lineWidth=2;c.beginPath();c.roundRect(12,12,w-24,w-24,6);c.stroke();
-    c.fillStyle=INK;c.font='25px Anton';c.textAlign='center';c.letterSpacing='1px';c.fillText(name,w/2,w+34);c.letterSpacing='0px';
-    e();stamp(c,'CAUGHT',x+w/2+4,y+w-30,32,srot);};
-  const [kur,gig,tip,tuc,jav]=imgs;
-  pol(30,380,-3,kur,[70,0,360,360],'KURNIAWAN',-7);
-  pol(222,392,1.5,gig,[510,10,440,440],'GIGNAC',5);
-  pol(414,380,-1.5,tip,[0,60,640,640],'TIPTON',-4);
-  pol(606,394,2,tuc,[0,40,640,640],'TUCKER',6);
-  pol(798,382,-2.5,jav,[0,40,640,640],'JAVICE',-6);
-  character(c,1150,150,98);
-  small(c,'FAKE WINE · FAKE PRINCE · RIGGED LOTTERY',44,688,30);
+    c.fillStyle=INK;c.font='34px Anton';c.textAlign='center';c.letterSpacing='1px';c.fillText(name,w/2,w+38);c.letterSpacing='0px';c.font='13px JetBrains Mono';c.fillStyle='#59606B';
+    e();stamp(c,'CAUGHT',x+w/2+4,y+w-34,40,srot);};
+  const [per,mee,kur]=imgs;
+  pol(40,352,-3,per,[90,60,620,620],'PERUGGIA',-7);
+  pol(340,364,1.5,mee,[490,40,370,370],'VAN MEEGEREN',5);
+  pol(640,352,-2,kur,[70,0,360,360],'KURNIAWAN',-6);
+  stamp(c,'4 FAKES · 1 TINY DETAIL EACH',905,120,40,-5);
+  character(c,1130,420,104);
   vignette(c);}
-(async()=>{await loadFonts();A(await Promise.all([P+'brand/photos/rudy-kurniawan/2.jpg',P+'brand/photos/anthony-gignac/1.jpg',P+'videos/2026-11-27-five-cons/assets/tipton.png',P+'videos/2026-11-27-five-cons/assets/tucker.png',P+'brand/photos/charlie-javice-illustration/founder.png'].map(loadImg)));window.READY=true;})();
+(async()=>{await loadFonts();A(await Promise.all([P+'brand/photos/vincenzo-peruggia/1.jpg',P+'brand/photos/han-van-meegeren/4.jpg',P+'brand/photos/rudy-kurniawan/2.jpg'].map(loadImg)));window.READY=true;})();
 </script>
