@@ -30,7 +30,7 @@ Picked #1 for this cut (own hook and order; other cuts use a different rung).
 | 12 | (see build/AV.md) | — | In twenty seventeen, two New York hotels said she walked out without paying. |
 | 13 | (see build/AV.md) | — | Send this to the friend who always says, I'll pay you back. |
 | 14 | (see build/AV.md) | — | Then she did it to a magazine editor friend, Rachel Williams. |
-| 15 | (see build/AV.md) | — | On a trip to Morocco, the bill landed on Rachel's card. |
+| 15 | (see build/AV.md) | — | Here's how: on a trip to Morocco, the bill landed on Rachel's card. |
 | 16 | (see build/AV.md) | — | Sixty-two thousand dollars. More than a lot of people make in a year. |
 | 17 | (see build/AV.md) | — | Rachel kept asking, but Anna kept saying the wire was coming. |
 | 18 | (see build/AV.md) | — | In October twenty seventeen, police finally arrested her. |

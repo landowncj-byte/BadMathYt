@@ -20,3 +20,9 @@ What If moods: synth_bed_1–3 · electronic_bed_1–3 · funk_bed_1–3 · hiph
 Long-form: ambient_bed_1–3, orchestral_bed_1–3, noir_bed_2 (284 s)
 Rule: pick a bed not used by the previous 3 posted topics; log it in the table above. Dark piano search found nothing usable.
 | mona lisa thief | noir_bed_1 |
+| double or nothing | synth_bed_1 |
+| anna delvey | mystery_bed_1 |
+| million or 100 a day | funk_bed_1 |
+| van meegeren | heist_bed_1 |
+| pennies to the moon | electronic_bed_2 |
+| hitler diaries | orchestral_bed_1 |

@@ -904,7 +904,7 @@
       g.save(); g.translate(150, y0 + h - 320); g.rotate(0.06); const bw = 270, bh = 420; g.fillStyle = '#9C7A4F'; g.beginPath(); g.roundRect(-bw / 2, -bh / 2, bw, bh, 8); g.fill(); g.strokeStyle = '#6B4F2A'; g.lineWidth = 5; g.beginPath(); g.moveTo(-bw / 2, -40); g.lineTo(bw / 2, -40); g.moveTo(-bw / 2, 90); g.lineTo(bw / 2, 90); g.moveTo(0, -bh / 2); g.lineTo(0, bh / 2); g.stroke();
       const pk = ease.out(lin(t, p.peekAt, p.peekAt + 0.5)); if (pk > 0) { g.save(); g.beginPath(); g.moveTo(-bw / 2, -bh / 2); g.lineTo(-bw / 2 + 170 * pk, -bh / 2); g.lineTo(-bw / 2, -bh / 2 + 220 * pk); g.closePath(); g.clip(); painting(g, p.art, 0, 0, bw, bh, { border: 20 }); g.restore(); g.strokeStyle = '#6B4F2A'; g.lineWidth = 4; g.beginPath(); g.moveTo(-bw / 2 + 170 * pk, -bh / 2); g.lineTo(-bw / 2, -bh / 2 + 220 * pk); g.stroke(); }
       g.restore();
-      g.fillStyle = '#F5F3EE'; rr(g, -250, y0 + h - 82, 500, 56, 10); g.fill(); txt(g, p.cap, 0, y0 + h - 53, F.hero(40), th.ink); txt(g, 'ILLUSTRATION', x0 + w - 24, y0 + 22, F.mono(14), th.inkSoft, 'right');
+      g.fillStyle = '#F5F3EE'; rr(g, -120, y0 + h - 82, 500, 56, 10); g.fill(); txt(g, p.cap, 130, y0 + h - 53, F.hero(40), th.ink); txt(g, 'ILLUSTRATION', x0 + w - 24, y0 + 22, F.mono(14), th.inkSoft, 'right');
     },
   });
 
@@ -1100,8 +1100,8 @@
       sfx(R.room, 'swoosh_2', -11, 0.8); sfx(R.peek, 'pop_1', -9, 0.4); sfx(R.peek, 'heartbeat_1', -9, 0.9); }
 
     if (R.twist) { const [x, y] = seg();
-      E.push({ id: 'tw1', type: 'text', at: [x, y], in: O(R.twist[0], '-0.3'), out: R.twist[1], props: { lines: [[['SO HOW DID', 'paper']], [['THEY CATCH', 'paper']], [['HIM?', 'gold']]], size: 170, per: 0.15 } });
-      E.push({ id: 'tw2', type: 'text', at: [x, y], in: O(R.twist[1], '-0.1'), props: { lines: [[['HE CAUGHT', 'paper']], [['HIMSELF', 'bad']]], size: 200, per: 0.25 } });
+      E.push({ id: 'tw1', type: 'text', at: [x, y], in: O(R.twist[0], '-0.3'), out: R.twist[1], props: { lines: [[['SO HOW DID', 'paper']], [['THEY CATCH', 'paper']], [['HIM?', 'gold']]], size: 140, per: 0.15 } });
+      E.push({ id: 'tw2', type: 'text', at: [x, y], in: O(R.twist[1], '-0.1'), props: { lines: [[['HE CAUGHT', 'paper']], [['HIMSELF', 'bad']]], size: 150, per: 0.25 } });
       b(R.twist[0], SB, 'tw1', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'chin' });
       b(R.twist[1], ZN, 'tw2', { fill: 0.9, maxH: 900, sy: 840, st: 'corner-left', pose: 'shock', dur: 0.5 });
       sfx(R.twist[0], 'swipe_2', -11, 0.4); sfx(R.twist[1], 'cinematic_hit_1', -7, 0.8); SH.push([R.twist[1], 12]); }
@@ -1166,8 +1166,8 @@
     // ---- FAMOUS ----
     { const [x, y] = seg();
       E.push({ id: 'fm', type: 'famous', at: [x, y], in: O(R.famous, '-0.5'), props: { art: ART, at: R.famousWord } });
-      b(R.famous, GH, 'fm', Object.assign({ move: 'whip', fill: 0.92, st: 'corner-left', pose: 'point' }, LAY, { maxH: 960, sy: 830 }));
-      b(R.famousWord, ZN, 'fm.banner', { fill: 0.92, maxH: 780, sy: 880, st: 'corner-left', pose: 'shock', dur: 0.6 });
+      b(R.famous, GH, 'fm', Object.assign({ move: 'whip', fill: 0.92, st: 'corner-left', pose: 'point' }, LAY, { maxH: 900, sy: 850 }));
+      b(R.famousWord, ZN, 'fm.banner', { fill: 0.72, maxH: 700, sy: 890, st: 'corner-left', pose: 'shock', dur: 0.6 });
       sfx(R.famous, 'swoosh_2', -11, 0.9); sfx(R.famousWord, 'cinematic_hit_1', -6, 1.0); sfx(R.famousWord, 'camera_shutter_1', -9, 0.4); }
     if (R.recap) { const [x, y] = seg();
       E.push({ id: 'rc', type: 'text', at: [x, y], in: O(R.recap[0], '-0.2'), props: { lines: [[['2 YEARS', 'paper']], [['NO CLUE', 'bad']], [['1 LETTER', 'gold']]], size: 130, per: 0.35 } });

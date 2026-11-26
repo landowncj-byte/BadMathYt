@@ -100,8 +100,8 @@
       sfx(R.room, 'swoosh_2', -11, 0.8); sfx(R.peek, 'pop_1', -9, 0.4); sfx(R.peek, 'heartbeat_1', -9, 0.9); }
 
     if (R.twist) { const [x, y] = seg();
-      E.push({ id: 'tw1', type: 'text', at: [x, y], in: O(R.twist[0], '-0.3'), out: R.twist[1], props: { lines: [[['SO HOW DID', 'paper']], [['THEY CATCH', 'paper']], [['HIM?', 'gold']]], size: 170, per: 0.15 } });
-      E.push({ id: 'tw2', type: 'text', at: [x, y], in: O(R.twist[1], '-0.1'), props: { lines: [[['HE CAUGHT', 'paper']], [['HIMSELF', 'bad']]], size: 200, per: 0.25 } });
+      E.push({ id: 'tw1', type: 'text', at: [x, y], in: O(R.twist[0], '-0.3'), out: R.twist[1], props: { lines: [[['SO HOW DID', 'paper']], [['THEY CATCH', 'paper']], [['HIM?', 'gold']]], size: 140, per: 0.15 } });
+      E.push({ id: 'tw2', type: 'text', at: [x, y], in: O(R.twist[1], '-0.1'), props: { lines: [[['HE CAUGHT', 'paper']], [['HIMSELF', 'bad']]], size: 150, per: 0.25 } });
       b(R.twist[0], SB, 'tw1', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'chin' });
       b(R.twist[1], ZN, 'tw2', { fill: 0.9, maxH: 900, sy: 840, st: 'corner-left', pose: 'shock', dur: 0.5 });
       sfx(R.twist[0], 'swipe_2', -11, 0.4); sfx(R.twist[1], 'cinematic_hit_1', -7, 0.8); SH.push([R.twist[1], 12]); }
@@ -166,8 +166,8 @@
     // ---- FAMOUS ----
     { const [x, y] = seg();
       E.push({ id: 'fm', type: 'famous', at: [x, y], in: O(R.famous, '-0.5'), props: { art: ART, at: R.famousWord } });
-      b(R.famous, GH, 'fm', Object.assign({ move: 'whip', fill: 0.92, st: 'corner-left', pose: 'point' }, LAY, { maxH: 960, sy: 830 }));
-      b(R.famousWord, ZN, 'fm.banner', { fill: 0.92, maxH: 780, sy: 880, st: 'corner-left', pose: 'shock', dur: 0.6 });
+      b(R.famous, GH, 'fm', Object.assign({ move: 'whip', fill: 0.92, st: 'corner-left', pose: 'point' }, LAY, { maxH: 900, sy: 850 }));
+      b(R.famousWord, ZN, 'fm.banner', { fill: 0.72, maxH: 700, sy: 890, st: 'corner-left', pose: 'shock', dur: 0.6 });
       sfx(R.famous, 'swoosh_2', -11, 0.9); sfx(R.famousWord, 'cinematic_hit_1', -6, 1.0); sfx(R.famousWord, 'camera_shutter_1', -9, 0.4); }
     if (R.recap) { const [x, y] = seg();
       E.push({ id: 'rc', type: 'text', at: [x, y], in: O(R.recap[0], '-0.2'), props: { lines: [[['2 YEARS', 'paper']], [['NO CLUE', 'bad']], [['1 LETTER', 'gold']]], size: 130, per: 0.35 } });
