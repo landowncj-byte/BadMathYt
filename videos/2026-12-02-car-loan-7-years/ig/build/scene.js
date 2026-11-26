@@ -523,7 +523,7 @@
     draw(g, p, env) {
       const { t, lt, theme, lift } = env, w = p.w, h = p.h, k = pop(lt, 'snappy'); g.save(); g.scale(0.92 + 0.08 * k, 0.92 + 0.08 * k); g.globalAlpha *= clamp(lt / 0.1 + 0.2); paper(g, -w / 2, -h / 2, w, h, 22, { lift });
       g.save(); rr(g, -w / 2, -h / 2, w, h, 22); g.clip(); g.fillStyle = theme.navy; g.fillRect(-w / 2, -h / 2, w, 100); g.restore(); txt(g, p.head, 0, -h / 2 + 52, F.hero(56), theme.paper);
-      const u = clamp(lin(t, p.at, p.at + p.dur)), hrs = ease.inOut(u) * p.hours; const o = { font: F.hero(170), size: 170, color: theme.badInk, speed: p.hours / p.dur * 0.5 }; const nw = B.rollWidth(g, p.hours, o).w, uw = MCw(' HRS', F.hero(64)), tot = nw + uw;
+      const u = clamp(lin(t, p.at, p.at + p.dur)), hrs = u >= 1 ? p.hours : Math.min(p.hours, ease.inOut(u) * p.hours); const o = { font: F.hero(170), size: 170, color: theme.badInk, speed: p.hours / p.dur * 0.5 }; const nw = B.rollWidth(g, p.hours, o).w, uw = MCw(' HRS', F.hero(64)), tot = nw + uw;
       g.save(); g.translate(0, -h / 2 + 200); B.roll(g, Math.round(hrs), -tot / 2, 0, { ...o, align: 'left' }); txt(g, ' HRS', -tot / 2 + nw, 34, F.hero(64), theme.badInk, 'left'); g.restore();
       for (let i = 0; i < 6; i++) { const y = -h / 2 + 320 + i * 52, f = clamp((hrs - i * 40) / 40); g.fillStyle = theme.paperShade; rr(g, -w / 2 + 120, y, w - 240, 38, 8); g.fill(); if (f > 0) { g.fillStyle = i < 5 ? theme.badInk : '#F2B705'; rr(g, -w / 2 + 120, y, (w - 240) * f, 38, 8); g.fill(); } txt(g, 'WK ' + (i + 1), -w / 2 + 60, y + 20, F.monoX(22), theme.inkSoft); if (f >= 1) txt(g, '40 H', w / 2 - 80, y + 20, F.monoX(22), theme.inkSoft); }
       txt(g, p.foot, 0, h / 2 - 34, F.mono(20), theme.inkSoft); g.restore();

@@ -19,3 +19,9 @@ What If — no villain photo. Recurring character = YOU (the same cartoon worker
 
 ## CRIME-SHOW BUILD STATUS
 VOICED READY
+
+RENDERED READY (night builder 2026-11-26, engine v2 + videos/_lib/cs.js screen-stage; beds exactly as assigned; mix v2 (quiet bed); TikTok mixed with BM2_BED_DB=-12):
+RENDERED READY: youtube (2026-12-04-phone-hours/video.mp4) 62.30s 23.6MB, -14.2 LUFS
+RENDERED READY: tiktok (2026-12-04-phone-hours/tiktok/video.mp4) 65.07s 24.6MB, -14.1 LUFS
+RENDERED READY: ig (2026-12-04-phone-hours/ig/video.mp4) 67.10s 25.0MB, -14.1 LUFS
+Checks: contact sheets of all 3 cuts looked at on real frames (stills reviewed per scene before render; fixed: card line overlap, hook text vs next scene, number-word timing). Nothing in the caption band; numbers match the script ($24.51/hr, $1,000, 41 HOURS, $70 x 36, $2,520, 103 HOURS, $3,520, 144 HOURS = 18 WORK DAYS, 22 after the ASSUMED 20% tax). No brand/model: generic logo-free phone. YOU = recurring cartoon worker (pip bottom-left, 100%). All visuals are ILLUSTRATION (no real photos). Bed electronic_bed_3; TikTok BM2_BED_DB=-12.

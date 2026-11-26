@@ -102,3 +102,6 @@ mix.py bed -24 → -30 LUFS, vocal-band EQ dip, harder ducking, SFX bus -3 dB. E
 | lottery rig | 20:00Z Thu | 694d842f / 100d61ac / 42ae01b1 / 1310b91b | APPROVED (old deleted) |
 | three briefcases | 22:00Z Thu | 09484669 / 168b8e03 / c04e7435 / 2637b693 | APPROVED (old deleted) |
 | fake wine | 00:00Z Fri | 903e3f95 / 0f4cf622 / ef4daad9 / 627068cc | APPROVED (old deleted) |
+| million vs billion | 16:00Z Fri 11/27 | 43980255 / f0858600 / 5a084f3b / 6ff19156 | APPROVED (old deleted) |
+| tucker payday | 20:00Z Fri | be046e7e / 2eff2d1f / 773cbea8 / 5ae869e2 | APPROVED (old deleted) |
+| card minimum | 00:00Z Sat | 9bbfac83 / df1910c2 / e92f9544 / 39418a9f | APPROVED (old deleted) |
