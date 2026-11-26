@@ -210,3 +210,36 @@ All CC0 1.0, sourced from Freesound with the license filter "Creative Commons 0"
 | `music/gameshow_bed_2.wav` | Pizzicato strings - bright, fun, boppy | jstarrcreative | CC0 1.0 | <https://freesound.org/people/jstarrcreative/sounds/742677/> |
 | `music/bass_sting_1.wav` | double bass sounds | elzozo | CC0 1.0 | <https://freesound.org/people/elzozo/sounds/441534/> |
 | `music/bass_sting_2.wav` | double bass sounds | elzozo | CC0 1.0 | <https://freesound.org/people/elzozo/sounds/441534/> |
+
+## Music beds added 2026-11-26 (RULES 115)
+| File | Title | Creator | License | Source |
+|---|---|---|---|---|
+| `music/noir_bed_1.mp3` | 'Noir' Reel by Hainbach | makenoisemusic | CC0 1.0 | <https://freesound.org/people/makenoisemusic/sounds/422441> |
+| `music/noir_bed_2.mp3` | Mysterious Misty Morning.mp3 | waxsocks | CC0 1.0 | <https://freesound.org/people/waxsocks/sounds/581683> |
+| `music/mystery_bed_1.mp3` | Mystery And Thriller Music | akisloukas | CC0 1.0 | <https://freesound.org/people/akisloukas/sounds/418210> |
+| `music/mystery_bed_2.mp3` | Suspenseful Strings Music 01 | Magmi.Soundtracks | CC0 1.0 | <https://freesound.org/people/Magmi.Soundtracks/sounds/475737> |
+| `music/mystery_bed_3.mp3` | Mysterious Horror Theme Song | emrebugday | CC0 1.0 | <https://freesound.org/people/emrebugday/sounds/488108> |
+| `music/heist_bed_1.mp3` | Chiptune Heist Music | Bertsz | CC0 1.0 | <https://freesound.org/people/Bertsz/sounds/545454> |
+| `music/heist_bed_2.mp3` | Spy-Game.aif | Inavision | CC0 1.0 | <https://freesound.org/people/Inavision/sounds/493909> |
+| `music/heist_bed_3.mp3` | Interscope (stealth music).wav | Sticks5611 | CC0 1.0 | <https://freesound.org/people/Sticks5611/sounds/614032> |
+| `music/synth_bed_1.mp3` | Circuit Synthwave Alt | Doctor_Dreamchip | CC0 1.0 | <https://freesound.org/people/Doctor_Dreamchip/sounds/460358> |
+| `music/synth_bed_2.mp3` | Circuit Synthwave | Doctor_Dreamchip | CC0 1.0 | <https://freesound.org/people/Doctor_Dreamchip/sounds/460357> |
+| `music/synth_bed_3.mp3` | Film Movie Synthwave Electropop Dance Retrowave 90s Atmo Cinematic music Mastered 120Bpm.wav | szegvari | CC0 1.0 | <https://freesound.org/people/szegvari/sounds/623421> |
+| `music/electronic_bed_1.mp3` | Cosmic minimal music fragment.Wav | Clacksberg | CC0 1.0 | <https://freesound.org/people/Clacksberg/sounds/506324> |
+| `music/electronic_bed_2.mp3` | Parallel Universe | Andrewkn | CC0 1.0 | <https://freesound.org/people/Andrewkn/sounds/404458> |
+| `music/electronic_bed_3.mp3` | Drops | Andrewkn | CC0 1.0 | <https://freesound.org/people/Andrewkn/sounds/404460> |
+| `music/funk_bed_1.mp3` | Retro.m4a | B_Sean | CC0 1.0 | <https://freesound.org/people/B_Sean/sounds/421888> |
+| `music/funk_bed_2.mp3` | Crack.wav | staticpony1 | CC0 1.0 | <https://freesound.org/people/staticpony1/sounds/249602> |
+| `music/funk_bed_3.mp3` | Disco funk loops 001 remix 1 long loop with drums 120 bpm.wav | josefpres | CC0 1.0 | <https://freesound.org/people/josefpres/sounds/567959> |
+| `music/hiphop_bed_1.mp3` | East Coast Drum Loop Tempo 90 - Nova Sound | NovaSoundTechnology | CC0 1.0 | <https://freesound.org/people/NovaSoundTechnology/sounds/118750> |
+| `music/orchestral_bed_1.mp3` | Thriller Documentary Pack #1 | dekstromoramid | CC0 1.0 | <https://freesound.org/people/dekstromoramid/sounds/435370> |
+| `music/orchestral_bed_2.mp3` | beneath ambient 2.wav | tradeshowmusic | CC0 1.0 | <https://freesound.org/people/tradeshowmusic/sounds/136721> |
+| `music/orchestral_bed_3.mp3` | Decay - Depressive melodic ambiant | edtijo | CC0 1.0 | <https://freesound.org/people/edtijo/sounds/250367> |
+| `music/ambient_bed_1.mp3` | Space ambient music fragment.Wav | Clacksberg | CC0 1.0 | <https://freesound.org/people/Clacksberg/sounds/491288> |
+| `music/ambient_bed_2.mp3` | Ethereal Ambient music..wav | Clacksberg | CC0 1.0 | <https://freesound.org/people/Clacksberg/sounds/500218> |
+| `music/ambient_bed_3.mp3` | Ambient Music | LightMister | CC0 1.0 | <https://freesound.org/people/LightMister/sounds/691725> |
+| `music/quirky_bed_1.mp3` | bird on a fence song - 120bpm | elaineaeris | CC0 1.0 | <https://freesound.org/people/elaineaeris/sounds/505686> |
+| `music/quirky_bed_2.mp3` | MusicBox | Bigvegie | CC0 1.0 | <https://freesound.org/people/Bigvegie/sounds/616098> |
+| `music/acoustic_bed_1.mp3` | Positive Acoustic Guitar Background Music | guitarman213 | CC0 1.0 | <https://freesound.org/people/guitarman213/sounds/712071> |
+| `music/acoustic_bed_2.mp3` | Dark Instrumental | AlmightyPsyche | CC0 1.0 | <https://freesound.org/people/AlmightyPsyche/sounds/494905> |
+| `music/acoustic_bed_3.mp3` | Happy Acoustic Guitar | guitarman213 | CC0 1.0 | <https://freesound.org/people/guitarman213/sounds/713738> |
