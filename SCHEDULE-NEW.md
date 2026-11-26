@@ -116,3 +116,4 @@ mix.py bed -24 → -30 LUFS, vocal-band EQ dip, harder ducking, SFX bus -3 dB. E
 | victor lustig | 00:00Z Tue 12/1 | d4ee6b74 / 6a8c0e18 / 738e6fc5 / c51e8a3e | APPROVED (old deleted) |
 | pennies to the moon | 16:00Z Tue | 4cfa2d5a / 701693df / b7072428 / c088a1f0 | APPROVED (old deleted) |
 | billionaires split | 20:00Z Tue | ce9c673b / c690b943 / 8b27ff3a / 6639f62c | APPROVED (old deleted) |
+| hitler diaries | 00:00Z Wed 12/2 | 2a740733 / d55b76d7 / 1efba7f0 / f26f5e11 | APPROVED (old deleted) — ALL 18 SHORTS REMIXED |
