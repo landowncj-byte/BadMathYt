@@ -399,7 +399,7 @@
 const SB = 'side-by-side', GH = 'graphic-hero', ZN = 'zoom-on-number', PF = 'presenter-front', PK = 'peek';
 const ICE = 'brand/photos/rudy-kurniawan/2.jpg', KIT = 'brand/photos/rudy-kurniawan/3.jpg';
 BM2.scene({
-  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 93.24,
+  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 86.5,
   footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: BOTTLE, LABELS, AUCTION, BENCH, CATALOGUE, WINEMAKER (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     // ---- S0 frame 0 ----
@@ -523,7 +523,7 @@ BM2.scene({
   captions: {
     gap: 16,
     emph: { '$35': 'good', '$35.': 'good', 'million': 'good', '95': 'bad', '$12': 'accent', '1945.': 'bad', '1982.': 'bad', '37': 'bad', FBI: 'accent', convicted: 'bad', '10': 'bad', '$28': 'bad', fakes: 'bad', fraud: 'bad' },
-    fix: [['Wade who', 'Wait, who'], ['Ruddy Kerniawin', 'Rudy Kurniawan'], ['cost 12', 'cost $12'], ["That's 1,000", "That's $1,000"], ['who who', 'who— who']],
+    fix: [['Rudy Kernioan,', 'Rudy Kurniawan,'], ['costs 12', 'costs $12'], ["That's 1,000", "That's $1,000"]],
   },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
