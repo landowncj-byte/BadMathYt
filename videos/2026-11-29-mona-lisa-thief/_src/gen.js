@@ -84,8 +84,8 @@
       b(O(R.clue, '+0.9'), PB, 'cl', Object.assign({ fill: 0.84, st: 'corner', sx: 500 }, LAY));
       for (let i = 0; i < 8; i++) sfx(O(R.cal, '+' + (i * cfg.calDur / 8).toFixed(2)), 'click_1', -14, 0.2); sfx(R.clue, 'rubber_stamp_2', -4); sfx(R.clue, 'deep_boom_2', -8, 0.5); SH.push([R.clue, 12]); }
     if (R.zero) { const [x, y] = seg();
-      E.push({ id: 'zl', type: 'text', at: [x, y], in: O(R.zero, '-0.3'), out: R.total, props: { lines: [[['ZERO', 'bad']], [['LEADS', 'paper']]], size: 150, per: 0.2 } });
-      E.push({ id: 'zl2', type: 'text', at: [x, y], in: O(R.total, '-0.1'), props: { lines: [[['TOTAL', 'paper']], [['EMBARRASS-', 'gold', 80]], [['MENT', 'gold', 80]]], size: 140, per: 0.2 } });
+      E.push({ id: 'zl', type: 'text', at: [x, y], in: O(R.zero, '-0.3'), out: R.total, props: { lines: [[['ZERO', 'bad']], [['LEADS', 'paper']]], size: 115, per: 0.2 } });
+      E.push({ id: 'zl2', type: 'text', at: [x, y], in: O(R.total, '-0.1'), props: { lines: [[['TOTAL', 'paper']], [['EMBARRASS-', 'gold', 80]], [['MENT', 'gold', 80]]], size: 110, per: 0.2 } });
       b(R.zero, SB, 'zl', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'shock' });
       b(R.total, SB, 'zl2', { sx: 540, sy: 840, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'talk', dur: 0.5 });
       sfx(R.zero, 'rubber_stamp_2', -8); sfx(R.total, 'thud_1', -8, 0.4); }
@@ -153,7 +153,7 @@
       E.push({ id: 'sv', type: 'suspect', at: [x - 390, y + 20], in: O(R.verd, '-0.5'), props: Object.assign({}, SUS, NAME, { w: 440, flash: false, tilt: -0.02, credit: CRED, mono: true, stamps: [{ text: 'SENTENCED', at: R.guilty, size: 58, x: 0, y: -10, rot: -0.1 }], bars: R.served }) });
       E.push({ id: 'vd', type: 'verd2', at: [x + 410, y - 20], in: O(R.verd, '-0.5'), props: { guiltyAt: R.guilty, termAt: R.term, servedAt: R.served } });
       b(R.verd, SB, ['sv', 'vd'], { move: 'whip', sx: 540, sy: 860, fill: 0.98, maxH: 960, st: 'corner', pose: 'point' });
-      b(R.term, ZN, 'vd.term', { fill: 0.84, maxH: 700, sy: 880, st: 'off', pose: 'shock', dur: 0.45, sx: 540 });
+      b(R.term, ZN, 'vd.term', { fill: 0.7, maxH: 560, sy: 800, st: 'off', pose: 'shock', dur: 0.45, sx: 540 });
       b(R.served, GH, ['sv', 'vd'], { move: 'whip', sx: 540, sy: 860, fill: 0.98, maxH: 960, st: 'corner', pose: 'talk', dur: 0.8 });
       sfx(R.guilty, 'gavel_1', -4, 0.8); sfx(R.term, 'cinematic_hit_1', -4, 1.0); sfx(R.term, 'deep_boom_1', -5, 1.2); sfx(R.served, 'cell_door_1', -7, 1.0); sfx(R.served, 'rubber_stamp_2', -5); SH.push([R.term, 22], [R.guilty, 12]); }
 

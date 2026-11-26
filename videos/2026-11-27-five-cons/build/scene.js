@@ -1017,7 +1017,7 @@ el('cd37', 'card', R3(3) + 40, 20, '@P37-0.3', { w: 1000, h: 520, fill: 'navy', 
 bt('@P37', 'graphic-hero', ['t37', 'cd37'], { move: 'whip', fill: 0.78, sy: 500, pose: 'point' }); sf('@P37-0.3', 'swoosh_2', -11, 0.5); sf('@P37:software', 'typewriter_2', -11, 1.4);
 bt('@P37:software', 'zoom-on-number', 'cd37', { fill: 0.5, maxH: 520, sy: 500 }); bt('@P37:write', 'graphic-hero', ['t37', 'cd37'], { fill: 0.78, sy: 500, pose: 'point' });
 // P38 trick: hid extra code; a few dates a year the numbers were predictable
-el('cd38', 'card', R3(4) - 700, 40, '@P38-0.2', { w: 560, h: 420, fill: 'navy', lines: [{ t: 'STEP 2', size: 44, font: 'mono', tone: 'good', at: '@P38+0.2', gap: 100 }, { t: 'HIDDEN CODE', size: 90, tone: 'bad', at: '@P38+0.4', gap: 90 }, { t: 'EXTRA LINES, NOBODY SEES', size: 26, font: 'mono', tone: 'paper', at: '@P38:code' }] }, { out: '@P39-0.2' });
+el('cd38', 'card', R3(4) - 700, 40, '@P38-0.2', { w: 560, h: 420, fill: 'navy', lines: [{ t: 'STEP 2', size: 44, font: 'mono', tone: 'good', at: '@P38+0.2', gap: 90 }, { t: 'HIDDEN CODE', size: 68, tone: 'bad', at: '@P38+0.4', gap: 90 }, { t: 'EXTRA LINES, NOBODY SEES', size: 26, font: 'mono', tone: 'paper', at: '@P38:code' }] }, { out: '@P39-0.2' });
 el('cal38', 'calendar', R3(4) + 20, 40, '@P38:dates-0.3', { head: 'A FEW DATES A YEAR', pages: [{ at: '@P38:dates', text: 'JAN' }, { at: '@P38:dates+0.5', text: 'JUL', tone: 'bad' }, { at: '@P38:specific+0.3', text: 'DEC', tone: 'bad' }], size: 140, w: 600 }, { out: '@P39-0.2' });
 for (let i = 0; i < 6; i++) el('bl38' + i, 'tile', R3(4) + 800 + (i % 3) * 190, -120 + Math.floor(i / 3) * 230, `@P38:predict+${(i * 0.1).toFixed(1)}`, { icon: 'labels', caption: '', w: 170, h: 190, iconS: 70 }, { out: '@P39-0.2' });
 el('pd38', 'stamp', R3(4) + 980, 280, '@P38:predict+0.7', { text: 'HE CAN PREDICT', tone: 'bad', size: 52 }, { rot: -0.05, out: '@P39-0.2' });
@@ -1132,7 +1132,7 @@ con('u56', 'tuc', R4(8) - 760, 300, '@P56:money-0.1', { w: 240, variant: 'pip', 
 bt('@P56', 'graphic-hero', 'car56', { move: 'whip', fill: 0.48, maxH: 560, sy: 500, pose: 'point' }); sf('@P56-0.3', 'swoosh_2', -11, 0.5);
 bt('@P56:race', 'graphic-hero', ['car56', 'tm56', 'u56'], { fill: 0.84, sy: 500, pose: 'shock' }); sf('@P56:race', 'rubber_stamp_2', -5, 0.5); sk('@P56:race', 10);
 // P57 claimed tribes owned it, because states can't sue tribes; prosecutors: a sham
-el('tr57', 'card', R4(9) - 440, 40, '@P57-0.2', { w: 600, h: 440, fill: 'navy', lines: [{ t: '“TRIBES OWN IT”', size: 64, tone: 'gold', at: '@P57:tribes' }, { t: 'BECAUSE STATES', size: 38, tone: 'paper', at: '@P57:because' }, { t: 'CAN\'T SUE TRIBES', size: 52, tone: 'paper', at: '@P57:sue' }] }, { out: '@P58-0.2' });
+el('tr57', 'card', R4(9) - 440, 40, '@P57-0.2', { w: 600, h: 440, fill: 'navy', lines: [{ t: '“TRIBES OWN IT”', size: 64, tone: 'gold', at: '@P57+0.3' }, { t: 'BECAUSE STATES', size: 38, tone: 'paper', at: '@P57:because' }, { t: 'CAN\'T SUE TRIBES', size: 52, tone: 'paper', at: '@P57:sue' }] }, { out: '@P58-0.2' });
 el('sh57', 'stamp', R4(9) + 420, 40, '@P57:sham-0.1', { text: 'A SHAM', tone: 'bad', size: 190 }, { rot: -0.07, out: '@P58-0.2' });
 el('pr57', 'text', R4(9) + 420, 300, '@P57:prosecutors-0.1', { lines: [[['PROSECUTORS CALLED IT', 'paper']]], size: 44 }, { out: '@P58-0.2' });
 bt('@P57', 'graphic-hero', 'tr57', { move: 'whip', fill: 0.34, maxH: 620, sy: 500, pose: 'point' }); sf('@P57-0.3', 'swoosh_2', -11, 0.5);
