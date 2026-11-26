@@ -2,10 +2,46 @@
  "duration": 15.3,
  "sfx": [
   {
+   "gain": -9,
+   "dur": 0.7,
+   "at": 0.75,
+   "name": "coins_drop_1",
+   "cue": "cash-rustle"
+  },
+  {
+   "gain": -9,
+   "dur": 0.7,
+   "at": 1.7,
+   "name": "coins_drop_1",
+   "cue": "cash-rustle"
+  },
+  {
    "gain": -8,
-   "dur": 0.6,
-   "at": 3.4,
-   "name": "door_slam_1"
+   "dur": 1.2,
+   "at": 2.05,
+   "name": "swoosh_1",
+   "cue": "pour"
+  },
+  {
+   "gain": -6,
+   "dur": 0.4,
+   "at": 2.72,
+   "name": "pop_1",
+   "cue": "cork-pop"
+  },
+  {
+   "gain": -6,
+   "dur": 0.4,
+   "at": 3.32,
+   "name": "pop_1",
+   "cue": "cork-pop"
+  },
+  {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 3.62,
+   "name": "paper_slam_1",
+   "cue": "label-slap"
   },
   {
    "gain": -8,
@@ -15,8 +51,22 @@
   },
   {
    "gain": -8,
+   "dur": 0.6,
+   "at": 4.41,
+   "name": "door_slam_1",
+   "cue": "door-slam"
+  },
+  {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 4.7,
+   "name": "pop_2",
+   "cue": "wax-plop"
+  },
+  {
+   "gain": -8,
    "dur": 1,
-   "at": 7.88,
+   "at": 6.56,
    "name": "deep_boom_1"
   },
   {
@@ -26,10 +76,32 @@
    "name": "camera_shutter_1"
   },
   {
-   "gain": -6,
+   "gain": -5,
+   "dur": 0.6,
+   "at": 11.34,
+   "name": "gavel_1",
+   "cue": "gavel"
+  },
+  {
+   "gain": -9,
    "dur": 0.5,
-   "at": 10.1,
-   "name": "gavel_1"
+   "at": 12.36,
+   "name": "swoosh_2",
+   "cue": "paddle-raise"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 12.6,
+   "name": "swoosh_2",
+   "cue": "paddle-raise"
+  },
+  {
+   "gain": -9,
+   "dur": 0.7,
+   "at": 14.64,
+   "name": "coins_drop_1",
+   "cue": "cash-rustle"
   }
  ],
  "bed": null

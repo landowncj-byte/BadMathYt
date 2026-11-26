@@ -654,3 +654,5 @@ Web pages consulted: support.google.com/youtube/answer/6175006 (mid-roll placeme
 - STYLE §18 "case board with red-string pins / running meter" survive as props in `desk` and `stage`, not as the main layout.
 - The on-screen comment bubble becomes the host's held sign (the one allowed sign gag); the `+ FOLLOW` button becomes the seal on the payoff.
 - RULES real-photo rule stays, narrowed by the owner's new direction: real photos appear only as evidence-photo props; the person on screen is the archetype puppet.
+
+> OWNER OVERRIDES 2026-11-26 (supersede conflicting laws above): RULES 108 "say it → show it" with the 4 tests (WATCH · HEAR · COLOR · SOUND) and a DENSITY column; CAST LOCK with signature colours (red = con/lie, gold+purple = money/rich, green = real/truth, navy = law, black = judge, grey = neutral, cream = you); cash is cream notes with gold bands (green is reserved for "real"); auction sets are purple-gold; average shot ~1.1–1.4 s (replaces law 5's 1.5–3 s); characters big (MS/CU default). Reference: videos/2026-11-26-fake-wine/STORYBOARD.md v3.
