@@ -1,8 +1,8 @@
 
 ## CRIME-SHOW BUILD STATUS
-RENDERED READY: . (YouTube) 77.97s 19.9MB
-RENDERED READY: tiktok 80.90s 19.8MB
-RENDERED READY: ig 75.03s 18.8MB
+RENDERED READY: . (YouTube) 77.97s 21.6MB (CAPTION FIX 2026-11-26 13:30: PERUGGIA)
+RENDERED READY: tiktok 80.90s 21.3MB (CAPTION FIX 2026-11-26 13:30: PERUGGIA)
+RENDERED READY: ig 75.03s 20.1MB (CAPTION FIX 2026-11-26 13:31: PERUGGIA)
 
 - All three cuts: 1080x1920 30 fps, -14.0 LUFS integrated (TikTok mixed with BM2_BED_DB=-12, bed noir_bed_1 in all cuts), true peak about -1.3 dBFS, CC0 sfx only, voice files untouched. Source: `_src/` (lisa_bits.js recipes, gen.js story builder, cfg_yt/tt/ig.js, build.sh). Video re-encoded crf 25 to stay under 40 MB.
 - Character: Vincenzo Peruggia, "THE LOUVRE INSIDER" (1909 Paris police mug shots, public domain, via Wikimedia Commons; credited on every card and in the footnote). Mona Lisa = PD reproduction (Commons, C2RMF retouched; brand/photos/mona-lisa-painting, row in VERIFIED.md). Dealer + Uffizi director, flat, letter, newspapers, cuffs = labelled ILLUSTRATION (no names, no real quotes; letter marked "NOT THE REAL LETTER").

@@ -1086,8 +1086,8 @@
     if (R.zero) { const [x, y] = seg();
       E.push({ id: 'zl', type: 'text', at: [x, y], in: O(R.zero, '-0.3'), out: R.total, props: { lines: [[['ZERO', 'bad']], [['LEADS', 'paper']]], size: 115, per: 0.2 } });
       E.push({ id: 'zl2', type: 'text', at: [x, y], in: O(R.total, '-0.1'), props: { lines: [[['TOTAL', 'paper']], [['EMBARRASS-', 'gold', 80]], [['MENT', 'gold', 80]]], size: 110, per: 0.2 } });
-      b(R.zero, SB, 'zl', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'shock' });
-      b(R.total, SB, 'zl2', { sx: 540, sy: 840, fill: 0.9, maxH: 900, st: 'corner-left', pose: 'talk', dur: 0.5 });
+      b(R.zero, SB, 'zl', { move: 'whip', sx: 540, sy: 860, fill: 0.7, maxH: 640, st: 'corner-left', pose: 'shock' });
+      b(R.total, SB, 'zl2', { sx: 540, sy: 860, fill: 0.7, maxH: 640, st: 'corner-left', pose: 'talk', dur: 0.5 });
       sfx(R.zero, 'rubber_stamp_2', -8); sfx(R.total, 'thud_1', -8, 0.4); }
 
     // ---- HIS SMALL PARIS FLAT ----
@@ -1224,5 +1224,5 @@ LISA({
   },
   cta: [{ k: 'heart', at: '@like' }, { k: 'send', at: '@send' }, { k: 'follow', at: '@follow' }],
   ask: ['MAIL IT?', 'YES OR NO'],
-  captions: { emph: { '500,000': 'accent', lire: 'accent', '1911': 'bad', '1913': 'bad', '1914': 'bad', stole: 'bad', police: 'bad', '15': 'bad', real: 'good' }, gap: 16 },
+  captions: { emph: { '500,000': 'accent', lire: 'accent', '1911': 'bad', '1913': 'bad', '1914': 'bad', stole: 'bad', police: 'bad', '15': 'bad', real: 'good' }, gap: 16, fix: [['Perugia,', 'Peruggia,'], ['Perugia', 'Peruggia']] },
 });

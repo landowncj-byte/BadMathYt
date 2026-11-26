@@ -18,7 +18,7 @@ const S = M5.make({
   hook: H,
   scenes: [
     { type: 'race', from: 0, to: '@wait-0.1', pose: 'shock', sc: 0.62, dy: 60, catchAt: -1, catchStamp: false },
-    { type: 'piles', from: '@wait-0.1', to: '@no#1-0.1', pose: 'shock', leftAt: '@piles', rightAt: '@right', chips: [{ at: '@left', text: 'ON THE LEFT: $1,000,000 CASH', tone: 'ink' }, { at: '@right', text: 'ON THE RIGHT: $100 EVERY DAY', tone: 'good' }, { at: '@for#1', text: 'FOR THE REST OF YOUR LIFE', tone: 'accent' }] },
+    { type: 'piles', from: '@wait-0.1', to: '@no#1-0.1', pose: 'shock', leftAt: '@piles', rightAt: '@right', tags: [{ at: '@wait', out: '@piles', text: 'TWO PILES OF MONEY', tone: 'ink', y: 830 }], chips: [{ at: '@left', text: 'ON THE LEFT: $1,000,000 CASH', tone: 'ink' }, { at: '@right', text: 'ON THE RIGHT: $100 EVERY DAY', tone: 'good' }, { at: '@for#1', text: 'FOR THE REST OF YOUR LIFE', tone: 'accent' }] },
     { type: 'piles', from: '@no#1-0.1', to: '@tap-0.1', pose: 'chin', leftAt: -1, rightAt: -1, tags: [{ at: '@taxes', text: 'NO TAXES', tone: 'bad', y: 618 }, { at: '@interest', text: 'NO INTEREST', tone: 'bad', y: 618 }] },
     { type: 'piles', from: '@tap-0.1', to: '@now#1-0.1', pose: 'you', leftAt: -1, rightAt: -1, pick: '@went', chips: [{ at: '@hand', text: 'YOUR HAND WENT FOR THE MILLION?', tone: 'accent' }] },
     { type: 'drip', from: '@now#1-0.1', to: "@that's#1-0.1", pose: 'shock', chips: [{ at: '@another', text: 'A NEW $100 EVERY MORNING', tone: 'good' }] },
@@ -32,7 +32,7 @@ const S = M5.make({
     { type: 'life', from: '@start#1-0.1', to: '@follow-0.1', pose: 'shock', rows: [{ age: 25, at: '@start#1', dur: 1.6, total: 2007500, numAt: '@two#2', win: true, resAt: '@million#6' }] },
     { type: 'ask', from: '@follow-0.1', to: '@but#2-0.1', pose: 'you', l1: 'JUST CHECKED', l2: 'HOW OLD YOU ARE?' },
     { type: 'life', from: '@but#2-0.1', to: '@the#15-0.1', pose: 'shock', rows: [{ age: 25, at: -1, total: 2007500, win: true, resAt: 0 }, { age: 60, at: '@start#2', dur: 1.6, total: 730000, numAt: '@730', win: false, resAt: '@000#4' }] },
-    { type: 'vs', from: '@the#15-0.1', to: '@so#1-0.1', pose: 'shock', max: 1.3e6, items: [{ label: 'THE MILLION', sub: 'CASH TODAY', val: 1e6, col: th0('gold'), at: '@million#7' }, { label: '$100 A DAY', sub: 'AGE 60 → 80', val: 730000, col: th0('bad'), at: '@the#15' }], gap: { at: '@$270#1', text: 'MILLION WINS BY $270,000', tone: 'bad' } },
+    { type: 'vs', from: '@the#15-0.1', to: '@so#1-0.1', pose: 'shock', max: 1.45e6, items: [{ label: 'THE MILLION', sub: 'CASH TODAY', val: 1e6, col: th0('gold'), at: '@million#7' }, { label: '$100 A DAY', sub: 'AGE 60 → 80', val: 730000, col: th0('bad'), at: '@the#15' }], gap: { at: '@$270#1', text: 'MILLION WINS BY $270,000', tone: 'bad' } },
     { type: 'life', from: '@so#1-0.1', to: '@million#8-0.1', pose: 'chin', head: 'IT’S NOT THE MONEY · IT’S THE YEARS LEFT', rows: [{ age: 25, at: -1, total: 2007500, win: true, resAt: 0 }, { age: 60, at: -1, total: 730000, win: false, resAt: 0 }], chips: [{ at: '@years#2', text: 'HOW MANY YEARS YOU’VE GOT LEFT', tone: 'accent' }] },
     { type: 'ask', from: '@million#8-0.1', to: 99, pose: 'you', l1: 'MILLION OR', l2: '$100 A DAY?' },
   ],

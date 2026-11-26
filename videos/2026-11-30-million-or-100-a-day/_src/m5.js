@@ -119,7 +119,7 @@
     g.setLineDash([10, 10]); g.strokeStyle = th.bad; g.lineWidth = 4; g.beginPath(); g.moveTo(px(80), 664); g.lineTo(px(80), 1000); g.stroke(); g.setLineDash([]); sub(g, 'AGE 80', px(80), 660, th.bad, 20);
     (S.rows || []).forEach((r, i) => { const y = 706 + i * 100, st = r.at < 0, on = st ? 99 : t - r.at; if (on < -0.0001) return; const u = st ? 1 : ease.out(clamp(on / (r.dur || 1.3))), x0 = px(r.age), x1 = x0 + (px(80) - x0) * u, win = r.win, res = r.resAt != null ? t >= r.resAt : st;
       g.save(); g.globalAlpha *= st ? 1 : clamp(on / 0.1); clay(g, x0, y, Math.max(20, x1 - x0), 56, 16, res ? (win ? th.good : th.bad) : th.gold, { shadowK: 0.4 }); B.you(g, x0 - 34, y + 38, 0.2, res ? (win ? 'happy' : 'angry') : 'neutral', t);
-      sub(g, 'AGE ' + r.age + ' → 80 · ' + (80 - r.age) + ' YEARS', x0, y - 18, th.paper, 22, 'left'); if (res) { g.save(); const kk = st ? 1 : pk(t, r.resAt); g.translate(990, y - 18); g.scale(kk, kk); txt(g, win ? 'BEATS $1M' : 'LOSES TO $1M', 0, 0, F.monoX(22), win ? th.good : th.bad, 'right'); g.restore(); }
+      sub(g, 'AGE ' + r.age + ' → 80 · ' + (80 - r.age) + ' YEARS', x0, y - 18, th.paper, 22, 'left'); if (res) { g.save(); const kk = st ? 1 : pk(t, r.resAt); g.translate(990, y - 18); g.scale(kk, kk); txt(g, win ? 'WINS' : 'LOSES', 0, 0, F.monoX(22), win ? th.good : th.bad, 'right'); g.restore(); }
       const cx = px(r.age + 27.4); g.save(); g.translate(cx, y + 28); g.rotate(0.785); if (x1 >= cx || r.age + 27.4 > 80) { g.fillStyle = r.age + 27.4 > 80 ? 'rgba(11,15,20,.0)' : '#0B0F14'; g.strokeStyle = r.age + 27.4 > 80 ? th.bad : th.gold; g.lineWidth = 4; g.fillRect(-11, -11, 22, 22); g.strokeRect(-11, -11, 22, 22); } g.restore(); 
       const v = Math.round(r.total * ease.out(clamp((t - (r.numAt ?? r.at)) / 0.9))); if (x1 - x0 > 190) txt(g, '$' + fmt(st ? r.total : v), x0 + 20, y + 30, F.hero(42), '#0B0F14', 'left'); g.restore(); });
     g.restore(); tagsOf(g, S, t, th); bottomChip(g, S, t, th);
@@ -128,9 +128,9 @@
     const base = 985, MH = 320, mx = S.max || 2.2e6, k = pk(lt, 0); const mil = 1e6;
     S.items.forEach((it, i) => { const x = i ? 770 : 310, on = t - it.at; if (on <= 0) return; const kk = Math.min(1.08, spring(on, 'bouncy')), u = ease.out(clamp(on / 0.9)), h = MH * it.val / mx * u, v = Math.round(it.val * u);
       g.save(); g.globalAlpha *= clamp(on / 0.08); clay(g, x - 130, base - Math.max(16, h), 260, Math.max(16, h), 16, it.col, { shadowK: 0.5 }); g.restore(); stk(g, '$' + fmt(v), x, base - Math.max(16, h) - 46, F.hero(fit('$2,007,500', F.hero, 330, 78)), it.col === th.bad ? th.bad : th.paper, 'center', 10); txt(g, it.label, x, base + 36, F.hero(34), th.paper); sub(g, it.sub, x, base + 68, th.gold, 20); });
-    g.setLineDash([12, 10]); g.strokeStyle = th.paper; g.lineWidth = 4; g.beginPath(); g.moveTo(130, base - MH * mil / mx); g.lineTo(950, base - MH * mil / mx); g.stroke(); g.setLineDash([]); sub(g, '$1,000,000 LINE', 950, base - MH * mil / mx - 16, th.paper, 18, 'right');
+    g.setLineDash([12, 10]); g.strokeStyle = th.paper; g.lineWidth = 4; g.beginPath(); g.moveTo(130, base - MH * mil / mx); g.lineTo(950, base - MH * mil / mx); g.stroke(); g.setLineDash([]);
     g.strokeStyle = 'rgba(245,243,238,.6)'; g.lineWidth = 4; g.beginPath(); g.moveTo(130, base); g.lineTo(950, base); g.stroke();
-    if (S.gap && t >= S.gap.at) { const kk = pk(t, S.gap.at); g.save(); g.translate(540, 640); g.scale(kk, kk); stamp(g, S.gap.text, 0, 0, S.gap.tone || 'bad', th, 46, -0.03, kk); g.restore(); }
+    if (S.gap && t >= S.gap.at) { const kk = pk(t, S.gap.at); g.save(); g.translate(540, 614); g.scale(kk, kk); stamp(g, S.gap.text, 0, 0, S.gap.tone || 'bad', th, 42, -0.03, kk); g.restore(); }
     tagsOf(g, S, t, th); bottomChip(g, { ...S, chips: (S.chips || []).map(c => ({ ...c, y: 1088 })) }, t, th);
   }
   function ask(g, p, lt, t, th, S) {

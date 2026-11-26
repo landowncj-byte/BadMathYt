@@ -23,5 +23,5 @@ LISA({
   },
   cta: [{ k: 'heart', at: '@heart' }, { k: 'send', at: '@send' }, { k: 'follow', at: '@follow' }],
   ask: ['FAIR?', 'YES OR NO'],
-  captions: { emph: { '500,000': 'accent', lire: 'accent', '1911': 'bad', '1913': 'bad', stole: 'bad', police: 'bad', '15': 'bad', real: 'good', greedy: 'bad' }, gap: 16 },
+  captions: { emph: { '500,000': 'accent', lire: 'accent', '1911': 'bad', '1913': 'bad', stole: 'bad', police: 'bad', '15': 'bad', real: 'good', greedy: 'bad' }, gap: 16, fix: [['Perugia,', 'Peruggia,'], ['Perugia', 'Peruggia']] },
 });

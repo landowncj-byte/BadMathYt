@@ -78,3 +78,8 @@ Mon 11/30 plan: million-or-100-a-day + van-meegeren (building) + a third (Mona L
 | card minimum (fixed) | Instagram REEL | Fri 11/27 19:00 | 00:00Z Sat | 6696d6ef-dc53-4d4b-af4b-674ebc32654c | APPROVED |
 | card minimum (fixed) | Facebook REEL | Fri 11/27 19:00 | 00:00Z Sat | 92a5924e-2f5a-4be6-8053-a14a1a017c84 | APPROVED |
 FRIDAY + SATURDAY COMPLETE. Sunday: 11:00 mona lisa (building) · 15:00 double ✅ · 19:00 anna ✅.
+| mona lisa thief | YouTube | Sun 11/29 11:00 | 16:00Z | edeada02-60d2-4e18-a1a7-840147ff482f | APPROVED |
+| mona lisa thief | TikTok (song: Opensound tense strings) | Sun 11/29 11:00 | 16:00Z | 23ae2ba7-120b-4d62-8ebe-b4b00dc4785d | APPROVED |
+| mona lisa thief | Instagram REEL | Sun 11/29 11:00 | 16:00Z | 48df33ce-3901-4114-9e23-fb2025552f16 | APPROVED |
+| mona lisa thief | Facebook REEL | Sun 11/29 11:00 | 16:00Z | 59f80964-9cc2-439e-bf9e-cb25850af15d | APPROVED |
+THU–SUN COMPLETE (all 4 platforms, 3/day + Thu catch-up + Fri long-form).

@@ -211,7 +211,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       const lx = L.k === 'line' ? px0 + 24 : L.x - 60, ly = Math.max(topY - 22 - gy + 14, L.k === 'stand' ? yy - 16 : yy - (L.k === 'line' ? 18 : 38)); const f = F.monoX(21), w = mw(L.lab, f) + 22; g.fillStyle = 'rgba(6,8,11,.78)'; rr(g, lx - 6, ly - 15, w, 30, 15); g.fill(); txt(g, L.lab, lx + 5, ly + 1, f, '#F5F3EE', 'left'); g.restore();
     }
     // moon
-    if (h > 3e6 && !S.noLM) { const my = Math.max(topY - gy + 40, -MOON * ppm), a = clamp((lh - 6.4) / 1.2); g.save(); g.globalAlpha *= a; moonArt(g, 800, my, 40); const f = F.monoX(22), lab = 'THE MOON'; g.fillStyle = 'rgba(6,8,11,.78)'; rr(g, 628, my - 14, mw(lab, f) + 24, 30, 15); g.fill(); txt(g, lab, 640, my + 1, f, '#F5F3EE', 'left'); g.restore(); }
+    if (h > 3e6 && !S.noLM) { const my = Math.max(topY - gy + 40, -MOON * ppm), a = clamp((lh - 6.4) / 1.2); g.save(); g.globalAlpha *= a; moonArt(g, 790, my, 38); const f = F.monoX(22), lab = 'THE MOON'; g.fillStyle = 'rgba(6,8,11,.78)'; rr(g, 848, my - 14, mw(lab, f) + 24, 30, 15); g.fill(); txt(g, lab, 860, my + 1, f, '#F5F3EE', 'left'); g.restore(); }
     // the tower
     const landed = S.drop == null ? 0 : S.drop + 0.35;
     if (t >= landed) {
@@ -227,7 +227,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     label(g, 'AUTO-ZOOM · NOT TO SCALE', px0 + pw - 24, py0 + ph - 18, 'rgba(245,243,238,.85)', 17, 'right');
     if (S.dim) { const d = S.dim * (1 - lin(t, S.dimOut, S.dimOut + 0.25)); if (d > 0) { g.fillStyle = 'rgba(6,8,11,' + d + ')'; g.fillRect(px0, py0, pw, ph); } }
     g.restore(); g.strokeStyle = 'rgba(245,243,238,.35)'; g.lineWidth = 3; rr(g, px0, py0, pw, ph, 28); g.stroke();
-    mchip(g, p, t, th, S, 1010);
+    mchip(g, p, t, th, S, 700);
   }
   // penny anatomy: face + edge-on slab, thickness callout
   function penny(g, p, lt, t, th, S) {
@@ -254,7 +254,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
       g.lineCap = 'round'; for (let i = 0; i < 36; i++) { const u0 = i / 36, u1 = (i + 1) / 36; if (u1 > d) break; const xa = lerp(x0, x1, u0), xb = lerp(x0, x1, u1), ya = cy - Math.sin(u0 * Math.PI) * wob, yb = cy - Math.sin(u1 * Math.PI) * wob; g.strokeStyle = i % 2 ? '#C77B45' : '#E39A62'; g.lineWidth = 16; g.beginPath(); g.moveTo(xa, ya); g.lineTo(xb + 1, yb); g.stroke(); }
       const lk = clamp((t - S.at - (S.lock || 1.4)) / 0.4); if (lk > 0) { g.save(); g.globalAlpha *= lk; g.strokeStyle = th.good; g.lineWidth = 3; g.setLineDash([8, 8]); g.beginPath(); g.moveTo(x0 - 20, cy); g.lineTo(x1 + 20, cy); g.stroke(); g.setLineDash([]); g.restore(); }
       stk(g, 'PERFECTLY STRAIGHT', 540, 735, F.hero(fit('PERFECTLY STRAIGHT', F.hero, 880, 84)), th.paper, 'center', 14);
-      if (S.never && t >= S.never) { const nk = spring(t - S.never, 'bouncy'); stamp(g, S.neverText || 'NEVER FALLS', 540, 1000, 'good', th, 60, -0.04, nk); }
+      if (S.never && t >= S.never) { const two = S.never2 && t >= S.never2, t0 = two ? S.never2 : S.never, nk = spring(t - t0, 'bouncy'); stamp(g, two ? S.neverText2 : (S.neverText || 'NEVER FALLS'), 540, 1000, two ? 'bad' : 'good', th, 60, -0.04, nk); }
     }
     mchip(g, p, t, th, S, 1050);
   }
@@ -268,40 +268,39 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
   function coinFlat(g, r) { const gr = g.createRadialGradient(-r * 0.3, -r * 0.3, 1, 0, 0, r); gr.addColorStop(0, '#F0A56F'); gr.addColorStop(1, '#B9622E'); g.fillStyle = gr; g.beginPath(); g.arc(0, 0, r, 0, 7); g.fill(); g.strokeStyle = 'rgba(90,40,12,.8)'; g.lineWidth = 2; g.beginPath(); g.arc(0, 0, r * 0.75, 0, 7); g.stroke(); }
   function bignum(g, p, lt, t, th, S) {
     const u = ease.out(clamp((t - S.at) / S.dur)), v = S.num * u, k = Math.min(1.08, spring(lt, 'bouncy')), s = (S.pre || '') + v.toFixed(S.dec || 0), big = (S.pre || '') + S.num.toFixed(S.dec || 0);
-    g.save(); g.translate(540, 770); g.scale(0.85 + 0.15 * k, 0.85 + 0.15 * k); stk(g, s, 0, 0, F.hero(fit(big, F.hero, 880, 250)), S.col || th.good, 'center', 20); g.restore();
-    if (S.word) { const wk = spring(t - S.at - S.dur * 0.7, 'bouncy'), w = S.word; g.save(); g.globalAlpha *= clamp(wk * 2); g.translate(540, 920); g.scale(0.8 + 0.2 * Math.min(1.08, wk), 0.8 + 0.2 * Math.min(1.08, wk)); stk(g, w, 0, 0, F.hero(fit(w, F.hero, 880, 130)), th.paper, 'center', 14); g.restore(); }
-    if (S.l1) stk(g, S.l1, 540, 1020, F.hero(fit(S.l1, F.hero, 860, 56)), th.accent, 'center', 10);
+    g.save(); g.translate(540, 745); g.scale(0.85 + 0.15 * k, 0.85 + 0.15 * k); g.globalAlpha *= clamp((t - S.at + 0.05) / 0.12); stk(g, s, 0, 0, F.hero(fit(big, F.hero, 880, 230)), S.col || th.good, 'center', 20); g.restore();
+    if (S.word) { const wk = spring(t - S.at - S.dur * 0.7, 'bouncy'), w = S.word; g.save(); g.globalAlpha *= clamp(wk * 2); g.translate(540, 930); g.scale(0.8 + 0.2 * Math.min(1.08, wk), 0.8 + 0.2 * Math.min(1.08, wk)); stk(g, w, 0, 0, F.hero(fit(w, F.hero, 880, 110)), th.paper, 'center', 14); g.restore(); }
+    if (S.l1) stk(g, S.l1, 540, 1030, F.hero(fit(S.l1, F.hero, 860, 56)), th.accent, 'center', 10);
     mchip(g, p, t, th, S, 1050);
   }
   // two bars on a true scale: record jackpot vs the penny tower
   function jackpot(g, p, lt, t, th, S) {
-    const base = 1005, mx = 300, hT = mx, hJ = mx * JACK / COSTP, gk = ease.out(clamp((t - S.at) / 0.9));
+    const base = 1005, mx = 230, hT = mx, hJ = mx * JACK / COSTP, gk = ease.out(clamp((t - S.at) / 0.9));
     paper(g, 150, base - 6, 780, 10, 4, { lift: 0.1 });
     const bar = (x, w, h, col, top, val, name, tcol, k) => { const hh = h * k; g.save(); clay(g, x, base - hh, w, hh, 16, col, { shadowK: 0.6 }); g.restore(); if (k > 0.3) { stk(g, val, x + w / 2, base - hh - 38, F.hero(66), tcol, 'center', 12); } label(g, name, x + w / 2, base + 34, th.paper, 22); };
     bar(230, 240, hJ, th.gold, 0, '$2.04B', 'RECORD JACKPOT', th.gold, gk);
     if (t > S.at + 0.5) { const jk = ease.out(clamp((t - S.at - 0.5) / 0.9)); bar(610, 240, hT, '#C77B45', 0, '$2.53B', 'PENNY TOWER', '#F0A56F', jk); }
     // ticket icon on the jackpot bar
-    const tk = Math.min(1.1, spring(t - S.at, 'bouncy')); g.save(); g.translate(350, base - hJ * gk - 150); g.scale(tk, tk); g.rotate(-0.08); clay(g, -90, -42, 180, 84, 12, '#F5F3EE', { shadowK: 0.5 }); g.fillStyle = th.gold; g.fillRect(-90, -42, 180, 24); txt(g, 'JACKPOT', 0, -30, F.monoX(18), '#0B0F14'); txt(g, '$2.04B', 0, 12, F.hero(40), '#0B0F14'); g.restore();
+    const tk = Math.min(1.1, spring(t - S.at, 'bouncy')); g.save(); g.translate(350, base - hJ * gk + 62); g.scale(tk, tk); g.rotate(-0.08); clay(g, -90, -42, 180, 84, 12, '#F5F3EE', { shadowK: 0.5 }); g.fillStyle = th.gold; g.fillRect(-90, -42, 180, 24); txt(g, 'JACKPOT', 0, -30, F.monoX(18), '#0B0F14'); txt(g, '$2.04B', 0, 12, F.hero(40), '#0B0F14'); g.restore();
     if (S.pct && t >= S.pct) { const k = spring(t - S.pct, 'bouncy'), y = base - hJ; g.save(); g.globalAlpha *= clamp(k * 2); g.strokeStyle = th.accent; g.lineWidth = 4; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(470, y); g.lineTo(850, y); g.stroke(); g.setLineDash([]); g.restore(); chip(g, '81% OF THE WAY THERE', 540, S.pctY || 700, 'accent', th, 44, 900, k); }
     mchip(g, p, t, th, S, 1058);
   }
-  // 17,252 record jackpots as a dot field
+  // ~1,725 record jackpots as a dot field (3.52 trillion / 2.04 billion)
   function jackpots(g, p, lt, t, th, S) {
-    const n = 17252, cols = 211, pitch = 4.45, x0 = 540 - cols * pitch / 2, y0 = 760, rows = Math.ceil(n / cols), sw = clamp((t - S.at) / S.dur);
-    const v = Math.round(n * ease.out(sw)); stk(g, fmt(v), 540, 668, F.hero(120), th.gold, 'center', 16); label(g, 'RECORD JACKPOTS · $2.04B EACH', 540, 722, th.paper, 24);
-    const cnt = Math.floor(n * ease.out(sw)); g.fillStyle = th.gold; for (let i = 0; i < cnt; i++) { const c = i % cols, r = Math.floor(i / cols); g.fillRect(x0 + c * pitch, y0 + r * pitch, 3.2, 3.2); }
-    g.fillStyle = th.paper; g.fillRect(x0, y0, 3.2, 3.2); if (t > S.at + 0.2) { const k = spring(t - S.at - 0.2, 'bouncy'); g.save(); g.globalAlpha *= clamp(k * 2); g.strokeStyle = th.paper; g.lineWidth = 3; g.beginPath(); g.arc(x0 + 1.6, y0 + 1.6, 12, 0, 7); g.stroke(); g.restore(); label(g, '← ONE JACKPOT', x0 + 26, y0 + 2, th.paper, 20, 'left'); }
-    label(g, '= $35.2 TRILLION IN $1 BILLS', 540, y0 + rows * pitch + 46, th.good, 26);
-    mchip(g, p, t, th, S, 1058);
+    const n = 1725, cols = 72, pitch = 12, x0 = 540 - cols * pitch / 2, y0 = 765, rows = Math.ceil(n / cols), sw = clamp((t - S.at) / S.dur);
+    const v = Math.round(n * ease.out(sw)); stk(g, fmt(v), 540, 664, F.hero(110), th.gold, 'center', 16); label(g, 'RECORD JACKPOTS · $2.04B EACH', 540, 722, th.paper, 24);
+    const cnt = Math.floor(n * ease.out(sw)); g.fillStyle = th.gold; for (let i = 0; i < cnt; i++) { const c = i % cols, r = Math.floor(i / cols); g.beginPath(); g.arc(x0 + c * pitch + 5, y0 + r * pitch + 5, 4.4, 0, 7); g.fill(); }
+    g.fillStyle = th.paper; g.beginPath(); g.arc(x0 + 5, y0 + 5, 5.5, 0, 7); g.fill(); if (t > S.at + 0.2) { const k = spring(t - S.at - 0.2, 'bouncy'); g.save(); g.globalAlpha *= clamp(k * 2); g.strokeStyle = th.paper; g.lineWidth = 3; g.beginPath(); g.arc(x0 + 5, y0 + 5, 13, 0, 7); g.stroke(); g.restore(); }
+    label(g, '= ' + (S.eq || '$3.52 TRILLION IN $1 BILLS') + ' · EACH DOT = 1 JACKPOT', 540, 1068, th.good, 22);
   }
   // 1 penny vs 14 dollar bills: same height
   function swap(g, p, lt, t, th, S) {
-    const sc = 50, base = 960, tp = PEN * 1000 * sc, tb = BIL * 1000 * sc, k1 = Math.min(1.08, spring(lt, 'bouncy'));
-    stk(g, 'SAME HEIGHT', 540, 690, F.hero(76), th.paper, 'center', 12);
+    const sc = 90, base = 925, tp = PEN * 1000 * sc, tb = BIL * 1000 * sc, k1 = Math.min(1.08, spring(lt, 'bouncy'));
+    stk(g, 'SAME HEIGHT', 540, 640, F.hero(76), th.paper, 'center', 12);
     g.save(); g.translate(0, 0); g.globalAlpha *= clamp(k1 * 2); const lx = 330; g.fillStyle = '#7a3d18'; rr(g, lx - 150, base - tp + 6, 300, tp, 6); g.fill(); const gr = g.createLinearGradient(0, base - tp, 0, base); gr.addColorStop(0, '#F0A56F'); gr.addColorStop(1, '#B9622E'); g.fillStyle = gr; rr(g, lx - 150, base - tp, 300, tp, 6); g.fill(); g.restore();
-    label(g, '1 PENNY', lx, base + 52, th.paper, 28); label(g, '1.52 mm', lx, base + 90, '#F0A56F', 28);
+    label(g, '1 PENNY', lx, base + 36, th.paper, 28); label(g, '1.52 mm', lx, base + 70, '#F0A56F', 28);
     const st = S.at; for (let i = 0; i < 14; i++) { const on = t - (st + i * 0.12); if (on <= 0) continue; const k = Math.min(1, spring(on, 'snappy')); const y = base - (i + 1) * tb - (1 - k) * 60; g.save(); g.globalAlpha *= clamp(on / 0.05); g.fillStyle = i % 2 ? '#2FA46B' : '#27935E'; rr(g, 750 - 150, y, 300, tb - 0.8, 2); g.fill(); g.fillStyle = 'rgba(255,255,255,.3)'; g.fillRect(750 - 148, y, 296, 1.2); g.restore(); }
-    label(g, '14 DOLLAR BILLS', 750, base + 52, th.paper, 28); label(g, '0.109 mm EACH', 750, base + 90, th.good, 28);
+    label(g, '14 DOLLAR BILLS', 750, base + 36, th.paper, 28); label(g, '0.109 mm EACH', 750, base + 70, th.good, 28);
     g.strokeStyle = th.accent; g.lineWidth = 3; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(150, base - tp); g.lineTo(930, base - tp); g.stroke(); g.setLineDash([]);
     if (S.eq && t >= S.eq) { const k = Math.min(1.1, spring(t - S.eq, 'bouncy')); g.save(); g.translate(540, base - tp - 120); g.scale(k, k); g.fillStyle = '#0B0F14'; g.beginPath(); g.arc(0, 0, 40, 0, 7); g.fill(); g.strokeStyle = th.accent; g.lineWidth = 5; g.stroke(); txt(g, '≈', 0, 3, F.hero(64), th.accent); g.restore(); }
     mchip(g, p, t, th, S, 1050);
@@ -322,11 +321,11 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
   }
   // pennies sliver vs bills
   function versus(g, p, lt, t, th, S) {
-    const base = 1000, mx = 280, k = ease.out(clamp((t - S.at) / 0.9));
+    const base = 1000, mx = 230, k = ease.out(clamp((t - S.at) / 0.9));
     g.fillStyle = 'rgba(245,243,238,.35)'; g.fillRect(180, base, 720, 4);
-    clay(g, 220, base - mx * k, 250, mx * k, 16, bills, { shadowK: 0.6 }); if (k > 0.5) { stk(g, '$35.2T', 345, base - mx * k - 40, F.hero(66), th.good, 'center', 12); } label(g, 'DOLLAR-BILL TOWER', 345, base + 36, th.paper, 22);
+    clay(g, 220, base - mx * k, 250, mx * k, 16, bills, { shadowK: 0.6 }); if (k > 0.5) { stk(g, '$3.52T', 345, base - mx * k - 40, F.hero(66), th.good, 'center', 12); } label(g, 'DOLLAR-BILL TOWER', 345, base + 36, th.paper, 22);
     const pk = ease.out(clamp((t - S.at - 0.6) / 0.6)); g.save(); g.globalAlpha *= pk; g.fillStyle = '#C77B45'; g.fillRect(610, base - 4, 250, 4); g.restore(); if (pk > 0) { g.save(); g.globalAlpha *= pk; stk(g, '$2.53B', 735, base - 100, F.hero(66), '#F0A56F', 'center', 12); g.strokeStyle = '#F0A56F'; g.lineWidth = 4; g.beginPath(); g.moveTo(735, base - 62); g.lineTo(735, base - 12); g.stroke(); g.beginPath(); g.moveTo(725, base - 24); g.lineTo(735, base - 10); g.lineTo(745, base - 24); g.stroke(); g.restore(); label(g, 'PENNY TOWER', 735, base + 36, th.paper, 22); }
-    if (S.ratio && t >= S.ratio) { const rk = spring(t - S.ratio, 'bouncy'); chip(g, 'PENNIES: ~14,000× CHEAPER', 540, 690, 'accent', th, 46, 900, rk); }
+    if (S.ratio && t >= S.ratio) { const rk = spring(t - S.ratio, 'bouncy'); chip(g, 'PENNIES: ~1,400× CHEAPER', 540, 650, 'accent', th, 46, 900, rk); }
     mchip(g, p, t, th, S, 1058);
   }
   function ask(g, p, lt, t, th, S) { const k = spring(lt, 'bouncy'); g.save(); g.translate(540, 800); g.scale(0.7 + 0.3 * Math.min(1.06, k), 0.7 + 0.3 * Math.min(1.06, k)); g.globalAlpha *= clamp(k * 2); const sz = Math.min(fit(S.l1, F.hero, 900, 112), fit(S.l2, F.hero, 900, 112)); stk(g, S.l1, 0, -62, F.hero(sz), th.accent, 'center', 16); stk(g, S.l2, 0, 62, F.hero(sz), th.good, 'center', 16); g.restore(); }
@@ -350,13 +349,13 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         if (C3) { label(g, C3[0], 100, 516, th.inkSoft, 24, 'left'); txt(g, C3[1], 980, 516, F.hero(fit(C3[1], F.hero, 600, 50, 30)), m === 'bill' ? '#118a4e' : th.ink, 'right'); }
         g.restore();
       }
-      hookText(g, p, t, th);
       for (const S of p.scenes) {
         if (t < S.from - 0.02 || t > S.to + 0.02) continue; const lt = t - S.from, kin = spring(lt + 0.08, { f: 2.4, z: 0.7 }), a = clamp(lt / 0.12) * (1 - lin(t, S.to - 0.12, S.to)), sc = (S.pop === false ? 1 : 0.94 + 0.06 * Math.min(1.05, kin));
         g.save(); g.globalAlpha *= a; g.translate(540, 840 + (S.dy || 0)); g.scale(sc * (S.sc || 1), sc * (S.sc || 1)); g.translate(-540, -840);
         const fn = SC[S.type]; if (!fn) throw new Error('unknown scene type ' + S.type); fn(g, p, lt, t, th, S);
         g.restore();
       }
+      hookText(g, p, t, th);
       for (const n of p.notes) if (t >= n.at && t < n.out + 0.2) { const nt = t - n.at, k = Math.min(1.08, spring(nt, 'bouncy')), fo = 1 - lin(t, n.out - 0.15, n.out + 0.05); g.save(); g.globalAlpha *= clamp(nt / 0.06) * fo; if (n.stamp) stamp(g, n.text, 540, n.y || 598, n.tone || 'good', th, n.size || 62, n.rot || -0.04, k); else chip(g, n.text, 540, n.y || 598, n.tone || 'bad', th, n.size || 44, 900, k); g.restore(); }
     },
   });
@@ -403,11 +402,11 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
 })();
 // YouTube cut — WHAT IF: pennies to the Moon. Hook: the tower zooms out to the Moon with the live counters ($2.5B) · build slowly (YOU drops a penny) · penny 1.52 mm · Moon distance · perfectly straight · climb (live counters) · 100¢=$1 · $2.53B · jackpot bars · send · swap to bills · bill tower · $35.2T · 17,252 jackpots · ladder · 31¢ each · ask
 const H = { until: '@sounds-0.1', y: 700, size: 70, lines: [[['PENNIES TO THE MOON', 'paper']], [['COST $2.5 BILLION', 'good']]] };
-const NM = 252894736842, NB = 3.5195e13;
+const NM = 252894736842, NB = 3.5195e12;
 const S = PM.make({
   dur: 70.77,
   P: [[0, 1], [0.5, 1], ['@billion+0.5', NM], [3.95, NM], ['@sounds-0.1', 1, 'j'], [19.6, 1], ['@billion#2+0.4', NM], ['@a#3-0.1', 1, 'j'], [49.0, 1], ['@trillion+0.3', NB]],
-  C: [{ from: 0, mode: 'pen' }, { from: '@a#3-0.1', mode: 'bill' }, { from: '@so#6-0.1', mode: 'txt', L: ['PENNY TOWER', '$2.53B'], R: ['BILL TOWER', '$35.2T'], C3: ['THE BILL TOWER COSTS', '~14,000 × MORE'], fr: 0.02 }, { from: '@split-0.1', mode: 'txt', L: ['PENNIES', '253 billion'], R: ['PEOPLE ON EARTH', '8.2 billion'], C3: ['EACH PERSON', '31 PENNIES = 31¢'], fr: 1 }, { from: '@would-0.1', mode: 'off' }],
+  C: [{ from: 0, mode: 'pen' }, { from: '@a#3-0.1', mode: 'bill' }, { from: '@so#6-0.1', mode: 'txt', L: ['PENNY TOWER', '$2.53B'], R: ['BILL TOWER', '$3.52T'], C3: ['THE BILL TOWER COSTS', '~1,400 × MORE'], fr: 0.02 }, { from: '@split-0.1', mode: 'txt', L: ['PENNIES', '253 billion'], R: ['PEOPLE ON EARTH', '8.2 billion'], C3: ['EACH PERSON', '31 PENNIES = 31¢'], fr: 1 }, { from: '@would#3-0.1', mode: 'off' }],
   hook: H,
   scenes: [
     { type: 'tower', from: 0, to: '@sounds-0.1', pose: 'shock', kind: 'pen', drop: 0.02, dim: 0.3, dimOut: 3.7, zoomAt: 0.5, zoomDur: 2.4 },
@@ -417,20 +416,20 @@ const S = PM.make({
     { type: 'moon', from: '@pretend-0.1', to: '@so#2-0.1', pose: 'chin', mode: 'straight', at: '@pretend', lock: 1.5, never: '@never', neverText: 'NEVER FALLS' },
     { type: 'tower', from: '@so#2-0.1', to: '@now-0.1', pose: 'shock', kind: 'pen', zoomAt: 19.6, zoomDur: 2.4, chips: 1, chip: { at: '@many', text: 'HOW MANY PENNIES?', tone: 'ink' } },
     { type: 'hundred', from: '@now-0.1', to: '@so#3-0.1', pose: 'talk', at: '@100-0.1', merge: '@$1-0.1', chip: { at: '@$1', text: '100¢ = $1', tone: 'accent' } },
-    { type: 'bignum', from: '@so#3-0.1', to: '@biggest-0.4', pose: 'shock', at: '@$2#2', dur: 1.1, num: 2.53, dec: 2, pre: '$', word: 'BILLION', col: '#00D26A', l1: 'THE WHOLE PENNY TOWER' },
-    { type: 'jackpot', from: '@biggest-0.4', to: '@send-0.1', pose: 'you', at: '@biggest', pct: '@most', pctY: 690 },
+    { type: 'bignum', from: '@so#3-0.1', to: '@biggest-0.4', pose: 'shock', at: '@whole', dur: 2.3, num: 2.53, dec: 2, pre: '$', word: 'BILLION', col: '#00D26A', l1: 'THE WHOLE PENNY TOWER' },
+    { type: 'jackpot', from: '@biggest-0.4', to: '@send-0.1', pose: 'you', at: '@biggest', pct: '@most', pctY: 645 },
     { type: 'ask', from: '@send-0.1', to: '@now#2-0.1', pose: 'you', l1: 'SEND THIS TO THE FRIEND', l2: 'WITH THE PENNY JAR' },
     { type: 'swap', from: '@now#2-0.1', to: '@a#3-0.1', pose: 'shock', at: '@thinner', eq: '@more', chip: { at: '@bills#2', text: 'BILLS: 14× THINNER', tone: 'accent' } },
     { type: 'tower', from: '@a#3-0.1', to: '@follow-0.1', pose: 'shock', kind: 'bill', zoomAt: 49.0, zoomDur: 3.3, chip: { at: '@$35', text: 'DOLLAR-BILL TOWER', tone: 'ink' } },
-    { type: 'bignum', from: '@follow-0.1', to: "@that's-0.1", pose: 'shock', at: '@follow', dur: 1.0, num: 35.2, dec: 1, pre: '$', word: 'TRILLION', col: '#FF3B30', l1: 'ONE STACK OF $1 BILLS' },
-    { type: 'jackpots', from: "@that's-0.1", to: '@so#6-0.1', pose: 'chin', at: '@around', dur: 2.3 },
+    { type: 'bignum', from: '@follow-0.1', to: "@that's-0.1", pose: 'shock', at: '@follow', dur: 1.0, num: 3.52, dec: 2, pre: '$', word: 'TRILLION', col: '#FF3B30', l1: 'ONE STACK OF $1 BILLS' },
+    { type: 'jackpots', from: "@that's-0.1", to: '@so#6-0.1', pose: 'chin', at: '@around#2', dur: 2.3 },
     { type: 'versus', from: '@so#6-0.1', to: '@split-0.1', pose: 'talk', at: '@so#6', ratio: '@ladder+0.2' },
-    { type: 'people', from: '@split-0.1', to: '@would-0.1', pose: 'talk', at: '@31-0.3', n: 31, per: 0.06, big: '31¢ EACH' },
-    { type: 'ask', from: '@would-0.1', to: 99, pose: 'you', l1: 'CHIP IN YOUR 31¢?', l2: 'YES OR NO' },
+    { type: 'people', from: '@split-0.1', to: '@would#3-0.1', pose: 'talk', at: '@31-0.3', n: 31, per: 0.06, big: '31¢ EACH' },
+    { type: 'ask', from: '@would#3-0.1', to: 99, pose: 'you', l1: 'CHIP IN YOUR 31¢?', l2: 'YES OR NO' },
   ],
   labels: [[0, 'THE CLAIM'], ['@sounds-0.1', 'THE BUILD'], ['@a-0.1', 'THE PENNY'], ['@moon#2-0.3', 'THE MOON'], ['@pretend-0.1', 'THE RULES'], ['@so#2-0.1', 'THE TOWER'], ['@now-0.1', 'THE PRICE'], ['@biggest-0.4', 'THE JACKPOT'], ['@now#2-0.1', 'THE TWIST'], ['@a#3-0.1', 'THE BILLS'], ["@that's-0.1", 'THE RECEIPT'], ['@so#6-0.1', 'THE LADDER'], ['@split-0.1', 'THE SPLIT']],
   notes: [],
-  you: [{ at: 0, mood: 'wow', text: 'YOU: 1 PENNY' }, { at: '@build', mood: 'smirk', text: 'DROP A PENNY' }, { at: '@a', mood: 'neutral', text: '1.52 mm' }, { at: '@moon#2', mood: 'worried', text: '239,000 MILES?!' }, { at: '@pretend', mood: 'smirk', text: 'PERFECTLY STRAIGHT' }, { at: '@so#2', mood: 'worried', text: 'HOW MANY?' }, { at: '@253', mood: 'wow', text: '253 BILLION' }, { at: '@now', mood: 'neutral', text: '100¢ = $1' }, { at: '@$2#2', mood: 'wow', text: '$2.53 BILLION' }, { at: '@biggest', mood: 'smirk', text: 'A JACKPOT?' }, { at: '@most', mood: 'happy', text: '81% THERE' }, { at: "@here's", mood: 'angry', text: 'THE TWIST' }, { at: '@$35', mood: 'wow', text: '$35 TRILLION' }, { at: '@follow', mood: 'wow', text: 'JAW DROP' }, { at: '@so#6', mood: 'smirk', text: 'COIN WINS' }, { at: '@split', mood: 'happy', text: '31¢ EACH' }, { at: '@would', mood: 'smirk', text: 'YOUR 31¢?' }],
+  you: [{ at: 0, mood: 'wow', text: 'YOU: 1 PENNY' }, { at: '@build', mood: 'smirk', text: 'DROP A PENNY' }, { at: '@a', mood: 'neutral', text: '1.52 mm' }, { at: '@moon#2', mood: 'worried', text: '239,000 MILES?!' }, { at: '@pretend', mood: 'smirk', text: 'PERFECTLY STRAIGHT' }, { at: '@so#2', mood: 'worried', text: 'HOW MANY?' }, { at: '@253', mood: 'wow', text: '253 BILLION' }, { at: '@now', mood: 'neutral', text: '100¢ = $1' }, { at: '@$2#2', mood: 'wow', text: '$2.53 BILLION' }, { at: '@biggest', mood: 'smirk', text: 'A JACKPOT?' }, { at: '@most', mood: 'happy', text: '81% THERE' }, { at: "@here's", mood: 'angry', text: 'THE TWIST' }, { at: '@$35', mood: 'wow', text: '$3.5 TRILLION' }, { at: '@follow', mood: 'wow', text: 'JAW DROP' }, { at: '@so#6', mood: 'smirk', text: 'COIN WINS' }, { at: '@split', mood: 'happy', text: '31¢ EACH' }, { at: '@would#3', mood: 'smirk', text: 'YOUR 31¢?' }],
   cta: { like: '@like-0.1', send: '@send', follow: '@follow+0.05', followOut: '@follow+1.9' },
   poses: [['@like', 'you'], ['@send', 'you']],
   shakes: [[0.1, 8], ['@billion+0.5', 12], ['@$35+0.8', 12]],

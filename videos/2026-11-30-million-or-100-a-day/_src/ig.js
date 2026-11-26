@@ -34,7 +34,7 @@ const S = M5.make({
     { type: 'life', from: '@start#2-0.1', to: '@follow-0.1', pose: 'chin', rows: [{ age: 25, at: -1, total: 2007500, win: true, resAt: 0 }, { age: 40, at: '@start#2', dur: 1.4, total: 1460000, numAt: '@forty', win: true, resAt: '@win#1' }] },
     { type: 'ask', from: '@follow-0.1', to: '@but#2-0.1', pose: 'you', l1: 'THE PART', l2: 'THAT STINGS' },
     { type: 'life', from: '@but#2-0.1', to: '@the#8-0.1', pose: 'shock', rows: [{ age: 25, at: -1, total: 2007500, win: true, resAt: 0 }, { age: 40, at: -1, total: 1460000, win: true, resAt: 0 }, { age: 60, at: '@start#3', dur: 1.4, total: 730000, numAt: '@seven#2', win: false, resAt: '@thousand#4' }] },
-    { type: 'vs', from: '@the#8-0.1', to: '@so#2-0.1', pose: 'shock', max: 1.3e6, items: [{ label: 'THE MILLION', sub: 'CASH TODAY', val: 1e6, col: th0('gold'), at: '@million#7' }, { label: '$100 A DAY', sub: 'AGE 60 → 80', val: 730000, col: th0('bad'), at: '@the#8' }], gap: { at: '@seventy#1', text: 'MILLION WINS BY $270,000', tone: 'bad' } },
+    { type: 'vs', from: '@the#8-0.1', to: '@so#2-0.1', pose: 'shock', max: 1.45e6, items: [{ label: 'THE MILLION', sub: 'CASH TODAY', val: 1e6, col: th0('gold'), at: '@million#7' }, { label: '$100 A DAY', sub: 'AGE 60 → 80', val: 730000, col: th0('bad'), at: '@the#8' }], gap: { at: '@seventy#1', text: 'MILLION WINS BY $270,000', tone: 'bad' } },
     { type: 'years27', from: '@so#2-0.1', to: '@million#8-0.1', pose: 'chin', at: '@twenty#3-0.3', dur: 1.6, chips: [{ at: '@brutal', text: 'BRUTAL, RIGHT?', tone: 'bad' }] },
     { type: 'ask', from: '@million#8-0.1', to: 99, pose: 'you', l1: 'MILLION OR', l2: '$100 A DAY?' },
   ],
