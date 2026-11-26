@@ -1,0 +1,162 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "He stole the Mona Lisa, then got caught asking for money.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Let's back up. Paris, nineteen eleven. Vincenzo Peruggia used to work at the Louvre.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "On a Monday when the museum was closed, he walked out with the Mona Lisa under his arm.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Nobody noticed until the next day, when a painter saw four empty hooks.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Tap the heart if that security makes you nervous.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And the Louvre? It shut down for a week, and newspapers around the world printed the empty wall.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "People still lined up just to stare at the blank spot.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And for over two years, nobody found it.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Where was it? In his little apartment in Paris.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Then, in nineteen thirteen, he got greedy.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He wrote to an art dealer in Florence, offering the Mona Lisa for five hundred thousand lire.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd post the stolen car on Facebook.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "So what did the dealer do? He brought the Uffizi gallery's director to meet him at his hotel.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "They checked the painting. It was the real one. So they called the police.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Two years of hiding, ruined by one letter he wrote himself.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you love when they catch themselves.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "His excuse? He said he did it for Italy.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "A court gave him one year and fifteen days in prison, and he served less than a year.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And the theft made the Mona Lisa the most famous painting on Earth.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "Stealing the world's most famous painting, for under a year. Fair or not?",
+  "override": null
+ }
+]
