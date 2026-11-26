@@ -28,3 +28,10 @@ Next free Thu slots: 17:00 ET (22Z) briefcases · 19:00 ET (00Z) wine · 21:00 E
 | penny doubled | Instagram REEL | Fri 11/27 11:00 | 16:00Z | d5bbef2a-200d-4537-9b25-06d80d212daf | APPROVED |
 | penny doubled | Facebook REEL | Fri 11/27 11:00 | 16:00Z | 166087ab-e9ee-4aba-a7db-c212e5af4b44 | APPROVED |
 Penny YT/TT: old partial renders (pre-pivot) — need a crime-show rebuild before posting.
+
+## Plan (owner 2026-11-26 ~07:30 UTC: "continue working like how you were… fill up as many days as you can… until Sunday, ideally next Sunday"; quality checks required)
+- Fri 11/27: 11:00 lottery-part2 · 15:00 tucker-payday · 19:00 card-minimum · 17:00 LONG-FORM five-cons
+- Sat 11/28: 11:00 javice · 15:00 one-percent-fee · 19:00 penny-doubled (rebuilt; old IG/FB posts d5bbef2a/166087ab set NEEDS_WORK — delete + recreate)
+- Sun 11/29: 11:00 NEW What If "spend a billion at $1,000/day" · 15:00 NEW What If "$1M sure vs 50/50 at $10M" · 19:00 NEW Decoded (research needed)
+- Then Mon 11/30 → Sun 12/6: ~21 new topics + long-forms Tue 12/1, Fri 12/4. What Ifs = pure math (Opus can script without research); Decoded need a Sonnet research pass (2+ sources).
+- QC: director views every contact sheet (≤1100 px) before posting; reject cropped text/numbers, clutter.
