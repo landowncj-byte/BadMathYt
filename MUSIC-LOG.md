@@ -19,3 +19,4 @@ Decoded moods: noir_bed_1–2 · mystery_bed_1–3 · heist_bed_1–3 · orchest
 What If moods: synth_bed_1–3 · electronic_bed_1–3 · funk_bed_1–3 · hiphop_bed_1 · quirky_bed_1–2 · acoustic_bed_1–3 (+ older upbeat/gameshow/lofi)
 Long-form: ambient_bed_1–3, orchestral_bed_1–3, noir_bed_2 (284 s)
 Rule: pick a bed not used by the previous 3 posted topics; log it in the table above. Dark piano search found nothing usable.
+| mona lisa thief | noir_bed_1 |
