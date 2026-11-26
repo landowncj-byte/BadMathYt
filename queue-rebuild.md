@@ -49,3 +49,10 @@ Full post ids: PostFast list_posts (approvalStatus NEEDS_WORK).
 - 2026-11-26 ~01:15 UTC: polish done — costumed cast (CON red, RICH purple/gold top hats + monocles + cash, FBI navy w/ yellow letters, JUDGE, WINEMAKER, YOU), literal actions (pour/cork/label/wax/handover/cuffs/gavel/paddle) with SFX cue hooks, paper textures, dressed sets, script-text captions. Demo v2 sent to owner. Render ~0.48 s/frame on this loaded box (~20 min per 90 s Short) → owner's computer would help.
 - 2026-11-26 ~01:30 UTC: CC0 sound library added (54 SFX, 2 ambience, 10 music incl. caper loops, auction bed, verdict bed, game-show beds, bass stings) — Freesound CC0, credits in manifest.json + CREDITS.md. Pilot build agent told to use them.
 - 2026-11-26 03:45 UTC OWNER: return to the pre-rebrand style (engine-v2 explainer + talking gold coin) → RULES 111. Resume the Owen-voice rebuilds: lottery (YT done; TT/IG), prince (all 3), penny (YT+TT done; IG), weight/wine/briefcases (re-sync to Owen voice + re-render). Then review → schedule into 11:00/15:00/19:00 ET slots.
+
+## 2026-11-26 ~05:30–06:20 UTC — OWNER: crime-show storytime + speed run + cloud rendering
+- RULES 112 (brand/CRIME-SHOW.md): con = recurring character (real photo ≥5×, else coloured ILLUSTRATION card), A/V table per line, crime-show structure.
+- Rendering: PC tried, then CANCELLED by owner ("just do it how you were doing it yesterday… on the cloud"). RULES 110 updated.
+- OWNER: "ignore all the old ones and just upload them in a new schedule… as soon as possible… catch up for missing all the uploads today." → ALL 46 held NEEDS_WORK posts DELETED in PostFast. New posts are created fresh as each topic finishes, ASAP, then 3/day (11/15/19 ET) + long-forms Tue/Fri 17:00 ET.
+- Builders (Sonnet ×3, cloud render): prince → wine · lottery-rig → penny IG · weight → briefcases.
+- Wave 2 scripts (Opus) + Owen voice DONE: lottery-part2 (68.6/64.1/63.9 s), card-minimum (65.6/68.0/66.5 s), tucker-payday (82.7/77.0/82.6 s; TT under the 80 s Decoded window but > 60 s, accepted for speed). Next: javice, one-percent-fee scripts; long-form Fri 11/27 17:00 ET.

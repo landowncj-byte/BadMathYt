@@ -1,58 +1,62 @@
 [
  [
-  "You're probably an idiot if you only pay the minimum on your credit card.",
-  0.2
- ],
- [
-  "Here's the math the bank prints in tiny letters.",
-  0.45
- ],
- [
-  "Say you owe five thousand dollars. The average rate on cards carrying a balance: about twenty-two percent.",
-  0.3
- ],
- [
-  "Your minimum: one percent of the balance, plus that month's interest.",
-  0.3
- ],
- [
-  "Month one, you pay a hundred forty-three dollars. Your debt goes down by fifty.",
-  0.45
- ],
- [
-  "Hit like if that just ruined your day.",
-  0.3
- ],
- [
-  "So how long until you're free?",
-  0.35
- ],
- [
-  "After five years, you still owe about two thousand seven hundred dollars.",
-  0.35
- ],
- [
-  "Send this to the friend who calls the minimum paying it off.",
-  0.3
- ],
- [
-  "Follow along, because the final number is disgusting.",
-  0.3
- ],
- [
-  "Sixteen and a half years. Twelve thousand eight hundred eleven dollars, for a five thousand dollar balance.",
-  0.45
- ],
- [
-  "A fixed two hundred fifty a month instead? Done in twenty-six months.",
-  0.3
- ],
- [
-  "Same debt. Same rate. Fourteen years faster.",
-  0.45
- ],
- [
-  "Still paying the minimum?",
+  "Five thousand dollars of credit card debt can cost you twelve thousand.",
   0.6
+ ],
+ [
+  "Say you owe five grand on a card, and you only pay the minimum, the smallest payment allowed.",
+  0.5
+ ],
+ [
+  "Your card charges about twenty-two percent a year. That's the average for people carrying a balance.",
+  0.5
+ ],
+ [
+  "So month one, you pay a hundred forty-three dollars.",
+  0.5
+ ],
+ [
+  "But ninety-three of it is interest, the bank's fee for lending you money.",
+  0.3
+ ],
+ [
+  "Your actual debt? It drops by only fifty bucks. Hit like if that hurts.",
+  0.3
+ ],
+ [
+  "And the trap? As your balance shrinks, your minimum shrinks too.",
+  0.3
+ ],
+ [
+  "After five whole years of paying, you still owe about two thousand seven hundred dollars.",
+  0.6
+ ],
+ [
+  "Send this to the friend who thinks the minimum means paid off.",
+  0.3
+ ],
+ [
+  "So when are you finally free? Sixteen and a half years.",
+  0.6
+ ],
+ [
+  "A kid born the day you started would be sixteen, learning to drive.",
+  0.3
+ ],
+ [
+  "Follow if you like knowing the math first. Ready for the total?",
+  0.3
+ ],
+ [
+  "You paid twelve thousand eight hundred eleven dollars, for five thousand dollars of stuff.",
+  0.6
+ ],
+ [
+  "Now pay a fixed two hundred fifty a month instead. Same debt, same rate. You're done in twenty-six months.",
+  0.5
+ ],
+ [
+  "That's fourteen years faster. So, are you still paying the minimum?",
+  0.4
  ]
 ]

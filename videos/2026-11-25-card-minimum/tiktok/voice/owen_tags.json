@@ -1,0 +1,138 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "You pay a hundred forty-three dollars, and your debt drops fifty.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "That's the credit card minimum, and it's a trap.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Here's the setup. You owe five thousand dollars on a card at about twenty-two percent.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "The minimum? It's the smallest payment the bank allows each month.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Ninety-three dollars of that first payment is just interest, basically the bank's rent on your money.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Tap the heart if you've ever paid just the minimum.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Now the sneaky part. Your balance goes down, so what happens to your minimum? It goes down too.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So every month you pay less. And the debt? It crawls even slower.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Five years in, you still owe about twenty-seven hundred dollars.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's more than half of what you started with, still sitting there.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend whose card is maxed out right now.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "So how long until it's gone? Sixteen and a half years.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if the math is making you mad too.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And the total you paid? Twelve thousand eight hundred eleven dollars, for a five grand balance.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Pay a fixed two fifty a month instead, and it's gone in twenty-six months.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's fourteen years faster, same card, same rate.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "What's your card's interest rate? Drop it below.",
+  "override": null
+ }
+]

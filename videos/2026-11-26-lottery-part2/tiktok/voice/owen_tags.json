@@ -1,0 +1,130 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "Someone bought almost every Texas lottery combo and won ninety-five million.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "And it wasn't even the first time. Let's go back to Virginia, nineteen ninety-two.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "An Australian fund tried to buy every single ticket, over five million of them.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "They hit the jackpot: twenty-seven million dollars, a state record.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Tap the heart if you'd have done the exact same thing.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "But there was a catch. Tickets had to be bought at a licensed store.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And these guys? They had millions printed in bulk.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So Virginia investigated. Three weeks later, nobody could prove the winning ticket broke a rule.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So they paid. About one point three million a year, for twenty years.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's like twenty normal salaries, every single year.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who still buys one ticket and prays.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then Virginia panicked and rushed in rules against bulk buying.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Didn't matter. Thirty-one years later, Texas got hit the same way.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow if you're here for the math. And how did Texas take it?",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "It got so messy that the state shut down its whole lottery commission.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Should buying every combo be legal? Yes or no.",
+  "override": null
+ }
+]

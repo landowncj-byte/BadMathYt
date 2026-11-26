@@ -1,52 +1,82 @@
 [
  {
-  "text": "Part two. Somebody bought nearly every lottery combo again, for ninety-five million bucks.",
+  "text": "Someone bought almost every Texas lottery combo and won ninety-five million.",
   "start": 0.0,
-  "end": 4.583
+  "end": 4.32
  },
  {
-  "text": "But first, Virginia, ninety-two: they'd won twenty-seven million. Did the state pay?",
-  "start": 5.783,
-  "end": 11.042
+  "text": "And it wasn't even the first time. Let's go back to Virginia, nineteen ninety-two.",
+  "start": 4.9,
+  "end": 7.8
  },
  {
-  "text": "Tap the heart if you're guessing no.",
-  "start": 11.292,
-  "end": 13.073
+  "text": "An Australian fund tried to buy every single ticket, over five million of them.",
+  "start": 9.4,
+  "end": 13.88
  },
  {
-  "text": "Yeah, it paid, 'cause nobody could prove a rule got broken.",
-  "start": 13.323,
-  "end": 16.337
+  "text": "They hit the jackpot: twenty-seven million dollars, a state record.",
+  "start": 14.32,
+  "end": 18.28
  },
  {
-  "text": "Then Virginia rushed in rules against bulk buying. Cute.",
-  "start": 16.587,
-  "end": 19.656
+  "text": "Tap the heart if you'd have done the exact same thing.",
+  "start": 18.9,
+  "end": 21.08
  },
  {
-  "text": "Send this to the friend who says the lottery's unbeatable.",
-  "start": 20.506,
-  "end": 23.344
+  "text": "But there was a catch. Tickets had to be bought at a licensed store.",
+  "start": 21.58,
+  "end": 25.14
  },
  {
-  "text": "'Cause Texas, twenty twenty-three, was the same\u2014 basically the same play.",
-  "start": 24.194,
-  "end": 27.849
+  "text": "And these guys? They had millions printed in bulk.",
+  "start": 25.54,
+  "end": 28.2
  },
  {
-  "text": "How'd it end? Follow, 'cause it's wild.",
-  "start": 28.099,
-  "end": 30.097
+  "text": "So Virginia investigated. Three weeks later, nobody could prove the winning ticket broke a rule.",
+  "start": 28.62,
+  "end": 34.0
  },
  {
-  "text": "Texas ended up shutting down its whole lottery commission.",
-  "start": 30.804,
-  "end": 33.651
+  "text": "So they paid. About one point three million a year, for twenty years.",
+  "start": 34.6,
+  "end": 38.86
  },
  {
-  "text": "Should buying every combo be legal?",
-  "start": 34.251,
-  "end": 36.222
+  "text": "That's like twenty normal salaries, every single year.",
+  "start": 39.3,
+  "end": 42.26
+ },
+ {
+  "text": "Send this to the friend who still buys one ticket and prays.",
+  "start": 42.74,
+  "end": 45.44
+ },
+ {
+  "text": "Then Virginia panicked and rushed in rules against bulk buying.",
+  "start": 46.22,
+  "end": 49.18
+ },
+ {
+  "text": "Didn't matter. Thirty-one years later, Texas got hit the same way.",
+  "start": 49.62,
+  "end": 53.38
+ },
+ {
+  "text": "Follow if you're here for the math. And how did Texas take it?",
+  "start": 53.76,
+  "end": 56.72
+ },
+ {
+  "text": "It got so messy that the state shut down its whole lottery commission.",
+  "start": 56.72,
+  "end": 60.44
+ },
+ {
+  "text": "Should buying every combo be legal? Yes or no.",
+  "start": 61.04,
+  "end": 63.86
  }
 ]

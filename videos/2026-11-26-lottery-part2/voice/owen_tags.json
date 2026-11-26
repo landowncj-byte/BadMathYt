@@ -1,0 +1,138 @@
+[
+ {
+  "line": 1,
+  "tag": "curious",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "A group bought over five million lottery tickets and won twenty-seven million.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "This is part two. In nineteen ninety-two, an Australian fund tried to buy every ticket in Virginia's lottery.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And it worked. They hit the jackpot, a state record.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But the rule said tickets had to be bought at a licensed store.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And this group had millions of them printed in bulk.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "So was the winning ticket legal? Hit like if you think Virginia should keep the money.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Virginia investigated for about three weeks, and nobody could prove how that ticket was bought.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "No proof means no broken rule. So Virginia paid.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "About one point three million dollars a year, for twenty years.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's like twenty normal salaries, every single year.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who says the house always wins.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then Virginia rushed in new rules against bulk buying. Problem solved, right?",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Thirty-one years later? Follow, 'cause this ending is wild.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "In twenty twenty-three, a group bought nearly every combination in the Texas lottery.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And they won ninety-five million dollars.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "It got so messy that Texas shut down its whole lottery commission.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": "playfully",
+  "why": "closing question",
+  "short_pause_after": false,
+  "text": "So when someone buys every ticket, should the state have to pay? Yes or no?",
+  "override": null
+ }
+]
