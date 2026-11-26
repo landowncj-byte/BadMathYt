@@ -8,6 +8,9 @@ Research: research/2026-11-28/lifetime-rent/research.md. Beats/AV notes: voice/b
 | tiktok | Three percent a year sounds like nothing. It's six hundred thousand dollars. | 200 | 70.72 | PASS (voiced timings) |
 | ig | Your rent is going to quietly triple, and you'll barely notice. | 203 | 69.33 | PASS (voiced timings) |
 
+## Real-timing gate note
+IG cut: real-timing gate flags PACING 6.1 s (limit 6.0) around 61 s — the follow line + loop tail; script passed pre-voice, not re-voiced (over 61 s, brief allows re-voice only if under). Builder: keep a visual change/number tick inside that stretch.
+
 ## Facts used
 ASSUMES (on screen): start $1,500/month; rent rises 3% every year (assumed); 40 years; no moves, deposits, insurance or tax angle; hypothetical, not a forecast. Math (research Python, re-checked: 18,000 × (1.03^40 − 1)/0.03 = $1,357,223): monthly rent year 10 $1,957, year 20 $2,630, year 30 $3,535, year 40 $4,751 (×3.17, "more than triple"); cumulative 10 yrs $206,350, 20 yrs $483,667, 30 yrs $856,357, 40 yrs $1,357,223 ("one point three six million"); flat rent with no raises = 1,500 × 480 = $720,000; the 3% raises add $637,223 (+88%, "almost as much as the rent itself"). Everyday: $1,500 → $4,751 a month; $720K vs $637K.
 

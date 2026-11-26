@@ -10,7 +10,7 @@ Follow `brand/REBUILD-LONGER.md` Stage 1, the PLAYBOOK add-on, RULES 104/105 and
    - Each cut gets its own hook and order.
    - Write `voice/beats-v3.md` per cut, with hook-ladder candidates and the AV notes the builder needs: what is on screen per line and where the villain photo or illustration card appears (at least 5 times for Decoded).
 3. LENGTH (owner: every Short must be OVER 60 s; Owen reads about 2.9 words/s with pauses):
-   - What If: 195–215 words, so about 66–74 s.
+   - What If: 205–215 words in about 16 lines (Owen actually reads about 3.2 words/s, so 200 words is only about 62 s).
    - Decoded: 240–265 words, so about 82–92 s.
    - The gate's estimate runs about 13% long, so trust the real timing after voicing.
 4. FACTS: use only ✔2/✔1 facts from research.md. Obey every "say X, not Y" caution in it. Drop ⚠ items. Put your everyday-comparison math in beats-v3.md.

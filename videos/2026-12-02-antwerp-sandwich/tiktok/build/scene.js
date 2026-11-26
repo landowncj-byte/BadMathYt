@@ -529,7 +529,7 @@ E_('brd', 'board', A(16, 0, 0), { in: S(16) - 0.35, props: { title: 'EVIDENCE BO
   { id: 'dn', k: 'note', x: 0, y: 440, w: 640, h: 220, icon: 'helix', iconS: 90, iconY: 70, size: 56, lines: [['SAID TO CARRY HIS DNA', 'bad', 44]], at: (SW(16,8)-0.1), rot: -0.02 } ],
   strings: [[0, 1, SW(16,0) + 0.1], [0, 2, SW(16,0) + 0.35], [0, 3, SW(16,0) + 0.55], [1, 4, SW(16,8)], [2, 4, SW(16,8) + 0.1]] } });
 // ---------- S17 arrest ----------
-E_('dys', 'counter', A(17, 360, -330), { in: (SW(17,4)-0.1), props: { to: 5, at: (SW(17,4)), dur: 0.8, suffix: ' DAYS', size: 120, tone: 'bad', label: 'LATER', w: 500 } });
+E_('dys', 'counter', A(17, 250, -330), { in: (SW(17,4)-0.1), props: { to: 5, at: (SW(17,4)), dur: 0.8, suffix: ' DAYS', size: 100, tone: 'bad', label: 'LATER', w: 420 } });
 E_('arr', 'suspect', A(17, -130, 40), { in: (SW(17,9)-0.3), props: D({ w: 480, name: 'THE FAKE DEALER', tag: ILL + ' · 21 FEB 2003', tilt: -0.02, mono: true, flash: true, push: { at: (SW(17,9)), dur: 3, to: 1.3 }, xmark: SW(17,16) - 0.05, stamps: [{ text: 'ARRESTED', at: SW(17,16), size: 72, x: 0, y: -20, rot: -0.1 }] }) });
 E_('cuff', 'prop', A(17, 420, 350), { in: (SW(17,16)-0.1), props: { icon: 'cuffs', caption: '', w: 260, h: 220, iconS: 170, tilt: 0.06 } });
 // ---------- S19 court ----------
@@ -595,7 +595,7 @@ B_((SW(16,8)), ZN, 'brd.dn', { fill: 0.7, maxH: 460, sy: 900 });
 B_((SW(16,6)+0.3), ZN, 'brd.ph', { fill: 0.5, maxH: 520, sy: 830 });
 B_(S(17) - 0.05, SB, ['arr', 'dys', 'cuff'], { move: 'whip', fill: 1.0, maxH: 900, sy: 830 });
 B_((SW(17,16)), ZN, 'arr.face', { fill: 0.42, maxH: 560, sy: 840, pose: 'shock', st: 'corner' });
-B_(S(18) - 0.05, PK, 'chk', { move: 'whip', fill: 0.98, sy: 830, maxH: 900 });
+B_(S(18) - 0.05, PK, 'chk', { move: 'whip', fill: 0.7, sy: 740, maxH: 600 });
 B_(S(19) - 0.05, SB, ['gvl', 'crt'], { move: 'whip', fill: 0.98, maxH: 760, sy: 820 });
 B_(S(20) - 0.05, GH, ['ver', 'v10'], { fill: 0.98, maxH: 760, sy: 830, st: 'corner' });
 B_((SW(20,4)), ZN, 'v10.value', { fill: 0.6, maxH: 420, sy: 830 });
