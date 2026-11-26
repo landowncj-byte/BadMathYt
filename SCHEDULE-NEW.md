@@ -67,3 +67,8 @@ Sunday plan (research/2026-11-27): 11:00 mona-lisa-thief (Decoded) · 15:00 coin
 | double or nothing | TikTok (song: Funny) | Sun 11/29 15:00 | 20:00Z | 1f543ba7-75f5-41fc-aa3d-8d401d6b0e5c | APPROVED |
 | double or nothing | Instagram REEL | Sun 11/29 15:00 | 20:00Z | 2b64d9c8-70ae-4063-9597-fa4b8c51f626 | APPROVED |
 | double or nothing | Facebook REEL | Sun 11/29 15:00 | 20:00Z | b1133554-2d52-4bb5-b6ea-c8c64c0aea8d | APPROVED |
+| anna delvey | YouTube | Sun 11/29 19:00 | 00:00Z Mon | 8b4188e8-b750-4166-972d-972a77be54b1 | APPROVED |
+| anna delvey | TikTok (song: Tense) | Sun 11/29 19:00 | 00:00Z Mon | e3607dc6-4700-4042-9213-b7cd077007ba | APPROVED |
+| anna delvey | Instagram REEL | Sun 11/29 19:00 | 00:00Z Mon | 04c1ae9f-1d3b-4468-a259-8531dd57bad6 | APPROVED |
+| anna delvey | Facebook REEL | Sun 11/29 19:00 | 00:00Z Mon | abda1a99-1b91-4a36-920f-9889338a21a9 | APPROVED |
+Mon 11/30 plan: million-or-100-a-day + van-meegeren (building) + a third (Mona Lisa if not used Sun 11:00).
