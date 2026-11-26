@@ -38,4 +38,8 @@ Note: the penny stack is drawn at a minimum coin height (about 14 px) so it is v
 | V13 post settings | not part of this build | | |
 
 ## CRIME-SHOW BUILD STATUS
-RENDERED READY: penny-doubled/ig 68.67s 22.3MB (-14.0 LUFS, -1.3 dBTP). Voice synced (bm2 voice no diff), scene = build.sh output, rendered crf 26 (crf 20 gave 57 MB). Gate: stills + sheet viewed. Residual: ~0.3 s near-empty whip frame at 64.0 s, last 3 s is blurred board behind the EXTRA stamp and bubble.
+v5 rebuild (director rejected the v3 ig render: cropped hook, cut-off numbers, blurry stacked boards). New stage `_src/pd5.js` + `_src/pdmk.js` + yt5/tt5/ig5.js (`_src/build5.sh <cut> <yt5|tt5|ig5>`): everything is drawn in screen space (camera cannot crop it), ONE idea per scene, every number auto-fitted to <= 920 px (margin >= 70 px), real coin grids (1 -> 512 coins, each doubling = a copy of the same coins slides in), live day/$ counter, true-scale million-brick vs penny-tower bars, YOU card + storyteller in the bottom row, nothing in the caption band. Voice untouched (Owen, `bm2.cjs voice` re-synced).
+RENDERED READY: penny-doubled/video.mp4 (YouTube) 70.97s 14.7MB (-14.0 LUFS, -1.26 dBTP)
+RENDERED READY: penny-doubled/tiktok 68.70s 14.3MB (-14.0 LUFS, -1.32 dBTP, bed -12 dB)
+RENDERED READY: penny-doubled/ig 68.23s 14.2MB (-14.0 LUFS, -1.30 dBTP)
+Gate: script_gate --all PASS x3; keyframe sheets + final 6x4 contact sheets of all three cuts viewed; no cropped text / cut-off numbers / overlapping cards found after fixes. Residuals: plane trail crosses the HYPOTHETICAL chip for ~1 s on the SEND beat; the day-20 bar scene (about 10 s) changes only through note chips and the counter.

@@ -24,18 +24,23 @@ for ch in range(7):
     allp = [p for p in P if p['chapter'] == ch]
     paras = [p for p in allp if 'file' not in p]
     a = load(f'ch{ch}.mp3'); dur = len(a) / SR
-    ws = whisper(a)
+    cf = f'/tmp/claude-0/cm/ws_ch{ch}.json'
+    if os.path.exists(cf): ws = json.load(open(cf))
+    else:
+        ws = whisper(a); json.dump(ws, open(cf, 'w'))
     import re
-    NUM = set('zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand million billion and first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth thirteenth fourteenth fifteenth sixteenth seventeenth eighteenth nineteenth twentieth thirtieth st nd rd th'.split())
+    NUM = set('a half quarter point oh zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand million billion and first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth thirteenth fourteenth fifteenth sixteenth seventeenth eighteenth nineteenth twentieth thirtieth st nd rd th'.split())
     def toks(t): return [x for x in (re.sub(r"[^a-z']", '', w.lower()).strip("'") for w in re.split(r'[\s-]+', t)) if x and x not in NUM]
     wt = [toks(w['w']) for w in ws]   # per whisper word (digits drop out)
     flat = [(i, x) for i, tl in enumerate(wt) for x in tl]
     cuts, pos = [], 0
     for b in range(1, len(paras)):
-        key = toks(paras[b]['text'])[:3]
         hit = None
-        for k in range(pos, len(flat) - len(key) + 1):
-            if all(difflib.SequenceMatcher(None, a, b).ratio() >= 0.75 for a, b in zip([x for _, x in flat[k:k + len(key)]], key)): hit = k; break
+        for kl in (3, 2, 1):
+            key = toks(paras[b]['text'])[:kl]
+            for k in range(pos, len(flat) - len(key) + 1):
+                if all(difflib.SequenceMatcher(None, a, b).ratio() >= 0.75 for a, b in zip([x for _, x in flat[k:k + len(key)]], key)): hit = k; break
+            if hit is not None: break
         if hit is None: raise SystemExit(f"no match for {paras[b]['id']} key={key}")
         wi = flat[hit][0]; pos = hit + 1
         # step back over leading words dropped from the key (And / One / Three / numbers)

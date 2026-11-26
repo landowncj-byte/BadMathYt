@@ -41,3 +41,12 @@ Penny YT/TT: old partial renders (pre-pivot) — need a crime-show rebuild befor
 | lottery part 2 | Facebook REEL | Fri 11/27 11:00 | 16:00Z | f96a207c-04ca-4a6c-a329-f9b845b10f61 | APPROVED |
 card-minimum: REJECTED at QC (16.5 YEARS cropped at right edge, INTEREST label overlap) → fix in progress, then Fri 19:00 ET.
 - million-vs-billion: scripts + Owen YT 70.0 s / TT 64.7 s done; IG voice pending (owen_jobs.json). Needs a builder when a slot frees (Fri 11:00 ET slot).
+| 1% fee | YouTube | Sat 11/28 15:00 | 20:00Z | 93628511-ceb0-48dc-a7ca-30353f2068c8 | APPROVED |
+| 1% fee | TikTok (song: My Zen Mornings) | Sat 11/28 15:00 | 20:00Z | e5fea75c-34c8-4f80-8571-203d28f90992 | APPROVED |
+| 1% fee | Instagram REEL | Sat 11/28 15:00 | 20:00Z | 54d0e877-a535-4ba4-9262-b745063805a7 | APPROVED |
+| 1% fee | Facebook REEL | Sat 11/28 15:00 | 20:00Z | bf91586e-75e5-445e-b82d-a9a06fadb5d6 | APPROVED |
+| penny doubled (rebuilt) | YouTube | Sat 11/28 19:00 | 00:00Z Sun | 70b623e2-0e98-4b2b-a33b-c938821e8bf3 | APPROVED |
+| penny doubled (rebuilt) | TikTok (song: Ok I Like It) | Sat 11/28 19:00 | 00:00Z Sun | c652e4fa-dd60-436f-8ce1-fbc59af0bbe5 | APPROVED |
+| penny doubled (rebuilt) | Instagram REEL | Sat 11/28 19:00 | 00:00Z Sun | 366e9b5f-d839-41b3-ba99-a0f15000618f | APPROVED |
+| penny doubled (rebuilt) | Facebook REEL | Sat 11/28 19:00 | 00:00Z Sun | 8f2d495c-3d41-46b7-905f-697d25b12847 | APPROVED |
+(old penny IG/FB d5bbef2a/166087ab deleted)

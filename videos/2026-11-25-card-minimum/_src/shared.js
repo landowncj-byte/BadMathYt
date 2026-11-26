@@ -93,7 +93,7 @@
     size: p => [p.w + 100, 720],
     anchors: p => ({ years: [0, -190, p.w * 0.85, 250], strip: [0, 40, p.w + 60, 150], ghost: [0, 195, p.w + 40, 130], end: [p.w * 0.43, 40, 220, 160], tag: [0, 300, p.w, 90] }),
     draw(g, p, env) { const { t, theme } = env, w = p.w, span = p.years * 12, x0 = -w / 2, sy = 40, sh = 70, fon = t - p.fillAt, fp = fon > 0 ? ease.out(lin(fon, 0, p.fillDur)) : 0;
-      txt(g, p.label, 0, -355, F.cap(32), rgba(theme.paper, 0.8));
+      if (t < p.ghostAt - 0.2) txt(g, p.label, 0, -355, F.cap(32), rgba(theme.paper, 0.8));
       const v = p.big * fp; let fs = 210, cf = F.hero(fs); g.font = cf; let cw = B.rollWidth(g, p.big, { font: cf, decimals: 1 }).w + g.measureText(' YEARS').width; if (cw > w * 0.86) { fs = Math.floor(fs * w * 0.86 / cw); cf = F.hero(fs); g.font = cf; cw = B.rollWidth(g, p.big, { font: cf, decimals: 1 }).w + g.measureText(' YEARS').width; } roll(g, v, -cw / 2, -200, { font: cf, size: fs, color: tone('bad', false), decimals: 1, suffix: ' YEARS', align: 'left', speed: fp > 0 && fp < 0.98 ? p.big / p.fillDur : 0 });
       const lp = fon - p.fillDur; burst(g, 0, -200, 260, tone('bad', false), lp, 18, 0.55);
       g.fillStyle = rgba(theme.paper, 0.14); rr(g, x0, sy, w, sh, 20); g.fill();
