@@ -72,3 +72,9 @@ Sunday plan (research/2026-11-27): 11:00 mona-lisa-thief (Decoded) · 15:00 coin
 | anna delvey | Instagram REEL | Sun 11/29 19:00 | 00:00Z Mon | 04c1ae9f-1d3b-4468-a259-8531dd57bad6 | APPROVED |
 | anna delvey | Facebook REEL | Sun 11/29 19:00 | 00:00Z Mon | abda1a99-1b91-4a36-920f-9889338a21a9 | APPROVED |
 Mon 11/30 plan: million-or-100-a-day + van-meegeren (building) + a third (Mona Lisa if not used Sun 11:00).
+| LONG-FORM five cons (8:36) | YouTube | Fri 11/27 17:00 | 22:00Z | 20fbd48d-03c4-44ca-99bd-77874bc8bbe7 | APPROVED |
+| card minimum (fixed) | YouTube | Fri 11/27 19:00 | 00:00Z Sat | 90d7f7aa-7fe7-4829-be42-c86f0db60e9f | APPROVED |
+| card minimum (fixed) | TikTok (song: ANYWAY megamix) | Fri 11/27 19:00 | 00:00Z Sat | cba95504-f53b-45b7-ad98-c04bebf04cdc | APPROVED |
+| card minimum (fixed) | Instagram REEL | Fri 11/27 19:00 | 00:00Z Sat | 6696d6ef-dc53-4d4b-af4b-674ebc32654c | APPROVED |
+| card minimum (fixed) | Facebook REEL | Fri 11/27 19:00 | 00:00Z Sat | 92a5924e-2f5a-4be6-8053-a14a1a017c84 | APPROVED |
+FRIDAY + SATURDAY COMPLETE. Sunday: 11:00 mona lisa (building) · 15:00 double ✅ · 19:00 anna ✅.
