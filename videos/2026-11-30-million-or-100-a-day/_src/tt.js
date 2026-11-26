@@ -1,0 +1,53 @@
+// TikTok cut — WHAT IF: "A million dollars loses to a hundred bucks a day." Hook = the live race (the daily pile overtakes the million in 3 s). Order: race hook · two piles · rules · heart pick · drip (a bill every morning) · rent · year 1 · year 10 (still behind) · day 10,000 · 27 yrs · friend · alive · 25 · follow · 60 · verdict · years left · ask
+const th0 = k => ({ gold: '#FFD60A', good: '#00D26A', bad: '#FF3B30' })[k];
+const H = { until: '@wait-0.1', y: 668, size: 66, lines: [[['A MILLION DOLLARS', 'good']], [['LOSES TO', 'paper']], [['$100 A DAY', 'accent']]] };
+const S = M5.make({
+  dur: 71.84,
+  K: [[0, 0], [3.5, 12500], ['@wait', 12500], ['@every#2-0.1', 0], ['@pile#1+0.3', 30], ['@one#1', 30], ['@500#1+0.2', 365], ['@year#2', 365], ['@10#1+0.2', 365], ['@000#2', 3650], ['@then#1', 3650], ['@000#3+0.1', 10000], ['@but#1', 10000], ['@start#1', 14000]],
+  C: [
+    { from: 0, L: ['THE MILLION', '$1,000,000'], R: ['~dayl', '~pile'], bar: 'pile', Lc: 'gold', Rc: 'good' },
+    { from: '@wait-0.1', L: ['THE MILLION', '$1,000,000'], R: ['OR, EVERY DAY', '$100'], Lc: 'gold', Rc: 'good' },
+    { from: '@now#1-0.1', L: ['THE MILLION', '$1,000,000'], R: ['~dayl', '~pile'], bar: 'pile', Lc: 'gold', Rc: 'good' },
+    { from: "@that's#1-0.1", L: ['A DAY', '$100'], R: ['A MONTH, ABOUT', { from: 0, to: 3042, at: '@3#1', dur: 0.9, pre: '$' }], Rc: 'good' },
+    { from: '@year#1-0.1', L: ['THE MILLION', '$1,000,000'], R: ['~dayl', '~pile'], bar: 'pile', Lc: 'gold', Rc: 'good' },
+    { from: '@start#1-0.1', L: ['YOU START AT', 'AGE 25'], R: ['BY AGE 80, YOU GET', { from: 0, to: 2007500, at: '@two#2', dur: 1.2, pre: '$' }], Rc: 'good' },
+    { from: '@but#2-0.1', L: ['YOU START AT', 'AGE 60'], R: ['BY AGE 80, YOU GET', { from: 0, to: 730000, at: '@730', dur: 1.2, pre: '$' }], Rc: 'bad' },
+    { from: '@the#15-0.1', L: ['THE MILLION', '$1,000,000'], R: ['$100 A DAY · AGE 60', '$730,000'], Lc: 'good', Rc: 'bad' },
+    { from: '@so#1-0.1', L: ['IT COMES DOWN TO', 'YEARS LEFT'], R: ['DAILY MONEY NEEDS', '27.4 YEARS'], Lc: 'gold', Rc: 'good' },
+  ],
+  hook: H,
+  scenes: [
+    { type: 'race', from: 0, to: '@wait-0.1', pose: 'shock', sc: 0.62, dy: 60, catchAt: -1, catchStamp: false },
+    { type: 'piles', from: '@wait-0.1', to: '@no#1-0.1', pose: 'shock', leftAt: '@piles', rightAt: '@right', chips: [{ at: '@left', text: 'ON THE LEFT: $1,000,000 CASH', tone: 'ink' }, { at: '@right', text: 'ON THE RIGHT: $100 EVERY DAY', tone: 'good' }, { at: '@for#1', text: 'FOR THE REST OF YOUR LIFE', tone: 'accent' }] },
+    { type: 'piles', from: '@no#1-0.1', to: '@tap-0.1', pose: 'chin', leftAt: -1, rightAt: -1, tags: [{ at: '@taxes', text: 'NO TAXES', tone: 'bad', y: 618 }, { at: '@interest', text: 'NO INTEREST', tone: 'bad', y: 618 }] },
+    { type: 'piles', from: '@tap-0.1', to: '@now#1-0.1', pose: 'you', leftAt: -1, rightAt: -1, pick: '@went', chips: [{ at: '@hand', text: 'YOUR HAND WENT FOR THE MILLION?', tone: 'accent' }] },
+    { type: 'drip', from: '@now#1-0.1', to: "@that's#1-0.1", pose: 'shock', chips: [{ at: '@another', text: 'A NEW $100 EVERY MORNING', tone: 'good' }] },
+    { type: 'rent', from: "@that's#1-0.1", to: '@year#1-0.1', pose: 'shock', numAt: '@3#1', rentAt: '@rent', chips: [{ at: '@forever', text: 'RENT · FOREVER', tone: 'good' }] },
+    { type: 'year', from: '@year#1-0.1', to: '@year#2-0.1', pose: 'shock', n: 1, at: '@pile#2', dur: 1.4, chips: [{ at: '@500#1', text: 'YEAR 1 · $36,500', tone: 'good' }] },
+    { type: 'year', from: '@year#2-0.1', to: '@then#1-0.1', pose: 'chin', n: 10, at: '@10#1+0.2', dur: 1.5, chips: [{ at: '@still', text: 'STILL WAY BEHIND THE MILLION', tone: 'bad' }] },
+    { type: 'race', from: '@then#1-0.1', to: "@that's#2-0.1", pose: 'shock', catchAt: '@000#3+0.1' },
+    { type: 'years27', from: "@that's#2-0.1", to: '@send-0.1', pose: 'chin', at: '@about#2', dur: 1.6, chips: [{ at: '@years#1', text: 'ABOUT 27 YEARS IN', tone: 'accent' }] },
+    { type: 'ask', from: '@send-0.1', to: '@but#1-0.1', pose: 'you', l1: 'FRIEND WHO SAYS', l2: 'JUST GIVE ME THE MILLION' },
+    { type: 'race', from: '@but#1-0.1', to: '@start#1-0.1', pose: 'shock', catchAt: -1, catchStamp: false, tags: [{ at: '@alive-1.2', text: 'ONLY WHILE YOU’RE ALIVE', tone: 'bad', y: 622 }] },
+    { type: 'life', from: '@start#1-0.1', to: '@follow-0.1', pose: 'shock', rows: [{ age: 25, at: '@start#1', dur: 1.6, total: 2007500, numAt: '@two#2', win: true, resAt: '@million#6' }] },
+    { type: 'ask', from: '@follow-0.1', to: '@but#2-0.1', pose: 'you', l1: 'JUST CHECKED', l2: 'HOW OLD YOU ARE?' },
+    { type: 'life', from: '@but#2-0.1', to: '@the#15-0.1', pose: 'shock', rows: [{ age: 25, at: -1, total: 2007500, win: true, resAt: 0 }, { age: 60, at: '@start#2', dur: 1.6, total: 730000, numAt: '@730', win: false, resAt: '@000#4' }] },
+    { type: 'vs', from: '@the#15-0.1', to: '@so#1-0.1', pose: 'shock', max: 1.3e6, items: [{ label: 'THE MILLION', sub: 'CASH TODAY', val: 1e6, col: th0('gold'), at: '@million#7' }, { label: '$100 A DAY', sub: 'AGE 60 → 80', val: 730000, col: th0('bad'), at: '@the#15' }], gap: { at: '@$270#1', text: 'MILLION WINS BY $270,000', tone: 'bad' } },
+    { type: 'life', from: '@so#1-0.1', to: '@million#8-0.1', pose: 'chin', head: 'IT’S NOT THE MONEY · IT’S THE YEARS LEFT', rows: [{ age: 25, at: -1, total: 2007500, win: true, resAt: 0 }, { age: 60, at: -1, total: 730000, win: false, resAt: 0 }], chips: [{ at: '@years#2', text: 'HOW MANY YEARS YOU’VE GOT LEFT', tone: 'accent' }] },
+    { type: 'ask', from: '@million#8-0.1', to: 99, pose: 'you', l1: 'MILLION OR', l2: '$100 A DAY?' },
+  ],
+  hideCounter: [['@million#8-0.1', 99]],
+  labels: [[0, 'THE RESULT'], ['@wait-0.1', 'THE TWO PILES'], ['@now#1-0.1', 'THE RACE'], ['@year#1-0.1', 'THE YEARS'], ['@then#1-0.1', 'THE CATCH-UP'], ['@but#1-0.1', 'THE CATCH'], ['@start#1-0.1', 'YOUR AGE'], ['@but#2-0.1', 'AGE 60'], ['@the#15-0.1', 'THE VERDICT']],
+  notes: [],
+  you: [{ at: 0, mood: 'wow', text: 'YOU: I LOST?' }, { at: '@wait', mood: 'neutral', text: 'TWO PILES' }, { at: '@right', mood: 'worried', text: 'OR $100 A DAY' }, { at: '@went', mood: 'smirk', text: 'GRAB THE MILLION' }, { at: '@now#1', mood: 'happy', text: 'A BILL A MORNING' }, { at: '@3#1', mood: 'wow', text: '$3,000 A MONTH' }, { at: '@year#2', mood: 'worried', text: 'YEAR 10: BEHIND' }, { at: '@then#1', mood: 'worried', text: 'WHEN DOES IT WIN?' }, { at: '@000#3', mood: 'wow', text: 'DAY 10,000!' }, { at: '@send', mood: 'smirk', text: 'JUST THE MILLION' }, { at: '@but#1', mood: 'worried', text: 'ONLY WHILE ALIVE' }, { at: '@start#1', mood: 'neutral', text: 'YOU: AGE 25' }, { at: '@two#2', mood: 'happy', text: '~$2 MILLION' }, { at: '@but#2', mood: 'worried', text: 'YOU: AGE 60' }, { at: '@730', mood: 'angry', text: '$730,000' }, { at: '@the#15', mood: 'angry', text: 'MILLION WINS' }, { at: '@so#1', mood: 'neutral', text: 'YEARS LEFT' }, { at: '@million#8', mood: 'smirk', text: 'YOUR CALL' }],
+  cta: { like: '@tap-0.1', send: '@send', follow: '@follow+0.05', followOut: '@follow+1.9', bubble: { at: '@one#2', l1: 'MILLION OR $100/DAY?', l2: 'COMMENT BELOW' } },
+  poses: [['@tap', 'you'], ['@send', 'you']],
+  shakes: [[0.1, 8], ['@000#3+0.1', 12], ['@$270#1', 10]],
+  captions: { gap: 16, emph: { 'million': 'good', 'million.': 'good', 'million?': 'good', 'loses': 'bad', 'day': 'accent', 'rent': 'accent', 'forever.': 'good', 'left.': 'accent', 'behind.': 'bad', 'wins': 'bad' }, fix: [] },
+  sfx2: [
+    { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 0.2, name: 'money_counter_2', gain: -14, dur: 3.0 },
+    { at: '@tap', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 },
+    { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.8', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.9', name: 'success_chime_1', gain: -12, dur: 1.2 }, { at: '@one#2', name: 'pop_1', gain: -9, dur: 0.5 },
+  ],
+});
+BM2.scene(S);
