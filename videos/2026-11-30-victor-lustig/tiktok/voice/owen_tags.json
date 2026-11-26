@@ -1,0 +1,202 @@
+[
+ {
+  "line": 1,
+  "tag": "dramatically",
+  "why": "hook",
+  "short_pause_after": false,
+  "text": "The Eiffel Tower con man got twenty years. But not for the tower.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "His name was Victor Lustig, and he called himself a count.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's a noble title, but his was fake.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "His famous story? Paris, nineteen twenty-five, at least in legend.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He poses as an official, and invites five scrap-metal dealers to a hotel.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Scrap dealers buy old metal, then melt it down and resell it.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then he tells them the Eiffel Tower is being sold for scrap, secretly.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "playfully",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "Tap like if you'd have smelled that a mile away.",
+  "override": "playfully"
+ },
+ {
+  "line": 9,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "A dealer named Poisson reportedly paid, then Lustig skipped town.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And Poisson? He was too embarrassed to tell the cops.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So then, the story says, Lustig came back and pitched it again.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But no court ever proved any of it.",
+  "override": null
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd buy a landmark off a stranger.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "Here's what's on the record: he got into counterfeiting.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That means making fake money, then spending it like it's real.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "May nineteen thirty-five, the Secret Service arrests him in New York.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "They chase fake cash, and yeah, they got him.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Then, a few months later, he escapes from a federal jail.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "But weeks later, they catch him again.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow, 'cause the sentence is brutal.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "He pleads guilty, and gets fifteen years for the fake money.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": "surprised",
+  "why": "turn",
+  "short_pause_after": false,
+  "text": "Wait, there's more? Yep, five years for the escape. That's twenty years, at Alcatraz.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "That's the famous island prison in San Francisco Bay.",
+  "override": null
+ },
+ {
+  "line": 24,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So the tower con that made him a legend? Never proven. Fake bills locked him up.",
+  "override": null
+ },
+ {
+  "line": 25,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Legend or real con? One word.",
+  "override": null
+ }
+]

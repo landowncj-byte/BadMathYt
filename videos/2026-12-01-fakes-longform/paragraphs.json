@@ -1,0 +1,530 @@
+[
+ {
+  "id": "P01",
+  "chapter": 0,
+  "text": "A man walked out of the most famous museum in the world with its most famous painting under his arm.",
+  "pause": 0.4
+ },
+ {
+  "id": "P02",
+  "chapter": 0,
+  "text": "A painter nobody took seriously sold a fake masterpiece to a Nazi leader, for one point six five million guilders.",
+  "pause": 0.4
+ },
+ {
+  "id": "P03",
+  "chapter": 0,
+  "text": "A magazine paid about nine million marks for secret diaries that had the wrong initials on the cover.",
+  "pause": 0.4
+ },
+ {
+  "id": "P04",
+  "chapter": 0,
+  "text": "And a wine collector set a world auction record, years before prosecutors called his own house a wine factory.",
+  "pause": 0.4
+ },
+ {
+  "id": "P05",
+  "chapter": 0,
+  "text": "Four stories. Three fakes that fooled the experts, and one real masterpiece that experts had to prove was real.",
+  "pause": 0.4
+ },
+ {
+  "id": "P06",
+  "chapter": 0,
+  "text": "Every one of them ended in a courtroom. And every one of them came apart over something tiny.",
+  "pause": 0.4
+ },
+ {
+  "id": "P07",
+  "chapter": 0,
+  "text": "Stay to the end, because there are three simple checks anyone can do, and they would have caught all four.",
+  "pause": 0.6
+ },
+ {
+  "id": "P08",
+  "chapter": 1,
+  "text": "Chapter one. The Mona Lisa thief.",
+  "pause": 0.4
+ },
+ {
+  "id": "P09",
+  "chapter": 1,
+  "text": "Paris. Monday, August twenty-first, nineteen eleven. The Louvre museum is closed for the day.",
+  "pause": 0.4
+ },
+ {
+  "id": "P10",
+  "chapter": 1,
+  "text": "A man named Vincenzo Peruggia walks in. He's Italian, and he used to work at the Louvre.",
+  "pause": 0.4
+ },
+ {
+  "id": "P11",
+  "chapter": 1,
+  "text": "He takes the Mona Lisa off the wall, and walks out with it under his arm.",
+  "pause": 0.4
+ },
+ {
+  "id": "P12",
+  "chapter": 1,
+  "text": "How long until anyone noticed? A whole day.",
+  "pause": 0.4
+ },
+ {
+  "id": "P13",
+  "chapter": 1,
+  "text": "The next day, a painter notices four empty hooks where the painting should be.",
+  "pause": 0.4
+ },
+ {
+  "id": "P14",
+  "chapter": 1,
+  "text": "The Louvre shuts for a week. Newspapers around the world print the empty wall, and crowds line up just to stare at the blank spot.",
+  "pause": 0.4
+ },
+ {
+  "id": "P15",
+  "chapter": 1,
+  "text": "And then, nothing. Not for weeks, not for months. For over two years, nobody finds it.",
+  "pause": 0.4
+ },
+ {
+  "id": "P16",
+  "chapter": 1,
+  "text": "Because the most famous painting on Earth is sitting in Peruggia's small Paris apartment.",
+  "pause": 0.4
+ },
+ {
+  "id": "P17",
+  "chapter": 1,
+  "text": "So how do you catch a thief who left no trail? You don't. He catches himself.",
+  "pause": 0.4
+ },
+ {
+  "id": "P18",
+  "chapter": 1,
+  "text": "In nineteen thirteen, he writes a letter to an art dealer in Florence, Italy, named Alfredo Geri.",
+  "pause": 0.4
+ },
+ {
+  "id": "P19",
+  "chapter": 1,
+  "text": "He offers him the Mona Lisa for five hundred thousand lire, and says the painting should go home to Italy.",
+  "pause": 0.4
+ },
+ {
+  "id": "P20",
+  "chapter": 1,
+  "text": "Geri brings in an expert, the director of the Uffizi gallery, Giovanni Poggi.",
+  "pause": 0.4
+ },
+ {
+  "id": "P21",
+  "chapter": 1,
+  "text": "They meet Peruggia at his hotel. They look at the painting closely. And it's the real one.",
+  "pause": 0.4
+ },
+ {
+  "id": "P22",
+  "chapter": 1,
+  "text": "They tell him they'll take it to be checked. Then, in mid-December nineteen thirteen, the police arrest him at his hotel.",
+  "pause": 0.4
+ },
+ {
+  "id": "P23",
+  "chapter": 1,
+  "text": "In nineteen fourteen, a court in Florence sentenced him to one year and fifteen days. He said he did it for Italy, and he ended up serving less than a year.",
+  "pause": 0.4
+ },
+ {
+  "id": "P24",
+  "chapter": 1,
+  "text": "And here's the strange part. Before the theft, the Mona Lisa was famous. After it, it was the most famous painting in the world.",
+  "pause": 0.4
+ },
+ {
+  "id": "P25",
+  "chapter": 1,
+  "text": "Hit like if you can't believe the thief got caught by his own letter.",
+  "pause": 0.6
+ },
+ {
+  "id": "P26",
+  "chapter": 2,
+  "text": "Chapter two. The Vermeer forger.",
+  "pause": 0.4
+ },
+ {
+  "id": "P27",
+  "chapter": 2,
+  "text": "The Netherlands, the nineteen thirties. Han van Meegeren is a Dutch painter the critics ignore.",
+  "pause": 0.4
+ },
+ {
+  "id": "P28",
+  "chapter": 2,
+  "text": "So he picks a target. Johannes Vermeer, a Dutch master from the sixteen hundreds.",
+  "pause": 0.4
+ },
+ {
+  "id": "P29",
+  "chapter": 2,
+  "text": "Only a few dozen real Vermeers are known, so a new one would be like buried treasure.",
+  "pause": 0.4
+ },
+ {
+  "id": "P30",
+  "chapter": 2,
+  "text": "Van Meegeren paints new pictures in Vermeer's style, then sells them as lost Vermeers that were just discovered.",
+  "pause": 0.4
+ },
+ {
+  "id": "P31",
+  "chapter": 2,
+  "text": "And the art world believes him. Experts and museums buy them.",
+  "pause": 0.4
+ },
+ {
+  "id": "P32",
+  "chapter": 2,
+  "text": "Then it gets dangerous.",
+  "pause": 0.4
+ },
+ {
+  "id": "P33",
+  "chapter": 2,
+  "text": "In nineteen forty-three, during the German occupation, one of his fakes is sold through a dealer to Hermann Goering, a Nazi leader.",
+  "pause": 0.4
+ },
+ {
+  "id": "P34",
+  "chapter": 2,
+  "text": "The price? One point six five million guilders. Guilders were Dutch money back then, and this was a fortune.",
+  "pause": 0.4
+ },
+ {
+  "id": "P35",
+  "chapter": 2,
+  "text": "In nineteen forty-five, after the war, investigators find the painting in Goering's collection, and trace it back to van Meegeren.",
+  "pause": 0.4
+ },
+ {
+  "id": "P36",
+  "chapter": 2,
+  "text": "To them, it looks like he sold a Dutch national treasure to the enemy. So he's arrested and charged with collaboration, which means helping the enemy.",
+  "pause": 0.4
+ },
+ {
+  "id": "P37",
+  "chapter": 2,
+  "text": "So how do you get out of that? You confess to something smaller.",
+  "pause": 0.4
+ },
+ {
+  "id": "P38",
+  "chapter": 2,
+  "text": "Van Meegeren says, I didn't sell a treasure. I painted it myself.",
+  "pause": 0.4
+ },
+ {
+  "id": "P39",
+  "chapter": 2,
+  "text": "Nobody believes him. The experts had already called those paintings real.",
+  "pause": 0.4
+ },
+ {
+  "id": "P40",
+  "chapter": 2,
+  "text": "So he asks for paint and a canvas. And while officials watch, he paints a brand-new picture in Vermeer's style.",
+  "pause": 0.4
+ },
+ {
+  "id": "P41",
+  "chapter": 2,
+  "text": "Now the charge changes. He's not a traitor. He's a forger.",
+  "pause": 0.4
+ },
+ {
+  "id": "P42",
+  "chapter": 2,
+  "text": "In nineteen forty-seven, he's convicted of forgery and fraud, and sentenced to one year in prison.",
+  "pause": 0.4
+ },
+ {
+  "id": "P43",
+  "chapter": 2,
+  "text": "Weeks later, he dies, before he ever serves it.",
+  "pause": 0.4
+ },
+ {
+  "id": "P44",
+  "chapter": 2,
+  "text": "The experts couldn't spot his fakes. In the end, the only way to prove they were fake was to watch him paint one.",
+  "pause": 0.4
+ },
+ {
+  "id": "P45",
+  "chapter": 2,
+  "text": "And if you've got a friend who swears they'd never fall for a fake, send them this one.",
+  "pause": 0.6
+ },
+ {
+  "id": "P46",
+  "chapter": 3,
+  "text": "Chapter three. The fake diaries.",
+  "pause": 0.4
+ },
+ {
+  "id": "P47",
+  "chapter": 3,
+  "text": "West Germany, the early nineteen eighties. A man named Konrad Kujau sells old war souvenirs in Stuttgart.",
+  "pause": 0.4
+ },
+ {
+  "id": "P48",
+  "chapter": 3,
+  "text": "Then he starts writing notebooks by hand, dozens of them. And he claims they're Hitler's secret diaries.",
+  "pause": 0.4
+ },
+ {
+  "id": "P49",
+  "chapter": 3,
+  "text": "He sells them under a fake name, through a middleman.",
+  "pause": 0.4
+ },
+ {
+  "id": "P50",
+  "chapter": 3,
+  "text": "They end up with Gerd Heidemann, a star reporter at Stern, one of Germany's biggest magazines. And he believes they're real.",
+  "pause": 0.4
+ },
+ {
+  "id": "P51",
+  "chapter": 3,
+  "text": "He talks his bosses into paying about nine million marks. Marks were West Germany's money back then, so this was a fortune.",
+  "pause": 0.4
+ },
+ {
+  "id": "P52",
+  "chapter": 3,
+  "text": "And Heidemann? He secretly kept a big chunk of that money for himself.",
+  "pause": 0.4
+ },
+ {
+  "id": "P53",
+  "chapter": 3,
+  "text": "In April nineteen eighty-three, the magazine tells the whole world.",
+  "pause": 0.4
+ },
+ {
+  "id": "P54",
+  "chapter": 3,
+  "text": "But nobody had really checked the most obvious thing. The cover.",
+  "pause": 0.4
+ },
+ {
+  "id": "P55",
+  "chapter": 3,
+  "text": "On the front of the notebooks were plastic letters, bought from a shop. The letters F and H.",
+  "pause": 0.4
+ },
+ {
+  "id": "P56",
+  "chapter": 3,
+  "text": "But the name starts with an A. It should have said A H.",
+  "pause": 0.4
+ },
+ {
+  "id": "P57",
+  "chapter": 3,
+  "text": "Then Germany's national archives tested the paper and the ink. Both were modern, far too new to be real.",
+  "pause": 0.4
+ },
+ {
+  "id": "P58",
+  "chapter": 3,
+  "text": "And it took them less than two weeks after the big announcement. They called the diaries a crude forgery, which means a cheap, obvious fake.",
+  "pause": 0.4
+ },
+ {
+  "id": "P59",
+  "chapter": 3,
+  "text": "In nineteen eighty-five, a court in Hamburg convicted Kujau and Heidemann. Each was sentenced to about four and a half years in prison.",
+  "pause": 0.4
+ },
+ {
+  "id": "P60",
+  "chapter": 3,
+  "text": "So the money was paid first, and the cheap test came after. Flip that order, and the fake probably never makes it to print.",
+  "pause": 0.6
+ },
+ {
+  "id": "P61",
+  "chapter": 4,
+  "text": "Chapter four. The wine in the kitchen.",
+  "pause": 0.4
+ },
+ {
+  "id": "P62",
+  "chapter": 4,
+  "text": "Los Angeles, the early two thousands. A young collector named Rudy Kurniawan becomes a star of the rare wine world.",
+  "pause": 0.4
+ },
+ {
+  "id": "P63",
+  "chapter": 4,
+  "text": "He opens rare old bottles at fancy dinners like they're nothing.",
+  "pause": 0.4
+ },
+ {
+  "id": "P64",
+  "chapter": 4,
+  "text": "In twenty oh six, two auctions of his wine bring in about thirty-five million dollars. The second one sets a world record.",
+  "pause": 0.4
+ },
+ {
+  "id": "P65",
+  "chapter": 4,
+  "text": "So how do you fake a wine that the world's best tasters are drinking?",
+  "pause": 0.4
+ },
+ {
+  "id": "P66",
+  "chapter": 4,
+  "text": "Prosecutors say it worked like this. He took older, cheaper wine, mixed it with newer wine, and poured it into old bottles.",
+  "pause": 0.4
+ },
+ {
+  "id": "P67",
+  "chapter": 4,
+  "text": "Then came new corks, new wax, and printed labels for famous wines.",
+  "pause": 0.4
+ },
+ {
+  "id": "P68",
+  "chapter": 4,
+  "text": "And for years, plenty of experts drank it, and bought more.",
+  "pause": 0.4
+ },
+ {
+  "id": "P69",
+  "chapter": 4,
+  "text": "So what caught him? Not taste. A date.",
+  "pause": 0.4
+ },
+ {
+  "id": "P70",
+  "chapter": 4,
+  "text": "In twenty oh eight, a New York auction listed his bottles of a French wine called Clos Saint-Denis, with labels going back to nineteen forty-five.",
+  "pause": 0.4
+ },
+ {
+  "id": "P71",
+  "chapter": 4,
+  "text": "The winemaker, Laurent Ponsot, saw that and objected. His family didn't start making that wine until nineteen eighty-two.",
+  "pause": 0.4
+ },
+ {
+  "id": "P72",
+  "chapter": 4,
+  "text": "So those labels were thirty-seven years older than the wine itself. The bottles were pulled from the sale.",
+  "pause": 0.4
+ },
+ {
+  "id": "P73",
+  "chapter": 4,
+  "text": "In twenty twelve, the FBI arrested Kurniawan at his home in California. Inside were old bottles, corks, wax and thousands of printed labels. Prosecutors called it a wine factory.",
+  "pause": 0.4
+ },
+ {
+  "id": "P74",
+  "chapter": 4,
+  "text": "Billionaire collector Bill Koch told the jury he paid two point one million dollars for two hundred nineteen bottles he says were fake.",
+  "pause": 0.4
+ },
+ {
+  "id": "P75",
+  "chapter": 4,
+  "text": "In twenty thirteen, a Manhattan jury convicted Kurniawan of fraud. He was sentenced to ten years in prison, and ordered to pay back about twenty-eight point four million dollars.",
+  "pause": 0.4
+ },
+ {
+  "id": "P76",
+  "chapter": 4,
+  "text": "The best noses in the business didn't catch it. A guy reading a label did.",
+  "pause": 0.6
+ },
+ {
+  "id": "P77",
+  "chapter": 5,
+  "text": "So, what do all four have in common?",
+  "pause": 0.4
+ },
+ {
+  "id": "P78",
+  "chapter": 5,
+  "text": "Look at what actually gave each one away.",
+  "pause": 0.4
+ },
+ {
+  "id": "P79",
+  "chapter": 5,
+  "text": "A thief who wrote a letter asking for money.",
+  "pause": 0.4
+ },
+ {
+  "id": "P80",
+  "chapter": 5,
+  "text": "A forger who had to paint one more fake to prove the others were fake.",
+  "pause": 0.4
+ },
+ {
+  "id": "P81",
+  "chapter": 5,
+  "text": "Two plastic letters on a cover.",
+  "pause": 0.4
+ },
+ {
+  "id": "P82",
+  "chapter": 5,
+  "text": "And a date on a label that was thirty-seven years too early.",
+  "pause": 0.4
+ },
+ {
+  "id": "P83",
+  "chapter": 5,
+  "text": "None of them took a genius detective. Every one came down to a detail anyone could check.",
+  "pause": 0.4
+ },
+ {
+  "id": "P84",
+  "chapter": 5,
+  "text": "So here are three simple checks anyone can do. One. Read the boring details. The date, the spelling, the name on the front.",
+  "pause": 0.4
+ },
+ {
+  "id": "P85",
+  "chapter": 5,
+  "text": "Two. Ask where it came from. A secret seller, or a lost treasure that just showed up, means slow down.",
+  "pause": 0.4
+ },
+ {
+  "id": "P86",
+  "chapter": 5,
+  "text": "Three. Check it before you pay, not after. The magazine paid first and tested later. That order cost them millions.",
+  "pause": 0.4
+ },
+ {
+  "id": "P87",
+  "chapter": 5,
+  "text": "Those three checks would have caught every fake in this video.",
+  "pause": 0.4
+ },
+ {
+  "id": "P88",
+  "chapter": 5,
+  "text": "If you want more stories where one tiny detail sinks a giant lie, subscribe. There's a new one every week.",
+  "pause": 0.6
+ }
+]

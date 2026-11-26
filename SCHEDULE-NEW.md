@@ -83,3 +83,6 @@ FRIDAY + SATURDAY COMPLETE. Sunday: 11:00 mona lisa (building) · 15:00 double �
 | mona lisa thief | Instagram REEL | Sun 11/29 11:00 | 16:00Z | 48df33ce-3901-4114-9e23-fb2025552f16 | APPROVED |
 | mona lisa thief | Facebook REEL | Sun 11/29 11:00 | 16:00Z | 59f80964-9cc2-439e-bf9e-cb25850af15d | APPROVED |
 THU–SUN COMPLETE (all 4 platforms, 3/day + Thu catch-up + Fri long-form).
+| van meegeren | YT / TT (A Forbidden Sin) / IG / FB | Mon 11/30 11:00 | 16:00Z | 8a31ff0e / 1f48907f / adeb9f02 / e879a1d3 | APPROVED |
+| million or 100 a day | YT / TT (SICK W/ IT) / IG / FB | Mon 11/30 15:00 | 20:00Z | 907f5687 / 5f870c9d / 04f4a01e / 90d8515f | APPROVED |
+Mon 19:00 ET = victor-lustig (building). Tue: 11:00 pennies · 15:00 billionaires-split · 17:00 LONG-FORM fakes · 19:00 hitler-diaries.

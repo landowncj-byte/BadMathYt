@@ -1,0 +1,202 @@
+[
+ {
+  "line": 1,
+  "tag": "sarcastic",
+  "why": "hook (IG roast cut)",
+  "short_pause_after": false,
+  "text": "This con man supposedly sold the fucking Eiffel Tower.",
+  "override": null
+ },
+ {
+  "line": 2,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "His name's Victor Lustig, and yeah, he called himself a count.",
+  "override": null
+ },
+ {
+  "line": 3,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's a noble title, but his came from nowhere.",
+  "override": null
+ },
+ {
+  "line": 4,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "So here's the legend. Paris, nineteen twenty-five.",
+  "override": null
+ },
+ {
+  "line": 5,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He pretends to work for the government, and books a fancy hotel.",
+  "override": null
+ },
+ {
+  "line": 6,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then five scrap-metal dealers show up, guys who buy old metal to melt down.",
+  "override": null
+ },
+ {
+  "line": 7,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And he tells them, keep it quiet, the tower's being sold for scrap.",
+  "override": null
+ },
+ {
+  "line": 8,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Double-tap if you'd have laughed him out of the room.",
+  "override": null
+ },
+ {
+  "line": 9,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "One dealer, Poisson, reportedly paid. And Lustig was gone.",
+  "override": null
+ },
+ {
+  "line": 10,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "The best part? Poisson was too damn embarrassed to call the police.",
+  "override": null
+ },
+ {
+  "line": 11,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "So then, legend says, Lustig came back and ran it again.",
+  "override": null
+ },
+ {
+  "line": 12,
+  "tag": "seriously",
+  "why": "override",
+  "short_pause_after": false,
+  "text": "But none of that was ever proven in court. Zero.",
+  "override": "seriously"
+ },
+ {
+  "line": 13,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Send this to the friend who'd fall for this, no question.",
+  "override": null
+ },
+ {
+  "line": 14,
+  "tag": "conversational",
+  "why": "back to plain storytelling",
+  "short_pause_after": false,
+  "text": "What's proven? He got into counterfeiting.",
+  "override": null
+ },
+ {
+  "line": 15,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That means making fake money, then passing it off as real.",
+  "override": null
+ },
+ {
+  "line": 16,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "He even reportedly sold a box that supposedly printed hundred-dollar bills.",
+  "override": null
+ },
+ {
+  "line": 17,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "In May nineteen thirty-five, the Secret Service arrested him in New York.",
+  "override": null
+ },
+ {
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's the agency that chases fake cash.",
+  "override": null
+ },
+ {
+  "line": 19,
+  "tag": "matter of fact",
+  "why": "steps",
+  "short_pause_after": false,
+  "text": "Then this guy escaped from a federal jail. Like, actually escaped.",
+  "override": null
+ },
+ {
+  "line": 20,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Weeks later, they caught his ass again.",
+  "override": null
+ },
+ {
+  "line": 21,
+  "tag": "playfully",
+  "why": "call to action",
+  "short_pause_after": false,
+  "text": "Follow, 'cause here's what twenty years looks like.",
+  "override": null
+ },
+ {
+  "line": 22,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "He pleaded guilty. Fifteen years for the fake money, and five for the escape.",
+  "override": null
+ },
+ {
+  "line": 23,
+  "tag": "seriously",
+  "why": "verdict",
+  "short_pause_after": false,
+  "text": "Twenty years, at Alcatraz, the island prison in San Francisco Bay.",
+  "override": null
+ },
+ {
+  "line": 24,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "And he was never even charged for the Eiffel Tower. The fake cash is what got him.",
+  "override": null
+ },
+ {
+  "line": 25,
+  "tag": "sarcastic",
+  "why": "roast",
+  "short_pause_after": false,
+  "text": "Real con or bullshit legend? One word.",
+  "override": null
+ }
+]

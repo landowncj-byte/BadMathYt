@@ -302,7 +302,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     const st = S.at; for (let i = 0; i < 14; i++) { const on = t - (st + i * 0.12); if (on <= 0) continue; const k = Math.min(1, spring(on, 'snappy')); const y = base - (i + 1) * tb - (1 - k) * 60; g.save(); g.globalAlpha *= clamp(on / 0.05); g.fillStyle = i % 2 ? '#2FA46B' : '#27935E'; rr(g, 750 - 150, y, 300, tb - 0.8, 2); g.fill(); g.fillStyle = 'rgba(255,255,255,.3)'; g.fillRect(750 - 148, y, 296, 1.2); g.restore(); }
     label(g, '14 DOLLAR BILLS', 750, base + 36, th.paper, 28); label(g, '0.109 mm EACH', 750, base + 70, th.good, 28);
     g.strokeStyle = th.accent; g.lineWidth = 3; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(150, base - tp); g.lineTo(930, base - tp); g.stroke(); g.setLineDash([]);
-    if (S.eq && t >= S.eq) { const k = Math.min(1.1, spring(t - S.eq, 'bouncy')); g.save(); g.translate(540, base - tp - 120); g.scale(k, k); g.fillStyle = '#0B0F14'; g.beginPath(); g.arc(0, 0, 40, 0, 7); g.fill(); g.strokeStyle = th.accent; g.lineWidth = 5; g.stroke(); txt(g, '≈', 0, 3, F.hero(64), th.accent); g.restore(); }
+    if (S.eq && t >= S.eq) { const k = Math.min(1.1, spring(t - S.eq, 'bouncy')); g.save(); g.translate(540, base - tp - 62); g.scale(k, k); g.fillStyle = '#0B0F14'; g.beginPath(); g.arc(0, 0, 40, 0, 7); g.fill(); g.strokeStyle = th.accent; g.lineWidth = 5; g.stroke(); txt(g, '≈', 0, 3, F.hero(64), th.accent); g.restore(); }
     mchip(g, p, t, th, S, 1050);
   }
   // the penny tower split across everyone: 31 pennies each

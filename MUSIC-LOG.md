@@ -26,3 +26,6 @@ Rule: pick a bed not used by the previous 3 posted topics; log it in the table a
 | van meegeren | heist_bed_1 |
 | pennies to the moon | electronic_bed_2 |
 | hitler diaries | orchestral_bed_1 |
+| victor lustig | noir_bed_2 |
+| billionaires split | acoustic_bed_1 |
+| fakes long-form | per chapter: noir_bed_1 / heist_bed_2 / orchestral_bed_2 / mystery_bed_2 / jazz_bed_2 / ambient_bed_1 |
