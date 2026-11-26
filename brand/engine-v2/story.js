@@ -22,8 +22,9 @@
     const scenes = []; let cur = null, lastSet = null;
     for (const sh of spec.shots) {
       const setKind = typeof sh.set === 'string' ? sh.set : (sh.set && sh.set.kind) || lastSet || 'void', sk = sh.scene || setKind + '|' + (sh.theme || spec.theme || '');
-      if (!cur || cur.key !== sk) { cur = { key: sk, id: sh.scene || 'S' + (scenes.length + 1), at: T(sh.at), set: typeof sh.set === 'object' ? sh.set : { kind: setKind }, theme: sh.theme || spec.theme, cast: {}, blocking: {}, actions: [], shots: [], fx: [], props: sh.props || [], transition: sh.transition, lamp: sh.lamp }; if (typeof sh.set === 'object') cur.set = { ...sh.set }; scenes.push(cur); }
+      if (!cur || cur.key !== sk) { cur = { key: sk, id: sh.scene || 'S' + (scenes.length + 1), at: T(sh.at), set: typeof sh.set === 'object' ? sh.set : { kind: setKind }, theme: sh.theme || spec.theme, cast: {}, blocking: {}, actions: [], shots: [], fx: [], props: sh.props || [], overlays: [], transition: sh.transition, lamp: sh.lamp }; if (typeof sh.set === 'object') cur.set = { ...sh.set }; scenes.push(cur); }
       lastSet = setKind; if (sh.props && cur.props !== sh.props) cur.props = cur.props.concat(sh.props.filter(p => !cur.props.some(q => q.id === p.id)));
+      for (const o of sh.overlays || []) cur.overlays.push(Object.assign({ at: sh.at }, o));
       const t0 = T(sh.at), marks = B.Sets3D && B.Sets3D.sets[setKind] ? B.Sets3D.sets[setKind].marks || {} : {}, mx = v => (typeof v === 'number' ? v : marks[v] ?? MARKS[v] ?? 0);
       let focus = null;
       for (const e of sh.cast || []) {
@@ -120,7 +121,7 @@
           for (let i = 1; i < ch.faces.length; i++) if (ch.faces[i].t - ch.faces[i - 1].t < 8 / fps - 1e-6) warns.push(`WARN scene ${sc.id} ${ch.id}: face ${ch.faces[i - 1].name} -> ${ch.faces[i].name} held only ${((ch.faces[i].t - ch.faces[i - 1].t) * fps).toFixed(0)} frames (bible: >= 8)`); }
         sc.shots = (s.shots && s.shots.length ? s.shots : [{ at: sc.t0, shot: 'wide' }]).map((h, i) => compileShot(h, sc, i)).sort((a, b) => a.t0 - b.t0);
         for (const f of s.fx || []) { const o = { ...f, t: tt(f.at), dur: f.dur ?? ({ impact: 2 / fps, flash: 0.18, shake: 0.5, punch: 0.3, speedlines: 0.2, tension: 0.7 }[f.type] || 0.3) }; sc.fx.push(o); rows.push({ t: o.t, scene: sc.id, who: '', text: `fx ${f.type}` }); if (f.sfx) sfx.push({ at: o.t, ...(typeof f.sfx === 'string' ? { name: f.sfx } : f.sfx) }); else if (f.type === 'impact') sfx.push({ at: o.t, name: 'deep_boom_1', gain: -4, dur: 1.2 }); }
-        for (const o of s.overlays || []) sc.overlays.push({ ...o, t0: tt(o.at ?? o.from ?? sc.t0), t1: o.until != null ? tt(o.until) : 1e9 });
+        for (const o of s.overlays || []) sc.overlays.push({ ...o, t0: tt(o.at ?? o.from ?? sc.t0), t1: o.until != null ? tt(o.until) : o.dur != null ? tt(o.at ?? o.from ?? sc.t0) + o.dur : 1e9 });
         sc.propPos = (p, t) => propPos(sc, p, t); sc.ctx = ctxFor(sc);
         if (use3d) stage.build(sc, sc.theme, sc.set.kind, sc.set.palette); return sc;
       }
@@ -257,7 +258,7 @@
         if (label) { const k = clamp(B.spring(u - 0.1, { f: 2.4, z: 0.5 }), 0, 1.25), size = fr.size || 120; g.font = `${size}px Anton, Impact, sans-serif`; const bw = g.measureText(label).width + 90, bh = size * 1.15 + (role ? 70 : 30), bx = fr.x ?? W / 2, by = fr.y ?? H * 0.3;
           g.translate(bx, by); g.scale(k, k); g.rotate(-0.03); g.beginPath(); g.roundRect(-bw / 2, -bh / 2, bw, bh, 8); g.fillStyle = '#F5F3EE'; g.fill(); g.lineWidth = 7; g.strokeStyle = '#0B0F14'; g.stroke(); g.fillStyle = '#0B0F14'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(label, 0, role ? -22 : 4); if (role) { g.font = '800 34px JBM, monospace'; g.fillStyle = '#FF3B30'; g.fillText(role, 0, bh / 2 - 36); } }
         const F = Math.exp(-u * 18); if (F > 0.02) { g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = `rgba(255,255,255,${F})`; g.fillRect(0, 0, W, H); } g.restore(); }
-      function drawOverlay(g, o, t) { const k = clamp(B.spring(t - o.t0, 'snappy'), 0, 1.15); g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.translate(o.x ?? W / 2, o.y ?? H * 0.2); g.scale(k, k); g.rotate(o.rot || 0); g.font = `${o.size || 80}px ${o.font || 'Anton, Impact, sans-serif'}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = 14; g.strokeStyle = B.Style.ink; g.strokeText(o.text, 0, 0); g.fillStyle = o.color || '#fffdf6'; g.fillText(o.text, 0, 0); g.restore(); }
+      function drawOverlay(g, o, t) { if (o.kind && B.Overlays && B.Overlays[o.kind]) { B.Overlays[o.kind](g, o, t, B.spring(t - o.t0, 'snappy')); return; } const k = clamp(B.spring(t - o.t0, 'snappy'), 0, 1.15); g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.translate(o.x ?? W / 2, o.y ?? H * 0.2); g.scale(k, k); g.rotate(o.rot || 0); g.font = `${o.size || 80}px ${o.font || 'Anton, Impact, sans-serif'}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.lineWidth = 14; g.strokeStyle = B.Style.ink; g.strokeText(o.text, 0, 0); g.fillStyle = o.color || '#fffdf6'; g.fillText(o.text, 0, 0); g.restore(); }
 
       function drawScene(g, sc, t) {
         const sh = shotAt(sc, t); let tw = t; if (sh.cam === 'security') { const f2 = (sh.camOpts && sh.camOpts.fps) || 12; tw = Math.floor(t * f2) / f2; }

@@ -248,7 +248,7 @@
     if (A.prop) { g.save(); g.rotate(fa + (A.propRot || 0)); if (B.Props && B.Props.kinds[A.prop]) { const s = (A.propScale || 1) * 0.8; g.scale(s * c.mir, s); B.Props.drawHeld(g, A.prop, A.lt != null ? Object.assign({}, c.propOpts || {}, { lt: A.lt, mir: c.mir }) : (c.propOpts || {}), t, c); } g.restore(); }
     if (A.finger) limb(g, [[0, -4], [0, -handR - 18]], 8, pal.skin, c.ink, c.ol * 0.8);
     if (A.fingers) for (let i = 0; i < A.fingers; i++) { const x = (i - (A.fingers - 1) / 2) * 10; limb(g, [[x, -3], [x * 1.25, -handR - 14 - (i % 2) * 3]], 7, pal.skin, c.ink, c.ol * 0.7); }
-    g.beginPath(); g.arc(0, 0, handR, 0, TAU); fillStroke(g, pal.skin, c.ink, c.ol); if (A.prop || A.open) { g.beginPath(); g.ellipse(handR * 0.6, handR * 0.3, 4.5, 7, 0.5, 0, TAU); fillStroke(g, pal.skin, c.ink, c.ol * 0.7); }
+    g.beginPath(); g.arc(0, 0, handR, 0, TAU); fillStroke(g, pal.glove || pal.skin, c.ink, c.ol); if (A.prop || A.open) { g.beginPath(); g.ellipse(handR * 0.6, handR * 0.3, 4.5, 7, 0.5, 0, TAU); fillStroke(g, pal.glove || pal.skin, c.ink, c.ol * 0.7); }
     g.restore();
   }
   function drawLeg(g, c, hipX, hipH, foot) {

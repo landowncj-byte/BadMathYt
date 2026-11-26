@@ -137,3 +137,76 @@ this table is kept as a courtesy and for source tracking. Copy the relevant rows
 | `music/tense_bed_2.mp3` | CINEMATIC BG ATMOSPHERIC #0055H.wav | metrostock99 | CC0 1.0 | <https://freesound.org/people/metrostock99/sounds/350955> |
 | `music/upbeat_bed_1.mp3` | Wah Wah Wah Wah | percypersimmon | CC0 1.0 | <https://freesound.org/people/percypersimmon/sounds/156592> |
 | `music/upbeat_bed_2.mp3` | fun dancetrack | evanjones4 | CC0 1.0 | <https://freesound.org/people/evanjones4/sounds/320089> |
+
+## Pilot additions (2026-11-26, Bad Math animated pilot)
+
+All CC0 1.0, sourced from Freesound with the license filter "Creative Commons 0" and the CC0 deed confirmed on each sound page.
+
+| File | Title | Creator | License | Source |
+|---|---|---|---|---|
+| `objects/pour_glug_1.wav` | Glug Glug | Zott820 | CC0 1.0 | <https://freesound.org/people/Zott820/sounds/568471/> |
+| `objects/pour_glug_2.wav` | fpwinebottle_pour_in.wav | jesuswasasoundboy | CC0 1.0 | <https://freesound.org/people/jesuswasasoundboy/sounds/527199/> |
+| `objects/cork_squeak_1.wav` | Squeaky cork pull | Kinoton | CC0 1.0 | <https://freesound.org/people/Kinoton/sounds/347353/> |
+| `objects/cork_squeak_2.wav` | Opening wine bottle OWI.wav | Jarryd28 | CC0 1.0 | <https://freesound.org/people/Jarryd28/sounds/655864/> |
+| `objects/cork_pop_1.wav` | Wine Cork | JimmySolorzano | CC0 1.0 | <https://freesound.org/people/JimmySolorzano/sounds/785283/> |
+| `objects/cork_pop_2.wav` | Liquor Bottle Cork Open | mitchanary | CC0 1.0 | <https://freesound.org/people/mitchanary/sounds/506142/> |
+| `objects/label_slap_1.wav` | Rolled paper,slapping 8.wav | nahmandub | CC0 1.0 | <https://freesound.org/people/nahmandub/sounds/131359/> |
+| `objects/label_slap_2.wav` | Newspaper_9.wav | waterboy920 | CC0 1.0 | <https://freesound.org/people/waterboy920/sounds/67040/> |
+| `money/cash_rustle_1.wav` | Unfolding Dollar Bill | danluxradium | CC0 1.0 | <https://freesound.org/people/danluxradium/sounds/767614/> |
+| `money/cash_count_1.wav` | money count.aif | Walter_Odington | CC0 1.0 | <https://freesound.org/people/Walter_Odington/sounds/18623/> |
+| `money/cash_count_2.wav` | Counting Money faster (bills).wav | contadordehistoriascast | CC0 1.0 | <https://freesound.org/people/contadordehistoriascast/sounds/407137/> |
+| `transitions/paddle_whoosh_1.wav` | Swinging staff whoosh (strong) 04.wav | Nightflame | CC0 1.0 | <https://freesound.org/people/Nightflame/sounds/422513/> |
+| `transitions/paddle_whoosh_2.wav` | Fast whoosh, bamboo swoosh through air, version 2 | zapsplat.com | CC0 1.0 | <https://freesound.org/people/zapsplat.com/sounds/719637/> |
+| `objects/handcuff_click_1.wav` | cuffs rattle, lock.mp3 | Mbytemama93 | CC0 1.0 | <https://freesound.org/people/Mbytemama93/sounds/666608/> |
+| `objects/handcuff_click_2.wav` | cuffs locking.mp3 | Mbytemama93 | CC0 1.0 | <https://freesound.org/people/Mbytemama93/sounds/666604/> |
+| `objects/wax_plop_1.wav` | wet clay thud | HighWaistedPants | CC0 1.0 | <https://freesound.org/people/HighWaistedPants/sounds/847272/> |
+| `objects/wax_plop_2.wav` | Mud Splat | Breviceps | CC0 1.0 | <https://freesound.org/people/Breviceps/sounds/445109/> |
+| `objects/glass_clink_1.wav` | wine glass clink | fleurescence | CC0 1.0 | <https://freesound.org/people/fleurescence/sounds/573157/> |
+| `objects/glass_clink_2.wav` | Glass Clink1.m4a | RoyalRose | CC0 1.0 | <https://freesound.org/people/RoyalRose/sounds/560298/> |
+| `objects/dust_puff_1.wav` | Air Puff | waymonds | CC0 1.0 | <https://freesound.org/people/waymonds/sounds/817695/> |
+| `objects/dust_puff_2.wav` | Dry Puff.wav | valeofhearts | CC0 1.0 | <https://freesound.org/people/valeofhearts/sounds/532234/> |
+| `objects/page_tear_1.wav` | Page tear; short.WAV | thomasanthony321 | CC0 1.0 | <https://freesound.org/people/thomasanthony321/sounds/682755/> |
+| `objects/page_tear_2.wav` | SFX PAPRRip_INT_Tearing Pages From Notebook_Group 29_OWSFX | Karla_Bezuidenhout | CC0 1.0 | <https://freesound.org/people/Karla_Bezuidenhout/sounds/708680/> |
+| `objects/page_turn_1.wav` | PageTurn | NicolasLikesThisWebsite496 | CC0 1.0 | <https://freesound.org/people/NicolasLikesThisWebsite496/sounds/811255/> |
+| `objects/page_turn_2.wav` | Page_Turn.MP3 | envirOmaniac2 | CC0 1.0 | <https://freesound.org/people/envirOmaniac2/sounds/393843/> |
+| `objects/pen_scratch_1.wav` | Pencil writing on paper (4 strokes) | ani_music | CC0 1.0 | <https://freesound.org/people/ani_music/sounds/632477/> |
+| `objects/pen_scratch_2.wav` | writing - pen - wide 01.wav | Anthousai | CC0 1.0 | <https://freesound.org/people/Anthousai/sounds/337087/> |
+| `objects/paper_fold_1.wav` | paper_double.wav | XTYL33 | CC0 1.0 | <https://freesound.org/people/XTYL33/sounds/68224/> |
+| `objects/paper_fold_2.wav` | Paper | Breviceps | CC0 1.0 | <https://freesound.org/people/Breviceps/sounds/447932/> |
+| `objects/paper_fwump_1.wav` | Picture Drop_Heavy Paper_Near_Mono | _stubb | CC0 1.0 | <https://freesound.org/people/_stubb/sounds/406586/> |
+| `objects/paper_fwump_2.wav` | Pillow Smash.mp3 | daymonjlong | CC0 1.0 | <https://freesound.org/people/daymonjlong/sounds/344669/> |
+| `objects/paper_rustle_1.wav` | Paper Rustle | BenjaminNelan | CC0 1.0 | <https://freesound.org/people/BenjaminNelan/sounds/353125/> |
+| `objects/paper_rustle_2.wav` | rustling paper.wav | keweldog | CC0 1.0 | <https://freesound.org/people/keweldog/sounds/181774/> |
+| `objects/paper_rustle_3.wav` | paper_rustling_03 | Spaghetto87 | CC0 1.0 | <https://freesound.org/people/Spaghetto87/sounds/731484/> |
+| `objects/paper_tear_1.wav` | Tearing paper - 5 | Valerie-Vivegnis | CC0 1.0 | <https://freesound.org/people/Valerie-Vivegnis/sounds/759322/> |
+| `objects/paper_tear_2.wav` | Tearing Paper.wav | krnash | CC0 1.0 | <https://freesound.org/people/krnash/sounds/389806/> |
+| `objects/chair_scrape_1.wav` | Chair Scrape mp3 | ME_Studios_Official | CC0 1.0 | <https://freesound.org/people/ME_Studios_Official/sounds/656682/> |
+| `objects/chair_scrape_2.wav` | Chair Scrape | bangcorrupt | CC0 1.0 | <https://freesound.org/people/bangcorrupt/sounds/832998/> |
+| `objects/phone_ring_1.wav` | rotary phone ring medium.wav | AberNStein | CC0 1.0 | <https://freesound.org/people/AberNStein/sounds/274289/> |
+| `objects/phone_ring_2.wav` | Ringtone: 1960s office phone | knufds | CC0 1.0 | <https://freesound.org/people/knufds/sounds/345805/> |
+| `objects/tape_zip_1.wav` | Tape Measure_1.wav | NinjaSharkStudios | CC0 1.0 | <https://freesound.org/people/NinjaSharkStudios/sounds/565501/> |
+| `objects/tape_zip_2.wav` | Tape measure | j2024w | CC0 1.0 | <https://freesound.org/people/j2024w/sounds/718461/> |
+| `objects/stir_pot_1.wav` | Stirring Gravey | itinerantmonk108 | CC0 1.0 | <https://freesound.org/people/itinerantmonk108/sounds/772079/> |
+| `objects/stir_pot_2.wav` | Stirring Water Free | AardsReal | CC0 1.0 | <https://freesound.org/people/AardsReal/sounds/842166/> |
+| `objects/sniff_sharp_1.wav` | Sniff OWI.wav | nayahnaidoo | CC0 1.0 | <https://freesound.org/people/nayahnaidoo/sounds/656052/> |
+| `objects/sniff_sharp_2.wav` | 19 Sniff.wav | Alshred | CC0 1.0 | <https://freesound.org/people/Alshred/sounds/403773/> |
+| `objects/car_stop_1.wav` | auto car or van stop brake skid gravel short.flac | kyles | CC0 1.0 | <https://freesound.org/people/kyles/sounds/637161/> |
+| `objects/car_stop_2.wav` | 26-Freno.wav | UsuarioLeal | CC0 1.0 | <https://freesound.org/people/UsuarioLeal/sounds/446480/> |
+| `objects/door_bang_1.wav` | Wood Door Slam.wav | MootMcnoodles | CC0 1.0 | <https://freesound.org/people/MootMcnoodles/sounds/444409/> |
+| `objects/door_bang_2.wav` | door wood apartment interior open close fast slam.flac | kyles | CC0 1.0 | <https://freesound.org/people/kyles/sounds/637482/> |
+| `objects/door_swing_2.wav` | door wood apartment interior open close fast slam.flac | kyles | CC0 1.0 | <https://freesound.org/people/kyles/sounds/637482/> |
+| `objects/door_swing_1.wav` | Puerta de madera abriendo y cerrando | Mariayolanda511 | CC0 1.0 | <https://freesound.org/people/Mariayolanda511/sounds/850566/> |
+| `objects/footsteps_wood_1.wav` | Footsteps_Boots_Wood_Mono.wav | Nox_Sound | CC0 1.0 | <https://freesound.org/people/Nox_Sound/sounds/533044/> |
+| `objects/footsteps_wood_2.wav` | Footsteps on Wood Floor.wav | mrh4hn | CC0 1.0 | <https://freesound.org/people/mrh4hn/sounds/426620/> |
+| `ambience/crowd_murmur_auction_1.wav` | Auction Ambience 3.wav | ecfike | CC0 1.0 | <https://freesound.org/people/ecfike/sounds/133822/> |
+| `ambience/crowd_murmur_courtroom_1.wav` | S11-22 Courtroom pre-trial murmuring.wav | craigsmith | CC0 1.0 | <https://freesound.org/people/craigsmith/sounds/675054/> |
+| `music/caper_loop_1.wav` | Pizzicato Espionage.wav | younoise | CC0 1.0 | <https://freesound.org/people/younoise/sounds/663853/> |
+| `music/caper_loop_2.wav` | 40second Heist.wav | Reg1n0ld | CC0 1.0 | <https://freesound.org/people/Reg1n0ld/sounds/508714/> |
+| `music/auction_tension_bed_1.wav` | TENSION DRAMA LOOP | sando2611 | CC0 1.0 | <https://freesound.org/people/sando2611/sounds/785419/> |
+| `music/auction_tension_bed_2.wav` | Tension and Progress Drum Loop at 120bpm | bassimat | CC0 1.0 | <https://freesound.org/people/bassimat/sounds/843467/> |
+| `music/verdict_bed_1.wav` | Verdict | Marcker | CC0 1.0 | <https://freesound.org/people/Marcker/sounds/769920/> |
+| `music/verdict_bed_2.wav` | Verdict | Marcker | CC0 1.0 | <https://freesound.org/people/Marcker/sounds/769920/> |
+| `music/gameshow_bed_1.wav` | Happy Commercial Music | Seth_Makes_Sounds | CC0 1.0 | <https://freesound.org/people/Seth_Makes_Sounds/sounds/674939/> |
+| `music/gameshow_bed_2.wav` | Pizzicato strings - bright, fun, boppy | jstarrcreative | CC0 1.0 | <https://freesound.org/people/jstarrcreative/sounds/742677/> |
+| `music/bass_sting_1.wav` | double bass sounds | elzozo | CC0 1.0 | <https://freesound.org/people/elzozo/sounds/441534/> |
+| `music/bass_sting_2.wav` | double bass sounds | elzozo | CC0 1.0 | <https://freesound.org/people/elzozo/sounds/441534/> |
