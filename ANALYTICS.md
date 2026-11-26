@@ -38,3 +38,9 @@ First Bad Math posts go out tonight (YouTube FTX 20:00 ET, lottery 22:00 ET; Tik
 - Weak: the 25–35 s Shorts from 11/25 (overdraft, parlay, McDonald's) average 3–10 s watch with 50–65% IG skip; McDonald's IG skip 65%.
 - Read: story-driven Decoded with a concrete object (oil tanks) holds viewers; short fact-dump cuts don't. Supports RULES 112 (crime-show storytime, longer context). YouTube Shorts still near zero reach (new channel).
 - ElevenLabs: 78,777 / 712,816 credits used (resets 2026-12-25). On pace: fine for 3 topics/day + 2 long-forms/week.
+
+## 2026-11-26 13:50 UTC check-up
+- No new posts went live since the last pull (the rebuilt videos start 16:00 UTC today), so numbers are nearly flat. Long-form Madoff (YT): 4 impressions. No unread comments in the inbox.
+- Still best: IG "Two buttons" 1,252 impressions / 18 s avg; IG salad oil 27.6% skip, 20 s avg; TikTok coffee 287 views + 11 likes; TikTok FTX 268 / 10 likes.
+- Worst: McDonald's IG 68% skip (4.3 s avg); TikTok McDonald's/parlay/overdraft ~0 impressions (TikTok didn't push them).
+- Read: longer story-led cuts hold; short fact-dump cuts die in 3 s. Next check-up will show the first rebuilt crime-show Shorts.
