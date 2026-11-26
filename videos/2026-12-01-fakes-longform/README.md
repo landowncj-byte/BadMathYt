@@ -11,3 +11,21 @@ Chapters (for chapters.txt once timed):
 4. The wine in the kitchen (Rudy Kurniawan)
 5. The lesson: 3 checks anyone can do
 Title idea: "Fakes That Fooled the Experts" (alt: "4 Fakes That Fooled the Experts — and the Tiny Detail That Caught Each One") · Thumbnail: v2 look, real photos of Peruggia / van Meegeren / Kurniawan.
+
+## BUILD STATUS (builder, 2026-11-26)
+RENDERED READY: long-form 8:32.9 (512.9 s) 85.2 MB (89.4 MB) — videos/2026-12-01-fakes-longform/video.mp4 · 1920x1080 30 fps, -14.1 LUFS (mix -14.0, peak -1.3 dBFS) · 1280x720 thumbnail thumbs/thumbnail.png · captions.srt (172 cues) · chapters.txt
+Chapter timestamps:
+0:00 Cold open: four fakes, one tiny detail each
+0:44 1. The Mona Lisa thief (Vincenzo Peruggia)
+2:26 2. The Vermeer forger (Han van Meegeren)
+4:13 3. The fake diaries (Konrad Kujau)
+5:40 4. The wine in the kitchen (Rudy Kurniawan)
+7:22 5. The lesson: 3 checks anyone can do
+(end card: last 12 s, WATCH NEXT / SUBSCRIBE slots; CTAs: like P25 ~29%, send P45 ~50%, subscribe P88)
+Files: DIRECTION.md (storyboard, written first) · build/src/*.js -> build/scene.js (build/build.sh) · align/ (aligned Owen narration; voice-owen/ and voice/ untouched) · build/fixes.json (caption spelling: Peruggia, Geri, van Meegeren, Goering, Stern, Gerd, Kurniawan, Saint-Denis, Ponsot) · qa/*.png contact sheets per chapter · video-master.mp4 (263 MB working master, local only; video.mp4 is the 2-pass re-encode under 95 MB).
+Beds per chapter (RULES 115, MUSIC-LOG.md): noir_bed_1 / heist_bed_2 / orchestral_bed_2 / mystery_bed_2 / jazz_bed_2 / ambient_bed_1.
+Cast, all real licensed photos with on-card + footnote credit: Peruggia (police photo, PD), van Meegeren (Koos Raucamp / ANEFO CC BY 4.0; his painting CC BY-SA 3.0), Kujau (Telephil CC BY-SA 3.0), Kurniawan (ICE + kitchen, PD), Mona Lisa PD reproduction. Evidence board in ch.5 with all four faces. Hitler-diaries chapter: plain black notebooks with F H letters only, no Hitler image, no Nazi symbols; Goering is a text card only.
+Beat gaps: longest hold between camera beats 3.4 s.
+
+## CRIME-SHOW BUILD STATUS
+RENDERED READY: long-form 512.9s 85.2MB (8:32) — chapters in chapters.txt

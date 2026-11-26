@@ -20,3 +20,9 @@ No licensed photo found (use coloured ILLUSTRATION card labelled ILLUSTRATION): 
 
 Eddie Tipton retry 2026-11-26 (CRIME-SHOW build): photos.py / stock.py / Commons + Wikipedia API searches all hit HTTP 429 (shared proxy rate limit) and the earlier Commons search returned no Tipton file. No licensed photo verified, so the lottery-rig cuts use a coloured ILLUSTRATION character ("the lottery IT guy", labelled ILLUSTRATION every time). Retry later: Iowa DCI / Polk County booking photos only if the file page states a free licence and it is checked by eye.
 | mona-lisa-painting | Mona Lisa (painting, not a person) | brand/photos/mona-lisa-painting/1.jpg | Public domain (Commons, C2RMF retouched) | PD reproduction of the painting |
+| Antwerp Diamond Centre (street) | leonardo-notarbartolo/1.jpg | Hoveniersstraat, Antwerp's diamond street (2026-11-26 research). Not a photo of Notarbartolo; no licensed one found. | Public domain, Thorsten1997 via Wikimedia Commons |
+| Brink's robbery 1950 (evidence) | brinks-robbery-boston-1950/1.jpg | FBI photo of a robber's chauffeur's cap; checked by eye | Public domain, FBI via Wikimedia Commons |
+| Hatton Garden (place) | hatton-garden/2.jpg, 3.jpg | street scene; 3.jpg building plaque; checked by eye | PD (unknown); CC BY-SA 4.0 No Swan So Fine |
+| Jules Rimet trophy (replica) | jules-rimet-trophy/3.jpg, 2.jpg | 3.jpg = REPLICA in Preston museum (label "replica"); 2.jpg trophy at Manchester museum; checked by eye | PD Abel Lafleur; CC BY-SA 4.0 Ank Kumar |
+| Bruce Reynolds (grave) | bruce-reynolds/2.jpg | grave memorial (weak; not a face) | CC BY-SA 2.0 Richard Croft |
+NOT downloaded (HTTP 429 x4, retry): Allen Stanford US Marshals mug shot (PD) -> allen-stanford-mug-shot/credits.json; Biggs + Reynolds 70th birthday (PD) -> ronnie-biggs-70th-birthday/credits.json. Irrelevant leftovers in great-train-robbery-1963/ (Terence Hogan CC BY-SA, 1903 film still) -- do not use.

@@ -92,3 +92,6 @@ pennies-to-the-moon: math error caught by builder ($35.2T → $3.52T for the $1-
 | victor lustig | YT / TT (Tense) / IG / FB | Mon 11/30 19:00 | 00:00Z Tue | 939506a5 / 39386af5 / 5759682d / 48d93009 | APPROVED |
 | billionaires split | YT / TT (My Zen Mornings) / IG / FB | Tue 12/1 15:00 | 20:00Z | 524da030 / 3a09cb90 / bc187cfb / a4f9abbc | APPROVED |
 THU–MON COMPLETE. Tue: 11 ✅ 15 ✅ 19 ✅ · 17:00 long-form fakes (building).
+
+## Tue 12/1 17:00 ET long-form (scheduled 2026-11-26)
+- YT 216392a3-317d-4606-894c-825adf9f73b6 — "Fakes That Fooled the Experts…" 8:33, chapters + captions + thumbnail, APPROVED
