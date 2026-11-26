@@ -36,3 +36,6 @@ Note: the penny stack is drawn at a minimum coin height (about 14 px) so it is v
 | V11 voice | not re-listened (voice untouched) | same | same |
 | V12 CC0 sfx, -14 LUFS, peak <= -1 dBTP | Y (sample peak) | Y | Y |
 | V13 post settings | not part of this build | | |
+
+## CRIME-SHOW BUILD STATUS
+RENDERED READY: penny-doubled/ig 68.67s 22.3MB (-14.0 LUFS, -1.3 dBTP). Voice synced (bm2 voice no diff), scene = build.sh output, rendered crf 26 (crf 20 gave 57 MB). Gate: stills + sheet viewed. Residual: ~0.3 s near-empty whip frame at 64.0 s, last 3 s is blurred board behind the EXTRA stamp and bubble.

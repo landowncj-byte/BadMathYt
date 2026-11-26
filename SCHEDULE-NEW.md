@@ -21,3 +21,10 @@ Next free Thu slots: 17:00 ET (22Z) briefcases · 19:00 ET (00Z) wine · 21:00 E
 | fake wine | TikTok (song: Tense) | Thu 11/26 19:00 | 00:00Z Fri | 76fa074b-a53d-4ce4-9352-6613ee9fbac8 | APPROVED |
 | fake wine | Instagram REEL | Thu 11/26 19:00 | 00:00Z Fri | 71afe4b6-7e07-42f0-8189-32433cb7406d | APPROVED |
 | fake wine | Facebook REEL | Thu 11/26 19:00 | 00:00Z Fri | 65e0ecd6-70c0-4e3d-aa19-04c85b8b9662 | APPROVED |
+| three briefcases | YouTube | Thu 11/26 17:00 | 22:00Z | b4a11716-0982-40aa-a626-b12489a0f67d | APPROVED |
+| three briefcases | TikTok (song: Final Game Showdown) | Thu 11/26 17:00 | 22:00Z | 8ba33ae8-28e2-4566-9583-636cf6919b09 | APPROVED |
+| three briefcases | Instagram REEL | Thu 11/26 17:00 | 22:00Z | 01ea5894-7e3e-4ea7-ad8a-55145e7b0214 | APPROVED |
+| three briefcases | Facebook REEL | Thu 11/26 17:00 | 22:00Z | 6df5eb88-8950-4947-920e-fba8d5c6b94e | APPROVED |
+| penny doubled | Instagram REEL | Fri 11/27 11:00 | 16:00Z | d5bbef2a-200d-4537-9b25-06d80d212daf | APPROVED |
+| penny doubled | Facebook REEL | Fri 11/27 11:00 | 16:00Z | 166087ab-e9ee-4aba-a7db-c212e5af4b44 | APPROVED |
+Penny YT/TT: old partial renders (pre-pivot) — need a crime-show rebuild before posting.
