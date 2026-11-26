@@ -848,7 +848,7 @@
       b(R.def, SB, ['bor', 'dtx'], { move: 'whip', sx: 540, sy: 860, fill: 0.95, maxH: 860, st: 'left', pose: 'point' });
       b(R.defLoan, ZN, ['bor', 'dtx'], { fill: 0.9, maxH: 900, sy: 860, st: 'corner', pose: 'point', dur: 0.5 });
       b(R.defPay, GH, ['bor', 'dtx'], { fill: 0.95, maxH: 860, sy: 860, st: 'corner-left', pose: 'talk', dur: 0.7 });
-      if (R.defMid) b(R.defMid, PK, ['bor', 'dtx'], { fill: 0.9, maxH: 860, sy: 860, pose: 'chin', dur: 0.8 });
+      if (R.defMid) b(R.defMid, GH, ['bor', 'dtx'], { sx: 520, fill: 0.86, maxH: 860, sy: 860, st: 'corner-left', pose: 'chin', dur: 0.8 });
       if (R.defExtra) b(R.defExtra, ZN, 'bor', { fill: 0.5, maxH: 700, sy: 880, st: 'corner', pose: 'shrug', dur: 0.5 });
       sfx(R.def, 'swipe_2', -11, 0.4); sfx(R.defLoan, 'pop_1', -9, 0.4); }
 
@@ -1005,7 +1005,7 @@
       series: 'decoded', title: 'CASE FILE Nº 027 · TUCKER', duration: cfg.duration,
       footnote: ['CONVICTED OCT 2017 · SENTENCED JAN 2018 · SOURCES: DOJ SDNY', 'ILLUSTRATIONS: LOAN FORM · CALENDAR · RACE CAR · CLAW (GENERIC)', 'PHOTO: LEVEL 5 MOTORSPORTS · CC BY-SA 2.0 · VIA WIKIMEDIA COMMONS'],
       elements: E, beats: T, poses: PO, shakes: SH, captions: cfg.captions,
-      bed: { name: 'tense_bed_2', gain: -1 }, sfx: S,
+      bed: { name: 'verdict_bed_2', gain: -1 }, sfx: S,
     });
   };
 })();

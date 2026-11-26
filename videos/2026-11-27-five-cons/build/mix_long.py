@@ -47,19 +47,19 @@ def main(bd, out):
     fx *= 10 ** (-1 / 20)
     # ---- beds (per chapter, crossfaded) ----
     T = lambda k: pstart[k]
-    segs = [  # start, end, [(file, gain dB)]
-        (0, T('P07') - 0.3, [('bed_cold_drone.mp3', 0)]),
-        (T('P07') - 0.3, T('P21') - 0.3, [('bed_ch2_drone.mp3', 0)]),
-        (T('P21') - 0.3, T('P34') - 0.3, [('bed_ch3_beat.mp3', 0)]),
-        (T('P34') - 0.3, T('P48') - 0.3, [('bed_cold_drone.mp3', 0), ('bed_ch1_projector.mp3', -14)]),
-        (T('P48') - 0.3, T('P60') - 0.3, [('bed_ch2_drone.mp3', 0)]),
-        (T('P60') - 0.3, T('P71') - 0.3, [('bed_ch3_beat.mp3', 0)]),
-        (T('P71') - 0.3, DUR, [('bed_ch4_uplift.mp3', 0)])]
+    segs = [  # start, end, [(manifest bed name, gain dB)] — RULES 115: a different bed per chapter
+        (0, T('P07') - 0.3, [('tense_bed_1', 0)]),
+        (T('P07') - 0.3, T('P21') - 0.3, [('jazz_bed_1', 0)]),
+        (T('P21') - 0.3, T('P34') - 0.3, [('tense_bed_2', 0)]),
+        (T('P34') - 0.3, T('P48') - 0.3, [('auction_tension_bed_1', 0)]),
+        (T('P48') - 0.3, T('P60') - 0.3, [('verdict_bed_2', 0)]),
+        (T('P60') - 0.3, T('P71') - 0.3, [('tense_bed_1', 0)]),
+        (T('P71') - 0.3, DUR, [('lofi_bed_1', 0)])]
     bed = np.zeros((N, 2), 'f4'); XF = 1.2
     for a, b, files in segs:
         i0 = int(max(0, a - XF / 2) * SR); i1 = min(N, int((b + XF / 2) * SR)); n = i1 - i0; seg = np.zeros((n, 2), 'f4')
         for fn, g in files:
-            fp = os.path.join(VID, 'sfx', fn); x = decode(fp, lufs_norm(fp, -24)) * 10 ** (g / 20); seg += loop_to(x, n)
+            fp = MAN[fn]; x = decode(fp, lufs_norm(fp, -24)) * 10 ** (g / 20); seg += loop_to(x, n)
         env = np.ones(n, 'f4'); k = int(XF * SR)
         if a > 0: env[:k] = np.sin(np.linspace(0, np.pi / 2, k))
         if b < DUR - 1: env[-k:] = np.cos(np.linspace(0, np.pi / 2, k))

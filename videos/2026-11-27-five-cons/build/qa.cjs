@@ -2,7 +2,7 @@
 //  1) the focused thing is fully on screen and clear of the HUD chip (top-left) and the caption band,
 //  2) the storyteller does not overlap the focused box,
 //  3) captions (bbox of the active chunk) do not overlap the focused box.
-const path = require('path'); const { chromium } = require('playwright');
+const path = require('path'); const { chromium } = require('/opt/node-tools/node_modules/playwright');
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1920, height: 1080 } }); await p.goto('file://' + path.resolve(__dirname, 'scene.html')); await p.evaluate(() => window.ready);
   const res = await p.evaluate(() => {

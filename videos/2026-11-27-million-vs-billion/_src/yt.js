@@ -1,0 +1,47 @@
+// YouTube cut — million vs billion. Hook cards · gift card · $1M pile · vs high school · $1B card · 2,738 · timeline to ~712 BC / Rome · 1,000 piles stacked · seconds (calendar / life) · duo · ask
+const hookEnd = "@let's-0.12";
+const K = [[0, 0], [hookEnd, 30000], [hookEnd, 0], ['@every', 5], ['@with', 5], ['@months', 1000],
+  ['@now-0.1', 1000], ['@now-0.1', 0], ['@how', 2], ['@2+1.4', 1e6],
+  ['@to#3-0.1', 1e6], ['@to#3-0.1', 0], ['@700+0.8', 1e6],
+  ['@because-0.1', 1e6], ['@because-0.1', 0], ['@10-0.1', 0], ['@10+0.25', 10], ['@100-0.1', 10], ['@100+0.4', 100], ['@it\'s#2+0.35', 100], ['@it\'s#2+1.0', 1000],
+  ['@here\'s-0.1', 1000], ['@here\'s-0.1', 0], ['@sleep', 3], ['@seconds-0.3', 3], ['@days+0.2', 1e6], ['@seconds#2-0.4', 1e6], ['@years#3+0.1', 1e9]];
+const S = MV5.make({
+  dur: 70.33, K,
+  C: [{ from: 0, mode: 'b', max: 1e6 }, { from: hookEnd, mode: 'm', max: 1000 }, { from: '@now-0.1', mode: 'b', max: 1e6 }, { from: '@to#3-0.1', mode: 'y', max: 1e6 }, { from: '@because-0.1', mode: 'n', max: 1000 },
+    { from: '@here\'s-0.1', mode: 's', u: 'd', max: 1e6 }, { from: '@seconds#2-0.4', mode: 's', u: 'y', max: 1e9 }],
+  hook: { until: hookEnd, y: 700, size: 104, lines: [[['A MILLION', 'good']], [['vs A BILLION', 'accent']]] },
+  scenes: [
+    { type: 'cards2', from: 0, to: '@you-0.1', pose: 'shock', cards: [{ at: 0.3, amount: '$1,000,000', col: '#00D26A', w: 560, y: 940 }, { at: '@billion', amount: '$1,000,000,000', col: '#FFD60A', w: 900, y: 1045 }] },
+    { type: 'gcard', from: '@you-0.1', to: '@with-0.1', pose: 'talk', cap: 1e6, col: '#00D26A' },
+    { type: 'pile', from: '@with-0.1', to: '@that\'s-0.1', pose: 'shock', zeroAt: '@months' },
+    { type: 'vs', from: '@that\'s-0.1', to: '@hit-0.1', pose: 'chin', a: { at: '@that\'s', yrs: 2.74, label: 'YOUR $1,000,000 LASTS', text: '2.74 YEARS' }, b: { at: '@high-0.2', yrs: 4, label: 'HIGH SCHOOL (GRADES 9-12)', text: '4 YEARS' }, chip: { at: '@school-0.1', text: 'LESS THAN HIGH SCHOOL' } },
+    { type: 'ask', from: '@hit-0.1', to: '@now-0.1', pose: 'you', l1: 'BROKE BY', l2: 'MONTH SIX?' },
+    { type: 'gcard', from: '@now-0.1', to: '@2-0.1', pose: 'talk', cap: 1e9, col: '#FFD60A' },
+    { type: 'bignum', from: '@2-0.1', to: '@to#3-0.1', pose: 'shock', at: '@2', dur: 1.3, l1: 'YEARS', chip: { at: '@years#2-0.4', text: '= 27 CENTURIES' }, num: 2738 },
+    { type: 'tline', from: '@to#3-0.1', to: '@because-0.1', pose: 'chin', romeAt: '@ancient-0.2', pinAt: '@700+0.5' },
+    { type: 'stack', from: '@because-0.1', to: '@send-0.1', pose: 'shock', mergeAt: '@stacked-0.15', steps: [{ at: '@10-0.1', n: 10, text: '10 × $1M = $10M' }, { at: '@100-0.1', n: 100, text: '100 × $1M = $100M' }, { at: '@it\'s#2+0.35', n: 1000, text: '1,000 × $1M = $1,000M' }] },
+    { type: 'duo', from: '@send-0.1', to: '@here\'s-0.1', pose: 'talk', a: { at: '@send+0.3', col: '#E5534B', l1: 'THE FRIEND SAYS', l2: 'A BIG MILLION' }, b: { at: '@thinks+0.3', col: '#00D26A', l1: 'THE TRUTH', l2: '1,000 MILLIONS' } },
+    { type: 'ask', from: '@here\'s-0.1', to: '@seconds-0.35', pose: 'you', l1: 'ONE NUMBER', l2: 'EVERY SECOND' },
+    { type: 'calendar', from: '@seconds-0.35', to: '@seconds#2-0.4', pose: 'chin' },
+    { type: 'life', from: '@seconds#2-0.4', to: '@so-0.1', pose: 'shock' },
+    { type: 'duo', from: '@so-0.1', to: '@that\'s#2-0.1', pose: 'chin', a: { at: '@so+0.3', col: '#00D26A', l1: '1 MILLION SECONDS', l2: 'UNDER 2 WEEKS' }, b: { at: '@most-0.6', col: '#E5534B', l1: '1 BILLION SECONDS', l2: 'MOST OF A CAREER' } },
+    { type: 'ask', from: '@that\'s#2-0.1', to: '@honest-0.1', pose: 'shock', l1: 'RICH vs', l2: 'RIDICULOUSLY RICH' },
+    { type: 'ask', from: '@honest-0.1', to: 99, pose: 'you', l1: 'HOW FAST WOULD YOU', l2: 'BLOW A MILLION?' },
+  ],
+  hideCounter: [['@honest-0.1', 99]],
+  labels: [[0, 'THE BET'], ['@let\'s-0.12', 'THE TEST'], ['@with-0.1', 'THE MILLION'], ['@now-0.1', 'THE BILLION'], ['@2-0.1', 'THE ANSWER'], ['@to#3-0.1', 'THE PAST'], ['@because-0.1', 'THE STACK'], ['@here\'s-0.1', 'THE SECONDS'], ['@so-0.1', 'THE GAP']],
+  notes: [{ at: '@about', out: '@that\'s-0.1', text: 'ABOUT 2 YRS 9 MONTHS', tone: 'bad', y: 606, size: 40 }],
+  you: [{ at: 0, mood: 'neutral', text: 'YOU' }, { at: '@let\'s', mood: 'smirk', text: 'YOU GET A GIFT CARD' }, { at: '@with', mood: 'worried', text: 'SPENDING…' }, { at: '@that\'s', mood: 'angry', text: 'BROKE' }, { at: '@now', mood: 'smirk', text: 'NOW A BILLION' },
+    { at: '@2', mood: 'wow', text: 'WHAT?!' }, { at: '@back', mood: 'neutral', text: 'TINY ROME' }, { at: '@count', mood: 'worried', text: 'COUNTING…' }, { at: '@seconds#2', mood: 'wow', text: 'SO LONG' }, { at: '@honest', mood: 'smirk', text: 'YOUR CALL' }],
+  cta: { like: '@like-0.1', send: '@send', follow: '@follow+0.05', followOut: '@follow+1.9', bubble: { at: '@honest', l1: 'HOW FAST?', l2: 'COMMENT BELOW' } },
+  poses: [['@like', 'you'], ['@send', 'you']],
+  shakes: [[0.1, 8], ['@2', 14], ['@700+0.8', 10], ['@stacked', 12]],
+  captions: { gap: 16, emph: { 'million': 'good', 'billion': 'accent', 'million.': 'good', 'billion?': 'accent', '2': 'accent', ',738': 'accent', 'years.': 'accent', '700': 'accent', 'BC.': 'accent', 'Rome': 'gold', 'stacked': 'accent', 'broke': 'bad', 'high': 'accent', 'career.': 'bad', '32': 'bad', '11': 'good' }, fix: [] },
+  sfx2: [
+    { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: '@with', name: 'money_counter_2', gain: -13, dur: 3.2 }, { at: '@how', name: 'money_counter_1', gain: -13, dur: 3.0 },
+    { at: '@like', name: 'pop_2', gain: -9, dur: 0.3 }, { at: '@send-0.05', name: 'swoosh_1', gain: -9, dur: 0.9 }, { at: '@to#3', name: 'riser_1', gain: -13, dur: 2.8 }, { at: '@it\'s#2+0.35', name: 'money_counter_2', gain: -13, dur: 1.2 },
+    { at: '@follow+0.05', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@follow+0.8', name: 'click_1', gain: -8, dur: 0.3 }, { at: '@follow+0.9', name: 'success_chime_1', gain: -12, dur: 1.2 },
+    { at: '@count', name: 'click_1', gain: -9, dur: 0.2 }, { at: '@count+1', name: 'click_1', gain: -9, dur: 0.2 }, { at: '@count+2', name: 'click_1', gain: -9, dur: 0.2 }, { at: '@days+0.2', name: 'ding_2', gain: -9, dur: 0.6 }, { at: '@honest', name: 'pop_1', gain: -9, dur: 0.5 },
+  ],
+});
+BM2.scene(S);

@@ -1,56 +1,84 @@
 1
-00:00:00,000 --> 00:00:04,128
-This founder was so desperate, she had a professor invent 4 million customers.
+00:00:00,000 --> 00:00:03,640
+She sold a bank four million customers who didn't exist.
 
 2
-00:00:04,328 --> 00:00:08,118
-And JPMorgan bought it. For $175 million.
+00:00:04,720 --> 00:00:07,100
+Charlie Javice started a website called Frank in twenty sixteen.
 
 3
-00:00:08,568 --> 00:00:11,684
-Her startup, Frank, claimed 4.25 million users.
+00:00:08,460 --> 00:00:12,000
+It helped students fill out the giant form you need for college financial aid.
 
 4
-00:00:11,984 --> 00:00:14,742
-Hit like if you've ever padded a number. Just not like this.
+00:00:12,440 --> 00:00:15,380
+By twenty twenty-one, big banks wanted to buy it.
 
 5
-00:00:15,042 --> 00:00:18,463
-The SEC says the real number was fewer than 300,000.
+00:00:15,560 --> 00:00:18,640
+And she told them Frank had four and a quarter million users.
 
 6
-00:00:18,863 --> 00:00:24,329
-So when JPMorgan asked to see the customer list, how do you hand over 4 million people who don't exist?
+00:00:19,300 --> 00:00:21,820
+The SEC says the real number was fewer than three hundred thousand.
 
 7
-00:00:24,679 --> 00:00:29,405
-According to the SEC, she first asked her own engineer to make fake data. He said no.
+00:00:23,540 --> 00:00:24,980
+Hit like if you'd have believed her.
 
 8
-00:00:29,755 --> 00:00:35,077
-So prosecutors say a data science professor built a list of over 4 million fake customers instead.
+00:00:25,460 --> 00:00:30,460
+So what did the bank, JPMorgan, do? The smart thing. It asked to see the customer list.
 
 9
-00:00:35,427 --> 00:00:38,467
-Send this to the friend who always rounds up their follower count.
+00:00:30,940 --> 00:00:33,940
+Here's the problem. There was no list of four million people.
 
 10
-00:00:38,767 --> 00:00:44,108
-The bank paid $175 million. That's about $580 for every real user.
+00:00:34,520 --> 00:00:39,440
+The SEC says she first asked her own engineer to make fake data. But he said no.
 
 11
-00:00:44,458 --> 00:00:46,885
-Follow along, because the ending is the best part.
+00:00:40,080 --> 00:00:45,640
+So she and a coworker hired a data science professor, who generated over four million fake customers.
 
 12
-00:00:47,185 --> 00:00:50,373
-Guilty on all 4 counts. 85 months in prison.
+00:00:46,300 --> 00:00:48,280
+According to the bank's lawsuit, he was paid about eighteen thousand dollars.
 
 13
-00:00:50,773 --> 00:00:53,794
-Restitution: $287.5 million.
+00:00:50,000 --> 00:00:52,340
+Send this to the friend who rounds up their follower count.
 
 14
-00:00:54,194 --> 00:00:57,587
-4 million customers. Fewer than 300,000 were real.
+00:00:52,800 --> 00:00:57,840
+The bank got the list, and JPMorgan paid one hundred seventy-five million dollars for Frank.
+
+15
+00:00:57,840 --> 00:01:01,200
+That's about five hundred eighty dollars for every real user.
+
+16
+00:01:01,700 --> 00:01:05,680
+Later, the bank tried reaching those customers. And the list? It fell apart.
+
+17
+00:01:06,440 --> 00:01:08,380
+Follow if you love it when the math catches up.
+
+18
+00:01:08,800 --> 00:01:12,120
+In twenty twenty-five, a jury convicted her on all four counts.
+
+19
+00:01:12,640 --> 00:01:16,240
+She was sentenced to eighty-five months in prison, a little over seven years.
+
+20
+00:01:16,720 --> 00:01:20,560
+And she was ordered to pay back two hundred eighty-seven and a half million dollars.
+
+21
+00:01:21,400 --> 00:01:24,440
+Four million, or three hundred thousand? Which would you have checked?
 
