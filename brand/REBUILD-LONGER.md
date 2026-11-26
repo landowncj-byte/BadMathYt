@@ -3,7 +3,7 @@
 Owner: "I don't care about posting times, I care about quality… fix all the shorts."
 Every held Short is rebuilt to RULES 101–102 + STYLE §22–24. All of its posts in PostFast are on HOLD (NEEDS_WORK) until the new version is done.
 
-## Stage 1 — SCRIPTS (Fable agent)
+## Stage 1 — SCRIPTS (Opus — Fable no longer used, RULES 109)
 For each topic you are given (folder `videos/<slug>/`, research in `research/2026-11-25/<topic>/` or `videos/<slug>/` qa.md/research notes):
 1. Read RULES.md (SCRIPT GATE S1–S17 + S10b, rules 101–102), STYLE.md §14, §15, §18, §19, §21, §22, §23, §24, and the skills in `brand/skills/` (short-form-video-script, hook-writer, storytelling-and-narrative, tiktok-script, viral-hooks). Read the current scripts (`voice/script.json` in root, `tiktok/`, `ig/`) — they are the facts spine, but too short and rushed.
 2. Save each current script as `voice/script.v2.json` (do not overwrite an existing script.v1.json).
