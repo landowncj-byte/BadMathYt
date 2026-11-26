@@ -1,0 +1,32 @@
+[
+ {
+  "provider": "loc",
+  "title": "Eddie Tipton",
+  "url": "https://tile.loc.gov/storage-services/service/pnp/npcc/09000/09028v.jpg",
+  "page": "https://www.loc.gov/item/2016835305/",
+  "license": "No known restrictions (Library of Congress)",
+  "author": "Library of Congress",
+  "credit": "Library of Congress",
+  "file": "1.jpg"
+ },
+ {
+  "provider": "commons",
+  "title": "File:Eddie Tipton LOC npcc.09028.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Eddie_Tipton_LOC_npcc.09028.jpg/960px-Eddie_Tipton_LOC_npcc.09028.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Eddie_Tipton_LOC_npcc.09028.jpg",
+  "license": "Public domain",
+  "author": "National Photo Company Collection",
+  "credit": "National Photo Company Collection, Public domain, via Wikimedia Commons",
+  "file": "2.jpg"
+ },
+ {
+  "provider": "commons",
+  "title": "File:Lebron free throw 12-21-11.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Lebron_free_throw_12-21-11.jpg/960px-Lebron_free_throw_12-21-11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Lebron_free_throw_12-21-11.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "RMTip21",
+  "credit": "RMTip21, CC BY-SA 2.0, via Wikimedia Commons",
+  "file": "3.jpg"
+ }
+]

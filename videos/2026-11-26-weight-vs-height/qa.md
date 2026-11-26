@@ -14,3 +14,13 @@ V1 PASS all. V2 1-fps sheets viewed: Y. V3 frame 0 slam + hook: Y. V4 change eve
 - Scene durations are narration+0.3/0.4 (YT 71.20 vs 71.29).
 - Inch stack (1 in) is small on screen; relies on the zoom beat.
 - 1-second test / per-beat keyframe sheet done via stills on YT and TT; IG went straight to render after check.
+
+## CRIME-SHOW BUILD STATUS (2026-11-26, RULES 112)
+Re-edit on top of the Owen-timed scenes (voice re-synced with `bm2.cjs voice`, `check` OK on all three; durations = narration + 0.4 s: YT 65.48, TT 64.09, IG 65.40; all > 60 s). NOT rendered here: full render + mix + loudness + final gate run on the owner's PC (director queues it).
+What changed: recurring cast (`_src/chars.js`): YOU = orange-hoodie player in the bottom-left corner with a reaction face per spoken beat (28/23/23 mood changes; name plate on entry; same design every time), THE STRANGER (top hat + monocle) stands between the two piles in the offer scene, the AVG US MAN card is YOU on the CDC card, beat labels THE BET / THE TWIST / THE ANSWER pinned in the HUD row. Storyteller coin stays right (no `corner-left`). `build/AV.md` per cut = line to picture to trigger word; `build/keyframes.png` = keyframe sheet (per beat) viewed and fixed. Build: `_src/build.sh <cut> <yt|tt|ig>`. Assets (photos in brand/photos/stock, sfx, fonts) are repo-relative.
+Engine fix: `brand/engine-v2/bm2.cjs` line 16 had a `//` comment that swallowed the rest of the line (`p is not defined`), changed to `/* */` so check/stills/render run again.
+- YouTube: SCENE READY: weight-vs-height (root) — render/mix/loudness pending on PC
+- TikTok: SCENE READY: weight-vs-height/tiktok — render/mix/loudness pending on PC
+- IG/FB: SCENE READY: weight-vs-height/ig — render/mix/loudness pending on PC
+Known: video.mp4 / captions.srt / contact_sheet.png in the folders are the previous build (stale until the PC render); captions.srt must be rebuilt from sentences.json after render.
+RENDERED READY: weight-vs-height (YouTube) 65.47s 18.9MB (-14.0 LUFS, -1.4 dBTP, 1080x1920 30fps; re-encoded crf 25). Contact sheet contact_sheet.png (1 fps) viewed, captions.srt rebuilt from sentences.json.

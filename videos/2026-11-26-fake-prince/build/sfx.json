@@ -8,6 +8,12 @@
    "name": "deep_boom_2"
   },
   {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 0.05,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -7,
    "dur": 0.5,
    "at": 0.1,
@@ -42,6 +48,12 @@
    "dur": 0.7,
    "at": 5.7,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 6,
+   "name": "camera_shutter_2"
   },
   {
    "gain": -10,
@@ -98,6 +110,12 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 14.84,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -10,
    "dur": 0.5,
    "at": 14.84,
@@ -144,6 +162,12 @@
    "dur": 0.7,
    "at": 21.84,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.8,
+   "at": 22.14,
+   "name": "typewriter_2"
   },
   {
    "gain": -13,
@@ -308,6 +332,12 @@
    "name": "swipe_2"
   },
   {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 44.72,
+   "name": "camera_shutter_2"
+  },
+  {
    "gain": -10,
    "dur": 0.5,
    "at": 44.72,
@@ -350,15 +380,33 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 50.42,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -10,
    "dur": 0.5,
    "at": 50.62,
    "name": "paper_slam_2"
   },
   {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 50.92,
+   "name": "paper_slam_1"
+  },
+  {
    "gain": -8,
    "dur": 0.5,
    "at": 52.14,
+   "name": "rubber_stamp_2"
+  },
+  {
+   "gain": -7,
+   "dur": 0.5,
+   "at": 52.8,
    "name": "rubber_stamp_2"
   },
   {
@@ -386,6 +434,12 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 56.5,
+   "name": "camera_shutter_2"
+  },
+  {
    "gain": -13,
    "dur": 0.45,
    "at": 56.52,
@@ -393,9 +447,21 @@
   },
   {
    "gain": -4,
+   "dur": 0.5,
+   "at": 56.72,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -4,
    "dur": 0.8,
    "at": 56.72,
    "name": "gavel_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.9,
+   "at": 57.72,
+   "name": "cell_door_1"
   },
   {
    "gain": -13,
@@ -444,6 +510,12 @@
    "dur": 0.7,
    "at": 62.92,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -14,
+   "dur": 3,
+   "at": 63.12,
+   "name": "suspense_drone_1"
   },
   {
    "gain": -13,
@@ -552,6 +624,12 @@
    "dur": 0.3,
    "at": 77.36,
    "name": "click_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 79,
+   "name": "camera_shutter_1"
   },
   {
    "gain": -10,

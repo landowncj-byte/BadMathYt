@@ -1,0 +1,42 @@
+import sys; sys.path.insert(0,'.')
+from crime_edit import *
+c=Cut('ig.js')
+c.r("title: 'CASE: FAKE PRINCE · 2017'","title: 'CASE FILE Nº 026 · FAKE PRINCE'")
+c.r("const F0 = { sx: 540, sy: 930, fill: 0.98, maxH: 960, st: { x: 130, y: 1350, s: 1.1 } };","const F0 = { sx: 540, sy: 895, fill: 0.98, maxH: 940, st: { x: 540, y: 1405, s: 0.7 } };")
+c.repl('royal',"    { id: 'sus0', type: 'suspect', at: [-235, 205], in: -1, props: { %s, w: 410, %s, %s, flash: false, tilt: -0.02, crownAt: 0, crownOff: 60, crownRe: '@noticed-0.1' } },"%(SUS,NAME,NICK))
+c.r("{ id: 'spike', type: 'spike', at: [300, 190], scale: 0.85,","{ id: 'spike', type: 'spike', at: [300, 235], scale: 0.62,")
+c.r("{ id: 'spike2', type: 'spike', at: [300, 190], scale: 0.85,","{ id: 'spike2', type: 'spike', at: [300, 235], scale: 0.62,")
+c.repl('pc',"    { id: 'suspc', type: 'suspect', at: [3100, 40], in: '@made-0.5', props: { %s, variant: 'side', w: 1000, pw: 430, aspect: 1.12, %s, %s, quote: [['I\\'M A', 'ink'], ['SAUDI', 'ink'], ['PRINCE', 'bad']], quoteAt: '@made', quoteSize: 74, quoteSub: 'HIS ACT · ONE ORDER BLEW IT', push: { at: '@made', dur: 3.2, to: 1.5 }, crownAt: 0, crownOff: '@damn', stamps: [{ text: 'SUSPICIOUS', at: '@suspicious', size: 60, x: -190, y: 150, rot: -0.12 }] } },"%(SUS,NAME,NICK))
+c.repl('mug',"    { id: 'mug', type: 'suspect', at: [4600, 30], in: \"@He's-0.35\", props: { %s, variant: 'card', file: true, caseNo: 'CASE FILE Nº 026', w: 480, %s, %s, credit: 'MIAMI-DADE COUNTY BOOKING PHOTO · PUBLIC DOMAIN', tilt: -0.03, push: { at: \"@He's\", dur: 4.5, to: 1.55 }, stringTo: [660, 330], stringAt: '@zero-0.3', ring: '@Anthony+0.2' } },"%(SUS,NAME,NICK))
+c.after('stepB',"    { id: 'pip1', type: 'suspect', layer: 'screen', at: [880, 1130], in: '@First-0.3', out: '@Now#2-0.3', props: { %s, variant: 'pip', w: 200, label: 'HIS TRICK', tilt: 0.03, arrow: { at: '@First+0.2', to: [-400, -330] } } },"%SUS)
+c.repl('inv',"    { id: 'vinv', type: 'victim', at: [3050, 1800], in: '@Now#2-0.3', props: { kind: 'investor', label: 'THE INVESTORS', sub: 'THE PEOPLE WHO LOST', reactAt: '@trusted+0.4' } },\n    { id: 'def', type: 'text', at: [3670, 1790], in: '@legit-0.2', props: { lines: [[['LOOKED LEGIT', 'gold']], [['= TRUSTED HIM', 'paper']], [['WITH MONEY', 'bad']]], size: 58 } },")
+c.repl('cos',"    { id: 'cos', type: 'suspect', at: [-750, 3600], in: '@But#3-0.3', props: { %s, w: 470, %s, %s, tilt: -0.02, crownAt: '@But#3-0.1', stamps: [{ text: 'FAKE PLATES', at: '@plates#3', size: 54, x: 0, y: -60, rot: -0.12 }, { text: 'FAKE BADGES', at: '@badges#2', size: 54, x: 0, y: 80, rot: 0.1 }] } },\n    { id: 'tplate', type: 'tile', at: [-300, 3470], in: '@But#3', props: { icon: 'plate', caption: 'CAR PLATE', stamp: 'FAKE', stampAt: '@plates#3', tilt: 0.05 } },\n    { id: 'tbadge', type: 'tile', at: [-300, 3790], in: '@But#3+0.2', props: { icon: 'badge', caption: 'BADGE', stamp: 'FAKE', stampAt: '@badges#2', tilt: -0.04 } },"%(SUS,NAME,NICK))
+c.repl('tally',"""    { id: 'board', type: 'board', at: [1300, 3600], in: '@gets-0.4', props: { title: 'EVIDENCE BOARD', caseNo: 'CASE FILE Nº 026', tightAt: '@royalty', items: [
+      { id: 'ph', k: 'photo', src: MUG, crop: [0.5, 0, 0.5, 1], fx: 0.5, fy: 0.42, x: 0, y: -280, w: 330, h: 400, name: 'ANTHONY GIGNAC', nameSize: 26, at: '@gets-0.2', rot: -0.02, push: 0.3 },
+      { id: 'pl', k: 'note', x: -300, y: 120, w: 270, h: 290, icon: 'plate', size: 34, lines: [['FAKE PLATES', 'bad']], at: '@gets+0.3', rot: -0.05 },
+      { id: 'bg', k: 'note', x: 0, y: 150, w: 270, h: 290, icon: 'badge', size: 34, lines: [['FAKE BADGES', 'bad']], at: '@gets+0.6', rot: 0.03 },
+      { id: 'ca', k: 'note', x: 300, y: 120, w: 270, h: 290, icon: 'cash', size: 34, lines: [['$8M+ LOST', 'bad']], at: '@gets+0.9', rot: 0.05 },
+      { id: 'n11', k: 'note', x: 0, y: 440, w: 640, h: 270, size: 150, lines: [['11×', 'bad', 150]], at: '@arrested-0.1', rot: -0.02, stamp: { text: 'PROSECUTORS SAID', at: '@said', y: 82, size: 30, rot: -0.04 } } ],
+      strings: [[0, 1, '@gets+0.5'], [0, 2, '@gets+0.8'], [0, 3, '@gets+1.1'], [0, 4, '@arrested+0.2'], [1, 4, '@royalty-0.2'], [2, 4, '@royalty-0.1'], [3, 4, '@royalty']] } },""")
+c.repl('royal2',"    { id: 'susd', type: 'suspect', at: [2650, 3760], in: '@dinner#2-0.5', props: { %s, w: 400, %s, %s, tilt: -0.03, crownAt: '@dinner#2-0.2', crownOff: '@suspicious#2+0.2', stamps: [{ text: 'OUT OF CHARACTER', at: '@victim-0.1', size: 40, x: 0, y: 40, rot: -0.1 }] } },"%(SUS,NAME,NICK))
+c.repl('diner',"    { id: 'diner', type: 'victim', at: [3640, 3820], in: '@victim-0.5', props: { kind: 'diner', label: 'THE VICTIM', sub: 'AT THE DINNER', reactAt: '@suspicious#2', w: 380, h: 480, tape: 'WITNESS' } },")
+c.repl('verdict',"""    { id: 'sv', type: 'suspect', at: [4680, 3600], in: '@Then#4-0.4', props: { %s, w: 470, %s, %s, tilt: -0.02, mono: true, push: { at: '@pleaded', dur: 3.2, to: 1.4 }, stamps: [{ text: 'GUILTY', at: '@guilty', size: 74, x: 0, y: -30, rot: -0.1 }], bars: '@sentenced' } },
+    { id: 'vc', type: 'counter', at: [5380, 3560], in: '@Then#4-0.3', props: { to: 18, at: '@18', dur: 0.7, suffix: '+', size: 170, tone: 'bad', label: 'YEARS IN PRISON', sub: 'MAY 31, 2019', w: 460 } },"""%(SUS,NAME,NICK))
+c.after('pip1',"""    { id: 'dc1', type: 'datecard', layer: 'screen', at: [340, 480], in: "@He's-0.05", out: '@Anthony+0.9', props: { kicker: 'CASE FILE Nº 026 · THE PITCH', big: 'FLORIDA', small: 'THE ACT: 1988 → 2017' } },
+    { id: 'dc3', type: 'datecard', layer: 'screen', at: [340, 480], in: '@gets-0.15', out: '@gets+1.1', props: { kicker: 'CHAPTER 3', big: 'THE FALLOUT', small: 'MONEY · ARRESTS' } },
+    { id: 'dc4', type: 'datecard', layer: 'screen', at: [340, 480], in: '@pleaded-0.1', out: '@guilty+0.1', props: { kicker: 'S.D. FLORIDA · FEDERAL COURT', big: 'THE VERDICT', small: 'PER DOJ' } },""")
+stepfix(c)
+hudlabels(c,[('-1',"THE SLIP"),("'@but#2-0.1'","THE PITCH"),("'@Look-0.1'","THE TRICK"),("'@Now#2-0.2'","THE MONEY"),("'@gets-0.25'","THE FALLOUT"),("'@Then#3-0.2'","THE CATCH"),("'@Then#4-0.2'","THE SENTENCE")])
+tail_beats(c,[("['hook', 'royal', 'spike']","['hook', 'sus0', 'spike']"),("['hook2', 'royal', 'spike2']","['hook2', 'sus0', 'spike2']"),
+("focus: 'pc', move","focus: 'suspc', move"),("focus: 'pc', fill: 0.9, maxH: 640","focus: 'suspc.face', fill: 0.62, maxH: 560"),
+("focus: 'mug.name', fill: 0.5, maxH: 300, sy: 1010","focus: 'mug.face', fill: 0.55, maxH: 520, sy: 990"),("focus: ['mug', 'zero'], move: 'whip', sx: 540, sy: 850, fill: 0.9, maxH: 1000","focus: ['mug', 'zero'], move: 'whip', sx: 540, sy: 950, fill: 0.9, maxH: 900"),
+("focus: 'inv', move","focus: ['vinv', 'def'], move"),("focus: 'inv.meter', fill: 0.8, maxH: 300","focus: 'def', fill: 0.62, maxH: 400"),("focus: 'inv.figs', fill: 0.9, maxH: 440","focus: 'vinv.face', fill: 0.62, maxH: 520"),("focus: 'inv', sy","focus: ['vinv', 'def'], sy"),
+("focus: 'cos', move","focus: ['cos', 'tplate', 'tbadge'], move"),("focus: 'cos.plate', fill: 0.28, maxH: 520","focus: 'tplate', fill: 0.34, maxH: 520"),("focus: 'cos.badge', fill: 0.28, maxH: 520","focus: 'tbadge', fill: 0.34, maxH: 520"),("focus: 'cos', sy","focus: ['cos', 'tplate', 'tbadge'], sy"),
+("focus: 'tally', move","focus: 'board', move"),("focus: 'tally', sy","focus: 'board', sy"),("focus: 'tally.num', fill: 0.8, maxH: 520","focus: 'board.n11', fill: 0.62, maxH: 520"),("focus: 'tally', fill","focus: 'board', fill"),
+("'royal2'","'susd'"),
+("focus: 'verdict', move","focus: ['sv', 'vc'], move"),("focus: 'verdict', sy: 880, fill: 0.9, maxH: 920, st: 'corner-left', pose: 'point'","focus: ['sv', 'vc'], sy: 880, fill: 0.9, maxH: 920, st: 'corner-left', pose: 'point'"),("focus: 'verdict.guilty', fill: 0.85, maxH: 420","focus: 'sv', fill: 0.8, maxH: 780"),("focus: 'verdict.years', fill: 0.72, maxH: 640","focus: 'vc.value', fill: 0.62, maxH: 560"),("focus: 'verdict', sy","focus: ['sv', 'vc'], sy"),
+])
+fixfocus(c)
+storyright(c,['mug','mug2','sus3','suspc','sv','cos','sus17','sus15','susd','sus0','mug0'])
+add_sfx(c,[(0.05,'camera_shutter_1',-8,0.4),("'@made'",'camera_shutter_2',-9,0.4),("\"@He's\"",'camera_shutter_1',-8,0.4),("'@First'",'typewriter_2',-12,0.8),("'@But#3'",'camera_shutter_2',-9,0.4),("'@gets-0.2'",'camera_shutter_1',-8,0.4),("'@Then#4'",'camera_shutter_2',-8,0.4),("'@sentenced'",'cell_door_1',-6,0.9),("'@guilty'",'rubber_stamp_1',-4,0.5),("'@Then#3-0.1'",'suspense_drone_1',-14,3.0),("'@dinner#2-0.2'",'camera_shutter_1',-9,0.4),("'@gets+0.3'",'paper_slam_1',-12,0.4),("'@arrested'",'rubber_stamp_2',-7,0.5)])
+c.save('ig.crime.js')

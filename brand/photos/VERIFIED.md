@@ -10,3 +10,5 @@
 | Kurniawan's "wine factory" kitchen | rudy-kurniawan/3.jpg | kitchen photographed by investigators | Public domain, U.S. Government |
 NOT the right person (never use): "Rudy Kurniawan" Depok council member photo.
 No licensed photo found (use silhouette labelled ILLUSTRATION): Charlie Javice, Scott Tucker, Glenn Arcaro, Eddie Tipton, Karl Sebastian Greenwood, Jerome Jacobson, Do Kwon (Commons file exists, download failed — retry), Clarence Barron.
+
+Eddie Tipton retry 2026-11-26 (CRIME-SHOW build): photos.py / stock.py / Commons + Wikipedia API searches all hit HTTP 429 (shared proxy rate limit) and the earlier Commons search returned no Tipton file. No licensed photo verified, so the lottery-rig cuts use a coloured ILLUSTRATION character ("the lottery IT guy", labelled ILLUSTRATION every time). Retry later: Iowa DCI / Polk County booking photos only if the file page states a free licence and it is checked by eye.

@@ -7,6 +7,9 @@ BM2.scene({
   series: 'whatif', title: 'WEIGHT VS HEIGHT', duration: 65.48,
   footnote: ['HYPOTHETICAL · NOBODY IS OFFERING THIS · NOT FINANCIAL ADVICE', 'ASSUMES ≈1 G & 0.0043 IN PER BILL · CRISP, FLAT, WHOLE NOTES', 'AVG US MAN = CDC 199.0 LB · 68.9 IN (AUG 2021–AUG 2023)', 'PHOTOS: D.L. (CC BY-SA 2.0) · THE.COMEDIAN (CC BY 2.0) · VIA FLICKR'],
   elements: [
+    { id: 'you1', type: 'char', layer: 'screen', at: [140, 1212], in: -1, out: '@Per-0.4', props: { who: 'you', s: 0.82, moods: [{ t: 0, m: 'greed' }, { t: '@costs', m: 'worried' }, { t: '@$200', m: 'shock' }, { t: '@stranger', m: 'think', look: [1, -1] }, { t: '@keep', m: 'greed' }, { t: '@pile', m: 'think', look: [1, 0] }, { t: '@pile#2', m: 'think', look: [1, 0] }, { t: '@stacked', m: 'think', look: [1, -1] }, { t: '@hundred', m: 'smug' }, { t: '@easy', m: 'grin' }, { t: '@but', m: 'shock' }, { t: '@pound', m: 'think', look: [1, 0] }, { t: '@$9', m: 'shock' }, { t: '@inch', m: 'think', look: [1, 0] }, { t: '@$23', m: 'shock' }, { t: '@grab', m: 'smug' }, { t: '@catch', m: 'worried' }, { t: '@per', m: 'think' }, { t: '@so#3', m: 'worried' }, { t: '@so#4', m: 'think', look: [1, -1] }, { t: '@million', m: 'shock' }, { t: '@his#3', m: 'worried' }, { t: '@million#2', m: 'shock' }, { t: '@small', m: 'wrong' }, { t: '@that\'s#2', m: 'worried' }, { t: '@years', m: 'shock' }, { t: '@still', m: 'smug' }, { t: '@bills#5>', m: 'greed' }], tagDur: 2.2 } },
+    { id: 'you2', type: 'char', layer: 'screen', at: [140, 1212], in: '@So#3-0.15', props: { who: 'you', s: 0.82, tag: false, moods: [{ t: 0, m: 'greed' }, { t: '@costs', m: 'worried' }, { t: '@$200', m: 'shock' }, { t: '@stranger', m: 'think', look: [1, -1] }, { t: '@keep', m: 'greed' }, { t: '@pile', m: 'think', look: [1, 0] }, { t: '@pile#2', m: 'think', look: [1, 0] }, { t: '@stacked', m: 'think', look: [1, -1] }, { t: '@hundred', m: 'smug' }, { t: '@easy', m: 'grin' }, { t: '@but', m: 'shock' }, { t: '@pound', m: 'think', look: [1, 0] }, { t: '@$9', m: 'shock' }, { t: '@inch', m: 'think', look: [1, 0] }, { t: '@$23', m: 'shock' }, { t: '@grab', m: 'smug' }, { t: '@catch', m: 'worried' }, { t: '@per', m: 'think' }, { t: '@so#3', m: 'worried' }, { t: '@so#4', m: 'think', look: [1, -1] }, { t: '@million', m: 'shock' }, { t: '@his#3', m: 'worried' }, { t: '@million#2', m: 'shock' }, { t: '@small', m: 'wrong' }, { t: '@that\'s#2', m: 'worried' }, { t: '@years', m: 'shock' }, { t: '@still', m: 'smug' }, { t: '@bills#5>', m: 'greed' }] } },
+    { id: 'blab', type: 'beatlabel', layer: 'screen', at: [64, 318], in: -1, props: { items: [{ t: 0, text: 'THE BET' }, { t: '@but', text: 'THE TWIST' }, { t: '@so#3', text: 'THE ANSWER' }] } },
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: '@stranger-0.2', props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: '@bills#5>+0.25', props: HOOK },
     { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { btnOff: BTN, slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@Pile'], bigAt: '@million#2-0.5', fill: [
@@ -22,7 +25,7 @@ BM2.scene({
     { id: 'recap', type: 'recap', at: [-1900, -1750], in: '@So#3-0.4', out: '@So#4-0.15', props: { lbAt: '@199#2-0.15', inAt: '@69#2-0.1', vsAt: '@against' } },
     { id: 'tot', type: 'totals', at: [0, -1750], in: '@small-1.0', out: '@That\'s#2+0.3', props: { hAt: '@small-0.5', wAt: '@small-0.1', gapAt: '@200' } },
     { id: 'cal', type: 'calendar', at: [-1900, 1750], in: '@That\'s#2-0.4', out: '@Still+0.3', props: { at: '@That\'s#2+0.4', dur: 2.1, doneAt: '@years' } },
-    { id: 'ph1', type: 'photo', layer: 'screen', at: [200, 1130], in: '@weight', out: '@Pile#2', props: { src: 'brand/photos/stock/bathroom-scale/3.jpg', name: 'SCALE', credit: 'D.L. · CC BY-SA 2.0', w: 250, tilt: -0.07, treatment: 'polaroid', aspect: 1.0 } },
+    { id: 'ph1', type: 'photo', layer: 'screen', at: [370, 1085], in: '@weight', out: '@Pile#2', props: { src: 'brand/photos/stock/bathroom-scale/3.jpg', name: 'SCALE', credit: 'D.L. · CC BY-SA 2.0', w: 250, tilt: -0.07, treatment: 'polaroid', aspect: 1.0 } },
     { id: 'ph2', type: 'photo', layer: 'screen', at: [880, 1130], in: '@stacked', out: '@A#2-0.2', props: { src: 'brand/photos/stock/stack-of-hundred-dollar-bills/2.jpg', name: '$100 STACK', credit: 'THE.COMEDIAN · CC BY 2.0', w: 250, tilt: 0.07, treatment: 'polaroid', aspect: 1.0 } },
     // screen-fixed
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@stranger', props: { text: 'HYPOTHETICAL', size: 24 } },
@@ -42,18 +45,18 @@ BM2.scene({
     { at: '@A-0.3', beat: 'pull-back', focus: F0, ...FR, pose: 'talk', keep: KEEP, drift: 0.02 },
     // the offer
     { at: '@stranger', beat: 'graphic-hero', focus: 'offer', move: 'whip', fill: 0.92, maxH: 900, sy: 780, st: 'corner', pose: 'point' },
-    { at: '@Keep', beat: 'zoom-on-number', focus: 'offer.keep', fill: 0.8, sy: 700, rot: 0.01, st: 'corner-left', pose: 'shock', keep: ['offer'] },
+    { at: '@Keep', beat: 'zoom-on-number', focus: 'offer.keep', fill: 0.8, sy: 700, rot: 0.01, st: 'corner', pose: 'shock', keep: ['offer'] },
     // pile one
     { at: '@Pile', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'point' },
     { at: '@weight', beat: 'zoom-on-number', focus: 'scale.dial', fill: 0.62, sy: 760, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@bills#2+0.3', beat: 'pull-back', focus: 'scale', fill: 0.82, maxH: 950, sy: 850, st: 'corner', pose: 'idle', drift: 0.03 },
     // pile two
-    { at: '@Pile#2', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'point' },
-    { at: '@stacked', beat: 'zoom-on-number', focus: 'tower.stack', fill: 0.62, sy: 780, rot: -0.01, st: 'corner-left', pose: 'point', dur: 0.5 },
+    { at: '@Pile#2', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'point' },
+    { at: '@stacked', beat: 'zoom-on-number', focus: 'tower.stack', fill: 0.62, sy: 780, rot: -0.01, st: 'corner', pose: 'point', dur: 0.5 },
     { at: '@tall', beat: 'pull-back', focus: F0, ...FR, pose: 'chin', keep: KEEP },
     // x5
     { at: '@A#2', beat: 'presenter-front', focus: 'five', fill: 0.7, sy: 780, pose: 'you', keep: ['five'] },
-    { at: '@five', beat: 'zoom-on-number', focus: 'five.x', fill: 0.75, sy: 740, rot: 0.01, st: 'corner-left', pose: 'shock', keep: ['five'] },
+    { at: '@five', beat: 'zoom-on-number', focus: 'five.x', fill: 0.75, sy: 740, rot: 0.01, st: 'corner', pose: 'shock', keep: ['five'] },
     { at: '@easy', beat: 'presenter-front', focus: 'five', fill: 0.7, sy: 780, pose: 'shrug', keep: ['five'], drift: 0.03 },
     { at: '@Hit', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'right', pose: 'point', keep: ['tower'] },
     // twist 1: same weight
@@ -68,31 +71,31 @@ BM2.scene({
     { at: '@$9+1.4', beat: 'pull-back', focus: 'scale', fill: 0.82, maxH: 950, sy: 850, st: 'corner', pose: 'chin', drift: 0.03 },
     // step 3: one inch of hundreds
     { at: '@And', beat: 'graphic-hero', st: 'right', focus: 'tower', move: 'whip', sy: 850, maxH: 900, pose: 'idle' },
-    { at: '@inch', beat: 'zoom-on-number', focus: 'tower.base', fill: 0.8, sy: 860, rot: -0.01, st: 'corner-left', pose: 'point' },
-    { at: '@$23', beat: 'zoom-on-number', focus: 'tower.inch', fill: 0.85, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@$23+1.2', beat: 'pull-back', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'corner-left', pose: 'chin', drift: 0.03 },
+    { at: '@inch', beat: 'zoom-on-number', focus: 'tower.base', fill: 0.8, sy: 860, rot: -0.01, st: 'corner', pose: 'point' },
+    { at: '@$23', beat: 'zoom-on-number', focus: 'tower.inch', fill: 0.85, sy: 860, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@$23+1.2', beat: 'pull-back', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'corner', pose: 'chin', drift: 0.03 },
     // send
     { at: '@Send', beat: 'graphic-hero', st: 'right', focus: 'tower', sy: 850, maxH: 900, pose: 'you' },
     { at: '@grab', beat: 'peek', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, pose: 'shock' },
     // the catch
     { at: '@But#2', beat: 'graphic-hero', focus: 'rows', move: 'whip', fill: 0.94, maxH: 900, sy: 780, st: 'corner', pose: 'point' },
-    { at: '@way', beat: 'zoom-on-number', focus: 'rows.lb', fill: 0.9, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['rows'] },
-    { at: '@inches', beat: 'zoom-on-number', focus: 'rows.inch', fill: 0.9, sy: 780, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['rows'] },
+    { at: '@way', beat: 'zoom-on-number', focus: 'rows.lb', fill: 0.9, sy: 760, rot: 0.01, st: 'corner', pose: 'point', dur: 0.5, keep: ['rows'] },
+    { at: '@inches', beat: 'zoom-on-number', focus: 'rows.inch', fill: 0.9, sy: 780, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['rows'] },
     { at: '@inches+0.7', beat: 'pull-back', focus: 'rows', fill: 0.94, maxH: 900, sy: 780, st: 'corner', pose: 'chin', keep: ['rows'], drift: 0.03 },
     // the average man
-    { at: '@Per', beat: 'graphic-hero', focus: 'doll', move: 'whip', fill: 0.55, maxH: 900, sy: 860, st: 'corner-left', pose: 'idle' },
-    { at: '@199', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
-    { at: '@pounds#2+0.3', beat: 'pull-back', focus: 'doll', fill: 0.55, maxH: 900, sy: 860, st: 'corner-left', pose: 'chin', drift: 0.03 },
-    { at: '@69', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
+    { at: '@Per', beat: 'graphic-hero', focus: 'doll', move: 'whip', fill: 0.55, maxH: 900, sy: 860, st: 'corner', pose: 'idle' },
+    { at: '@199', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner', pose: 'point', keep: ['doll'], dur: 0.5 },
+    { at: '@pounds#2+0.3', beat: 'pull-back', focus: 'doll', fill: 0.55, maxH: 900, sy: 860, st: 'corner', pose: 'chin', drift: 0.03 },
+    { at: '@69', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner', pose: 'point', keep: ['doll'], dur: 0.5 },
     // recap: scale vs tape measure
     { at: '@So#3', beat: 'graphic-hero', focus: 'recap', move: 'whip', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'point' },
-    { at: '@199#2', beat: 'zoom-on-number', focus: 'recap.l', fill: 0.7, sy: 780, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['recap'] },
-    { at: '@69#2', beat: 'zoom-on-number', focus: 'recap.r', fill: 0.7, sy: 780, rot: -0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['recap'] },
+    { at: '@199#2', beat: 'zoom-on-number', focus: 'recap.l', fill: 0.7, sy: 780, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['recap'] },
+    { at: '@69#2', beat: 'zoom-on-number', focus: 'recap.r', fill: 0.7, sy: 780, rot: -0.01, st: 'corner', pose: 'point', dur: 0.5, keep: ['recap'] },
     { at: '@hundreds#4', beat: 'pull-back', focus: 'recap', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'chin', keep: ['recap'], drift: 0.03 },
     // height in hundreds
-    { at: '@So#4', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'idle' },
-    { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.78, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@million+0.4', beat: 'pull-back', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'chin', drift: 0.03 },
+    { at: '@So#4', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'idle' },
+    { at: '@1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.78, sy: 800, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@million+0.4', beat: 'pull-back', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'chin', drift: 0.03 },
     // follow
     { at: '@His#2', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'chin', keep: ['scale'] },
     { at: '@follow', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'follow', keep: ['scale'] },
@@ -102,15 +105,15 @@ BM2.scene({
     { at: '@million#2', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.9, sy: 900, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.6, drift: 0.03, keep: ['scale'] },
     // verdict
     { at: '@small-0.6', beat: 'graphic-hero', focus: 'tot', move: 'whip', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'idle' },
-    { at: '@200', beat: 'zoom-on-number', focus: 'tot.gap', fill: 0.88, sy: 800, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['tot'] },
+    { at: '@200', beat: 'zoom-on-number', focus: 'tot.gap', fill: 0.88, sy: 800, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['tot'] },
     { at: '@grand+0.6', beat: 'pull-back', focus: 'tot', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'shrug', drift: 0.03 },
     // everyday comparison
     { at: '@That\'s#2', beat: 'graphic-hero', focus: 'cal', move: 'whip', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'point' },
-    { at: '@day', beat: 'zoom-on-number', focus: 'cal.days', fill: 0.84, sy: 960, rot: 0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['cal'] },
-    { at: '@years', beat: 'zoom-on-number', focus: 'cal.days', fill: 0.84, sy: 960, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['cal'] },
+    { at: '@day', beat: 'zoom-on-number', focus: 'cal.days', fill: 0.84, sy: 960, rot: 0.01, st: 'corner', pose: 'point', dur: 0.5, keep: ['cal'] },
+    { at: '@years', beat: 'zoom-on-number', focus: 'cal.days', fill: 0.84, sy: 960, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['cal'] },
     // loop
     { at: '@Still', beat: 'presenter-front', focus: F0, move: 'whip', ...FR, pose: 'shrug', keep: KEEP },
-    { at: '@bills#5>+0.25', beat: 'side-by-side', focus: F0, move: 'whip', ...FR, pose: 'shock', keep: KEEP },
+    { at: '@bills#5>+0.25', beat: 'side-by-side', focus: F0, move: 'whip', ...FR, pose: 'shock', st: 'corner', keep: KEEP },
   ],
   poses: [['@follow', 'follow', { target: [650, 1120] }]],
   shakes: [[0.3, 10], ['@20s#4', 18], ['@200', 8], ['@Keep', 6]],

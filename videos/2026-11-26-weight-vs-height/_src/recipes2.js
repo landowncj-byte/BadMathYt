@@ -12,25 +12,28 @@
 
   // ---------- offer ----------
   B.register('offer', {
-    defaults: { keepAt: 99999 }, ownEnter: true, size: () => [980, 620],
-    anchors: () => ({ a: [-250, 60, 420, 440], b: [250, 60, 420, 440], keep: [0, -250, 500, 120], all: [0, 0, 980, 620] }),
+    defaults: { keepAt: 99999 }, ownEnter: true, size: () => [1180, 700],
+    anchors: () => ({ a: [-330, 60, 420, 440], b: [330, 60, 420, 440], keep: [0, -345, 500, 120], all: [0, -40, 1180, 700] }),
     draw(g, p, env) {
       const { t, theme, lt } = env; const k1 = ease.out(clamp(lt / 0.45)), k2 = ease.out(clamp((lt - 0.12) / 0.45));
       g.save(); g.globalAlpha *= clamp(lt / 0.06);
+      // THE STRANGER stands between the two piles, arms out to both
+      { const ks = ease.out(clamp((lt - 0.05) / 0.5)); g.save(); g.translate(0, 235 + 300 * (1 - ks)); g.scale(1.25, 1.25); window.BMCHAR(g, theme, 'stranger', t >= p.keepAt ? 'smug' : 'grin', t, { arms: 'spread' }); g.restore();
+        if (lt < 2.0) { g.save(); g.globalAlpha *= clamp((lt - 0.3) / 0.2) * (1 - clamp((lt - 1.7) / 0.3)); g.translate(0, 270); clay(g, -150, -28, 300, 56, 16, theme.paper, { shadowK: 0.5 }); txt(g, 'THE STRANGER', 0, 3, F.hero(36), theme.ink); g.restore(); } }
       // A tray from left
-      g.save(); g.translate(lerp(-900, -250, k1), 60);
+      g.save(); g.translate(lerp(-900, -330, k1), 60);
       clay(g, -210, 120, 420, 60, 24, theme.navy, { shadowK: 0.8 });
       for (let r = 0; r < 7; r++) for (let c = 0; c < 8 - r; c++) { g.save(); g.translate((c - (8 - r - 1) / 2) * 44, 104 - r * 17); bill(g, -22, -10, 44, 20, GREEN); g.restore(); }
       clay(g, -130, -220, 260, 84, 24, theme.good, { shadowK: 0.6 }); txt(g, 'A', -80, -178, F.hero(60), '#0B0F14'); txt(g, '$20s', 30, -176, F.hero(46), '#0B0F14');
       g.restore();
       // B tray from right
-      g.save(); g.translate(lerp(900, 250, k2), 60);
+      g.save(); g.translate(lerp(900, 330, k2), 60);
       clay(g, -210, 120, 420, 60, 24, theme.navy, { shadowK: 0.8 });
       clay(g, -75, -90, 150, 205, 8, HUN, { shadowK: 0.7 }); g.save(); rr(g, -75, -90, 150, 205, 8); g.clip(); g.fillStyle = 'rgba(11,15,20,.16)'; for (let y = 110; y > -90; y -= 7) g.fillRect(-75, y, 150, 2); g.fillStyle = 'rgba(245,243,238,.55)'; g.fillRect(-12, -90, 24, 205); g.restore();
       clay(g, -130, -220, 260, 84, 24, theme.accent, { shadowK: 0.6 }); txt(g, 'B', -80, -178, F.hero(60), '#0B0F14'); txt(g, '$100s', 30, -176, F.hero(46), '#0B0F14');
       g.restore();
       // KEEP ONE tag
-      if (t >= p.keepAt) { const s = t - p.keepAt, kk = pop(t, p.keepAt); g.save(); g.translate(0, -265); g.rotate(-0.04 * (1 - kk)); g.scale(0.4 + 0.6 * kk, 0.4 + 0.6 * kk); clay(g, -260, -52, 520, 104, 26, theme.paper, { shadowK: 0.7 }); txt(g, 'KEEP ONE', 0, 4, F.hero(72), theme.ink); g.restore(); }
+      if (t >= p.keepAt) { const s = t - p.keepAt, kk = pop(t, p.keepAt); g.save(); g.translate(0, -345); g.rotate(-0.04 * (1 - kk)); g.scale(0.4 + 0.6 * kk, 0.4 + 0.6 * kk); clay(g, -260, -52, 520, 104, 26, theme.paper, { shadowK: 0.7 }); txt(g, 'KEEP ONE', 0, 4, F.hero(72), theme.ink); g.restore(); }
       g.restore();
     },
   });

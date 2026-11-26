@@ -8,6 +8,12 @@
    "name": "deep_boom_2"
   },
   {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 0.05,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -6,
    "dur": 0.5,
    "at": 0.06,
@@ -86,6 +92,12 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 10.62,
+   "name": "camera_shutter_2"
+  },
+  {
    "gain": -6,
    "dur": 0.5,
    "at": 11.34,
@@ -114,6 +126,12 @@
    "dur": 0.7,
    "at": 13.68,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 13.98,
+   "name": "camera_shutter_1"
   },
   {
    "gain": -10,
@@ -228,6 +246,12 @@
    "dur": 0.7,
    "at": 30.76,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.8,
+   "at": 31.06,
+   "name": "typewriter_2"
   },
   {
    "gain": -13,
@@ -386,6 +410,12 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 54.84,
+   "name": "camera_shutter_2"
+  },
+  {
    "gain": -10,
    "dur": 0.5,
    "at": 54.84,
@@ -422,15 +452,33 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 57.5,
+   "name": "camera_shutter_1"
+  },
+  {
    "gain": -10,
    "dur": 0.5,
    "at": 57.7,
    "name": "paper_slam_2"
   },
   {
+   "gain": -12,
+   "dur": 0.4,
+   "at": 58,
+   "name": "paper_slam_1"
+  },
+  {
    "gain": -8,
    "dur": 0.5,
    "at": 59.02,
+   "name": "rubber_stamp_2"
+  },
+  {
+   "gain": -7,
+   "dur": 0.5,
+   "at": 59.9,
    "name": "rubber_stamp_2"
   },
   {
@@ -458,10 +506,22 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -14,
+   "dur": 3,
+   "at": 63.66,
+   "name": "suspense_drone_1"
+  },
+  {
    "gain": -11,
    "dur": 0.4,
    "at": 63.76,
    "name": "swipe_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 64.16,
+   "name": "camera_shutter_1"
   },
   {
    "gain": -13,
@@ -518,6 +578,12 @@
    "name": "whoosh_2"
   },
   {
+   "gain": -8,
+   "dur": 0.4,
+   "at": 70.6,
+   "name": "camera_shutter_2"
+  },
+  {
    "gain": -13,
    "dur": 0.45,
    "at": 72.3,
@@ -525,9 +591,21 @@
   },
   {
    "gain": -4,
+   "dur": 0.5,
+   "at": 72.5,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -4,
    "dur": 0.8,
    "at": 72.5,
    "name": "gavel_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.9,
+   "at": 73.62,
+   "name": "cell_door_1"
   },
   {
    "gain": -13,

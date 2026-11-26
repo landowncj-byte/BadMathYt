@@ -1,3 +1,138 @@
+// ===== What If recurring cast (CRIME-SHOW pass, RULES 112) — registered via BM2.register; prepended to each cut's scene.js =====
+// char      : cartoon bust. who = 'you' (orange hoodie player) | 'host' (tux + red bow tie game-show host) | 'stranger' (top hat + monocle rich weirdo)
+//             moods: [{t, m, look:[dx,dy]}]  mood = neutral smug think shock worried grin greed wrong
+//             tag: small name plate shown for tagDur seconds after entering.  s: scale.  Same design every appearance.
+// beatlabel : small pinned mono pill in the HUD row (THE BET · THE TWIST · THE ANSWER), items: [{t, text}]
+// window.BMCHAR(g, th, who, mood, tt, o): draw a bust inside other recipes (origin = bottom centre of the torso, figure grows up, ~270 px tall)
+(function () {
+  const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, clay, burst, shade, mix } = B;
+  const INK = '#0B0F14';
+  const MOODS = {
+    neutral: { bl: 0, br: 0, ti: 0, mouth: 'smile', eyes: 'norm' },
+    smug: { bl: -4, br: 6, ti: -0.12, mouth: 'smirk', eyes: 'half' },
+    think: { bl: 8, br: -2, ti: 0.1, mouth: 'flat', eyes: 'norm', look: [-1, -1] },
+    shock: { bl: 14, br: 14, ti: 0, mouth: 'o', eyes: 'wide' },
+    worried: { bl: 10, br: 10, ti: 0.28, mouth: 'wobble', eyes: 'norm', sweat: true },
+    grin: { bl: 4, br: 4, ti: 0, mouth: 'grin', eyes: 'norm', blush: true },
+    greed: { bl: 6, br: 6, ti: 0, mouth: 'grin', eyes: 'dollar' },
+    wrong: { bl: -6, br: -6, ti: -0.25, mouth: 'frown', eyes: 'squint', sweat: true },
+  };
+  const LOOK = { 'you': { skin: '#F1C29A', skinS: '#D9A47C' }, 'host': { skin: '#D8A27C', skinS: '#BE8A64' }, 'stranger': { skin: '#F2D6BE', skinS: '#D9B99F' } };
+  const NAMES = { you: ['YOU', 'THE PLAYER'], host: ['THE HOST', 'KNOWS WHERE THE MONEY IS'], stranger: ['THE STRANGER', 'RICH · FREE CASH'] };
+
+  function face(g, who, m, tt, look) {
+    const L = LOOK[who], cy = -190, R = 66;
+    // head
+    g.save(); g.fillStyle = L.skin; g.strokeStyle = INK; g.lineWidth = 5;
+    g.beginPath(); g.ellipse(0, cy, R * 0.94, R, 0, 0, 7); g.fill(); g.stroke();
+    g.fillStyle = rgba(L.skinS, 0.55); g.beginPath(); g.ellipse(0, cy + R * 0.78, R * 0.6, R * 0.22, 0, 0, 7); g.fill();
+    for (const s of [-1, 1]) { g.fillStyle = L.skin; g.beginPath(); g.ellipse(s * R * 0.94, cy + 4, 11, 16, 0, 0, 7); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  function hairBack(g, who) {
+    g.save(); g.fillStyle = who === 'you' ? '#5A3A22' : INK; g.strokeStyle = INK; g.lineWidth = 5;
+    if (who === 'you') { // hood bunched behind the head
+      g.fillStyle = '#C9511F'; g.beginPath(); g.ellipse(0, -128, 96, 40, 0, 0, 7); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  function hairFront(g, who) {
+    const cy = -190; g.save(); g.strokeStyle = INK; g.lineWidth = 5; g.lineJoin = 'round';
+    if (who === 'you') { g.fillStyle = '#5A3A22'; g.beginPath(); g.moveTo(-64, cy - 8); g.lineTo(-70, cy - 40); g.lineTo(-48, cy - 36); g.lineTo(-52, cy - 76); g.lineTo(-26, cy - 58); g.lineTo(-16, cy - 92); g.lineTo(6, cy - 66); g.lineTo(26, cy - 94); g.lineTo(38, cy - 60); g.lineTo(62, cy - 70); g.lineTo(58, cy - 36); g.lineTo(70, cy - 30); g.lineTo(62, cy - 8); g.quadraticCurveTo(44, cy - 58, 0, cy - 56); g.quadraticCurveTo(-44, cy - 58, -64, cy - 8); g.closePath(); g.fill(); g.stroke(); }
+    else if (who === 'host') { g.fillStyle = '#16181F'; g.beginPath(); g.moveTo(-64, cy - 6); g.quadraticCurveTo(-76, cy - 70, -10, cy - 76); g.quadraticCurveTo(60, cy - 84, 66, cy - 8); g.quadraticCurveTo(50, cy - 58, 14, cy - 62); g.quadraticCurveTo(-30, cy - 56, -64, cy - 6); g.closePath(); g.fill(); g.stroke();
+      g.strokeStyle = 'rgba(255,255,255,.5)'; g.lineWidth = 4; g.beginPath(); g.moveTo(-34, cy - 62); g.quadraticCurveTo(0, cy - 74, 34, cy - 62); g.stroke(); }
+    else { // top hat
+      g.fillStyle = '#14171E'; g.beginPath(); g.ellipse(0, cy - 52, 96, 20, 0, 0, 7); g.fill(); g.stroke(); rr(g, -58, cy - 160, 116, 112, 10); g.fill(); g.stroke();
+      g.fillStyle = '#F2B705'; g.fillRect(-57, cy - 82, 114, 22); g.strokeRect(-57, cy - 82, 114, 22);
+      g.fillStyle = '#14171E'; g.beginPath(); g.ellipse(0, cy - 52, 96, 20, 0, 0, Math.PI); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  function body(g, who, arms) {
+    const col = who === 'you' ? '#F26B3A' : who === 'host' ? '#1E2638' : '#33333D';
+    g.save();
+    // arms (behind torso edges)
+    const armCol = shade(col, -0.1);
+    if (arms === 'spread') for (const s of [-1, 1]) { g.save(); g.translate(s * 92, -92); g.rotate(-s * 1.05); clay(g, -20, -10, 40, 150, 20, armCol, { shadowK: 0.4 }); g.fillStyle = LOOK[who].skin; g.strokeStyle = INK; g.lineWidth = 4; g.beginPath(); g.arc(0, 150, 26, 0, 7); g.fill(); g.stroke(); g.restore(); }
+    clay(g, -100, -126, 200, 128, 40, col, { shadowK: 0.6 });
+    g.fillStyle = LOOK[who].skin; g.strokeStyle = INK; g.lineWidth = 4; g.beginPath(); g.moveTo(-30, -130); g.lineTo(30, -130); g.lineTo(18, -112); g.lineTo(-18, -112); g.closePath(); g.fill();
+    if (who === 'you') { // hoodie: neckline, drawstrings, pocket
+      g.fillStyle = '#C9511F'; g.beginPath(); g.moveTo(-46, -128); g.quadraticCurveTo(0, -92, 46, -128); g.lineTo(34, -122); g.quadraticCurveTo(0, -108, -34, -122); g.fill();
+      g.strokeStyle = '#F5F3EE'; g.lineWidth = 5; g.lineCap = 'round'; g.beginPath(); g.moveTo(-14, -104); g.lineTo(-16, -66); g.moveTo(14, -104); g.lineTo(16, -62); g.stroke();
+      g.fillStyle = 'rgba(0,0,0,.14)'; rr(g, -52, -48, 104, 34, 12); g.fill(); }
+    else if (who === 'host') { // white shirt V, red bow tie, pocket square
+      g.fillStyle = '#F5F3EE'; g.beginPath(); g.moveTo(-38, -128); g.lineTo(38, -128); g.lineTo(0, -52); g.closePath(); g.fill();
+      g.fillStyle = '#E4572E'; g.beginPath(); g.moveTo(0, -112); g.lineTo(-34, -132); g.lineTo(-34, -98); g.closePath(); g.fill(); g.beginPath(); g.moveTo(0, -112); g.lineTo(34, -132); g.lineTo(34, -98); g.closePath(); g.fill(); g.beginPath(); g.arc(0, -114, 9, 0, 7); g.fill();
+      g.fillStyle = '#F2B705'; g.beginPath(); g.moveTo(54, -86); g.lineTo(76, -86); g.lineTo(76, -70); g.lineTo(54, -70); g.fill(); }
+    else { // cravat + gold buttons
+      g.fillStyle = '#F2B705'; g.beginPath(); g.moveTo(-22, -128); g.lineTo(22, -128); g.lineTo(14, -78); g.lineTo(-14, -78); g.closePath(); g.fill(); g.strokeStyle = INK; g.lineWidth = 3; g.stroke();
+      for (const y of [-56, -30]) { g.fillStyle = '#F2B705'; g.beginPath(); g.arc(0, y, 7, 0, 7); g.fill(); } }
+    g.restore();
+  }
+  function features(g, who, mood, tt, lookOv) {
+    const M = MOODS[mood] || MOODS.neutral, cy = -190, blink = (tt % 3.6) < 0.11 || (tt % 5.3) > 5.22;
+    const lk = lookOv || M.look || [0, 0];
+    g.save(); g.strokeStyle = INK; g.lineCap = 'round'; g.lineJoin = 'round';
+    for (const s of [-1, 1]) {
+      const ex = s * 25, ey = cy - 6; const er = M.eyes === 'wide' ? 19 : M.eyes === 'squint' ? 0 : 15;
+      if (M.eyes === 'dollar') { g.fillStyle = '#F5F3EE'; g.lineWidth = 4; g.beginPath(); g.arc(ex, ey, 19, 0, 7); g.fill(); g.stroke(); txt(g, '$', ex, ey + 2, F.hero(30), '#1FA366'); }
+      else if (blink || M.eyes === 'squint') { g.lineWidth = 5; g.beginPath(); g.moveTo(ex - 13, ey + (M.eyes === 'squint' ? -4 : 0)); g.lineTo(ex + 13, ey + (M.eyes === 'squint' ? 4 : 0) * s); g.stroke(); }
+      else { g.fillStyle = '#F5F3EE'; g.lineWidth = 4; g.beginPath(); g.ellipse(ex, ey, er, er * (M.eyes === 'half' ? 0.72 : 1.08), 0, 0, 7); g.fill(); g.stroke();
+        g.fillStyle = INK; g.beginPath(); g.arc(ex + lk[0] * 5, ey + lk[1] * 5 + (M.eyes === 'half' ? 3 : 0), M.eyes === 'wide' ? 5 : 7, 0, 7); g.fill();
+        if (M.eyes === 'half') { g.fillStyle = LOOK[who].skin; g.fillRect(ex - er - 2, ey - er * 1.1, er * 2 + 4, er * 0.55); g.lineWidth = 4; g.beginPath(); g.moveTo(ex - er, ey - er * 0.45); g.lineTo(ex + er, ey - er * 0.45); g.stroke(); } }
+    }
+    // tilted brows overlay (inner ends up when worried; down when smug/wrong)
+    g.lineWidth = 7; g.strokeStyle = who === 'you' ? '#5A3A22' : who === 'stranger' ? '#B9B9C2' : INK;
+    // (clear the straight brows by redrawing skin patch first would be heavy: instead brows above are short; tilt drawn here)
+    for (const s of [-1, 1]) { const ex = s * 25, ey = cy - 6, bk = (s < 0 ? M.bl : M.br), t = M.ti * s * -1; g.beginPath(); g.moveTo(ex - 15 * s, ey - 30 - bk * 0.5 + 15 * t * -1); g.lineTo(ex + 15 * s, ey - 30 - bk * 0.5 + 15 * t); g.stroke(); }
+    // mouth
+    g.lineWidth = 5; g.strokeStyle = INK; const my = cy + 34;
+    if (M.mouth === 'smile') { g.beginPath(); g.arc(0, my - 8, 20, 0.25, Math.PI - 0.25); g.stroke(); }
+    else if (M.mouth === 'grin') { g.fillStyle = '#7A1F1F'; g.beginPath(); g.moveTo(-28, my - 8); g.quadraticCurveTo(0, my + 36, 28, my - 8); g.closePath(); g.fill(); g.stroke(); g.fillStyle = '#F5F3EE'; g.beginPath(); g.moveTo(-22, my - 6); g.lineTo(22, my - 6); g.lineTo(18, my + 3); g.lineTo(-18, my + 3); g.closePath(); g.fill(); }
+    else if (M.mouth === 'smirk') { g.beginPath(); g.moveTo(-18, my); g.quadraticCurveTo(6, my + 10, 26, my - 12); g.stroke(); }
+    else if (M.mouth === 'o') { g.fillStyle = '#7A1F1F'; g.beginPath(); g.ellipse(0, my + 4, 12, 17, 0, 0, 7); g.fill(); g.stroke(); }
+    else if (M.mouth === 'flat') { g.beginPath(); g.moveTo(-14, my + 2); g.lineTo(14, my - 2); g.stroke(); }
+    else if (M.mouth === 'frown') { g.beginPath(); g.arc(0, my + 18, 20, Math.PI + 0.3, -0.3); g.stroke(); }
+    else if (M.mouth === 'wobble') { g.beginPath(); g.moveTo(-20, my + 8); g.quadraticCurveTo(-10, my - 4, 0, my + 8); g.quadraticCurveTo(10, my + 20, 20, my + 8); g.stroke(); }
+    if (M.blush) { g.fillStyle = 'rgba(230,90,90,.35)'; for (const s of [-1, 1]) { g.beginPath(); g.ellipse(s * 44, cy + 22, 13, 8, 0, 0, 7); g.fill(); } }
+    if (M.sweat) { const wob = (tt * 1.6) % 1; g.fillStyle = '#7FD6FF'; g.strokeStyle = INK; g.lineWidth = 3; g.save(); g.translate(62, cy - 36 + wob * 14); g.beginPath(); g.moveTo(0, -16); g.quadraticCurveTo(14, 4, 0, 12); g.quadraticCurveTo(-14, 4, 0, -16); g.fill(); g.stroke(); g.restore(); }
+    if (who === 'stranger') { g.strokeStyle = '#F2B705'; g.lineWidth = 5; g.beginPath(); g.arc(25, cy - 6, 24, 0, 7); g.stroke(); g.beginPath(); g.moveTo(25, cy + 18); g.quadraticCurveTo(34, cy + 60, 50, cy + 76); g.stroke();
+      g.fillStyle = '#E8E8EE'; g.strokeStyle = INK; g.lineWidth = 3; g.beginPath(); g.moveTo(0, cy + 22); g.quadraticCurveTo(-30, cy + 14, -42, cy + 28); g.quadraticCurveTo(-24, cy + 38, 0, cy + 30); g.quadraticCurveTo(24, cy + 38, 42, cy + 28); g.quadraticCurveTo(30, cy + 14, 0, cy + 22); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  window.BMCHAR = function (g, th, who, mood, tt, o) {
+    o = o || {}; g.save();
+    if (o.s) g.scale(o.s, o.s);
+    const bob = Math.sin(tt * 2.6) * 2.5; g.translate(0, bob);
+    hairBack(g, who); body(g, who, o.arms); face(g, who, mood, tt, o.look); features(g, who, mood, tt, o.look); hairFront(g, who);
+    g.restore();
+  };
+  const moodAt = (K, t) => { let c = { m: 'neutral', t: -1 }; for (const k of K || []) if (t >= k.t && k.t >= c.t) c = k; return c; };
+
+  B.register('char', {
+    defaults: { who: 'you', moods: [], s: 1, tag: true, tagDur: 1.9, flip: false }, ownEnter: true, size: p => [250 * p.s, 290 * p.s],
+    anchors: () => ({ head: [0, -40, 170, 150], all: [0, 0, 250, 290] }),
+    draw(g, p, env) {
+      const { t, lt, theme } = env, k = Math.max(0, spring(lt, { f: 2.3, z: 0.5 })), mk = moodAt(p.moods, t), since = t - Math.max(0, mk.t);
+      const jump = mk.t >= 0 && since < 0.35 ? 1 + 0.07 * Math.sin(since / 0.35 * Math.PI) : 1;
+      g.save(); g.globalAlpha *= clamp(lt / 0.07); g.translate(0, 135 + 320 * (1 - Math.min(1.05, k)));
+      g.scale(p.s * jump, p.s * jump); if (p.flip) g.scale(-1, 1);
+      window.BMCHAR(g, theme, p.who, mk.m, t, { look: mk.look, arms: p.arms });
+      g.restore();
+      if (p.tag && lt < p.tagDur + 0.3) { const a = clamp(lt / 0.2) * (1 - clamp((lt - p.tagDur) / 0.3)), [n, sub] = NAMES[p.who];
+        g.save(); g.globalAlpha *= a; g.translate(0, -148 * p.s - 6 + (1 - ease.out(clamp(lt / 0.3))) * 14);         clay(g, -96, -22, 192, 44, 14, theme.paper, { shadowK: 0.5 }); txt(g, n, 0, 2, F.hero(28), theme.ink); g.restore(); }
+    },
+  });
+
+  B.register('beatlabel', {
+    defaults: { items: [] }, ownEnter: true, size: () => [320, 52],
+    draw(g, p, env) {
+      const { t, theme } = env; let cur = null, idx = -1; p.items.forEach((it, i) => { if (t >= it.t) { cur = it; idx = i; } }); if (!cur) return;
+      const s = t - cur.t, k = Math.max(0, spring(s, { f: 2.6, z: 0.45 })); const MC = document.createElement('canvas').getContext('2d'); MC.font = F.monoX(22); const w = MC.measureText(cur.text).width + 74, h = 44;
+      g.save(); g.translate(w / 2, (1 - Math.min(1, k)) * -24); g.globalAlpha *= clamp(s / 0.08);
+      clay(g, -w / 2, -h / 2, w, h, h / 2, INK, { shadowK: 0.5 }); g.strokeStyle = theme.gold; g.lineWidth = 3; rr(g, -w / 2, -h / 2, w, h, h / 2); g.stroke();
+      g.fillStyle = theme.gold; g.beginPath(); g.arc(-w / 2 + 24, 0, 7, 0, 7); g.fill(); txt(g, cur.text, 14, 2, F.monoX(22), theme.paper); g.restore();
+    },
+  });
+})();
 // ===== Weight vs height — custom recipes (registered via BM2.register; prepended to each cut's scene.js) =====
 // scale  : clay bathroom scale + dial + pile of $20 bills, counters (lb / bills / $)
 // tower  : stack of $100 bills + tape measure + counters (in / bills / $), 1-inch bracket, 35 LB luggage tag
@@ -103,12 +238,13 @@
       const { t, theme, lift, lt } = env, k = Math.max(0, spring(lt, { f: 2.1, z: 0.55 })), you = p.mode === 'you';
       g.save(); g.translate(0, -700 * (1 - Math.min(1.08, k))); g.globalAlpha *= clamp(lt / 0.06);
       paper(g, -210, -410, 420, 820, 26, { lift }); g.save(); rr(g, -210, -410, 420, 820, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(-210, -410, 420, 100); g.restore();
-      txt(g, you ? 'YOUR TURN' : 'AVG US MAN', 0, -372, F.hero(46), theme.paper); txt(g, you ? 'YOU' : 'PER THE CDC', 0, -332, F.mono(20), rgba(theme.paper, 0.78));
+      txt(g, you ? 'YOUR TURN' : 'AVG US MAN = YOU', 0, -372, F.hero(46), theme.paper); txt(g, you ? 'YOU' : 'PER THE CDC', 0, -332, F.mono(20), rgba(theme.paper, 0.78));
       // figure
+      if (!you) { g.save(); g.translate(0, 132); g.scale(1.3, 1.3); window.BMCHAR(g, theme, 'you', t < p.lbAt ? 'neutral' : t < p.hAt ? 'think' : 'shock', t, {}); g.restore(); } else {
       g.save(); g.translate(0, -40); const col = you ? 'rgba(0,0,0,0)' : theme.paperShade; g.fillStyle = col; g.strokeStyle = you ? theme.inkSoft : theme.ink; g.lineWidth = you ? 6 : 5; if (you) g.setLineDash([14, 10]);
       g.beginPath(); g.arc(0, -150, 46, 0, 7); g.fill(); g.stroke(); rr(g, -62, -92, 124, 190, 30); g.fill(); g.stroke(); rr(g, -112, -86, 44, 150, 20); g.fill(); g.stroke(); rr(g, 68, -86, 44, 150, 20); g.fill(); g.stroke(); rr(g, -56, 94, 50, 160, 18); g.fill(); g.stroke(); rr(g, 6, 94, 50, 160, 18); g.fill(); g.stroke(); g.setLineDash([]);
       if (!you) { g.fillStyle = theme.ink; g.beginPath(); g.arc(-16, -156, 5, 0, 7); g.arc(16, -156, 5, 0, 7); g.fill(); g.lineWidth = 4; g.beginPath(); g.arc(0, -140, 16, 0.2, Math.PI - 0.2); g.stroke(); } else txt(g, '?', 0, -150, F.hero(70), theme.inkSoft);
-      g.restore();
+      g.restore(); }
       txt(g, 'ILLUSTRATION', 0, 392, F.mono(16), theme.inkSoft);
       const chip = (at, label, val, y, col) => { if (t < at) { g.fillStyle = theme.paperShade; rr(g, -180, y - 48, 360, 96, 20); g.fill(); return; } const s = t - at, kk = Math.max(0, spring(s, 'bouncy')); g.save(); g.translate(0, y); g.scale(0.6 + 0.4 * kk, 0.6 + 0.4 * kk); g.globalAlpha *= clamp(s / 0.06); clay(g, -180, -48, 360, 96, 20, col, { shadowK: 0.6 }); txt(g, label, 0, -26, F.monoX(20), 'rgba(11,15,20,.75)'); txt(g, val, 0, 14, F.hero(54), '#0B0F14'); g.restore(); burst(g, 0, y, 200, col, s - 0.04, 12, 0.4); };
       if (!you) { chip(p.lbAt, 'BODY WEIGHT', '199.0 LB', 195, theme.good); chip(p.hAt, 'HEIGHT', '68.9 IN (≈5′9″)', 315, theme.accent); }
@@ -202,25 +338,28 @@
 
   // ---------- offer ----------
   B.register('offer', {
-    defaults: { keepAt: 99999 }, ownEnter: true, size: () => [980, 620],
-    anchors: () => ({ a: [-250, 60, 420, 440], b: [250, 60, 420, 440], keep: [0, -250, 500, 120], all: [0, 0, 980, 620] }),
+    defaults: { keepAt: 99999 }, ownEnter: true, size: () => [1180, 700],
+    anchors: () => ({ a: [-330, 60, 420, 440], b: [330, 60, 420, 440], keep: [0, -345, 500, 120], all: [0, -40, 1180, 700] }),
     draw(g, p, env) {
       const { t, theme, lt } = env; const k1 = ease.out(clamp(lt / 0.45)), k2 = ease.out(clamp((lt - 0.12) / 0.45));
       g.save(); g.globalAlpha *= clamp(lt / 0.06);
+      // THE STRANGER stands between the two piles, arms out to both
+      { const ks = ease.out(clamp((lt - 0.05) / 0.5)); g.save(); g.translate(0, 235 + 300 * (1 - ks)); g.scale(1.25, 1.25); window.BMCHAR(g, theme, 'stranger', t >= p.keepAt ? 'smug' : 'grin', t, { arms: 'spread' }); g.restore();
+        if (lt < 2.0) { g.save(); g.globalAlpha *= clamp((lt - 0.3) / 0.2) * (1 - clamp((lt - 1.7) / 0.3)); g.translate(0, 270); clay(g, -150, -28, 300, 56, 16, theme.paper, { shadowK: 0.5 }); txt(g, 'THE STRANGER', 0, 3, F.hero(36), theme.ink); g.restore(); } }
       // A tray from left
-      g.save(); g.translate(lerp(-900, -250, k1), 60);
+      g.save(); g.translate(lerp(-900, -330, k1), 60);
       clay(g, -210, 120, 420, 60, 24, theme.navy, { shadowK: 0.8 });
       for (let r = 0; r < 7; r++) for (let c = 0; c < 8 - r; c++) { g.save(); g.translate((c - (8 - r - 1) / 2) * 44, 104 - r * 17); bill(g, -22, -10, 44, 20, GREEN); g.restore(); }
       clay(g, -130, -220, 260, 84, 24, theme.good, { shadowK: 0.6 }); txt(g, 'A', -80, -178, F.hero(60), '#0B0F14'); txt(g, '$20s', 30, -176, F.hero(46), '#0B0F14');
       g.restore();
       // B tray from right
-      g.save(); g.translate(lerp(900, 250, k2), 60);
+      g.save(); g.translate(lerp(900, 330, k2), 60);
       clay(g, -210, 120, 420, 60, 24, theme.navy, { shadowK: 0.8 });
       clay(g, -75, -90, 150, 205, 8, HUN, { shadowK: 0.7 }); g.save(); rr(g, -75, -90, 150, 205, 8); g.clip(); g.fillStyle = 'rgba(11,15,20,.16)'; for (let y = 110; y > -90; y -= 7) g.fillRect(-75, y, 150, 2); g.fillStyle = 'rgba(245,243,238,.55)'; g.fillRect(-12, -90, 24, 205); g.restore();
       clay(g, -130, -220, 260, 84, 24, theme.accent, { shadowK: 0.6 }); txt(g, 'B', -80, -178, F.hero(60), '#0B0F14'); txt(g, '$100s', 30, -176, F.hero(46), '#0B0F14');
       g.restore();
       // KEEP ONE tag
-      if (t >= p.keepAt) { const s = t - p.keepAt, kk = pop(t, p.keepAt); g.save(); g.translate(0, -265); g.rotate(-0.04 * (1 - kk)); g.scale(0.4 + 0.6 * kk, 0.4 + 0.6 * kk); clay(g, -260, -52, 520, 104, 26, theme.paper, { shadowK: 0.7 }); txt(g, 'KEEP ONE', 0, 4, F.hero(72), theme.ink); g.restore(); }
+      if (t >= p.keepAt) { const s = t - p.keepAt, kk = pop(t, p.keepAt); g.save(); g.translate(0, -345); g.rotate(-0.04 * (1 - kk)); g.scale(0.4 + 0.6 * kk, 0.4 + 0.6 * kk); clay(g, -260, -52, 520, 104, 26, theme.paper, { shadowK: 0.7 }); txt(g, 'KEEP ONE', 0, 4, F.hero(72), theme.ink); g.restore(); }
       g.restore();
     },
   });
@@ -359,6 +498,9 @@ BM2.scene({
   series: 'whatif', title: 'WEIGHT VS HEIGHT', duration: 65.4,
   footnote: ['HYPOTHETICAL · NOBODY IS OFFERING THIS · NOT FINANCIAL ADVICE', 'ASSUMES ≈1 G & 0.0043 IN PER BILL · CRISP, FLAT, WHOLE NOTES', 'AVG US MAN = CDC 199.0 LB · 68.9 IN (AUG 2021–AUG 2023)', 'PHOTOS: D.L. (CC BY-SA 2.0) · THE.COMEDIAN (CC BY 2.0) · VIA FLICKR'],
   elements: [
+    { id: 'you1', type: 'char', layer: 'screen', at: [140, 1212], in: -1, out: '@CDC-0.4', props: { who: 'you', s: 0.82, moods: [{ t: 0, m: 'greed' }, { t: '@200', m: 'shock' }, { t: '@rich', m: 'think', look: [1, -1] }, { t: '@free', m: 'greed' }, { t: '@option', m: 'think', look: [1, 0] }, { t: '@option#2', m: 'think', look: [1, 0] }, { t: '@double', m: 'grin' }, { t: '@but', m: 'shock' }, { t: '@pound', m: 'think', look: [1, 0] }, { t: '@nine', m: 'shock' }, { t: '@23', m: 'shock' }, { t: '@sounds', m: 'smug' }, { t: '@except', m: 'worried' }, { t: '@send', m: 'smug' }, { t: '@so#2', m: 'worried' }, { t: '@his', m: 'think' }, { t: '@million', m: 'shock' }, { t: '@stupid', m: 'worried' }, { t: '@million#2', m: 'shock' }, { t: '@pays', m: 'wrong' }, { t: '@so#4', m: 'worried' }, { t: '@20s#5', m: 'smug' }, { t: '@up#2', m: 'greed' }], tagDur: 2.2 } },
+    { id: 'you2', type: 'char', layer: 'screen', at: [140, 1212], in: '@So#2-0.15', props: { who: 'you', s: 0.82, tag: false, moods: [{ t: 0, m: 'greed' }, { t: '@200', m: 'shock' }, { t: '@rich', m: 'think', look: [1, -1] }, { t: '@free', m: 'greed' }, { t: '@option', m: 'think', look: [1, 0] }, { t: '@option#2', m: 'think', look: [1, 0] }, { t: '@double', m: 'grin' }, { t: '@but', m: 'shock' }, { t: '@pound', m: 'think', look: [1, 0] }, { t: '@nine', m: 'shock' }, { t: '@23', m: 'shock' }, { t: '@sounds', m: 'smug' }, { t: '@except', m: 'worried' }, { t: '@send', m: 'smug' }, { t: '@so#2', m: 'worried' }, { t: '@his', m: 'think' }, { t: '@million', m: 'shock' }, { t: '@stupid', m: 'worried' }, { t: '@million#2', m: 'shock' }, { t: '@pays', m: 'wrong' }, { t: '@so#4', m: 'worried' }, { t: '@20s#5', m: 'smug' }, { t: '@up#2', m: 'greed' }] } },
+    { id: 'blab', type: 'beatlabel', layer: 'screen', at: [64, 318], in: -1, props: { items: [{ t: 0, text: 'THE BET' }, { t: '@but', text: 'THE TWIST' }, { t: '@so#2', text: 'THE ANSWER' }] } },
     { id: 'hook', type: 'text', at: [0, -690], in: -1, out: '@Here\'s-0.2', props: HOOK },
     { id: 'endt', type: 'text', at: [0, -690], in: LAST + '+0.25', props: HOOK },
     { id: 'scale', type: 'scale', at: [-300, 0], in: -1, props: { btnOff: BTN, slamAt: 0, btnAt: 0.1, pulses: ['@weight', '@bills'], bigAt: '@million#2-0.5', fill: [
@@ -372,7 +514,7 @@ BM2.scene({
     { id: 'doll', type: 'doll', at: [-1900, 0], in: '@CDC-0.4', out: '@So#2-0.15', props: { lbAt: '@199-0.3', hAt: '@five' } },
     { id: 'recap', type: 'recap', at: [-1900, -1750], in: '@So#2-0.3', out: '@His-0.1', props: { lbAt: '@199#2-0.15', inAt: '@69-0.1', vsAt: '@against' } },
     { id: 'tot', type: 'totals', at: [0, -1750], in: '@So#3-0.4', out: LAST + '-1.0', props: { hAt: '@So#3', wAt: '@damn#2', gapAt: '@200#2' } },
-    { id: 'ph1', type: 'photo', layer: 'screen', at: [200, 1130], in: '@weight', out: '@Option#2', props: { src: 'brand/photos/stock/bathroom-scale/3.jpg', name: 'SCALE', credit: 'D.L. · CC BY-SA 2.0', w: 250, tilt: -0.07, treatment: 'polaroid', aspect: 1.0 } },
+    { id: 'ph1', type: 'photo', layer: 'screen', at: [370, 1085], in: '@weight', out: '@Option#2', props: { src: 'brand/photos/stock/bathroom-scale/3.jpg', name: 'SCALE', credit: 'D.L. · CC BY-SA 2.0', w: 250, tilt: -0.07, treatment: 'polaroid', aspect: 1.0 } },
     { id: 'ph2', type: 'photo', layer: 'screen', at: [880, 1130], in: '@stacked', out: '@Double-0.2', props: { src: 'brand/photos/stock/stack-of-hundred-dollar-bills/2.jpg', name: '$100 STACK', credit: 'THE.COMEDIAN · CC BY 2.0', w: 250, tilt: 0.07, treatment: 'polaroid', aspect: 1.0 } },
     { id: 'hyp', type: 'chip', layer: 'screen', at: [850, 264], in: '@Here\'s', props: { text: 'HYPOTHETICAL', size: 24 } },
     { id: 'hund', type: 'text', layer: 'screen', at: [540, 345], in: '@yelled', out: '@But-0.1', props: { lines: [[['HUNDREDS?', 'accent']]], size: 96 } },
@@ -390,12 +532,12 @@ BM2.scene({
     { at: '@200', beat: 'zoom-on-number', focus: 'hook', fill: 0.8, sy: 560, rot: 0.008, pose: 'point', keep: KEEP },
     { at: '@Here\'s-0.3', beat: 'pull-back', focus: F0, ...FR, pose: 'talk', keep: KEEP, drift: 0.02 },
     { at: '@Here\'s', beat: 'graphic-hero', focus: 'offer', move: 'whip', fill: 0.92, maxH: 900, sy: 780, st: 'corner', pose: 'point' },
-    { at: '@free', beat: 'zoom-on-number', focus: 'offer.keep', fill: 0.8, sy: 700, rot: 0.01, st: 'corner-left', pose: 'shock', keep: ['offer'] },
+    { at: '@free', beat: 'zoom-on-number', focus: 'offer.keep', fill: 0.8, sy: 700, rot: 0.01, st: 'corner', pose: 'shock', keep: ['offer'] },
     { at: '@Option', beat: 'graphic-hero', focus: 'scale', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'point' },
     { at: '@weight', beat: 'zoom-on-number', focus: 'scale.dial', fill: 0.62, sy: 760, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@bills+0.4', beat: 'pull-back', focus: 'scale', fill: 0.82, maxH: 950, sy: 850, st: 'corner', pose: 'idle', drift: 0.03 },
-    { at: '@Option#2', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'point' },
-    { at: '@stacked', beat: 'zoom-on-number', focus: 'tower.stack', fill: 0.62, sy: 780, rot: -0.01, st: 'corner-left', pose: 'point', dur: 0.5 },
+    { at: '@Option#2', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'point' },
+    { at: '@stacked', beat: 'zoom-on-number', focus: 'tower.stack', fill: 0.62, sy: 780, rot: -0.01, st: 'corner', pose: 'point', dur: 0.5 },
     { at: '@tall', beat: 'pull-back', focus: F0, ...FR, pose: 'chin', keep: KEEP },
     { at: '@Double', beat: 'graphic-hero', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, st: 'right', pose: 'point', keep: ['tower'] },
     { at: '@brain', beat: 'presenter-front', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, pose: 'chin', keep: ['tower'] },
@@ -407,34 +549,34 @@ BM2.scene({
     { at: '@pound', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.7, sy: 880, rot: 0.01, st: 'corner', pose: 'point', dur: 0.5 },
     { at: '@nine', beat: 'zoom-on-number', focus: 'scale.total', fill: 0.84, sy: 780, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['scale'] },
     { at: '@And#2', beat: 'graphic-hero', st: 'right', focus: 'tower', move: 'whip', sy: 850, maxH: 900, pose: 'idle' },
-    { at: '@inch', beat: 'zoom-on-number', focus: 'tower.base', fill: 0.8, sy: 860, rot: -0.01, st: 'corner-left', pose: 'point' },
-    { at: '@23', beat: 'zoom-on-number', focus: 'tower.inch', fill: 0.85, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
+    { at: '@inch', beat: 'zoom-on-number', focus: 'tower.base', fill: 0.8, sy: 860, rot: -0.01, st: 'corner', pose: 'point' },
+    { at: '@23', beat: 'zoom-on-number', focus: 'tower.inch', fill: 0.85, sy: 860, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
     { at: '@Sounds', beat: 'presenter-front', focus: 'tower', fill: 0.78, maxH: 900, sy: 850, pose: 'shrug', keep: ['tower'] },
     { at: '@Except', beat: 'graphic-hero', focus: 'rows', move: 'whip', fill: 0.94, maxH: 900, sy: 780, st: 'corner', pose: 'point' },
-    { at: '@pounds', beat: 'zoom-on-number', focus: 'rows.lb', fill: 0.9, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['rows'] },
-    { at: '@inches', beat: 'zoom-on-number', focus: 'rows.inch', fill: 0.9, sy: 780, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['rows'] },
+    { at: '@pounds', beat: 'zoom-on-number', focus: 'rows.lb', fill: 0.9, sy: 760, rot: 0.01, st: 'corner', pose: 'point', dur: 0.5, keep: ['rows'] },
+    { at: '@inches', beat: 'zoom-on-number', focus: 'rows.inch', fill: 0.9, sy: 780, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['rows'] },
     { at: '@Send', beat: 'graphic-hero', focus: 'rows', fill: 0.94, maxH: 900, sy: 780, st: 'right', pose: 'you', keep: ['rows'] },
     { at: '@grabbed', beat: 'peek', focus: 'rows', fill: 0.94, maxH: 900, sy: 780, pose: 'shock', keep: ['rows'] },
-    { at: '@CDC', beat: 'graphic-hero', focus: 'doll', move: 'whip', fill: 0.55, maxH: 900, sy: 860, st: 'corner-left', pose: 'idle' },
-    { at: '@199', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
-    { at: '@five', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'shock', keep: ['doll'], dur: 0.5 },
+    { at: '@CDC', beat: 'graphic-hero', focus: 'doll', move: 'whip', fill: 0.55, maxH: 900, sy: 860, st: 'corner', pose: 'idle' },
+    { at: '@199', beat: 'zoom-on-number', focus: 'doll.lb', fill: 0.62, sy: 760, rot: 0.01, st: 'corner', pose: 'point', keep: ['doll'], dur: 0.5 },
+    { at: '@five', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner', pose: 'shock', keep: ['doll'], dur: 0.5 },
     { at: '@So#2', beat: 'graphic-hero', focus: 'recap', move: 'whip', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'point' },
-    { at: '@199#2', beat: 'zoom-on-number', focus: 'recap.l', fill: 0.7, sy: 780, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['recap'] },
-    { at: '@69', beat: 'zoom-on-number', focus: 'recap.r', fill: 0.7, sy: 780, rot: -0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['recap'] },
+    { at: '@199#2', beat: 'zoom-on-number', focus: 'recap.l', fill: 0.7, sy: 780, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['recap'] },
+    { at: '@69', beat: 'zoom-on-number', focus: 'recap.r', fill: 0.7, sy: 780, rot: -0.01, st: 'corner', pose: 'point', dur: 0.5, keep: ['recap'] },
     { at: '@hundreds#6', beat: 'pull-back', focus: 'recap', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'chin', keep: ['recap'], drift: 0.03 },
-    { at: '@His', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'idle' },
-    { at: '@$1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.78, sy: 800, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@million+0.5', beat: 'pull-back', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'chin', drift: 0.03 },
+    { at: '@His', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'idle' },
+    { at: '@$1', beat: 'zoom-on-number', focus: 'tower.total', fill: 0.78, sy: 800, rot: 0.01, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@million+0.5', beat: 'pull-back', focus: 'tower', fill: 0.8, maxH: 900, sy: 850, st: 'corner', pose: 'chin', drift: 0.03 },
     { at: '@Now', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'chin', keep: ['scale'] },
     { at: '@follow', beat: 'presenter-front', focus: 'scale', fill: 0.8, maxH: 900, sy: 850, pose: 'follow', keep: ['scale'] },
     { at: '@His#3', beat: 'graphic-hero', focus: 'scale', fill: 0.84, maxH: 900, sy: 850, st: 'right', pose: 'point' },
     { at: '@20s#4', beat: 'zoom-on-number', focus: 'scale.total', fill: 0.84, sy: 780, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.5, keep: ['scale'] },
     { at: '@million#2', beat: 'zoom-on-number', focus: 'scale.pile', fill: 0.9, sy: 900, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.6, drift: 0.03, keep: ['scale'] },
     { at: '@So#3', beat: 'graphic-hero', focus: 'tot', move: 'whip', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'idle' },
-    { at: '@200#2', beat: 'zoom-on-number', focus: 'tot.gap', fill: 0.88, sy: 800, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['tot'] },
+    { at: '@200#2', beat: 'zoom-on-number', focus: 'tot.gap', fill: 0.88, sy: 800, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.5, keep: ['tot'] },
     { at: '@tape', beat: 'pull-back', focus: 'tot', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'shrug', drift: 0.03 },
     { at: '@So#4', beat: 'presenter-front', focus: F0, move: 'whip', ...FR, pose: 'shrug', keep: KEEP },
-    { at: LAST + '+0.25', beat: 'side-by-side', focus: F0, move: 'whip', ...FR, pose: 'shock', keep: KEEP },
+    { at: LAST + '+0.25', beat: 'side-by-side', focus: F0, move: 'whip', ...FR, pose: 'shock', st: 'corner', keep: KEEP },
   ],
   poses: [['@follow', 'follow', { target: [650, 1120] }]],
   shakes: [[0.3, 10], ['@20s#4', 18], ['@200#2', 8], ['@free', 6]],

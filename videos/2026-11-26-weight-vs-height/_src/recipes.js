@@ -103,12 +103,13 @@
       const { t, theme, lift, lt } = env, k = Math.max(0, spring(lt, { f: 2.1, z: 0.55 })), you = p.mode === 'you';
       g.save(); g.translate(0, -700 * (1 - Math.min(1.08, k))); g.globalAlpha *= clamp(lt / 0.06);
       paper(g, -210, -410, 420, 820, 26, { lift }); g.save(); rr(g, -210, -410, 420, 820, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(-210, -410, 420, 100); g.restore();
-      txt(g, you ? 'YOUR TURN' : 'AVG US MAN', 0, -372, F.hero(46), theme.paper); txt(g, you ? 'YOU' : 'PER THE CDC', 0, -332, F.mono(20), rgba(theme.paper, 0.78));
+      txt(g, you ? 'YOUR TURN' : 'AVG US MAN = YOU', 0, -372, F.hero(46), theme.paper); txt(g, you ? 'YOU' : 'PER THE CDC', 0, -332, F.mono(20), rgba(theme.paper, 0.78));
       // figure
+      if (!you) { g.save(); g.translate(0, 132); g.scale(1.3, 1.3); window.BMCHAR(g, theme, 'you', t < p.lbAt ? 'neutral' : t < p.hAt ? 'think' : 'shock', t, {}); g.restore(); } else {
       g.save(); g.translate(0, -40); const col = you ? 'rgba(0,0,0,0)' : theme.paperShade; g.fillStyle = col; g.strokeStyle = you ? theme.inkSoft : theme.ink; g.lineWidth = you ? 6 : 5; if (you) g.setLineDash([14, 10]);
       g.beginPath(); g.arc(0, -150, 46, 0, 7); g.fill(); g.stroke(); rr(g, -62, -92, 124, 190, 30); g.fill(); g.stroke(); rr(g, -112, -86, 44, 150, 20); g.fill(); g.stroke(); rr(g, 68, -86, 44, 150, 20); g.fill(); g.stroke(); rr(g, -56, 94, 50, 160, 18); g.fill(); g.stroke(); rr(g, 6, 94, 50, 160, 18); g.fill(); g.stroke(); g.setLineDash([]);
       if (!you) { g.fillStyle = theme.ink; g.beginPath(); g.arc(-16, -156, 5, 0, 7); g.arc(16, -156, 5, 0, 7); g.fill(); g.lineWidth = 4; g.beginPath(); g.arc(0, -140, 16, 0.2, Math.PI - 0.2); g.stroke(); } else txt(g, '?', 0, -150, F.hero(70), theme.inkSoft);
-      g.restore();
+      g.restore(); }
       txt(g, 'ILLUSTRATION', 0, 392, F.mono(16), theme.inkSoft);
       const chip = (at, label, val, y, col) => { if (t < at) { g.fillStyle = theme.paperShade; rr(g, -180, y - 48, 360, 96, 20); g.fill(); return; } const s = t - at, kk = Math.max(0, spring(s, 'bouncy')); g.save(); g.translate(0, y); g.scale(0.6 + 0.4 * kk, 0.6 + 0.4 * kk); g.globalAlpha *= clamp(s / 0.06); clay(g, -180, -48, 360, 96, 20, col, { shadowK: 0.6 }); txt(g, label, 0, -26, F.monoX(20), 'rgba(11,15,20,.75)'); txt(g, val, 0, 14, F.hero(54), '#0B0F14'); g.restore(); burst(g, 0, y, 200, col, s - 0.04, 12, 0.4); };
       if (!you) { chip(p.lbAt, 'BODY WEIGHT', '199.0 LB', 195, theme.good); chip(p.hAt, 'HEIGHT', '68.9 IN (≈5′9″)', 315, theme.accent); }
