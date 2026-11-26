@@ -10,7 +10,7 @@ const S = MV5.make({
   dur: 65.08, K,
   C: [{ from: 0, mode: 'b', max: 1e6 }, { from: hookEnd, mode: 'm', max: 1000 }, { from: '@now-0.1', mode: 'b', max: 1e6 }, { from: '@you\'d#2-0.1', mode: 'y', max: 1e6 }, { from: '@because-0.1', mode: 'n', max: 1000 },
     { from: '@want-0.1', mode: 's', u: 'd', max: 1e6 }, { from: '@seconds#2-0.4', mode: 's', u: 'y', max: 1e9 }, { from: '@so-0.1', mode: 'y', max: 1e6 }],
-  hook: { until: hookEnd, y: 690, size: 100, lines: [[['$1,000 A DAY', 'good']], [['WON\'T FINISH A BILLION', 'paper']], [['FOR 27 CENTURIES', 'accent']]] },
+  hook: { until: hookEnd, y: 744, size: 92, lines: [[['$1,000 A DAY', 'good']], [['WON\'T FINISH A BILLION', 'paper']], [['FOR 27 CENTURIES', 'accent']]] },
   scenes: [
     { type: 'cards2', from: 0, to: '@say-0.1', pose: 'shock', cards: [{ at: 0.3, amount: '$1,000 / DAY', col: '#00D26A', w: 560, y: 940 }, { at: '@billion', amount: '$1,000,000,000', col: '#FFD60A', w: 900, y: 1045 }] },
     { type: 'gcard', from: '@say-0.1', to: '@it\'s-0.1', pose: 'talk', cap: 1e6, col: '#00D26A' },

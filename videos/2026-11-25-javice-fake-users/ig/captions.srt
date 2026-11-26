@@ -1,16 +1,84 @@
 1
-00:00:00,000 --> 00:00:03,381
-She sold JPMorgan 4 million customers that didn't exist.
+00:00:00,000 --> 00:00:04,180
+She sold JPMorgan four million fucking customers that didn't exist.
 
 2
-00:00:03,681 --> 00:00:08,928
-$175 million, for a startup with fewer than 300,000 real users.
+00:00:04,820 --> 00:00:10,020
+Who's she? Charlie Javice, who ran Frank, a website that helped students fill out college aid forms.
 
 3
-00:00:09,278 --> 00:00:12,466
-When they asked for proof, she had a professor fake it. Bold as hell.
+00:00:10,420 --> 00:00:14,620
+You know, the giant form you need for college money? Super boring, super useful.
 
 4
-00:00:12,866 --> 00:00:17,022
-85 months in prison. Send this to the friend who fakes their follower count.
+00:00:15,160 --> 00:00:19,040
+When banks came shopping, she said Frank had four and a quarter million users.
+
+5
+00:00:19,520 --> 00:00:21,640
+The SEC says the real number was under three hundred thousand.
+
+6
+00:00:23,200 --> 00:00:26,920
+That's like telling people your party had fourteen guests when one guy showed up.
+
+7
+00:00:27,440 --> 00:00:29,000
+Double-tap if you'd have fallen for it.
+
+8
+00:00:29,000 --> 00:00:32,300
+But JPMorgan asked to see the customer list. Oops.
+
+9
+00:00:33,100 --> 00:00:36,720
+The SEC says she asked her own engineer to fake it. He refused.
+
+10
+00:00:37,340 --> 00:00:42,300
+So she and a coworker paid a data science professor to make up over four million fake people.
+
+11
+00:00:42,780 --> 00:00:45,820
+According to the bank's lawsuit, that cost about eighteen thousand bucks.
+
+12
+00:00:46,420 --> 00:00:48,320
+Send this to whoever fakes their follower count.
+
+13
+00:00:48,780 --> 00:00:53,220
+And it worked. JPMorgan paid one hundred seventy-five million dollars for Frank.
+
+14
+00:00:53,640 --> 00:00:57,000
+That's about five hundred eighty bucks for every real user. Damn.
+
+15
+00:00:57,570 --> 00:01:01,260
+Then the bank tried to reach those customers, and the whole list fell apart.
+
+16
+00:01:01,980 --> 00:01:03,820
+Follow, 'cause the ending is chef's kiss.
+
+17
+00:01:04,380 --> 00:01:06,580
+A jury convicted her on all four counts in twenty twenty-five.
+
+18
+00:01:07,880 --> 00:01:10,600
+She got eighty-five months in prison, over seven years.
+
+19
+00:01:11,480 --> 00:01:12,100
+Prosecutors had asked for twelve.
+
+20
+00:01:12,960 --> 00:01:16,500
+And she was ordered to pay back two hundred eighty-seven and a half million dollars.
+
+21
+00:01:17,360 --> 00:01:19,700
+Genius or idiot? One word.
 

@@ -77,7 +77,7 @@
     if (S.chip && t >= S.chip.at) chip(g, S.chip.text, 540, 1060, 'good', th, 40, 900, spring(t - S.chip.at, 'bouncy'));
   }
   function list(g, p, lt, t, th, S) {
-    (S.items || []).forEach((c, i) => { const on = t - c.at; if (on <= 0) return; const k = Math.min(1.08, spring(on, 'bouncy')), y = 690 + i * 118;
+    (S.items || []).forEach((c, i) => { const on = t - c.at; if (on <= 0) return; const k = Math.min(1.08, spring(on, 'bouncy')), y = 676 + i * 108;
       g.save(); g.translate(540, y + (1 - Math.min(1, k)) * 40); g.scale(0.85 + 0.15 * k, 0.85 + 0.15 * k); g.globalAlpha *= clamp(on / 0.07);
       clay(g, -450, -48, 900, 96, 48, c.col, { shadowK: 0.6 }); txt(g, c.text, 0, 3, F.hero(fit(c.text, F.hero, 820, 62)), c.ink || '#0B0F14'); g.restore(); });
   }
@@ -160,7 +160,7 @@
         let L, R, fr; const m = seg.mode;
         if (m === 'm' || m === 'b') { const days = Math.floor(x + 1e-6); L = ['DAY', fmt(days)]; R = ['YEARS', fmt(x / YR, m === 'm' ? 2 : (x / YR < 100 ? 1 : 0))]; fr = x / seg.max; }
         else if (m === 'y') { L = ['YEARS BACK', fmt(Math.floor(x / YR))]; R = ['YEAR', yearLabel(x / YR)]; fr = x / seg.max; }
-        else if (m === 'n') { L = ['PILES OF $1M', fmt(Math.floor(x + 1e-6))]; R = ['TOTAL', '$' + fmt(Math.round(x) * 1e6)]; fr = x / seg.max; }
+        else if (m === 'n') { L = ['PILES OF $1M', fmt(Math.floor(x + 1e-6))]; R = ['TOTAL', '$' + fmt(Math.floor(x + 1e-6) * 1e6)]; fr = x / seg.max; }
         else { L = ['SECONDS COUNTED', fmt(Math.floor(x))]; R = [seg.u === 'y' ? 'YEARS' : 'DAYS', seg.u === 'y' ? (x / (DAY * YR)).toFixed(1) : (x / DAY).toFixed(1)]; fr = x / seg.max; }
         g.fillStyle = 'rgba(11,15,20,.14)'; rr(g, 98, 344, 884, 22, 11); g.fill(); const fw = clamp(fr) * 884; if (fw > 4) { g.fillStyle = m === 'y' ? th.gold : fr >= 0.999 ? th.bad : th.gold; rr(g, 98, 344, Math.max(22, fw), 22, 11); g.fill(); }
         label(g, L[0], 100, 398, th.inkSoft, 28, 'left'); label(g, R[0], 980, 398, th.inkSoft, 28, 'right');

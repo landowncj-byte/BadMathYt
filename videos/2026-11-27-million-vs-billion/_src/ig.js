@@ -26,7 +26,7 @@ const S = MV5.make({
     { type: 'calendar', from: '@seconds-0.35', to: '@seconds#2-0.4', pose: 'chin' },
     { type: 'life', from: '@seconds#2-0.4', to: '@that\'s#2-0.1', pose: 'shock' },
     { type: 'ask', from: '@that\'s#2-0.1', to: '@so#3-0.1', pose: 'shock', l1: 'RICH vs', l2: 'RIDICULOUS' },
-    { type: 'duo', from: '@so#3-0.1', to: '@million#4-0.1', pose: 'chin', a: { at: '@billionaire-0.1', col: '#FFD60A', l1: 'A BILLIONAIRE', l2: '= 1,000 MILLIONAIRES' }, b: { at: '@with#3-0.3', col: '#E5534B', l1: 'NOT A MILLIONAIRE', l2: 'WITH EXTRA STEPS' } },
+    { type: 'duo', from: '@so#3-0.1', to: '@million#4-0.1', pose: 'chin', a: { at: '@so#3+0.15', col: '#FFD60A', l1: 'A BILLIONAIRE', l2: '= 1,000 MILLIONAIRES' }, b: { at: '@with#3-0.3', col: '#E5534B', l1: 'NOT A MILLIONAIRE', l2: 'WITH EXTRA STEPS' } },
     { type: 'ask', from: '@million#4-0.1', to: 99, pose: 'you', l1: 'HOW LONG', l2: 'WOULD YOU LAST?' },
   ],
   hideCounter: [['@million#4-0.1', 99]],

@@ -50,3 +50,7 @@ card-minimum: REJECTED at QC (16.5 YEARS cropped at right edge, INTEREST label o
 | penny doubled (rebuilt) | Instagram REEL | Sat 11/28 19:00 | 00:00Z Sun | 366e9b5f-d839-41b3-ba99-a0f15000618f | APPROVED |
 | penny doubled (rebuilt) | Facebook REEL | Sat 11/28 19:00 | 00:00Z Sun | 8f2d495c-3d41-46b7-905f-697d25b12847 | APPROVED |
 (old penny IG/FB d5bbef2a/166087ab deleted)
+| million vs billion | YouTube | Fri 11/27 11:00 | 16:00Z | 1990a760-81ee-446f-86c8-ba3fcecd87e6 | APPROVED |
+| million vs billion | TikTok (song: Summer Festival Energy) | Fri 11/27 11:00 | 16:00Z | e0c24231-6692-42f6-b3cc-76525db9088c | APPROVED |
+| million vs billion | Instagram REEL | Fri 11/27 11:00 | 16:00Z | 01c96149-d69b-4fcd-85da-179c3d88e374 | APPROVED |
+| million vs billion | Facebook REEL | Fri 11/27 11:00 | 16:00Z | cd06774f-261d-4bb8-b2bb-631003659920 | APPROVED |

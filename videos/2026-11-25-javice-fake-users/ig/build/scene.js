@@ -854,7 +854,7 @@
 
     // ---- extra line (coworker 68 months / prosecutors asked 12 years) ----
     if (R.extra) { const [x, y] = seg();
-      E.push({ id: 'ex', type: 'text', at: [x, y], in: O(R.extra, '-0.3'), props: { lines: cfg.extraLines, size: 82, per: 0.12 } });
+      E.push({ id: 'ex', type: 'text', at: [x, y], in: O(R.extra, '-0.3'), props: { lines: cfg.extraLines, size: cfg.extraSize || 82, per: 0.12 } });
       b(R.extra, SB, 'ex', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 700, st: 'corner-left', pose: 'shock' });
       sfx(R.extra, 'rubber_stamp_2', -8); }
 
@@ -890,6 +890,7 @@ JAVICE({
   duration: 80.38, deckDur: 2.8, fillDur: 2.0,
   hook: { lines: [[['4,000,000 ', 'bad'], ['CUSTOMERS', 'paper']], [["THAT DIDN'T EXIST", 'gold']]], size: 92, side: { kind: 'investor', label: 'JPMORGAN', sub: 'THE BANK', tape: 'THE BANK' } },
   hookBeats: [['@4', {}], ['@fucking', { fill: 1.1 }]],
+  extraSize: 64,
   extraLines: [[['PROSECUTORS ASKED FOR', 'paper']], [['12 YEARS', 'bad']]],
   extra: [['@ran', 'peek', 'mug', { fill: 0.62, maxH: 740, sy: 950 }], ['@giant', 'zoom-on-number', ['mug', 'ftx'], { sx: 480, sy: 840, fill: 0.95, maxH: 1000, st: 'corner' }], ['@super', 'graphic-hero', ['mug', 'ftx'], { sx: 480, sy: 840, fill: 0.9, maxH: 1000, pose: 'shrug' }], ['@prison', 'graphic-hero', ['sv', 'vd'], { sx: 540, sy: 880, fill: 0.98, maxH: 940, st: 'corner' }]],
   R: {

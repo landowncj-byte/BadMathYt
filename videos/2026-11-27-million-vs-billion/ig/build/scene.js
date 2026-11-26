@@ -198,7 +198,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
     if (S.chip && t >= S.chip.at) chip(g, S.chip.text, 540, 1060, 'good', th, 40, 900, spring(t - S.chip.at, 'bouncy'));
   }
   function list(g, p, lt, t, th, S) {
-    (S.items || []).forEach((c, i) => { const on = t - c.at; if (on <= 0) return; const k = Math.min(1.08, spring(on, 'bouncy')), y = 690 + i * 118;
+    (S.items || []).forEach((c, i) => { const on = t - c.at; if (on <= 0) return; const k = Math.min(1.08, spring(on, 'bouncy')), y = 676 + i * 108;
       g.save(); g.translate(540, y + (1 - Math.min(1, k)) * 40); g.scale(0.85 + 0.15 * k, 0.85 + 0.15 * k); g.globalAlpha *= clamp(on / 0.07);
       clay(g, -450, -48, 900, 96, 48, c.col, { shadowK: 0.6 }); txt(g, c.text, 0, 3, F.hero(fit(c.text, F.hero, 820, 62)), c.ink || '#0B0F14'); g.restore(); });
   }
@@ -281,7 +281,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         let L, R, fr; const m = seg.mode;
         if (m === 'm' || m === 'b') { const days = Math.floor(x + 1e-6); L = ['DAY', fmt(days)]; R = ['YEARS', fmt(x / YR, m === 'm' ? 2 : (x / YR < 100 ? 1 : 0))]; fr = x / seg.max; }
         else if (m === 'y') { L = ['YEARS BACK', fmt(Math.floor(x / YR))]; R = ['YEAR', yearLabel(x / YR)]; fr = x / seg.max; }
-        else if (m === 'n') { L = ['PILES OF $1M', fmt(Math.floor(x + 1e-6))]; R = ['TOTAL', '$' + fmt(Math.round(x) * 1e6)]; fr = x / seg.max; }
+        else if (m === 'n') { L = ['PILES OF $1M', fmt(Math.floor(x + 1e-6))]; R = ['TOTAL', '$' + fmt(Math.floor(x + 1e-6) * 1e6)]; fr = x / seg.max; }
         else { L = ['SECONDS COUNTED', fmt(Math.floor(x))]; R = [seg.u === 'y' ? 'YEARS' : 'DAYS', seg.u === 'y' ? (x / (DAY * YR)).toFixed(1) : (x / DAY).toFixed(1)]; fr = x / seg.max; }
         g.fillStyle = 'rgba(11,15,20,.14)'; rr(g, 98, 344, 884, 22, 11); g.fill(); const fw = clamp(fr) * 884; if (fw > 4) { g.fillStyle = m === 'y' ? th.gold : fr >= 0.999 ? th.bad : th.gold; rr(g, 98, 344, Math.max(22, fw), 22, 11); g.fill(); }
         label(g, L[0], 100, 398, th.inkSoft, 28, 'left'); label(g, R[0], 980, 398, th.inkSoft, 28, 'right');
@@ -370,7 +370,7 @@ const S = MV5.make({
     { type: 'calendar', from: '@seconds-0.35', to: '@seconds#2-0.4', pose: 'chin' },
     { type: 'life', from: '@seconds#2-0.4', to: '@that\'s#2-0.1', pose: 'shock' },
     { type: 'ask', from: '@that\'s#2-0.1', to: '@so#3-0.1', pose: 'shock', l1: 'RICH vs', l2: 'RIDICULOUS' },
-    { type: 'duo', from: '@so#3-0.1', to: '@million#4-0.1', pose: 'chin', a: { at: '@billionaire-0.1', col: '#FFD60A', l1: 'A BILLIONAIRE', l2: '= 1,000 MILLIONAIRES' }, b: { at: '@with#3-0.3', col: '#E5534B', l1: 'NOT A MILLIONAIRE', l2: 'WITH EXTRA STEPS' } },
+    { type: 'duo', from: '@so#3-0.1', to: '@million#4-0.1', pose: 'chin', a: { at: '@so#3+0.15', col: '#FFD60A', l1: 'A BILLIONAIRE', l2: '= 1,000 MILLIONAIRES' }, b: { at: '@with#3-0.3', col: '#E5534B', l1: 'NOT A MILLIONAIRE', l2: 'WITH EXTRA STEPS' } },
     { type: 'ask', from: '@million#4-0.1', to: 99, pose: 'you', l1: 'HOW LONG', l2: 'WOULD YOU LAST?' },
   ],
   hideCounter: [['@million#4-0.1', 99]],

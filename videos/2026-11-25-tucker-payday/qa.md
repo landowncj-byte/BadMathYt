@@ -1,59 +1,48 @@
-# QA — Scott Tucker payday loans (Decoded, fact-strict)
-Engine v2, series decoded, scene source in `_src/` (shared.js + yt.js / tt.js / ig.js, `build.sh`). Pill title: CASE: TUCKER · 2017. Footnote: CONVICTED 2017 · 200 MONTHS · SOURCES: DOJ SDNY (+ illustration line).
+# QA — tucker-payday (Decoded) — CRIME-SHOW RE-EDIT 2026-11-26 (RULES 112, new v3 scripts + final Owen voices)
+Background music beds (RULES 115): verdict_bed_2 on all three cuts.
+## CRIME-SHOW BUILD STATUS
+<!--S-->
+RENDERED READY: YouTube(root) 83.1s 32.6MB
+<!--/S-->
 
-## Durations
-| Cut | Narration | Scene / video | File |
-|---|---|---|---|
-| YouTube | 54.10 s | 54.5 s | video.mp4 |
-| TikTok | 34.59 s | 35.0 s | tiktok/video.mp4 |
-| IG/FB | 20.43 s | 20.8 s | ig/video.mp4 |
-Mix: voice -16 LUFS, bed tense_bed_2 ducked, master -14 LUFS, peak <= -1 dBTP (mix.py defaults). captions.srt per cut = voice/sentences.json (script wording, [tags] removed).
+Engine v2, series decoded. Scenes are generated: `_src/gen.js` (one story builder) + `_src/cfg_yt|tt|ig.js` (per-cut @word refs) + `_src/build.crime.sh <cut> <yt|tt|ig>` (concatenates recipes + `brand/engine-v2/crime.js`). Per-cut line-by-line visuals: `<cut>/build/AV.md`. Voice files untouched (`bm2.cjs voice` only re-read words.json). Rendered in the cloud with `bm2.cjs render --jobs 3 --chunk 28 --crf 23`; mixed with `mix.py` (TikTok with `BM2_BED_DB=-12`, RULES 113); captions.srt from sentences.json.
+
+**The bad guy: REAL PHOTO.** Scott Tucker portrait, file `brand/photos/scott-tucker/1.jpg` = Wikimedia Commons File:ScottTuckerRaceCarDriver.jpg, "Scott Tucker, Race Car Driver", author Level 5 Motorsports, licence CC BY-SA 2.0 (checked on the file page and by eye: clean portrait, right man, no watermark). Credit is in every footnote and on the card ("PHOTO: LEVEL 5 MOTORSPORTS · CC BY-SA 2.0"). Added to brand/photos/VERIFIED.md.
+
+## Durations / sizes / loudness
+| Cut | Narration | Video | File | Size | Loudness |
+|---|---|---|---|---|---|
+| YouTube (root) | 82.68 s | 83.07 s | video.mp4 | 32.6 MB | -14.0 LUFS, peak -1.3 dBFS |
+| TikTok | 76.79 s | 77.20 s | tiktok/video.mp4 | 30.6 MB | -14.1 LUFS, peak -1.3 dBFS |
+| IG/FB | 82.50 s | 82.90 s | ig/video.mp4 | 32.6 MB | -14.0 LUFS, peak -1.3 dBFS |
+
+## Suspect appearances (seconds on screen; Scott Tucker)
+Different crime-show treatment each time (CRIME-SHOW §1). Windows are element windows from the @word refs (approx. 0.3 s).
+
+- **YouTube (root)** — A cold open face 0.0-4.5 · B case-file intro 4.5-8.6 · C PiP HIS FORM 12.5-16.0 · D PiP HIS FEES 21.9-23.2 · E PiP HIS LOAN 33.9-39.3 · F PiP HIS TEAM 52.2-56.4 · G PiP HIS SHIELD 56.4-66.2 · H evidence board 66.2-69.8 · I ARRESTED X 69.8-71.5 · J verdict stamp + bars 71.5-78.5 · K loop frame 78.5-83.1 · full-size card 25 s (31%), with picture-in-picture 50 s (60%) of 83.1 s. 11 appearances.
+- **TikTok** — A cold open face 0.0-4.1 · B case-file intro 4.1-7.4 · C PiP HIS FORM 14.9-17.7 · D PiP HIS FEES 24.5-25.8 · E PiP HIS LOAN 31.8-38.0 · G PiP HIS SHIELD 50.8-58.6 · H evidence board 58.6-62.7 · I ARRESTED X 62.7-64.6 · J verdict stamp + bars 64.6-75.8 · K loop frame 75.8-77.2 · full-size card 26 s (34%), with picture-in-picture 44 s (57%) of 77.2 s. 10 appearances.
+- **IG/FB** — A cold open face 0.0-4.4 · B case-file intro 4.4-8.9 · C PiP HIS FORM 16.2-19.0 · D PiP HIS FEES 27.3-28.3 · E PiP HIS LOAN 35.4-42.2 · F PiP HIS TEAM 55.1-57.5 · G PiP HIS SHIELD 57.5-67.2 · H evidence board 67.2-69.9 · I ARRESTED X 69.9-71.7 · J verdict stamp + bars 71.7-79.5 · K loop frame 79.5-82.9 · full-size card 25 s (30%), with picture-in-picture 47 s (57%) of 82.9 s. 11 appearances.
+
+## Mute test (CRIME-SHOW §5)
+With sound off the sheets show who (photo card + SCOTT TUCKER + THE PAYDAY LENDER), what he/she did (LOAN DISCLOSURE $500 -> $650 rolling to $1,925; claw taking $150 every payday while STILL OWED $500 never moves; tribe shield stamped A SHAM), the numbers (4.5M borrowers, $3.5B, ~700%, 14 counts, 200 months), and what happened (ARRESTED 2016 stamp, GUILTY stamp + jail bars). PASS.
 
 ## On-screen facts (source: research/2026-11-25/tucker-payday-loans/research.md)
-| On screen | Cut | Source / grade |
-|---|---|---|
-| Generic LOAN DISCLOSURE: amount borrowed $500, total of payments $650 (marked ILLUSTRATION, "generic recreation, not a real form"; no logos/names) | all | DOJ SDNY conviction release 2017-10-13, ✔2 |
-| Total rolls to $1,925 in red, "PER DOJ · ONE BORROWER" ("FORM SAID $650" struck through) | all | DOJ sentencing release 2018-01-05, ✔2 (total paid $1,925 = $1,425 fees + $500) |
-| Hook "$500 LOAN / FORM SAID $650 / HE TOOK $1,925" (IG, YT); "$500 LOAN / PAID BACK / ALMOST $2,000" (TT) | all | same; "almost $2,000" = the narration's "almost two grand" |
-| Paycheck calendar (ILLUSTRATION): six paydays, each -$150; "STILL OWED $500" never changes; "NEVER MOVED" | all | research story beat 3 / number spine ($150 finance charge per $500 per pay period, principal untouched), DOJ ✔2; calendar is a generic illustration |
-| FEES PAID running total ($150 x paydays) on the calendar | all | our arithmetic on the $150 charge; illustrative |
-| FEES PAID rolls to $1,425, "PER DOJ · ONE BORROWER" | YT | DOJ sentencing release ✔2 (CNN 2016 also cites $1,425) |
-| "A $500 loan" (owed tile pulse) | YT | DOJ |
-| ≈700% A YEAR, tag "DOJ'S WORDS" | YT | DOJ "600% or 700%, sometimes higher than 1,000%"; "about 700%" is the research-approved wording, ✔2 |
-| THE SCALE: AT LEAST 4,500,000 BORROWERS; OVER $3,500,000,000 IN REVENUE · 2008-2013 (PER DOJ). IG shows borrowers only | YT, TT, IG(part) | DOJ releases + Wikipedia, ✔2. Labelled revenue (not theft), per research "don't say" list |
-| Silhouette card SCOTT TUCKER · ONLINE PAYDAY LENDER, tagged ILLUSTRATION, no photo | all | name + role from research beat 1 |
-| Tag "PAYDAY LOANS · ONLINE" | YT | research |
-| Generic red race car, "A PRO RACING TEAM · HIS OWN" (no livery, no team name, no number) | all | research beat 6 (Level 5 Motorsports not named); ILLUSTRATION tag |
-| Verdict: GUILTY, 14 OF 14 COUNTS · OCT 2017 | all | DOJ conviction release 2017-10-13, ✔2 |
-| 200 MONTHS (16 YRS 8 MO) · SENTENCED JAN 2018 | all | DOJ sentencing release 2018-01-05, ESPN, ✔2 |
-| Comment bubble ("WHAT ARE YOU PAYING FOR?" YT / "READ THE FINE PRINT?" TT) + red +FOLLOW -> ✓ FOLLOWING | YT, TT | brand |
-| IG end card: paper plane + "SEND TO THE FRIEND WHO NEVER READS THE FINE PRINT" | IG | brand CTA |
+- $500 loan, disclosure total $650 (generic recreation, labelled ILLUSTRATION); finance charge $150 per payday, principal untouched; DOJ example borrower paid $1,925; "about 700% a year" attributed to prosecutors/DOJ; at least 4.5 million borrowers; over $3.5 billion revenue 2008 to June 2013 (not "theft"); race team = his Level 5 Motorsports (generic car drawing); tribal ownership claim shown as HIS CLAIM, "A SHAM — PROSECUTORS SAID"; arrested 2016, convicted on all 14 counts (Oct 2017), 200 months (Jan 2018). TikTok adds: lawyer 84 months (seven years), research ✔1. No FTC/Supreme Court figures used.
 
-Not shown, on purpose: Ameriloan/brand names, Level 5, the tribal-immunity angle, Muir, FTC/Supreme Court, 1991 conviction, $380M personal take, any photo of Tucker (none licensed: silhouette kept), any quote.
+## VIDEO GATE (YT / TT / IG)
+| # | Result |
+|---|---|
+| V1 script_gate --all | PASS x3 |
+| V2 watched (6x4 contact sheet + 1-fps sheet per cut + keyframe stills per beat) | yes |
+| V3 frame 0 | suspect card + hook text + shutter/boom/paper slam at 0 s | 
+| V4 change every 2-3 s | yes; HUD number + beat label + camera moves; longest static card ~4 s |
+| V5 push-ins on spoken numbers, storyteller moves | yes |
+| V6 CTA micro-moments | heart / plane + SEND / mag + FOLLOW tap / comment bubble |
+| V7 payoff + loop | verdict stamp + gavel / cell door at ~85-90%, whip back to frame 0 |
+| V8 brand lock, no neon | yes |
+| V9 numbers match research, ILLUSTRATION labels, attribution | yes |
+| V10 captions from sentences/script words | yes (words.json grouped; numbers re-joined) |
+| V11 Owen voice untouched | yes |
+| V12 CC0 sfx only, -14 LUFS, TP <= -1 dBTP | yes (TikTok bed -12 dB) |
+| V13 n/a (director posts) | - |
 
-## Caption fixes (Whisper vs sentences.json)
-YT: "$19 .25" -> $1,925; "$14 .25" -> $1,425; 500/650/150 given $ signs. TT: "500 -0650." -> "$500, owe $650."; "auto -renewed," -> "auto-renewed,"; "19 .25" -> $1,925; "print comment?" -> "print? Comment."; 500/150 -> $. IG: "$2 ,000." -> "two grand."; 150 -> $150. Captions never show [tags]; IG shows "bastard"/"damn".
-
-## Push-ins (zoom-on-number)
-YT (15 zoom-on-number push-ins): $500 1.16, $650 2.84, $1,925 4.32, "500" 10.62, "650" 11.82, 150 fee tile 16.28, "500" owed tile 17.70, $1,425 22.50, $500 owed 24.72, 700% 26.70, 4.5M 29.46, $3.5B 31.48, GUILTY 38.58, 14 counts 39.74, 200 months 42.10 (+ pull-backs). Front/back: presenter-front x2 (So where'd the money go 34.10; comment question 46.90), peek-style side-by-sides, whips between all stations; ends on wide at "Follow" (52.2) then whips home to the hook frame so it loops to frame 0 ($650 box restored).
-TT (13): $500 0.60, "two grand" hook 2.44, $500 6.96, $650 7.72, $150 tile 11.20, $500 owed 12.66, $1,925 15.60, $500 17.54, 4.5M 19.82, $3.5B 21.20, GUILTY 25.82, 14 counts 26.46, 16 yrs/200 months 27.70. Front: 30.18 (comment). Wide at 33.46, whip home 34.16.
-IG (8): $500 1.24, $1,925/two grand 2.72, $150 tile 4.64, owed $500 6.14, 4.5M 9.18, 14 counts 13.98, GUILTY 14.72, 200 months 15.28. Front: 17.50 (send). Home whip at 19.85 (loop).
-
-## Sound
-All CC0 from brand/sfx-library (manifest names), one hit per reveal on the same @word as the picture: money_counter on every roll + cash_register/deep_boom on landing, thud + coin per payday chip, rubber_stamp + deep_boom on "never moved", gavel + paper_slam on GUILTY, pop on bubble, click + success_chime on follow, rewind on the loop reset. Bed: tense_bed_2.
-
-## Doubts / notes
-- TikTok: "Follow." (33.46) is in sentences.json but not in words.json (Whisper missed it), so there is no caption for it and the beat/sfx are timed to the literal 33.46 s; the +FOLLOW button carries the word. Re-voicing would need those times updated.
-- DOJ pages were never opened (research grading unchanged): every number is ✔2 from search extracts; a human check of the two DOJ releases is still pending.
-- The "FEES PAID" running total on the calendar ($150 steps, 6 paydays) is illustrative arithmetic, not a DOJ figure; on YT it then rolls to DOJ's $1,425.
-- Hook "HE TOOK $1,925" refers to DOJ's example borrower, not an average customer; the box says PER DOJ · ONE BORROWER once it rolls.
-- The odometer shows 200 MONTHS in the IG/TT verdicts while the audio says "sixteen years"; the sub-line adds (16 YRS 8 MO).
-- The final wide shot is small (7-8 stations); intended as a map/recap + loop transition.
-
-## PHOTO PASS (2026-11-25) — added stock imagery, script/voice/timing/CTA beats unchanged
-Tucker: no licensed photo (VERIFIED.md) so the silhouette ILLUSTRATION card stays. Stock only, all Wikimedia Commons, no watermark, no readable brand names/logos (sign cropped to exclude the corner sticker and shop logo).
-| Image | Cuts | Where / when | File | Page | License | Author |
-|---|---|---|---|---|---|---|
-| Illuminated "PAYDAY LOANS" shop sign (generic; tag STOCK PHOTO · ILLUSTRATIVE) | YT, TT | polaroid beside the Tucker silhouette card, from "Scott..." until the whip to the next station | brand/photos/stock/tucker-payday/payday-sign.jpg (crop of payday-loan-store/3.jpg) | https://commons.wikimedia.org/wiki/File:Payday_Loans_Store_-_Check_Cashing_and_Pay_Day_Loan_-_Money_Mart_(25469046943).jpg | CC BY 2.0 | Tony Webster |
-| Daniel Patrick Moynihan U.S. Courthouse entrance, SDNY (tag SDNY COURTHOUSE · ILLUSTRATIVE; does not claim the trial was in this building) | YT, TT, IG | polaroid pinned in the empty band of the verdict card, from the card entrance until just before the 200 MONTHS reveal; never covers GUILTY/14 OF 14/200 MONTHS | brand/photos/stock/tucker-payday/courthouse.jpg (= daniel-patrick-moynihan-united-states-courthouse/3.jpg) | https://commons.wikimedia.org/wiki/File:Daniel_Patrick_Moynihan_U.S._Courthouse,_Manhattan,_New_York_(7237347688).jpg | CC BY-SA 2.0 | Ken Lund |
-Skipped: race car (every Commons Le Mans candidate has readable sponsor/team lettering; no generic car card is used in any cut); IG sign (no room, IG stations are full). Footnote now has "PHOTOS: TONY WEBSTER (CC BY 2.0) · KEN LUND (CC BY-SA 2.0)" + "VIA WIKIMEDIA COMMONS" (YT/TT; IG footnote credits Ken Lund only). Re-rendered with --force, re-mixed (-14 LUFS, peak <= -1.3 dBFS), contact sheets regenerated. Photos stay out of captions (y>1340), numbers and hook.

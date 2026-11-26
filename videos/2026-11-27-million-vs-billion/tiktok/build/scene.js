@@ -281,7 +281,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
         let L, R, fr; const m = seg.mode;
         if (m === 'm' || m === 'b') { const days = Math.floor(x + 1e-6); L = ['DAY', fmt(days)]; R = ['YEARS', fmt(x / YR, m === 'm' ? 2 : (x / YR < 100 ? 1 : 0))]; fr = x / seg.max; }
         else if (m === 'y') { L = ['YEARS BACK', fmt(Math.floor(x / YR))]; R = ['YEAR', yearLabel(x / YR)]; fr = x / seg.max; }
-        else if (m === 'n') { L = ['PILES OF $1M', fmt(Math.floor(x + 1e-6))]; R = ['TOTAL', '$' + fmt(Math.round(x) * 1e6)]; fr = x / seg.max; }
+        else if (m === 'n') { L = ['PILES OF $1M', fmt(Math.floor(x + 1e-6))]; R = ['TOTAL', '$' + fmt(Math.floor(x + 1e-6) * 1e6)]; fr = x / seg.max; }
         else { L = ['SECONDS COUNTED', fmt(Math.floor(x))]; R = [seg.u === 'y' ? 'YEARS' : 'DAYS', seg.u === 'y' ? (x / (DAY * YR)).toFixed(1) : (x / DAY).toFixed(1)]; fr = x / seg.max; }
         g.fillStyle = 'rgba(11,15,20,.14)'; rr(g, 98, 344, 884, 22, 11); g.fill(); const fw = clamp(fr) * 884; if (fw > 4) { g.fillStyle = m === 'y' ? th.gold : fr >= 0.999 ? th.bad : th.gold; rr(g, 98, 344, Math.max(22, fw), 22, 11); g.fill(); }
         label(g, L[0], 100, 398, th.inkSoft, 28, 'left'); label(g, R[0], 980, 398, th.inkSoft, 28, 'right');
@@ -354,7 +354,7 @@ const S = MV5.make({
   dur: 65.08, K,
   C: [{ from: 0, mode: 'b', max: 1e6 }, { from: hookEnd, mode: 'm', max: 1000 }, { from: '@now-0.1', mode: 'b', max: 1e6 }, { from: '@you\'d#2-0.1', mode: 'y', max: 1e6 }, { from: '@because-0.1', mode: 'n', max: 1000 },
     { from: '@want-0.1', mode: 's', u: 'd', max: 1e6 }, { from: '@seconds#2-0.4', mode: 's', u: 'y', max: 1e9 }, { from: '@so-0.1', mode: 'y', max: 1e6 }],
-  hook: { until: hookEnd, y: 690, size: 100, lines: [[['$1,000 A DAY', 'good']], [['WON\'T FINISH A BILLION', 'paper']], [['FOR 27 CENTURIES', 'accent']]] },
+  hook: { until: hookEnd, y: 744, size: 92, lines: [[['$1,000 A DAY', 'good']], [['WON\'T FINISH A BILLION', 'paper']], [['FOR 27 CENTURIES', 'accent']]] },
   scenes: [
     { type: 'cards2', from: 0, to: '@say-0.1', pose: 'shock', cards: [{ at: 0.3, amount: '$1,000 / DAY', col: '#00D26A', w: 560, y: 940 }, { at: '@billion', amount: '$1,000,000,000', col: '#FFD60A', w: 900, y: 1045 }] },
     { type: 'gcard', from: '@say-0.1', to: '@it\'s-0.1', pose: 'talk', cap: 1e6, col: '#00D26A' },
