@@ -5,7 +5,7 @@ The cloud session adds jobs here and pushes. The PC session (DESKTOP-FR23QQM, "B
 | # | Folder | Cuts | Status | Notes |
 |---|---|---|---|---|
 | 1 | videos/2026-11-26-lottery-rig | tiktok, ig | todo | YT done in the cloud |
-| 2 | videos/2026-11-26-fake-prince | yt, tiktok, ig | todo | |
+| 2 | videos/2026-11-26-fake-prince | yt, tiktok, ig | in progress | PC GPU: yt done (render ~55 s, 32.7 MB) |
 | 3 | videos/2026-11-26-penny-doubled | ig | todo | YT + TT done in the cloud |
 | 4 | videos/2026-11-26-weight-vs-height | yt, tiktok, ig | todo | |
 | 5 | videos/2026-11-26-fake-wine | yt, tiktok, ig | todo | |
