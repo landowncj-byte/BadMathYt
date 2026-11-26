@@ -36,7 +36,7 @@ bt('@P83:check', 'graphic-hero', 'h83', { fill: 0.9, maxH: 300, sy: 470, pose: '
 el('cl84', 'checklist', R5(2), 20, '@P84-0.3', { title: 'THE 3 CHECKS ANYONE CAN DO', lockOpen: '@P86>', rows: [{ show: '@P84:one', t: 'READ THE BORING DETAILS', size: 44 }, { show: '@P85:two', t: 'ASK WHERE IT CAME FROM', size: 44 }, { show: '@P86:three', t: 'CHECK IT BEFORE YOU PAY', size: 44 }] }, { out: '@P87-0.2' });
 const chip = (id, p, inn, text, tone, out) => el(id, 'badge', R5(2) + p, 450, inn, { text, tone, size: 32, tcol: 'paper' }, { out });
 chip('c841', -420, '@P84:date-0.1', 'THE DATE', 'navy', '@P85-0.2'); chip('c842', 0, '@P84:spelling-0.1', 'THE SPELLING', 'navy', '@P85-0.2'); chip('c843', 440, '@P84:name-0.1', 'THE NAME ON THE FRONT', 'navy', '@P85-0.2');
-chip('c851', -300, '@P85:secret-0.1', 'A SECRET SELLER', 'bad', '@P86-0.2'); chip('c852', 220, '@P85:lost-0.1', 'A LOST TREASURE THAT JUST SHOWED UP', 'bad', '@P86-0.2');
+chip('c851', -540, '@P85:secret-0.1', 'A SECRET SELLER', 'bad', '@P86-0.2'); chip('c852', 160, '@P85:lost-0.1', 'A LOST TREASURE THAT JUST SHOWED UP', 'bad', '@P86-0.2');
 chip('c861', -300, '@P86:paid-0.1', 'THE MAGAZINE PAID FIRST', 'bad', '@P87-0.2'); chip('c862', 240, '@P86:tested-0.1', 'AND TESTED LATER', 'bad', '@P87-0.2');
 bt('@P84', 'graphic-hero', 'cl84', { move: 'whip', fill: 0.62, maxH: 800, sy: 480, pose: 'point' }); sf('@P84-0.3', 'paper_slam_2', -10, 0.5); sf('@P84-0.3', 'swoosh_2', -11, 0.5);
 bt('@P84:one', 'graphic-hero', ['cl84'], { fill: 0.5, maxH: 780, sy: 500 }); sf('@P84:one', 'pop_2', -9, 0.3);

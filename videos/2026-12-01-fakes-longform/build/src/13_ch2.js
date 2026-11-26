@@ -60,7 +60,7 @@ bt('@P34:1', 'zoom-on-number', 'c34.value', { fill: 0.5, maxH: 440, sy: 480, pos
 bt('@P34:guilders', 'graphic-hero', ['c34'], { fill: 0.6, sy: 480, pose: 'chin' });
 bt('@P34:fortune', 'graphic-hero', ['c34', 'f34'], { fill: 0.7, sy: 500, pose: 'shock' }); sf('@P34:fortune', 'rubber_stamp_2', -6, 0.5);
 // P35 1945: found in Goering's collection, traced to van Meegeren
-el('t35', 'timeline', R2(9) - 380, 40, '@P35-0.3', { w: 900, step: 180, items: [{ id: 'i0', date: '1945', label: 'THE WAR IS OVER', at: '@P35:after', tone: 'accent' }, { id: 'i1', date: 'INVESTIGATORS', label: 'FIND IT IN GOERING\'S COLLECTION', at: '@P35:find', tone: 'accent' }, { id: 'i2', date: 'THE TRAIL', label: 'LEADS TO VAN MEEGEREN', at: '@P35:trace', tone: 'bad' }] }, { out: '@P36-0.2' });
+el('t35', 'timeline', R2(9) - 380, 40, '@P35-0.3', { w: 900, step: 180, items: [{ id: 'i0', date: '1945', label: 'THE WAR IS OVER', at: '@P35:1945', tone: 'accent' }, { id: 'i1', date: 'INVESTIGATORS', label: 'FIND IT IN GOERING\'S COLLECTION', at: '@P35:find', tone: 'accent' }, { id: 'i2', date: 'THE TRAIL', label: 'LEADS TO VAN MEEGEREN', at: '@P35:trace', tone: 'bad' }] }, { out: '@P36-0.2' });
 con('m35', 'mee', R2(9) + 640, 40, '@P35:trace-0.3', { w: 400, variant: 'card', ring: '@P35:meegeren', flash: false, credit: '' }, { out: '@P36-0.2' });
 bt('@P35', 'graphic-hero', ['t35'], { move: 'whip', fill: 0.5, maxH: 640, sy: 500, pose: 'point' }); sf('@P35-0.3', 'swoosh_2', -11, 0.5);
 bt('@P35:find', 'zoom-on-number', 't35.i1', { fill: 0.4, maxH: 300, sy: 500 }); sf('@P35:find', 'page_turn_1', -10, 0.8);
@@ -122,7 +122,7 @@ el('d43', 'datecard', R2(17) + 380, -100, '@P43-0.2', { big: 'WEEKS LATER', smal
 bt('@P43', 'graphic-hero', ['m43', 'd43'], { move: 'whip', fill: 0.84, sy: 500, pose: 'chin' }); sf('@P43-0.3', 'swoosh_2', -11, 0.5); sf('@P43:later', 'suspense_drone_1', -16, 3.5);
 bt('@P43:serves', 'zoom-on-number', 'm43', { fill: 0.28, maxH: 760, sy: 520, pose: 'shock' }); sf('@P43:serves', 'rubber_stamp_2', -5, 0.5);
 // P44 the experts couldn't spot his fakes; the only proof was to watch him paint one
-el('g44', 'gallery', R2(18) - 100, 30, '@P44-0.3', { w: 1400, h: 520, head: 'THE EXPERTS COULD NOT TELL', fakeAt: '@P44:fake', items: [0, 1, 2, 3].map(i => ({ label: 'EXPERT: REAL', at: `@P44:spot+${(i * 0.15).toFixed(2)}` })) }, { out: '@P45-0.2' });
+el('g44', 'gallery', R2(18) - 100, 30, '@P44-0.3', { w: 1400, h: 520, head: 'THE EXPERTS COULD NOT TELL', fakeAt: '@P44:fake', items: [0, 1, 2, 3].map(i => ({ label: 'EXPERT: REAL', at: `@P44:experts+${(i * 0.15).toFixed(2)}` })) }, { out: '@P45-0.2' });
 con('m44', 'mee', R2(18) + 760, 360, '@P44:watch-0.2', { w: 270, variant: 'pip', label: 'WATCH HIM PAINT ONE', flash: false, arrow: { at: '@P44:watch', to: [-250, -170] } }, { out: '@P45-0.2' });
 bt('@P44', 'graphic-hero', ['g44'], { move: 'whip', fill: 0.8, sy: 500, pose: 'chin' }); sf('@P44-0.3', 'swoosh_2', -11, 0.5);
 bt('@P44:fake', 'zoom-on-number', 'g44', { fill: 0.82, maxH: 640, sy: 500, pose: 'shock' }); for (let i = 0; i < 4; i++) sf(`@P44:fake+${(i * 0.12).toFixed(2)}`, 'rubber_stamp_2', -9, 0.5); sk('@P44:fake', 10);

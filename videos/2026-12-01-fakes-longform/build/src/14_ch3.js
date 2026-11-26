@@ -76,11 +76,11 @@ bt('@P56', 'graphic-hero', ['nb56', 'h56'], { move: 'whip', fill: 0.86, sy: 500,
 bt('@P56:name', 'zoom-on-number', 'nb56.letters', { fill: 0.34, maxH: 460, sy: 480, pose: 'shock' }); sf('@P56:name', 'rubber_stamp_2', -5, 0.5); sk('@P56:name', 10);
 bt('@P56:said', 'graphic-hero', ['nb56'], { fill: 0.5, maxH: 800, sy: 470, pose: 'point' }); sf('@P56:said', 'ding_2', -9, 0.7);
 // P57 national archives test: paper and ink both modern
-el('d57', 'doc', R3(11) - 100, 40, '@P57-0.3', { title: 'NATIONAL ARCHIVES', sub: 'GERMANY · LAB TEST', w: 720, h: 820, skeleton: 2, band: 'navy', lines: [{ id: 'paper', t: 'PAPER: MODERN', at: '@P57:paper', tone: 'bad', mark: 'bad' }, { id: 'ink', t: 'INK: MODERN', at: '@P57:ink', tone: 'bad', mark: 'bad' }, { id: 'new', t: 'TOO NEW TO BE REAL', at: '@P57:new', tone: 'bad', big: true }] }, { out: '@P58-0.2' });
+el('d57', 'doc', R3(11) - 100, 40, '@P57-0.3', { title: 'NATIONAL ARCHIVES', sub: 'GERMANY · LAB TEST', w: 720, h: 700, skeleton: 2, band: 'navy', lines: [{ id: 'paper', t: 'PAPER: MODERN', at: '@P57:paper', tone: 'bad', mark: 'bad' }, { id: 'ink', t: 'INK: MODERN', at: '@P57:ink', tone: 'bad', mark: 'bad' }, { id: 'new', t: 'TOO NEW TO BE REAL', at: '@P57:new', tone: 'bad', big: true }] }, { out: '@P58-0.2' });
 bt('@P57', 'graphic-hero', ['d57'], { move: 'whip', fill: 0.4, maxH: 920, sy: 500, pose: 'point' }); sf('@P57-0.3', 'swoosh_2', -11, 0.5);
 bt('@P57:paper', 'zoom-on-number', 'd57.paper', { fill: 0.4, maxH: 300, sy: 480 }); sf('@P57:paper', 'typewriter_2', -11, 1.0);
 bt('@P57:ink', 'zoom-on-number', 'd57.ink', { fill: 0.4, maxH: 300, sy: 480, pose: 'chin' }); sf('@P57:ink', 'typewriter_2', -11, 1.0);
-bt('@P57:modern', 'graphic-hero', ['d57'], { fill: 0.4, maxH: 780, sy: 470, pose: 'shock' });
+bt('@P57:modern', 'graphic-hero', ['d57'], { fill: 0.4, maxH: 660, sy: 440, pose: 'shock' });
 bt('@P57:new', 'zoom-on-number', 'd57.new', { fill: 0.42, maxH: 300, sy: 480, pose: 'shock' }); sf('@P57:new', 'rubber_stamp_2', -5, 0.5);
 // P58 less than two weeks later: crude forgery
 el('c58', 'counter', R3(12) - 200, -100, '@P58:less-0.3', { label: 'AFTER THE BIG ANNOUNCEMENT', prefix: '< ', to: 2, suffix: ' WEEKS', at: '@P58:two', dur: 0.6, tone: 'bad', size: 170, w: 1000 }, { out: '@P59-0.2' });

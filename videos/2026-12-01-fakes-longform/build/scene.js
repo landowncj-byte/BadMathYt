@@ -858,8 +858,8 @@ bt('@P01:famous#2', 'graphic-hero', ['k0', 'w0'], { fill: 0.84, sy: 480, pose: '
 bt('@P01:under', 'zoom-on-number', 'w0', { fill: 0.42, maxH: 780, sy: 500, pose: 'shock' }); sf('@P01:under', 'door_bang_1', -9, 0.8); sk('@P01:under', 10);
 // P02: the forger + 1.65 million guilders sold to a Nazi leader (text card only)
 con('k1', 'mee', R0(1) - 660, 60, '@P02-0.3', { w: 420, variant: 'card', file: true, caseNo: 'CASE Nº 2', stamps: [{ text: 'FAKE', at: '@P02:fake', tone: 'bad', size: 70, rot: -0.1, y: 30 }] }, { out: '@P03-0.2' });
-el('g2', 'card', R0(1) + 250, -200, '@P02:nazi-0.5', { w: 640, h: 280, lines: [{ t: 'THE BUYER', size: 24, gap: 54, font: 'mono', tone: 'inkSoft', at: '@P02:nazi-0.4' }, { t: 'HERMANN GOERING', size: 58, font: 'hero', at: '@P02:nazi-0.3' }, { t: 'A NAZI LEADER', size: 40, tone: 'bad', at: '@P02:nazi' }], pad: 56 }, { out: '@P03-0.2' });
-el('c2', 'counter', R0(1) + 250, 150, '@P02:for-0.2', { label: 'PRICE IN GUILDERS (DUTCH MONEY)', to: 1.65, decimals: 2, suffix: ' MILLION', at: '@P02:1', dur: 1.2, tone: 'bad', size: 110, w: 900 }, { out: '@P03-0.2' });
+el('g2', 'card', R0(1) + 250, -200, '@P02:painter+0.4', { w: 640, h: 280, lines: [{ t: 'THE BUYER', size: 24, gap: 54, font: 'mono', tone: 'inkSoft', at: '@P02:nazi-0.4' }, { t: 'HERMANN GOERING', size: 58, font: 'hero', at: '@P02:nazi-0.3' }, { t: 'A NAZI LEADER', size: 40, tone: 'bad', at: '@P02:nazi' }], pad: 56 }, { out: '@P03-0.2' });
+el('c2', 'counter', R0(1) + 250, 150, '@P02:sold-0.2', { label: 'PRICE IN GUILDERS (DUTCH MONEY)', to: 1.65, decimals: 2, suffix: ' MILLION', at: '@P02:1', dur: 1.2, tone: 'bad', size: 110, w: 900 }, { out: '@P03-0.2' });
 bt('@P02', 'graphic-hero', ['k1', 'g2', 'c2'], { move: 'whip', fill: 0.86, sy: 500, pose: 'point' }); sf('@P02-0.3', 'swoosh_2', -11, 0.5);
 bt('@P02:fake', 'zoom-on-number', 'k1', { fill: 0.3, maxH: 760, sy: 520, pose: 'shock' }); sf('@P02:fake', 'rubber_stamp_2', -5, 0.5);
 bt('@P02:nazi', 'graphic-hero', ['g2', 'c2'], { fill: 0.5, sy: 500, pose: 'chin' });
@@ -958,7 +958,7 @@ bt('@P15:finds', 'graphic-hero', ['n15', 'cal15'], { fill: 0.9, sy: 480, pose: '
 // P16 the reveal: it was in his apartment
 el('ap16', 'photo', R1(8) - 340, 40, '@P16-0.3', { src: MONA, name: 'THE MONA LISA', role: 'IN HIS SMALL PARIS APARTMENT', credit: 'PUBLIC-DOMAIN REPRODUCTION', treatment: 'paper', fx: 0.5, fy: 0.3, w: 520, aspect: 1.3, tilt: -0.03 }, { out: '@P17-0.2' });
 con('p16', 'per', R1(8) + 460, 60, '@P16:peruggia\'s-0.2', { w: 400, variant: 'card', flash: false, ring: '@P16:apartment', push: { at: '@P16:peruggia\'s', to: 1.2, dur: 3 } }, { out: '@P17-0.2' });
-bt('@P16', 'graphic-hero', ['ap16'], { move: 'whip', fill: 0.34, maxH: 900, sy: 500, pose: 'shock' }); sf('@P16-0.3', 'swoosh_2', -11, 0.5); sf('@P16:most', 'heartbeat_1', -10, 2.5);
+bt('@P16', 'graphic-hero', ['ap16'], { move: 'whip', fill: 0.34, maxH: 780, sy: 450, pose: 'shock' }); sf('@P16-0.3', 'swoosh_2', -11, 0.5); sf('@P16:most', 'heartbeat_1', -10, 2.5);
 bt('@P16:peruggia\'s', 'graphic-hero', ['ap16', 'p16'], { fill: 0.82, sy: 500, pose: 'point' }); sf('@P16:peruggia\'s', 'camera_flash_1', -10, 0.6);
 bt('@P16:apartment', 'zoom-on-number', 'p16', { fill: 0.3, maxH: 760, sy: 520, pose: 'shock' }); sf('@P16:apartment', 'rubber_stamp_2', -5, 0.5);
 // P17 the catch: he catches himself
@@ -970,9 +970,9 @@ bt('@P17:catches', 'zoom-on-number', 'h17', { fill: 0.4, maxH: 520, sy: 380, pos
 // P18 letter to the Florence dealer Alfredo Geri
 el('dc18', 'datecard', R1(10) - 700, -330, '@P18-0.2', { big: '1913', small: 'FLORENCE, ITALY' }, { out: '@P19-0.2' });
 el('m18', 'memo', R1(10) + 100, 20, '@P18-0.3', { w: 700, h: 820, to: 'ALFREDO GERI · ART DEALER', date: '1913', title: ['THE MONA LISA', 'IS FOR SALE'], titleAt: '@P18:letter' }, { out: '@P19-0.2' });
-bt('@P18', 'graphic-hero', ['dc18', 'm18'], { move: 'whip', fill: 0.6, sy: 500, pose: 'point' }); sf('@P18-0.3', 'swoosh_2', -11, 0.5); sf('@P18:letter', 'pen_scratch_1', -10, 1.5);
-bt('@P18:letter', 'zoom-on-number', 'm18.title', { fill: 0.4, maxH: 520, sy: 500 }); sf('@P18:letter', 'paper_slam_2', -10, 0.5);
-bt('@P18:dealer', 'graphic-hero', ['dc18', 'm18'], { fill: 0.7, sy: 500, pose: 'chin' });
+bt('@P18', 'graphic-hero', ['dc18', 'm18'], { move: 'whip', fill: 0.6, maxH: 760, sy: 450, pose: 'point' }); sf('@P18-0.3', 'swoosh_2', -11, 0.5); sf('@P18:letter', 'pen_scratch_1', -10, 1.5);
+bt('@P18:letter', 'zoom-on-number', 'm18', { fill: 0.4, maxH: 740, sy: 450 }); sf('@P18:letter', 'paper_slam_2', -10, 0.5);
+bt('@P18:dealer', 'graphic-hero', ['dc18', 'm18'], { fill: 0.7, maxH: 760, sy: 450, pose: 'chin' });
 bt('@P18:geri', 'zoom-on-number', 'm18', { fill: 0.4, maxH: 800, sy: 500, pose: 'point' });
 // P19 500,000 lire; the painting should go home to Italy
 con('p19', 'per', R1(11) - 560, 80, '@P19-0.3', { w: 330, variant: 'card', flash: false, credit: '' }, { out: '@P20-0.2' });
@@ -1088,7 +1088,7 @@ bt('@P34:1', 'zoom-on-number', 'c34.value', { fill: 0.5, maxH: 440, sy: 480, pos
 bt('@P34:guilders', 'graphic-hero', ['c34'], { fill: 0.6, sy: 480, pose: 'chin' });
 bt('@P34:fortune', 'graphic-hero', ['c34', 'f34'], { fill: 0.7, sy: 500, pose: 'shock' }); sf('@P34:fortune', 'rubber_stamp_2', -6, 0.5);
 // P35 1945: found in Goering's collection, traced to van Meegeren
-el('t35', 'timeline', R2(9) - 380, 40, '@P35-0.3', { w: 900, step: 180, items: [{ id: 'i0', date: '1945', label: 'THE WAR IS OVER', at: '@P35:after', tone: 'accent' }, { id: 'i1', date: 'INVESTIGATORS', label: 'FIND IT IN GOERING\'S COLLECTION', at: '@P35:find', tone: 'accent' }, { id: 'i2', date: 'THE TRAIL', label: 'LEADS TO VAN MEEGEREN', at: '@P35:trace', tone: 'bad' }] }, { out: '@P36-0.2' });
+el('t35', 'timeline', R2(9) - 380, 40, '@P35-0.3', { w: 900, step: 180, items: [{ id: 'i0', date: '1945', label: 'THE WAR IS OVER', at: '@P35:1945', tone: 'accent' }, { id: 'i1', date: 'INVESTIGATORS', label: 'FIND IT IN GOERING\'S COLLECTION', at: '@P35:find', tone: 'accent' }, { id: 'i2', date: 'THE TRAIL', label: 'LEADS TO VAN MEEGEREN', at: '@P35:trace', tone: 'bad' }] }, { out: '@P36-0.2' });
 con('m35', 'mee', R2(9) + 640, 40, '@P35:trace-0.3', { w: 400, variant: 'card', ring: '@P35:meegeren', flash: false, credit: '' }, { out: '@P36-0.2' });
 bt('@P35', 'graphic-hero', ['t35'], { move: 'whip', fill: 0.5, maxH: 640, sy: 500, pose: 'point' }); sf('@P35-0.3', 'swoosh_2', -11, 0.5);
 bt('@P35:find', 'zoom-on-number', 't35.i1', { fill: 0.4, maxH: 300, sy: 500 }); sf('@P35:find', 'page_turn_1', -10, 0.8);
@@ -1150,7 +1150,7 @@ el('d43', 'datecard', R2(17) + 380, -100, '@P43-0.2', { big: 'WEEKS LATER', smal
 bt('@P43', 'graphic-hero', ['m43', 'd43'], { move: 'whip', fill: 0.84, sy: 500, pose: 'chin' }); sf('@P43-0.3', 'swoosh_2', -11, 0.5); sf('@P43:later', 'suspense_drone_1', -16, 3.5);
 bt('@P43:serves', 'zoom-on-number', 'm43', { fill: 0.28, maxH: 760, sy: 520, pose: 'shock' }); sf('@P43:serves', 'rubber_stamp_2', -5, 0.5);
 // P44 the experts couldn't spot his fakes; the only proof was to watch him paint one
-el('g44', 'gallery', R2(18) - 100, 30, '@P44-0.3', { w: 1400, h: 520, head: 'THE EXPERTS COULD NOT TELL', fakeAt: '@P44:fake', items: [0, 1, 2, 3].map(i => ({ label: 'EXPERT: REAL', at: `@P44:spot+${(i * 0.15).toFixed(2)}` })) }, { out: '@P45-0.2' });
+el('g44', 'gallery', R2(18) - 100, 30, '@P44-0.3', { w: 1400, h: 520, head: 'THE EXPERTS COULD NOT TELL', fakeAt: '@P44:fake', items: [0, 1, 2, 3].map(i => ({ label: 'EXPERT: REAL', at: `@P44:experts+${(i * 0.15).toFixed(2)}` })) }, { out: '@P45-0.2' });
 con('m44', 'mee', R2(18) + 760, 360, '@P44:watch-0.2', { w: 270, variant: 'pip', label: 'WATCH HIM PAINT ONE', flash: false, arrow: { at: '@P44:watch', to: [-250, -170] } }, { out: '@P45-0.2' });
 bt('@P44', 'graphic-hero', ['g44'], { move: 'whip', fill: 0.8, sy: 500, pose: 'chin' }); sf('@P44-0.3', 'swoosh_2', -11, 0.5);
 bt('@P44:fake', 'zoom-on-number', 'g44', { fill: 0.82, maxH: 640, sy: 500, pose: 'shock' }); for (let i = 0; i < 4; i++) sf(`@P44:fake+${(i * 0.12).toFixed(2)}`, 'rubber_stamp_2', -9, 0.5); sk('@P44:fake', 10);
@@ -1239,11 +1239,11 @@ bt('@P56', 'graphic-hero', ['nb56', 'h56'], { move: 'whip', fill: 0.86, sy: 500,
 bt('@P56:name', 'zoom-on-number', 'nb56.letters', { fill: 0.34, maxH: 460, sy: 480, pose: 'shock' }); sf('@P56:name', 'rubber_stamp_2', -5, 0.5); sk('@P56:name', 10);
 bt('@P56:said', 'graphic-hero', ['nb56'], { fill: 0.5, maxH: 800, sy: 470, pose: 'point' }); sf('@P56:said', 'ding_2', -9, 0.7);
 // P57 national archives test: paper and ink both modern
-el('d57', 'doc', R3(11) - 100, 40, '@P57-0.3', { title: 'NATIONAL ARCHIVES', sub: 'GERMANY · LAB TEST', w: 720, h: 820, skeleton: 2, band: 'navy', lines: [{ id: 'paper', t: 'PAPER: MODERN', at: '@P57:paper', tone: 'bad', mark: 'bad' }, { id: 'ink', t: 'INK: MODERN', at: '@P57:ink', tone: 'bad', mark: 'bad' }, { id: 'new', t: 'TOO NEW TO BE REAL', at: '@P57:new', tone: 'bad', big: true }] }, { out: '@P58-0.2' });
+el('d57', 'doc', R3(11) - 100, 40, '@P57-0.3', { title: 'NATIONAL ARCHIVES', sub: 'GERMANY · LAB TEST', w: 720, h: 700, skeleton: 2, band: 'navy', lines: [{ id: 'paper', t: 'PAPER: MODERN', at: '@P57:paper', tone: 'bad', mark: 'bad' }, { id: 'ink', t: 'INK: MODERN', at: '@P57:ink', tone: 'bad', mark: 'bad' }, { id: 'new', t: 'TOO NEW TO BE REAL', at: '@P57:new', tone: 'bad', big: true }] }, { out: '@P58-0.2' });
 bt('@P57', 'graphic-hero', ['d57'], { move: 'whip', fill: 0.4, maxH: 920, sy: 500, pose: 'point' }); sf('@P57-0.3', 'swoosh_2', -11, 0.5);
 bt('@P57:paper', 'zoom-on-number', 'd57.paper', { fill: 0.4, maxH: 300, sy: 480 }); sf('@P57:paper', 'typewriter_2', -11, 1.0);
 bt('@P57:ink', 'zoom-on-number', 'd57.ink', { fill: 0.4, maxH: 300, sy: 480, pose: 'chin' }); sf('@P57:ink', 'typewriter_2', -11, 1.0);
-bt('@P57:modern', 'graphic-hero', ['d57'], { fill: 0.4, maxH: 780, sy: 470, pose: 'shock' });
+bt('@P57:modern', 'graphic-hero', ['d57'], { fill: 0.4, maxH: 660, sy: 440, pose: 'shock' });
 bt('@P57:new', 'zoom-on-number', 'd57.new', { fill: 0.42, maxH: 300, sy: 480, pose: 'shock' }); sf('@P57:new', 'rubber_stamp_2', -5, 0.5);
 // P58 less than two weeks later: crude forgery
 el('c58', 'counter', R3(12) - 200, -100, '@P58:less-0.3', { label: 'AFTER THE BIG ANNOUNCEMENT', prefix: '< ', to: 2, suffix: ' WEEKS', at: '@P58:two', dur: 0.6, tone: 'bad', size: 170, w: 1000 }, { out: '@P59-0.2' });
@@ -1428,7 +1428,7 @@ bt('@P83:check', 'graphic-hero', 'h83', { fill: 0.9, maxH: 300, sy: 470, pose: '
 el('cl84', 'checklist', R5(2), 20, '@P84-0.3', { title: 'THE 3 CHECKS ANYONE CAN DO', lockOpen: '@P86>', rows: [{ show: '@P84:one', t: 'READ THE BORING DETAILS', size: 44 }, { show: '@P85:two', t: 'ASK WHERE IT CAME FROM', size: 44 }, { show: '@P86:three', t: 'CHECK IT BEFORE YOU PAY', size: 44 }] }, { out: '@P87-0.2' });
 const chip = (id, p, inn, text, tone, out) => el(id, 'badge', R5(2) + p, 450, inn, { text, tone, size: 32, tcol: 'paper' }, { out });
 chip('c841', -420, '@P84:date-0.1', 'THE DATE', 'navy', '@P85-0.2'); chip('c842', 0, '@P84:spelling-0.1', 'THE SPELLING', 'navy', '@P85-0.2'); chip('c843', 440, '@P84:name-0.1', 'THE NAME ON THE FRONT', 'navy', '@P85-0.2');
-chip('c851', -300, '@P85:secret-0.1', 'A SECRET SELLER', 'bad', '@P86-0.2'); chip('c852', 220, '@P85:lost-0.1', 'A LOST TREASURE THAT JUST SHOWED UP', 'bad', '@P86-0.2');
+chip('c851', -540, '@P85:secret-0.1', 'A SECRET SELLER', 'bad', '@P86-0.2'); chip('c852', 160, '@P85:lost-0.1', 'A LOST TREASURE THAT JUST SHOWED UP', 'bad', '@P86-0.2');
 chip('c861', -300, '@P86:paid-0.1', 'THE MAGAZINE PAID FIRST', 'bad', '@P87-0.2'); chip('c862', 240, '@P86:tested-0.1', 'AND TESTED LATER', 'bad', '@P87-0.2');
 bt('@P84', 'graphic-hero', 'cl84', { move: 'whip', fill: 0.62, maxH: 800, sy: 480, pose: 'point' }); sf('@P84-0.3', 'paper_slam_2', -10, 0.5); sf('@P84-0.3', 'swoosh_2', -11, 0.5);
 bt('@P84:one', 'graphic-hero', ['cl84'], { fill: 0.5, maxH: 780, sy: 500 }); sf('@P84:one', 'pop_2', -9, 0.3);

@@ -55,7 +55,7 @@ bt('@P15:finds', 'graphic-hero', ['n15', 'cal15'], { fill: 0.9, sy: 480, pose: '
 // P16 the reveal: it was in his apartment
 el('ap16', 'photo', R1(8) - 340, 40, '@P16-0.3', { src: MONA, name: 'THE MONA LISA', role: 'IN HIS SMALL PARIS APARTMENT', credit: 'PUBLIC-DOMAIN REPRODUCTION', treatment: 'paper', fx: 0.5, fy: 0.3, w: 520, aspect: 1.3, tilt: -0.03 }, { out: '@P17-0.2' });
 con('p16', 'per', R1(8) + 460, 60, '@P16:peruggia\'s-0.2', { w: 400, variant: 'card', flash: false, ring: '@P16:apartment', push: { at: '@P16:peruggia\'s', to: 1.2, dur: 3 } }, { out: '@P17-0.2' });
-bt('@P16', 'graphic-hero', ['ap16'], { move: 'whip', fill: 0.34, maxH: 900, sy: 500, pose: 'shock' }); sf('@P16-0.3', 'swoosh_2', -11, 0.5); sf('@P16:most', 'heartbeat_1', -10, 2.5);
+bt('@P16', 'graphic-hero', ['ap16'], { move: 'whip', fill: 0.34, maxH: 780, sy: 450, pose: 'shock' }); sf('@P16-0.3', 'swoosh_2', -11, 0.5); sf('@P16:most', 'heartbeat_1', -10, 2.5);
 bt('@P16:peruggia\'s', 'graphic-hero', ['ap16', 'p16'], { fill: 0.82, sy: 500, pose: 'point' }); sf('@P16:peruggia\'s', 'camera_flash_1', -10, 0.6);
 bt('@P16:apartment', 'zoom-on-number', 'p16', { fill: 0.3, maxH: 760, sy: 520, pose: 'shock' }); sf('@P16:apartment', 'rubber_stamp_2', -5, 0.5);
 // P17 the catch: he catches himself
@@ -67,9 +67,9 @@ bt('@P17:catches', 'zoom-on-number', 'h17', { fill: 0.4, maxH: 520, sy: 380, pos
 // P18 letter to the Florence dealer Alfredo Geri
 el('dc18', 'datecard', R1(10) - 700, -330, '@P18-0.2', { big: '1913', small: 'FLORENCE, ITALY' }, { out: '@P19-0.2' });
 el('m18', 'memo', R1(10) + 100, 20, '@P18-0.3', { w: 700, h: 820, to: 'ALFREDO GERI · ART DEALER', date: '1913', title: ['THE MONA LISA', 'IS FOR SALE'], titleAt: '@P18:letter' }, { out: '@P19-0.2' });
-bt('@P18', 'graphic-hero', ['dc18', 'm18'], { move: 'whip', fill: 0.6, sy: 500, pose: 'point' }); sf('@P18-0.3', 'swoosh_2', -11, 0.5); sf('@P18:letter', 'pen_scratch_1', -10, 1.5);
-bt('@P18:letter', 'zoom-on-number', 'm18.title', { fill: 0.4, maxH: 520, sy: 500 }); sf('@P18:letter', 'paper_slam_2', -10, 0.5);
-bt('@P18:dealer', 'graphic-hero', ['dc18', 'm18'], { fill: 0.7, sy: 500, pose: 'chin' });
+bt('@P18', 'graphic-hero', ['dc18', 'm18'], { move: 'whip', fill: 0.6, maxH: 760, sy: 450, pose: 'point' }); sf('@P18-0.3', 'swoosh_2', -11, 0.5); sf('@P18:letter', 'pen_scratch_1', -10, 1.5);
+bt('@P18:letter', 'zoom-on-number', 'm18', { fill: 0.4, maxH: 740, sy: 450 }); sf('@P18:letter', 'paper_slam_2', -10, 0.5);
+bt('@P18:dealer', 'graphic-hero', ['dc18', 'm18'], { fill: 0.7, maxH: 760, sy: 450, pose: 'chin' });
 bt('@P18:geri', 'zoom-on-number', 'm18', { fill: 0.4, maxH: 800, sy: 500, pose: 'point' });
 // P19 500,000 lire; the painting should go home to Italy
 con('p19', 'per', R1(11) - 560, 80, '@P19-0.3', { w: 330, variant: 'card', flash: false, credit: '' }, { out: '@P20-0.2' });

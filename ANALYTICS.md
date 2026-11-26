@@ -44,3 +44,5 @@ First Bad Math posts go out tonight (YouTube FTX 20:00 ET, lottery 22:00 ET; Tik
 - Still best: IG "Two buttons" 1,252 impressions / 18 s avg; IG salad oil 27.6% skip, 20 s avg; TikTok coffee 287 views + 11 likes; TikTok FTX 268 / 10 likes.
 - Worst: McDonald's IG 68% skip (4.3 s avg); TikTok McDonald's/parlay/overdraft ~0 impressions (TikTok didn't push them).
 - Read: longer story-led cuts hold; short fact-dump cuts die in 3 s. Next check-up will show the first rebuilt crime-show Shorts.
+
+- 2026-11-26 15:38 UTC comment sweep: no new/unread comments.

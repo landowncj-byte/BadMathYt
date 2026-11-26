@@ -8,8 +8,8 @@ bt('@P01:famous#2', 'graphic-hero', ['k0', 'w0'], { fill: 0.84, sy: 480, pose: '
 bt('@P01:under', 'zoom-on-number', 'w0', { fill: 0.42, maxH: 780, sy: 500, pose: 'shock' }); sf('@P01:under', 'door_bang_1', -9, 0.8); sk('@P01:under', 10);
 // P02: the forger + 1.65 million guilders sold to a Nazi leader (text card only)
 con('k1', 'mee', R0(1) - 660, 60, '@P02-0.3', { w: 420, variant: 'card', file: true, caseNo: 'CASE Nº 2', stamps: [{ text: 'FAKE', at: '@P02:fake', tone: 'bad', size: 70, rot: -0.1, y: 30 }] }, { out: '@P03-0.2' });
-el('g2', 'card', R0(1) + 250, -200, '@P02:nazi-0.5', { w: 640, h: 280, lines: [{ t: 'THE BUYER', size: 24, gap: 54, font: 'mono', tone: 'inkSoft', at: '@P02:nazi-0.4' }, { t: 'HERMANN GOERING', size: 58, font: 'hero', at: '@P02:nazi-0.3' }, { t: 'A NAZI LEADER', size: 40, tone: 'bad', at: '@P02:nazi' }], pad: 56 }, { out: '@P03-0.2' });
-el('c2', 'counter', R0(1) + 250, 150, '@P02:for-0.2', { label: 'PRICE IN GUILDERS (DUTCH MONEY)', to: 1.65, decimals: 2, suffix: ' MILLION', at: '@P02:1', dur: 1.2, tone: 'bad', size: 110, w: 900 }, { out: '@P03-0.2' });
+el('g2', 'card', R0(1) + 250, -200, '@P02:painter+0.4', { w: 640, h: 280, lines: [{ t: 'THE BUYER', size: 24, gap: 54, font: 'mono', tone: 'inkSoft', at: '@P02:nazi-0.4' }, { t: 'HERMANN GOERING', size: 58, font: 'hero', at: '@P02:nazi-0.3' }, { t: 'A NAZI LEADER', size: 40, tone: 'bad', at: '@P02:nazi' }], pad: 56 }, { out: '@P03-0.2' });
+el('c2', 'counter', R0(1) + 250, 150, '@P02:sold-0.2', { label: 'PRICE IN GUILDERS (DUTCH MONEY)', to: 1.65, decimals: 2, suffix: ' MILLION', at: '@P02:1', dur: 1.2, tone: 'bad', size: 110, w: 900 }, { out: '@P03-0.2' });
 bt('@P02', 'graphic-hero', ['k1', 'g2', 'c2'], { move: 'whip', fill: 0.86, sy: 500, pose: 'point' }); sf('@P02-0.3', 'swoosh_2', -11, 0.5);
 bt('@P02:fake', 'zoom-on-number', 'k1', { fill: 0.3, maxH: 760, sy: 520, pose: 'shock' }); sf('@P02:fake', 'rubber_stamp_2', -5, 0.5);
 bt('@P02:nazi', 'graphic-hero', ['g2', 'c2'], { fill: 0.5, sy: 500, pose: 'chin' });

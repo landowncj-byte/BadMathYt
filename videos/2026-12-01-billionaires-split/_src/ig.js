@@ -49,7 +49,7 @@ const S = BQ.make({
   cta: { like: 22.26, send: 39.98, follow: 56.3, followOut: 58.1, bubble: { at: 71.5, l1: 'WOULD YOUR CUT', l2: 'CHANGE YOUR YEAR?' } },
   poses: [[22.3, 'you'], [40.0, 'you']],
   shakes: [[0.1, 8], [34.08, 10], [42.6, 10], [63.4, 10]],
-  captions: { gap: 16, emph: { '$20': 'good', '.1': 'good', 'trillion.': 'good', 'check.': 'good', '$2': 'good', ',450.': 'good', 'once.': 'bad', 'sandwich': 'accent', 'day.': 'accent', '$488': 'good', 'billion': 'good' }, fix: [] },
+  captions: { gap: 16, emph: { '$20': 'good', '.1': 'good', 'trillion.': 'good', 'check.': 'good', '$2': 'good', ',450.': 'good', 'once.': 'bad', 'sandwich': 'accent', 'day.': 'accent', '$488': 'good', 'billion': 'good' }, fix: [["it's 672 a", "it's $6.72 a"]] },
   sfx2: [
     { at: 0.04, name: 'deep_boom_2', gain: -4, dur: 0.36 }, { at: 22.26, name: 'pop_2', gain: -9, dur: 0.3 }, { at: 39.93, name: 'swoosh_1', gain: -9, dur: 0.9 },
     { at: 56.35, name: 'pop_1', gain: -9, dur: 0.5 }, { at: 57.1, name: 'click_1', gain: -8, dur: 0.3 }, { at: 57.2, name: 'success_chime_1', gain: -12, dur: 1.2 }, { at: 71.5, name: 'pop_1', gain: -9, dur: 0.5 },

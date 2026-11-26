@@ -41,7 +41,7 @@ const S = BQ.make({
   hideCounter: [[66.5, 99]],
   labels: [[0, 'THE PILE'], [5.5, 'THE LIST'], [12.6, 'THE ASSUMPTION'], [22.5, 'THE SPLIT'], [30.7, 'YOUR CHECK'], [37.6, 'THE REALITY'], [40.2, 'PER DAY'], [45.4, 'THE TWIST'], [56.6, 'THE AVERAGE']],
   notes: [],
-  you: [{ at: 0, mood: 'wow', text: 'YOU: IN LINE' }, { at: 4.1, mood: 'worried', text: 'THAT’S YOUR CUT', held: 'check' }, { at: 9.3, mood: 'neutral', text: '$20.1 TRILLION' }, { at: 12.6, mood: 'worried', text: 'ALL CASH?' }, { at: 22.6, mood: 'neutral', text: 'ONE OF 8.2B' }, { at: 28.5, mood: 'happy', text: 'SAME CHECK', held: 'check' },
+  you: [{ at: 0, mood: 'wow', text: 'YOU: IN LINE' }, { at: 4.1, mood: 'worried', text: 'YOUR CUT', held: 'check' }, { at: 9.3, mood: 'neutral', text: '$20.1 TRILLION' }, { at: 12.6, mood: 'worried', text: 'ALL CASH?' }, { at: 22.6, mood: 'neutral', text: 'ONE OF 8.2B' }, { at: 28.5, mood: 'happy', text: 'SAME CHECK', held: 'check' },
     { at: 32.0, mood: 'wow', text: '$2,451', held: 'check' }, { at: 34.3, mood: 'worried', text: 'THAT’S IT?', held: 'check' }, { at: 39.4, mood: 'angry', text: 'NOT A MILLION', held: 'check' }, { at: 41.0, mood: 'neutral', text: '$6.72 A DAY', held: 'check' }, { at: 44.2, mood: 'happy', text: 'A SANDWICH', held: 'sandwich' },
     { at: 46.6, mood: 'wow', text: 'LIST GREW $4T' }, { at: 51.64, mood: 'happy', text: '$488 EACH', held: 'check' }, { at: 57.0, mood: 'neutral', text: 'THE AVERAGE' }, { at: 61.2, mood: 'wow', text: '2.4M CHECKS' }, { at: 65.3, mood: 'smirk', text: '8.2B SLICES' }, { at: 66.6, mood: 'neutral', text: 'YOUR YEAR?', held: 'check' }],
   cta: { like: 20.24, send: 37.7, follow: 54.45, followOut: 56.2, bubble: { at: 66.7, l1: 'WOULD YOUR SPLIT', l2: 'CHANGE YOUR YEAR?' } },

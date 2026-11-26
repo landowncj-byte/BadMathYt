@@ -32,9 +32,9 @@
     enter(g, t, S.at ?? 0, 0, 0, 0);
     if (S.pileAt == null || t >= S.pileAt) {
       const sl = S.sliceAt != null ? t - S.sliceAt : -1, fly = sl > 0 ? (i, hx, hy) => { const q = clamp((sl - i * 0.05) / 0.7), e = ease.in(q), tx = 120 + (i * 61) % 800, ty = 1030; return { x: lerp(hx, tx, e), y: lerp(hy, ty, e), k: lerp(1, 0.18, e), a: 1 - clamp((q - 0.85) / 0.15) }; } : null;
-      pile(g, 540, 930, 1.12, null, fly);
-      if (sl > 0) { for (let r = 1; r < 5; r++) { const u = clamp((sl + 0.2) / 0.3); g.strokeStyle = 'rgba(224,40,30,' + (1 - clamp((sl - 0.5) / 0.4)) * u + ')'; g.lineWidth = 4; g.setLineDash([12, 8]); g.beginPath(); g.moveTo(240, 930 - r * 56); g.lineTo(240 + 600 * u, 930 - r * 56); g.stroke(); g.setLineDash([]); } }
-      const la = t - (S.labelAt ?? S.at ?? 0); if (la > 0 && !(S.labelOut != null && t > S.labelOut)) { const k = pk(t, S.labelAt ?? S.at ?? 0); g.save(); g.translate(540, 624); g.scale(0.85 + 0.15 * k, 0.85 + 0.15 * k); g.globalAlpha *= clamp(la / 0.08); stk(g, '$20.1 TRILLION', 0, 0, F.hero(fit('$20.1 TRILLION', F.hero, 780, 92)), th.good, 'center', 12); g.restore(); }
+      pile(g, 540, 935, 1.04, null, fly);
+      if (sl > 0) { for (let r = 1; r < 5; r++) { const u = clamp((sl + 0.2) / 0.3); g.strokeStyle = 'rgba(224,40,30,' + (1 - clamp((sl - 0.5) / 0.4)) * u + ')'; g.lineWidth = 4; g.setLineDash([12, 8]); g.beginPath(); g.moveTo(260, 935 - r * 52); g.lineTo(260 + 560 * u, 935 - r * 52); g.stroke(); g.setLineDash([]); } }
+      const la = t - (S.labelAt ?? S.at ?? 0); if (la > 0 && !(S.labelOut != null && t > S.labelOut)) { const k = pk(t, S.labelAt ?? S.at ?? 0); g.save(); g.translate(540, 612); g.scale(0.85 + 0.15 * k, 0.85 + 0.15 * k); g.globalAlpha *= clamp(la / 0.08); stk(g, '$20.1 TRILLION', 0, 0, F.hero(fit('$20.1 TRILLION', F.hero, 780, 92)), th.good, 'center', 12); g.restore(); }
       const pa = t - (S.plateAt ?? 9999); if (pa > 0 && !(S.labelOut != null && t > S.labelOut)) { const k = pk(t, S.plateAt); g.save(); g.translate(540, 984); g.scale(0.85 + 0.15 * k, 0.85 + 0.15 * k); g.globalAlpha *= clamp(pa / 0.08); clay(g, -250, -26, 500, 52, 12, th.navy, { shadowK: 0.5 }); txt(g, '3,428 BILLIONAIRES', 0, 2, F.hero(36), th.gold); g.restore(); }
     }
     const ca = t - (S.crowdAt ?? 9999); if (ca > 0) { for (const [x, y, i] of crowd) { const q = clamp((ca - i * 0.012) / 0.2); if (q <= 0) continue; g.save(); g.globalAlpha *= q; person(g, x, y + 20, 1.05, i); g.restore(); } sub(g, '8.2 BILLION PEOPLE · DRAWN SMALL', 540, 1066, th.paper, 18); }
