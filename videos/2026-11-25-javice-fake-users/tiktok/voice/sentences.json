@@ -1,37 +1,107 @@
 [
  {
-  "text": "Imagine faking four million customers to sell your startup to JPMorgan.",
+  "text": "A professor got paid to invent four million fake people.",
   "start": 0.0,
-  "end": 4.058
+  "end": 3.76
  },
  {
-  "text": "The founder of Frank did. Claimed users: four point two five million. The SEC says fewer than three hundred thousand were real.",
-  "start": 4.358,
-  "end": 10.884
+  "text": "And JPMorgan paid one hundred seventy-five million dollars for them.",
+  "start": 4.24,
+  "end": 8.0
  },
  {
-  "text": "When the bank asked for the list, prosecutors say she had a professor generate fake ones.",
-  "start": 11.234,
-  "end": 15.432
+  "text": "How? Let's go back. Charlie Javice ran Frank, a website helping students apply for college financial aid.",
+  "start": 8.38,
+  "end": 15.06
  },
  {
-  "text": "JPMorgan paid a hundred seventy-five million dollars.",
-  "start": 15.732,
-  "end": 18.863
+  "text": "She told banks it had four and a quarter million users.",
+  "start": 15.56,
+  "end": 18.5
  },
  {
-  "text": "Guilty on all four counts. Eighty-five months.",
-  "start": 19.213,
-  "end": 21.755
+  "text": "The SEC says it had fewer than three hundred thousand.",
+  "start": 19.06,
+  "end": 20.9
  },
  {
-  "text": "Real question. How does a bank that big not catch it? Comment.",
-  "start": 22.155,
-  "end": 25.271
+  "text": "That's like saying fourteen people came to your party when only one showed up.",
+  "start": 22.38,
+  "end": 26.18
  },
  {
-  "text": "Follow for the next one.",
-  "start": 25.571,
-  "end": 26.994
+  "text": "Tap the heart if you'd have bought it.",
+  "start": 26.66,
+  "end": 28.02
+ },
+ {
+  "text": "But JPMorgan wasn't dumb. Before buying, it asked for the customer list.",
+  "start": 28.34,
+  "end": 32.44
+ },
+ {
+  "text": "So now she needs four million people who don't exist.",
+  "start": 32.9,
+  "end": 35.82
+ },
+ {
+  "text": "The SEC says she asked her own engineer to fake the data first. But he refused.",
+  "start": 36.4,
+  "end": 40.92
+ },
+ {
+  "text": "Then she and a coworker hired a data science professor to generate them.",
+  "start": 41.58,
+  "end": 45.2
+ },
+ {
+  "text": "Over four million fake customers, for about eighteen thousand dollars, according to the bank's lawsuit.",
+  "start": 45.6,
+  "end": 50.7
+ },
+ {
+  "text": "Send this to the friend who fakes their follower count.",
+  "start": 51.26,
+  "end": 53.32
+ },
+ {
+  "text": "The deal closed in twenty twenty-one. Then the bank tried to reach its new customers.",
+  "start": 53.74,
+  "end": 57.94
+ },
+ {
+  "text": "And the list? It fell apart.",
+  "start": 58.42,
+  "end": 60.0
+ },
+ {
+  "text": "So the bank sued, and then prosecutors charged her. Follow, 'cause the ending's brutal.",
+  "start": 60.5,
+  "end": 65.56
+ },
+ {
+  "text": "A jury convicted her on all four counts.",
+  "start": 66.14,
+  "end": 68.54
+ },
+ {
+  "text": "She got eighty-five months in prison, over seven years.",
+  "start": 69.0,
+  "end": 71.94
+ },
+ {
+  "text": "She was also ordered to pay back two hundred eighty-seven and a half million dollars.",
+  "start": 72.46,
+  "end": 76.16
+ },
+ {
+  "text": "And her coworker who helped? He got sixty-eight months.",
+  "start": 76.88,
+  "end": 79.76
+ },
+ {
+  "text": "Would you have caught it? Yes or no.",
+  "start": 80.32,
+  "end": 82.1
  }
 ]

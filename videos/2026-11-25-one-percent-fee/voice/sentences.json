@@ -1,62 +1,87 @@
 [
  {
-  "text": "A one percent fee can take more than you ever put in.",
+  "text": "A one percent fee can cost you over three hundred thousand dollars.",
   "start": 0.0,
-  "end": 2.671
+  "end": 2.0
  },
  {
-  "text": "It's legal. It's disclosed. And you'd never feel it. So how?",
-  "start": 3.571,
-  "end": 6.587
+  "text": "Here's the setup. You put five hundred dollars a month into an investment for forty years.",
+  "start": 4.28,
+  "end": 8.9
  },
  {
-  "text": "Two funds. Same\u2014 literally the same investments. One charges one percent more a year.",
-  "start": 6.837,
-  "end": 11.448
+  "text": "That's two hundred forty thousand dollars of your own money.",
+  "start": 9.26,
+  "end": 12.22
  },
  {
-  "text": "Hit like if that sounds like nothing. It's supposed to.",
-  "start": 11.698,
-  "end": 14.243
+  "text": "Let's say it grows seven percent a year. That's just an assumption, not a promise.",
+  "start": 12.68,
+  "end": 16.58
  },
  {
-  "text": "Five hundred a month, forty years. Say both earn seven percent, that's an assumption.",
-  "start": 14.543,
-  "end": 18.802
+  "text": "Now picture two identical funds, but one charges a one percent fee every year.",
+  "start": 17.26,
+  "end": 22.3
  },
  {
-  "text": "Ten years in, the gap's forty-six hundred bucks. Whatever, right?",
-  "start": 19.102,
-  "end": 22.508
+  "text": "Hit like if one percent sounds like nothing.",
+  "start": 22.72,
+  "end": 24.72
+ },
+ {
+  "text": "A fee is what the fund keeps for managing your money. One percent sounds tiny, right?",
+  "start": 25.3,
+  "end": 29.82
+ },
+ {
+  "text": "After ten years, the gap is only about forty-six hundred dollars.",
+  "start": 30.4,
+  "end": 32.52
+ },
+ {
+  "text": "But here's the thing. The fee doesn't take one percent of what you add.",
+  "start": 34.12,
+  "end": 37.56
+ },
+ {
+  "text": "It takes one percent of everything, every year, growth included.",
+  "start": 37.92,
+  "end": 41.9
  },
  {
   "text": "Send this to the friend who's never checked their fees.",
-  "start": 23.358,
-  "end": 25.828
+  "start": 42.52,
+  "end": 44.68
  },
  {
-  "text": "Year twenty? Twenty-nine grand. Okay, that's a car. Year thirty? A hundred seven grand.",
-  "start": 26.128,
-  "end": 30.359
+  "text": "At forty years, the no-fee fund has about one point three million dollars.",
+  "start": 45.32,
+  "end": 48.94
  },
  {
-  "text": "Year forty's next. Follow, 'cause this page catches the quiet ones.",
-  "start": 30.659,
-  "end": 34.227
+  "text": "The one percent fund? About nine hundred ninety-six thousand.",
+  "start": 49.78,
+  "end": 51.42
  },
  {
-  "text": "That one percent cost you three hundred sixteen grand.",
-  "start": 35.277,
-  "end": 37.919
+  "text": "Follow if you like knowing the math before the fine print.",
+  "start": 53.58,
+  "end": 56.12
  },
  {
-  "text": "You only put in two forty. The fee beat you.",
-  "start": 38.219,
-  "end": 42.373
+  "text": "That tiny fee cost you three hundred sixteen thousand dollars.",
+  "start": 56.52,
+  "end": 58.22
  },
  {
-  "text": "So\u2026 still call one percent small?",
-  "start": 42.673,
-  "end": 44.631
+  "text": "That's more than all the money you ever put in.",
+  "start": 60.78,
+  "end": 63.04
+ },
+ {
+  "text": "Is one percent still small? Yes or no.",
+  "start": 63.5,
+  "end": 65.9
  }
 ]

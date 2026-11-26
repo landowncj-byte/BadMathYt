@@ -1,3 +1,138 @@
+// ===== What If recurring cast (CRIME-SHOW pass, RULES 112) — registered via BM2.register; prepended to each cut's scene.js =====
+// char      : cartoon bust. who = 'you' (orange hoodie player) | 'host' (tux + red bow tie game-show host) | 'stranger' (top hat + monocle rich weirdo)
+//             moods: [{t, m, look:[dx,dy]}]  mood = neutral smug think shock worried grin greed wrong
+//             tag: small name plate shown for tagDur seconds after entering.  s: scale.  Same design every appearance.
+// beatlabel : small pinned mono pill in the HUD row (THE BET · THE TWIST · THE ANSWER), items: [{t, text}]
+// window.BMCHAR(g, th, who, mood, tt, o): draw a bust inside other recipes (origin = bottom centre of the torso, figure grows up, ~270 px tall)
+(function () {
+  const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, clay, burst, shade, mix } = B;
+  const INK = '#0B0F14';
+  const MOODS = {
+    neutral: { bl: 0, br: 0, ti: 0, mouth: 'smile', eyes: 'norm' },
+    smug: { bl: -4, br: 6, ti: -0.12, mouth: 'smirk', eyes: 'half' },
+    think: { bl: 8, br: -2, ti: 0.1, mouth: 'flat', eyes: 'norm', look: [-1, -1] },
+    shock: { bl: 14, br: 14, ti: 0, mouth: 'o', eyes: 'wide' },
+    worried: { bl: 10, br: 10, ti: 0.28, mouth: 'wobble', eyes: 'norm', sweat: true },
+    grin: { bl: 4, br: 4, ti: 0, mouth: 'grin', eyes: 'norm', blush: true },
+    greed: { bl: 6, br: 6, ti: 0, mouth: 'grin', eyes: 'dollar' },
+    wrong: { bl: -6, br: -6, ti: -0.25, mouth: 'frown', eyes: 'squint', sweat: true },
+  };
+  const LOOK = { 'you': { skin: '#F1C29A', skinS: '#D9A47C' }, 'host': { skin: '#D8A27C', skinS: '#BE8A64' }, 'stranger': { skin: '#F2D6BE', skinS: '#D9B99F' } };
+  const NAMES = { you: ['YOU', 'THE PLAYER'], host: ['THE HOST', 'KNOWS WHERE THE MONEY IS'], stranger: ['THE STRANGER', 'RICH · FREE CASH'] };
+
+  function face(g, who, m, tt, look) {
+    const L = LOOK[who], cy = -190, R = 66;
+    // head
+    g.save(); g.fillStyle = L.skin; g.strokeStyle = INK; g.lineWidth = 5;
+    g.beginPath(); g.ellipse(0, cy, R * 0.94, R, 0, 0, 7); g.fill(); g.stroke();
+    g.fillStyle = rgba(L.skinS, 0.55); g.beginPath(); g.ellipse(0, cy + R * 0.78, R * 0.6, R * 0.22, 0, 0, 7); g.fill();
+    for (const s of [-1, 1]) { g.fillStyle = L.skin; g.beginPath(); g.ellipse(s * R * 0.94, cy + 4, 11, 16, 0, 0, 7); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  function hairBack(g, who) {
+    g.save(); g.fillStyle = who === 'you' ? '#5A3A22' : INK; g.strokeStyle = INK; g.lineWidth = 5;
+    if (who === 'you') { // hood bunched behind the head
+      g.fillStyle = '#C9511F'; g.beginPath(); g.ellipse(0, -128, 96, 40, 0, 0, 7); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  function hairFront(g, who) {
+    const cy = -190; g.save(); g.strokeStyle = INK; g.lineWidth = 5; g.lineJoin = 'round';
+    if (who === 'you') { g.fillStyle = '#5A3A22'; g.beginPath(); g.moveTo(-64, cy - 8); g.lineTo(-70, cy - 40); g.lineTo(-48, cy - 36); g.lineTo(-52, cy - 76); g.lineTo(-26, cy - 58); g.lineTo(-16, cy - 92); g.lineTo(6, cy - 66); g.lineTo(26, cy - 94); g.lineTo(38, cy - 60); g.lineTo(62, cy - 70); g.lineTo(58, cy - 36); g.lineTo(70, cy - 30); g.lineTo(62, cy - 8); g.quadraticCurveTo(44, cy - 58, 0, cy - 56); g.quadraticCurveTo(-44, cy - 58, -64, cy - 8); g.closePath(); g.fill(); g.stroke(); }
+    else if (who === 'host') { g.fillStyle = '#16181F'; g.beginPath(); g.moveTo(-64, cy - 6); g.quadraticCurveTo(-76, cy - 70, -10, cy - 76); g.quadraticCurveTo(60, cy - 84, 66, cy - 8); g.quadraticCurveTo(50, cy - 58, 14, cy - 62); g.quadraticCurveTo(-30, cy - 56, -64, cy - 6); g.closePath(); g.fill(); g.stroke();
+      g.strokeStyle = 'rgba(255,255,255,.5)'; g.lineWidth = 4; g.beginPath(); g.moveTo(-34, cy - 62); g.quadraticCurveTo(0, cy - 74, 34, cy - 62); g.stroke(); }
+    else { // top hat
+      g.fillStyle = '#14171E'; g.beginPath(); g.ellipse(0, cy - 52, 96, 20, 0, 0, 7); g.fill(); g.stroke(); rr(g, -58, cy - 160, 116, 112, 10); g.fill(); g.stroke();
+      g.fillStyle = '#F2B705'; g.fillRect(-57, cy - 82, 114, 22); g.strokeRect(-57, cy - 82, 114, 22);
+      g.fillStyle = '#14171E'; g.beginPath(); g.ellipse(0, cy - 52, 96, 20, 0, 0, Math.PI); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  function body(g, who, arms) {
+    const col = who === 'you' ? '#F26B3A' : who === 'host' ? '#1E2638' : '#33333D';
+    g.save();
+    // arms (behind torso edges)
+    const armCol = shade(col, -0.1);
+    if (arms === 'spread') for (const s of [-1, 1]) { g.save(); g.translate(s * 92, -92); g.rotate(-s * 1.05); clay(g, -20, -10, 40, 150, 20, armCol, { shadowK: 0.4 }); g.fillStyle = LOOK[who].skin; g.strokeStyle = INK; g.lineWidth = 4; g.beginPath(); g.arc(0, 150, 26, 0, 7); g.fill(); g.stroke(); g.restore(); }
+    clay(g, -100, -126, 200, 128, 40, col, { shadowK: 0.6 });
+    g.fillStyle = LOOK[who].skin; g.strokeStyle = INK; g.lineWidth = 4; g.beginPath(); g.moveTo(-30, -130); g.lineTo(30, -130); g.lineTo(18, -112); g.lineTo(-18, -112); g.closePath(); g.fill();
+    if (who === 'you') { // hoodie: neckline, drawstrings, pocket
+      g.fillStyle = '#C9511F'; g.beginPath(); g.moveTo(-46, -128); g.quadraticCurveTo(0, -92, 46, -128); g.lineTo(34, -122); g.quadraticCurveTo(0, -108, -34, -122); g.fill();
+      g.strokeStyle = '#F5F3EE'; g.lineWidth = 5; g.lineCap = 'round'; g.beginPath(); g.moveTo(-14, -104); g.lineTo(-16, -66); g.moveTo(14, -104); g.lineTo(16, -62); g.stroke();
+      g.fillStyle = 'rgba(0,0,0,.14)'; rr(g, -52, -48, 104, 34, 12); g.fill(); }
+    else if (who === 'host') { // white shirt V, red bow tie, pocket square
+      g.fillStyle = '#F5F3EE'; g.beginPath(); g.moveTo(-38, -128); g.lineTo(38, -128); g.lineTo(0, -52); g.closePath(); g.fill();
+      g.fillStyle = '#E4572E'; g.beginPath(); g.moveTo(0, -112); g.lineTo(-34, -132); g.lineTo(-34, -98); g.closePath(); g.fill(); g.beginPath(); g.moveTo(0, -112); g.lineTo(34, -132); g.lineTo(34, -98); g.closePath(); g.fill(); g.beginPath(); g.arc(0, -114, 9, 0, 7); g.fill();
+      g.fillStyle = '#F2B705'; g.beginPath(); g.moveTo(54, -86); g.lineTo(76, -86); g.lineTo(76, -70); g.lineTo(54, -70); g.fill(); }
+    else { // cravat + gold buttons
+      g.fillStyle = '#F2B705'; g.beginPath(); g.moveTo(-22, -128); g.lineTo(22, -128); g.lineTo(14, -78); g.lineTo(-14, -78); g.closePath(); g.fill(); g.strokeStyle = INK; g.lineWidth = 3; g.stroke();
+      for (const y of [-56, -30]) { g.fillStyle = '#F2B705'; g.beginPath(); g.arc(0, y, 7, 0, 7); g.fill(); } }
+    g.restore();
+  }
+  function features(g, who, mood, tt, lookOv) {
+    const M = MOODS[mood] || MOODS.neutral, cy = -190, blink = (tt % 3.6) < 0.11 || (tt % 5.3) > 5.22;
+    const lk = lookOv || M.look || [0, 0];
+    g.save(); g.strokeStyle = INK; g.lineCap = 'round'; g.lineJoin = 'round';
+    for (const s of [-1, 1]) {
+      const ex = s * 25, ey = cy - 6; const er = M.eyes === 'wide' ? 19 : M.eyes === 'squint' ? 0 : 15;
+      if (M.eyes === 'dollar') { g.fillStyle = '#F5F3EE'; g.lineWidth = 4; g.beginPath(); g.arc(ex, ey, 19, 0, 7); g.fill(); g.stroke(); txt(g, '$', ex, ey + 2, F.hero(30), '#1FA366'); }
+      else if (blink || M.eyes === 'squint') { g.lineWidth = 5; g.beginPath(); g.moveTo(ex - 13, ey + (M.eyes === 'squint' ? -4 : 0)); g.lineTo(ex + 13, ey + (M.eyes === 'squint' ? 4 : 0) * s); g.stroke(); }
+      else { g.fillStyle = '#F5F3EE'; g.lineWidth = 4; g.beginPath(); g.ellipse(ex, ey, er, er * (M.eyes === 'half' ? 0.72 : 1.08), 0, 0, 7); g.fill(); g.stroke();
+        g.fillStyle = INK; g.beginPath(); g.arc(ex + lk[0] * 5, ey + lk[1] * 5 + (M.eyes === 'half' ? 3 : 0), M.eyes === 'wide' ? 5 : 7, 0, 7); g.fill();
+        if (M.eyes === 'half') { g.fillStyle = LOOK[who].skin; g.fillRect(ex - er - 2, ey - er * 1.1, er * 2 + 4, er * 0.55); g.lineWidth = 4; g.beginPath(); g.moveTo(ex - er, ey - er * 0.45); g.lineTo(ex + er, ey - er * 0.45); g.stroke(); } }
+    }
+    // tilted brows overlay (inner ends up when worried; down when smug/wrong)
+    g.lineWidth = 7; g.strokeStyle = who === 'you' ? '#5A3A22' : who === 'stranger' ? '#B9B9C2' : INK;
+    // (clear the straight brows by redrawing skin patch first would be heavy: instead brows above are short; tilt drawn here)
+    for (const s of [-1, 1]) { const ex = s * 25, ey = cy - 6, bk = (s < 0 ? M.bl : M.br), t = M.ti * s * -1; g.beginPath(); g.moveTo(ex - 15 * s, ey - 30 - bk * 0.5 + 15 * t * -1); g.lineTo(ex + 15 * s, ey - 30 - bk * 0.5 + 15 * t); g.stroke(); }
+    // mouth
+    g.lineWidth = 5; g.strokeStyle = INK; const my = cy + 34;
+    if (M.mouth === 'smile') { g.beginPath(); g.arc(0, my - 8, 20, 0.25, Math.PI - 0.25); g.stroke(); }
+    else if (M.mouth === 'grin') { g.fillStyle = '#7A1F1F'; g.beginPath(); g.moveTo(-28, my - 8); g.quadraticCurveTo(0, my + 36, 28, my - 8); g.closePath(); g.fill(); g.stroke(); g.fillStyle = '#F5F3EE'; g.beginPath(); g.moveTo(-22, my - 6); g.lineTo(22, my - 6); g.lineTo(18, my + 3); g.lineTo(-18, my + 3); g.closePath(); g.fill(); }
+    else if (M.mouth === 'smirk') { g.beginPath(); g.moveTo(-18, my); g.quadraticCurveTo(6, my + 10, 26, my - 12); g.stroke(); }
+    else if (M.mouth === 'o') { g.fillStyle = '#7A1F1F'; g.beginPath(); g.ellipse(0, my + 4, 12, 17, 0, 0, 7); g.fill(); g.stroke(); }
+    else if (M.mouth === 'flat') { g.beginPath(); g.moveTo(-14, my + 2); g.lineTo(14, my - 2); g.stroke(); }
+    else if (M.mouth === 'frown') { g.beginPath(); g.arc(0, my + 18, 20, Math.PI + 0.3, -0.3); g.stroke(); }
+    else if (M.mouth === 'wobble') { g.beginPath(); g.moveTo(-20, my + 8); g.quadraticCurveTo(-10, my - 4, 0, my + 8); g.quadraticCurveTo(10, my + 20, 20, my + 8); g.stroke(); }
+    if (M.blush) { g.fillStyle = 'rgba(230,90,90,.35)'; for (const s of [-1, 1]) { g.beginPath(); g.ellipse(s * 44, cy + 22, 13, 8, 0, 0, 7); g.fill(); } }
+    if (M.sweat) { const wob = (tt * 1.6) % 1; g.fillStyle = '#7FD6FF'; g.strokeStyle = INK; g.lineWidth = 3; g.save(); g.translate(62, cy - 36 + wob * 14); g.beginPath(); g.moveTo(0, -16); g.quadraticCurveTo(14, 4, 0, 12); g.quadraticCurveTo(-14, 4, 0, -16); g.fill(); g.stroke(); g.restore(); }
+    if (who === 'stranger') { g.strokeStyle = '#F2B705'; g.lineWidth = 5; g.beginPath(); g.arc(25, cy - 6, 24, 0, 7); g.stroke(); g.beginPath(); g.moveTo(25, cy + 18); g.quadraticCurveTo(34, cy + 60, 50, cy + 76); g.stroke();
+      g.fillStyle = '#E8E8EE'; g.strokeStyle = INK; g.lineWidth = 3; g.beginPath(); g.moveTo(0, cy + 22); g.quadraticCurveTo(-30, cy + 14, -42, cy + 28); g.quadraticCurveTo(-24, cy + 38, 0, cy + 30); g.quadraticCurveTo(24, cy + 38, 42, cy + 28); g.quadraticCurveTo(30, cy + 14, 0, cy + 22); g.fill(); g.stroke(); }
+    g.restore();
+  }
+  window.BMCHAR = function (g, th, who, mood, tt, o) {
+    o = o || {}; g.save();
+    if (o.s) g.scale(o.s, o.s);
+    const bob = Math.sin(tt * 2.6) * 2.5; g.translate(0, bob);
+    hairBack(g, who); body(g, who, o.arms); face(g, who, mood, tt, o.look); features(g, who, mood, tt, o.look); hairFront(g, who);
+    g.restore();
+  };
+  const moodAt = (K, t) => { let c = { m: 'neutral', t: -1 }; for (const k of K || []) if (t >= k.t && k.t >= c.t) c = k; return c; };
+
+  B.register('char', {
+    defaults: { who: 'you', moods: [], s: 1, tag: true, tagDur: 1.9, flip: false }, ownEnter: true, size: p => [250 * p.s, 290 * p.s],
+    anchors: () => ({ head: [0, -40, 170, 150], all: [0, 0, 250, 290] }),
+    draw(g, p, env) {
+      const { t, lt, theme } = env, k = Math.max(0, spring(lt, { f: 2.3, z: 0.5 })), mk = moodAt(p.moods, t), since = t - Math.max(0, mk.t);
+      const jump = mk.t >= 0 && since < 0.35 ? 1 + 0.07 * Math.sin(since / 0.35 * Math.PI) : 1;
+      g.save(); g.globalAlpha *= clamp(lt / 0.07); g.translate(0, 135 + 320 * (1 - Math.min(1.05, k)));
+      g.scale(p.s * jump, p.s * jump); if (p.flip) g.scale(-1, 1);
+      window.BMCHAR(g, theme, p.who, mk.m, t, { look: mk.look, arms: p.arms });
+      g.restore();
+      if (p.tag && lt < p.tagDur + 0.3) { const a = clamp(lt / 0.2) * (1 - clamp((lt - p.tagDur) / 0.3)), [n, sub] = NAMES[p.who];
+        g.save(); g.globalAlpha *= a; g.translate(0, -148 * p.s - 6 + (1 - ease.out(clamp(lt / 0.3))) * 14);         clay(g, -96, -22, 192, 44, 14, theme.paper, { shadowK: 0.5 }); txt(g, n, 0, 2, F.hero(28), theme.ink); g.restore(); }
+    },
+  });
+
+  B.register('beatlabel', {
+    defaults: { items: [] }, ownEnter: true, size: () => [320, 52],
+    draw(g, p, env) {
+      const { t, theme } = env; let cur = null, idx = -1; p.items.forEach((it, i) => { if (t >= it.t) { cur = it; idx = i; } }); if (!cur) return;
+      const s = t - cur.t, k = Math.max(0, spring(s, { f: 2.6, z: 0.45 })); const MC = document.createElement('canvas').getContext('2d'); MC.font = F.monoX(22); const w = MC.measureText(cur.text).width + 74, h = 44;
+      g.save(); g.translate(w / 2, (1 - Math.min(1, k)) * -24); g.globalAlpha *= clamp(s / 0.08);
+      clay(g, -w / 2, -h / 2, w, h, h / 2, INK, { shadowK: 0.5 }); g.strokeStyle = theme.gold; g.lineWidth = 3; rr(g, -w / 2, -h / 2, w, h, h / 2); g.stroke();
+      g.fillStyle = theme.gold; g.beginPath(); g.arc(-w / 2 + 24, 0, 7, 0, 7); g.fill(); txt(g, cur.text, 14, 2, F.monoX(22), theme.paper); g.restore();
+    },
+  });
+})();
 // ===== three-briefcases — shared custom recipes (registered via BM2.register; prepended to each cut's scene.js) =====
 // table3 (three clay briefcases + host hand + odds bars + 50/50 + STAY/SWITCH), fan100 (100-case payoff), mail (letter avalanche),
 // tally (bar race of simulated rounds "OUR MATH" / kitchen-table tally), assumes (pinned chip), chip, heart, plane.
@@ -438,14 +573,18 @@
 // TikTok cut — v3 re-edit (64 s). Stations (world x): 0 table3 (+ giant 50/50 hook) · 1750 calendar · 3500 100 cases · 5250 the three starts · 7000 column · 8750 letters
 const F0 = { x: 0, y: 40, w: 900, h: 1340 };      // frame 0 and the loop frame share this framing
 const ST = { sx: 560, sy: 930, maxH: 1000 };
-const ST0 = { x: 170, y: 1340, s: 1.15, layer: 'front' };   // storyteller stands between the two closed cases
+const ST0 = { x: 930, y: 1340, s: 1.15, layer: 'front' };   // storyteller stands between the two closed cases
 const H1 = { lines: [[['THE ', 'paper'], ['$1,000,000', 'good']], [['QUESTION', 'paper']]], size: 110 };
-const LOOP = '@So#3-0.45';
+const LOOP = '@So#4-0.45';
 const P = 'brand/photos/stock/briefcase-cash/7.jpg';
 BM2.scene({
-  series: 'whatif', title: 'THREE BRIEFCASES', duration: 64.23,
+  series: 'whatif', title: 'THREE BRIEFCASES', duration: 64.99,
   footnote: ['ASSUMES: 1 CASE HAS $1,000,000 (AT RANDOM) · HOST KNOWS WHERE', 'HE ALWAYS OPENS AN EMPTY CASE YOU DIDN\'T PICK + OFFERS THE SWAP', 'HYPOTHETICAL · NOT FINANCIAL ADVICE · NO REAL GAME SHOW', 'PHOTO: SEMTRIO · CC BY 2.0 · VIA FLICKR'],
   elements: [
+    { id: 'you1', type: 'char', layer: 'screen', at: [140, 1212], in: -1, props: { who: 'you', s: 0.82, moods: [{ t: 0, m: 'think' }, { t: '@wrong', m: 'shock' }, { t: '@three', m: 'think' }, { t: '@million#2', m: 'greed' }, { t: '@two', m: 'neutral' }, { t: '@that\'s', m: 'think' }, { t: '@27', m: 'shock' }, { t: '@pick', m: 'smug' }, { t: '@host', m: 'worried' }, { t: '@opens', m: 'shock' }, { t: '@wanna', m: 'think', look: [1, -1] }, { t: '@tap', m: 'smug' }, { t: '@nah', m: 'shock' }, { t: '@try', m: 'think' }, { t: '@98', m: 'shock' }, { t: '@skipped', m: 'worried' }, { t: '@99', m: 'shock' }, { t: '@send', m: 'smug' }, { t: '@three#2', m: 'think' }, { t: '@pick#4', m: 'worried' }, { t: '@wins', m: 'grin' }, { t: '@second', m: 'think' }, { t: '@same#2', m: 'grin' }, { t: '@staying', m: 'worried' }, { t: '@doubles', m: 'shock' }, { t: '@columnist', m: 'shock' }, { t: '@by', m: 'think' }, { t: '@wrong#2', m: 'wrong' }, { t: '@so#4', m: 'worried' }], tagDur: 2.2 } },
+    { id: 'host1', type: 'char', layer: 'screen', at: [540, 1212], in: '@then-0.1', out: '@tap-0.1', props: { who: 'host', s: 0.82, tag: true, moods: [{ t: 0, m: 'smug' }, { t: '@opens', m: 'grin' }, { t: '@asks', m: 'smug' }] } },
+    { id: 'host2', type: 'char', layer: 'screen', at: [540, 1212], in: '@he#2-0.3', out: '@your-0.1', props: { who: 'host', s: 0.82, tag: false, moods: [{ t: 0, m: 'smug' }, { t: '@98', m: 'grin' }] } },
+    { id: 'host3', type: 'char', layer: 'screen', at: [540, 1212], in: '@so#4-0.1', props: { who: 'host', s: 0.82, tag: false, moods: [{ t: 0, m: 'smug' }] } },
     { id: 'hook1', type: 'text', at: [0, -440], in: -1, out: '@Three-0.15', props: H1 },
     { id: 'ws', type: 'stamp', at: [0, 20], rot: -0.08, in: '@wrong', out: '@Three-0.15', props: { text: 'WRONG', tone: 'bad', size: 140 } },
     { id: 'endt', type: 'text', at: [0, -440], in: LOOP, props: H1 },
@@ -457,8 +596,8 @@ BM2.scene({
     { id: 'fan', type: 'fan100', at: [3500, 330], in: '@Nah-0.6', out: '@Three#2-0.1', props: { dealAt: '@try', pickAt: '@pick#2', waveAt: '@98', stampAt: '@99', awayAt: '@Send+1.3', pickIdx: 23, keepIdx: 67 } },
     { id: 'brd', type: 'board3', at: [5250, 330], in: '@Three#2-0.7', out: '@columnist-0.5', props: { boxAt: '@Three#2-0.1', rows: [['@pick#4-0.3', 1, 2, '@loses', 1.1], ['@pick#5-0.1', 0, 2, '@wins', 1.9], ['@second-0.2', 2, 0, '@deal', 1.0]], sumAt: '@Switching#3' } },
     { id: 'col', type: 'column', at: [7000, 330], in: '@columnist-0.7', out: '@By-0.2', props: { stampAt: '@1990', circleAt: '@printed' } },
-    { id: 'mail', type: 'mail', at: [8750, 330], in: '@By-0.6', out: '@So#3-0.1', props: { t0: '@By+0.1', t1: '@wrote', n: 64, countAt: '@nearly+0.2', stampAt: '@PhDs' } },
-    { id: 'live', type: 'live', layer: 'screen', at: [540, 342], in: -1, props: { end: '@So#3-0.3', n0: 14 } },
+    { id: 'mail', type: 'mail', at: [8750, 330], in: '@By-0.6', out: '@So#4-0.1', props: { t0: '@By+0.1', t1: '@wrote', n: 64, countAt: '@nearly+0.2', stampAt: '@PhDs' } },
+    { id: 'live', type: 'live', layer: 'screen', at: [540, 342], in: -1, props: { end: '@So#4-0.3', n0: 14 } },
     { id: 'lab', type: 'blabel', layer: 'screen', at: [830, 264], in: -1, props: { labels: [[0, 'THE BET'], ['@Nah-0.1', 'THE TWIST'], ['@Three#2-0.2', 'THE CHECK'], ['@Switching#3-0.2', 'THE ANSWER']] } },
     { id: 'hyp', type: 'chip', layer: 'screen', at: [540, 416], in: '@Three+0.3', out: '@host+0.1', props: { text: 'HYPOTHETICAL', size: 22 } },
     { id: 'asm', type: 'assumes', layer: 'screen', at: [540, 416], in: '@host+0.3', props: { text: 'HYPOTHETICAL · HOST KNOWS · ALWAYS OPENS AN EMPTY CASE', size: 17 } },
@@ -472,54 +611,54 @@ BM2.scene({
     { at: '@wrong', beat: 'zoom-on-number', focus: { x: 0, y: -190, w: 900, h: 700 }, fill: 0.8, maxH: 800, sy: 820, rot: -0.01, st: ST0, pose: 'shock', keep: ['hook1', 'ws', 'tbl'] },
     { at: '@million', beat: 'zoom-on-number', focus: 'hook1', fill: 0.8, sy: 760, rot: 0.01, st: ST0, pose: 'point', keep: ['hook1', 'ws', 'tbl'] },
     { at: '@question', beat: 'pull-back', focus: F0, fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, st: ST0, pose: 'talk', keep: ['hook1', 'ws', 'tbl'] },
-    { at: '@Three', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 860, st: 'corner-left', pose: 'idle', keep: ['cash'] },
-    { at: '@million#2', beat: 'zoom-on-number', focus: 'tbl.tag', fill: 0.8, sy: 950, rot: 0.01, st: 'corner-left', pose: 'point', keep: ['cash'] },
-    { at: '@two', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.98, sy: 860, st: 'left', pose: 'chin', keep: ['cash'] },
-    { at: '@That\'s', beat: 'graphic-hero', focus: 'cal', move: 'whip', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'idle' },
-    { at: '@hundred', beat: 'zoom-on-number', focus: 'cal.cal', fill: 0.62, sy: 860, rot: 0.01, st: 'corner-left', pose: 'point' },
-    { at: '@27', beat: 'zoom-on-number', focus: 'cal.years', fill: 0.72, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@years+0.2', beat: 'pull-back', focus: 'cal', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'shock' },
-    { at: '@You', beat: 'graphic-hero', focus: 'tbl.row', move: 'whip', fill: 0.92, sy: 860, st: 'left', pose: 'point', point: 'tbl.c0' },
-    { at: '@host', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
-    { at: '@where', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 860, rot: 0.008, st: 'corner-left', pose: 'chin' },
-    { at: '@always', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner-left', pose: 'point', point: 'tbl.hand' },
-    { at: '@opens', beat: 'zoom-on-number', focus: 'tbl.c2', fill: 0.76, sy: 860, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Now', beat: 'graphic-hero', focus: 'tbl.pulled', fill: 0.72, sy: 860, st: 'corner-left', pose: 'idle' },
-    { at: '@heart-0.2', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'left', pose: 'chin' },
-    { at: '@coin', beat: 'zoom-on-number', focus: 'coin', fill: 0.8, sy: 700, rot: 0.01, st: 'corner-left', pose: 'shrug' },
-    { at: '@Nah-0.1', beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shrug' },
-    { at: '@pick#2', beat: 'zoom-on-number', focus: 'fan.pick', fill: 0.5, sy: 860, rot: 0.01, st: 'corner-left', pose: 'point' },
-    { at: '@98', beat: 'zoom-on-number', focus: 'fan.count', fill: 0.8, sy: 560, rot: -0.01, st: 'corner-left', pose: 'shock', dur: 0.5 },
-    { at: '@98+0.9', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shock' },
-    { at: '@skipped', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 1030, rot: 0.01, st: 'corner-left', pose: 'point' },
-    { at: '@hundred#3', beat: 'graphic-hero', focus: 'fan.pick', fill: 0.45, sy: 860, st: 'corner-left', pose: 'shrug' },
-    { at: '@So', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'chin' },
-    { at: '@99', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 1030, rot: 0.012, st: 'corner-left', pose: 'shock', dur: 0.4 },
-    { at: '@time', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner-left', pose: 'shrug' },
+    { at: '@Three', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.92, sy: 860, st: 'corner', pose: 'idle', keep: ['cash'] },
+    { at: '@million#2', beat: 'zoom-on-number', focus: 'tbl.tag', fill: 0.8, sy: 950, rot: 0.01, st: 'corner', pose: 'point', keep: ['cash'] },
+    { at: '@two', beat: 'graphic-hero', focus: 'tbl.row', fill: 0.98, sy: 860, st: 'corner', pose: 'chin', keep: ['cash'] },
+    { at: '@That\'s', beat: 'graphic-hero', focus: 'cal', move: 'whip', fill: 0.92, maxH: 800, sy: 880, st: 'corner', pose: 'idle' },
+    { at: '@100', beat: 'zoom-on-number', focus: 'cal.cal', fill: 0.62, sy: 860, rot: 0.01, st: 'corner', pose: 'point' },
+    { at: '@27', beat: 'zoom-on-number', focus: 'cal.years', fill: 0.72, sy: 860, rot: -0.01, st: 'corner', pose: 'shock' },
+    { at: '@years+0.2', beat: 'pull-back', focus: 'cal', fill: 0.92, maxH: 800, sy: 880, st: 'corner', pose: 'shock' },
+    { at: '@You', beat: 'graphic-hero', focus: 'tbl.row', move: 'whip', fill: 0.92, sy: 860, st: 'corner', pose: 'point', point: 'tbl.c0' },
+    { at: '@host', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner', pose: 'point', point: 'tbl.hand' },
+    { at: '@where', beat: 'zoom-on-number', focus: 'tbl.row', fill: 0.98, sy: 860, rot: 0.008, st: 'corner', pose: 'chin' },
+    { at: '@always', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner', pose: 'point', point: 'tbl.hand' },
+    { at: '@opens', beat: 'zoom-on-number', focus: 'tbl.c2', fill: 0.76, sy: 860, rot: -0.01, st: 'corner', pose: 'shock' },
+    { at: '@Now', beat: 'graphic-hero', focus: 'tbl.pulled', fill: 0.72, sy: 860, st: 'corner', pose: 'idle' },
+    { at: '@heart-0.2', beat: 'graphic-hero', focus: 'tbl', fill: 0.92, maxH: 800, sy: 880, st: 'corner', pose: 'chin' },
+    { at: '@coin', beat: 'zoom-on-number', focus: 'coin', fill: 0.8, sy: 700, rot: 0.01, st: 'corner', pose: 'shrug' },
+    { at: '@Nah-0.1', beat: 'graphic-hero', focus: 'fan.grid', move: 'whip', fill: 0.9, maxH: 800, sy: 880, st: 'corner', pose: 'shrug' },
+    { at: '@pick#2', beat: 'zoom-on-number', focus: 'fan.pick', fill: 0.5, sy: 860, rot: 0.01, st: 'corner', pose: 'point' },
+    { at: '@98', beat: 'zoom-on-number', focus: 'fan.count', fill: 0.8, sy: 560, rot: -0.01, st: 'corner', pose: 'shock', dur: 0.5 },
+    { at: '@98+0.9', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner', pose: 'shock' },
+    { at: '@skipped', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 1030, rot: 0.01, st: 'corner', pose: 'point' },
+    { at: '@100#3', beat: 'graphic-hero', focus: 'fan.pick', fill: 0.45, sy: 860, st: 'corner', pose: 'shrug' },
+    { at: '@So', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner', pose: 'chin' },
+    { at: '@99', beat: 'zoom-on-number', focus: 'fan.keep', fill: 0.5, maxH: 700, sy: 1030, rot: 0.012, st: 'corner', pose: 'shock', dur: 0.4 },
+    { at: '@time', beat: 'pull-back', focus: 'fan.grid', fill: 0.9, maxH: 800, sy: 880, st: 'corner', pose: 'shrug' },
     { at: '@Send', beat: 'presenter-front', focus: 'fan.grid', sy: 860, pose: 'you' },
-    { at: '@Three#2-0.1', beat: 'graphic-hero', focus: 'brd.rows', move: 'whip', fill: 0.98, maxH: 720, sy: 850, st: 'corner-left', pose: 'idle' },
-    { at: '@pick#4-0.4', beat: 'graphic-hero', focus: 'brd.row0', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
-    { at: '@money', beat: 'zoom-on-number', focus: 'brd.row0', fill: 1.0, sy: 800, rot: 0.01, st: 'corner-left', pose: 'chin' },
-    { at: '@loses', beat: 'zoom-on-number', focus: 'brd.v0', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@pick#5-0.2', beat: 'graphic-hero', focus: 'brd.row1', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
-    { at: '@open', beat: 'zoom-on-number', focus: 'brd.row1', fill: 1.0, sy: 800, rot: -0.01, st: 'corner-left', pose: 'chin' },
-    { at: '@wins', beat: 'zoom-on-number', focus: 'brd.v1', fill: 0.42, maxH: 520, sy: 840, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@And#4', beat: 'graphic-hero', focus: 'brd.row2', fill: 0.98, sy: 800, st: 'corner-left', pose: 'point' },
-    { at: '@same#2', beat: 'zoom-on-number', focus: 'brd.v2', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@Follow-0.1', beat: 'graphic-hero', focus: 'brd.rows', fill: 0.98, maxH: 720, sy: 850, st: 'left', pose: 'follow' },
-    { at: '@Switching#3', beat: 'zoom-on-number', focus: 'brd.sum', fill: 0.92, sy: 860, rot: 0.01, st: 'corner-left', pose: 'shock' },
-    { at: '@times', beat: 'pull-back', focus: 'brd.rows', fill: 0.98, maxH: 720, sy: 850, st: 'left', pose: 'shock' },
+    { at: '@Three#2-0.1', beat: 'graphic-hero', focus: 'brd.rows', move: 'whip', fill: 0.98, maxH: 720, sy: 850, st: 'corner', pose: 'idle' },
+    { at: '@pick#4-0.4', beat: 'graphic-hero', focus: 'brd.row0', fill: 0.98, sy: 800, st: 'corner', pose: 'point' },
+    { at: '@money', beat: 'zoom-on-number', focus: 'brd.row0', fill: 1.0, sy: 800, rot: 0.01, st: 'corner', pose: 'chin' },
+    { at: '@loses', beat: 'zoom-on-number', focus: 'brd.v0', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner', pose: 'shock' },
+    { at: '@pick#5-0.2', beat: 'graphic-hero', focus: 'brd.row1', fill: 0.98, sy: 800, st: 'corner', pose: 'point' },
+    { at: '@open', beat: 'zoom-on-number', focus: 'brd.row1', fill: 1.0, sy: 800, rot: -0.01, st: 'corner', pose: 'chin' },
+    { at: '@wins', beat: 'zoom-on-number', focus: 'brd.v1', fill: 0.42, maxH: 520, sy: 840, rot: 0.01, st: 'corner', pose: 'shock' },
+    { at: '@And#4', beat: 'graphic-hero', focus: 'brd.row2', fill: 0.98, sy: 800, st: 'corner', pose: 'point' },
+    { at: '@same#2', beat: 'zoom-on-number', focus: 'brd.v2', fill: 0.42, maxH: 520, sy: 840, rot: -0.01, st: 'corner', pose: 'shock' },
+    { at: '@Follow-0.1', beat: 'graphic-hero', focus: 'brd.rows', fill: 0.98, maxH: 720, sy: 850, st: 'corner', pose: 'follow' },
+    { at: '@Switching#3', beat: 'zoom-on-number', focus: 'brd.sum', fill: 0.92, sy: 860, rot: 0.01, st: 'corner', pose: 'shock' },
+    { at: '@times', beat: 'pull-back', focus: 'brd.rows', fill: 0.98, maxH: 720, sy: 850, st: 'corner', pose: 'shock' },
     { at: '@three#3', beat: 'presenter-front', focus: 'brd.rows', sy: 850, pose: 'you' },
     { at: '@columnist-0.1', beat: 'peek', focus: 'col', move: 'whip', sy: 930, maxH: 800, pose: 'idle' },
-    { at: '@1990', beat: 'zoom-on-number', focus: 'col.stamp', fill: 0.42, sy: 760, rot: 0.01, st: 'corner-left', pose: 'point' },
-    { at: '@By', beat: 'graphic-hero', focus: 'mail', move: 'whip', fill: 0.9, maxH: 800, sy: 930, st: 'corner-left', pose: 'shock' },
-    { at: '@nearly+0.2', beat: 'zoom-on-number', focus: 'mail.count', fill: 0.92, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point' },
-    { at: '@wrote', beat: 'pull-back', focus: 'mail', fill: 0.9, maxH: 800, sy: 930, st: 'corner-left', pose: 'shrug' },
-    { at: '@wrong#2', beat: 'zoom-on-number', focus: 'mail.pile', fill: 0.9, sy: 980, rot: 0.01, st: 'corner-left', pose: 'shock' },
+    { at: '@1990', beat: 'zoom-on-number', focus: 'col.stamp', fill: 0.42, sy: 760, rot: 0.01, st: 'corner', pose: 'point' },
+    { at: '@By', beat: 'graphic-hero', focus: 'mail', move: 'whip', fill: 0.9, maxH: 800, sy: 930, st: 'corner', pose: 'shock' },
+    { at: '@nearly+0.2', beat: 'zoom-on-number', focus: 'mail.count', fill: 0.92, sy: 760, rot: -0.01, st: 'corner', pose: 'point' },
+    { at: '@wrote', beat: 'pull-back', focus: 'mail', fill: 0.9, maxH: 800, sy: 930, st: 'corner', pose: 'shrug' },
+    { at: '@wrong#2', beat: 'zoom-on-number', focus: 'mail.pile', fill: 0.9, sy: 980, rot: 0.01, st: 'corner', pose: 'shock' },
     { at: LOOP, beat: 'side-by-side', focus: F0, move: 'whip', fill: 0.85, maxH: ST.maxH, sx: ST.sx, sy: ST.sy, st: ST0, pose: 'shock', keep: ['hook1', 'ws', 'tbl', 'endt'] },
   ],
   poses: [['@Follow', 'follow', { target: [650, 1120] }], ['@Send', 'you'], ['@stay', 'chin']],
-  shakes: [[0.3, 10], ['@wrong', 12], ['@loses', 8], ['@years', 10], ['@98', 10], ['@99', 26], ['@Switching#3', 12], ['@So#3-0.3', 10]],
+  shakes: [[0.3, 10], ['@wrong', 12], ['@loses', 8], ['@years', 10], ['@98', 10], ['@99', 26], ['@Switching#3', 12], ['@So#4-0.3', 10]],
   captions: { gap: 16, emph: { '50': 'accent', '-50': 'accent', wrong: 'bad', 'question.': 'good', million: 'good', 'bucks,': 'good', '27': 'accent', 'empties.': 'accent', '99': 'good', 'loses.': 'bad', 'wins.': 'good', 'deal.': 'good', 'two': 'good', 'wrong.': 'bad', 'switch?': 'accent' }, fix: [['of your', 'if you\'re']] },
   bed: { name: 'lofi_bed_1', gain: -1 },
   sfx: [

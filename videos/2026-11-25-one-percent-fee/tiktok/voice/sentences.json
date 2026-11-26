@@ -1,57 +1,87 @@
 [
  {
-  "text": "One percent sounds tiny. It ate three hundred sixteen grand.",
+  "text": "Your one percent fee just ate three hundred sixteen thousand dollars.",
   "start": 0.0,
-  "end": 3.378
+  "end": 1.82
  },
  {
-  "text": "Same two funds, except one charges one percent more a year.",
-  "start": 4.228,
-  "end": 7.616
+  "text": "Think that sounds fake? Here's the actual math.",
+  "start": 4.68,
+  "end": 7.16
  },
  {
-  "text": "Tap the heart if that sounds like nothing.",
-  "start": 7.866,
-  "end": 9.887
+  "text": "You invest five hundred bucks a month for forty years. Two hundred forty grand of your money.",
+  "start": 7.7,
+  "end": 12.28
  },
  {
-  "text": "Five hundred a month, forty years, an assumed seven percent.",
-  "start": 10.137,
-  "end": 13.08
+  "text": "We'll assume seven percent growth a year. Not a promise, just math.",
+  "start": 12.72,
+  "end": 16.14
  },
  {
-  "text": "Year ten? The gap's forty-six hundred bucks. Whatever.",
-  "start": 13.33,
-  "end": 16.309
+  "text": "Fund A charges basically nothing. Fund B charges one percent a year.",
+  "start": 16.78,
+  "end": 21.08
  },
  {
-  "text": "Send this to your friend with their first real job.",
-  "start": 16.559,
-  "end": 19.072
+  "text": "That one percent is a fee the fund keeps for managing your money.",
+  "start": 21.48,
+  "end": 24.58
  },
  {
-  "text": "Year thirty? A hundred seven grand. Yeah.",
-  "start": 19.922,
-  "end": 22.225
+  "text": "Tap the heart if you've never checked yours.",
+  "start": 25.12,
+  "end": 26.62
  },
  {
-  "text": "Year forty's next, and it's ugly. Follow, this page catches the quiet ones.",
-  "start": 23.075,
-  "end": 26.99
+  "text": "Ten years in, Fund B is behind by about forty-six hundred. Who really cares, right?",
+  "start": 27.38,
+  "end": 32.14
  },
  {
-  "text": "Three hundred sixteen grand. To\u2014 to a fee.",
-  "start": 27.39,
-  "end": 29.738
+  "text": "Thirty years in, it's behind by over a hundred thousand.",
+  "start": 32.84,
+  "end": 34.52
  },
  {
-  "text": "You only put in two forty.",
-  "start": 30.638,
-  "end": 33.578
+  "text": "Send this to the friend who says one percent is nothing. Still think it's tiny?",
+  "start": 36.18,
+  "end": 39.66
  },
  {
-  "text": "Still tiny?",
-  "start": 33.878,
-  "end": 34.904
+  "text": "Wait, how does that happen? The fee takes a cut of your whole pile, every single year, including the growth.",
+  "start": 40.2,
+  "end": 46.46
+ },
+ {
+  "text": "And a smaller pile? It grows slower, forever, and the gap keeps getting bigger.",
+  "start": 46.84,
+  "end": 51.32
+ },
+ {
+  "text": "Forty years in, Fund A has about one point three million.",
+  "start": 51.96,
+  "end": 54.84
+ },
+ {
+  "text": "Follow if this makes you want to check your account.",
+  "start": 55.3,
+  "end": 57.28
+ },
+ {
+  "text": "Fund B? About nine hundred ninety-six thousand.",
+  "start": 57.78,
+  "end": 58.72
+ },
+ {
+  "text": "That fee cost more than every dollar you ever put in.",
+  "start": 60.92,
+  "end": 63.9
+ },
+ {
+  "text": "One percent: small or not? One word.",
+  "start": 64.92,
+  "end": 67.18
  }
 ]

@@ -49,8 +49,7 @@
     clay(g, -52, y0 - 40, 104, 64, 14, '#59606B', { shadowK: 0.3 }); paper(g, x0, y0, w, h, 26, { lift: lift + (sl ? 0.4 * (1 - ease.expo(clamp(st / 0.3))) : 0) });
     g.save(); rr(g, x0, y0, w, h, 26); g.clip(); g.fillStyle = theme.navy; g.fillRect(x0, y0, w, 104); g.restore();
     txt(g, 'MULTI-STATE LOTTERY', 0, y0 + 40, F.cap(30), theme.paper); txt(g, 'ASSOCIATION', 0, y0 + 76, F.cap(30), theme.paper);
-    g.save(); rr(g, x0 + 130, y0 + 130, 240, 220, 18); g.clip(); const bg = g.createLinearGradient(0, y0 + 130, 0, y0 + 350); bg.addColorStop(0, '#E7E2D6'); bg.addColorStop(1, '#D8D3C7'); g.fillStyle = bg; g.fillRect(x0 + 130, y0 + 130, 240, 220);
-    g.fillStyle = '#3a4350'; rr(g, -90, y0 + 280, 180, 120, 60); g.fill(); g.fillStyle = '#59606B'; g.beginPath(); g.ellipse(0, y0 + 238, 46, 56, 0, 0, 7); g.fill(); g.restore();
+    B.badgeFace(g, x0, y0, t);
     txt(g, 'INFORMATION', 0, y0 + 392, F.cap(38), theme.ink); txt(g, 'SECURITY DIRECTOR', 0, y0 + 440, F.cap(38), theme.badInk);
     { const k = clamp((t - p.nameAt) / 0.3); if (k > 0) { marker(g, x0 + 50, y0 + 478, w - 100, 56, theme.bad, k, 0.22); g.save(); g.globalAlpha = clamp(k * 3); txt(g, p.name, 0, y0 + 508, F.hero(46), theme.ink); g.restore(); } }
     txt(g, 'ILLUSTRATION', x0 + 26, y0 + h - 30, F.mono(18), theme.inkSoft, 'left');

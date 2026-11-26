@@ -1,72 +1,107 @@
 [
  {
-  "text": "This founder was so desperate, she had a professor invent four million customers.",
+  "text": "She sold a bank four million customers who didn't exist.",
   "start": 0.0,
-  "end": 4.128
+  "end": 3.64
  },
  {
-  "text": "And JPMorgan bought it. For a hundred seventy-five million dollars.",
-  "start": 4.328,
-  "end": 8.118
+  "text": "Charlie Javice started a website called Frank in twenty sixteen.",
+  "start": 4.72,
+  "end": 7.1
  },
  {
-  "text": "Her startup, Frank, claimed four point two five million users.",
-  "start": 8.568,
-  "end": 11.684
+  "text": "It helped students fill out the giant form you need for college financial aid.",
+  "start": 8.46,
+  "end": 12.0
  },
  {
-  "text": "Hit like if you've ever padded a number. Just not like this.",
-  "start": 11.984,
-  "end": 14.742
+  "text": "By twenty twenty-one, big banks wanted to buy it.",
+  "start": 12.44,
+  "end": 15.38
+ },
+ {
+  "text": "And she told them Frank had four and a quarter million users.",
+  "start": 15.56,
+  "end": 18.64
  },
  {
   "text": "The SEC says the real number was fewer than three hundred thousand.",
-  "start": 15.042,
-  "end": 18.463
+  "start": 19.3,
+  "end": 21.82
  },
  {
-  "text": "So when JPMorgan asked to see the customer list, how do you hand over four million people who don't exist?",
-  "start": 18.863,
-  "end": 24.329
+  "text": "Hit like if you'd have believed her.",
+  "start": 23.54,
+  "end": 24.98
  },
  {
-  "text": "According to the SEC, she first asked her own engineer to make fake data. He said no.",
-  "start": 24.679,
-  "end": 29.405
+  "text": "So what did the bank, JPMorgan, do? The smart thing. It asked to see the customer list.",
+  "start": 25.46,
+  "end": 30.46
  },
  {
-  "text": "So prosecutors say a data science professor built a list of over four million fake customers instead.",
-  "start": 29.755,
-  "end": 35.077
+  "text": "Here's the problem. There was no list of four million people.",
+  "start": 30.94,
+  "end": 33.94
  },
  {
-  "text": "Send this to the friend who always rounds up their follower count.",
-  "start": 35.427,
-  "end": 38.467
+  "text": "The SEC says she first asked her own engineer to make fake data. But he said no.",
+  "start": 34.52,
+  "end": 39.44
  },
  {
-  "text": "The bank paid a hundred seventy-five million. That's about five hundred eighty dollars for every real user.",
-  "start": 38.767,
-  "end": 44.108
+  "text": "So she and a coworker hired a data science professor, who generated over four million fake customers.",
+  "start": 40.08,
+  "end": 45.64
  },
  {
-  "text": "Follow along, because the ending is the best part.",
-  "start": 44.458,
-  "end": 46.885
+  "text": "According to the bank's lawsuit, he was paid about eighteen thousand dollars.",
+  "start": 46.3,
+  "end": 48.28
  },
  {
-  "text": "Guilty on all four counts. Eighty-five months in prison.",
-  "start": 47.185,
-  "end": 50.373
+  "text": "Send this to the friend who rounds up their follower count.",
+  "start": 50.0,
+  "end": 52.34
  },
  {
-  "text": "Restitution: two hundred eighty-seven and a half million dollars.",
-  "start": 50.773,
-  "end": 53.794
+  "text": "The bank got the list, and JPMorgan paid one hundred seventy-five million dollars for Frank.",
+  "start": 52.8,
+  "end": 57.84
  },
  {
-  "text": "Four million customers. Fewer than three hundred thousand were real.",
-  "start": 54.194,
-  "end": 57.587
+  "text": "That's about five hundred eighty dollars for every real user.",
+  "start": 57.84,
+  "end": 61.2
+ },
+ {
+  "text": "Later, the bank tried reaching those customers. And the list? It fell apart.",
+  "start": 61.7,
+  "end": 65.68
+ },
+ {
+  "text": "Follow if you love it when the math catches up.",
+  "start": 66.44,
+  "end": 68.38
+ },
+ {
+  "text": "In twenty twenty-five, a jury convicted her on all four counts.",
+  "start": 68.8,
+  "end": 72.12
+ },
+ {
+  "text": "She was sentenced to eighty-five months in prison, a little over seven years.",
+  "start": 72.64,
+  "end": 76.24
+ },
+ {
+  "text": "And she was ordered to pay back two hundred eighty-seven and a half million dollars.",
+  "start": 76.72,
+  "end": 80.56
+ },
+ {
+  "text": "Four million, or three hundred thousand? Which would you have checked?",
+  "start": 81.4,
+  "end": 84.44
  }
 ]

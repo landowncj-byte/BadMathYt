@@ -60,6 +60,11 @@ const S = PDS.make({
   ],
   bubble: { l1: 'PENNY or MILLION?', l2: 'ONE WORD · COMMENT', size: 48, tail: 'left' },
   extra: [
+    { id: 'you', type: 'you', layer: 'screen', at: [135, 610], scale: 1.1, in: -1, z: 80, props: { keys: [
+      { at: 0, mood: 'neutral', text: 'YOU' }, { at: '@Here\'s', mood: 'neutral', text: 'YOU · PICK ONE' }, { at: '@penny', mood: 'smirk', text: 'YOU TAKE THE PENNY' },
+      { at: '@week-0.2', mood: 'worried', text: 'DAY 7 · 64¢' }, { at: '@10-0.1', mood: 'worried', text: 'DAY 10 · $5.12' }, { at: '@20+0.0', mood: 'worried', text: 'DAY 20 · $5.2K' },
+      { at: '@27-0.2', mood: 'angry', text: 'DAY 27 · $671K', tone: 'bad' }, { at: '@28+0.1', mood: 'wow', text: 'DAY 28 · $1.34M', tone: 'good' }, { at: '@5-0.1', mood: 'happy', text: 'DAY 30 · $5.37M', tone: 'good' },
+      { at: '@So#3', mood: 'smirk', text: 'PENNY OR MILLION?' }] } },
     { id: 'twice', type: 'text', layer: 'screen', at: [540, 560], in: '@twice-0.3', out: '@Double-0.1', props: { lines: [[['EVERY DAY =', 'paper']], [['2× THE DAY BEFORE', 'accent']]], size: 64 } },
     { id: 'pass', type: 'stamp', layer: 'screen', at: [540, 470], rot: -0.06, in: '@past', out: '@29', props: { text: 'PASSES THE MILLION', tone: 'good', size: 66 } },
     { id: 'extra4', type: 'stamp', layer: 'screen', at: [540, 480], rot: 0.05, in: '@four#2', out: Q.loop, props: { text: '+$4,368,709.12 EXTRA', tone: 'good', size: 48 } },
