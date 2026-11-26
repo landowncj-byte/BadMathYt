@@ -30,7 +30,8 @@ for ch in range(7):
         ws = whisper(a); json.dump(ws, open(cf, 'w'))
     import re
     NUM = set('a half quarter point oh zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand million billion and first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth thirteenth fourteenth fifteenth sixteenth seventeenth eighteenth nineteenth twentieth thirtieth st nd rd th'.split())
-    def toks(t): return [x for x in (re.sub(r"[^a-z']", '', w.lower()).strip("'") for w in re.split(r'[\s-]+', t)) if x and x not in NUM]
+    ALIAS = {'spex': 'specs', 'specks': 'specs', 'plan': 'planned'}   # Whisper spellings of names in this script
+    def toks(t): return [ALIAS.get(x, x) for x in (re.sub(r"[^a-z']", '', w.lower()).strip("'") for w in re.split(r'[\s-]+', t)) if x and x not in NUM]
     wt = [toks(w['w']) for w in ws]   # per whisper word (digits drop out)
     flat = [(i, x) for i, tl in enumerate(wt) for x in tl]
     cuts, pos = [], 0
