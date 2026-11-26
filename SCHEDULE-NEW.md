@@ -54,3 +54,12 @@ card-minimum: REJECTED at QC (16.5 YEARS cropped at right edge, INTEREST label o
 | million vs billion | TikTok (song: Summer Festival Energy) | Fri 11/27 11:00 | 16:00Z | e0c24231-6692-42f6-b3cc-76525db9088c | APPROVED |
 | million vs billion | Instagram REEL | Fri 11/27 11:00 | 16:00Z | 01c96149-d69b-4fcd-85da-179c3d88e374 | APPROVED |
 | million vs billion | Facebook REEL | Fri 11/27 11:00 | 16:00Z | cd06774f-261d-4bb8-b2bb-631003659920 | APPROVED |
+| tucker payday | YouTube | Fri 11/27 15:00 | 20:00Z | 27425ff7-73a1-48bf-b689-18db79ebbee3 | APPROVED |
+| tucker payday | TikTok (song: Prisoner) | Fri 11/27 15:00 | 20:00Z | a5e8db11-3c82-47c7-b4b2-e7cdc579e5d8 | APPROVED |
+| tucker payday | Instagram REEL | Fri 11/27 15:00 | 20:00Z | 88f85426-43d9-4aa2-a687-1897669efc93 | APPROVED |
+| tucker payday | Facebook REEL | Fri 11/27 15:00 | 20:00Z | fb1988c0-0d4d-4e34-9d8b-22f87323a0d2 | APPROVED |
+| javice | YouTube | Sat 11/28 11:00 | 16:00Z | 0a90e37d-7b5d-4d20-b2f4-1124c375ff25 | APPROVED |
+| javice | TikTok (song: Self Aware) | Sat 11/28 11:00 | 16:00Z | 883ca884-6adc-4a3b-9550-b65521f1853d | APPROVED |
+| javice | Instagram REEL | Sat 11/28 11:00 | 16:00Z | 70e1bcd0-4730-46c2-be13-93c808151c88 | APPROVED |
+| javice | Facebook REEL | Sat 11/28 11:00 | 16:00Z | f7c83cd6-77ce-40d3-9713-47c5835168f1 | APPROVED |
+Sunday plan (research/2026-11-27): 11:00 mona-lisa-thief (Decoded) · 15:00 coin-flip-double-or-nothing (What If) · 19:00 anna-delvey-fake-heiress (Decoded). Then Mon–Sun next week from ideas.md ranks 5–9 + new research.

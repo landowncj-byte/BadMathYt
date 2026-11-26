@@ -20,7 +20,7 @@ JAVICE({
     fell0: '@then', fellWord: '@fell',
     board: '@follow+0.2', boardTight: '@kiss',
     jury0: '@a#5', convicted: '@convicted', sentenced: '@got', m85: '@85', resti: '@$287',
-    extra: '@prosecutors',
+    extra: '@prosecutors', extraFill: 0.7,
     loop: '@genius', ask: '@genius', askEnd: '@word+0.5',
   },
   cta: [{ k: 'heart', at: '@tap' }, { k: 'send', at: '@send' }, { k: 'follow', at: '@follow' }],

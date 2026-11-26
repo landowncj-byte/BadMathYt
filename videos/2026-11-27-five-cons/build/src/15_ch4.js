@@ -5,8 +5,8 @@ con('u1', 'tuc', R4(0) + 640, 50, '@P48-0.2', { w: 440, variant: 'card', file: t
 bt('@P48', 'graphic-hero', ['ch4', 'u1'], { move: 'whip', dur0: 0.7, fill: 0.82, sy: 480, pose: 'shrug', arc: 0.2 }); sf('@P48-0.6', 'tape_stop_1', -8, 1.0); sf('@P48-0.1', 'cinematic_hit_1', -9, 1.5); sf('@P48+0.9', 'camera_flash_1', -9, 0.6); sk('@P48+0.7', 8);
 bt('@P48:loan', 'zoom-on-number', 'u1', { fill: 0.3, maxH: 760, sy: 520, pose: 'point' });
 // P49 rent due Friday, paycheck Monday: a payday loan covers the gap
-el('rent49', 'card', R4(1) - 620, 40, '@P49:rent-0.2', { w: 520, h: 400, lines: [{ t: 'RENT DUE', size: 48, font: 'mono', tone: 'bad', at: '@P49:rent' }, { t: 'FRIDAY', size: 104, tone: 'bad', at: '@P49:friday', gap: 34 }] }, { out: '@P50-0.2' });
-el('pay49', 'card', R4(1) + 620, 40, '@P49:paycheck-0.2', { w: 520, h: 400, lines: [{ t: 'PAYCHECK', size: 48, font: 'mono', tone: 'good', at: '@P49:paycheck' }, { t: 'MONDAY', size: 104, tone: 'good', at: '@P49:monday', gap: 34 }] }, { out: '@P50-0.2' });
+el('rent49', 'card', R4(1) - 620, 40, '@P49-0.2', { w: 520, h: 400, lines: [{ t: 'RENT DUE', size: 48, font: 'mono', tone: 'bad', at: '@P49+0.2', gap: 100 }, { t: 'FRIDAY', size: 104, tone: 'bad', at: '@P49:friday' }] }, { out: '@P50-0.2' });
+el('pay49', 'card', R4(1) + 620, 40, '@P49:paycheck-0.5', { w: 520, h: 400, lines: [{ t: 'PAYCHECK', size: 48, font: 'mono', tone: 'good', at: '@P49:paycheck', gap: 100 }, { t: 'MONDAY', size: 104, tone: 'good', at: '@P49:monday' }] }, { out: '@P50-0.2' });
 el('gap49', 'text', R4(1), 40, '@P49:payday-0.1', { lines: [[['A PAYDAY LOAN', 'gold']], [['COVERS THE GAP', 'paper', 52]]], size: 66 }, { out: '@P50-0.2' });
 bt('@P49', 'graphic-hero', 'rent49', { move: 'whip', fill: 0.3, maxH: 560, sy: 500, pose: 'point' }); sf('@P49-0.3', 'swoosh_2', -11, 0.5); sf('@P49:friday', 'paper_slam_2', -10, 0.5);
 bt('@P49:paycheck', 'graphic-hero', ['rent49', 'pay49'], { fill: 0.9, sy: 500, pose: 'point' }); sf('@P49:monday', 'paper_slam_2', -10, 0.5); bt('@P49:payday', 'graphic-hero', ['rent49', 'pay49', 'gap49'], { fill: 0.9, sy: 500, pose: 'chin' }); sf('@P49:payday', 'pop_2', -8, 0.4);
@@ -37,7 +37,7 @@ con('u53', 'tuc', R4(5) - 700, 80, '@P53-0.2', { w: 320, variant: 'pip', label: 
 bt('@P53', 'graphic-hero', ['c53', 'u53'], { move: 'whip', fill: 0.78, sy: 490, pose: 'point' }); sf('@P53-0.3', 'swoosh_2', -11, 0.5);
 bt('@P53:$1', 'zoom-on-number', 'c53.value', { fill: 0.56, maxH: 480, sy: 500, pose: 'shock' }); sf('@P53:$1', 'money_counter_1', -12, 1.5); sf('@P53:loan', 'deep_boom_1', -6, 1.0); sk('@P53:loan', 12);
 // P54 ~700% a year vs credit card 22%
-el('bar54', 'bars', R4(6), 0, '@P54-0.3', { items: [{ id: 'cc', label: 'CREDIT CARD', value: 22, show: 22, display: { suffix: '%' }, tone: 'accent', at: '@P54:credit' }, { id: 'pd', label: 'THIS LOAN', value: 700, show: 700, display: { suffix: '%' }, tone: 'bad', at: '@P54:700', style: 'cash' }], max: 700, h: 640, barW: 260, gap: 260, note: 'APR · PER YEAR' }, { out: '@P55-0.2' });
+el('bar54', 'bars', R4(6), 0, '@P54-0.3', { items: [{ id: 'cc', label: 'CREDIT CARD', value: 22, show: 22, display: { suffix: '%' }, tone: 'accent', at: '@P54+0.5' }, { id: 'pd', label: 'THIS LOAN', value: 700, show: 700, display: { suffix: '%' }, tone: 'bad', at: '@P54+0.9', style: 'cash' }], max: 700, h: 640, barW: 260, gap: 260, note: 'APR · PER YEAR' }, { out: '@P55-0.2' });
 bt('@P54', 'graphic-hero', 'bar54', { move: 'whip', fill: 0.52, maxH: 800, sy: 500, pose: 'point' }); sf('@P54-0.3', 'swoosh_2', -11, 0.5);
 bt('@P54:700', 'zoom-on-number', 'bar54.pd_top', { fill: 0.3, maxH: 460, sy: 420, pose: 'shock' }); sf('@P54:700', 'money_counter_2', -11, 1.2); sk('@P54:700+0.6', 10);
 bt('@P54:credit', 'graphic-hero', 'bar54', { fill: 0.5, maxH: 800, sy: 500, pose: 'point' }); bt('@P54:22', 'zoom-on-number', 'bar54.cc_base', { fill: 0.3, maxH: 420, sy: 560, pose: 'point' }); sf('@P54:22', 'pop_2', -8, 0.4);
@@ -54,7 +54,7 @@ con('u56', 'tuc', R4(8) - 760, 300, '@P56:money-0.1', { w: 240, variant: 'pip', 
 bt('@P56', 'graphic-hero', 'car56', { move: 'whip', fill: 0.48, maxH: 560, sy: 500, pose: 'point' }); sf('@P56-0.3', 'swoosh_2', -11, 0.5);
 bt('@P56:race', 'graphic-hero', ['car56', 'tm56', 'u56'], { fill: 0.84, sy: 500, pose: 'shock' }); sf('@P56:race', 'rubber_stamp_2', -5, 0.5); sk('@P56:race', 10);
 // P57 claimed tribes owned it, because states can't sue tribes; prosecutors: a sham
-el('tr57', 'card', R4(9) - 440, 40, '@P57:tribes-0.3', { w: 600, h: 440, fill: 'navy', lines: [{ t: '“TRIBES OWN IT”', size: 64, tone: 'gold', at: '@P57:tribes' }, { t: 'BECAUSE STATES', size: 38, tone: 'paper', at: '@P57:because' }, { t: 'CAN\'T SUE TRIBES', size: 52, tone: 'paper', at: '@P57:sue' }] }, { out: '@P58-0.2' });
+el('tr57', 'card', R4(9) - 440, 40, '@P57-0.2', { w: 600, h: 440, fill: 'navy', lines: [{ t: '“TRIBES OWN IT”', size: 64, tone: 'gold', at: '@P57:tribes' }, { t: 'BECAUSE STATES', size: 38, tone: 'paper', at: '@P57:because' }, { t: 'CAN\'T SUE TRIBES', size: 52, tone: 'paper', at: '@P57:sue' }] }, { out: '@P58-0.2' });
 el('sh57', 'stamp', R4(9) + 420, 40, '@P57:sham-0.1', { text: 'A SHAM', tone: 'bad', size: 190 }, { rot: -0.07, out: '@P58-0.2' });
 el('pr57', 'text', R4(9) + 420, 300, '@P57:prosecutors-0.1', { lines: [[['PROSECUTORS CALLED IT', 'paper']]], size: 44 }, { out: '@P58-0.2' });
 bt('@P57', 'graphic-hero', 'tr57', { move: 'whip', fill: 0.34, maxH: 620, sy: 500, pose: 'point' }); sf('@P57-0.3', 'swoosh_2', -11, 0.5);

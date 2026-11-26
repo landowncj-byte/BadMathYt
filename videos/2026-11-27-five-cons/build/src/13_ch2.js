@@ -5,7 +5,7 @@ con('g1', 'gig', R2(0) + 640, 50, '@P21-0.2', { w: 440, variant: 'card', file: t
 bt('@P21', 'graphic-hero', ['ch2', 'g1'], { move: 'whip', dur0: 0.7, fill: 0.82, sy: 480, pose: 'shrug', arc: 0.2 }); sf('@P21-0.6', 'tape_stop_1', -8, 1.0); sf('@P21-0.1', 'cinematic_hit_1', -9, 1.5); sf('@P21+0.9', 'camera_flash_1', -9, 0.6); sk('@P21+0.7', 8);
 bt('@P21:prince', 'zoom-on-number', 'g1', { fill: 0.3, maxH: 760, sy: 520, pose: 'point' });
 // P22 Miami: he calls himself a prince — the pitch quote
-el('dc22', 'datecard', R2(1) - 300, -330, '@P22-0.2', { big: 'MIAMI', small: 'FLORIDA' }, { out: '@P23-0.2' });
+el('dc22', 'datecard', R2(1) + 330, -330, '@P22-0.2', { big: 'MIAMI', small: 'FLORIDA' }, { out: '@P23-0.2' });
 con('g2', 'gig', R2(1) - 200, 40, '@P22-0.3', { w: 900, variant: 'side', quote: ['“PRINCE KHALID', 'BIN AL-SAUD”'], quoteSub: 'SAUDI ROYAL FAMILY · HIS CLAIM', quoteSize: 62, quoteAt: '@P22:calls', noquote: true, aspect: 0.62, pw: 400, crownAt: '@P22:calls' }, { out: '@P23-0.2' });
 bt('@P22', 'graphic-hero', ['g2', 'dc22'], { move: 'whip', fill: 0.56, maxH: 860, sy: 500, pose: 'point' }); sf('@P22-0.3', 'swoosh_2', -11, 0.5); sf('@P22-0.1', 'typewriter_2', -11, 1.6);
 bt('@P22:royal', 'zoom-on-number', 'g2', { fill: 0.62, maxH: 640, sy: 500, pose: 'shrug' });
@@ -29,7 +29,7 @@ con('g25', 'gig', R2(4) + 260, 230, '@P25:he-0.1', { w: 260, variant: 'pip', lab
 bt('@P25', 'graphic-hero', ['v25', 'q25'], { move: 'whip', fill: 0.7, sy: 500, pose: 'point' }); sf('@P25-0.3', 'swoosh_2', -11, 0.5);
 bt('@P25:hundreds', 'zoom-on-number', 'q25', { fill: 0.44, maxH: 420, sy: 400, pose: 'point' }); sf('@P25:hundreds', 'pop_2', -8, 0.4); bt('@P25:first', 'graphic-hero', ['v25', 'q25', 'g25'], { fill: 0.82, sy: 500, pose: 'shock' });
 // P26 investors handed over $8M+
-el('cs26', 'cashStack', R2(5) - 480, 120, '@P26-0.3', { count: 60, at: '@P26:handed', per: 0.04, each: 135000, prefix: '$', label: 'HANDED OVER', w: 520 }, { out: '@P27-0.2' });
+el('cs26', 'tile', R2(5) - 520, 40, '@P26-0.3', { icon: 'cash', caption: 'HANDED OVER', w: 330, h: 380, iconS: 190, tilt: -0.03 }, { out: '@P27-0.2' });
 el('c26', 'counter', R2(5) + 340, 20, '@P26-0.2', { label: 'INVESTORS HANDED HIM', sub: 'MORE THAN', to: 8000000, prefix: '$', at: '@P26:$8', dur: 1.2, tone: 'bad', size: 170, w: 1000 }, { out: '@P27-0.2' });
 bt('@P26', 'graphic-hero', ['cs26', 'c26'], { move: 'whip', fill: 0.8, sy: 500, pose: 'point' }); sf('@P26-0.3', 'swoosh_2', -11, 0.5);
 bt('@P26:$8', 'zoom-on-number', 'c26.value', { fill: 0.5, sy: 500, pose: 'shock' }); sf('@P26:$8', 'cash_register_1', -9, 0.9); sf('@P26:$8', 'money_counter_2', -11, 1.3); sk('@P26:$8+1.0', 10);
@@ -44,7 +44,7 @@ bt('@P27:man', 'graphic-hero', ['g27', 't27b', 'mi27'], { fill: 0.8, sy: 500, po
 bt('@P27:michigan', 'zoom-on-number', 'mi27', { fill: 0.4, maxH: 300, sy: 460 });
 // P28 nobody checked the plates
 el('mg28', 'icon', R2(7) - 320, 40, '@P28-0.3', { kind: 'magnifier', s: 360, col: 'paper' }, { out: '@P29-0.2' });
-el('n28', 'stamp', R2(7) + 380, 40, '@P28:checked-0.3', { text: 'NOBODY CHECKED', tone: 'bad', size: 110 }, { rot: -0.05, out: '@P29-0.2' });
+el('n28', 'stamp', R2(7) + 380, 40, '@P28+0.2', { text: 'NOBODY CHECKED', tone: 'bad', size: 110 }, { rot: -0.05, out: '@P29-0.2' });
 el('pl28', 'tile', R2(7) + 380, 300, '@P28:plates-0.1', { icon: 'plate', caption: 'THE PLATES', w: 240, h: 260, iconS: 120 }, { out: '@P29-0.2' });
 bt('@P28', 'graphic-hero', ['mg28', 'n28'], { move: 'whip', fill: 0.66, sy: 490, pose: 'chin' }); sf('@P28-0.3', 'swoosh_2', -11, 0.5); bt('@P28:checked', 'zoom-on-number', 'n28', { fill: 0.5, maxH: 420, sy: 460, pose: 'shock' }); sf('@P28:checked', 'rubber_stamp_2', -5, 0.5); sk('@P28:checked', 10);
 // P29 dinner: a devout Saudi royal would not eat pork; the partner watched him eat pork

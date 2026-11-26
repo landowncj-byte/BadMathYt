@@ -213,7 +213,7 @@
     // ---- extra line (coworker 68 months / prosecutors asked 12 years) ----
     if (R.extra) { const [x, y] = seg();
       E.push({ id: 'ex', type: 'text', at: [x, y], in: O(R.extra, '-0.3'), props: { lines: cfg.extraLines, size: cfg.extraSize || 82, per: 0.12 } });
-      b(R.extra, SB, 'ex', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 700, st: 'corner-left', pose: 'shock' });
+      b(R.extra, SB, 'ex', { move: 'whip', sx: 540, sy: 840, fill: R.extraFill || 0.9, maxH: 700, st: 'corner-left', pose: 'shock' });
       sfx(R.extra, 'rubber_stamp_2', -8); }
 
     // ---- CTAs + end ----

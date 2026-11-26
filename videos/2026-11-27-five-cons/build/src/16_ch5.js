@@ -27,13 +27,13 @@ el('dc64', 'doc', R5(4) + 380, 20, '@P64:customer-0.3', { w: 560, h: 620, title:
 bt('@P64', 'graphic-hero', ['bk64', 'bt64'], { move: 'whip', fill: 0.4, maxH: 640, sy: 490, pose: 'point' }); sf('@P64-0.3', 'swoosh_2', -11, 0.5);
 bt('@P64:asked', 'graphic-hero', ['bk64', 'dc64'], { fill: 0.82, sy: 500, pose: 'point' }); sf('@P64:customer-0.3', 'paper_slam_2', -10, 0.5); bt('@P64:customer', 'zoom-on-number', 'dc64', { fill: 0.3, maxH: 640, sy: 500, pose: 'chin' });
 // P65 you can't hand over four million people you don't have
-el('nm65', 'text', R5(5) - 380, -200, '@P65:four-0.2', { lines: [[['4,000,000 PEOPLE', 'paper']], [['NEEDED', 'gold', 64]]], size: 96 }, { out: '@P66-0.2' });
+el('nm65', 'text', R5(5) - 380, -200, '@P65-0.2', { lines: [[['4,000,000 PEOPLE', 'paper']], [['NEEDED', 'gold', 64]]], size: 96 }, { out: '@P66-0.2' });
 el('dg65', 'dotgrid', R5(5) + 330, 40, '@P65:problem-0.3', { cols: 40, rows: 26, gap: 17, at: '@P65:problem', hiAt: 99999, per: 0.9 }, { out: '@P66-0.2' });
 el('pb65', 'stamp', R5(5) - 380, 220, '@P65:problem', { text: 'THE PROBLEM', tone: 'bad', size: 104 }, { rot: -0.05, out: '@P66-0.2' });
 bt('@P65', 'graphic-hero', ['nm65'], { move: 'whip', fill: 0.5, maxH: 520, sy: 480, pose: 'chin' }); sf('@P65-0.3', 'swoosh_2', -11, 0.5);
 bt('@P65:problem', 'graphic-hero', ['nm65', 'dg65', 'pb65'], { fill: 0.9, sy: 500, pose: 'shock' }); sf('@P65:problem', 'rubber_stamp_2', -5, 0.5); sk('@P65:problem', 10); bt('@P65:can\'t', 'zoom-on-number', 'pb65', { fill: 0.4, maxH: 300, sy: 460, pose: 'point' });
 // P66 she asked her own engineer to create fake data; he refused
-el('en66', 'victim', R5(6) - 540, 40, '@P66:engineer-0.3', { kind: 'investor', label: 'HER ENGINEER', sub: 'SAID NO', suit: '#2F5DA8', w: 340, h: 440, tape: 'ENGINEER', reactAt: '@P66:refused' }, { out: '@P67-0.2' });
+el('en66', 'victim', R5(6) - 540, 40, '@P66-0.2', { kind: 'investor', label: 'HER ENGINEER', sub: 'SAID NO', suit: '#2F5DA8', w: 340, h: 440, tape: 'ENGINEER', reactAt: '@P66:refused' }, { out: '@P67-0.2' });
 el('fk66', 'text', R5(6) + 340, -80, '@P66:fake-0.2', { lines: [[['“CREATE FAKE DATA”', 'bad']]], size: 76 }, { out: '@P67-0.2' });
 el('rf66', 'stamp', R5(6) + 340, 160, '@P66:refused-0.1', { text: 'HE REFUSED', tone: 'good', size: 120 }, { rot: -0.05, out: '@P67-0.2' });
 con('j66', 'jav', R5(6) + 1000, 400, '@P66:asked-0.1', { w: 230, variant: 'pip', label: 'THE ASK', flash: false }, { out: '@P67-0.2' });
@@ -49,7 +49,7 @@ bt('@P67', 'graphic-hero', ['pf67', 'ml67'], { move: 'whip', fill: 0.62, sy: 490
 bt('@P67:four', 'zoom-on-number', 'c67.value', { fill: 0.38, maxH: 400, sy: 400 }); sf('@P67:four', 'money_counter_2', -11, 1.3); bt('@P67:cost', 'graphic-hero', ['ml67', 'ch67'], { fill: 0.72, sx: 1100, sy: 490, pose: 'point' });
 bt('@P67:$18', 'zoom-on-number', 'ch67.value', { fill: 0.3, maxH: 400, sy: 480, pose: 'shock' }); sf('@P67:$18', 'cash_register_1', -9, 0.9); sk('@P67:$18', 10);
 // P68 JPMorgan bought Frank for $175M
-el('cs68', 'cashStack', R5(8) - 520, 100, '@P68-0.3', { count: 70, at: '@P68:bought', per: 0.03, each: 2500000, prefix: '$', label: 'THE PRICE', w: 520 }, { out: '@P69-0.2' });
+el('cs68', 'tile', R5(8) - 560, 40, '@P68-0.3', { icon: 'cash', caption: 'THE PRICE', w: 330, h: 380, iconS: 190, tilt: -0.03 }, { out: '@P69-0.2' });
 el('c68', 'counter', R5(8) + 340, 20, '@P68-0.2', { label: 'THE BANK PAID', to: 175000000, prefix: '$', at: '@P68:$175', dur: 1.5, tone: 'bad', size: 170, w: 1000 }, { out: '@P69-0.2' });
 bt('@P68', 'graphic-hero', ['cs68', 'c68'], { move: 'whip', fill: 0.82, sy: 500, pose: 'point' }); sf('@P68-0.3', 'swoosh_2', -11, 0.5);
 bt('@P68:$175', 'zoom-on-number', 'c68.value', { fill: 0.5, maxH: 420, sy: 500, pose: 'shock' }); sf('@P68:$175', 'money_counter_1', -11, 1.6); sf('@P68:million+0.2', 'cash_register_1', -9, 0.9); sk('@P68:million+0.2', 12);

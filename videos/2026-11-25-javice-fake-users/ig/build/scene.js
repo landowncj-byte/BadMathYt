@@ -855,7 +855,7 @@
     // ---- extra line (coworker 68 months / prosecutors asked 12 years) ----
     if (R.extra) { const [x, y] = seg();
       E.push({ id: 'ex', type: 'text', at: [x, y], in: O(R.extra, '-0.3'), props: { lines: cfg.extraLines, size: cfg.extraSize || 82, per: 0.12 } });
-      b(R.extra, SB, 'ex', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 700, st: 'corner-left', pose: 'shock' });
+      b(R.extra, SB, 'ex', { move: 'whip', sx: 540, sy: 840, fill: R.extraFill || 0.9, maxH: 700, st: 'corner-left', pose: 'shock' });
       sfx(R.extra, 'rubber_stamp_2', -8); }
 
     // ---- CTAs + end ----
@@ -908,7 +908,7 @@ JAVICE({
     fell0: '@then', fellWord: '@fell',
     board: '@follow+0.2', boardTight: '@kiss',
     jury0: '@a#5', convicted: '@convicted', sentenced: '@got', m85: '@85', resti: '@$287',
-    extra: '@prosecutors',
+    extra: '@prosecutors', extraFill: 0.7,
     loop: '@genius', ask: '@genius', askEnd: '@word+0.5',
   },
   cta: [{ k: 'heart', at: '@tap' }, { k: 'send', at: '@send' }, { k: 'follow', at: '@follow' }],

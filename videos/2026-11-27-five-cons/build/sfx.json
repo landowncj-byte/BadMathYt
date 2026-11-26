@@ -182,12 +182,6 @@
    "name": "gavel_1"
   },
   {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 24.8,
-   "name": "swipe_2"
-  },
-  {
    "gain": -10,
    "dur": 0.7,
    "at": 25.738,
@@ -648,12 +642,6 @@
    "dur": 1.5,
    "at": 107.58,
    "name": "clock_ticking_1"
-  },
-  {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 108.34,
-   "name": "swipe_2"
   },
   {
    "gain": -5,
@@ -2606,34 +2594,16 @@
    "name": "swoosh_2"
   },
   {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 485.86,
-   "name": "swipe_2"
-  },
-  {
    "gain": -9,
    "dur": 0.3,
    "at": 486.06,
    "name": "pop_2"
   },
   {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 488.52,
-   "name": "swipe_2"
-  },
-  {
    "gain": -9,
    "dur": 0.3,
    "at": 488.72,
    "name": "pop_2"
-  },
-  {
-   "gain": -13,
-   "dur": 0.45,
-   "at": 491.28,
-   "name": "swipe_2"
   },
   {
    "gain": -9,
@@ -2716,8 +2686,20 @@
   {
    "gain": -10,
    "dur": 0.7,
-   "at": 502.579,
+   "at": 502.779,
    "name": "whoosh_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.8,
+   "at": 502.879,
+   "name": "swoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 1.4,
+   "at": 503.479,
+   "name": "success_chime_2"
   }
  ],
  "bed": null

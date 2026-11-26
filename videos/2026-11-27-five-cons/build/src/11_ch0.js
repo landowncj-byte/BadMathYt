@@ -2,7 +2,7 @@
 const R0 = k => K(RM[0], k);
 // P01: the wine con — Kurniawan photo + $2.1M + bottles tagged FAKE on "kitchen"
 con('k0', 'kur', R0(0) - 640, 60, -3, { w: 440, variant: 'card', stamps: [{ text: 'FAKE WINE', at: '@P01:kitchen', tone: 'bad', size: 60, rot: -0.1, y: 40 }], file: true, caseNo: 'CASE Nº 1' }, { out: '@P02-0.2' });
-el('c21', 'counter', R0(0) + 330, -60, -3, { label: 'A BILLIONAIRE PAID', sub: 'FOR "RARE" WINE', to: 2100000, prefix: '$', at: '@P01:$2', dur: 1.3, tone: 'bad', size: 150, w: 900 }, { out: '@P02-0.2' });
+el('c21', 'counter', R0(0) + 330, -60, -3, { label: 'A BILLIONAIRE PAID', sub: 'FOR "RARE" WINE', to: 2100000, prefix: '$', at: -9, dur: 1.3, tone: 'bad', size: 150, w: 900 }, { out: '@P02-0.2' });
 el('b0', 'bottles', R0(0) + 330, 280, '@P01:wine-0.1', { items: [{ label: '1945', at: '@P01:wine' }, { label: '1982', at: '@P01:wine+0.12' }, { label: '1990', at: '@P01:wine+0.24' }], fakeAt: '@P01:kitchen', gap: 170 }, { out: '@P02-0.2' });
 bt(0, 'graphic-hero', ['k0', 'c21'], { fill: 0.74, sy: 480, pose: 'point' }); sf(0, 'paper_slam_2', -9, 0.5); sf(0.05, 'camera_flash_1', -9, 0.6);
 bt('@P01:$2', 'zoom-on-number', 'c21.value', { fill: 0.42, sy: 520 }); sf('@P01:$2', 'money_counter_2', -12, 1.4); sf('@P01:million+0.2', 'deep_boom_1', -6, 1.0); sk('@P01:million+0.2', 12);
@@ -19,7 +19,7 @@ bt('@P02:4', 'zoom-on-number', 'c4m.value', { fill: 0.5, sy: 500 });
 bt('@P02:did', 'graphic-hero', ['c4m', 'j0'], { fill: 0.6, sy: 500, pose: 'shock' }); sf('@P02:exist', 'glitch_1', -9, 0.6); sk('@P02:exist', 12);
 // P03: the lottery con — $16.5M jackpot rigged by the man whose job was to protect it
 con('t0', 'tip', R0(2) - 640, 60, '@P03-0.3', { w: 440, variant: 'card', file: true, caseNo: 'CASE Nº 3', stamps: [{ text: 'RIGGED IT', at: '@P03:rigged', tone: 'bad', size: 60, rot: -0.1, y: 40 }] }, { out: '@P04-0.2' });
-el('lt0', 'lotto', R0(2) + 330, 0, '@P03-0.2', { w: 760, h: 440, amount: '$16.5 MILLION', ballsAt: '@P03:$16', stamp: 'RIGGED', stampAt: '@P03:rigged' }, { out: '@P04-0.2' });
+el('lt0', 'lotto', R0(2) + 330, 0, '@P03-0.2', { w: 760, h: 440, amount: '$16.5 MILLION', ballsAt: '@P03:$16' }, { out: '@P04-0.2' });
 el('lk', 'icon', R0(2) + 330, -330, '@P03:protect-0.3', { kind: 'lock', s: 180, col: 'paper' }, { out: '@P04-0.2' });
 bt('@P03', 'graphic-hero', ['t0', 'lt0'], { move: 'whip', fill: 0.78, sy: 500, pose: 'point' }); sf('@P03-0.3', 'swoosh_2', -11, 0.5); sf('@P03-0.1', 'camera_flash_1', -9, 0.6);
 bt('@P03:$16', 'zoom-on-number', 'lt0.amount', { fill: 0.42, sy: 500 }); sf('@P03:$16', 'money_counter_2', -12, 1.2);
@@ -32,7 +32,7 @@ el('gav', 'icon', R0(3) + 960, -330, '@P04:courtroom-0.2', { kind: 'cuffs', s: 2
 bt('@P04', 'graphic-hero', ['fiveT', 'f0', 'f4'], { move: 'whip', fill: 0.9, sy: 470, pose: 'point' }); sf('@P04-0.3', 'swoosh_2', -11, 0.5);
 for (let i = 0; i < 5; i++) sf(`@P04:five+${(i * 0.14).toFixed(2)}`, 'pop_2', -9, 0.3);
 bt('@P04:every', 'zoom-on-number', 'f0', { fill: 0.22, maxH: 520, sy: 500 }); bt('@P04:courtroom', 'graphic-hero', ['f0', 'f4', 'gav'], { fill: 0.95, sy: 520, pose: 'shock' }); sf('@P04:courtroom', 'gavel_1', -6, 0.8);
-bt('@P04:same', 'zoom-on-number', 'fiveT', { fill: 0.5, maxH: 300, sy: 360, pose: 'chin' });
+bt('@P04:same', 'graphic-hero', ['fiveT', 'f0', 'f4'], { fill: 0.95, sy: 500, pose: 'chin' });
 // P05: not a genius detective — one small number that did not add up
 el('q5', 'text', R0(4), -40, '@P05-0.3', { lines: [[['?', 'accent']]], size: 560 }, { out: '@P05:by-0.1' });
 el('one', 'counter', R0(4), 20, '@P05:by-0.1', { label: 'ONE SMALL NUMBER', sub: 'THAT DID NOT ADD UP', to: 1, at: '@P05:one', dur: 0.4, tone: 'accent', size: 330, w: 900 }, { out: '@P06-0.2' });

@@ -36,7 +36,7 @@ bt('@P78:checked', 'graphic-hero', ['mg78', 'h78'], { fill: 0.66, sy: 500, pose:
 el('cl79', 'checklist', R6(2), 40, '@P79-0.3', { title: 'THE 3-QUESTION TEST', lockOpen: '@P79>', rows: [{ show: '@P79:one', t: 'DOES THIS NUMBER MAKE SENSE?' }, { show: '@P79:two', t: 'CAN I CHECK IT MYSELF, TODAY?' }, { show: '@P79:three#2', t: 'WHAT IF I SAY, “SHOW ME”?' }] }, { out: '@P81-0.2' });
 bt('@P79', 'graphic-hero', 'cl79', { move: 'whip', fill: 0.62, maxH: 800, sy: 500, pose: 'point' }); sf('@P79-0.3', 'paper_slam_2', -10, 0.5); sf('@P79-0.3', 'swoosh_2', -11, 0.5);
 for (const w of ['one', 'two', 'three']) { sf(`@P79:${w}${w === 'three' ? '#2' : ''}`, 'pop_2', -9, 0.3); }
-bt('@P79:one', 'zoom-on-number', 'cl79.r0', { fill: 0.6, maxH: 300, sy: 480 }); bt('@P79:two', 'zoom-on-number', 'cl79.r1', { fill: 0.6, maxH: 300, sy: 480 }); bt('@P79:three#2', 'zoom-on-number', 'cl79.r2', { fill: 0.6, maxH: 300, sy: 480, pose: 'chin' });
+bt('@P79:one', 'graphic-hero', 'cl79', { fill: 0.5, maxH: 760, sy: 520 }); bt('@P79:two', 'graphic-hero', 'cl79', { fill: 0.5, maxH: 760, sy: 520 }); bt('@P79:three#2', 'graphic-hero', 'cl79', { fill: 0.5, maxH: 760, sy: 520, pose: 'chin' });
 // P80 every con would have failed: the ticks, then five FAILED stamps
 for (let i = 0; i < 5; i++) con('fl' + i, ['kur', 'gig', 'tip', 'tuc', 'jav'][i], R6(3) + (i - 2) * 400, 40, `@P80:every+${(i * 0.15).toFixed(2)}`, { w: 320, variant: 'card', flash: false, credit: '', stamps: [{ text: 'FAILED', at: `@P80:failed+${(i * 0.25).toFixed(2)}`, tone: 'bad', size: 70, rot: -0.12, y: 20 }] }, { out: '@P81-0.2' });
 bt('@P80', 'graphic-hero', ['fl0', 'fl4'], { move: 'whip', fill: 0.94, sy: 500, pose: 'point' }); sf('@P80-0.3', 'swoosh_2', -11, 0.5);
@@ -48,8 +48,7 @@ sf('@P81:subscribe-0.15', 'pop_2', -9, 0.3); sf('@P81:subscribe+0.55', 'click_1'
 el('end81', 'headline', R6(4), 40, '@P81-0.3', { kicker: 'NEW CASE EVERY WEEK', lines: [[['THE MATH ', 'paper'], ['CATCHES', 'bad']], [['THE BAD GUY', 'paper']]], size: 130, underAt: 1.0 }, { out: '@P81>' });
 bt('@P81', 'graphic-hero', 'end81', { move: 'whip', fill: 0.7, maxH: 640, sx: 860, sy: 480, st: 'corner', pose: 'point' }); sf('@P81-0.3', 'swoosh_2', -11, 0.5);
 bt('@P81:subscribe', 'graphic-hero', 'end81', { fill: 0.72, maxH: 640, sx: 860, sy: 480, st: 'corner', pose: 'follow' }); po('@P81:subscribe', 'follow', [1480, 880]); po('@P81:subscribe+1.2', 'point');
-// END CARD (12 s after the last word): clean dark card with YouTube end-screen slots
-el('endc', 'endslots', RM[7], 40, '@P81>+0.4', { at: '@P81>+0.4', rl: 'WATCH NEXT', cl: 'SUBSCRIBE' }, { layer: 'screen' });
-el('endt', 'headline', RM[7], -380, '@P81>+0.2', { kicker: 'BAD MATH', lines: [[['5 CONS. ', 'paper'], ['1 PATTERN.', 'accent']]], size: 86, under: 'accent', underAt: 0.8 }, {});
-bt('@P81>+0.1', 'graphic-hero', 'endt', { move: 'whip', fill: 0.4, maxH: 400, sy: 260, st: 'off', pose: 'wave' });
-po('@P81>+0.5', 'wave');
+// END CARD (12 s after the last word): wordmark, YouTube end-screen slots, storyteller waving, music only
+el('wm', 'text', 960, 140, '@P81>+0.2', { lines: [[['BAD MATH', 'paper']]], size: 150, shadow: true }, { layer: 'screen' });
+el('slots', 'endslots', 0, 0, '@P81>+0.4', { rl: 'WATCH NEXT', cl: 'SUBSCRIBE' }, { layer: 'screen' });
+bt('@P81>+0.3', 'wide', { x: RM[7], y: 0, w: 1000, h: 600 }, { move: 'whip', dur0: 0.9, fill: 0.5, sy: 470, st: { x: 1075, y: 1064, s: 1.05, layer: 'front' }, pose: 'wave', stDur: 0.9, arc: 0.2 }); sf('@P81>+0.1', 'swoosh_2', -9, 0.8); sf('@P81>+0.7', 'success_chime_2', -12, 1.4);

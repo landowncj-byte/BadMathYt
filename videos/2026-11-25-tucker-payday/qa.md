@@ -3,6 +3,8 @@ Background music beds (RULES 115): verdict_bed_2 on all three cuts.
 ## CRIME-SHOW BUILD STATUS
 <!--S-->
 RENDERED READY: YouTube(root) 83.1s 32.6MB
+RENDERED READY: TikTok(tiktok/) 77.2s 30.6MB
+RENDERED READY: IG/FB(ig/) 82.9s 32.6MB
 <!--/S-->
 
 Engine v2, series decoded. Scenes are generated: `_src/gen.js` (one story builder) + `_src/cfg_yt|tt|ig.js` (per-cut @word refs) + `_src/build.crime.sh <cut> <yt|tt|ig>` (concatenates recipes + `brand/engine-v2/crime.js`). Per-cut line-by-line visuals: `<cut>/build/AV.md`. Voice files untouched (`bm2.cjs voice` only re-read words.json). Rendered in the cloud with `bm2.cjs render --jobs 3 --chunk 28 --crf 23`; mixed with `mix.py` (TikTok with `BM2_BED_DB=-12`, RULES 113); captions.srt from sentences.json.

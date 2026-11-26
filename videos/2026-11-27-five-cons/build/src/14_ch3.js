@@ -18,11 +18,11 @@ bt('@P36:many', 'graphic-hero', 'mp36', { fill: 0.44, maxH: 700, sy: 490 }); bt(
 bt('@P36:director', 'zoom-on-number', 't36', { fill: 0.3, maxH: 760, sy: 520, pose: 'shock' });
 // P37 he helped write the software; trick step 1
 con('t37', 'tip', R3(3) - 700, 380, '@P37-0.2', { w: 250, variant: 'pip', label: 'HE WROTE IT', flash: false, arrow: { at: '@P37:write', to: [250, -250] } }, { out: '@P38-0.2' });
-el('cd37', 'card', R3(3) + 40, 20, '@P37-0.3', { w: 1000, h: 520, fill: 'navy', lines: [{ t: 'LOTTERY SOFTWARE', size: 40, font: 'mono', tone: 'gold', at: '@P37-0.1' }, { t: '{ pick numbers }', size: 120, tone: 'paper', at: '@P37:software', gap: 60 }, { t: 'STEP 1 · HE HELPED WRITE IT', size: 38, font: 'mono', tone: 'good', at: '@P37:helped' }] }, { out: '@P38-0.2' });
+el('cd37', 'card', R3(3) + 40, 20, '@P37-0.3', { w: 1000, h: 520, fill: 'navy', lines: [{ t: 'LOTTERY SOFTWARE', size: 40, font: 'mono', tone: 'gold', at: '@P37-0.1', gap: 110 }, { t: '{ pick numbers }', size: 120, tone: 'paper', at: '@P37:software' }, { t: 'STEP 1 · HE HELPED WRITE IT', size: 38, font: 'mono', tone: 'good', at: '@P37:helped' }] }, { out: '@P38-0.2' });
 bt('@P37', 'graphic-hero', ['t37', 'cd37'], { move: 'whip', fill: 0.78, sy: 500, pose: 'point' }); sf('@P37-0.3', 'swoosh_2', -11, 0.5); sf('@P37:software', 'typewriter_2', -11, 1.4);
 bt('@P37:software', 'zoom-on-number', 'cd37', { fill: 0.5, maxH: 520, sy: 500 }); bt('@P37:write', 'graphic-hero', ['t37', 'cd37'], { fill: 0.78, sy: 500, pose: 'point' });
 // P38 trick: hid extra code; a few dates a year the numbers were predictable
-el('cd38', 'card', R3(4) - 700, 40, '@P38:hid-0.2', { w: 560, h: 420, fill: 'navy', lines: [{ t: 'STEP 2', size: 44, font: 'mono', tone: 'good', at: '@P38:hid-0.1' }, { t: 'HIDDEN CODE', size: 90, tone: 'bad', at: '@P38:hid', gap: 40 }, { t: 'EXTRA LINES, NOBODY SEES', size: 26, font: 'mono', tone: 'paper', at: '@P38:code' }] }, { out: '@P39-0.2' });
+el('cd38', 'card', R3(4) - 700, 40, '@P38-0.2', { w: 560, h: 420, fill: 'navy', lines: [{ t: 'STEP 2', size: 44, font: 'mono', tone: 'good', at: '@P38+0.2', gap: 100 }, { t: 'HIDDEN CODE', size: 90, tone: 'bad', at: '@P38+0.4', gap: 90 }, { t: 'EXTRA LINES, NOBODY SEES', size: 26, font: 'mono', tone: 'paper', at: '@P38:code' }] }, { out: '@P39-0.2' });
 el('cal38', 'calendar', R3(4) + 20, 40, '@P38:dates-0.3', { head: 'A FEW DATES A YEAR', pages: [{ at: '@P38:dates', text: 'JAN' }, { at: '@P38:dates+0.5', text: 'JUL', tone: 'bad' }, { at: '@P38:specific+0.3', text: 'DEC', tone: 'bad' }], size: 140, w: 600 }, { out: '@P39-0.2' });
 for (let i = 0; i < 6; i++) el('bl38' + i, 'tile', R3(4) + 800 + (i % 3) * 190, -120 + Math.floor(i / 3) * 230, `@P38:predict+${(i * 0.1).toFixed(1)}`, { icon: 'labels', caption: '', w: 170, h: 190, iconS: 70 }, { out: '@P39-0.2' });
 el('pd38', 'stamp', R3(4) + 980, 280, '@P38:predict+0.7', { text: 'HE CAN PREDICT', tone: 'bad', size: 52 }, { rot: -0.05, out: '@P39-0.2' });
@@ -31,9 +31,9 @@ bt('@P38:dates', 'graphic-hero', ['cd38', 'cal38'], { fill: 0.64, sy: 500, pose:
 bt('@P38:predict', 'graphic-hero', ['cal38', 'bl380', 'pd38'], { fill: 0.7, sy: 500, pose: 'shock' }); sf('@P38:predict+0.7', 'rubber_stamp_2', -6, 0.5); sk('@P38:predict+0.7', 10);
 // P39 workers can't play; he passed numbers to his brother and a friend who bought tickets
 con('t39', 'tip', R3(5) - 760, 40, '@P39-0.3', { w: 300, variant: 'pip', label: 'THE TRICK', flash: false }, { out: '@P40-0.2' });
-el('fl39', 'flow', R3(5) + 220, 80, '@P39:passed-0.3', { w: 1280, h: 360, items: [{ label: 'NUMBERS', icon: 'doc', at: '@P39:passed' }, { label: 'BROTHER + FRIEND', icon: 'pair', at: '@P39:brother' }, { label: 'TICKET', icon: 'ticket', at: '@P39:bought' }, { label: 'WIN', icon: 'dollar', at: '@P39:collected', tone: 'good' }] }, { out: '@P40-0.2' });
-el('np39', 'stamp', R3(5) - 280, -300, '@P39:aren\'t-0.1', { text: 'WORKERS CAN\'T PLAY', tone: 'bad', size: 74 }, { rot: -0.04, out: '@P40-0.2' });
-bt('@P39', 'graphic-hero', ['np39', 't39'], { move: 'whip', fill: 0.62, sy: 480, pose: 'point' }); sf('@P39-0.3', 'swoosh_2', -11, 0.5); sf('@P39:aren\'t', 'rubber_stamp_2', -6, 0.5);
+el('fl39', 'flow', R3(5) + 220, 80, '@P39:passed-0.3', { w: 1280, h: 360, items: [{ label: 'NUMBERS', icon: 'doc', at: '@P39:passed' }, { label: 'HIS CREW', icon: 'pair', at: '@P39:brother' }, { label: 'TICKET', icon: 'ticket', at: '@P39:bought' }, { label: 'WIN', icon: 'dollar', at: '@P39:collected', tone: 'good' }] }, { out: '@P40-0.2' });
+el('np39', 'stamp', R3(5) + 220, -250, '@P39:aren\'t-0.1', { text: 'WORKERS CAN\'T PLAY', tone: 'bad', size: 74 }, { rot: -0.04, out: '@P40-0.2' });
+bt('@P39', 'graphic-hero', ['np39', 'fl39'], { move: 'whip', fill: 0.78, sy: 500, pose: 'point' }); sf('@P39-0.3', 'swoosh_2', -11, 0.5); sf('@P39:aren\'t', 'rubber_stamp_2', -6, 0.5);
 bt('@P39:passed', 'graphic-hero', 'fl39', { fill: 0.72, maxH: 460, sy: 500, pose: 'point' }); sf('@P39:passed', 'pop_2', -8, 0.3); sf('@P39:brother', 'pop_2', -8, 0.3); sf('@P39:bought', 'pop_2', -8, 0.3); sf('@P39:collected', 'cash_register_1', -9, 0.9);
 bt('@P39:collected', 'zoom-on-number', 'fl39', { fill: 0.5, maxH: 420, sy: 500, pose: 'shock' });
 // P40 Colorado, Wisconsin, Oklahoma — $2.5M+
@@ -65,7 +65,7 @@ el('mg44', 'icon', R3(10) - 100, -300, '@P44:who-0.3', { kind: 'magnifier', s: 2
 bt('@P44', 'graphic-hero', 'rf44', { move: 'whip', fill: 0.78, maxH: 480, sy: 500, pose: 'point' }); sf('@P44-0.3', 'swoosh_2', -11, 0.5); sf('@P44:refused', 'rubber_stamp_2', -5, 0.5); sk('@P44:refused', 10);
 bt('@P44:who', 'graphic-hero', ['rf44', 'mg44'], { fill: 0.74, sy: 480, pose: 'shock' });
 // P45 store security video; his co-workers recognize his voice; red ring on Tipton
-el('vd45', 'card', R3(11) - 700, 40, '@P45-0.3', { w: 620, h: 400, fill: 'navy', lines: [{ t: 'SECURITY VIDEO', size: 50, font: 'mono', tone: 'gold', at: '@P45:video-0.2' }, { t: 'STORE · 12/29/2010', size: 34, font: 'mono', tone: 'paper', at: '@P45:video' }, { t: '● REC', size: 80, tone: 'bad', at: '@P45:video', gap: 36 }] }, { out: '@P46-0.2' });
+el('vd45', 'card', R3(11) - 700, 40, '@P45-0.3', { w: 620, h: 400, fill: 'navy', lines: [{ t: 'SECURITY VIDEO', size: 50, font: 'mono', tone: 'gold', at: '@P45+0.3' }, { t: 'STORE · 12/29/2010', size: 34, font: 'mono', tone: 'paper', at: '@P45+0.5', gap: 80 }, { t: '● REC', size: 80, tone: 'bad', at: '@P45+0.7' }] }, { out: '@P46-0.2' });
 el('vc45', 'text', R3(11) + 60, -150, '@P45:voice-0.3', { lines: [[['“THAT\'S HIS ', 'paper'], ['VOICE', 'bad'], ['”', 'paper']]], size: 80 }, { out: '@P46-0.2' });
 con('t45', 'tip', R3(11) + 560, 160, '@P45:voice-0.1', { w: 400, variant: 'card', ring: '@P45:director', flash: false, push: { at: '@P45:director', to: 1.3, dur: 3 } }, { out: '@P46-0.2' });
 bt('@P45', 'graphic-hero', 'vd45', { move: 'whip', fill: 0.4, maxH: 600, sy: 490, pose: 'point' }); sf('@P45-0.3', 'swoosh_2', -11, 0.5); sf('@P45:video', 'camera_flash_1', -10, 0.6);

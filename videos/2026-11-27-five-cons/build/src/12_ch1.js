@@ -12,7 +12,7 @@ el('v8', 'victim', R1(1) + 600, 80, '@P08:fanciest-0.2', { kind: 'collector', la
 bt('@P08', 'graphic-hero', ['k2', 'v8', 'dc8'], { move: 'whip', fill: 0.72, sy: 500, pose: 'point' }); sf('@P08-0.3', 'swoosh_2', -11, 0.5); sf('@P08-0.1', 'camera_flash_1', -10, 0.6);
 bt('@P08:young', 'zoom-on-number', 'k2', { fill: 0.5, maxH: 720, sy: 500 }); bt('@P08:fanciest', 'graphic-hero', ['k2', 'v8'], { fill: 0.74, sy: 480, pose: 'point' }); sf('@P08:fanciest', 'pop_2', -9, 0.3);
 // P09 bottles that cost $10,000 like soda; people call him a genius
-el('b9', 'bottles', R1(2) - 330, 60, '@P09-0.3', { items: [{ label: '$10,000', at: '@P09:bottles', size: 24 }, { label: '$10,000', at: '@P09:bottles+0.2', size: 24 }, { label: '$10,000', at: '@P09:bottles+0.4', size: 24 }], gap: 190 }, { out: '@P10-0.2' });
+el('b9', 'bottles', R1(2) - 330, 60, '@P09-0.3', { items: [{ label: '$10,000', at: '@P09+0.35', size: 24 }, { label: '$10,000', at: '@P09+0.55', size: 24 }, { label: '$10,000', at: '@P09+0.75', size: 24 }], gap: 190 }, { out: '@P10-0.2' });
 el('g9', 'text', R1(2) + 560, 20, '@P09:people-0.1', { lines: [[['“GENIUS”', 'gold']]], size: 140 }, { enter: 'slam', out: '@P10-0.2' });
 con('k9', 'kur', R1(2) + 560, 290, '@P09:genius-0.3', { w: 270, variant: 'pip', label: 'THE PITCH', flash: false }, { out: '@P10-0.2' });
 bt('@P09', 'graphic-hero', 'b9', { move: 'whip', fill: 0.6, sy: 500, pose: 'point' }); sf('@P09-0.3', 'swoosh_2', -11, 0.5);
@@ -38,16 +38,16 @@ bt('@P12', 'graphic-hero', ['s3', 's4'], { fill: 0.7, sy: 490, pose: 'point' });
 bt('@P12:famous', 'zoom-on-number', 's4', { fill: 0.34, maxH: 640, sy: 500, pose: 'point' });
 // P13 FBI search 2012: kitchen photo, wine factory
 el('kit', 'photo', R1(5) - 420, 20, '@P13-0.3', { src: 'brand/photos/rudy-kurniawan/3.jpg', name: 'HIS KITCHEN', role: 'FBI SEARCH · 2012', credit: 'PHOTO: U.S. GOVERNMENT · PUBLIC DOMAIN', treatment: 'paper', fx: 0.5, fy: 0.5, w: 780, aspect: 0.72, tilt: -0.02 }, { out: '@P14-0.2' });
-el('t13a', 'tile', R1(5) + 330, -200, '@P13:stacks-0.1', { icon: 'bottle', caption: 'CORKS', w: 250, h: 270, iconS: 130, stamp: '', tilt: 0.03 }, { out: '@P14-0.2' });
-el('t13b', 'tile', R1(5) + 620, -200, '@P13:wax-0.1', { icon: 'cash', caption: 'WAX', w: 250, h: 270, iconS: 130, tilt: -0.02 }, { out: '@P14-0.2' });
-el('t13c', 'tile', R1(5) + 905, -200, '@P13:thousands-0.4', { icon: 'labels', caption: 'LABELS', w: 250, h: 270, iconS: 130, tilt: 0.03 }, { out: '@P14-0.2' });
-el('wf', 'stamp', R1(5) + 620, 150, '@P13:wine+0.1', { text: 'A WINE FACTORY', tone: 'bad', size: 74 }, { rot: -0.05, out: '@P14-0.2' });
+el('t13a', 'tile', R1(5) + 330, -290, '@P13:stacks-0.1', { icon: 'bottle', caption: 'CORKS', w: 250, h: 270, iconS: 130, stamp: '', tilt: 0.03 }, { out: '@P14-0.2' });
+el('t13b', 'tile', R1(5) + 620, -290, '@P13:wax-0.1', { icon: 'cash', caption: 'WAX', w: 250, h: 270, iconS: 130, tilt: -0.02 }, { out: '@P14-0.2' });
+el('t13c', 'tile', R1(5) + 905, -290, '@P13:thousands-0.4', { icon: 'labels', caption: 'LABELS', w: 250, h: 270, iconS: 130, tilt: 0.03 }, { out: '@P14-0.2' });
+el('wf', 'stamp', R1(5) + 620, 20, '@P13:wine+0.1', { text: 'A WINE FACTORY', tone: 'bad', size: 74 }, { rot: -0.05, out: '@P14-0.2' });
 bt('@P13', 'graphic-hero', 'kit', { move: 'whip', fill: 0.5, maxH: 700, sx: 800, sy: 480, pose: 'point' }); sf('@P13-0.3', 'camera_flash_1', -9, 0.6);
 bt('@P13:prosecutors', 'graphic-hero', ['kit', 'wf'], { fill: 0.82, sy: 500 }); sf('@P13:wine+0.1', 'rubber_stamp_2', -5, 0.5); sk('@P13:wine+0.1', 10);
 bt('@P13:stacks', 'graphic-hero', ['t13a', 't13b', 't13c', 'wf'], { fill: 0.5, sx: 900, sy: 470, pose: 'point' }); sf('@P13:stacks-0.1', 'pop_2', -9, 0.3); sf('@P13:wax-0.1', 'pop_2', -9, 0.3); sf('@P13:thousands-0.4', 'pop_1', -9, 0.3);
 bt('@P13:thousands', 'zoom-on-number', 't13c', { fill: 0.2, maxH: 400, sx: 900, sy: 440, pose: 'shock' });
 // P14 the best tasters drank it and praised it
-for (let i = 0; i < 3; i++) el('ts' + i, 'victim', R1(6) - 420 + i * 420, 20, `@P14:tasters+${(i * 0.18).toFixed(2)}`, { kind: 'collector', label: 'EXPERT TASTER', sub: 'LOVED IT', w: 320, h: 410, suit: ['#1FA366', '#2F5DA8', '#8A3FD1'][i], tape: 'TASTER', reactAt: '@P14:praised' }, { out: '@P15-0.2' });
+for (let i = 0; i < 3; i++) el('ts' + i, 'victim', R1(6) - 420 + i * 420, 20, `@P14+${(0.3 + i * 0.2).toFixed(2)}`, { kind: 'collector', label: 'EXPERT TASTER', sub: 'LOVED IT', w: 320, h: 410, suit: ['#1FA366', '#2F5DA8', '#8A3FD1'][i], tape: 'TASTER', reactAt: '@P14:praised' }, { out: '@P15-0.2' });
 el('pr14', 'stamp', R1(6), 330, '@P14:praised-0.1', { text: 'DRANK IT · PRAISED IT', tone: 'good', size: 70 }, { rot: -0.04, out: '@P15-0.2' });
 bt('@P14', 'graphic-hero', 'ts1', { move: 'whip', fill: 0.3, maxH: 620, sy: 500, pose: 'chin' }); sf('@P14-0.3', 'swoosh_2', -11, 0.5);
 bt('@P14:tasters', 'graphic-hero', ['ts0', 'ts2', 'pr14'], { fill: 0.72, sy: 500, pose: 'point' }); bt('@P14:praised', 'zoom-on-number', 'pr14', { fill: 0.44, maxH: 300, sy: 500, pose: 'shrug' }); sf('@P14:praised', 'pop_2', -9, 0.3);
@@ -70,7 +70,7 @@ bt('@P17:family', 'graphic-hero', ['v17', 'tl17'], { fill: 0.8, sy: 480, pose: '
 // P18 labels were thirty-seven years older than the wine
 el('ru18', 'ruler', R1(8) + 400, 40, '@P18-0.3', { from: '1945', to: '1982', n: 37, at: '@P18:those', dur: 1.5 }, { out: '@P19-0.2' });
 bt('@P18', 'graphic-hero', 'ru18', { fill: 0.64, maxH: 700, sy: 500, pose: 'point' }); sf('@P18-0.3', 'paper_slam_2', -10, 0.5); sf('@P18:those', 'clock_ticking_1', -10, 1.5);
-bt('@P18:37', 'zoom-on-number', 'ru18.n', { fill: 0.4, maxH: 420, sy: 400, pose: 'shock' }); sf('@P18:older', 'rubber_stamp_2', -5, 0.5); sk('@P18:older', 12);
+bt('@P18:37', 'graphic-hero', 'ru18', { fill: 0.74, maxH: 760, sy: 500, pose: 'shock' }); sf('@P18:older', 'rubber_stamp_2', -5, 0.5); sk('@P18:older', 12);
 // P19 billionaire Bill Koch: $2.1M for 219 bottles he says are fake
 el('v19', 'victim', R1(9) - 560, 40, '@P19-0.3', { kind: 'billionaire', label: 'BILL KOCH', sub: 'BILLIONAIRE COLLECTOR', w: 380, h: 480, reactAt: '@P19:fake' }, { out: '@P20-0.2' });
 el('c19', 'counter', R1(9) + 130, -120, '@P19-0.2', { label: 'HE PAID', to: 2100000, prefix: '$', at: '@P19:$2', dur: 1.2, tone: 'bad', size: 150, w: 900 }, { out: '@P20-0.2' });
