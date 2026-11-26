@@ -19,3 +19,11 @@ Real licensed: brand/photos/jules-rimet-trophy/3.jpg (REPLICA, Preston museum â€
 
 ## CRIME-SHOW BUILD STATUS
 VOICED READY
+
+RENDERED READY (night builder 2026-11-26, engine v2 + videos/_lib/cs.js screen-stage; beds exactly as assigned; mix v2 (quiet bed); TikTok mixed with BM2_BED_DB=-12):
+RENDERED READY: youtube (2026-12-04-world-cup-pickles/video.mp4) 83.50s 29.0MB, -14.0 LUFS
+RENDERED READY: tiktok (2026-12-04-world-cup-pickles/tiktok/video.mp4) 86.30s 29.2MB, -14.0 LUFS
+RENDERED READY: ig (2026-12-04-world-cup-pickles/ig/video.mp4) 86.33s 30.1MB, -14.1 LUFS
+Checks: contact sheets (yt/tiktok/ig) looked at on real frames; fixed during review: board pin coordinates, hook text vs card overlap, stamps covering nameplates, ransom-note letters spilling, calendar empty-day dot, bars labels vs title. Nothing in the caption band (y>1340); spelling checked (BETCHLEY, CORBETT, PICKLES, JACKSON, WESTMINSTER not used). Numbers on screen match the script (2 YEARS, DAY 7, 4 MONTHS, 20 MARCH 1966).
+Credits: PHOTO brand/photos/jules-rimet-trophy/3.jpg = REPLICA of the Jules Rimet trophy at the National Football Museum, Preston, Abel Lafleur, public domain (https://commons.wikimedia.org/wiki/File:Jules_rimet_trophy_at_preston_museum.jpg), labelled REPLICA on every use. 2.jpg NOT used (it shows the modern FIFA trophy beside a Brazil shirt with a crest, not the Jules Rimet trophy). Betchley, Corbett, Pickles and the thief are coloured ILLUSTRATION cards (never photos).
+Villain card (the middleman, Betchley) = always-on pip bottom-left (100% of runtime) plus full cards at: arrest, claim, whoq, sentence (+ thief card at stolen, whoq, thiefnever) in every cut (>=5 full appearances). Bed quirky_bed_1; TikTok BM2_BED_DB=-12.

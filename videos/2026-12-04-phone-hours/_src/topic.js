@@ -1,7 +1,7 @@
 // Phone hours (What If). YOU = recurring cartoon worker. Numbers exactly per research (median $24.51, $1,000 phone, $70 x 36, 20% tax ASSUMED).
 const CS_TOPIC = {
   series: 'whatif', title: 'WHAT IF · PHONE IN HOURS', pipWho: 'you', hypo: 'HYPOTHETICAL · NOT FINANCIAL ADVICE',
-  footnote: ['ASSUMES: MEDIAN WAGE $24.51/HR (BLS OEWS, MAY 2025) · $1,000 PHONE · $70/MO × 36 MONTHS · NO TAX/TRADE-IN ON THE PHONE', 'AFTER-TAX LINE ASSUMES 20% TAX (NOT A SOURCED RATE) · HOURS = DOLLARS ÷ $24.51 · WAGES BEFORE TAX', 'ILLUSTRATION: “YOU” IS A DRAWN CHARACTER · PHONE IS GENERIC, NO BRAND'],
+  footnote: ['ASSUMES: MEDIAN WAGE $24.51/HR (BLS OEWS, MAY 2025) · $1,000 PHONE · $70/MO x 36 MONTHS · NO TAX/TRADE-IN ON THE PHONE', 'AFTER-TAX LINE ASSUMES 20% TAX (NOT A SOURCED RATE) · HOURS = DOLLARS ÷ $24.51 · WAGES BEFORE TAX', 'ILLUSTRATION: “YOU” IS A DRAWN CHARACTER · PHONE IS GENERIC, NO BRAND'],
   rules: [
     [/^(Hit|Smash) like|^Send this|^Follow if/i, '-'],
     [/price it in hours|not dollars|Want proof|count it in hours/i, 'hours'],
@@ -33,9 +33,9 @@ const CS_TOPIC = {
     cheap: { lab: 'THE TWIST', pip: { text: 'THE CHEAP PART?', tone: 'gold' }, items: [
       { k: 'text', lines: [['THE CHEAP PART?', 'gold']], size: 100, x: 540, y: 470, at: 0.1 }, { k: 'icon', name: 'phone', s: 1.5, x: 300, y: 830, at: 0 }, { k: 'icon', name: 'stack', n: 8, s: 2.5, x: 760, y: 820, at: '~cheap|plan|rip-off|expensive' }, { k: 'arrow', from: [420, 820], to: [600, 820], tone: 'bad', x: 540, y: 820, at: '~cheap|plan|rip-off|expensive+0.3', lift: 0 }] },
     plan: { lab: 'THE PLAN', pip: { text: '$70 / MONTH', tone: 'gold' }, items: [
-      { k: 'card', head: 'THE PLAN', w: 880, h: 400, icon: 'stack', iconS: 1.6, lines: [['$70 / MONTH', 'ink', 96], ['× 36 MONTHS', 'bad', 96]], x: 540, y: 700, at: 0 }, { k: 'chip', text: '3 YEARS', tone: 'gold', size: 44, x: 540, y: 1010, at: '~three|years' }] },
-    planbars: { lab: 'THE PLAN', pip: { text: '2.5× THE PHONE', tone: 'bad' }, items: [
-      { k: 'bars', title: 'PHONE vs PLAN', w: 640, h: 430, items: [{ label: 'PHONE', value: 1000, show: '$1,000', tone: 'navy', at: 0.2 }, { label: '36-MONTH PLAN', value: 2520, show: '$2,520', tone: 'bad', at: '~two|Two' }], x: 540, y: 740, at: 0 }, { k: 'chip', text: '≈ 2.5× THE PHONE', tone: 'bad', size: 44, x: 540, y: 1075, at: '~half|phones' }] },
+      { k: 'card', head: 'THE PLAN', w: 880, h: 400, icon: 'stack', iconS: 1.6, lines: [['$70 / MONTH', 'ink', 96], ['x 36 MONTHS', 'bad', 96]], x: 540, y: 700, at: 0 }, { k: 'chip', text: '3 YEARS', tone: 'gold', size: 44, x: 540, y: 1010, at: '~three|years' }] },
+    planbars: { lab: 'THE PLAN', pip: { text: '2.5x THE PHONE', tone: 'bad' }, items: [
+      { k: 'bars', title: 'PHONE vs PLAN', w: 640, h: 430, items: [{ label: 'PHONE', value: 1000, show: '$1,000', tone: 'navy', at: 0.2 }, { label: '36-MONTH PLAN', value: 2520, show: '$2,520', tone: 'bad', at: '~two|Two' }], x: 540, y: 740, at: 0 }, { k: 'chip', text: '≈ 2.5x THE PHONE', tone: 'bad', size: 44, x: 540, y: 1075, at: '~half|phones' }] },
     planhours: { lab: 'THE PLAN', pip: { text: '≈ 103 HOURS', tone: 'bad' }, items: [
       { k: 'count', to: 103, from: 0, suf: ' HOURS', size: 150, card: true, label: 'THE PLAN IN WORK HOURS', tone: 'bad', x: 540, y: 660, at: 0.1, dur: 1.0 }, { k: 'icon', name: 'clock', s: 1.8, x: 540, y: 980, at: '~hundred|about' }] },
     monthly: { lab: 'ALL IN', pip: { text: '≈ $98 / MONTH', tone: 'bad' }, items: [

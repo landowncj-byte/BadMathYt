@@ -1,0 +1,333 @@
+{
+ "duration": 65.05,
+ "sfx": [
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 0,
+   "name": "pop_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 0.04,
+   "name": "deep_boom_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 0.1,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 2.28,
+   "name": "pop_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 2.58,
+   "name": "pop_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 3.32,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 3.32,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 4.96,
+   "name": "pop_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 4.96,
+   "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 6.2,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 6.2,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 8.3,
+   "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 10.18,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 10.18,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 10.26,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 12.68,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 12.68,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 15.1,
+   "name": "pop_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 15.72,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 15.72,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 16.26,
+   "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 19.74,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 19.74,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 22.58,
+   "name": "pop_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 23.76,
+   "name": "pop_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 26.08,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 26.08,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 30.46,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 31.6,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 31.7,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 32.6,
+   "name": "pop_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.9,
+   "at": 35.68,
+   "name": "swoosh_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 38.68,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 38.73,
+   "name": "pop_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 39.18,
+   "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 42.44,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 42.44,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 45.92,
+   "name": "pop_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 46.67,
+   "name": "click_1"
+  },
+  {
+   "gain": -12,
+   "dur": 1.2,
+   "at": 46.77,
+   "name": "success_chime_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 49.02,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 49.07,
+   "name": "pop_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 49.52,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 53.88,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 53.98,
+   "name": "pop_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 54.38,
+   "name": "pop_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 54.38,
+   "name": "pop_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 57.38,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 57.38,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 60.28,
+   "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 61.88,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 61.88,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 62.18,
+   "name": "pop_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 62.21,
+   "name": "pop_1"
+  }
+ ],
+ "bed": {
+  "name": "electronic_bed_3",
+  "gain": -1
+ }
+}

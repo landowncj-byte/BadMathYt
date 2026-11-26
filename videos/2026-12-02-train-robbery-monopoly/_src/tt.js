@@ -80,7 +80,7 @@ E_('heart', 'heart', [800, 930], { layer: 'screen', in: SW(6,1) - 0.05, out: SW(
 E_('plane', 'plane', [540, 960], { layer: 'screen', in: SW(12,1) - 0.05, out: SW(12,1) + 1.2, props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } });
 E_('sendtx', 'text', [830, 360], { layer: 'screen', in: SW(12,1) + 0.15, out: SW(12,1) + 1.2, props: { lines: [[['SEND', 'gold']]], size: 70 } });
 E_('btn', 'follow', [830, 1010], { layer: 'screen', scale: 0.8, in: SW(17,0) - 0.05, out: SW(17,0) + 1.45, props: { press: 0.5 } });
-E_('ask', 'bubble', [600, 1090], { layer: 'screen', in: SW(22,0) - 0.1, out: E(22) + 0.2, props: { l1: 'THE SANDWICH-LEVEL', l2: 'DUMB: WHICH?', size: 52, tail: 'left' } });
+E_('ask', 'bubble', [600, 1090], { layer: 'screen', in: SW(22,0) - 0.1, out: E(22) + 0.2, props: { l1: 'MONOPOLY OR', l2: 'KETCHUP?', size: 52, tail: 'left' } });
 E_('rew', 'text', [540, 440], { layer: 'screen', in: S(3) + 0.3, out: SW(3,8) - 0.1, props: { lines: [[["WHERE'D THE", 'paper']], [['REAL MONEY COME FROM?', 'gold']]], size: 60 } });
 E_('hud', 'hud', [0, 0], { layer: 'screen', in: -1, props: { labels: [{ at: -1, text: 'THE HOOK' }, { at: SW(1,4) - 0.1, text: 'THE SETUP' }, { at: SW(5,0) - 0.1, text: 'THE GANG' }, { at: SW(5,6) - 0.1, text: 'THE PLAN' }, { at: S(11) - 0.1, text: 'THE COVER-UP' }, { at: S(15) - 0.1, text: 'THE SLIP' }, { at: S(18) - 0.1, text: 'THE SENTENCE' }], items: [] } });
 const B_ = (at, beat, focus, o) => beats.push(Object.assign({ at, beat, focus }, o || {}));

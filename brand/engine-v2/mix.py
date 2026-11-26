@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bad Math engine v2 mixer. Same recipe as the v1 mixlib: voice -16 LUFS, bed -24 LUFS ducked under the voice,
+"""Bad Math engine v2 mixer. Same recipe as the v1 mixlib: voice -16 LUFS, bed -30 LUFS (owner 2026-11-26: music too loud, voice must be clear) with a vocal-band EQ dip, ducked hard under the voice,
 master -14 LUFS / true peak <= -1 dBTP (two-pass loudnorm + limiter). SFX come straight from brand/sfx-library
 and their times come from <sceneDir>/sfx.json, which `bm2.cjs render` (or `check`) writes from scene.js.
 usage: python3 brand/engine-v2/mix.py <sceneDir> <voiceDir> <out.mp4>"""
@@ -17,12 +17,12 @@ def mix(scene, voice_dir, out):
         ins += ['-i', MAN[s['name']]]; ms = int(s['at'] * 1000); d = s.get('dur', 1); off = s.get('offset', 0)
         ch = f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,atrim={off}:{off + d + 1.0 if off else 99},asetpts=PTS-STARTPTS,silenceremove=start_periods=1:start_threshold=-45dB,atrim=0:{d},asetpts=PTS-STARTPTS,afade=out:st={max(0, d - min(.15, d / 3)):.3f}:d={min(.15, d / 3):.3f}"
         fc.append(ch + f",volume={s.get('gain', -8)}dB,adelay={ms}|{ms}[f{n}]"); fxl.append(f"[f{n}]"); n += 1
-    fc.append("".join(fxl) + f"amix=inputs={len(fxl)}:normalize=0:duration=longest,apad=whole_dur={DUR},atrim=0:{DUR},volume=-1dB[fx]" if fxl else f"anullsrc=r=48000:cl=stereo,atrim=0:{DUR}[fx]")
+    fc.append("".join(fxl) + f"amix=inputs={len(fxl)}:normalize=0:duration=longest,apad=whole_dur={DUR},atrim=0:{DUR},volume=-4dB[fx]" if fxl else f"anullsrc=r=48000:cl=stereo,atrim=0:{DUR}[fx]")
     bed = S.get('bed')
     if bed:
         ins += ['-stream_loop', '-1', '-i', MAN[bed['name']]]; off = bed.get('offset', 0)  # loop short beds (RULES 115)
-        fc.append(f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,atrim={off}:{off + DUR},asetpts=PTS-STARTPTS,loudnorm=I=-24:TP=-6:LRA=15,aresample=48000,afade=in:d=0.3,afade=out:st={DUR - 1:.3f}:d=1,volume={bed.get('gain', -1) + float(__import__('os').environ.get('BM2_BED_DB', '0'))}dB,apad=whole_dur={DUR},atrim=0:{DUR}[bed]")
-        fc.append("[bed][vk]sidechaincompress=threshold=0.04:ratio=5:attack=15:release=350[bd]")
+        fc.append(f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,atrim={off}:{off + DUR},asetpts=PTS-STARTPTS,loudnorm=I={float(os.environ.get('BM2_BED_LUFS','-30'))}:TP=-8:LRA=15,aresample=48000,equalizer=f=2200:t=q:w=1.2:g=-5,equalizer=f=900:t=q:w=1:g=-3,afade=in:d=0.3,afade=out:st={DUR - 1:.3f}:d=1,volume={bed.get('gain', -1) + float(__import__('os').environ.get('BM2_BED_DB', '0'))}dB,apad=whole_dur={DUR},atrim=0:{DUR}[bed]")
+        fc.append("[bed][vk]sidechaincompress=threshold=0.02:ratio=8:attack=10:release=450[bd]")
     else: fc.append(f"[vk]volume=0[bd]")
     fc.append("[v][fx][bd]amix=inputs=3:normalize=0:duration=first,highpass=f=60,acompressor=threshold=-16dB:ratio=2.5:attack=10:release=200[out]")
     run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', *ins, '-filter_complex', ';'.join(fc), '-map', '[out]', '-t', str(DUR), '-c:a', 'pcm_f32le', pre], check=True)

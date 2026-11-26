@@ -36,6 +36,7 @@
     // ---- CTA from sentence text
     const cta = {}; sents.forEach((s, i) => { const tx = s.text; if (!cta.like && /\blike\b/i.test(tx) && /(hit|smash|drop|tap).*like|like if/i.test(tx)) cta.like = s.start + 0.1; else if (!cta.send && /\bsend this\b|\bshare this\b/i.test(tx)) cta.send = s.start + 0.1; else if (!cta.follow && /^follow\b|\bfollow if\b/i.test(tx)) { cta.follow = s.start + 0.1; cta.followOut = s.end + 0.1; } });
     const last = sents[sents.length - 1]; if (CUT.bubble) cta.bubble = { at: last.start + 0.25, ...CUT.bubble };
+    if (CUT.hook && scenes[1]) CUT.hook.until = Math.min(CUT.hook.until, scenes[1].from - 0.3);
     const els = [];
     els.push({ id: 'stage', type: 'csstage', layer: 'screen', at: [540, 960], in: -1, z: 10, props: { scenes, hook: CUT.hook, labels, pip: CUT.pip || pipk, pipWho: TOPIC.pipWho, notes: CUT.notes || [] } });
     els.push({ id: 'hypo', type: 'hypo', layer: 'screen', at: [545, 1316], in: 0.2, z: 20, props: { text: TOPIC.hypo } });

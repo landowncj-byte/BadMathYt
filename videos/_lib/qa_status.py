@@ -11,7 +11,7 @@ for name, c in cuts:
     out = subprocess.run(['ffmpeg', '-nostats', '-i', v, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
     i = re.findall(r'I:\s+(-?[\d.]+) LUFS', out)[-1]; tp = re.findall(r'Peak:\s+(-?[\d.]+) dBFS', out)[-1]
     shutil.copy(os.path.join(d, 'voice/beats-v3.md'), os.path.join(d, 'build/AV.md'))
-    lines.append('RENDERED READY: %s %.1fs %.1fMB · %s LUFS · TP %s dBFS' % (name, dur, size, i, tp))
+    lines.append('RENDERED READY: %s %.1fs %.1fMB · %s LUFS · TP %s dBFS · mix v2 (quiet bed)' % (name, dur, size, i, tp))
     assert dur > 60 and size < 40, (name, dur, size)
 q = os.path.join(T, 'qa.md'); s = open(q).read()
 s = s.replace('## CRIME-SHOW BUILD STATUS\nVOICED READY', '## CRIME-SHOW BUILD STATUS\nVOICED READY\n' + '\n'.join(lines) + ('\n\n' + notes if notes else ''))

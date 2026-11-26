@@ -1,0 +1,447 @@
+{
+ "duration": 84.68,
+ "sfx": [
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 0,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -6,
+   "dur": 0.5,
+   "at": 0.04,
+   "name": "deep_boom_2"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 3.12,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 5.06,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 5.06,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 6.78,
+   "name": "pop_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 8.3,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 8.3,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 8.68,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 12.32,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 12.32,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 13.76,
+   "name": "pop_2"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 14.18,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 15.18,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 15.18,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 15.98,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 18.1,
+   "name": "pop_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 18.1,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 19,
+   "name": "pop_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 20.06,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 20.06,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 20.66,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 22.96,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 24.34,
+   "name": "pop_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 24.34,
+   "name": "pop_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 25.64,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 25.64,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 26.4,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 27.32,
+   "name": "pop_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.4,
+   "at": 28.02,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 31.34,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 31.64,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 31.74,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 32.04,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 32.34,
+   "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 36.16,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 36.16,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 38.06,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 40.86,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 40.86,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 43.22,
+   "name": "swipe_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 43.22,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 43.42,
+   "name": "pop_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 45.1,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 45.1,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -9,
+   "dur": 0.9,
+   "at": 49.64,
+   "name": "swoosh_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 52.4,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 52.5,
+   "name": "pop_2"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 52.84,
+   "name": "pop_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 56.18,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 56.48,
+   "name": "pop_1"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 59.36,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 60.5,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 60.5,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 62.64,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 64.08,
+   "name": "pop_2"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 64.08,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 67.88,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 69.24,
+   "name": "pop_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.3,
+   "at": 69.99,
+   "name": "click_1"
+  },
+  {
+   "gain": -12,
+   "dur": 1.2,
+   "at": 70.09,
+   "name": "success_chime_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 71.52,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 71.52,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -11,
+   "dur": 0.6,
+   "at": 71.8,
+   "name": "pop_1"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 74.8,
+   "name": "rubber_stamp_1"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 75.5,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 75.5,
+   "name": "whoosh_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 75.6,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -10,
+   "dur": 0.6,
+   "at": 77.28,
+   "name": "pop_2"
+  },
+  {
+   "gain": -8,
+   "dur": 0.6,
+   "at": 80.56,
+   "name": "camera_shutter_1"
+  },
+  {
+   "gain": -12,
+   "dur": 0.6,
+   "at": 80.56,
+   "name": "whoosh_1"
+  },
+  {
+   "gain": -9,
+   "dur": 0.5,
+   "at": 80.89,
+   "name": "pop_1"
+  },
+  {
+   "gain": -7,
+   "dur": 0.6,
+   "at": 80.96,
+   "name": "rubber_stamp_1"
+  }
+ ],
+ "bed": {
+  "name": "funk_bed_3",
+  "gain": -1
+ }
+}

@@ -95,3 +95,10 @@ THU–MON COMPLETE. Tue: 11 ✅ 15 ✅ 19 ✅ · 17:00 long-form fakes (building
 
 ## Tue 12/1 17:00 ET long-form (scheduled 2026-11-26)
 - YT 216392a3-317d-4606-894c-825adf9f73b6 — "Fakes That Fooled the Experts…" 8:33, chapters + captions + thumbnail, APPROVED
+
+## REMIX v2 (owner 2026-11-26 ~17:20Z: "music too loud… make sure the voice is clear")
+mix.py bed -24 → -30 LUFS, vocal-band EQ dip, harder ducking, SFX bus -3 dB. Every unpublished Short is remixed (audio only; build/video_noaudio.mp4 reused) and its posts are REPLACED in the same slot with the same captions and titles. TikTok replacements carry NO API song: the API plays a song at 50% over our audio at 50% with no volume control, which buries the voice.
+| weight vs height | YT/TT/IG/FB 18:00Z Thu | 90d7def7 / 2189bd7c / 83cd8cde / 230a9dd8 | APPROVED (old 4 deleted) |
+| lottery rig | 20:00Z Thu | 694d842f / 100d61ac / 42ae01b1 / 1310b91b | APPROVED (old deleted) |
+| three briefcases | 22:00Z Thu | 09484669 / 168b8e03 / c04e7435 / 2637b693 | APPROVED (old deleted) |
+| fake wine | 00:00Z Fri | 903e3f95 / 0f4cf622 / ef4daad9 / 627068cc | APPROVED (old deleted) |
