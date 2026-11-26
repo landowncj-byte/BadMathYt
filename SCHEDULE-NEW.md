@@ -89,3 +89,6 @@ Mon 19:00 ET = victor-lustig (building). Tue: 11:00 pennies · 15:00 billionaire
 | hitler diaries | YT / TT / IG / FB | Tue 12/1 19:00 | 00:00Z Wed | 5a399e12 / 82d7d1c4 / 4b8e97db / 7a096cb3 | APPROVED |
 pennies-to-the-moon: math error caught by builder ($35.2T → $3.52T for the $1-bill stack; 17,000 → ~1,725 jackpots) — scripts fixed, re-voiced, re-aligning; rebuild pending.
 | pennies to the moon (math fixed) | YT / TT (6500 RPM) / IG / FB | Tue 12/1 11:00 | 16:00Z | 2d2068f8 / 279ec08a / 97331e9e / 28936100 | APPROVED |
+| victor lustig | YT / TT (Tense) / IG / FB | Mon 11/30 19:00 | 00:00Z Tue | 939506a5 / 39386af5 / 5759682d / 48d93009 | APPROVED |
+| billionaires split | YT / TT (My Zen Mornings) / IG / FB | Tue 12/1 15:00 | 20:00Z | 524da030 / 3a09cb90 / bc187cfb / a4f9abbc | APPROVED |
+THU–MON COMPLETE. Tue: 11 ✅ 15 ✅ 19 ✅ · 17:00 long-form fakes (building).
