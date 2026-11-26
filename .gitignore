@@ -52,3 +52,4 @@ research/creators/**/*.m4a
 **/build/*_tmp*.mp4
 **/build/*.partial.mp4
 **/build/render.log
+**/build/*.mp4
