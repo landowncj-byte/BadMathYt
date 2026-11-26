@@ -40,7 +40,7 @@ BM2.scene({
     { id: 'gl', type: 'glass', layer: 'screen', at: [330, 1190], in: '@send-0.1', out: '@send+1.25', props: { s: 0.8 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@send-0.05', out: '@send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@send+0.15', out: '@send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
-    { id: 'cq', type: 'text', layer: 'screen', at: [540, 365], in: '@how', out: '@taste', props: { lines: [[['CAUGHT HOW?', 'gold']]], size: 84 } },
+    { id: 'cq', type: 'text', layer: 'screen', at: [540, 365], in: '@how'd', out: '@taste', props: { lines: [[['CAUGHT HOW?', 'gold']]], size: 84 } },
     { id: 'mag', type: 'mag', layer: 'screen', at: [830, 1010], in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.5 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.5 } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@could', out: '@wine#11+0.7', props: { l1: 'COULD YOU', l2: 'TASTE IT?', size: 54, tail: 'left' } },
