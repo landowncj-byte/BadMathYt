@@ -53,6 +53,6 @@ PASS  IG/FB (whatif) cut · 18 lines · 200 words · 66.5 s (voiced timings) · 
 YOU, the card, shopping bags, kid are ILLUSTRATIONS (no brands, no bank names).
 
 ## CRIME-SHOW BUILD STATUS
-RENDERED READY: videos/2026-11-25-card-minimum/video.mp4 66.0s 18.2MB
-RENDERED READY: videos/2026-11-25-card-minimum/tiktok/video.mp4 68.2s 18.7MB
-RENDERED READY: videos/2026-11-25-card-minimum/ig/video.mp4 66.8s 18.2MB
+RENDERED READY: videos/2026-11-25-card-minimum/video.mp4 66.0s 18.9MB — FIXED 2026-11-26 10:16Z (final 'fix' section: 16.5 YEARS headline shrunk to fit with margin, ghost-row zoom reframed, 'SAME MATH' tag moved off the ghost label, 'THE MINIMUM =' text now exits before the payment bar, fee text moved off the $143.17/$93.17 labels; bed gameshow_bed_1 per RULES 115; -14 LUFS)
+RENDERED READY: videos/2026-11-25-card-minimum/tiktok/video.mp4 68.2s 19.2MB — FIXED 2026-11-26 10:16Z (final 'fix' section: 16.5 YEARS headline shrunk to fit with margin, ghost-row zoom reframed, 'SAME MATH' tag moved off the ghost label, 'THE MINIMUM =' text now exits before the payment bar, fee text moved off the $143.17/$93.17 labels; bed gameshow_bed_1 per RULES 115; -14 LUFS)
+RENDERED READY: videos/2026-11-25-card-minimum/ig/video.mp4 66.8s 19.2MB — FIXED 2026-11-26 10:16Z (final 'fix' section: 16.5 YEARS headline shrunk to fit with margin, ghost-row zoom reframed, 'SAME MATH' tag moved off the ghost label, 'THE MINIMUM =' text now exits before the payment bar, fee text moved off the $143.17/$93.17 labels; bed gameshow_bed_1 per RULES 115; -14 LUFS)

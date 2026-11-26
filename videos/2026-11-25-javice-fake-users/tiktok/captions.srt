@@ -1,28 +1,84 @@
 1
-00:00:00,000 --> 00:00:04,058
-Imagine faking 4 million customers to sell your startup to JPMorgan.
+00:00:00,000 --> 00:00:03,760
+A professor got paid to invent four million fake people.
 
 2
-00:00:04,358 --> 00:00:10,884
-The founder of Frank did. Claimed users: 4.25 million. The SEC says fewer than 300,000 were real.
+00:00:04,240 --> 00:00:08,000
+And JPMorgan paid one hundred seventy-five million dollars for them.
 
 3
-00:00:11,234 --> 00:00:15,432
-When the bank asked for the list, prosecutors say she had a professor generate fake ones.
+00:00:08,380 --> 00:00:15,060
+How? Let's go back. Charlie Javice ran Frank, a website helping students apply for college financial aid.
 
 4
-00:00:15,732 --> 00:00:18,863
-JPMorgan paid $175 million.
+00:00:15,560 --> 00:00:18,500
+She told banks it had four and a quarter million users.
 
 5
-00:00:19,213 --> 00:00:21,755
-Guilty on all 4 counts. 85 months.
+00:00:19,060 --> 00:00:20,900
+The SEC says it had fewer than three hundred thousand.
 
 6
-00:00:22,155 --> 00:00:25,271
-Real question. How does a bank that big not catch it? Comment.
+00:00:22,380 --> 00:00:26,180
+That's like saying fourteen people came to your party when only one showed up.
 
 7
-00:00:25,571 --> 00:00:26,994
-Follow for the next one.
+00:00:26,660 --> 00:00:28,020
+Tap the heart if you'd have bought it.
+
+8
+00:00:28,340 --> 00:00:32,440
+But JPMorgan wasn't dumb. Before buying, it asked for the customer list.
+
+9
+00:00:32,900 --> 00:00:35,820
+So now she needs four million people who don't exist.
+
+10
+00:00:36,400 --> 00:00:40,920
+The SEC says she asked her own engineer to fake the data first. But he refused.
+
+11
+00:00:41,580 --> 00:00:45,200
+Then she and a coworker hired a data science professor to generate them.
+
+12
+00:00:45,600 --> 00:00:50,700
+Over four million fake customers, for about eighteen thousand dollars, according to the bank's lawsuit.
+
+13
+00:00:51,260 --> 00:00:53,320
+Send this to the friend who fakes their follower count.
+
+14
+00:00:53,740 --> 00:00:57,940
+The deal closed in twenty twenty-one. Then the bank tried to reach its new customers.
+
+15
+00:00:58,420 --> 00:01:00,000
+And the list? It fell apart.
+
+16
+00:01:00,500 --> 00:01:05,560
+So the bank sued, and then prosecutors charged her. Follow, 'cause the ending's brutal.
+
+17
+00:01:06,140 --> 00:01:08,540
+A jury convicted her on all four counts.
+
+18
+00:01:09,000 --> 00:01:11,940
+She got eighty-five months in prison, over seven years.
+
+19
+00:01:12,460 --> 00:01:16,160
+She was also ordered to pay back two hundred eighty-seven and a half million dollars.
+
+20
+00:01:16,880 --> 00:01:19,760
+And her coworker who helped? He got sixty-eight months.
+
+21
+00:01:20,320 --> 00:01:22,100
+Would you have caught it? Yes or no.
 
