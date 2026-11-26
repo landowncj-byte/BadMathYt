@@ -86,3 +86,5 @@ THU–SUN COMPLETE (all 4 platforms, 3/day + Thu catch-up + Fri long-form).
 | van meegeren | YT / TT (A Forbidden Sin) / IG / FB | Mon 11/30 11:00 | 16:00Z | 8a31ff0e / 1f48907f / adeb9f02 / e879a1d3 | APPROVED |
 | million or 100 a day | YT / TT (SICK W/ IT) / IG / FB | Mon 11/30 15:00 | 20:00Z | 907f5687 / 5f870c9d / 04f4a01e / 90d8515f | APPROVED |
 Mon 19:00 ET = victor-lustig (building). Tue: 11:00 pennies · 15:00 billionaires-split · 17:00 LONG-FORM fakes · 19:00 hitler-diaries.
+| hitler diaries | YT / TT / IG / FB | Tue 12/1 19:00 | 00:00Z Wed | 5a399e12 / 82d7d1c4 / 4b8e97db / 7a096cb3 | APPROVED |
+pennies-to-the-moon: math error caught by builder ($35.2T → $3.52T for the $1-bill stack; 17,000 → ~1,725 jackpots) — scripts fixed, re-voiced, re-aligning; rebuild pending.

@@ -1,7 +1,7 @@
 // Instagram cut — DECODED: the fake diaries. Hook: "a forger got one letter wrong and still made millions" — black notebook F H, then the payout. Neutral cards only.
 const H = { until: '@early-0.1', y: 690, size: 60, lines: [[['A FORGER GOT', 'paper']], [['ONE LETTER WRONG', 'bad']], [['AND STILL MADE', 'paper']], [['MILLIONS', 'gold']]] };
 const S = DD.make({
-  dur: 85.67,
+  dur: 85.27,
   C: [
     { from: 0, L: ['THE FORGER', 'ONE LETTER WRONG'], R: ['HE STILL MADE', 'MILLIONS'], Lc: 'bad', Rc: 'gold' },
     { from: '@early-0.1', L: ['PLACE', 'WEST GERMANY'], R: ['WHEN', 'EARLY 1980s'] },

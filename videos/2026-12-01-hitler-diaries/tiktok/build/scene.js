@@ -575,7 +575,7 @@ const B = window.BM2, { clamp, lerp, lin, ease, spring, rgba, rr, txt, F, paper,
 // TikTok cut — DECODED: the fake diaries. Hook: black notebook with F H (wrong letters) then the magazine's fortune. Neutral cards only: no portraits, no symbols.
 const H = { until: "@here's-0.1", y: 690, size: 60, lines: [[['THE FAKE DIARIES HAD', 'paper']], [['THE WRONG LETTERS', 'bad']], [['AND A MAGAZINE PAID', 'paper']], [['A FORTUNE', 'gold']]] };
 const S = DD.make({
-  dur: 86.56,
+  dur: 86.16,
   C: [
     { from: 0, L: ['THE PAYOUT', 'A FORTUNE'], R: ['THE COVER', 'WRONG LETTERS'], Lc: 'gold', Rc: 'bad' },
     { from: "@here's-0.1", L: ['PLACE', 'WEST GERMANY'], R: ['WHEN', 'EARLY 1980s'] },
@@ -601,7 +601,7 @@ const S = DD.make({
   hook: H,
   scenes: [
     { type: 'nb', from: 0, to: '@and-0.1', pose: 'shock', at: 0.1, lAt: 0.3, circleAt: '@letters', stampAt: '@cover', stampText: 'WRONG LETTERS', sc: 0.62, dy: 135 },
-    { type: 'pay', from: '@and-0.1', to: "@here's-0.1", pose: 'shock', at: '@huge', noNum: true, sc: 0.62, dy: 135, stampAt: '@fortune', stampText: 'A FORTUNE' },
+    { type: 'pay', from: '@and-0.1', to: "@here's-0.1", pose: 'shock', at: '@huge', noNum: true, sc: 0.62, dy: 135 },
     { type: 'defcard', from: "@here's-0.1", to: '@a#3-0.1', pose: 'talk', at: "@here's-0.1", head: 'CASE FILE Nº 1983', term: 'WEST GERMANY', d1: 'THE EARLY', d2: '1980s', icon: 'book', defAt: '@germany-0.2', iconAt: '@west' },
     { type: 'casefile', from: '@a#3-0.1', to: '@old-0.1', pose: 'chin', at: '@a#3-0.1', nameAt: '@konrad', roleAt: '@sells', head: 'CASE FILE Nº 1983 · THE FORGER', flash: true },
     { type: 'souvenirs', from: '@old-0.1', to: '@then-0.1', pose: 'point', at: '@old' },

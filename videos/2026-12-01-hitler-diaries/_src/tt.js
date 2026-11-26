@@ -1,7 +1,7 @@
 // TikTok cut — DECODED: the fake diaries. Hook: black notebook with F H (wrong letters) then the magazine's fortune. Neutral cards only: no portraits, no symbols.
 const H = { until: "@here's-0.1", y: 690, size: 60, lines: [[['THE FAKE DIARIES HAD', 'paper']], [['THE WRONG LETTERS', 'bad']], [['AND A MAGAZINE PAID', 'paper']], [['A FORTUNE', 'gold']]] };
 const S = DD.make({
-  dur: 86.56,
+  dur: 86.16,
   C: [
     { from: 0, L: ['THE PAYOUT', 'A FORTUNE'], R: ['THE COVER', 'WRONG LETTERS'], Lc: 'gold', Rc: 'bad' },
     { from: "@here's-0.1", L: ['PLACE', 'WEST GERMANY'], R: ['WHEN', 'EARLY 1980s'] },

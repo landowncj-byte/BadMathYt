@@ -108,7 +108,7 @@
   "tag": "conversational",
   "why": "back to plain storytelling",
   "short_pause_after": false,
-  "text": "A stack of dollar bills to the Moon costs about thirty-five trillion dollars.",
+  "text": "A stack of dollar bills to the Moon costs about three and a half trillion dollars.",
   "override": null
  },
  {
@@ -124,7 +124,7 @@
   "tag": "conversational",
   "why": "back to plain storytelling",
   "short_pause_after": false,
-  "text": "That's around seventeen thousand record jackpots.",
+  "text": "That's around seventeen hundred record jackpots.",
   "override": null
  },
  {

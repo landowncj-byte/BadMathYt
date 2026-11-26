@@ -1,0 +1,78 @@
+<!doctype html><meta charset="utf-8"><title>thumbs v2</title>
+<body style="margin:0;background:#000">
+<canvas id="a" width="1280" height="720"></canvas>
+<script src="../../../brand/storyteller.js"></script>
+<script>
+const INK='#0B0F14',PAPER='#F5F3EE',RED='#FF3B30',GREEN='#00D26A',GOLD='#F2B705';
+const PG='#00A152',PR='#E0281E',SUIT='#2c3e66',EDGE='#6f86b8';
+const F='../../../brand/engine-v2/fonts/';
+async function loadFonts(){for(const [n,u,w] of [['Anton','anton-latin-400-normal.woff2','400'],['JetBrains Mono','jetbrains-mono-latin-800-normal.woff2','800']]){const f=new FontFace(n,`url(${F+u})`,{weight:w});await f.load();document.fonts.add(f);}}
+function shockedHead(c,x,y,r){
+  Storyteller.head(c,x,y,r);c.save();c.translate(x,y);c.scale(r/78,r/78);
+  c.beginPath();c.arc(0,0,69,0,7);c.save();c.clip();
+  const hg=c.createRadialGradient(-20,-24,10,0,0,78);hg.addColorStop(0,'#ffe27a');hg.addColorStop(1,'#F2B705');c.fillStyle=hg;c.fillRect(-80,-80,160,160);c.restore();
+  c.strokeStyle='rgba(138,100,8,.6)';c.lineWidth=3;c.beginPath();c.arc(0,0,62,0,7);c.stroke();c.lineCap='round';
+  for(const s of [-1,1]){c.fillStyle='#fff';c.strokeStyle='#5a3f08';c.lineWidth=2;c.beginPath();c.ellipse(s*25,-10,17,22,0,0,7);c.fill();c.stroke();
+    c.fillStyle=INK;c.beginPath();c.arc(s*25+(s<0?4:0)+1,-8,6,0,7);c.fill();
+    c.strokeStyle='#5a3f08';c.lineWidth=7;c.beginPath();c.moveTo(s*12,-50-(s<0?0:4));c.lineTo(s*38,-60+(s<0?4:0));c.stroke();}
+  c.fillStyle='#3a1a08';c.beginPath();c.ellipse(0,32,16,22,0,0,7);c.fill();
+  c.fillStyle='#d9534f';c.beginPath();c.ellipse(0,40,9,9,0,0,7);c.fill();
+  c.fillStyle='rgba(255,120,80,.35)';c.beginPath();c.arc(-46,16,9,0,7);c.arc(46,16,9,0,7);c.fill();c.restore();}
+function stage(c){
+  c.fillStyle=INK;c.fillRect(0,0,1280,720);
+  let g=c.createRadialGradient(420,330,40,420,330,900);g.addColorStop(0,'#2A3647');g.addColorStop(.5,'#161E2A');g.addColorStop(1,INK);c.fillStyle=g;c.fillRect(0,0,1280,720);
+  // dot grid
+  c.fillStyle='rgba(245,243,238,.075)';for(let x=48;x<1280;x+=96)for(let y=48;y<720;y+=96){c.beginPath();c.arc(x,y,((x-48)/96%4==0&&(y-48)/96%4==0)?4:2.5,0,7);c.fill();}
+}
+function vignette(c){const g=c.createRadialGradient(640,360,260,640,360,860);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.5)');c.fillStyle=g;c.fillRect(0,0,1280,720);}
+function paper(c,x,y,w,h,rot){
+  c.save();c.translate(x+w/2,y+h/2);c.rotate(rot*Math.PI/180);c.translate(-w/2,-h/2);
+  c.save();c.shadowColor='rgba(2,4,9,.42)';c.shadowBlur=8;c.shadowOffsetX=1.5;c.shadowOffsetY=4;c.fillStyle=PAPER;c.beginPath();c.roundRect(0,0,w,h,16);c.fill();c.restore();
+  c.save();c.shadowColor='rgba(2,4,9,.34)';c.shadowBlur=36;c.shadowOffsetX=10;c.shadowOffsetY=20;c.fillStyle=PAPER;c.beginPath();c.roundRect(0,0,w,h,16);c.fill();c.restore();
+  const g=c.createLinearGradient(0,0,w,h);g.addColorStop(0,'rgba(255,255,255,.22)');g.addColorStop(.5,'rgba(255,255,255,0)');g.addColorStop(1,'rgba(120,90,40,.12)');c.fillStyle=g;c.beginPath();c.roundRect(0,0,w,h,16);c.fill();
+  c.strokeStyle='rgba(255,255,255,.55)';c.lineWidth=1.5;c.beginPath();c.roundRect(1,1,w-2,h-2,15);c.stroke();
+  return ()=>c.restore();}
+function stamp(c,text,cx,cy,size,rot){
+  c.save();c.translate(cx,cy);c.rotate(rot*Math.PI/180);c.font=`${size}px Anton`;c.textAlign='center';c.textBaseline='middle';
+  const w=c.measureText(text).width+size*.5,h=size*1.2;
+  c.save();c.shadowColor='rgba(2,4,9,.45)';c.shadowBlur=30;c.shadowOffsetY=14;c.fillStyle=RED;c.beginPath();c.roundRect(-w/2,-h/2,w,h,10);c.fill();c.restore();
+  const g=c.createLinearGradient(0,-h/2,0,h/2);g.addColorStop(0,'rgba(255,255,255,.22)');g.addColorStop(.3,'rgba(255,255,255,0)');g.addColorStop(1,'rgba(0,0,0,.2)');c.fillStyle=g;c.beginPath();c.roundRect(-w/2,-h/2,w,h,10);c.fill();
+  c.strokeStyle=PAPER;c.lineWidth=size*.04;c.beginPath();c.roundRect(-w/2+size*.08,-h/2+size*.08,w-size*.16,h-size*.16,6);c.stroke();
+  c.fillStyle=PAPER;c.fillText(text,0,size*.04);c.restore();}
+function character(c,x,y,r){
+  // shoulders / suit behind head, same palette
+  c.save();c.translate(x,y);const k=r/78;c.scale(k,k);
+  c.save();c.shadowColor='rgba(2,4,9,.5)';c.shadowBlur=40;c.shadowOffsetY=20;
+  c.fillStyle=SUIT;c.strokeStyle=EDGE;c.lineWidth=5;c.beginPath();c.moveTo(-150,260);c.lineTo(-120,110);c.quadraticCurveTo(-100,80,-40,76);c.lineTo(40,76);c.quadraticCurveTo(100,80,120,110);c.lineTo(150,260);c.closePath();c.fill();c.restore();c.stroke();
+  c.fillStyle=PAPER;c.beginPath();c.moveTo(-32,76);c.lineTo(32,76);c.lineTo(0,160);c.closePath();c.fill();
+  c.fillStyle=RED;c.beginPath();c.moveTo(0,112);c.lineTo(-48,86);c.lineTo(-48,138);c.closePath();c.fill();c.beginPath();c.moveTo(0,112);c.lineTo(48,86);c.lineTo(48,138);c.closePath();c.fill();
+  c.fillStyle='#b81f16';c.beginPath();c.arc(0,112,9,0,7);c.fill();c.restore();
+  // contact shadow under head
+  c.save();c.shadowColor='rgba(2,4,9,.45)';c.shadowBlur=30;c.shadowOffsetY=14;c.fillStyle=GOLD;c.beginPath();c.arc(x,y,r,0,7);c.fill();c.restore();
+  shockedHead(c,x,y,r);}
+function small(c,txt,x,y,size){c.save();c.font=`${size}px Anton`;c.fillStyle=PAPER;c.textBaseline='alphabetic';c.letterSpacing=size*.06+'px';c.shadowColor='rgba(2,4,9,.6)';c.shadowBlur=6;c.shadowOffsetY=3;c.fillText(txt,x,y);c.restore();}
+
+const P='../../../';
+function loadImg(u){return new Promise((r,j)=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>j(u);i.src=u;});}
+function A(imgs){const c=document.getElementById('a').getContext('2d');stage(c);
+  c.textBaseline='alphabetic';c.textAlign='left';
+  const T=(t,x,y,sz,col)=>{c.save();c.font=sz+'px Anton';c.fillStyle=col;c.shadowColor='rgba(2,4,9,.6)';c.shadowBlur=8;c.shadowOffsetY=4;c.fillText(t,x,y);c.restore();};
+  T('5 CONS',44,235,250,PAPER);T('1 NUMBER CAUGHT THEM ALL',48,322,76,GOLD);
+  // five polaroids: real photos (Kurniawan, Gignac) + illustrations (Tipton, Tucker, Javice)
+  const pol=(x,y,rot,img,crop,name,srot,tag)=>{const w=182,h=244;const e=paper(c,x,y,w,h,rot);
+    c.save();c.beginPath();c.roundRect(12,12,w-24,w-24,6);c.clip();c.drawImage(img,crop[0],crop[1],crop[2],crop[3],12,12,w-24,w-24);
+    const g=c.createLinearGradient(12,12,w,w);g.addColorStop(0,'rgba(255,255,255,.12)');g.addColorStop(1,'rgba(0,0,0,.12)');c.fillStyle=g;c.fillRect(12,12,w-24,w-24);c.restore();
+    c.strokeStyle='rgba(11,15,20,.25)';c.lineWidth=2;c.beginPath();c.roundRect(12,12,w-24,w-24,6);c.stroke();
+    c.fillStyle=INK;c.font='25px Anton';c.textAlign='center';c.letterSpacing='1px';c.fillText(name,w/2,w+34);c.letterSpacing='0px';
+    e();stamp(c,'CAUGHT',x+w/2+4,y+w-30,32,srot);};
+  const [kur,gig,tip,tuc,jav]=imgs;
+  pol(30,380,-3,kur,[70,0,360,360],'KURNIAWAN',-7);
+  pol(222,392,1.5,gig,[510,10,440,440],'GIGNAC',5);
+  pol(414,380,-1.5,tip,[0,60,640,640],'TIPTON',-4);
+  pol(606,394,2,tuc,[0,40,640,640],'TUCKER',6);
+  pol(798,382,-2.5,jav,[0,40,640,640],'JAVICE',-6);
+  character(c,1150,150,98);
+  small(c,'FAKE WINE · FAKE PRINCE · RIGGED LOTTERY',44,688,30);
+  vignette(c);}
+(async()=>{await loadFonts();A(await Promise.all([P+'brand/photos/rudy-kurniawan/2.jpg',P+'brand/photos/anthony-gignac/1.jpg',P+'videos/2026-11-27-five-cons/assets/tipton.png',P+'videos/2026-11-27-five-cons/assets/tucker.png',P+'brand/photos/charlie-javice-illustration/founder.png'].map(loadImg)));window.READY=true;})();
+</script>

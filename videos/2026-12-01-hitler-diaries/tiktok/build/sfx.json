@@ -1,5 +1,5 @@
 {
- "duration": 86.56,
+ "duration": 86.16,
  "sfx": [
   {
    "gain": -4,
@@ -54,12 +54,6 @@
    "dur": 1.2,
    "at": 4.56,
    "name": "deep_boom_1"
-  },
-  {
-   "gain": -7,
-   "dur": 0.5,
-   "at": 5.02,
-   "name": "rubber_stamp_1"
   },
   {
    "gain": -12,

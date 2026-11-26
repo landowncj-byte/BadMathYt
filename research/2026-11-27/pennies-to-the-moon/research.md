@@ -2,7 +2,7 @@
 What If · Everyday-object scale math · compiled 2026-11-26 for Fri 2026-11-27 · computed in Python
 
 ## The claim in one line
-A single stack of pennies to the Moon needs **about 253 billion pennies = $2.53 billion** — **less than 1.25× the record lottery jackpot** (Powerball $2.04 billion advertised, 2022). The same stack in **dollar bills** would cost **$35.2 trillion**.
+A single stack of pennies to the Moon needs **about 253 billion pennies = $2.53 billion** — **less than 1.25× the record lottery jackpot** (Powerball $2.04 billion advertised, 2022). The same stack in **dollar bills** would cost **$3.52 trillion**.
 
 ## Assumptions (on screen: "ASSUMES")
 - Average Earth–Moon distance **384,400 km** (NASA average; the real distance swings about ±5%).
@@ -27,10 +27,10 @@ Pennies = 384,400,000 m ÷ 0.00152 m = **252,894,736,842** → ÷ 100 = **$2,528
 | Per person | $2.53B ÷ 8.2 billion people = **31 cents** each; ÷ 342M Americans = **$7.39** each | arithmetic (US pop. ⚠ unsourced) | derived; use world 31¢ only |
 | Pennies around the Earth | equator 40,075 km → **263.7 million pennies = $2.64 million** | arithmetic (circumference standard) | ⚠ circ. unsourced |
 | Height check | Everest 8,849 m = 5.82 million pennies = **$58,217** | arithmetic (height ⚠ unsourced) | derived |
-| Dollar bills version | 3.52 × 10¹³ = **35.2 trillion bills = $35.2 trillion** | arithmetic | derived |
+| Dollar bills version | 3.52 × 10¹³ = **3.52 trillion bills = $3.52 trillion** | arithmetic | derived |
 | Hundreds version | **$3.52 quadrillion** | arithmetic | derived |
 
-Twist: the Moon in pennies is only **31 cents per human on Earth**. Counter-twist: swap in dollar bills and it's **$35.2 trillion** — about **17,000 times** the record lottery jackpot ($35.195T ÷ $2.04B = 17,252).
+Twist: the Moon in pennies is only **31 cents per human on Earth**. Counter-twist: swap in dollar bills and it's **$3.52 trillion** — about **1,725 times** the record lottery jackpot ($35.195T ÷ $2.04B = 1,725).
 
 ## Story loop
 STAKES: pennies are the most worthless money — stack them to the Moon. · QUESTION: how rich do you have to be? · TWIST: $2.5 billion — barely more than the biggest lottery jackpot ever. But swap in dollar bills and it's $35 trillion: the thinnest coin is the cheapest ladder. · REHOOKS: "253 billion pennies" → "632,000 tons" → "less than a Powerball" → "now with $1 bills".
@@ -47,7 +47,7 @@ None.
 - Don't repeat the logged "penny doubling" hook or "million vs billion" comparisons.
 
 ## Pronunciation
-- $2,528,947,368 → "two point five three billion" · 3.52 × 10¹³ → "thirty-five trillion" · 632,237 tons → "about six hundred thirty thousand tons".
+- $2,528,947,368 → "two point five three billion" · 3.52 × 10¹³ → "three and a half trillion" · 632,237 tons → "about six hundred thirty thousand tons".
 
 ## Visual ideas
 1. Frame 0: one penny, camera pulls up a tower of coins into space; counter "253,000,000,000".

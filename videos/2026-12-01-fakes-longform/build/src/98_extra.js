@@ -1,0 +1,21 @@
+// extra push-ins so no picture holds longer than ~3 s (found by the beat-gap check)
+bt('@P51:marks#2', 'graphic-hero', ['c51', 'v51'], { fill: 0.86, sy: 490, pose: 'chin' });
+bt('@P44:experts', 'graphic-hero', ['g44'], { fill: 0.84, sy: 500, pose: 'point' });
+bt('@P80:prove', 'graphic-hero', ['bd5'], { fill: 0.86, sy: 500, pose: 'chin' });
+bt('@P34:back', 'graphic-hero', ['c34'], { fill: 0.66, sy: 480, pose: 'point' });
+bt('@P27:painter', 'graphic-hero', ['m27'], { fill: 0.64, maxH: 800, sy: 500, pose: 'chin' });
+bt('@P86:before', 'graphic-hero', ['cl84'], { fill: 0.56, maxH: 800, sy: 500, pose: 'point' });
+bt('@P71:start', 'graphic-hero', ['v71', 'tl71'], { fill: 0.84, sy: 480, pose: 'point' });
+bt('@P45:friend', 'graphic-hero', ['sd45'], { fill: 0.8, sy: 500, pose: 'chin' });
+bt('@P73:prosecutors', 'graphic-hero', ['kit'], { fill: 0.55, maxH: 760, sx: 900, sy: 480, pose: 'chin' });
+bt('@P72:bottles', 'graphic-hero', ['ru72'], { fill: 0.7, maxH: 720, sy: 500, pose: 'chin' });
+bt('@P06:every', 'graphic-hero', ['gv6'], { fill: 0.32, maxH: 700, sy: 500, pose: 'chin' });
+bt('@P84:simple', 'graphic-hero', ['cl84'], { fill: 0.56, maxH: 800, sy: 500, pose: 'chin' });
+bt('@P47:sells', 'graphic-hero', ['u47'], { fill: 0.6, maxH: 780, sy: 500, pose: 'shrug' });
+bt('@P33:german', 'graphic-hero', ['dc33', 'f33'], { fill: 0.78, sy: 500, pose: 'chin' });
+bt('@P85:ask', 'graphic-hero', ['cl84'], { fill: 0.56, maxH: 800, sy: 500, pose: 'chin' });
+bt('@P44:end', 'graphic-hero', ['g44'], { fill: 0.8, sy: 500, pose: 'shrug' });
+bt('@P27:1930s', 'graphic-hero', ['dc27', 'm27'], { fill: 0.6, sy: 500, pose: 'point' });
+bt('@P72:itself', 'graphic-hero', ['ru72'], { fill: 0.7, maxH: 720, sy: 500, pose: 'point' });
+bt('@P06:ended', 'graphic-hero', ['gv6'], { fill: 0.3, maxH: 640, sy: 500, pose: 'point' });
+bt('@P47:man', 'graphic-hero', ['dc47', 'u47'], { fill: 0.64, sy: 500, pose: 'point' });
