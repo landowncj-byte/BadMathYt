@@ -5,3 +5,5 @@ Per cut: AV.md (line → exact visual + trigger word) → scene.js (sources in _
 Decoded: con = recurring character ≥ 5 appearances (real licensed photo from brand/photos/VERIFIED.md, else a coloured ILLUSTRATION card, never gray). What If: recurring YOU character + real objects.
 The moment a cut is final write in the topic's qa.md under "## CRIME-SHOW BUILD STATUS": `RENDERED READY: <cut> <duration>s <size>MB`. The director posts it.
 4 CPUs shared by 3 builders: one render at a time; never kill processes you didn't start. No PostFast, no git commit/push, no Fable.
+
+MUSIC (RULES 115): use the bed the director assigns in your prompt / MUSIC-LOG.md — never default to tense_bed_2 or upbeat_bed_2. mix.py loops short beds.

@@ -196,6 +196,8 @@ Run `python3 brand/tools/script_gate.py videos/<slug> --all` (un-voiced drafts: 
 
 114. NO PART TWOS (owner 2026-11-26: "avoid part twos in the future… make videos that can be covered in one short"). Every Short tells a complete story on its own: setup, twist, payoff, all in one video. Never split a topic into Part 1 / Part 2 and never tease a follow-up. If a story is too big for one Short, pick the single best angle or make it a long-form. (Lottery Part 2, already scheduled for Fri 11/27, is the last one.)
 
+115. DIFFERENT MUSIC EVERY VIDEO (owner 2026-11-26: "every single video has the exact same background music… change it from video to video"). Each topic gets its own bed from brand/sfx-library (never the same bed as the previous 3 posted topics); log the bed in SCHEDULE-NEW.md / MUSIC-LOG.md. mix.py now loops short beds (-stream_loop), so every bed in the library is usable. Grow the library with more CC0 music (Freesound/Openverse, mood-tagged) so beds rarely repeat.
+
 ---
 
 ## Rejected by the owner — never bring back

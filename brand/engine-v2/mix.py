@@ -20,7 +20,7 @@ def mix(scene, voice_dir, out):
     fc.append("".join(fxl) + f"amix=inputs={len(fxl)}:normalize=0:duration=longest,apad=whole_dur={DUR},atrim=0:{DUR},volume=-1dB[fx]" if fxl else f"anullsrc=r=48000:cl=stereo,atrim=0:{DUR}[fx]")
     bed = S.get('bed')
     if bed:
-        ins += ['-i', MAN[bed['name']]]; off = bed.get('offset', 0)
+        ins += ['-stream_loop', '-1', '-i', MAN[bed['name']]]; off = bed.get('offset', 0)  # loop short beds (RULES 115)
         fc.append(f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,atrim={off}:{off + DUR},asetpts=PTS-STARTPTS,loudnorm=I=-24:TP=-6:LRA=15,aresample=48000,afade=in:d=0.3,afade=out:st={DUR - 1:.3f}:d=1,volume={bed.get('gain', -1) + float(__import__('os').environ.get('BM2_BED_DB', '0'))}dB,apad=whole_dur={DUR},atrim=0:{DUR}[bed]")
         fc.append("[bed][vk]sidechaincompress=threshold=0.04:ratio=5:attack=15:release=350[bd]")
     else: fc.append(f"[vk]volume=0[bd]")
