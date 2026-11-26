@@ -2,7 +2,7 @@
 const SB = 'side-by-side', GH = 'graphic-hero', ZN = 'zoom-on-number', PF = 'presenter-front', PK = 'peek';
 const ICE = 'brand/photos/rudy-kurniawan/2.jpg', KIT = 'brand/photos/rudy-kurniawan/3.jpg';
 BM2.scene({
-  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 93.79,
+  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 82.81,
   footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: BOTTLE, LABELS, AUCTION, BENCH, CHEQUE, CATALOGUE (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'hook', type: 'text', at: [20, -330], in: -1, props: { lines: [[['LABEL: ', 'paper'], ['1945', 'gold']]], size: 120, per: 0 } },
@@ -108,7 +108,7 @@ BM2.scene({
   captions: {
     gap: 16,
     emph: { '$35': 'good', '95': 'bad', '1945.': 'bad', '1982.': 'bad', '37': 'bad', '$2': 'bad', fake: 'bad', convicted: 'bad', fraud: 'bad', '10': 'bad', '$28': 'bad', FBI: 'accent', dumbass: 'bad', damn: 'bad' },
-    fix: [['Rudy Kerniawin', 'Rudy Kurniawan'], ['parts next so', "part's next, so"], ['Double tap', 'Double-tap'], ['wine snob', 'wine-snob']],
+    fix: [['Rudy Kurneewan,', 'Rudy Kurniawan,'], ['parts next so', "part's next, so"], ['Double tap', 'Double-tap'], ['wine snob', 'wine-snob']],
   },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [

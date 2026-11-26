@@ -399,7 +399,7 @@
 const SB = 'side-by-side', GH = 'graphic-hero', ZN = 'zoom-on-number', PF = 'presenter-front', PK = 'peek';
 const ICE = 'brand/photos/rudy-kurniawan/2.jpg', KIT = 'brand/photos/rudy-kurniawan/3.jpg';
 BM2.scene({
-  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 89.69,
+  series: 'decoded', title: 'CASE: KURNIAWAN · 2013', duration: 84.24,
   footnote: ['CONVICTED 2013 · 10 YEARS · $28.4M BACK · SOURCES: DOJ SDNY · TRIAL REPORTS', 'ILLUSTRATIONS: CHEQUE, CRATE, AUCTION, BENCH, BOTTLE, LABELS (GENERIC)', 'PHOTOS: U.S. ICE; U.S. GOVERNMENT TRIAL EXHIBIT · PUBLIC DOMAIN VIA WIKIMEDIA COMMONS'],
   elements: [
     { id: 'hook', type: 'text', at: [0, -520], in: -1, props: { lines: [[['A BILLIONAIRE TOLD A JURY', 'paper']], [['HE PAID $2 MILLION', 'gold']], [['FOR FAKE WINE', 'bad']]], size: 66, per: 0 } },
@@ -428,7 +428,7 @@ BM2.scene({
     { id: 'silh', type: 'silh', at: [2330, 3650], rot: -0.03, in: '@actual-0.3', props: {} },
     { id: 'tl2', type: 'wintl', at: [3600, 3600], in: '@family-0.4', props: { headNote: "THE WINE'S TIMELINE", firstAt: '@1982', axisAt: '@made', bracketAt: '@37', sub: 'FIRST MADE IN 1982 · TRIAL TESTIMONY' } },
     { id: 'door', type: 'card', at: [5100, 3300], rot: 0.02, in: '@fbi-0.3', props: { w: 600, h: 330, lines: [{ t: 'ARRESTED 2012', size: 62, font: 'hero', tone: 'ink', gap: 100 }, { t: 'CONVICTED OF FRAUD', size: 44, font: 'hero', tone: 'bad', at: '@convicted', mark: 'bad', gap: 80 }, { t: 'PER DOJ', size: 26, font: 'mono', tone: 'soft' }] } },
-    { id: 'verdict', type: 'wverdict', at: [5400, 4150], in: '@he#5-0.3', props: { h: 860, convAt: '@he#5', yearsAt: '@10', payAt: '@$28' } },
+    { id: 'verdict', type: 'wverdict', at: [5400, 4150], in: '@he#6-0.3', props: { h: 860, convAt: '@he#6', yearsAt: '@10', payAt: '@$28' } },
     // screen micro-moments
     { id: 'sec', type: 'text', layer: 'screen', at: [540, 365], in: '@so#1', out: '@named', props: { lines: [[['THE SELLER?', 'paper']]], size: 76 } },
     { id: 'club', type: 'text', layer: 'screen', at: [540, 400], in: '@tap+0.1', out: '@tap+1.7', props: { lines: [[['SCREW CAP GANG', 'gold']]], size: 76 } },
@@ -437,7 +437,7 @@ BM2.scene({
     { id: 'gl', type: 'glass', layer: 'screen', at: [330, 1190], in: '@send-0.1', out: '@send+1.25', props: { s: 0.8 } },
     { id: 'plane', type: 'plane', layer: 'screen', at: [540, 960], in: '@send-0.05', out: '@send+1.2', props: { dur: 0.9, from: [-230, 250], to: [280, -330], s: 1.5 } },
     { id: 'sendtx', type: 'text', layer: 'screen', at: [820, 400], in: '@send+0.15', out: '@send+1.2', props: { lines: [[['SEND', 'gold']]], size: 70 } },
-    { id: 'cq', type: 'text', layer: 'screen', at: [540, 365], in: '@how', out: '@taste', props: { lines: [[['CAUGHT HOW?', 'gold']]], size: 84 } },
+    { id: 'cq', type: 'text', layer: 'screen', at: [540, 365], in: "@how'd", out: '@taste', props: { lines: [[['CAUGHT HOW?', 'gold']]], size: 84 } },
     { id: 'mag', type: 'mag', layer: 'screen', at: [830, 1010], in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.5 } },
     { id: 'btn', type: 'follow', layer: 'screen', at: [830, 1010], scale: 0.8, in: '@follow-0.05', out: '@follow+1.45', props: { press: 0.5 } },
     { id: 'ask', type: 'bubble', layer: 'screen', at: [600, 1090], in: '@could', out: '@wine#11+0.7', props: { l1: 'COULD YOU', l2: 'TASTE IT?', size: 54, tail: 'left' } },
@@ -494,7 +494,7 @@ BM2.scene({
     { at: '@older', beat: PK, focus: 'tl2', fill: 0.8, sy: 880, pose: 'talk', dur: 0.8 },
     { at: '@fbi', beat: GH, focus: 'door', move: 'whip', sx: 540, sy: 790, fill: 0.9, maxH: 700, st: 'corner-left', pose: 'shock' },
     { at: '@convicted', beat: ZN, focus: 'door', fill: 1.0, maxH: 600, sy: 790, st: 'corner-left', pose: 'shock', dur: 0.45 },
-    { at: '@he#5', beat: SB, focus: 'verdict', move: 'whip', sx: 540, sy: 960, fill: 0.78, maxH: 1000, st: 'corner-left', pose: 'idle' },
+    { at: '@he#6', beat: SB, focus: 'verdict', move: 'whip', sx: 540, sy: 960, fill: 0.78, maxH: 1000, st: 'corner-left', pose: 'idle' },
     { at: '@10', beat: ZN, focus: 'verdict.years', fill: 0.8, maxH: 560, sy: 940, st: 'corner-left', pose: 'shock', dur: 0.45 },
     { at: '@back', beat: GH, focus: 'verdict', fill: 0.72, maxH: 950, sy: 880, st: 'corner-left', pose: 'idle', dur: 0.8 },
     { at: '@$28', beat: ZN, focus: 'verdict.pay', fill: 0.8, maxH: 640, sy: 1010, st: { x: 140, y: 1500, s: 0.85 }, pose: 'shock', dur: 0.45 },
@@ -507,7 +507,7 @@ BM2.scene({
   captions: {
     gap: 16,
     emph: { '$2': 'bad', fake: 'bad', '$35': 'good', '95': 'bad', '1945.': 'bad', '1982.': 'bad', '37': 'bad', convicted: 'bad', fraud: 'bad', '10': 'bad', '$28': 'bad', FBI: 'accent' },
-    fix: [['Rudy Kerniawin', 'Rudy Kurniawan'], ['parts next so', "part's next, so"], ['Double tap', 'Double-tap'], ['wine snob', 'wine-snob']],
+    fix: [['Rudy Kerniawan,', 'Rudy Kurniawan,'], ['parts next so', "part's next, so"], ['Double tap', 'Double-tap'], ['wine snob', 'wine-snob']],
   },
   bed: { name: 'tense_bed_2', gain: -1 },
   sfx: [
@@ -528,7 +528,7 @@ BM2.scene({
     { at: '@objected', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@family', name: 'paper_slam_2', gain: -10, dur: 0.5 },
     { at: '@1982', name: 'rubber_stamp_2', gain: -4, dur: 0.5 }, { at: '@1982', name: 'deep_boom_1', gain: -3, dur: 1.4 }, { at: '@37', name: 'rubber_stamp_2', gain: -6, dur: 0.5 },
     { at: '@fbi', name: 'door_slam_1', gain: -8, dur: 0.6 }, { at: '@convicted', name: 'gavel_1', gain: -4, dur: 0.8 }, { at: '@convicted', name: 'rubber_stamp_2', gain: -7, dur: 0.5 },
-    { at: '@he#5-0.9', name: 'riser_2', gain: -14, dur: 0.9 }, { at: '@10', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@10', name: 'cell_door_1', gain: -8, dur: 1.0 },
+    { at: '@he#6-0.9', name: 'riser_2', gain: -14, dur: 0.9 }, { at: '@10', name: 'rubber_stamp_2', gain: -5, dur: 0.5 }, { at: '@10', name: 'cell_door_1', gain: -8, dur: 1.0 },
     { at: '@$28', name: 'money_counter_2', gain: -10, dur: 0.9 }, { at: '@$28+0.9', name: 'cash_register_1', gain: -8, dur: 0.9 },
     { at: '@could', name: 'pop_1', gain: -9, dur: 0.5 }, { at: '@wine#11+0.75', name: 'rewind_2', gain: -11, dur: 0.7 },
   ],

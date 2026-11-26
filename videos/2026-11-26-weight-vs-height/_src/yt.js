@@ -86,8 +86,8 @@ BM2.scene({
     { at: '@69', beat: 'zoom-on-number', focus: 'doll.h', fill: 0.62, sy: 760, rot: -0.01, st: 'corner-left', pose: 'point', keep: ['doll'], dur: 0.5 },
     // recap: scale vs tape measure
     { at: '@So#3', beat: 'graphic-hero', focus: 'recap', move: 'whip', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'point' },
-    { at: '@199#2', beat: 'zoom-on-number', focus: 'recap.l', fill: 0.85, sy: 780, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['recap'] },
-    { at: '@69#2', beat: 'zoom-on-number', focus: 'recap.r', fill: 0.85, sy: 780, rot: -0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['recap'] },
+    { at: '@199#2', beat: 'zoom-on-number', focus: 'recap.l', fill: 0.7, sy: 780, rot: 0.01, st: 'corner-left', pose: 'shock', dur: 0.5, keep: ['recap'] },
+    { at: '@69#2', beat: 'zoom-on-number', focus: 'recap.r', fill: 0.7, sy: 780, rot: -0.01, st: 'corner-left', pose: 'point', dur: 0.5, keep: ['recap'] },
     { at: '@hundreds#4', beat: 'pull-back', focus: 'recap', fill: 0.94, maxH: 950, sy: 800, st: 'corner', pose: 'chin', keep: ['recap'], drift: 0.03 },
     // height in hundreds
     { at: '@So#4', beat: 'graphic-hero', focus: 'tower', move: 'whip', fill: 0.8, maxH: 900, sy: 850, st: 'corner-left', pose: 'idle' },
