@@ -9,9 +9,9 @@ BM2.story({
   look: { CON: 'CON', AGENT: 'AGENT', TELLER: 'TELLER', RICH_A: 'RICH', RICH_B: 'RICH_B' },
   shots: [
     // ---- SCENE 1 · auction hall: collectors PAY the con (cash changes hands), the con grins
-    { id: '1.1', at: 0, set: 'auction', size: 'MS', observer: 'two', on: ['RICH_A', 'CON'], cam: { push: 0.02, zoomMoves: [{ at: 1.3, dur: 0.5, to: 1.35 }] }, el: 5, narration: 'Collectors paid millions for',
+    { id: '1.1', at: 0, set: 'auction', size: 'FS', observer: 'two', on: ['RICH_A', 'CON'], cam: { push: 0.02, zoomMoves: [{ at: 1.3, dur: 0.5, to: 1.35 }] }, el: 5, narration: 'Collectors paid millions for',
       props: [{ id: 'lot', kind: 'bottle', x: 400, lane: -3.3, y: 150, scale: 1.2 }, { id: 'cash2', kind: 'cashbundle', x: 330, lane: -0.6, y: 0, in: 1.0, scale: 1.4 }],
-      cast: [{ who: 'RICH_A', at: [-150, 0], dir: 'right', face: 'F15' }, { who: 'CON', at: [130, 0], dir: 'left', face: 'F16' }, { who: 'RICH_B', at: [520, -2], dir: 'left', face: 'F20', bg: true }],
+      cast: [{ who: 'RICH_A', at: [-110, 0], dir: 'right', face: 'F15' }, { who: 'CON', at: [110, 0], dir: 'left', face: 'F16' }, { who: 'RICH_B', at: [520, -2], dir: 'left', face: 'F20', bg: true }],
       actions: [{ at: 0.45, do: 'handover', from: 'RICH_A', to: 'CON', prop: 'cashbundle' }, { at: 0.2, who: 'RICH_B', do: 'cheer', dur: 1.8 }, { at: 1.0, who: 'CON', face: 'F20' }, { at: 1.4, who: 'RICH_B', do: 'give', prop: 'cashbundle', dur: 0.8 }] },
     // ---- SCENE 2 · kitchen: how the fraud is bottled at home (pour, cork, label, wax), then the agent walks in
     { id: '2.1', at: '@wine', set: 'kitchen', size: 'MS', cam: { push: 0.03 }, el: 6, narration: 'wine this fraud',
