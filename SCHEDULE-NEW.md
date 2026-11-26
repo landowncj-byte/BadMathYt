@@ -40,3 +40,4 @@ Penny YT/TT: old partial renders (pre-pivot) — need a crime-show rebuild befor
 | lottery part 2 | Instagram REEL | Fri 11/27 11:00 | 16:00Z | 8a89472b-353a-4dad-8704-10ca78a2b33d | APPROVED |
 | lottery part 2 | Facebook REEL | Fri 11/27 11:00 | 16:00Z | f96a207c-04ca-4a6c-a329-f9b845b10f61 | APPROVED |
 card-minimum: REJECTED at QC (16.5 YEARS cropped at right edge, INTEREST label overlap) → fix in progress, then Fri 19:00 ET.
+- million-vs-billion: scripts + Owen YT 70.0 s / TT 64.7 s done; IG voice pending (owen_jobs.json). Needs a builder when a slot frees (Fri 11:00 ET slot).

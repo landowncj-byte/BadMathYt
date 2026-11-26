@@ -81,6 +81,14 @@
  },
  {
   "line": 11,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "Because a billion isn't ten millions, or a hundred. It's a thousand millions, stacked on top of each other.",
+  "override": null
+ },
+ {
+  "line": 12,
   "tag": "playfully",
   "why": "call to action",
   "short_pause_after": false,
@@ -88,7 +96,7 @@
   "override": null
  },
  {
-  "line": 12,
+  "line": 13,
   "tag": "conversational",
   "why": "back to plain storytelling",
   "short_pause_after": false,
@@ -96,7 +104,7 @@
   "override": null
  },
  {
-  "line": 13,
+  "line": 14,
   "tag": null,
   "why": "",
   "short_pause_after": false,
@@ -104,7 +112,7 @@
   "override": null
  },
  {
-  "line": 14,
+  "line": 15,
   "tag": "playfully",
   "why": "call to action",
   "short_pause_after": false,
@@ -112,7 +120,7 @@
   "override": null
  },
  {
-  "line": 15,
+  "line": 16,
   "tag": "conversational",
   "why": "back to plain storytelling",
   "short_pause_after": false,
@@ -120,7 +128,7 @@
   "override": null
  },
  {
-  "line": 16,
+  "line": 17,
   "tag": null,
   "why": "",
   "short_pause_after": false,
@@ -128,7 +136,15 @@
   "override": null
  },
  {
-  "line": 17,
+  "line": 18,
+  "tag": null,
+  "why": "",
+  "short_pause_after": false,
+  "text": "That's the real gap between rich and ridiculously rich.",
+  "override": null
+ },
+ {
+  "line": 19,
   "tag": "playfully",
   "why": "closing question",
   "short_pause_after": false,
