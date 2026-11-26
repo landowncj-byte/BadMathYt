@@ -3,7 +3,7 @@ const hookEnd = "@sounds-0.12";
 const K = [[0, 0], ['@centuries+0.3', 1e6], [hookEnd, 1e6], [hookEnd, 0], ['@and#2', 6], ['@it\'s-0.1', 6], ['@months+0.1', 1000],
   ['@now-0.1', 1000], ['@now-0.1', 0], ['@how', 2], ['@years#2', 1e6],
   ['@you\'d#2-0.1', 1e6], ['@you\'d#2-0.1', 0], ['@bc+0.1', 1e6],
-  ['@because-0.1', 1e6], ['@because-0.1', 0], ['@ten-0.1', 0], ['@ten+0.25', 10], ['@hundred#2-0.1', 10], ['@hundred#2+0.4', 100], ['@thousand#5-0.1', 100], ['@thousand#5+0.6', 1000],
+  ['@because-0.1', 1e6], ['@because-0.1', 0], ['@ten-0.1', 1], ['@ten+0.25', 10], ['@hundred#2-0.1', 10], ['@hundred#2+0.4', 100], ['@thousand#5-0.1', 100], ['@thousand#5+0.6', 1000],
   ['@want-0.1', 1000], ['@want-0.1', 0], ['@count', 0], ['@breaks', 3], ['@seconds-0.3', 3], ['@days+0.2', 1e6], ['@seconds#2-0.4', 1e6], ['@years#3+0.1', 1e9],
   ['@so-0.1', 1e9], ['@so-0.1', 1e6]];
 const S = MV5.make({
@@ -19,7 +19,7 @@ const S = MV5.make({
     { type: 'gcard', from: '@now-0.1', to: '@two#3-0.1', pose: 'talk', cap: 1e9, col: '#FFD60A' },
     { type: 'bignum', from: '@two#3-0.1', to: '@you\'d#2-0.1', pose: 'shock', at: '@two#3', dur: 2.0, l1: 'YEARS', chip: { at: '@years#2-0.4', text: '= 27 CENTURIES' }, num: 2738 },
     { type: 'tline', from: '@you\'d#2-0.1', to: '@because-0.1', pose: 'chin', romeAt: '@ancient-0.2', pinAt: '@700+0.5' },
-    { type: 'stack', from: '@because-0.1', to: '@send-0.1', pose: 'shock', mergeAt: '@stacked-0.45', steps: [{ at: '@ten-0.1', n: 10, text: '10 × $1M = $10M' }, { at: '@hundred#2-0.1', n: 100, text: '100 × $1M = $100M' }, { at: '@thousand#5-0.1', n: 1000, text: '1,000 × $1M = $1,000M' }] },
+    { type: 'stack', from: '@because-0.1', to: '@send-0.1', pose: 'shock', mergeAt: '@stacked-0.45', steps: [{ at: '@because-0.05', n: 1, text: '1 × $1M = $1M' }, { at: '@ten-0.1', n: 10, text: '10 × $1M = $10M' }, { at: '@hundred#2-0.1', n: 100, text: '100 × $1M = $100M' }, { at: '@thousand#5-0.1', n: 1000, text: '1,000 × $1M = $1,000M' }] },
     { type: 'duo', from: '@send-0.1', to: '@want-0.1', pose: 'talk', a: { at: '@send+0.3', col: '#E5534B', l1: 'THE FRIEND SAYS', l2: 'A LOT OF MILLIONS' }, b: { at: '@says+0.4', col: '#00D26A', l1: 'THE TRUTH', l2: '1,000 MILLIONS' } },
     { type: 'ask', from: '@want-0.1', to: '@seconds-0.35', pose: 'you', l1: 'ONE NUMBER', l2: 'PER SECOND' },
     { type: 'calendar', from: '@seconds-0.35', to: '@seconds#2-0.4', pose: 'chin' },

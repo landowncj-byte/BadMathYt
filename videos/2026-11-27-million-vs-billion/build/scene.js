@@ -347,7 +347,7 @@ const hookEnd = "@let's-0.12";
 const K = [[0, 0], [hookEnd, 30000], [hookEnd, 0], ['@every', 5], ['@with', 5], ['@months', 1000],
   ['@now-0.1', 1000], ['@now-0.1', 0], ['@how', 2], ['@2+1.4', 1e6],
   ['@to#3-0.1', 1e6], ['@to#3-0.1', 0], ['@700+0.8', 1e6],
-  ['@because-0.1', 1e6], ['@because-0.1', 0], ['@10-0.1', 0], ['@10+0.25', 10], ['@100-0.1', 10], ['@100+0.4', 100], ['@it\'s#2+0.35', 100], ['@it\'s#2+1.0', 1000],
+  ['@because-0.1', 1e6], ['@because-0.1', 0], ['@10-0.1', 1], ['@10+0.25', 10], ['@100-0.1', 10], ['@100+0.4', 100], ['@it\'s#2+0.35', 100], ['@it\'s#2+1.0', 1000],
   ['@here\'s-0.1', 1000], ['@here\'s-0.1', 0], ['@sleep', 3], ['@seconds-0.3', 3], ['@days+0.2', 1e6], ['@seconds#2-0.4', 1e6], ['@years#3+0.1', 1e9]];
 const S = MV5.make({
   dur: 70.33, K,
@@ -363,7 +363,7 @@ const S = MV5.make({
     { type: 'gcard', from: '@now-0.1', to: '@2-0.1', pose: 'talk', cap: 1e9, col: '#FFD60A' },
     { type: 'bignum', from: '@2-0.1', to: '@to#3-0.1', pose: 'shock', at: '@2', dur: 1.3, l1: 'YEARS', chip: { at: '@years#2-0.4', text: '= 27 CENTURIES' }, num: 2738 },
     { type: 'tline', from: '@to#3-0.1', to: '@because-0.1', pose: 'chin', romeAt: '@ancient-0.2', pinAt: '@700+0.5' },
-    { type: 'stack', from: '@because-0.1', to: '@send-0.1', pose: 'shock', mergeAt: '@stacked-0.15', steps: [{ at: '@10-0.1', n: 10, text: '10 × $1M = $10M' }, { at: '@100-0.1', n: 100, text: '100 × $1M = $100M' }, { at: '@it\'s#2+0.35', n: 1000, text: '1,000 × $1M = $1,000M' }] },
+    { type: 'stack', from: '@because-0.1', to: '@send-0.1', pose: 'shock', mergeAt: '@stacked-0.15', steps: [{ at: '@because-0.05', n: 1, text: '1 × $1M = $1M' }, { at: '@10-0.1', n: 10, text: '10 × $1M = $10M' }, { at: '@100-0.1', n: 100, text: '100 × $1M = $100M' }, { at: '@it\'s#2+0.35', n: 1000, text: '1,000 × $1M = $1,000M' }] },
     { type: 'duo', from: '@send-0.1', to: '@here\'s-0.1', pose: 'talk', a: { at: '@send+0.3', col: '#E5534B', l1: 'THE FRIEND SAYS', l2: 'A BIG MILLION' }, b: { at: '@thinks+0.3', col: '#00D26A', l1: 'THE TRUTH', l2: '1,000 MILLIONS' } },
     { type: 'ask', from: '@here\'s-0.1', to: '@seconds-0.35', pose: 'you', l1: 'ONE NUMBER', l2: 'EVERY SECOND' },
     { type: 'calendar', from: '@seconds-0.35', to: '@seconds#2-0.4', pose: 'chin' },
