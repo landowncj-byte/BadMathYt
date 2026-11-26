@@ -32,6 +32,12 @@
    "name": "swipe_2"
   },
   {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 8.18,
+   "name": "swipe_2"
+  },
+  {
    "gain": -10,
    "dur": 0.7,
    "at": 10.24,
@@ -60,6 +66,12 @@
    "dur": 0.8,
    "at": 12.16,
    "name": "typewriter_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 12.86,
+   "name": "swipe_2"
   },
   {
    "gain": -10,
@@ -498,6 +510,12 @@
    "dur": 0.5,
    "at": 76.88,
    "name": "rubber_stamp_2"
+  },
+  {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 77.68,
+   "name": "swipe_2"
   },
   {
    "gain": -9,

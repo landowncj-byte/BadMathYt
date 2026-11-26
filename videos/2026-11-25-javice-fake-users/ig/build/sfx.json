@@ -62,6 +62,12 @@
    "name": "typewriter_2"
   },
   {
+   "gain": -13,
+   "dur": 0.45,
+   "at": 10.7,
+   "name": "swipe_2"
+  },
+  {
    "gain": -10,
    "dur": 0.7,
    "at": 14.86,

@@ -848,6 +848,7 @@
       b(R.def, SB, ['bor', 'dtx'], { move: 'whip', sx: 540, sy: 860, fill: 0.95, maxH: 860, st: 'left', pose: 'point' });
       b(R.defLoan, ZN, ['bor', 'dtx'], { fill: 0.9, maxH: 900, sy: 860, st: 'corner', pose: 'point', dur: 0.5 });
       b(R.defPay, GH, ['bor', 'dtx'], { fill: 0.95, maxH: 860, sy: 860, st: 'corner-left', pose: 'talk', dur: 0.7 });
+      if (R.defMid) b(R.defMid, PK, ['bor', 'dtx'], { fill: 0.9, maxH: 860, sy: 860, pose: 'chin', dur: 0.8 });
       if (R.defExtra) b(R.defExtra, ZN, 'bor', { fill: 0.5, maxH: 700, sy: 880, st: 'corner', pose: 'shrug', dur: 0.5 });
       sfx(R.def, 'swipe_2', -11, 0.4); sfx(R.defLoan, 'pop_1', -9, 0.4); }
 
@@ -903,6 +904,7 @@
       E.push({ id: 'rt', type: 'rate', at: [x, y], in: O(R.rate, '-0.4'), props: { at: R.p700 } });
       b(R.rate, SB, 'rt', { move: 'whip', sx: 540, sy: 840, fill: 0.84, maxH: 800, st: 'corner-left', pose: 'point' });
       b(R.p700, ZN, 'rt.hero', { fill: 0.7, maxH: 520, sy: 840, st: 'corner-left', pose: 'shock', dur: 0.5 });
+      if (R.rateAfter) b(R.rateAfter, PF, 'rt', { sy: 820, pose: 'talk' });
       sfx(R.rate, 'paper_slam_2', -10); sfx(R.p700, 'cinematic_hit_1', -8, 0.8); SH.push([O(R.p700, '+1.0'), 10]); }
 
     // ---- 4.5 MILLION ----
@@ -939,7 +941,7 @@
       b(R.claimed, ZN, 'tr', { fill: 0.84, maxH: 900, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.5 });
       b(R.sue, ZN, 'tr', { fill: 0.86, maxH: 940, sy: 880, st: 'corner-left', pose: 'point', dur: 0.5 });
       b(R.shamAt, ZN, 'tr', { fill: 0.9, maxH: 940, sy: 900, st: 'corner-left', pose: 'shock', dur: 0.4 });
-      b(O(R.shamAt, '+1.0'), PB, ['tr', 'sps'], { fill: 0.9, maxH: 960, sx: 540, sy: 860, st: 'corner', dur: 0.7 });
+      if (!R.noShamPB) b(O(R.shamAt, '+1.0'), PB, ['tr', 'sps'], { fill: 0.9, maxH: 960, sx: 540, sy: 860, st: 'corner', dur: 0.7 });
       sfx(R.shield, 'paper_slam_2', -10); sfx(R.claimed, 'click_1', -8, 0.3); sfx(R.sue, 'pop_1', -9, 0.4); sfx(O(R.shamAt, '-0.3'), 'thud_1', -8, 0.4); sfx(R.shamAt, 'rubber_stamp_2', -5); SH.push([R.shamAt, 12]); }
 
     // ---- EVIDENCE BOARD ----
@@ -977,8 +979,8 @@
 
     // ---- his lawyer (TikTok only) ----
     if (R.lawyer) { const [x, y] = seg();
-      E.push({ id: 'lw', type: 'text', at: [x, y], in: O(R.lawyer, '-0.3'), props: { lines: [[['HIS OWN LAWYER:', 'gold']], [['7 YEARS', 'bad']], [['(84 MONTHS)', 'paper']]], size: 110, per: 0.12 } });
-      b(R.lawyer, SB, 'lw', { move: 'whip', sx: 540, sy: 840, fill: 0.9, maxH: 700, st: 'corner-left', pose: 'shock' });
+      E.push({ id: 'lw', type: 'text', at: [x, y], in: O(R.lawyer, '-0.3'), props: { lines: [[['HIS OWN LAWYER:', 'gold']], [['7 YEARS', 'bad']], [['(84 MONTHS)', 'paper']]], size: 90, per: 0.12 } });
+      b(R.lawyer, SB, 'lw', { move: 'whip', sx: 540, sy: 840, fill: 0.7, maxH: 700, st: 'corner-left', pose: 'shock' });
       sfx(R.lawyer, 'rubber_stamp_2', -8); }
 
     // ---- screen micro-moments (CTAs) + comment bubble ----
@@ -1020,7 +1022,7 @@ TUCKER({
     cal: '@each', fee: '@$150', pd: ['@$150', '@$150+0.45', '@$150+0.9', '@$150+1.35', '@$150+1.8', '@$150+2.25'], pdEnd: '@$150+2.6', never: '@never', neverEnd: '@down+0.4',
     rent: "@it's", rentWord: '@rent',
     doj: '@justice', dojNum: '@925',
-    rate: '@prosecutors', p700: '@700',
+    rate: '@prosecutors', p700: '@700', rateAfter: '@send',
     crowd: '@it#2', four: '@$4',
     rev: '@his#3', rev3: '@$3',
     race0: '@so', raceDrive: '@some', raceOwn: '@race',

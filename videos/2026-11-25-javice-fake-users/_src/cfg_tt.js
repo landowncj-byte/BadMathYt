@@ -3,6 +3,7 @@ JAVICE({
   hook: { lines: [[['A PROFESSOR GOT PAID', 'paper']], [['TO INVENT ', 'paper'], ['4M FAKE PEOPLE', 'bad']]], size: 84, side: { kind: 'prof', label: 'THE PROFESSOR', sub: 'DATA SCIENCE', tape: 'HIRED' } },
   hookBeats: [['@4', {}], ['@paid#2', { fill: 1.1 }]],
   extraLines: [[['HER COWORKER:', 'gold']], [['68 MONTHS', 'bad']], [['(5 YEARS 8 MONTHS)', 'paper']]],
+  extra: [['@how', 'zoom-on-number', 'F0', { fill: 1.0, maxH: 900, sx: 540, sy: 880, st: { x: 915, y: 1385, s: 0.95 } }], ['@back', 'peek', 'F0', { fill: 1.0, maxH: 900, sx: 540, sy: 880 }], ['@students', 'zoom-on-number', ['mug', 'ftx'], { sx: 480, sy: 840, fill: 0.95, maxH: 1000, st: 'corner' }], ['@dumb', 'peek', ['vb', 'btx'], { sy: 860 }], ['@follower', 'peek', 'inv', { sy: 880, fill: 0.84, maxH: 700 }], ['@reach', 'peek', ['vb3', 'sh2'], { sy: 860, fill: 0.98, maxH: 940 }], ["@ending's", 'graphic-hero', 'board', { sy: 800, fill: 0.86, maxH: 860 }], ['@prison', 'graphic-hero', ['sv', 'vd'], { sx: 540, sy: 880, fill: 0.98, maxH: 940, st: 'corner' }], ['@who#3', 'zoom-on-number', 'ex', { fill: 0.8, maxH: 700, sy: 840 }]],
   R: {
     hookEnd: '@charli', hookRing: '@fake', hookReact: '@invent', loopIn: '@yes',
     who: '@charli', whoName: '@javis', whoString: '@ran', whoRing: '@frank', frank: '@a#2',

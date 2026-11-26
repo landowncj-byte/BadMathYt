@@ -869,6 +869,8 @@
     b(R.ask, PF, ['hook2', 'sus0'], { sy: 880, pose: 'talk' });
     sfx(R.loop, 'rewind_2', -11, 0.9); sfx(R.ask, 'pop_1', -9, 0.5);
 
+    (cfg.extra || []).forEach(([at, beat, focus, o]) => b(at, beat, focus === 'F0' ? F0 : focus, Object.assign({ fill: 0.9, maxH: 860, sy: 860, st: 'corner-left', pose: 'talk', dur: 0.8 }, o || {})));
+
     // ---- HUD ----
     const lab = [{ at: -1, text: 'THE PITCH' }, { at: O(R.bankAsk, '-0.2'), text: 'THE CHECK' }, { at: O(R.eng, '-0.2'), text: 'THE FAKE' }, { at: O(R.deal, '-0.2'), text: 'THE DEAL' }, { at: O(R.fell0, '-0.2'), text: 'THE COLLAPSE' }, { at: O(R.board, '+0.2'), text: 'THE EVIDENCE' }, { at: O(R.jury0, '-0.2'), text: 'THE SENTENCE' }];
     const itm = [{ at: 0, label: 'CUSTOMERS SOLD (CLAIMED)', to: 4000000, dur: 1.2 }, { at: R.claim, label: 'USERS SHE CLAIMED', to: 4250000, dur: 0.8 }, { at: R.real, label: 'REAL USERS (SEC: UNDER)', to: 300000, dur: 0.9 }, { at: R.engNo, label: 'ENGINEERS WHO SAID YES', to: 0, dur: 0.4 }, { at: R.fillGo, label: 'FAKE CUSTOMERS MADE', from: 0, to: 4000000, dur: cfg.fillDur || 2.2 }, { at: R.invoice, label: 'PAID FOR THE LIST (ABOUT)', to: 18000, prefix: '$', dur: 1.0 }, { at: R.n175, label: 'JPMORGAN PAID', to: 175000000, prefix: '$', dur: 1.1 }]
@@ -889,6 +891,7 @@ JAVICE({
   hook: { lines: [[['A PROFESSOR GOT PAID', 'paper']], [['TO INVENT ', 'paper'], ['4M FAKE PEOPLE', 'bad']]], size: 84, side: { kind: 'prof', label: 'THE PROFESSOR', sub: 'DATA SCIENCE', tape: 'HIRED' } },
   hookBeats: [['@4', {}], ['@paid#2', { fill: 1.1 }]],
   extraLines: [[['HER COWORKER:', 'gold']], [['68 MONTHS', 'bad']], [['(5 YEARS 8 MONTHS)', 'paper']]],
+  extra: [['@how', 'zoom-on-number', 'F0', { fill: 1.0, maxH: 900, sx: 540, sy: 880, st: { x: 915, y: 1385, s: 0.95 } }], ['@back', 'peek', 'F0', { fill: 1.0, maxH: 900, sx: 540, sy: 880 }], ['@students', 'zoom-on-number', ['mug', 'ftx'], { sx: 480, sy: 840, fill: 0.95, maxH: 1000, st: 'corner' }], ['@dumb', 'peek', ['vb', 'btx'], { sy: 860 }], ['@follower', 'peek', 'inv', { sy: 880, fill: 0.84, maxH: 700 }], ['@reach', 'peek', ['vb3', 'sh2'], { sy: 860, fill: 0.98, maxH: 940 }], ["@ending's", 'graphic-hero', 'board', { sy: 800, fill: 0.86, maxH: 860 }], ['@prison', 'graphic-hero', ['sv', 'vd'], { sx: 540, sy: 880, fill: 0.98, maxH: 940, st: 'corner' }], ['@who#3', 'zoom-on-number', 'ex', { fill: 0.8, maxH: 700, sy: 840 }]],
   R: {
     hookEnd: '@charli', hookRing: '@fake', hookReact: '@invent', loopIn: '@yes',
     who: '@charli', whoName: '@javis', whoString: '@ran', whoRing: '@frank', frank: '@a#2',

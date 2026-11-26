@@ -2,6 +2,7 @@ JAVICE({
   duration: 85.10, deckDur: 5.2, fillDur: 2.0,
   hook: { lines: [[['4,000,000', 'bad']], [['CUSTOMERS', 'paper']], [["WHO DIDN'T EXIST", 'gold']]], size: 96, side: { kind: 'investor', label: 'JPMORGAN', sub: 'THE BANK', tape: 'THE BANK' } },
   hookBeats: [['@four', {}], ['@exist', { fill: 1.1 }]],
+  extra: [['@website', 'graphic-hero', 'mug', { fill: 0.62, maxH: 740, sy: 950 }], ['@giant', 'peek', ['mug', 'ftx'], { sx: 480, sy: 840, fill: 0.95, maxH: 1000 }], ['@banks', 'peek', ['deck', 'spd'], { sy: 840, fill: 0.9, maxH: 800 }], ['@buy', 'graphic-hero', 'deck', { fill: 0.78, maxH: 800, sy: 840, pose: 'chin' }], ['@smart', 'peek', ['vb', 'btx'], { sy: 860 }], ['@tried', 'peek', ['vb3', 'sh2'], { sy: 860, fill: 0.98, maxH: 940 }], ['@years', 'graphic-hero', ['sv', 'vd'], { sx: 540, sy: 880, fill: 0.98, maxH: 940, st: 'corner' }]],
   R: {
     hookEnd: '@charlie', hookRing: '@exist', hookReact: "@didn't", loopIn: '@four#6',
     who: '@charlie', whoName: '@javis', whoString: '@started', whoRing: '@frank', frank: '@it',
