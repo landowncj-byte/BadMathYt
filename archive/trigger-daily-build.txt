@@ -1,18 +1,18 @@
 Daily Bad Math build. First re-read /home/user/badmathyt/HANDOFF.md, then follow /home/user/badmathyt/PRODUCTION.md exactly, along with CHANNEL.md, STYLE.md (especially §14 hook gate, §15 three platform cuts, §16 pronunciation, §18 story loop, §19 series rules, §20 visual system v2, §21 humanized scripts), brand/CHARACTER.md, brand/MEMES.md, brand/sfx-library/manifest.json, ideas.md, ANALYTICS.md, queue.md and the newest research/<date>/ folder. If /home/user/badmathyt is missing, attach landowncj-byte/BadMathYt with push access and clone it.
 
 MODEL SPLIT (user rule):
-- FABLE does ALL research (Agent tool, model "fable"):
+- SONNET (research) / OPUS (scripts) does ALL research (Agent tool, model "fable"):
   - CONTENT research: competitors in our niche, their viral outliers, which hooks/topics/formats are working, and gaps.
   - FACT research: topic ideas, fact-checking, the number spine and sources.
   - Output: research/<date>/competitors.md, ideas.md (ranked, with "inspired by" links) and <slug>/research.md for each topic.
   - If today's research/<date>/ folder already exists (built ahead), use it instead of redoing it.
-- OPUS (you) does creation and directing: pick topics from Fable's list, write hooks, the three platform scripts, the pronunciation pass and direction (including v2 camera moves and storyteller choreography), review every contact sheet, approve publishing.
+- OPUS (you) does creation and directing: pick topics from Sonnet's list, write hooks, the three platform scripts, the pronunciation pass and direction (including v2 camera moves and storyteller choreography), review every contact sheet, approve publishing.
 - SONNET agents do coding, rendering and mixing. HAIKU agents do narration timings, sound, captions and packaging.
 
-1. ANALYTICS FIRST: pull get_post_analytics for the last 7 days (all platforms) and append today's block to ANALYTICS.md. Give our winners and losers to Fable along with its competitor findings. On Sunday (US Eastern), Fable refreshes competitors.md fully, and you write the weekly review and apply its 3–5 changes. Never repeat a topic. Copy competitor PATTERNS, never their topics, scripts, footage or audio.
+1. ANALYTICS FIRST: pull get_post_analytics for the last 7 days (all platforms) and append today's block to ANALYTICS.md. Give our winners and losers to Sonnet along with its competitor findings. On Sunday (US Eastern), Sonnet refreshes competitors.md fully, and you write the weekly review and apply its 3–5 changes. Never repeat a topic. Copy competitor PATTERNS, never their topics, scripts, footage or audio.
 
-2. RESEARCH: one Fable agent researches the next day's batch: at least 8 Short topics, plus 1 long-form topic ONLY on Monday, Wednesday or Friday (US Eastern). Every number is sourced; anything unverifiable is cut.
-   - BROAD TOPICS (user rule 2026-11-25): money is the topic, the audience is EVERYONE. Every topic must be something most people already know (famous brands, celebrities, sports, games, movies, food, everyday bills, viral stories) — the grandma / 16-year-old test: recognizable in 2 seconds with zero finance knowledge. No niche finance topics unless framed through something everyone knows. Fable ranks ideas by mass recognizability first.
+2. RESEARCH: one Sonnet agent researches the next day's batch: at least 8 Short topics, plus 1 long-form topic ONLY on Monday, Wednesday or Friday (US Eastern). Every number is sourced; anything unverifiable is cut.
+   - BROAD TOPICS (user rule 2026-11-25): money is the topic, the audience is EVERYONE. Every topic must be something most people already know (famous brands, celebrities, sports, games, movies, food, everyday bills, viral stories) — the grandma / 16-year-old test: recognizable in 2 seconds with zero finance knowledge. No niche finance topics unless framed through something everyone knows. Sonnet ranks ideas by mass recognizability first.
    - DECODED must be 100% accurate (STYLE §19): court-proven only; every fact primary-sourced or confirmed by 2+ independent sources, else cut.
    - WHAT IF: random, off-the-wall premises are welcome (about half of each day's topics) as long as money is the theme. The math and real-world inputs must still be exact, and assumptions labeled.
 
@@ -21,7 +21,7 @@ MODEL SPLIT (user rule):
    - Add human touches: one self-correction ("she— she had…") and [breath]/[sigh]/[gasp]/[smack] tags. NO um/uh fillers and NO laugh/[chuckle] (user rule 2026-11-25). Captions come from the script minus the tags.
    - LONGER SHORTS WITH CONTEXT (user rule 2026-11-25, RULES 102): DECODED ~90 s (80–100 s, ≤ 250 words) · WHAT IF ~65 s (62–75 s, ≤ 185 words; NEVER under 60 s — TikTok monetization), same on every platform (owner 2026-11-25 "90 seconds is the target timing… 65 seconds for the what ifs"): YouTube ad-safe edgy hook · TikTok spicy, comment bait · Instagram/Facebook most vulgar, sends and saves. Explain almost at kindergarten level: set up who/what/why, every term in plain words, one idea per line, walk the "how it worked" step by step, an everyday comparison for every big number. Never rush details. Long-forms unchanged.
    - Fill the 08:00–14:00 slots first. Run up to 3 Sonnet build agents in parallel.
-   - VISUALS (STYLE §20): build every NEW video with engine v2 (brand/engine-v2, READY) + brand/VISUAL-V2.md: camera push-ins on spoken numbers, the storyteller moving in front of and behind graphics, satisfying springs, no neon. Don't rebuild already-built or scheduled videos. Fable built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Fable stays on research only. Set the scene's duration to the narration length + ~0.4 s. LONG-FORMS use the same engine v2 style in 16:9 landscape mode (user rule: no more neon long-forms).
+   - VISUALS (STYLE §20): build every NEW video with engine v2 (brand/engine-v2, READY) + brand/VISUAL-V2.md: camera push-ins on spoken numbers, the storyteller moving in front of and behind graphics, satisfying springs, no neon. Don't rebuild already-built or scheduled videos. Sonnet built the engine once; you (Opus) direct v2 videos yourself per brand/engine-v2/README.md, and Sonnet stays on research only. Set the scene's duration to the narration length + ~0.4 s. LONG-FORMS use the same engine v2 style in 16:9 landscape mode (user rule: no more neon long-forms).
 
 4. VOICE: Shorts use the FREE Kokoro voice am_liam (user pick), voiced through brand/voice/humanize.py build(k, lines), which adds real CC0 breaths and human noises, strips any um/uh or chuckle, and handles pronunciation fixes. No energy mode. Long-forms use the PAID ElevenLabs "Owen – Calm, Trustworthy Narrator" (voice_id 83MXTnoLsr3jX4Sl4gL4) if credits cover the script + 5%; otherwise use Kokoro and tell the user. All SFX and music are free CC0.
 
@@ -46,7 +46,7 @@ MODEL SPLIT (user rule):
 
 6. AFTER EACH POST is queued, send the user a short note with the video and its slot. Commit and push everything to main. If time or usage runs out, stop after the last finished-and-queued video and tell the user how many of the 8 per platform are covered and what's left. Give time-based (not percentage) usage estimates before heavy work.
 
-LONG-FORM topics follow the same broad rule: the Do Kwon long-form planned for Friday 11/27 is DROPPED (too niche); Fable picks a mass-recognizable long-form instead.
+LONG-FORM topics follow the same broad rule: the Do Kwon long-form planned for Friday 11/27 is DROPPED (too niche); Sonnet picks a mass-recognizable long-form instead.
 
 Pending promise: the lottery TikTok promised a "Part 2" (what happened after the 1992 Virginia win). Research is in research/2026-11-25/lottery-part2/. Make it soon.
 
@@ -59,3 +59,5 @@ Pending promise: the lottery TikTok promised a "Part 2" (what happened after the
 > CADENCE (RULES 106, 2026-11-25, ElevenLabs Pro): 3 Short topics/day at 11:00 · 15:00 · 19:00 ET (each on YouTube + TikTok + Instagram + Facebook = 12 posts/day), ~50/50 Decoded / What If; long-forms Tue + Fri 17:00 ET. Math in PLAN-CADENCE.md. Replaces "8 per platform per day" and Mon/Wed/Fri long-forms.
 
 > AUTO-TAG (owner 2026-11-25): before every Owen take run `python3 brand/voice/owen_tags.py <cut>` and send voice/owen_prompt.txt (eleven_v4 delivery tags, never noise tags) as the prompt.
+
+> RULES 109 (2026-11-26): never use Fable. Research = Sonnet agents; scripts/storyboards = Opus.
