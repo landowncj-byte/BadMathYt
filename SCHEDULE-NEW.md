@@ -63,3 +63,7 @@ card-minimum: REJECTED at QC (16.5 YEARS cropped at right edge, INTEREST label o
 | javice | Instagram REEL | Sat 11/28 11:00 | 16:00Z | 70e1bcd0-4730-46c2-be13-93c808151c88 | APPROVED |
 | javice | Facebook REEL | Sat 11/28 11:00 | 16:00Z | f7c83cd6-77ce-40d3-9713-47c5835168f1 | APPROVED |
 Sunday plan (research/2026-11-27): 11:00 mona-lisa-thief (Decoded) · 15:00 coin-flip-double-or-nothing (What If) · 19:00 anna-delvey-fake-heiress (Decoded). Then Mon–Sun next week from ideas.md ranks 5–9 + new research.
+| double or nothing | YouTube | Sun 11/29 15:00 | 20:00Z | 81cd32be-8577-45dd-b0a9-28d50df8a45a | APPROVED |
+| double or nothing | TikTok (song: Funny) | Sun 11/29 15:00 | 20:00Z | 1f543ba7-75f5-41fc-aa3d-8d401d6b0e5c | APPROVED |
+| double or nothing | Instagram REEL | Sun 11/29 15:00 | 20:00Z | 2b64d9c8-70ae-4063-9597-fa4b8c51f626 | APPROVED |
+| double or nothing | Facebook REEL | Sun 11/29 15:00 | 20:00Z | b1133554-2d52-4bb5-b6ea-c8c64c0aea8d | APPROVED |
