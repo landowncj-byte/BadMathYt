@@ -194,6 +194,8 @@ Run `python3 brand/tools/script_gate.py videos/<slug> --all` (un-voiced drafts: 
 
 113. SONGS (owner 2026-11-26: "always add popular songs for each shortform video"; picked "Yes, but narration first"). TikTok: every Short gets a trending pre-cleared Commercial Music Library track attached on the post (PostFast list_tiktok_sounds → create_posts controls.tiktokMusicSoundId + tiktokMusicSoundName; fresh list each day; mood-matched: tense/dark for Decoded, upbeat for What If). Because TikTok plays the track at 50% over our audio, the TikTok cut is mixed with our own music bed 12 dB lower (`BM2_BED_DB=-12 python3 brand/engine-v2/mix.py …`) so Owen stays clear. YouTube / IG / FB: popular commercial songs are NOT baked into video files (YouTube blocks claimed Shorts over 60 s worldwide; IG/FB mute or block; business accounts can't use the general library) — keep the CC0 beds; the owner can add a trending sound by hand in the IG app if wanted.
 
+114. NO PART TWOS (owner 2026-11-26: "avoid part twos in the future… make videos that can be covered in one short"). Every Short tells a complete story on its own: setup, twist, payoff, all in one video. Never split a topic into Part 1 / Part 2 and never tease a follow-up. If a story is too big for one Short, pick the single best angle or make it a long-form. (Lottery Part 2, already scheduled for Fri 11/27, is the last one.)
+
 ---
 
 ## Rejected by the owner — never bring back
