@@ -1,63 +1,67 @@
 1
-00:00:00,000 --> 00:00:03,586
+00:00:00,460 --> 00:00:04,160
 Twenty dollar bills beat hundreds here, and your bathroom scale decides it.
 
 2
-00:00:05,136 --> 00:00:07,342
+00:00:04,900 --> 00:00:07,180
 So you get one of two piles of free cash.
 
 3
-00:00:07,992 --> 00:00:10,564
+00:00:07,560 --> 00:00:09,960
 The first pile is your weight in twenty dollar bills.
 
 4
-00:00:11,314 --> 00:00:14,775
+00:00:10,380 --> 00:00:14,240
 The second pile is hundred dollar bills, stacked flat, as tall as you.
 
 5
-00:00:16,225 --> 00:00:19,909
+00:00:14,700 --> 00:00:19,180
 You said hundreds, right? Tap the heart if you did. No judgment— okay, a little.
 
 6
-00:00:21,259 --> 00:00:24,786
+00:00:19,620 --> 00:00:22,700
 Now run it on the average American guy, with CDC numbers.
 
 7
-00:00:25,436 --> 00:00:29,186
+00:00:23,100 --> 00:00:26,940
 He weighs one ninety-nine pounds. And every bill weighs about one gram.
 
 8
-00:00:30,036 --> 00:00:32,977
-So his weight in twenties is about one point eight million.
+00:00:26,840 --> 00:00:31,300
+And he's about sixty-nine inches tall, so that's how high his hundreds stack.
 
 9
-00:00:34,627 --> 00:00:37,731
-His height in hundreds is only about one point six million.
+00:00:31,800 --> 00:00:34,520
+So his weight in twenties is about one point eight million.
 
 10
-00:00:38,781 --> 00:00:41,446
-Send this to the friend who'd grab hundreds instantly.
+00:00:35,160 --> 00:00:38,320
+His height in hundreds is only about one point six million.
 
 11
-00:00:42,196 --> 00:00:44,851
-Wait, why? A pound of twenties is about nine grand.
+00:00:38,900 --> 00:00:41,300
+Send this to the friend who'd grab hundreds instantly.
 
 12
-00:00:45,701 --> 00:00:50,075
-An inch of hundreds is about twenty-three grand, but you've got way more pounds than inches.
+00:00:41,920 --> 00:00:45,000
+Wait, why? A pound of twenties is about nine grand.
 
 13
-00:00:50,925 --> 00:00:53,270
-Now here's your cheat code, and it's worth a follow.
+00:00:45,500 --> 00:00:50,260
+An inch of hundreds is about twenty-three grand, but you've got way more pounds than inches.
 
 14
-00:00:54,020 --> 00:00:57,471
-Take your height in inches, and multiply by two point five six.
+00:00:50,700 --> 00:00:53,080
+Now here's your cheat code, and it's worth a follow.
 
 15
-00:00:58,521 --> 00:01:01,221
-If you weigh more than that number in pounds, take the twenties.
+00:00:52,980 --> 00:00:55,620
+Take your height in inches, and multiply by two point five six.
 
 16
-00:01:02,171 --> 00:01:04,986
+00:00:57,160 --> 00:00:59,720
+If you weigh more than that number in pounds, take the twenties.
+
+17
+00:01:00,400 --> 00:01:03,280
 So what's your bathroom scale saying, twenties or hundreds?

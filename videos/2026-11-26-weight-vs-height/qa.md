@@ -24,3 +24,4 @@ Engine fix: `brand/engine-v2/bm2.cjs` line 16 had a `//` comment that swallowed 
 - IG/FB: SCENE READY: weight-vs-height/ig — render/mix/loudness pending on PC
 Known: video.mp4 / captions.srt / contact_sheet.png in the folders are the previous build (stale until the PC render); captions.srt must be rebuilt from sentences.json after render.
 RENDERED READY: weight-vs-height (YouTube) 65.47s 18.9MB (-14.0 LUFS, -1.4 dBTP, 1080x1920 30fps; re-encoded crf 25). Contact sheet contact_sheet.png (1 fps) viewed, captions.srt rebuilt from sentences.json.
+RENDERED READY: weight-vs-height/tiktok 64.10s 17.7MB (-14.0 LUFS, -1.3 dBTP). Doubt: cheat-code card 51-55 s is camera drift + counters only (held ~4 s).

@@ -32,3 +32,9 @@ First Bad Math posts go out tonight (YouTube FTX 20:00 ET, lottery 22:00 ET; Tik
 
 ### Comment sweep 2026-11-26 03:38 UTC
 - No unread conversations.
+
+## 2026-11-26 06:15 UTC pull (last 7 days, PostFast)
+- Best: IG "Two buttons" 1,252 impressions, 18.2 s avg watch, 42% skip, 12 likes + 3 comments + 1 save. FB salad oil: 169 views, 78 complete views (46%), 14.2 s avg. TT salad oil 13% full-watch, 11.2 s avg.
+- Weak: the 25–35 s Shorts from 11/25 (overdraft, parlay, McDonald's) average 3–10 s watch with 50–65% IG skip; McDonald's IG skip 65%.
+- Read: story-driven Decoded with a concrete object (oil tanks) holds viewers; short fact-dump cuts don't. Supports RULES 112 (crime-show storytime, longer context). YouTube Shorts still near zero reach (new channel).
+- ElevenLabs: 78,777 / 712,816 credits used (resets 2026-12-25). On pace: fine for 3 topics/day + 2 long-forms/week.

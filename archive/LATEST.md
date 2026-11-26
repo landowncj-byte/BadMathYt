@@ -1,13 +1,4 @@
-# Latest — 2026-11-25 ~02:35 UTC (Tue Nov 24 ~9:35 PM ET)
-- Tonight (Tue): 20 posts live/scheduled 20:00–23:30 ET (FTX, Theranos, lottery, Fyre, coffee) — these still carry the old AI label (set at creation).
-- Wed 2026-11-25: parlay 08:00, overdraft 10:00, McDonald's Monopoly 12:00 ET on all 4 platforms (re-created with AI labels OFF).
-- NEW TODAY (all saved in STYLE/PRODUCTION/CHANNEL/HANDOFF + nightly prompt):
-  - Visual system v2 live (brand/engine-v2/READY) — user loved the prototype. Brand lock: avatar/profile/pills/fonts unchanged.
-  - Shorts voice = am_liam plain (user pick). Energy mode exists but OFF.
-  - AI labels OFF on all platforms. PostFast YouTube cap = 10/UTC day.
-  - What If = wild premises OK; Decoded = 100% accurate (§19).
-  - Fable = research (facts + competitors); built engine-v2 once; Opus directs; Sonnet/Haiku build.
-  - Comments hybrid (auto-reply + flag), sweep task 4×/day.
-  - Usage: give time estimates, not %.
-  - Bios v2 in brand/PROFILE.md.
-- Next: Wed 14:00+ slots + Do Kwon long-form (17:00, Owen) + lottery Part 2, from research/2026-11-25/. Nightly build 1:13 AM ET picks up anything not yet built (check videos/2026-11-25-* and list_posts first to avoid duplicates).
+# LATEST (2026-11-26 06:20 UTC)
+- Owner pivots tonight: crime-show storytime (RULES 112), PC rendering tried then cancelled (cloud final), speed-run all videos + schedule ASAP, ignore old posts (46 deleted).
+- Done: wave 2 scripts + Owen voices (5 topics × 3 cuts), Fri long-form script + voice, first 2 rebuilt Shorts scheduled (SCHEDULE-NEW.md).
+- Running: 3 Sonnet builders on the 6 first-wave topics. Next: builds for wave 2 + long-form, Tue long-form script.
